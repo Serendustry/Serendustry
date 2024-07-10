@@ -15,6 +15,7 @@ public class SerendustryMetaTileEntities {
     public static MetaTileEntityIndustrialLaboratory INDUSTRIAL_LABORATORY;
     public static MetaTileEntityTranscendentPlasmaMixer TRANSCENDENT_PLASMA_MIXER;
     public static MetaTileEntitySpaceElevator SPACE_ELEVATOR;
+    public static MetaTileEntityNebulaicNexus NEBULAIC_NEXUS;
 
     public static void preInit() {
         // todo claim an id range
@@ -24,5 +25,7 @@ public class SerendustryMetaTileEntities {
                 new MetaTileEntityTranscendentPlasmaMixer(Serendustry.ID("transcendent_plasma_mixer")));
         SPACE_ELEVATOR = registerMetaTileEntity(4002,
                 new MetaTileEntitySpaceElevator(Serendustry.ID("space_elevator")));
+        NEBULAIC_NEXUS = registerMetaTileEntity(4003,
+                new MetaTileEntityNebulaicNexus(Serendustry.ID("nebulaic_nexus")));
     }
 }

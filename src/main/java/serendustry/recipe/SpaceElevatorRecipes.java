@@ -54,7 +54,7 @@ public class SpaceElevatorRecipes {
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(circuit, MarkerMaterials.Tier.UV, 4)
-                .input(ELECTRIC_MOTOR_UHV, 4) // Gated behind Tengam planetoid
+                .input(ELECTRIC_MOTOR_UV, 4)
                 .input(plate, WroughtNeutronium, 8)
                 .input(stick, HighDurabilityCompoundSteel, 16)
                 .input(screw, EnrichedNaquadahAlloy, 64)
@@ -82,7 +82,7 @@ public class SpaceElevatorRecipes {
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(circuit, MarkerMaterials.Tier.UV, 8)
-                .input(ELECTRIC_MOTOR_UHV, 8)
+                .input(ELECTRIC_MOTOR_UV, 8)
                 .input(plate, WroughtNeutronium, 16)
                 .input(stick, HighDurabilityCompoundSteel, 32)
                 .input(screw, EnrichedNaquadahAlloy, 64)

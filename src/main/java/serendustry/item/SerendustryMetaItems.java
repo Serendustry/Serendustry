@@ -63,7 +63,7 @@ public class SerendustryMetaItems {
     public static MetaItem<?>.MetaValueItem PLANETOID_SCANNING_DRONE;
     public static MetaItem<?>.MetaValueItem PLANETOID_HARVESTING_DRONE;
 
-    // todo: data should have x durability and lose 1 per craft
+    // todo: data should have x durability and lose 1 per craft, also dont use a separate metaitem for each one, or at least autogenerate them
     public static MetaItem<?>.MetaValueItem STONE_PLANETOID_DATA;
     public static MetaItem<?>.MetaValueItem OBSIDIAN_PLANETOID_DATA;
 

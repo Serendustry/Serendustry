@@ -12,6 +12,8 @@ public class SerendustryRecipeMaps {
             "transcendent_plasma_mixer", 0, 0, 9, 2, false);
     public static final RecipeMapSpaceElevator SPACE_ELEVATOR_RECIPES = new RecipeMapSpaceElevator("space_elevator", 2,
             28, 1, 3, false);
+    public static final RecipeMapNebulaicNexus NEBULAIC_NEXUS_RECIPES = new RecipeMapNebulaicNexus("nebulaic_nexus", 0,
+            1, 9, 1, false);
     public static final RecipeMap<SimpleRecipeBuilder> DIGESTER_RECIPES = new RecipeMap<>("digester", 3, 9, 3, 3,
             new SimpleRecipeBuilder(), false);
 

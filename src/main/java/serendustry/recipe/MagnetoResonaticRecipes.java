@@ -209,7 +209,7 @@ public class MagnetoResonaticRecipes {
                 .duration(1000).EUt(VA[UHV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, HighDurabilityCompoundSteel)
+                .input(frameGt, CondensedStarMatter)
                 .input(WETWARE_CIRCUIT_BOARD)
                 .input(MAGNETO_RESONATIC_UV)
                 .input(RESONANCE_CHIP, 4)

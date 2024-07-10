@@ -34,7 +34,7 @@ public class MetaTileEntitySpaceElevator extends RecipeMapMultiblockController {
                 .aisle("XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX")
                 .aisle("XXX", "XXX", "XXX", "XXX", "XSX", "XXX", "XXX", "XXX", "XXX")
                 .where('S', selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(60).or(autoAbilities()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(40).or(autoAbilities()))
                 .build();
     }
 

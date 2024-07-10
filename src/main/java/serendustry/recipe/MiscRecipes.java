@@ -17,6 +17,7 @@ import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.chance.output.ChancedOutputLogic;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
+import net.minecraft.init.Items;
 
 public class MiscRecipes {
 
@@ -151,5 +152,15 @@ public class MiscRecipes {
          * .input(HOT_WOOD_INGOT)
          * .duration(65535).EUt(MAX).buildAndRegister();
          */
+
+        EXTRACTOR_RECIPES.recipeBuilder()
+                .input(dust, CheeseAmerican)
+                .output(dust, Polyethylene)
+                .duration(20).EUt(VA[LV]).buildAndRegister();
+
+        WIREMILL_RECIPES.recipeBuilder()
+                .input(stickLong, CheeseMozzarella)
+                .output(Items.STRING, 8)
+                .duration(40).EUt(VA[LV]).buildAndRegister();
     }
 }

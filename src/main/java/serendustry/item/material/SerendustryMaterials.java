@@ -215,6 +215,8 @@ public class SerendustryMaterials {
     public static Material CheeseMozzarella;
     public static Material CheeseSwiss;
 
+    public static Material StellarBaptismSolution;
+
     public static void init() {
         // This should probably be a loop, but I never intended for it to get this big; it just kind of slowly grew over
         // time, and now it's too late for me to want to change it
@@ -443,7 +445,7 @@ public class SerendustryMaterials {
         Cinobite = new Material.Builder(9, Serendustry.ID("cinobite"))
                 .ingot(3).liquid(new FluidBuilder().temperature(6000))
                 .color(0x010101).iconSet(SHINY)
-                .flags(EXT2_METAL, DECOMPOSITION_BY_CENTRIFUGING, GENERATE_FOIL)
+                .flags(EXT2_METAL, DECOMPOSITION_BY_CENTRIFUGING, GENERATE_FOIL, GENERATE_FINE_WIRE)
                 .components(Zeron100, 8, Titanium, 6, Naquadria, 4, Gadolinium, 3, Osmiridium, 1, Mercury, 1)
                 .blastTemp(2500, GasTier.HIGHEST, VA[UV], 2000)
                 .fluidPipeProperties(30000, 3500, true, true, true, true)
@@ -490,7 +492,7 @@ public class SerendustryMaterials {
         Pikyonium = new Material.Builder(15, Serendustry.ID("pikyonium"))
                 .ingot(3).liquid(new FluidBuilder().temperature(6000))
                 .color(0x3160AE).iconSet(SHINY)
-                .flags(EXT2_METAL, DECOMPOSITION_BY_CENTRIFUGING, GENERATE_SMALL_GEAR)
+                .flags(EXT2_METAL, DECOMPOSITION_BY_CENTRIFUGING, GENERATE_SMALL_GEAR, GENERATE_FINE_WIRE)
                 .components(Inconel792, 8, EglinSteel, 5, NaquadahEnriched, 4, TungstenSteel, 4, Cerium, 3, Onionium, 7)
                 .blastTemp(9000, GasTier.HIGHEST, VA[UV], 2000)
                 .cableProperties(V[UHV], 2, 512)
@@ -562,7 +564,7 @@ public class SerendustryMaterials {
                 .ingot(3).liquid(new FluidBuilder().temperature(6000))
                 .color(0x304030).iconSet(SHINY)
                 .flags(STD_METAL, DECOMPOSITION_BY_CENTRIFUGING, GENERATE_FRAME, GENERATE_RING, GENERATE_LONG_ROD,
-                        GENERATE_BOLT_SCREW)
+                        GENERATE_BOLT_SCREW, GENERATE_ROUND, GENERATE_ROTOR, GENERATE_FINE_WIRE, GENERATE_FOIL, GENERATE_SMALL_GEAR)
                 .components(TungstenSteel, 12, HSSS, 9, HSSG, 6, Ruridit, 3, MagnetoResonatic, 2, Plutonium239, 1)
                 .toolStats(ToolProperty.Builder.of(100.0f, 70.0f, 65535, 6)
                         .attackSpeed(0.5f).enchantability(33).magnetic().build())
@@ -923,6 +925,7 @@ public class SerendustryMaterials {
                 .fluidPipeProperties(8000, 5000, true, true, true, false)
                 .build();
 
+        // Todo: stop GCYM from autogenerating a recipe for this that's very cheap
         Floppa = new Material.Builder(67, Serendustry.ID("floppa"))
                 .ingot(3).liquid(new FluidBuilder().temperature(800000))
                 .color(0x9E5625).iconSet(SHINY)
@@ -1379,35 +1382,35 @@ public class SerendustryMaterials {
 
         // todo: custom star matter textures
         YellowStarMatter = new Material.Builder(136, Serendustry.ID("yellow_star_matter"))
-                .fluid().color(0xffff00)
+                .color(0xffff00).liquid(new FluidBuilder().temperature(6000))
                 .build();
 
         RedStarMatter = new Material.Builder(137, Serendustry.ID("red_star_matter"))
-                .fluid().color(0xff0000)
+                .color(0xff0000).liquid(new FluidBuilder().temperature(3600))
                 .build();
 
         BlueStarMatter = new Material.Builder(138, Serendustry.ID("blue_star_matter"))
-                .fluid().color(0x0000ff)
+                .color(0x0000ff).liquid(new FluidBuilder().temperature(28000))
                 .build();
 
         WhiteStarMatter = new Material.Builder(139, Serendustry.ID("white_star_matter"))
-                .fluid().color(0xffffff)
+                .color(0xffffff).liquid(new FluidBuilder().temperature(11000))
                 .build();
 
         BrownStarMatter = new Material.Builder(140, Serendustry.ID("brown_star_matter"))
-                .fluid().color(0x842f00)
+                .color(0x842f00).liquid(new FluidBuilder().temperature(950))
                 .build();
 
         BlackStarMatter = new Material.Builder(141, Serendustry.ID("black_star_matter"))
-                .fluid().color(0x000000)
+                .color(0x000000).liquid(new FluidBuilder().temperature(5))
                 .build();
 
         PulsarStarMatter = new Material.Builder(142, Serendustry.ID("pulsar_star_matter"))
-                .fluid().color(0x878787)
+                .color(0x878787).liquid(new FluidBuilder().temperature(950))
                 .build();
 
         CondensedStarMatter = new Material.Builder(143, Serendustry.ID("condensed_star_matter"))
-                .ingot(3).liquid(new FluidBuilder().temperature(9000))
+                .ingot(3).liquid(new FluidBuilder().temperature(35000))
                 .color(0x00ffd8).iconSet(SHINY)
                 .flags(EXT2_METAL, GENERATE_FRAME)
                 .toolStats(ToolProperty.Builder.of(120.0f, 140.0f, 10000, 7)
@@ -1440,7 +1443,7 @@ public class SerendustryMaterials {
                 .components(Carbon, 1)
                 .build();
 
-        BituminousCoal = new Material.Builder(146, Serendustry.ID("butuminous_coal"))
+        BituminousCoal = new Material.Builder(146, Serendustry.ID("bituminous_coal"))
                 .gem(1, 1200)
                 .ore(2, 1)
                 .color(0x451C90).iconSet(LIGNITE)
@@ -1453,7 +1456,7 @@ public class SerendustryMaterials {
                 .components(Carbon, 1)
                 .build();
 
-        SubBituminousCoal = new Material.Builder(147, Serendustry.ID("sub_bitunimous_coal"))
+        SubBituminousCoal = new Material.Builder(147, Serendustry.ID("sub_bituminous_coal"))
                 .gem(1, 1200)
                 .ore(2, 1)
                 .color(0x451C3F).iconSet(LIGNITE)
@@ -1544,5 +1547,11 @@ public class SerendustryMaterials {
         oreProp = CheeseMozzarella.getProperty(PropertyKey.ORE);
         oreProp.setOreByProducts(CheeseMozzarella, CheeseCheddar, CheeseSwiss, CheeseAmerican);
         oreProp.setWashedIn(Water);
+
+        // todo: make cheeses edible
+
+        StellarBaptismSolution = new Material.Builder(152, Serendustry.ID("stellar_baptism_solution"))
+                .liquid(new FluidBuilder().temperature(30000)).color(0x676767)
+                .build();
     }
 }
