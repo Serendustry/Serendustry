@@ -369,5 +369,10 @@ public class AlloyRecipes {
                 .input(dust, Rhodium, 1).input(dust, Palladium, 1).input(dust, Ruthenium, 1)
                 .output(dust, Rhopalthenit, 3)
                 .duration(400).EUt(VA[IV]).buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder()
+                .input(dust, Cadmium, 4).input(dust, Antimony, 3).input(dust, Indium, 1)
+                .output(dust, HighGradeSolderingAlloy, 8)
+                .duration(460).EUt(VA[IV]).buildAndRegister();
     }
 }

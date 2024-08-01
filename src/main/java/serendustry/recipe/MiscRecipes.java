@@ -17,6 +17,7 @@ import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.chance.output.ChancedOutputLogic;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.material.Material;
 import net.minecraft.init.Items;
 
 public class MiscRecipes {
@@ -162,5 +163,16 @@ public class MiscRecipes {
                 .input(stickLong, CheeseMozzarella)
                 .output(Items.STRING, 8)
                 .duration(40).EUt(VA[LV]).buildAndRegister();
+
+        Material[] oil = { Oil, Creosote, SeedOil };
+
+        for (int i = 0; i < oil.length; i++) {
+            BREWING_RECIPES.recipeBuilder()
+                    .input(dust, Molybdenite)
+                    .input(dust, Graphite)
+                    .fluidInputs(oil[i].getFluid(1000))
+                    .fluidOutputs(MolybdeniteLubricant.getFluid(1000))
+                    .duration(256).EUt(VA[HV]).buildAndRegister();
+        }
     }
 }

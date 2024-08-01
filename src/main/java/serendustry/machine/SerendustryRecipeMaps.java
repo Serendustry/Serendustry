@@ -11,9 +11,11 @@ public class SerendustryRecipeMaps {
     public static final RecipeMapTranscendentPlasmaMixer PLASMA_MIXER_RECIPES = new RecipeMapTranscendentPlasmaMixer(
             "transcendent_plasma_mixer", 0, 0, 9, 2, false);
     public static final RecipeMapSpaceElevator SPACE_ELEVATOR_RECIPES = new RecipeMapSpaceElevator("space_elevator", 2,
-            28, 1, 3, false);
-    public static final RecipeMapNebulaicNexus NEBULAIC_NEXUS_RECIPES = new RecipeMapNebulaicNexus("nebulaic_nexus", 0,
+            4096, 1, 3, false);
+    public static final RecipeMapNebulaicNexus NEBULAIC_NEXUS_RECIPES = new RecipeMapNebulaicNexus("nebulaic_nexus", 1,
             1, 9, 1, false);
+    public static final RecipeMapPlasmaFoundry PLASMA_FOUNDRY_RECIPES = new RecipeMapPlasmaFoundry("plasma_foundry", 0,
+            0, 6, 2, false);
     public static final RecipeMap<SimpleRecipeBuilder> DIGESTER_RECIPES = new RecipeMap<>("digester", 3, 9, 3, 3,
             new SimpleRecipeBuilder(), false);
 
@@ -25,5 +27,6 @@ public class SerendustryRecipeMaps {
         RecipeMaps.LASER_ENGRAVER_RECIPES.setMaxInputs(4);
         RecipeMaps.MIXER_RECIPES.setMaxInputs(9);
         RecipeMaps.MIXER_RECIPES.setMaxFluidInputs(3);
+        RecipeMaps.BREWING_RECIPES.setMaxInputs(4);
     }
 }

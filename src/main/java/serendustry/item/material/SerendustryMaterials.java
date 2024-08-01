@@ -216,6 +216,19 @@ public class SerendustryMaterials {
     public static Material CheeseSwiss;
 
     public static Material StellarBaptismSolution;
+    public static Material StellarContainmentBase;
+
+    public static Material Hihiirokane;
+    public static Material NeutronatedSteel;
+    public static Material HAMAlloy;
+    public static Material MagneticHAMAlloy;
+
+    public static Material HighGradeSolderingAlloy;
+    public static Material SuperheavySolderingAlloy;
+
+    public static Material MolybdeniteLubricant;
+
+    public static Material Ferrofluid;
 
     public static void init() {
         // This should probably be a loop, but I never intended for it to get this big; it just kind of slowly grew over
@@ -335,8 +348,19 @@ public class SerendustryMaterials {
         Oganesson.setProperty(PropertyKey.INGOT, new IngotProperty());
         Lutetium.setProperty(PropertyKey.INGOT, new IngotProperty());
 
-        Sodium.setProperty(PropertyKey.FLUID, new FluidProperty());
-        Bromine.setProperty(PropertyKey.FLUID, new FluidProperty());
+        Holmium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
+        Thulium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
+        Scandium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
+        Promethium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
+        Electrotine.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
+        Cadmium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
+        Boron.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
+        Barium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
+        Calcium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
+        Sodium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
+        Bromine.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
+        Erbium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
+        Moscovium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
 
         Water.getProperty(PropertyKey.FLUID).getStorage().enqueueRegistration(FluidStorageKeys.PLASMA,
                 new FluidBuilder());
@@ -1412,7 +1436,8 @@ public class SerendustryMaterials {
         CondensedStarMatter = new Material.Builder(143, Serendustry.ID("condensed_star_matter"))
                 .ingot(3).liquid(new FluidBuilder().temperature(35000))
                 .color(0x00ffd8).iconSet(SHINY)
-                .flags(EXT2_METAL, GENERATE_FRAME)
+                .flags(EXT2_METAL, GENERATE_FRAME, GENERATE_RING, GENERATE_ROUND, GENERATE_GEAR, GENERATE_SMALL_GEAR)
+                .blastTemp(9000, GasTier.HIGHEST, VA[UHV], 1600)
                 .toolStats(ToolProperty.Builder.of(120.0f, 140.0f, 10000, 7)
                         .attackSpeed(0.5f).enchantability(33).magnetic().build())
                 .build();
@@ -1553,5 +1578,77 @@ public class SerendustryMaterials {
         StellarBaptismSolution = new Material.Builder(152, Serendustry.ID("stellar_baptism_solution"))
                 .liquid(new FluidBuilder().temperature(30000)).color(0x676767)
                 .build();
+
+        StellarContainmentBase = new Material.Builder(153, Serendustry.ID("stellar_containment_base"))
+                .ingot(3).liquid(new FluidBuilder().temperature(1000))
+                .color(0x001171).iconSet(SHINY)
+                .flags(STD_METAL)
+                .blastTemp(9000, GasTier.HIGHEST, VA[UHV], 1600)
+                .toolStats(ToolProperty.Builder.of(60.0f, 70.0f, 5000, 6)
+                        .attackSpeed(0.4f).enchantability(30).build())
+                .build();
+
+        Hihiirokane = new Material.Builder(154, Serendustry.ID("hihiirokane"))
+                .ingot(3).liquid(new FluidBuilder().temperature(6000))
+                .color(0xFE5330).iconSet(SHINY)
+                .flags(STD_METAL, DECOMPOSITION_BY_CENTRIFUGING, GENERATE_FOIL, GENERATE_FINE_WIRE, GENERATE_LONG_ROD)
+                .components(RoseGold, 3, Promethium, 2, Naquadria, 2, Thulium, 1)
+                .blastTemp(9000, GasTier.HIGHEST, VA[UHV], 1600)
+                .cableProperties(V[UHV], 4, 8, false, 3)
+                .build();
+
+        NeutronatedSteel = new Material.Builder(155, Serendustry.ID("neutronated_steel"))
+                .ingot(3).liquid(new FluidBuilder().temperature(10000))
+                .color(0x10005A).iconSet(DULL)
+                .flags(EXT2_METAL, DECOMPOSITION_BY_CENTRIFUGING, GENERATE_ROTOR, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_BOLT_SCREW)
+                .components(Neutronium, 3, HSSS, 2, Tritanium, 2, Scandium, 1)
+                .toolStats(ToolProperty.Builder.of(100.0f, 70.0f, 65535, 6)
+                        .attackSpeed(0.5f).enchantability(33).build())
+                .fluidPipeProperties(6000, 1600, true, true, true, true)
+                .blastTemp(9000, GasTier.HIGHEST, VA[UHV], 1600)
+                .build();
+
+        HAMAlloy = new Material.Builder(156, Serendustry.ID("ham_alloy"))
+                .ingot(3).liquid(new FluidBuilder().temperature(10000))
+                .color(0xCA8BEC).iconSet(DULL)
+                .flags(STD_METAL, DECOMPOSITION_BY_CENTRIFUGING, GENERATE_LONG_ROD)
+                .components(Holmium, 2, Americium, 1, Moscovium, 1)
+                .blastTemp(9000, GasTier.HIGHEST, VA[UHV], 1600)
+                .build();
+
+        MagneticHAMAlloy = new Material.Builder(157, Serendustry.ID("magnetic_ham_alloy"))
+                .ingot(3)
+                .color(0xCA8BEC).iconSet(MAGNETIC)
+                .flags(STD_METAL, GENERATE_LONG_ROD, IS_MAGNETIC)
+                .components(HAMAlloy, 1)
+                .ingotSmeltInto(HAMAlloy)
+                .arcSmeltInto(HAMAlloy)
+                .macerateInto(HAMAlloy)
+                .build();
+        HAMAlloy.getProperty(PropertyKey.INGOT).setMagneticMaterial(MagneticHAMAlloy);
+
+        HighGradeSolderingAlloy = new Material.Builder(158, Serendustry.ID("high_grade_soldering_alloy"))
+                .ingot(3).liquid(new FluidBuilder().temperature(1500))
+                .color(0x5C009A).iconSet(DULL)
+                .flags(STD_METAL, DECOMPOSITION_BY_CENTRIFUGING)
+                .components(Cadmium, 4, Antimony, 3, Indium, 1)
+                .blastTemp(5000, GasTier.HIGH, VA[EV], 1500)
+                .build(); // todo: change LuV-UV recipes to use this
+
+        SuperheavySolderingAlloy = new Material.Builder(159, Serendustry.ID("superheavy_soldering_alloy"))
+                .ingot(3).liquid(new FluidBuilder().temperature(1500))
+                .color(0xE4FF27).iconSet(DULL)
+                .flags(STD_METAL, DECOMPOSITION_BY_CENTRIFUGING)
+                .components(Flerovium, 4, HighGradeSolderingAlloy, 3, Darmstadtium, 1)
+                .blastTemp(9000, GasTier.HIGHEST, VA[UV], 1300)
+                .build();
+
+        MolybdeniteLubricant = new Material.Builder(160, Serendustry.ID("molybdenite_lubricant"))
+                .color(0xB7A5F9).liquid(new FluidBuilder())
+                .build(); // todo: change IV-UV recipes to use this
+
+        Ferrofluid = new Material.Builder(161, Serendustry.ID("ferrofluid"))
+                .color(0x000000).liquid(new FluidBuilder())
+                .build(); // todo: add chain
     }
 }

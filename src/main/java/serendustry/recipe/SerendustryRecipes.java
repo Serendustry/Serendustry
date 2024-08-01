@@ -15,6 +15,7 @@ public class SerendustryRecipes {
         MiscRecipes.init();
         MysteriousBlobRecipes.init();
         PeriodiciumChain.init();
+        PlasmaFoundryRecipes.init();
         PlasmaFuels.init();
         PlasmaMixerRecipes.init();
         RadoxChain.init();

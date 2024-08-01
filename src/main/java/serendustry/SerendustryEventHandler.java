@@ -1,7 +1,6 @@
 package serendustry;
 
-import static gregtech.api.unification.material.Materials.Neutronium;
-import static gregtech.api.unification.material.Materials.VanadiumGallium;
+import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.loaders.recipe.CraftingComponent.*;
 import static serendustry.item.material.SerendustryMaterials.*;
@@ -81,11 +80,11 @@ public class SerendustryEventHandler {
         appendToComponent(GTValues.IV, STICK_ELECTROMAGNETIC, stickLong, VanadiumGallium, VanadiumGallium,
                 VanadiumGallium, VanadiumGallium, TengamAttuned, TengamAttuned, TengamAttuned, KerrBlackHole,
                 KerrBlackHole);
-        appendToComponent(STICK_DISTILLATION, spring, Pikyonium, Lafium, Signalium, Bedrockium, Quantium);
+        appendToComponent(GTValues.UEV, STICK_DISTILLATION, spring, Lafium, Signalium, Bedrockium, Quantium);
 
         // Not used by base CEu
-        // appendToComponent(GTValues.UV, STICK_RADIOACTIVE, stickLong, Tritanium, EnrichedNaquadahAlloy, Actinoids,
-        // SuperheavyLAlloy, SuperheavyHAlloy, Periodicium)
+        appendToComponent(GTValues.UV, STICK_RADIOACTIVE, stickLong, Tritanium, EnrichedNaquadahAlloy, Actinoids,
+                PartialSuperheavies, Superheavies, Periodicium);
 
         // Reactor Pipe
         appendToComponent(GTValues.UHV, PIPE_REACTOR, pipeTinyFluid, RadoxPolymer);
