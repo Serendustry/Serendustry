@@ -48,6 +48,8 @@ metaitem.planetoid_scanning_drone.name=Planetoid Scanning Drone
 metaitem.planetoid_harvesting_drone.name=Planetoid Harvesting Drone
 metaitem.star_scanning_drone.name=Star Scanning Drone
 metaitem.star_harvesting_drone.name=Star Harvesting Drone
+metaitem.spaceweed.name=Spaceweed
+metaitem.crushed_spaceweed.name=Crushed Spaceweed
 
 serendustry.material.animal_waste=Animal Waste
 serendustry.material.infused_gold=Infused Gold
@@ -192,12 +194,36 @@ serendustry.material.cheese_american=American Cheese
 serendustry.material.cheese_mozzarella=Mozzarella Cheese
 serendustry.material.cheese_swiss=Swiss Cheese
 serendustry.material.stellar_baptism_solution=Stellar Baptism Solution
+serendustry.material.stellar_containment_base=Stellar Containment Base
+serendustry.material.hihiirokane=Hihi'irokane
+serendustry.material.halkonite_steel=Halkonite Steel
+serendustry.material.ham_alloy=HAM Alloy
+serendustry.material.magnetic_ham_alloy=Magnetic HAM Alloy
+serendustry.material.high_grade_soldering_alloy=High-Grade Soldering Alloy
+serendustry.material.superheavy_soldering_alloy=Superheavy Soldering Alloy
+serendustry.material.molybdenite_lubricant=Molybdenite Lubricant
+serendustry.material.ferrofluid=Ferrofluid
+serendustry.material.almst=ALMST
+serendustry.material.halkonite_preparation_base=Halkonite Preparation Base
+serendustry.material.iron_2_chloride=Iron II Chloride
+serendustry.material.stearic_acid=Stearic Acid
+serendustry.material.oleic_acid=Oleic Acid
+serendustry.material.ammonium_oleate=Ammonium Oleate
+serendustry.material.magnetic_nanoparticle_mixture=Magnetic Nanoparticle Mixture
+serendustry.material.kerosene=Kerosene
+serendustry.material.cyclopentadiene=Cyclopentadiene
+serendustry.material.butene_mixture=Butene Mixture
+serendustry.material.butana=Butane
+serendustry.material.butene_1=1-Butene
+serendustry.material.butene_2=2-Butene
 
 serendustry.machine.industrial_laboratory.name=Industrial Laboratory
 serendustry.machine.industrial_laboratory.jei_header=Machines Required:
 serendustry.machine.transcendent_plasma_mixer.name=Transcendent Plasma Mixer
 serendustry.machine.space_elevator.name=Space Elevator
 serendustry.machine.nebulaic_nexus.name=Nebulaic Nexus
+serendustry.machine.plasma_foundry.name=Plasma Foundry
+serendustry.machine.giant_fractionating_column.name=Giant Fractionating Column
 
 entity.serendustry.friendly_creeper.name=Friendly Creeper
 

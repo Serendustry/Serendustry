@@ -9,8 +9,13 @@ public class LargeAlloySmelterRecipes {
 
     public static void init() {
         FUSION_RECIPES.recipeBuilder()
-                .fluidInputs(Silver.getFluid(32)).fluidInputs(Erbium.getFluid(16))
+                .fluidInputs(Dysprosium.getFluid(16)).fluidInputs(Indium.getFluid(16))
                 .fluidOutputs(Moscovium.getFluid(16))
+                .duration(32).EUt(VA[ZPM]).EUToStart(640_000_000).buildAndRegister();
+
+        FUSION_RECIPES.recipeBuilder()
+                .fluidInputs(Erbium.getFluid(16)).fluidInputs(Palladium.getFluid(16))
+                .fluidOutputs(Flerovium.getFluid(16))
                 .duration(32).EUt(VA[ZPM]).EUToStart(640_000_000).buildAndRegister();
 
         FUSION_RECIPES.recipeBuilder()

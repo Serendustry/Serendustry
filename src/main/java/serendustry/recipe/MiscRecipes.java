@@ -174,5 +174,11 @@ public class MiscRecipes {
                     .fluidOutputs(MolybdeniteLubricant.getFluid(1000))
                     .duration(256).EUt(VA[HV]).buildAndRegister();
         }
+
+        MACERATOR_RECIPES.recipeBuilder()
+                .input(SPACEWEED)
+                .output(CRUSHED_SPACEWEED)
+                .fluidOutputs(Water.getFluid(10), Xenoxene.getFluid(1))
+                .duration(20).EUt(VA[ZPM]).buildAndRegister();
     }
 }

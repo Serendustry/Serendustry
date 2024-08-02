@@ -105,6 +105,9 @@ public class SerendustryMetaItems {
     public static MetaItem<?>.MetaValueItem QUARTZ_PLANETOID_DATA;
     public static MetaItem<?>.MetaValueItem STAR_HARVESTING_DRONE;
 
+    public static MetaItem<?>.MetaValueItem SPACEWEED;
+    public static MetaItem<?>.MetaValueItem CRUSHED_SPACEWEED;
+
     public static void preInit() {
         ITEMS = new StandardMetaItem();
         // todo ???
@@ -210,5 +213,7 @@ public class SerendustryMetaItems {
         PITCHBLENDE_PLANETOID_DATA = ITEMS.addItem(79, "pitchblende_planetoid_data");
         QUARTZ_PLANETOID_DATA = ITEMS.addItem(80, "quartz_planetoid_data");
         STAR_HARVESTING_DRONE = ITEMS.addItem(81, "star_harvesting_drone");
+        SPACEWEED = ITEMS.addItem(82, "spaceweed");
+        CRUSHED_SPACEWEED = ITEMS.addItem(83, "crushed_spaceweed");
     }
 }

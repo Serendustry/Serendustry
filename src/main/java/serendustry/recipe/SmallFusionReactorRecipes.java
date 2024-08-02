@@ -265,10 +265,10 @@ public class SmallFusionReactorRecipes {
                 .output(ingot, Rutherfordium, 1)
                 .duration(500).EUt(VA[ZPM] + 2).buildAndRegister();
 
-        ALLOY_SMELTER_RECIPES.recipeBuilder()
+        /*ALLOY_SMELTER_RECIPES.recipeBuilder()
                 .input(ingot, Iridium, 1).input(ingot, Rubidium, 1)
                 .output(ingot, Flerovium, 1)
-                .duration(600).EUt(VA[ZPM]).buildAndRegister();
+                .duration(600).EUt(VA[ZPM]).buildAndRegister();*/
 
         ALLOY_SMELTER_RECIPES.recipeBuilder()
                 .input(ingot, Osmium, 1).input(ingot, Molybdenum, 1)

@@ -112,7 +112,7 @@ public class AlloyRecipes {
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, Silicon, 5).input(dust, Oxygen, 10).input(dust, Iron, 1)
                 .output(dust, Prasiolite, 16)
-                .duration(600).EUt(VA[HV]).buildAndRegister();
+                .duration(6000).EUt(VA[HV]).buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, Zirconium, 1).input(dust, Oxygen, 2)
@@ -308,10 +308,10 @@ public class AlloyRecipes {
                 .duration(600).EUt(VA[UHV]).buildAndRegister();
 
         CHEMICAL_BATH_RECIPES.recipeBuilder()
-                .input(dust, Darmstadtium)
+                .input(dust, Iron)
                 .fluidInputs(Magic2.getFluid(100))
                 .output(dust, Thaumium)
-                .duration(300).EUt(VA[ZPM]).buildAndRegister();
+                .duration(300).EUt(VA[LV]).buildAndRegister();
 
         for (int i = LV; i <= OpV; i++) {
             EXTRACTOR_RECIPES.recipeBuilder()
@@ -373,6 +373,12 @@ public class AlloyRecipes {
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, Cadmium, 4).input(dust, Antimony, 3).input(dust, Indium, 1)
                 .output(dust, HighGradeSolderingAlloy, 8)
-                .duration(460).EUt(VA[IV]).buildAndRegister();
+                .duration(480).EUt(VA[IV]).buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder()
+                .input(dust, Aluminium, 2).input(dust, Lithium, 2).input(dust, Magnesium, 1)
+                .input(dust, Scandium, 2).input(dust, Titanium, 3)
+                .output(dust, ALMST, 9)
+                .duration(440).EUt(VA[IV]).buildAndRegister();
     }
 }

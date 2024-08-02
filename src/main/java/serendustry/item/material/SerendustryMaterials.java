@@ -219,7 +219,7 @@ public class SerendustryMaterials {
     public static Material StellarContainmentBase;
 
     public static Material Hihiirokane;
-    public static Material NeutronatedSteel;
+    public static Material HalkoniteSteel;
     public static Material HAMAlloy;
     public static Material MagneticHAMAlloy;
 
@@ -229,6 +229,23 @@ public class SerendustryMaterials {
     public static Material MolybdeniteLubricant;
 
     public static Material Ferrofluid;
+    public static Material ALMST;
+    public static Material HalkonitePreparationBase;
+
+    public static Material Iron2Chloride;
+// EMPTY ID
+    public static Material StearicAcid;
+    public static Material OleicAcid;
+    public static Material AmmoniumOleate;
+    public static Material MagneticNanoparticleMixture;
+
+    public static Material Kerosene;
+    public static Material Cyclopentadiene;
+    public static Material ButeneMixture;
+// EMPTY ID
+    public static Material Butene1;
+    public static Material Butene2;
+
 
     public static void init() {
         // This should probably be a loop, but I never intended for it to get this big; it just kind of slowly grew over
@@ -391,6 +408,7 @@ public class SerendustryMaterials {
         RutheniumTriniumAmericiumNeutronate.addFlags(GENERATE_FINE_WIRE);
         Europium.addFlags(GENERATE_SPRING_SMALL);
         PolyvinylChloride.addFlags(GENERATE_LENS);
+        Neutronium.addFlags(GENERATE_SMALL_GEAR, GENERATE_DENSE, GENERATE_ROTOR, GENERATE_FINE_WIRE, GENERATE_FOIL);
 
         AnimalWaste = new Material.Builder(1, Serendustry.ID("animal_waste"))
                 .gem().fluid().color(0x7B5C00)
@@ -1437,7 +1455,7 @@ public class SerendustryMaterials {
                 .ingot(3).liquid(new FluidBuilder().temperature(35000))
                 .color(0x00ffd8).iconSet(SHINY)
                 .flags(EXT2_METAL, GENERATE_FRAME, GENERATE_RING, GENERATE_ROUND, GENERATE_GEAR, GENERATE_SMALL_GEAR)
-                .blastTemp(9000, GasTier.HIGHEST, VA[UHV], 1600)
+                .blastTemp(10800, GasTier.HIGHEST, VA[UHV], 1600)
                 .toolStats(ToolProperty.Builder.of(120.0f, 140.0f, 10000, 7)
                         .attackSpeed(0.5f).enchantability(33).magnetic().build())
                 .build();
@@ -1583,7 +1601,7 @@ public class SerendustryMaterials {
                 .ingot(3).liquid(new FluidBuilder().temperature(1000))
                 .color(0x001171).iconSet(SHINY)
                 .flags(STD_METAL)
-                .blastTemp(9000, GasTier.HIGHEST, VA[UHV], 1600)
+                .blastTemp(10800, GasTier.HIGHEST, VA[UHV], 1600)
                 .toolStats(ToolProperty.Builder.of(60.0f, 70.0f, 5000, 6)
                         .attackSpeed(0.4f).enchantability(30).build())
                 .build();
@@ -1593,27 +1611,22 @@ public class SerendustryMaterials {
                 .color(0xFE5330).iconSet(SHINY)
                 .flags(STD_METAL, DECOMPOSITION_BY_CENTRIFUGING, GENERATE_FOIL, GENERATE_FINE_WIRE, GENERATE_LONG_ROD)
                 .components(RoseGold, 3, Promethium, 2, Naquadria, 2, Thulium, 1)
-                .blastTemp(9000, GasTier.HIGHEST, VA[UHV], 1600)
+                .blastTemp(10800, GasTier.HIGHEST, VA[UHV], 1600)
                 .cableProperties(V[UHV], 4, 8, false, 3)
                 .build();
 
-        NeutronatedSteel = new Material.Builder(155, Serendustry.ID("neutronated_steel"))
-                .ingot(3).liquid(new FluidBuilder().temperature(10000))
-                .color(0x10005A).iconSet(DULL)
-                .flags(EXT2_METAL, DECOMPOSITION_BY_CENTRIFUGING, GENERATE_ROTOR, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_BOLT_SCREW)
-                .components(Neutronium, 3, HSSS, 2, Tritanium, 2, Scandium, 1)
-                .toolStats(ToolProperty.Builder.of(100.0f, 70.0f, 65535, 6)
-                        .attackSpeed(0.5f).enchantability(33).build())
-                .fluidPipeProperties(6000, 1600, true, true, true, true)
-                .blastTemp(9000, GasTier.HIGHEST, VA[UHV], 1600)
-                .build();
+        HalkoniteSteel = new Material.Builder(155, Serendustry.ID("halkonite_steel"))
+                .color(0x4BCD83).iconSet(BRIGHT)
+                .flags(STD_METAL, NO_WORKING, NO_SMASHING, NO_SMELTING, DISABLE_DECOMPOSITION, GENERATE_LONG_ROD, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_BOLT_SCREW, GENERATE_ROTOR, GENERATE_DENSE)
+                .build()
+                .setFormula("Nt(Tr3Ds2(Al2Li2MgSc2Ti3)2(((FeW)CrMo2V)6Ir2Os))");
 
         HAMAlloy = new Material.Builder(156, Serendustry.ID("ham_alloy"))
                 .ingot(3).liquid(new FluidBuilder().temperature(10000))
                 .color(0xCA8BEC).iconSet(DULL)
                 .flags(STD_METAL, DECOMPOSITION_BY_CENTRIFUGING, GENERATE_LONG_ROD)
                 .components(Holmium, 2, Americium, 1, Moscovium, 1)
-                .blastTemp(9000, GasTier.HIGHEST, VA[UHV], 1600)
+                .blastTemp(10800, GasTier.HIGHEST, VA[UHV], 1600)
                 .build();
 
         MagneticHAMAlloy = new Material.Builder(157, Serendustry.ID("magnetic_ham_alloy"))
@@ -1649,6 +1662,65 @@ public class SerendustryMaterials {
 
         Ferrofluid = new Material.Builder(161, Serendustry.ID("ferrofluid"))
                 .color(0x000000).liquid(new FluidBuilder())
-                .build(); // todo: add chain
+                .build();
+
+        ALMST = new Material.Builder(162, Serendustry.ID("almst"))
+                .ingot(3).liquid(new FluidBuilder().temperature(8000))
+                .color(0x82A4CA).iconSet(BRIGHT)
+                .flags(STD_METAL)
+                .components(Aluminium, 2, Lithium, 2, Magnesium, 1, Scandium, 2, Titanium, 3)
+                .blastTemp(6000, GasTier.HIGH, VA[IV], 900)
+                .build();
+
+        HalkonitePreparationBase = new Material.Builder(163, Serendustry.ID("halkonite_preparation_base"))
+                .liquid(new FluidBuilder().temperature(8000))
+                .color(0x11B95A).iconSet(BRIGHT)
+                .components(Tritanium, 3, Darmstadtium, 2, ALMST, 2, HSSS, 1)
+                .build();
+
+        Iron2Chloride = new Material.Builder(164, Serendustry.ID("iron_2_chloride"))
+                .color(0x606D70).liquid(new FluidBuilder())
+                .build();
+
+        OleicAcid = new Material.Builder(166, Serendustry.ID("oleic_acid"))
+                .color(0xB3B99A).liquid(new FluidBuilder())
+                .build();
+
+        StearicAcid = new Material.Builder(167, Serendustry.ID("stearic_acid"))
+                .dust().color(0xEFD49C)
+                .build();
+
+        AmmoniumOleate = new Material.Builder(168, Serendustry.ID("ammonium_oleate"))
+                .dust().color(0xFFA800)
+                .build();
+
+        MagneticNanoparticleMixture = new Material.Builder(169, Serendustry.ID("magnetic_nanoparticle_mixture"))
+                .dust().color(0x363636)
+                .build();
+
+        Kerosene = new Material.Builder(170, Serendustry.ID("kerosene"))
+                .color(0x5B4600).liquid(new FluidBuilder())
+                .build()
+                .setFormula("C12H26");
+
+        Cyclopentadiene = new Material.Builder(171, Serendustry.ID("cyclopentadiene"))
+                .color(0xEFC76F).liquid(new FluidBuilder())
+                .build()
+                .setFormula("C5H6");
+
+        ButeneMixture = new Material.Builder(172, Serendustry.ID("butene_mixture"))
+                .color(0x62512A).liquid(new FluidBuilder())
+                .build()
+                .setFormula("C4H8");
+
+        Butene1 = new Material.Builder(174, Serendustry.ID("butene_1"))
+                .color(0xA58640).liquid(new FluidBuilder())
+                .build()
+                .setFormula("C4H8");
+
+        Butene2 = new Material.Builder(175, Serendustry.ID("butene_2"))
+                .color(0x3D321B).liquid(new FluidBuilder())
+                .build()
+                .setFormula("C4H8");
     }
 }
