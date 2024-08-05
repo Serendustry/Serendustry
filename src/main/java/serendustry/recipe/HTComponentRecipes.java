@@ -35,7 +35,7 @@ public class HTComponentRecipes {
                 .input(stickLong, TengamAttuned, 2)
                 .input(stickLong, HastelloyK243, 4)
                 .input(ring, Lafium, 4)
-                .input(round, Lafium, 8)
+                .input(round, Arcanite, 8)
                 .input(wireFine, Aluminum, 64)
                 .input(wireFine, Aluminum, 64)
                 .input(wireFine, HastelloyK243, 64)

@@ -76,8 +76,8 @@ public class HTMachineRecipes {
 
          ASSEMBLER_RECIPES.recipeBuilder()
          .inputs(MACHINE_CASING.getItemVariant(UHV))
-         .input(cableGtSingle, Europium, 2)
-         .fluidInputs(Teflon.getFluid(288))
+         .input(cableGtSingle, Hihiirokane, 2)
+         .fluidInputs(RadoxPolymer.getFluid(288))
          .output(HULL[GTValues.UHV])
          .duration(50).EUt(16).buildAndRegister();
 

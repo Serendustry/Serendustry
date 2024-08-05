@@ -35,12 +35,10 @@ public class PlasmaFoundryRecipes {
                         Europium.getFluid(144 * 16))
                 .output(PLASMA_FOUNDRY)
                 .duration(6400).EUt(VA[UV]).buildAndRegister();
-
-        // todo: recipe for Plasma Foundry Catalyst Housing
     }
 
     private static void catalystRecipes() {
-        // todo: Add catalysts -- they go into the Catalyst Housing (only 1 at once, cannot be taken out) and lose durability with each craft
+        // todo: Add catalysts -- they go into the controller (only 1 at once, cannot be taken out) and lose durability with each craft
     }
 
     private static void alloyRecipes() {
@@ -421,5 +419,16 @@ public class PlasmaFoundryRecipes {
                 //.foundryCatalyst(CATALYST_SOLDERING_ALLOYS)
                 .fluidOutputs(SuperheavySolderingAlloy.getFluid(144 * 64))
                 .duration(100*20*64/2/4).EUt(VA[UV]).buildAndRegister();
+
+        PLASMA_FOUNDRY_RECIPES.recipeBuilder()
+                .fluidInputs(Thorium.getFluid(144 * 108),
+                        EnergyCrystal.getFluid(144 * 108),
+                        OrdoCrystal.getFluid(144 * 27),
+                        PerditioCrystal.getFluid(144 * 27),
+                        Nickel.getPlasma(144 * 64),
+                        Tin.getPlasma(144 * 64))
+                //.foundryCatalyst(CATALYST_ARCANITE)
+                .fluidOutputs(Arcanite.getFluid(144 * 240))
+                .duration(400000).EUt(VA[UEV]).buildAndRegister();
     }
 }

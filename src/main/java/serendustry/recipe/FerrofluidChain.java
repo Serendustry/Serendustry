@@ -8,7 +8,6 @@ import static serendustry.item.material.SerendustryMaterials.*;
 
 public class FerrofluidChain {
     public static void init() {
-
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, Iron)
                 .fluidInputs(Iron3Chloride.getFluid(1000))
@@ -23,7 +22,7 @@ public class FerrofluidChain {
                 .circuitMeta(2)
                 .duration(80).EUt(VA[LV]).buildAndRegister();
 
-        DISTILLERY_RECIPES.recipeBuilder()
+       /* DISTILLERY_RECIPES.recipeBuilder() TODO: fix this crashing
                 .fluidInputs(SeedOil.getFluid(1000))
                 .output(dust, StearicAcid)
                 .circuitMeta(2)
@@ -33,7 +32,7 @@ public class FerrofluidChain {
                 .fluidInputs(SeedOil.getFluid(1000))
                 .output(dust, StearicAcid)
                 .circuitMeta(2)
-                .duration(240).EUt(VA[LV]).buildAndRegister();
+                .duration(240).EUt(VA[LV]).buildAndRegister();*/
 
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, StearicAcid)

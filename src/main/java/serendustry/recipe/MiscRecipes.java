@@ -6,7 +6,6 @@ import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static gregtech.common.metatileentities.MetaTileEntities.HULL;
-import static net.minecraft.init.Blocks.*;
 import static serendustry.item.SerendustryMetaItems.*;
 import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryMetaTileEntities.*;
@@ -164,21 +163,25 @@ public class MiscRecipes {
                 .output(Items.STRING, 8)
                 .duration(40).EUt(VA[LV]).buildAndRegister();
 
-        Material[] oil = { Oil, Creosote, SeedOil };
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(foil, WroughtNeutronium)
+                .fluidInputs(Oxygen.getFluid(1000))
+                .output(foil, Oxygen)
+                .duration(100).EUt(VA[UHV]).buildAndRegister();
 
-        for (int i = 0; i < oil.length; i++) {
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(dust, Molybdenite)
+                .fluidInputs(Chrome.getFluid(72))
+                .output(dust, ChromiumDopedMolybdenite)
+                .duration(256).EUt(VA[HV]).buildAndRegister();
+
+        for (Material material : new Material[] { Oil, Creosote, SeedOil }) {
             BREWING_RECIPES.recipeBuilder()
-                    .input(dust, Molybdenite)
+                    .input(dust, ChromiumDopedMolybdenite)
                     .input(dust, Graphite)
-                    .fluidInputs(oil[i].getFluid(1000))
+                    .fluidInputs(material.getFluid(1000))
                     .fluidOutputs(MolybdeniteLubricant.getFluid(1000))
                     .duration(256).EUt(VA[HV]).buildAndRegister();
         }
-
-        MACERATOR_RECIPES.recipeBuilder()
-                .input(SPACEWEED)
-                .output(CRUSHED_SPACEWEED)
-                .fluidOutputs(Water.getFluid(10), Xenoxene.getFluid(1))
-                .duration(20).EUt(VA[ZPM]).buildAndRegister();
     }
 }

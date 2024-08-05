@@ -24,9 +24,8 @@ import net.minecraft.init.Items;
 public class HalkoniteSteelRecipes {
 
     public static void init() {
-
         OrePrefix[] parts = { plate, stick, stickLong, bolt, screw, gear, gearSmall, rotor, plateDense, ring };
-        float[] cost = { 1.0f, 0.5f, 1.0f, 0.125f, 0.125f, 4.0f, 1.0f,  5.0f, 9.0f, 0.25F};
+        float[] cost = { 1.0f, 0.5f, 1.0f, 0.125f, 0.125f, 4.0f, 1.0f,  5.0f, 9.0f, 0.25F };
 
         for (int i = 0; i < parts.length; i++) {
             CHEMICAL_BATH_RECIPES.recipeBuilder()

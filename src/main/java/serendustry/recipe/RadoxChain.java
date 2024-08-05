@@ -5,6 +5,7 @@ import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
 import static serendustry.item.SerendustryMetaItems.CRUSHED_SPACEWEED;
+import static serendustry.item.SerendustryMetaItems.SPACEWEED;
 import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryRecipeMaps.GIANT_FRACTIONATING_COLUMN_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.LABORATORY_RECIPES;
@@ -12,6 +13,12 @@ import static serendustry.machine.SerendustryRecipeMaps.LABORATORY_RECIPES;
 public class RadoxChain {
 
     public static void init() {
+        MACERATOR_RECIPES.recipeBuilder()
+                .input(SPACEWEED)
+                .output(CRUSHED_SPACEWEED)
+                .fluidOutputs(Water.getFluid(10), Xenoxene.getFluid(1))
+                .duration(20).EUt(VA[ZPM]).buildAndRegister();
+
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(CRUSHED_SPACEWEED, 16)
                 .input(dust, Trinium)

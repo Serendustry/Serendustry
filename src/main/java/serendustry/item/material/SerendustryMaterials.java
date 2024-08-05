@@ -246,15 +246,21 @@ public class SerendustryMaterials {
     public static Material Butene1;
     public static Material Butene2;
 
+    public static Material IgnisCrystal;
+    public static Material AquaCrystal;
+    public static Material TerraCrystal;
+    public static Material AerCrystal;
+    public static Material OrdoCrystal;
+    public static Material PerditioCrystal;
+    public static Material EnergyCrystal;
+    public static Material Arcanite;
+
+    public static Material ChromiumDopedMolybdenite;
+
 
     public static void init() {
         // This should probably be a loop, but I never intended for it to get this big; it just kind of slowly grew over
         // time, and now it's too late for me to want to change it
-        Oxygen.setProperty(PropertyKey.DUST, new DustProperty());
-        Hydrogen.setProperty(PropertyKey.DUST, new DustProperty());
-        Nitrogen.setProperty(PropertyKey.DUST, new DustProperty());
-        Water.setProperty(PropertyKey.DUST, new DustProperty());
-
         Rhenium.setProperty(PropertyKey.DUST, new DustProperty());
         Gadolinium.setProperty(PropertyKey.DUST, new DustProperty());
         Polonium.setProperty(PropertyKey.DUST, new DustProperty());
@@ -306,11 +312,6 @@ public class SerendustryMaterials {
         Livermorium.setProperty(PropertyKey.DUST, new DustProperty());
         Tennessine.setProperty(PropertyKey.DUST, new DustProperty());
         Oganesson.setProperty(PropertyKey.DUST, new DustProperty());
-
-        Oxygen.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Nitrogen.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Hydrogen.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Water.setProperty(PropertyKey.INGOT, new IngotProperty());
 
         Rhenium.setProperty(PropertyKey.INGOT, new IngotProperty());
         Gadolinium.setProperty(PropertyKey.INGOT, new IngotProperty());
@@ -367,6 +368,7 @@ public class SerendustryMaterials {
 
         Holmium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
         Thulium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
+        Dysprosium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
         Scandium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
         Promethium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
         Electrotine.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
@@ -404,7 +406,7 @@ public class SerendustryMaterials {
         Protactinium.setProperty(PropertyKey.FLUID, fp);
 
         TinAlloy.addFlags(GENERATE_FINE_WIRE, GENERATE_FOIL);
-        Oxygen.addFlags(GENERATE_FOIL);
+        Oxygen.addFlags(GENERATE_FOIL, NO_SMASHING, NO_WORKING, NO_SMELTING);
         RutheniumTriniumAmericiumNeutronate.addFlags(GENERATE_FINE_WIRE);
         Europium.addFlags(GENERATE_SPRING_SMALL);
         PolyvinylChloride.addFlags(GENERATE_LENS);
@@ -897,9 +899,8 @@ public class SerendustryMaterials {
                 .color(0x802BA8).iconSet(BRIGHT)
                 .flags(STD_METAL, DISABLE_DECOMPOSITION)
                 .components(SolderingAlloy, 1)
-                .blastTemp(6000, GasTier.HIGHER, VA[UV], 5000)
                 .build()
-                .setFormula("DsMa");
+                .setFormula("FeMa");
 
         GalliumYttrium = new Material.Builder(56, Serendustry.ID("gallium_yttrium"))
                 .ingot(3).liquid(new FluidBuilder().temperature(12000))
@@ -1722,5 +1723,54 @@ public class SerendustryMaterials {
                 .color(0x3D321B).liquid(new FluidBuilder())
                 .build()
                 .setFormula("C4H8");
+
+        IgnisCrystal = new Material.Builder(176, Serendustry.ID("ignis_crystal"))
+                .gem().fluid().color(0xFF0000).iconSet(SHINY)
+                .flags(STD_METAL, NO_SMASHING, NO_SMELTING, GENERATE_LENS)
+                .build();
+
+        AquaCrystal = new Material.Builder(177, Serendustry.ID("aqua_crystal"))
+                .gem().fluid().color(0x0000FF).iconSet(SHINY)
+                .flags(STD_METAL, NO_SMASHING, NO_SMELTING, GENERATE_LENS)
+                .build();
+
+        TerraCrystal = new Material.Builder(178, Serendustry.ID("terra_crystal"))
+                .gem().fluid().color(0x00FF00).iconSet(SHINY)
+                .flags(STD_METAL, NO_SMASHING, NO_SMELTING, GENERATE_LENS)
+                .build();
+
+        AerCrystal = new Material.Builder(179, Serendustry.ID("aer_crystal"))
+                .gem().fluid().color(0xFFFF00).iconSet(SHINY)
+                .flags(STD_METAL, NO_SMASHING, NO_SMELTING, GENERATE_LENS)
+                .build();
+
+        OrdoCrystal = new Material.Builder(180, Serendustry.ID("ordo_crystal"))
+                .gem().fluid().color(0xFFFFFF).iconSet(SHINY)
+                .flags(STD_METAL, NO_SMASHING, NO_SMELTING, GENERATE_LENS)
+                .build();
+
+        PerditioCrystal = new Material.Builder(181, Serendustry.ID("perditio_crystal"))
+                .gem().fluid().color(0x000000).iconSet(SHINY)
+                .flags(STD_METAL, NO_SMASHING, NO_SMELTING, GENERATE_LENS)
+                .build();
+
+        EnergyCrystal = new Material.Builder(182, Serendustry.ID("energy_crystal"))
+                .ingot().fluid().color(0xF3FF00).iconSet(SHINY)
+                .flags(STD_METAL, GENERATE_LENS)
+                .blastTemp(4000, GasTier.MID, VA[HV], 600)
+                .build().setFormula("⬟⬢⬣");
+
+        Arcanite = new Material.Builder(183, Serendustry.ID("arcanite"))
+                .ingot().fluid()
+                .color(0x7B825B).iconSet(DULL)
+                .flags(STD_METAL, DISABLE_DECOMPOSITION, NO_WORKING, GENERATE_ROUND)
+                .components(Thorium, 4, EnergyCrystal, 4, OrdoCrystal, 1, PerditioCrystal, 1)
+                .blastTemp(10800, GasTier.HIGHEST, VA[UEV], 8000)
+                .build().setFormula("Th4(⬟⬢⬣)4????");
+
+        ChromiumDopedMolybdenite = new Material.Builder(184, Serendustry.ID("chromium_doped_molybdenite"))
+                .dust().color(0x9C5fB5)
+                .components(Chrome, 1, Molybdenite, 1)
+                .build();
     }
 }
