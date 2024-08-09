@@ -10,16 +10,33 @@ import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.recipeproperties.CleanroomProperty;
 import gregtech.api.recipes.recipeproperties.RecipeProperty;
+import net.minecraft.item.ItemStack;
 import serendustry.machine.LaboratoryProperty.LaboratoryEntry;
 
-public class PlasmaFoundryRecipeBuilder extends RecipeBuilder<PlasmaFoundryRecipeBuilder> {
+import java.util.ArrayList;
+import java.util.List;
 
-    private final ImmutableTable.Builder<RecipeMap<?>, Integer, Integer> internalBuilder = ImmutableTable.builder();
+public class PlasmaFoundryRecipeBuilder extends RecipeBuilder<PlasmaFoundryRecipeBuilder> {
+    private final List<ItemStack> validCatalysts = new ArrayList<>();
 
     public PlasmaFoundryRecipeBuilder() {}
 
     public PlasmaFoundryRecipeBuilder(RecipeBuilder<PlasmaFoundryRecipeBuilder> recipeBuilder) {
         super(recipeBuilder);
+    }
+
+    public PlasmaFoundryRecipeBuilder foundryCatalyst(MetaItem<?>.MetaValueItem... items) {
+        for(MetaItem<?>.MetaValueItem item : items) {
+            validCatalysts.add(item.getStackForm());
+        }
+        return this;
+    }
+
+    public PlasmaFoundryRecipeBuilder foundryCatalyst(ItemStack... items) {
+        for(ItemStack stack : items) {
+            validCatalysts.add(stack);
+        }
+        return this;
     }
 
     @Override
@@ -30,22 +47,7 @@ public class PlasmaFoundryRecipeBuilder extends RecipeBuilder<PlasmaFoundryRecip
     @Override
     public boolean applyProperty(@Nonnull String key, @Nullable Object value) {
         if (key.equals(PlasmaFoundryCatalystProperty.KEY)) {
-            if (value instanceof LaboratoryEntry) {
-                return applyProperty(PlasmaFoundryCatalystProperty.getInstance(), value);
-            }
-            if (value instanceof String) { // from GrS or CT
-                String[] stringPair = ((String) value).split(",");
-                if (stringPair.length == 2 || stringPair.length == 3) {
-                    String catalyst;
-                    try {
-                        catalyst = Integer.parseInt(stringPair[1].trim());
-                    } catch (NumberFormatException e) {
-                        return false;
-                    }
-                    this.plasmaFoundryCatalyst(catalyst);
-                    return true;
-                } else return false;
-            }
+            return applyProperty(PlasmaFoundryCatalystProperty.getInstance(), value);
         }
         if (key.equals(CleanroomProperty.KEY)) return false; // this should not be in the cleanroom,
         return super.applyProperty(key, value);
@@ -59,11 +61,7 @@ public class PlasmaFoundryRecipeBuilder extends RecipeBuilder<PlasmaFoundryRecip
 
     @Override
     public void buildAndRegister() {
-        super.applyProperty(PlasmaFoundryCatalystProperty.getInstance(), new LaboratoryEntry(internalBuilder));
+        super.applyProperty(PlasmaFoundryCatalystProperty.getInstance(), validCatalysts.toArray(new ItemStack[0]));
         super.buildAndRegister();
-    }
-
-    public PlasmaFoundryRecipeBuilder plasmaFoundryCatalyst(String catalyst) {
-        return plasmaFoundryCatalyst(catalyst);
     }
 }

@@ -25,10 +25,10 @@ dependencies {
     api("com.cleanroommc:groovyscript:1.1.1") { transitive = false }
 
     // Hard Dependencies
-    implementation rfg.deobf("curse.maven:gregtech-ce-unofficial-557242:5519022") // GTCEu 2.8.10
-    implementation rfg.deobf("curse.maven:codechicken-lib-1-8-242818:2779848") // CCL 3.2.3.358
+    implementation("gregtech:gregtech:2.8.10-beta:dev") { transitive = false } // GTCEu 2.8.10
+    implementation "codechicken:codechickenlib:3.2.3.358:dev" // CCL 3.2.3.358
 
     // Soft Dependencies
     compileOnlyApi rfg.deobf("curse.maven:ctm-267602:2915363") // CTM 1.0.2.31
-    compileOnlyApi rfg.deobf("curse.maven:ae2-extended-life-570458:5047265") // AE2UEL 0.56.2
+    compileOnlyApi "appeng:ae2-uel:v0.56.4:dev" // AE2UEL 0.56.2
 }

@@ -3,13 +3,10 @@ package serendustry.machine;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.Widget;
 import gregtech.api.gui.widgets.SlotWidget;
-import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.metatileentity.multiblock.MultiblockDisplayText;
 import gregtech.api.recipes.Recipe;
-import gregtech.api.recipes.recipeproperties.TemperatureProperty;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.TextComponentUtil;
-import gregtech.api.util.TextFormattingUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -19,6 +16,7 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
 
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentBase;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.items.ItemStackHandler;
@@ -36,6 +34,7 @@ import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
 
 import javax.annotation.Nonnull;
+import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
@@ -43,13 +42,12 @@ import static gregtech.api.util.GTUtility.getMetaTileEntity;
 import static serendustry.item.SerendustryMetaItems.*;
 
 public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
+    private static final String NO_CATALYST = "gregtech.chance_logic.none";
+    private final int CATALYST = 32842846;
 
     private ItemStackHandler controllerSlot;
-
-    String catalyst = "gregtech.chance_logic.none";
-    MetaItem.MetaValueItem[] Catalysts = { CATALYST_STEELS, CATALYST_COPPER_ALLOYS, CATALYST_TIN_ALLOYS, CATALYST_GOLD_ALLOYS, CATALYST_BATTERY_ALLOY, CATALYST_SOLDERING_ALLOYS, CATALYST_PLATINUM_GROUP_ALLOYS, CATALYST_NAQUADAH_ALLOYS, CATALYST_SUPERCONDUCTORS, CATALYST_HAM_ALLOY, CATALYST_ARCANITE };
-    String[] CatalystKeys = { "metaitem.catalyst_steels.name", "metaitem.catalyst_copper_alloys.name", "metaitem.catalyst_tin_alloys.name", "metaitem.catalyst_gold_alloys.name", "metaitem.catalyst_battery_alloy.name", "metaitem.catalyst_soldering_alloys.name", "metaitem.catalyst_platinum_group_alloys.name", "metaitem.catalyst_naquadah_alloys.name", "metaitem.catalyst_superconductors.name", "metaitem.catalyst_ham_alloy.name", "metaitem.catalyst_arcanite.name"};
-    int CATALYST = 32842846;
+    @NotNull
+    private ItemStack catalyst = ItemStack.EMPTY;
 
     public MetaTileEntityPlasmaFoundry(ResourceLocation rl) {
         super(rl, SerendustryRecipeMaps.PLASMA_FOUNDRY_RECIPES);
@@ -57,8 +55,27 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
     }
 
     @Override
+    public MetaTileEntityPlasmaFoundry createMetaTileEntity(IGregTechTileEntity te) {
+        return new MetaTileEntityPlasmaFoundry(metaTileEntityId);
+    }
+
+    @Override
     public boolean checkRecipe(@NotNull Recipe recipe, boolean consumeIfSuccess) {
-        return this.blastFurnaceTemperature >= recipe.getProperty(PlasmaFoundryCatalystProperty.getInstance(), 0);
+        ItemStack[] expectedCatalysts = recipe.getProperty(PlasmaFoundryCatalystProperty.getInstance(), new ItemStack[0]);
+        if(expectedCatalysts.length != 0) {
+            for(ItemStack expectedCatalyst : expectedCatalysts) {
+                if(ItemStack.areItemsEqual(expectedCatalyst, this.catalyst)) {
+                    if(consumeIfSuccess) {
+                        this.catalyst.setCount(this.catalyst.getCount() - 1);
+                        syncCatalyst();
+                    }
+                    return true;
+                }
+            }
+            return false;
+        } else {
+            return true;
+        }
     }
     
     @Override
@@ -87,16 +104,27 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("serendustry.machine.plasma_foundry.flavor"));
         tooltip.add(I18n.format("serendustry.machine.plasma_foundry.description"));
-        String catalyst = "gregtech.chance_logic.none";
+        String catalyst = I18n.format("serendustry.machine.plasma_foundry.no_catalyst");
         NBTTagCompound tag = stack.getTagCompound();
-        if (tag != null) {
-            catalyst = tag.getString("Catalyst");
+        if(tag != null) {
+            ItemStack catalystStack = new ItemStack(tag.getCompoundTag("Catalyst"));
+            if(!catalystStack.isEmpty()) {
+                catalyst = catalystStack.getDisplayName();
+            }
         }
-        tooltip.add(I18n.format("serendustry.machine.plasma_foundry.catalyst") + " " + "§e" + I18n.format(catalyst) + "§7");
+
+        tooltip.add(I18n.format("serendustry.machine.plasma_foundry.catalyst") + " " + "§e" + catalyst + "§7");
     }
 
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
+        TextComponentBase catalystText;
+        if(catalyst.isEmpty()) {
+            catalystText = TextComponentUtil.translationWithColor(TextFormatting.GRAY, NO_CATALYST);
+        } else {
+            catalystText = TextComponentUtil.stringWithColor(TextFormatting.GRAY, catalyst.getDisplayName());
+        }
+
         MultiblockDisplayText.builder(textList, isStructureFormed())
                 .setWorkingStatus(recipeMapWorkable.isWorkingEnabled(), recipeMapWorkable.isActive())
                 .addEnergyUsageLine(getEnergyContainer())
@@ -107,9 +135,7 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
                                 TextFormatting.GRAY,
                                 "serendustry.machine.plasma_foundry.catalyst"));
 
-                    tl.add(TextComponentUtil.translationWithColor(
-                            TextFormatting.GRAY,
-                            catalyst));
+                    tl.add(catalystText);
                 })
                 .addWorkingStatusLine()
                 .addProgressLine(recipeMapWorkable.getProgressPercent());
@@ -127,7 +153,7 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
     public NBTTagCompound writeToNBT(NBTTagCompound data) {
         super.writeToNBT(data);
         GTUtility.writeItems(controllerSlot, "ControllerSlot", data);
-        data.setString("Catalyst", this.catalyst);
+        data.setTag("Catalyst", this.catalyst.writeToNBT(new NBTTagCompound()));
         return data;
     }
 
@@ -135,19 +161,19 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
     public void readFromNBT(NBTTagCompound data) {
         super.readFromNBT(data);
         GTUtility.readItems(controllerSlot, "ControllerSlot", data);
-        this.catalyst = data.getString("Catalyst");
+        this.catalyst = new ItemStack(data.getCompoundTag("Catalyst"));
     }
 
     @Override
     public void initFromItemStackData(NBTTagCompound data) {
         super.initFromItemStackData(data);
-        this.catalyst = data.getString("Catalyst");
+        this.catalyst = new ItemStack(data.getCompoundTag("Catalyst"));
     }
 
     @Override
     public void writeItemStackData(NBTTagCompound data) {
         super.writeItemStackData(data);
-        data.setString("Catalyst", this.catalyst);
+        data.setTag("Catalyst", this.catalyst.writeToNBT(new NBTTagCompound()));
     }
 
     @Override
@@ -159,27 +185,34 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
     public void update() {
         super.update();
         if(getWorld().isRemote) return;
-        if(Objects.equals(catalyst, "gregtech.chance_logic.none")) {
-            for (int i = 0; i < Catalysts.length; i++) {
-                if (ItemStack.areItemsEqual(getStackInSlot(), Catalysts[i].getStackForm())) {
-                    ItemStack stack = controllerSlot.getStackInSlot(0);
-                    stack = stack.copy();
-                    stack.setCount(stack.getCount() - 1);
-                    controllerSlot.setStackInSlot(0, stack);
+        if(this.catalyst.isEmpty()) {
+            ItemStack stack = this.controllerSlot.getStackInSlot(0);
+            if(SerendustryRecipeMaps.PLASMA_FOUNDRY_RECIPES.isValidCatalyst(stack)) {
+                this.catalyst = stack.copy();
+                this.catalyst.setCount(SerendustryRecipeMaps.PLASMA_FOUNDRY_RECIPES.getCatalystUses(stack));
 
-                    catalyst = CatalystKeys[i];
-                    writeCustomData(CATALYST, w -> w.writeString(catalyst));
-                    return;
-                }
+                stack = stack.copy();
+                stack.setCount(stack.getCount() - 1);
+                this.controllerSlot.setStackInSlot(0, stack);
+
+                syncCatalyst();
             }
         }
+    }
+
+    private void syncCatalyst() {
+        writeCustomData(CATALYST, w -> w.writeItemStack(this.catalyst));
     }
 
     @Override
     public void receiveCustomData(int dataId, PacketBuffer buf) {
         super.receiveCustomData(dataId, buf);
         if (dataId == CATALYST) {
-            catalyst = buf.readString(35); // Arbitrary number that's big enough
+            try {
+                catalyst = buf.readItemStack();
+            } catch (IOException e) {
+                throw new RuntimeException(e); // java...
+            }
         }
     }
 }
