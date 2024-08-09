@@ -6,7 +6,6 @@ import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static gregtech.common.metatileentities.MetaTileEntities.HULL;
-import static net.minecraft.init.Blocks.*;
 import static serendustry.item.SerendustryMetaItems.*;
 import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryMetaTileEntities.*;
@@ -17,6 +16,8 @@ import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.chance.output.ChancedOutputLogic;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.material.Material;
+import net.minecraft.init.Items;
 
 public class MiscRecipes {
 
@@ -151,5 +152,36 @@ public class MiscRecipes {
          * .input(HOT_WOOD_INGOT)
          * .duration(65535).EUt(MAX).buildAndRegister();
          */
+
+        EXTRACTOR_RECIPES.recipeBuilder()
+                .input(dust, CheeseAmerican)
+                .output(dust, Polyethylene)
+                .duration(20).EUt(VA[LV]).buildAndRegister();
+
+        WIREMILL_RECIPES.recipeBuilder()
+                .input(stickLong, CheeseMozzarella)
+                .output(Items.STRING, 8)
+                .duration(40).EUt(VA[LV]).buildAndRegister();
+
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(foil, WroughtNeutronium)
+                .fluidInputs(Oxygen.getFluid(1000))
+                .output(foil, Oxygen)
+                .duration(100).EUt(VA[UHV]).buildAndRegister();
+
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(dust, Molybdenite)
+                .fluidInputs(Chrome.getFluid(72))
+                .output(dust, ChromiumDopedMolybdenite)
+                .duration(256).EUt(VA[HV]).buildAndRegister();
+
+        for (Material material : new Material[] { Oil, Creosote, SeedOil }) {
+            BREWING_RECIPES.recipeBuilder()
+                    .input(dust, ChromiumDopedMolybdenite)
+                    .input(dust, Graphite)
+                    .fluidInputs(material.getFluid(1000))
+                    .fluidOutputs(MolybdeniteLubricant.getFluid(1000))
+                    .duration(256).EUt(VA[HV]).buildAndRegister();
+        }
     }
 }

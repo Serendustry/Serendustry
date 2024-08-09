@@ -63,7 +63,7 @@ public class SerendustryMetaItems {
     public static MetaItem<?>.MetaValueItem PLANETOID_SCANNING_DRONE;
     public static MetaItem<?>.MetaValueItem PLANETOID_HARVESTING_DRONE;
 
-    // todo: data should have x durability and lose 1 per craft
+    // todo: data should have x durability and lose 1 per craft, also dont use a separate metaitem for each one, or at least autogenerate them
     public static MetaItem<?>.MetaValueItem STONE_PLANETOID_DATA;
     public static MetaItem<?>.MetaValueItem OBSIDIAN_PLANETOID_DATA;
 
@@ -104,6 +104,21 @@ public class SerendustryMetaItems {
     public static MetaItem<?>.MetaValueItem PITCHBLENDE_PLANETOID_DATA;
     public static MetaItem<?>.MetaValueItem QUARTZ_PLANETOID_DATA;
     public static MetaItem<?>.MetaValueItem STAR_HARVESTING_DRONE;
+
+    public static MetaItem<?>.MetaValueItem SPACEWEED;
+    public static MetaItem<?>.MetaValueItem CRUSHED_SPACEWEED;
+
+    public static MetaItem<?>.MetaValueItem CATALYST_STEELS;
+    public static MetaItem<?>.MetaValueItem CATALYST_COPPER_ALLOYS;
+    public static MetaItem<?>.MetaValueItem CATALYST_TIN_ALLOYS;
+    public static MetaItem<?>.MetaValueItem CATALYST_GOLD_ALLOYS;
+    public static MetaItem<?>.MetaValueItem CATALYST_BATTERY_ALLOY;
+    public static MetaItem<?>.MetaValueItem CATALYST_SOLDERING_ALLOYS;
+    public static MetaItem<?>.MetaValueItem CATALYST_PLATINUM_GROUP_ALLOYS;
+    public static MetaItem<?>.MetaValueItem CATALYST_NAQUADAH_ALLOYS;
+    public static MetaItem<?>.MetaValueItem CATALYST_SUPERCONDUCTORS;
+    public static MetaItem<?>.MetaValueItem CATALYST_HAM_ALLOY;
+    public static MetaItem<?>.MetaValueItem CATALYST_ARCANITE;
 
     public static void preInit() {
         ITEMS = new StandardMetaItem();
@@ -210,5 +225,19 @@ public class SerendustryMetaItems {
         PITCHBLENDE_PLANETOID_DATA = ITEMS.addItem(79, "pitchblende_planetoid_data");
         QUARTZ_PLANETOID_DATA = ITEMS.addItem(80, "quartz_planetoid_data");
         STAR_HARVESTING_DRONE = ITEMS.addItem(81, "star_harvesting_drone");
+        SPACEWEED = ITEMS.addItem(82, "spaceweed");
+        CRUSHED_SPACEWEED = ITEMS.addItem(83, "crushed_spaceweed");
+        CATALYST_STEELS = ITEMS.addItem(84, "catalyst_steels");
+        CATALYST_COPPER_ALLOYS = ITEMS.addItem(85, "catalyst_copper_alloys");
+        CATALYST_TIN_ALLOYS = ITEMS.addItem(86, "catalyst_tin_alloys");
+        CATALYST_GOLD_ALLOYS = ITEMS.addItem(87, "catalyst_gold_alloys");
+        CATALYST_BATTERY_ALLOY = ITEMS.addItem(88, "catalyst_battery_alloy");
+        CATALYST_SOLDERING_ALLOYS = ITEMS.addItem(89, "catalyst_soldering_alloys");
+        CATALYST_PLATINUM_GROUP_ALLOYS = ITEMS.addItem(90, "catalyst_platinum_group_alloys");
+        CATALYST_NAQUADAH_ALLOYS = ITEMS.addItem(91, "catalyst_naquadah_alloys");
+        CATALYST_SUPERCONDUCTORS = ITEMS.addItem(92, "catalyst_superconductors");
+        CATALYST_HAM_ALLOY = ITEMS.addItem(93, "catalyst_ham_alloy");
+        CATALYST_ARCANITE = ITEMS.addItem(94, "catalyst_arcanite");
+
     }
 }

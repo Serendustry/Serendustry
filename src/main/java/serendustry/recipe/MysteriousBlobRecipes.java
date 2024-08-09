@@ -172,7 +172,7 @@ public class MysteriousBlobRecipes {
                 .duration(50).EUt(VA[UHV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
-                .input(ring, WroughtNeutronium, 13)
+                .input(ring, CondensedStarMatter, 13)
                 .fluidInputs(NeonPrime.getFluid(10))
                 .output(HULL[UHV])
                 .duration(50).EUt(VA[UEV]).buildAndRegister();

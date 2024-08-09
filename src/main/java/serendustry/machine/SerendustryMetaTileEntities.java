@@ -15,6 +15,9 @@ public class SerendustryMetaTileEntities {
     public static MetaTileEntityIndustrialLaboratory INDUSTRIAL_LABORATORY;
     public static MetaTileEntityTranscendentPlasmaMixer TRANSCENDENT_PLASMA_MIXER;
     public static MetaTileEntitySpaceElevator SPACE_ELEVATOR;
+    public static MetaTileEntityNebulaicNexus NEBULAIC_NEXUS;
+    public static MetaTileEntityPlasmaFoundry PLASMA_FOUNDRY;
+    public static MetaTileEntityGiantFractionatingColumn GIANT_FRACTIONATING_COLUMN;
 
     public static void preInit() {
         // todo claim an id range
@@ -24,5 +27,11 @@ public class SerendustryMetaTileEntities {
                 new MetaTileEntityTranscendentPlasmaMixer(Serendustry.ID("transcendent_plasma_mixer")));
         SPACE_ELEVATOR = registerMetaTileEntity(4002,
                 new MetaTileEntitySpaceElevator(Serendustry.ID("space_elevator")));
+        NEBULAIC_NEXUS = registerMetaTileEntity(4003,
+                new MetaTileEntityNebulaicNexus(Serendustry.ID("nebulaic_nexus")));
+        PLASMA_FOUNDRY = registerMetaTileEntity(4004,
+                new MetaTileEntityPlasmaFoundry(Serendustry.ID("plasma_foundry")));
+        GIANT_FRACTIONATING_COLUMN = registerMetaTileEntity(4005,
+                new MetaTileEntityGiantFractionatingColumn(Serendustry.ID("giant_fractionating_column")));
     }
 }

@@ -8,6 +8,9 @@ public class SerendustryRecipes {
         AnimalWasteRecipes.init();
         DestabilizedMatterChain.init();
         DragonEggRecipes.init();
+        FerrofluidChain.init();
+        GiantFractionatingColumnRecipes.init();
+        HalkoniteSteelRecipes.init();
         HTComponentRecipes.init();
         HTMachineRecipes.init();
         LargeAlloySmelterRecipes.init();
@@ -15,6 +18,7 @@ public class SerendustryRecipes {
         MiscRecipes.init();
         MysteriousBlobRecipes.init();
         PeriodiciumChain.init();
+        PlasmaFoundryRecipes.init();
         PlasmaFuels.init();
         PlasmaMixerRecipes.init();
         RadoxChain.init();

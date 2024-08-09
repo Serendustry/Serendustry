@@ -6,8 +6,7 @@ import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.QUANTUM_MAINFRAME_ZPM;
 import static gregtech.common.items.MetaItems.STEM_CELLS;
-import static gregtech.common.metatileentities.MetaTileEntities.ASSEMBLY_LINE;
-import static gregtech.common.metatileentities.MetaTileEntities.ELECTROLYZER;
+import static gregtech.common.metatileentities.MetaTileEntities.*;
 import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryRecipeMaps.LABORATORY_RECIPES;
 
@@ -112,7 +111,7 @@ public class AlloyRecipes {
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, Silicon, 5).input(dust, Oxygen, 10).input(dust, Iron, 1)
                 .output(dust, Prasiolite, 16)
-                .duration(600).EUt(VA[HV]).buildAndRegister();
+                .duration(6000).EUt(VA[HV]).buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, Zirconium, 1).input(dust, Oxygen, 2)
@@ -308,10 +307,10 @@ public class AlloyRecipes {
                 .duration(600).EUt(VA[UHV]).buildAndRegister();
 
         CHEMICAL_BATH_RECIPES.recipeBuilder()
-                .input(dust, Darmstadtium)
+                .input(dust, Iron)
                 .fluidInputs(Magic2.getFluid(100))
                 .output(dust, Thaumium)
-                .duration(300).EUt(VA[ZPM]).buildAndRegister();
+                .duration(300).EUt(VA[LV]).buildAndRegister();
 
         for (int i = LV; i <= OpV; i++) {
             EXTRACTOR_RECIPES.recipeBuilder()
@@ -369,5 +368,68 @@ public class AlloyRecipes {
                 .input(dust, Rhodium, 1).input(dust, Palladium, 1).input(dust, Ruthenium, 1)
                 .output(dust, Rhopalthenit, 3)
                 .duration(400).EUt(VA[IV]).buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder()
+                .input(dust, Cadmium, 4).input(dust, Antimony, 3).input(dust, Indium, 1)
+                .output(dust, HighGradeSolderingAlloy, 8)
+                .duration(480).EUt(VA[IV]).buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder()
+                .input(dust, Aluminium, 2).input(dust, Lithium, 2).input(dust, Magnesium, 1)
+                .input(dust, Scandium, 2).input(dust, Titanium, 3)
+                .output(dust, ALMST, 9)
+                .duration(440).EUt(VA[IV]).buildAndRegister();
+
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(dust, Diamond)
+                .fluidInputs(Lava.getFluid(100))
+                .output(dust, IgnisCrystal)
+                .duration(30).EUt(VA[LV]).buildAndRegister();
+
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(dust, Diamond)
+                .fluidInputs(DistilledWater.getFluid(100))
+                .output(dust, AquaCrystal)
+                .duration(30).EUt(VA[LV]).buildAndRegister();
+
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(dust, Diamond)
+                .fluidInputs(Lava.getFluid(100))
+                .output(dust, TerraCrystal)
+                .duration(30).EUt(VA[LV]).buildAndRegister();
+
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(dust, Diamond)
+                .fluidInputs(Air.getFluid(100))
+                .output(dust, AerCrystal)
+                .duration(30).EUt(VA[LV]).buildAndRegister();
+
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(dust, Diamond)
+                .fluidInputs(Antimony.getFluid(100))
+                .output(dust, OrdoCrystal)
+                .duration(30).EUt(VA[LV]).buildAndRegister();
+
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(dust, Diamond)
+                .fluidInputs(TinAlloy.getFluid(100))
+                .output(dust, PerditioCrystal)
+                .duration(30).EUt(VA[LV]).buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder()
+                .input(dust, IgnisCrystal, 1)
+                .input(dust, AquaCrystal, 1)
+                .input(dust, TerraCrystal, 1)
+                .input(dust, AerCrystal, 1)
+                .output(dust, EnergyCrystal, 4)
+                .duration(400).EUt(VA[EV]).buildAndRegister();
+
+        LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .input(ingot, Arcanite)
+                .notConsumable(lens, EnergyCrystal)
+                .notConsumable(lens, OrdoCrystal)
+                .notConsumable(lens, PerditioCrystal)
+                .output(round, Arcanite, 9)
+                .duration(3200).EUt(VA[UEV]).buildAndRegister();
     }
 }

@@ -2,7 +2,7 @@ package serendustry.recipe;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
-import static gregtech.api.unification.material.Materials.RutheniumTriniumAmericiumNeutronate;
+import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static serendustry.item.SerendustryMetaItems.*;
@@ -12,22 +12,22 @@ import gregtech.api.unification.material.MarkerMaterials.Tier;
 
 public class HTComponentRecipes {
 
+    // Todo: require research for all Assembly Line recipes
     public static void init() {
         // Motors
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(stickLong, TengamAttuned)
-                .input(stickLong, HighDurabilityCompoundSteel, 4)
-                .input(ring, FluxedElectrum, 4)
-                .input(round, FluxedElectrum, 8)
-                .input(wireFine, EnrichedNaquadahAlloy, 64)
-                .input(wireFine, EnrichedNaquadahAlloy, 64)
-                .input(wireFine, Amogus, 64)
-                .input(wireFine, WroughtNeutronium, 64)
-                .input(cableGtSingle, Pikyonium, 2)
-                .fluidInputs(MutatedLivingSolder.getFluid(144))
-                .fluidInputs(OmniversalLubricant.getPlasma(500))
-                .fluidInputs(FluxedElectrum.getFluid(576))
+                .input(stickLong, MagneticHAMAlloy, 2)
+                .input(stickLong, CondensedStarMatter, 4)
+                .input(stickLong, HalkoniteSteel, 4)
+                .input(ring, CondensedStarMatter, 4)
+                .input(round, CondensedStarMatter, 8)
+                .input(wireFine, Neutronium, 64)
+                .input(wireFine, Neutronium, 64)
+                .input(cableGtSingle, Hihiirokane, 2)
+                .fluidInputs(SuperheavySolderingAlloy.getFluid(144 * 4))
+                .fluidInputs(Ferrofluid.getFluid(1000))
+                .fluidInputs(Moscovium.getFluid(144 * 4))
                 .output(ELECTRIC_MOTOR_UHV)
                 .duration(800).EUt(300000).buildAndRegister();
 
@@ -35,7 +35,7 @@ public class HTComponentRecipes {
                 .input(stickLong, TengamAttuned, 2)
                 .input(stickLong, HastelloyK243, 4)
                 .input(ring, Lafium, 4)
-                .input(round, Lafium, 8)
+                .input(round, Arcanite, 8)
                 .input(wireFine, Aluminum, 64)
                 .input(wireFine, Aluminum, 64)
                 .input(wireFine, HastelloyK243, 64)
@@ -117,15 +117,16 @@ public class HTComponentRecipes {
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_UHV, 2)
-                .input(plate, HighDurabilityCompoundSteel, 2)
-                .input(ring, WroughtNeutronium, 4)
-                .input(round, FluxedElectrum, 16)
-                .input(screw, FluxedElectrum, 4)
-                .input(cableGtSingle, Pikyonium, 2)
-                .fluidInputs(MutatedLivingSolder.getFluid(144))
-                .fluidInputs(OmniversalLubricant.getPlasma(500))
+                .input(plate, CondensedStarMatter, 2)
+                .input(plate, HalkoniteSteel, 2)
+                .input(ring, CondensedStarMatter, 4)
+                .input(round, CondensedStarMatter, 16)
+                .input(screw, CondensedStarMatter, 4)
+                .input(cableGtSingle, Hihiirokane, 2)
+                .fluidInputs(SuperheavySolderingAlloy.getFluid(144 * 4))
+                .fluidInputs(Ferrofluid.getFluid(1000))
                 .fluidInputs(RadoxPolymer.getFluid(144))
-                .fluidInputs(FluxedElectrum.getFluid(576))
+                .fluidInputs(Moscovium.getFluid(144 * 4))
                 .output(CONVEYOR_MODULE_UHV)
                 .duration(800).EUt(300000).buildAndRegister();
 
@@ -203,15 +204,16 @@ public class HTComponentRecipes {
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_UHV)
-                .input(pipeLargeFluid, Cinobite)
-                .input(plate, HighDurabilityCompoundSteel, 2)
-                .input(screw, WroughtNeutronium, 8)
+                .input(pipeLargeFluid, Neutronium)
+                .input(plate, CondensedStarMatter, 2)
+                .input(plate, HalkoniteSteel, 2)
+                .input(screw, CondensedStarMatter, 8)
                 .input(ring, RadoxPolymer, 4)
-                .input(rotor, EnrichedNaquadahAlloy, 1)
-                .input(cableGtSingle, Pikyonium, 2)
-                .fluidInputs(MutatedLivingSolder.getFluid(144))
-                .fluidInputs(OmniversalLubricant.getPlasma(500))
-                .fluidInputs(FluxedElectrum.getFluid(576))
+                .input(rotor, HalkoniteSteel, 1)
+                .input(cableGtSingle, Hihiirokane, 2)
+                .fluidInputs(SuperheavySolderingAlloy.getFluid(144 * 4))
+                .fluidInputs(Ferrofluid.getFluid(1000))
+                .fluidInputs(Moscovium.getFluid(144 * 4))
                 .output(ELECTRIC_PUMP_UHV)
                 .duration(800).EUt(300000).buildAndRegister();
 
@@ -294,16 +296,17 @@ public class HTComponentRecipes {
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_UHV)
-                .input(plate, HighDurabilityCompoundSteel, 4)
-                .input(ring, WroughtNeutronium, 4)
-                .input(round, FluxedElectrum, 16)
-                .input(stick, HighDurabilityCompoundSteel, 4)
-                .input(gear, EnrichedNaquadahAlloy)
-                .input(gearSmall, Pikyonium, 2)
-                .input(cableGtSingle, Pikyonium, 2)
-                .fluidInputs(MutatedLivingSolder.getFluid(144))
-                .fluidInputs(OmniversalLubricant.getPlasma(500))
-                .fluidInputs(FluxedElectrum.getFluid(576))
+                .input(plate, CondensedStarMatter, 4)
+                .input(plate, HalkoniteSteel, 4)
+                .input(ring, CondensedStarMatter, 4)
+                .input(round, CondensedStarMatter, 16)
+                .input(stick, CondensedStarMatter, 4)
+                .input(gear, HalkoniteSteel)
+                .input(gearSmall, HalkoniteSteel, 2)
+                .input(cableGtSingle, Hihiirokane, 2)
+                .fluidInputs(SuperheavySolderingAlloy.getFluid(144 * 4))
+                .fluidInputs(Ferrofluid.getFluid(1000))
+                .fluidInputs(Moscovium.getFluid(144 * 4))
                 .output(ELECTRIC_PISTON_UHV)
                 .duration(800).EUt(300000).buildAndRegister();
 
@@ -386,19 +389,20 @@ public class HTComponentRecipes {
 
         // Robot Arms
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder() // Doesn't work
-                .input(stickLong, HighDurabilityCompoundSteel, 4)
-                .input(gear, EnrichedNaquadahAlloy, 1)
-                .input(gearSmall, WroughtNeutronium, 3)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(stickLong, CondensedStarMatter, 4)
+                .input(stickLong, HalkoniteSteel, 4)
+                .input(gear, CondensedStarMatter, 1)
+                .input(gearSmall, CondensedStarMatter, 3)
                 .input(ELECTRIC_MOTOR_UHV, 2)
                 .input(ELECTRIC_PISTON_UHV, 1)
                 .input(circuit, Tier.UHV, 1)
                 .input(circuit, Tier.UV, 2)
                 .input(circuit, Tier.ZPM, 4)
-                .input(cableGtSingle, Pikyonium, 4)
-                .fluidInputs(MutatedLivingSolder.getFluid(144))
-                .fluidInputs(OmniversalLubricant.getPlasma(500))
-                .fluidInputs(FluxedElectrum.getFluid(576))
+                .input(cableGtSingle, Hihiirokane, 4)
+                .fluidInputs(SuperheavySolderingAlloy.getFluid(144 * 12))
+                .fluidInputs(Ferrofluid.getFluid(1000))
+                .fluidInputs(Moscovium.getFluid(144 * 4))
                 .output(ROBOT_ARM_UHV)
                 .duration(800).EUt(300000).buildAndRegister();
 
@@ -487,18 +491,17 @@ public class HTComponentRecipes {
         // Field Generators
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, HighDurabilityCompoundSteel)
-                .input(plate, EnrichedNaquadahAlloy, 6)
+                .input(frameGt, CondensedStarMatter)
+                .input(plate, CondensedStarMatter, 6)
+                .input(plate, HalkoniteSteel, 6)
                 .input(GRAVI_STAR, 2)
                 .input(EMITTER_UHV, 2)
                 .input(circuit, Tier.UHV, 2)
                 .input(wireFine, RutheniumTriniumAmericiumNeutronate, 64)
                 .input(wireFine, RutheniumTriniumAmericiumNeutronate, 64)
-                .input(wireFine, Amogus, 64)
-                .input(wireFine, WroughtNeutronium, 64)
-                .input(cableGtSingle, Pikyonium, 4)
-                .fluidInputs(MutatedLivingSolder.getFluid(144))
-                .fluidInputs(FluxedElectrum.getFluid(576))
+                .input(cableGtSingle, Hihiirokane, 4)
+                .fluidInputs(SuperheavySolderingAlloy.getFluid(144 * 12))
+                .fluidInputs(Moscovium.getFluid(144 * 4))
                 .output(FIELD_GENERATOR_UHV)
                 .duration(800).EUt(300000).buildAndRegister();
 
@@ -587,16 +590,17 @@ public class HTComponentRecipes {
         // Sensors
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, HighDurabilityCompoundSteel)
+                .input(frameGt, CondensedStarMatter)
                 .input(ELECTRIC_MOTOR_UHV)
-                .input(plate, EnrichedNaquadahAlloy, 4)
+                .input(plate, CondensedStarMatter, 4)
+                .input(plate, HalkoniteSteel, 4)
                 .input(GRAVI_STAR, 2)
                 .input(circuit, Tier.UHV, 2)
-                .input(foil, Cinobite, 64)
-                .input(foil, WroughtNeutronium, 32)
-                .input(cableGtSingle, Pikyonium, 4)
-                .fluidInputs(MutatedLivingSolder.getFluid(144))
-                .fluidInputs(FluxedElectrum.getFluid(576))
+                .input(foil, Neutronium, 64)
+                .input(foil, Neutronium, 64)
+                .input(cableGtSingle, Hihiirokane, 4)
+                .fluidInputs(SuperheavySolderingAlloy.getFluid(144 * 8))
+                .fluidInputs(Moscovium.getFluid(144 * 4))
                 .output(SENSOR_UHV)
                 .duration(800).EUt(300000).buildAndRegister();
 
@@ -675,16 +679,17 @@ public class HTComponentRecipes {
         // Emitters
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, HighDurabilityCompoundSteel)
+                .input(frameGt, CondensedStarMatter)
                 .input(ELECTRIC_MOTOR_UHV)
-                .input(stickLong, EnrichedNaquadahAlloy, 4)
+                .input(stickLong, CondensedStarMatter, 4)
+                .input(stickLong, HalkoniteSteel, 4)
                 .input(GRAVI_STAR, 2)
                 .input(circuit, Tier.UHV, 2)
-                .input(foil, Cinobite, 64)
-                .input(foil, WroughtNeutronium, 32)
-                .input(cableGtSingle, Pikyonium, 4)
-                .fluidInputs(MutatedLivingSolder.getFluid(144))
-                .fluidInputs(FluxedElectrum.getFluid(576))
+                .input(foil, Neutronium, 64)
+                .input(foil, Neutronium, 64)
+                .input(cableGtSingle, Hihiirokane, 4)
+                .fluidInputs(SuperheavySolderingAlloy.getFluid(144 * 8))
+                .fluidInputs(Moscovium.getFluid(144 * 4))
                 .output(EMITTER_UHV)
                 .duration(800).EUt(300000).buildAndRegister();
 
