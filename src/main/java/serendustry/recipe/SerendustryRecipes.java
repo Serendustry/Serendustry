@@ -6,6 +6,9 @@ public class SerendustryRecipes {
         // registerPrefixHandlers() todo
         AlloyRecipes.init();
         AnimalWasteRecipes.init();
+        BETSPerrhenateChain.init();
+        BoPETCHain.init();
+        CircuitRecipes.init();
         DestabilizedMatterChain.init();
         DragonEggRecipes.init();
         FerrofluidChain.init();
@@ -17,15 +20,20 @@ public class SerendustryRecipes {
         MagnetoResonaticRecipes.init();
         MiscRecipes.init();
         MysteriousBlobRecipes.init();
+        NanotubesChain.init();
+        NetheriteChain.init();
         PeriodiciumChain.init();
         PlasmaFoundryRecipes.init();
         PlasmaFuels.init();
         PlasmaMixerRecipes.init();
         RadoxChain.init();
-        ToolPrefixHandlers.registerToolPrefixHandler();
+        SelfRepairingNanobotsRecipes.init();
+        SemiconductorGradeSiliconChain.init();
         SmallFusionReactorRecipes.init();
         SpaceElevatorRecipes.init();
         StarMatterRecipes.init();
+        TaraniumChain.init();
+        ToolPrefixHandlers.registerToolPrefixHandler();
         WasteFluidRecipes.init();
     }
 }

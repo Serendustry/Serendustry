@@ -9,6 +9,7 @@ import static gregtech.common.metatileentities.MetaTileEntities.HULL;
 import static serendustry.item.SerendustryMetaItems.*;
 import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryMetaTileEntities.*;
+import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.LABORATORY_RECIPES;
 
 import gregtech.api.fluids.store.FluidStorageKeys;
@@ -52,7 +53,7 @@ public class MiscRecipes {
                 .input(dust, Glass, 64)
                 .input(QUANTUM_ANOMALY)
                 .output(dust, ChromaticGlass)
-                .duration(400).EUt(VA[UV]).buildAndRegister();
+                .duration(1200).EUt(VA[UHV]).buildAndRegister();
 
         LASER_ENGRAVER_RECIPES.recipeBuilder()
                 .input(dust, Redstone, 64)
@@ -164,7 +165,7 @@ public class MiscRecipes {
                 .duration(40).EUt(VA[LV]).buildAndRegister();
 
         CHEMICAL_BATH_RECIPES.recipeBuilder()
-                .input(foil, WroughtNeutronium)
+                .input(foil, BoneSteel)
                 .fluidInputs(Oxygen.getFluid(1000))
                 .output(foil, Oxygen)
                 .duration(100).EUt(VA[UHV]).buildAndRegister();
@@ -182,6 +183,11 @@ public class MiscRecipes {
                     .fluidInputs(material.getFluid(1000))
                     .fluidOutputs(MolybdeniteLubricant.getFluid(1000))
                     .duration(256).EUt(VA[HV]).buildAndRegister();
+
+            CVD_RECIPES.recipeBuilder()
+                    .fluidInputs(Methane.getFluid(100), Hydrogen.getFluid(10000))
+                    .output(gemExquisite, Diamond)
+                    .duration(400).EUt(VA[HV]).buildAndRegister();
         }
     }
 }

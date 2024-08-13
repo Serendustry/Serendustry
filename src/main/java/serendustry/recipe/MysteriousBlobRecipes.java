@@ -23,13 +23,13 @@ public class MysteriousBlobRecipes {
                 .input(Blocks.TNT, 1)
                 .fluidInputs(Air.getFluid(1000))
                 .fluidOutputs(PrimedAir.getFluid(100))
-                .duration(3800).EUt(VA[LV]).buildAndRegister();
+                .duration(3800).EUt(VA[EV]).buildAndRegister();
 
         DISTILLATION_RECIPES.recipeBuilder()
                 .fluidInputs(PrimedAir.getFluid(1000))
                 .output(MYSTERIOUS_BLOB_HYDROGEN)
                 .fluidOutputs(Air.getFluid(1000))
-                .duration(4600).EUt(VA[LV]).buildAndRegister();
+                .duration(4600).EUt(VA[EV]).buildAndRegister();
 
         AUTOCLAVE_RECIPES.recipeBuilder()
                 .input(MYSTERIOUS_BLOB_HYDROGEN)
@@ -77,49 +77,49 @@ public class MysteriousBlobRecipes {
                 .input(MYSTERIOUS_BLOB_NITROGEN)
                 .fluidInputs(Thaumium.getFluid(576))
                 .output(MYSTERIOUS_BLOB_OXYGEN)
-                .duration(9600).EUt(VA[ZPM]).buildAndRegister();
+                .duration(9600).EUt(VA[UV]).buildAndRegister();
 
         AUTOCLAVE_RECIPES.recipeBuilder()
                 .input(MYSTERIOUS_BLOB_OXYGEN)
                 .fluidInputs(Oxygen.getFluid(10000))
                 .fluidOutputs(OxygenPrime.getFluid(100))
-                .duration(9600).EUt(VA[ZPM]).buildAndRegister();
+                .duration(9600).EUt(VA[UV]).buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
                 .input(MYSTERIOUS_BLOB_OXYGEN)
                 .fluidInputs(InfusedGold.getFluid(576))
                 .output(MYSTERIOUS_BLOB_NEON)
-                .duration(9600).EUt(VA[UV]).buildAndRegister();
+                .duration(9600).EUt(VA[UHV]).buildAndRegister();
 
         AUTOCLAVE_RECIPES.recipeBuilder()
                 .input(MYSTERIOUS_BLOB_NEON)
                 .fluidInputs(Neon.getFluid(10000))
                 .fluidOutputs(NeonPrime.getFluid(100))
-                .duration(9600).EUt(VA[UV]).buildAndRegister();
+                .duration(9600).EUt(VA[UHV]).buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
                 .input(MYSTERIOUS_BLOB_NEON)
                 .fluidInputs(FluxedElectrum.getFluid(2304))
                 .output(MYSTERIOUS_BLOB_ARGON)
-                .duration(9600).EUt(VA[UHV]).buildAndRegister();
+                .duration(9600).EUt(VA[UEV]).buildAndRegister();
 
         AUTOCLAVE_RECIPES.recipeBuilder()
                 .input(MYSTERIOUS_BLOB_ARGON)
                 .fluidInputs(Argon.getFluid(10000))
                 .fluidOutputs(ArgonPrime.getFluid(100))
-                .duration(9600).EUt(VA[UHV]).buildAndRegister();
+                .duration(9600).EUt(VA[UEV]).buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
                 .input(MYSTERIOUS_BLOB_ARGON)
-                .fluidInputs(FluxedElectrum.getFluid(2304))
+                .fluidInputs(Quantium.getFluid(2304))
                 .output(MYSTERIOUS_BLOB_KRYPTON)
-                .duration(9600).EUt(VA[UEV]).buildAndRegister();
+                .duration(9600).EUt(VA[UIV]).buildAndRegister();
 
         AUTOCLAVE_RECIPES.recipeBuilder()
                 .input(MYSTERIOUS_BLOB_KRYPTON)
                 .fluidInputs(Krypton.getFluid(10000))
                 .fluidOutputs(KryptonPrime.getFluid(100))
-                .duration(9600).EUt(VA[UEV]).buildAndRegister();
+                .duration(9600).EUt(VA[UIV]).buildAndRegister();
     }
 
     private static void machineHullRecipes() {
@@ -172,7 +172,7 @@ public class MysteriousBlobRecipes {
                 .duration(50).EUt(VA[UHV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
-                .input(ring, CondensedStarMatter, 13)
+                .input(ring, Neutronium, 13)
                 .fluidInputs(NeonPrime.getFluid(10))
                 .output(HULL[UHV])
                 .duration(50).EUt(VA[UEV]).buildAndRegister();

@@ -4,15 +4,21 @@ import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.QUANTUM_MAINFRAME_ZPM;
-import static gregtech.common.items.MetaItems.STEM_CELLS;
+import static gregtech.common.items.MetaItems.*;
+import static gregtech.common.items.MetaItems.EMITTER_UV;
 import static gregtech.common.metatileentities.MetaTileEntities.*;
 import static serendustry.item.material.SerendustryMaterials.*;
+import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.LABORATORY_RECIPES;
 
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.ore.OrePrefix;
+import gregtech.api.unification.stack.UnificationEntry;
 import net.minecraft.init.Blocks;
 
 import gregtech.api.fluids.store.FluidStorageKeys;
+import net.minecraft.init.Items;
 
 public class AlloyRecipes {
 
@@ -109,7 +115,8 @@ public class AlloyRecipes {
                 .duration(500).EUt(VA[ZPM]).buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
-                .input(dust, Silicon, 5).input(dust, Oxygen, 10).input(dust, Iron, 1)
+                .input(dust, Silicon, 5).input(dust, Iron, 1)
+                .fluidInputs(Oxygen.getFluid(10000))
                 .output(dust, Prasiolite, 16)
                 .duration(6000).EUt(VA[HV]).buildAndRegister();
 
@@ -218,8 +225,8 @@ public class AlloyRecipes {
         FORMING_PRESS_RECIPES.recipeBuilder()
                 .input(dust, Stone, 64).input(dust, Stone, 64).input(dust, Stone, 64).input(dust, Stone, 64)
                 .input(dust, Stone, 64).input(dust, Stone, 64)
-                .output(dust, Bedrockium, 16)
-                .duration(1050).EUt(VA[UHV]).buildAndRegister();
+                .output(dust, Bedrockium, 1)
+                .duration(120).EUt(VA[UHV]).buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, ChargedDraconium, 4).input(dust, StellarAlloy, 4).input(dust, Luminessence, 3)
@@ -233,11 +240,12 @@ public class AlloyRecipes {
                 .output(dust, Jasper, 8)
                 .duration(500).EUt(VA[UHV]).buildAndRegister();
 
-        BLAST_RECIPES.recipeBuilder()
-                .input(dust, Silicon).input(dust, Carbon)
-                .fluidInputs(Argon.getFluid(200))
+        CVD_RECIPES.recipeBuilder()
+                .input(dust, Carbon)
+                .fluidInputs(Silane.getFluid(1000), Argon.getFluid(100))
                 .output(dust, SiliconCarbide, 2)
-                .duration(100).EUt(VA[UV]).blastFurnaceTemp(6000).buildAndRegister();
+                .fluidOutputs(Hydrogen.getFluid(4000))
+                .duration(100).EUt(VA[HV]).buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, Trinium, 3).input(dust, HSSS, 4).input(dust, TungstenCarbide, 2).input(dust, Osmiridium)
@@ -431,5 +439,54 @@ public class AlloyRecipes {
                 .notConsumable(lens, PerditioCrystal)
                 .output(round, Arcanite, 9)
                 .duration(3200).EUt(VA[UEV]).buildAndRegister();
+
+        CENTRIFUGE_RECIPES.recipeBuilder()
+                .input(dust, AbyssalAlloy, 8)
+                .output(dust, Naquadria, 3)
+                .output(dust, Taranium, 1)
+                .output(dust, TungstenCarbide, 1)
+                .output(dust, Netherite, 1)
+                .output(dust, Germanium, 1)
+                .fluidOutputs(BlackStarMatter.getFluid(400))
+                .duration(2400).EUt(VA[UV]).buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder()
+                .input(dust, Tungsten, 9).input(dust, Naquadria, 8).input(dust, Bedrockium, 6)
+                .input(dust, Vanadium, 5).input(dust, BlackSteel, 2).input(dust, Taranium).input(dust, SiliconCarbide)
+                .output(dust, Tairitsu, 32)
+                .duration(2400).EUt(VA[UHV]).buildAndRegister();
+
+        IMPLOSION_RECIPES.recipeBuilder()
+                .input(gemExquisite, LigniteCoal).input(gemExquisite, AnthraciteCoal)
+                .input(gemExquisite, BituminousCoal).input(gemExquisite, SubBituminousCoal).input(gemExquisite, PeatCoal)
+                .output(dust, CondensedCoal)
+                .explosivesAmount(8)
+                .duration(20).EUt(VA[MAX]).buildAndRegister();
+
+        IMPLOSION_RECIPES.recipeBuilder()
+                .input(gemExquisite, TiberiumAboreus).input(gemExquisite, TiberiumCruentus).input(gemExquisite, TiberiumRiparius)
+                .input(gemExquisite, TiberiumVinifera).input(crushedCentrifuged, Originite)
+                .output(dust, ExtremelyUnstableTiberium)
+                .explosivesAmount(8)
+                .duration(20).EUt(VA[MAX]).buildAndRegister();
+
+        ALLOY_SMELTER_RECIPES.recipeBuilder()
+                .input(ingot, Steel).input(Items.BONE)
+                .output(ingot, BoneSteel)
+                .duration(120).EUt(VA[LV]).buildAndRegister();
+
+        // todo: remove normal Tungstencarbide recipe
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, Tungsten)
+                .fluidInputs(Chlorine.getFluid(6000))
+                .output(dust, TungstenHexachloride, 7)
+                .duration(240).EUt(VA[HV]).buildAndRegister();
+
+        CVD_RECIPES.recipeBuilder()
+                .input(dust, TungstenHexachloride, 7)
+                .fluidInputs(Hydrogen.getFluid(2000), Methane.getFluid(1000))
+                .output(dust, TungstenCarbide)
+                .fluidOutputs(HydrochloricAcid.getFluid(6000))
+                .duration(240).EUt(VA[HV]).buildAndRegister();
     }
 }

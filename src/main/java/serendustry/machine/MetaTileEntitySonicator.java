@@ -18,24 +18,20 @@ import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
 
-public class MetaTileEntityGiantFractionatingColumn extends RecipeMapMultiblockController {
+public class MetaTileEntitySonicator extends RecipeMapMultiblockController {
 
-    public MetaTileEntityGiantFractionatingColumn(ResourceLocation rl) {
-        super(rl, SerendustryRecipeMaps.GIANT_FRACTIONATING_COLUMN_RECIPES);
+    public MetaTileEntitySonicator(ResourceLocation rl) {
+        super(rl, SerendustryRecipeMaps.SONICATOR_RECIPES);
     }
 
     @Override
-    public MetaTileEntityGiantFractionatingColumn createMetaTileEntity(IGregTechTileEntity te) {
-        return new MetaTileEntityGiantFractionatingColumn(metaTileEntityId);
+    public MetaTileEntitySonicator createMetaTileEntity(IGregTechTileEntity te) {
+        return new MetaTileEntitySonicator(metaTileEntityId);
     }
 
     @Override
     public @NotNull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("YYYY#YYYY", "YYY###YYY", "YY#####YY", "Y#######Y", "Y#######Y", "#########", "#########", "#########", "#########", "#########", "#########", "YYYY#YYYY", "YYY###YYY", "YY#####YY", "Y#######Y", "Y#######Y")
-                .aisle("YXXXXXXXY", "YXXXXXXXY", "YXXXXXXXY", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#CCCCCCC#", "#XXXXXXX#", "#CCCCCCC#", "#XXXXXXX#", "#XXXXXXX#", "YXXXXXXXY", "YXXXXXXXY", "Y#######Y", "#########", "#########")
-                .aisle("YXXXXXXXY", "YXXXXXXXY", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#XXXXXXX#", "YXXXXXXXY", "YXXXXXXXY", "#########", "#########", "#########")
-                .aisle("YXXXXXXXY", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#XXXXXXX#", "YXXXXXXXY", "#XXXXXXX#", "#########", "#########", "#########")
                 .aisle("#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#########", "#########", "#########")
                 .aisle("YXXXXXXXY", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#XXXXXXX#", "YXXXXXXXY", "#XXXXXXX#", "#########", "#########", "#########")
                 .aisle("YXXXXXXXY", "YXXXXXXXY", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#XXXXXXX#", "YXXXXXXXY", "YXXXXXXXY", "#########", "#########", "#########")

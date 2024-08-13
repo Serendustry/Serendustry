@@ -257,6 +257,83 @@ public class SerendustryMaterials {
 
     public static Material ChromiumDopedMolybdenite;
 
+    public static Material MagnesiumSilicide;
+    public static Material MagnesiumDichloride;
+    public static Material Silane;
+    public static Material SemiconductorGradeSilicon;
+
+    public static Material Acetylene;
+    public static Material RawCarbonNanotubesMixture;
+    public static Material CarbonNanotubes;
+    public static Material GadoliniumTrichloride;
+    public static Material Gadonanotubes;
+
+    public static Material MagneticHolmium;
+
+    public static Material NeutronStarMatter;
+
+    public static Material TiberiumRiparius;
+    public static Material TiberiumVinifera;
+    public static Material TiberiumCruentus;
+    public static Material TiberiumAboreus;
+    public static Material Originite;
+    public static Material Originium;
+    public static Material Orundum;
+
+    public static Material RawAncientDebris;
+    public static Material NetheriteRichAncientDebris;
+    public static Material NetheritePoorAncientDebris;
+    public static Material Netherite;
+
+    public static Material Tairitsu;
+    public static Material Taranium;
+    public static Material AbyssalAlloy;
+
+    public static Material CondensedCoal;
+    public static Material ExtremelyUnstableTiberium;
+    public static Material BoneSteel;
+    public static Material TungstenHexachloride;
+    public static Material SelfRepairingNanobots;
+
+    public static Material EthyleneOxide;
+    public static Material EthyleneGlycol;
+    public static Material paraXylene;
+    public static Material HydrogenBromide;
+    public static Material TerephtalicAcid;
+    public static Material PolyethyleneTerephtalate;
+    public static Material MoPET;
+    public static Material BoPET;
+    public static Material HeatSetBoPET;
+    public static Material AluminizedBoPET;
+    public static Material LaminatedBoPET;
+
+    public static Material PositroniumHydride;
+    public static Material IrradiatedDiamond;
+    public static Material NVCDiamond;
+
+    public static Material ScUevSane;
+    public static Material cis12Dichloroethene;
+    public static Material SodiumZ12ethenedithiolate;
+    public static Material EthyleneDibromide;
+    public static Material Dihydro14Dithiine;
+    public static Material SodiumBromide;
+    public static Material Bromobutane;
+    public static Material Propylene;
+    public static Material Butanol;
+    public static Material nButyllithium;
+    public static Material LithiumBromide;
+    public static Material LithiumDiisopropylamide;
+    public static Material Dihydro14dithiine23bislithiumSelenolate;
+    public static Material Diisopropylamine;
+    public static Material PhosphorusTrichloride;
+    public static Material TriethylPhosphite;
+    public static Material Phosgene;
+    public static Material BETS;
+    public static Material DiethylPhosphate;
+    public static Material Formaldehyde;
+    public static Material RheniumVIIOxide;
+    public static Material AmmoniumPerrhenate;
+    public static Material BETSPerrhenate;
 
     public static void init() {
         // This should probably be a loop, but I never intended for it to get this big; it just kind of slowly grew over
@@ -380,6 +457,8 @@ public class SerendustryMaterials {
         Bromine.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
         Erbium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
         Moscovium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
+        Diamond.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
+        Germanium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
 
         Water.getProperty(PropertyKey.FLUID).getStorage().enqueueRegistration(FluidStorageKeys.PLASMA,
                 new FluidBuilder());
@@ -405,12 +484,15 @@ public class SerendustryMaterials {
         fp.getStorage().enqueueRegistration(FluidStorageKeys.PLASMA, new FluidBuilder());
         Protactinium.setProperty(PropertyKey.FLUID, fp);
 
+        SolderingAlloy.addFlags(GENERATE_PLATE);
         TinAlloy.addFlags(GENERATE_FINE_WIRE, GENERATE_FOIL);
         Oxygen.addFlags(GENERATE_FOIL, NO_SMASHING, NO_WORKING, NO_SMELTING);
         RutheniumTriniumAmericiumNeutronate.addFlags(GENERATE_FINE_WIRE);
         Europium.addFlags(GENERATE_SPRING_SMALL);
+        Holmium.addFlags(GENERATE_LONG_ROD);
         PolyvinylChloride.addFlags(GENERATE_LENS);
-        Neutronium.addFlags(GENERATE_SMALL_GEAR, GENERATE_DENSE, GENERATE_ROTOR, GENERATE_FINE_WIRE, GENERATE_FOIL);
+        Duranium.addFlags(GENERATE_SMALL_GEAR, GENERATE_DENSE, GENERATE_ROTOR, GENERATE_LONG_ROD);
+        Neutronium.addFlags(GENERATE_SMALL_GEAR, GENERATE_ROUND, GENERATE_RING);
 
         AnimalWaste = new Material.Builder(1, Serendustry.ID("animal_waste"))
                 .gem().fluid().color(0x7B5C00)
@@ -447,7 +529,7 @@ public class SerendustryMaterials {
         HastelloyX78 = new Material.Builder(5, Serendustry.ID("hastelloyx_78"))
                 .ingot(3).liquid(new FluidBuilder().temperature(7500))
                 .color(0x5F90C9).iconSet(SHINY)
-                .flags(STD_METAL, DECOMPOSITION_BY_CENTRIFUGING)
+                .flags(STD_METAL, DECOMPOSITION_BY_CENTRIFUGING, GENERATE_FINE_WIRE)
                 .components(NaquadahAlloy, 10, Rhenium, 5, Naquadria, 4, Polonium, 3, Rutherfordium, 2, Fermium, 1)
                 .blastTemp(8500, GasTier.HIGHEST, VA[UV], 10000)
                 .build();
@@ -460,8 +542,6 @@ public class SerendustryMaterials {
                 .components(HastelloyX78, 5, Tritanium, 4, TungstenCarbide, 4, Promethium, 4, NiobiumNitride, 2,
                         Mendelevium, 1)
                 .blastTemp(9000, GasTier.HIGHEST, VA[UHV], 12000)
-                .toolStats(ToolProperty.Builder.of(160.0f, 110.0f, 65535, 7)
-                        .attackSpeed(0.5f).enchantability(33).magnetic().build())
                 .build();
 
         Technetium22 = new Material.Builder(7, Serendustry.ID("technetium_22"))
@@ -523,6 +603,8 @@ public class SerendustryMaterials {
                 .dust(0)
                 .color(0x606060).iconSet(SHINY)
                 .components(Silicon, 1, Carbon, 1)
+                .toolStats(ToolProperty.Builder.of(30.0f, 2.0f, 512, 2)
+                        .attackSpeed(1f).enchantability(12).build())
                 .build();
 
         Onionium = new Material.Builder(14, Serendustry.ID("onionium"))
@@ -610,8 +692,6 @@ public class SerendustryMaterials {
                 .flags(STD_METAL, DECOMPOSITION_BY_CENTRIFUGING, GENERATE_FRAME, GENERATE_RING, GENERATE_LONG_ROD,
                         GENERATE_BOLT_SCREW, GENERATE_ROUND, GENERATE_ROTOR, GENERATE_FINE_WIRE, GENERATE_FOIL, GENERATE_SMALL_GEAR)
                 .components(TungstenSteel, 12, HSSS, 9, HSSG, 6, Ruridit, 3, MagnetoResonatic, 2, Plutonium239, 1)
-                .toolStats(ToolProperty.Builder.of(100.0f, 70.0f, 65535, 6)
-                        .attackSpeed(0.5f).enchantability(33).magnetic().build())
                 .blastTemp(5000, GasTier.HIGHEST, VA[ZPM], 1200)
                 .build();
 
@@ -707,8 +787,6 @@ public class SerendustryMaterials {
                 .components(VibrantAlloy, 8, TastyNeutronium, 2, Aluminum, 2, AluminiumSulfite, 1)
                 .fluidPipeProperties(80000, 7500, true, true, true, true)
                 .blastTemp(8000, GasTier.HIGHEST, VA[UHV], 4000)
-                .toolStats(ToolProperty.Builder.of(200.0f, 120.0f, 65535, 8)
-                        .attackSpeed(0.5f).enchantability(33).magnetic().build())
                 .build();
 
         ScUiv = new Material.Builder(36, Serendustry.ID("sc_uiv"))
@@ -774,8 +852,6 @@ public class SerendustryMaterials {
                         GENERATE_BOLT_SCREW, GENERATE_DENSE)
                 .components(Draconium, 1)
                 .blastTemp(8950, GasTier.HIGHEST, VA[UIV], 8500)
-                .toolStats(ToolProperty.Builder.of(240.0f, 160.0f, 65535, 9)
-                        .attackSpeed(0.5f).enchantability(33).magnetic().build())
                 .build()
                 .setFormula("Dc*", true);
 
@@ -832,8 +908,6 @@ public class SerendustryMaterials {
                 .components(StellarAlloy, 15, ArceusAlloy2B, 10, Lafium, 10, Jasper, 5, Americium, 5, Pikyonium, 5,
                         Germanium, 5, SiliconCarbide, 5, AssemblyLine, 1)
                 .blastTemp(10800, GasTier.HIGHEST, VA[UXV], 8000)
-                .toolStats(ToolProperty.Builder.of(220.0f, 125.0f, 65535, 9)
-                        .attackSpeed(0.5f).enchantability(33).magnetic().build())
                 .build();
 
         Quantium = new Material.Builder(49, Serendustry.ID("quantium"))
@@ -851,7 +925,7 @@ public class SerendustryMaterials {
         CallistoIce = new Material.Builder(50, Serendustry.ID("callisto_ice"))
                 .ingot(3).liquid(new FluidBuilder().temperature(1))
                 .color(0x00D1FF).iconSet(BRIGHT)
-                .flags(STD_METAL, DISABLE_DECOMPOSITION, GENERATE_ROUND, GENERATE_RING, GENERATE_BOLT_SCREW)
+                .flags(STD_METAL, DISABLE_DECOMPOSITION, GENERATE_ROUND, GENERATE_RING, GENERATE_BOLT_SCREW, GENERATE_FINE_WIRE)
                 .components(Water, 1)
                 .fluidPipeProperties(800000, 15000, true, true, true, true)
                 .blastTemp(273, GasTier.HIGHEST, VA[UXV], 2000)
@@ -897,7 +971,7 @@ public class SerendustryMaterials {
         Thaumium = new Material.Builder(55, Serendustry.ID("thaumium"))
                 .ingot(3).liquid(new FluidBuilder().temperature(25000))
                 .color(0x802BA8).iconSet(BRIGHT)
-                .flags(STD_METAL, DISABLE_DECOMPOSITION)
+                .flags(STD_METAL, DISABLE_DECOMPOSITION, GENERATE_FINE_WIRE)
                 .components(SolderingAlloy, 1)
                 .build()
                 .setFormula("FeMa");
@@ -965,7 +1039,7 @@ public class SerendustryMaterials {
                 .polymer(3).fluid()
                 .color(0xBB2BE0)
                 .flags(GENERATE_FOIL, GENERATE_RING, GENERATE_DENSE)
-                .fluidPipeProperties(8000, 5000, true, true, true, false)
+                .fluidPipeProperties(1000, 4500, true, true, false, false)
                 .build();
 
         // Todo: stop GCYM from autogenerating a recipe for this that's very cheap
@@ -1012,10 +1086,9 @@ public class SerendustryMaterials {
                 .build();
 
         ChromaticGlass = new Material.Builder(74, Serendustry.ID("chromatic_glass"))
-                .ingot(3).liquid(new FluidBuilder().temperature(35000))
+                .gem(3).liquid(new FluidBuilder().temperature(35000))
                 .color(0xFFFFFF).iconSet(GLASS) // TODO: Give it animated rainbow colors
-                .flags(STD_METAL, GENERATE_FOIL)
-                .blastTemp(10800, GasTier.HIGHEST, VA[UV], 6000)
+                .flags(NO_SMASHING, NO_SMELTING, NO_WORKING, GENERATE_LENS, GENERATE_FOIL)
                 .build();
 
         Shirabon = new Material.Builder(75, Serendustry.ID("shirabon"))
@@ -1363,8 +1436,6 @@ public class SerendustryMaterials {
                         GENERATE_LONG_ROD, GENERATE_BOLT_SCREW)
                 .components(Rhodium, 1, Palladium, 1, Ruthenium, 1)
                 .blastTemp(3500, GasTier.MID, VA[IV])
-                .toolStats(ToolProperty.Builder.of(50.0f, 10.0f, 3600, 4)
-                        .attackSpeed(0.5f).enchantability(29).build())
                 .rotorStats(7.5f, 3.0f, 2500)
                 .build();
 
@@ -1453,12 +1524,8 @@ public class SerendustryMaterials {
                 .build();
 
         CondensedStarMatter = new Material.Builder(143, Serendustry.ID("condensed_star_matter"))
-                .ingot(3).liquid(new FluidBuilder().temperature(35000))
-                .color(0x00ffd8).iconSet(SHINY)
-                .flags(EXT2_METAL, GENERATE_FRAME, GENERATE_RING, GENERATE_ROUND, GENERATE_GEAR, GENERATE_SMALL_GEAR)
-                .blastTemp(10800, GasTier.HIGHEST, VA[UHV], 1600)
-                .toolStats(ToolProperty.Builder.of(120.0f, 140.0f, 10000, 7)
-                        .attackSpeed(0.5f).enchantability(33).magnetic().build())
+                .liquid(new FluidBuilder().temperature(35000))
+                .color(0x00ffd8)
                 .build();
 
         LigniteCoal = new Material.Builder(144, Serendustry.ID("lignite_coal"))
@@ -1602,23 +1669,22 @@ public class SerendustryMaterials {
                 .ingot(3).liquid(new FluidBuilder().temperature(1000))
                 .color(0x001171).iconSet(SHINY)
                 .flags(STD_METAL)
-                .blastTemp(10800, GasTier.HIGHEST, VA[UHV], 1600)
-                .toolStats(ToolProperty.Builder.of(60.0f, 70.0f, 5000, 6)
-                        .attackSpeed(0.4f).enchantability(30).build())
+                .blastTemp(10800, GasTier.HIGHEST, VA[UHV], 900)
                 .build();
 
         Hihiirokane = new Material.Builder(154, Serendustry.ID("hihiirokane"))
                 .ingot(3).liquid(new FluidBuilder().temperature(6000))
-                .color(0xFE5330).iconSet(SHINY)
+                .color(0xff2500).iconSet(SHINY)
                 .flags(STD_METAL, DECOMPOSITION_BY_CENTRIFUGING, GENERATE_FOIL, GENERATE_FINE_WIRE, GENERATE_LONG_ROD)
                 .components(RoseGold, 3, Promethium, 2, Naquadria, 2, Thulium, 1)
-                .blastTemp(10800, GasTier.HIGHEST, VA[UHV], 1600)
+                .blastTemp(10800, GasTier.HIGHEST, VA[UHV], 1200)
                 .cableProperties(V[UHV], 4, 8, false, 3)
                 .build();
 
         HalkoniteSteel = new Material.Builder(155, Serendustry.ID("halkonite_steel"))
                 .color(0x4BCD83).iconSet(BRIGHT)
-                .flags(STD_METAL, NO_WORKING, NO_SMASHING, NO_SMELTING, DISABLE_DECOMPOSITION, GENERATE_LONG_ROD, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_BOLT_SCREW, GENERATE_ROTOR, GENERATE_DENSE)
+                .flags(NO_UNIFICATION, NO_WORKING, NO_SMASHING, NO_SMELTING, GENERATE_PLATE, GENERATE_ROD, DISABLE_DECOMPOSITION, GENERATE_LONG_ROD, GENERATE_GEAR, GENERATE_SMALL_GEAR,
+                        GENERATE_BOLT_SCREW, GENERATE_ROTOR, GENERATE_DENSE, GENERATE_RING)
                 .build()
                 .setFormula("Nt(Tr3Ds2(Al2Li2MgSc2Ti3)2(((FeW)CrMo2V)6Ir2Os))");
 
@@ -1646,7 +1712,7 @@ public class SerendustryMaterials {
                 .color(0x5C009A).iconSet(DULL)
                 .flags(STD_METAL, DECOMPOSITION_BY_CENTRIFUGING)
                 .components(Cadmium, 4, Antimony, 3, Indium, 1)
-                .blastTemp(5000, GasTier.HIGH, VA[EV], 1500)
+                .blastTemp(5000, GasTier.HIGH, VA[EV], 900)
                 .build(); // todo: change LuV-UV recipes to use this
 
         SuperheavySolderingAlloy = new Material.Builder(159, Serendustry.ID("superheavy_soldering_alloy"))
@@ -1654,7 +1720,7 @@ public class SerendustryMaterials {
                 .color(0xE4FF27).iconSet(DULL)
                 .flags(STD_METAL, DECOMPOSITION_BY_CENTRIFUGING)
                 .components(Flerovium, 4, HighGradeSolderingAlloy, 3, Darmstadtium, 1)
-                .blastTemp(9000, GasTier.HIGHEST, VA[UV], 1300)
+                .blastTemp(9000, GasTier.HIGHEST, VA[UV], 1100)
                 .build();
 
         MolybdeniteLubricant = new Material.Builder(160, Serendustry.ID("molybdenite_lubricant"))
@@ -1668,7 +1734,7 @@ public class SerendustryMaterials {
         ALMST = new Material.Builder(162, Serendustry.ID("almst"))
                 .ingot(3).liquid(new FluidBuilder().temperature(8000))
                 .color(0x82A4CA).iconSet(BRIGHT)
-                .flags(STD_METAL)
+                .flags(STD_METAL, GENERATE_FOIL)
                 .components(Aluminium, 2, Lithium, 2, Magnesium, 1, Scandium, 2, Titanium, 3)
                 .blastTemp(6000, GasTier.HIGH, VA[IV], 900)
                 .build();
@@ -1772,5 +1838,462 @@ public class SerendustryMaterials {
                 .dust().color(0x9C5fB5)
                 .components(Chrome, 1, Molybdenite, 1)
                 .build();
+
+        MagnesiumSilicide = new Material.Builder(185, Serendustry.ID("magensium_silicide"))
+                .dust().color(0x5f4b5f)
+                .components(Magnesium, 2, Silicon, 1)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        MagnesiumDichloride = new Material.Builder(186, Serendustry.ID("magensium_dichloride"))
+                .dust().color(0x89b293)
+                .components(Magnesium, 1, Chlorine, 2)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        Silane = new Material.Builder(187, Serendustry.ID("silane"))
+                .color(0x909090).liquid(new FluidBuilder())
+                .components(Silicon, 1, Hydrogen, 4)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        SemiconductorGradeSilicon = new Material.Builder(188, Serendustry.ID("semiconductor_grade_silicon"))
+                .ingot(1).color(0x3a395a).iconSet(SHINY)
+                .components(Silicon, 1)
+                .flags(STD_METAL)
+                .blastTemp(2273, GasTier.LOW, VA[MV], 240)
+                .build()
+                .setFormula("SGSi");
+
+        Acetylene = new Material.Builder(189, Serendustry.ID("acetylene"))
+                .color(0x675e5e).liquid(new FluidBuilder())
+                .components(Carbon, 2, Hydrogen, 2)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        RawCarbonNanotubesMixture = new Material.Builder(195, Serendustry.ID("raw_carbon_nanotubes_mixture"))
+                .dust().color(0x424240)
+                .components(Carbon, 1, Iron, 1)
+                .flags(DISABLE_DECOMPOSITION)
+                .build();
+
+        // todo: find a way to not have a plate or plate recipe for Nanotubes?
+        CarbonNanotubes = new Material.Builder(190, Serendustry.ID("carbon_nanotubes"))
+                .dust().color(0x000000)
+                .components(Carbon, 1)
+                .flags(DISABLE_DECOMPOSITION, NO_WORKING, NO_SMELTING, GENERATE_FOIL, GENERATE_FINE_WIRE)
+                .build();
+
+        GadoliniumTrichloride = new Material.Builder(191, Serendustry.ID("gadolinium_trichloride"))
+                .dust().color(0xb4e87c)
+                .components(Gadolinium, 1, Chlorine, 3)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        Gadonanotubes = new Material.Builder(192, Serendustry.ID("gadonanotubes"))
+                .dust().color(0x509a00)
+                .components(Gadolinium, 1, Carbon, 1)
+                .flags(DISABLE_DECOMPOSITION, NO_WORKING, NO_SMELTING, GENERATE_FOIL, GENERATE_FINE_WIRE)
+                .build();
+
+        MagneticHolmium = new Material.Builder(193, Serendustry.ID("magnetic_holmium"))
+                .ingot(3)
+                .color(0xffffff).iconSet(MAGNETIC)
+                .flags(STD_METAL, GENERATE_LONG_ROD, IS_MAGNETIC)
+                .components(Holmium, 1)
+                .ingotSmeltInto(Holmium)
+                .arcSmeltInto(Holmium)
+                .macerateInto(Holmium)
+                .build();
+        Holmium.getProperty(PropertyKey.INGOT).setMagneticMaterial(MagneticHolmium);
+
+        NeutronStarMatter = new Material.Builder(194, Serendustry.ID("neutron_star_matter"))
+                .color(0xCCCCCC).liquid(new FluidBuilder().temperature(15000))
+                .build();
+
+        Originium = new Material.Builder(200, Serendustry.ID("originium"))
+                .ingot(1).color(0xFF0000).iconSet(SHINY).liquid(new FluidBuilder().temperature(2500))
+                .flags(STD_METAL, GENERATE_FOIL, GENERATE_FINE_WIRE)
+                .blastTemp(10800, GasTier.HIGHEST, VA[UHV], 1400)
+                .build()
+                .setFormula("Or");
+
+        Originite = new Material.Builder(199, Serendustry.ID("originite"))
+                .dust(3).ore(1, 1)
+                .color(0xFF2222).iconSet(METALLIC)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(SiliconDioxide, 3, Originium, 1)
+                .build();
+
+        oreProp = Originite.getProperty(PropertyKey.ORE);
+        oreProp.setOreByProducts(Originite, Originite, Silicon, Originium);
+        oreProp.setWashedIn(Xenoxene);
+
+        TiberiumRiparius = new Material.Builder(202, Serendustry.ID("tiberium_riparius"))
+                .gem(3).ore(1, 1).fluid()
+                .color(0x23FF16).iconSet(METALLIC)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Iron, 8, Oxygen, 30, Copper, 2, Calcium, 2, Phosphorus, 4, Originite, 10)
+                .build();
+
+        oreProp = TiberiumRiparius.getProperty(PropertyKey.ORE);
+        oreProp.setOreByProducts(TiberiumVinifera, TiberiumCruentus, TiberiumAboreus, Originite);
+        oreProp.setWashedIn(Xenoxene);
+
+        TiberiumVinifera = new Material.Builder(196, Serendustry.ID("tiberium_vinifera"))
+                .gem(3).ore(1, 1).fluid()
+                .color(0x2316FF).iconSet(METALLIC)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Iron, 12, Oxygen, 24, Copper, 2, Phosphorus, 8, Originite, 10)
+                .build();
+
+        oreProp = TiberiumVinifera.getProperty(PropertyKey.ORE);
+        oreProp.setOreByProducts(TiberiumRiparius, TiberiumCruentus, TiberiumAboreus, Originite);
+        oreProp.setWashedIn(Xenoxene);
+
+        TiberiumCruentus = new Material.Builder(197, Serendustry.ID("tiberium_cruentus"))
+                .gem(3).ore(1, 1).fluid()
+                .color(0xFF2316).iconSet(METALLIC)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Iron, 10, Oxygen, 32, Copper, 4, Originite, 10)
+                .build();
+
+        oreProp = TiberiumCruentus.getProperty(PropertyKey.ORE);
+        oreProp.setOreByProducts(TiberiumVinifera, TiberiumRiparius, TiberiumAboreus, Originite);
+        oreProp.setWashedIn(Xenoxene);
+
+        TiberiumAboreus = new Material.Builder(198, Serendustry.ID("tiberium_aboreus"))
+                .gem(3).ore(1, 1).fluid()
+                .color(0xAB31FE).iconSet(METALLIC)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Oxygen, 30, Copper, 2, Calcium, 2, Phosphorus, 12, Originite, 10)
+                .build();
+
+        oreProp = TiberiumAboreus.getProperty(PropertyKey.ORE);
+        oreProp.setOreByProducts(TiberiumVinifera, TiberiumCruentus, TiberiumRiparius, Originite);
+        oreProp.setWashedIn(Xenoxene);
+
+        Orundum = new Material.Builder(201, Serendustry.ID("orundum"))
+                .gem(3).fluid().color(0xAA0000)
+                .flags(STD_METAL, NO_SMASHING, NO_SMELTING, DECOMPOSITION_BY_ELECTROLYZING, GENERATE_FINE_WIRE, GENERATE_LENS) // todo: check recipes, is NO_WORKING needed?
+                .components(Originium, 4, SemiconductorGradeSilicon, 2, Naquadria, 1, Cerium, 1)
+                .build();
+
+        RawAncientDebris = new Material.Builder(203, Serendustry.ID("raw_ancient_debris")) // todo: add planetoid and ore vein for this
+                .dust(3).ore(1, 1)
+                .color(0x4c3e23).iconSet(METALLIC)
+                .build()
+                .setFormula("??Nr??");
+
+        oreProp = RawAncientDebris.getProperty(PropertyKey.ORE);
+        oreProp.setOreByProducts(Netherrack, Gold, Gold, RawAncientDebris);
+        oreProp.setWashedIn(Lava);
+
+        NetheriteRichAncientDebris = new Material.Builder(204, Serendustry.ID("netherite_rich_ancient_debris"))
+                .ingot(3)
+                .color(0x3b311e).iconSet(SHINY)
+                .flags(NO_SMELTING)
+                .blastTemp(3600, GasTier.HIGHEST, VA[UXV], 12000) // exists purely to generate a hot ingot, gets manually removed
+                .build()
+                .setFormula("??Nr??");
+
+        NetheritePoorAncientDebris = new Material.Builder(205, Serendustry.ID("netherite_poor_ancient_debris"))
+                .dust(3)
+                .color(0x5d4a26).iconSet(DULL)
+                .build()
+                .setFormula("??Nr??");
+
+        Netherite = new Material.Builder(206, Serendustry.ID("netherite"))
+                .ingot().liquid(new FluidBuilder().temperature(6000))
+                .color(0x4C4143).iconSet(METALLIC)
+                .flags(STD_METAL, GENERATE_LONG_ROD, GENERATE_BOLT_SCREW)
+                .toolStats(ToolProperty.Builder.of(10.0f, 8.0f, 2560, 4)
+                        .attackSpeed(1f).enchantability(33).build())
+                .cableProperties(V[HV], 4, 0, true, 4500)
+                .blastTemp(3600, GasTier.MID, VA[HV], 600)
+                .build()
+                .setFormula("NrAu");
+
+        Taranium = new Material.Builder(207, Serendustry.ID("taranium"))
+                .ingot(3).liquid(new FluidBuilder().temperature(12000))
+                .color(0x000000).iconSet(SHINY)
+                .flags(STD_METAL, GENERATE_FOIL)
+                .blastTemp(10800, GasTier.HIGHEST, VA[UHV], 3200)
+                .build()
+                .setFormula("Tn");
+
+        Tairitsu = new Material.Builder(208, Serendustry.ID("tairitsu"))
+                .ingot(3).liquid(new FluidBuilder().temperature(12000))
+                .color(0x333333).iconSet(DULL)
+                .flags(STD_METAL)
+                .components(Tungsten, 9, Naquadria, 8, Bedrockium, 6, Vanadium, 5, BlackSteel, 2, Taranium, 1, SiliconCarbide, 1)
+                .blastTemp(10800, GasTier.HIGHEST, VA[UHV], 1400)
+                .build();
+
+        AbyssalAlloy = new Material.Builder(209, Serendustry.ID("abyssal_alloy"))
+                .ingot(3).liquid(new FluidBuilder().temperature(14500))
+                .color(0xAD94A4).iconSet(BRIGHT)
+                .flags(STD_METAL, DISABLE_DECOMPOSITION, GENERATE_FOIL)
+                .components(Naquadria, 3, Taranium, 1, TungstenCarbide, 1, Netherite, 1, Germanium, 1)
+                .blastTemp(10800, GasTier.HIGHEST, VA[UHV], 1600)
+                .build()
+                .setFormula("W2(NrAu)2TnGe(SiC)???");
+
+        CondensedCoal = new Material.Builder(210, Serendustry.ID("condensed_coal"))
+                .ingot(3).liquid(new FluidBuilder().temperature(16000))
+                .color(0x4c3e23).iconSet(DULL)
+                .flags(STD_METAL, DISABLE_DECOMPOSITION)
+                .components(Coal, 1, LigniteCoal, 1, BituminousCoal, 1, SubBituminousCoal, 1, PeatCoal, 1)
+                .blastTemp(10800, GasTier.HIGHEST, VA[MAX], 2400)
+                .build();
+
+        ExtremelyUnstableTiberium = new Material.Builder(211, Serendustry.ID("extremely_unstable_tiberium"))
+                .ingot(3).liquid(new FluidBuilder().temperature(16000))
+                .color(0xfe0254).iconSet(DULL)
+                .flags(STD_METAL)
+                .components(TiberiumRiparius, 1, TiberiumVinifera, 1, TiberiumCruentus, 1, TiberiumAboreus, 1)
+                .blastTemp(10800, GasTier.HIGHEST, VA[MAX], 2400)
+                .build();
+
+        BoneSteel = new Material.Builder(212, Serendustry.ID("bone_steel"))
+                .ingot(1).liquid(new FluidBuilder().temperature(2000))
+                .color(0xFFEEDD).iconSet(DULL)
+                .flags(STD_METAL, GENERATE_FOIL)
+                .components(Steel, 1, Bone, 1)
+                .build();
+
+        TungstenHexachloride = new Material.Builder(213, Serendustry.ID("tungsten_hexachloride"))
+                .dust(3).color(0x331133)
+                .components(Tungsten, 1, Chlorine, 6)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        SelfRepairingNanobots = new Material.Builder(214, Serendustry.ID("self_repairing_nanobots"))
+                .dust().liquid(new FluidBuilder())
+                .color(0xa8abcb).iconSet(BRIGHT)
+                .flags(GENERATE_PLATE, GENERATE_FOIL, NO_WORKING, NO_SMASHING, NO_SMELTING, NO_UNIFICATION)
+                .build();
+
+        EthyleneOxide = new Material.Builder(215, Serendustry.ID("ethylene_oxide"))
+                .color(0x557678).liquid(new FluidBuilder())
+                .components(Ethylene, 1, Oxygen, 1)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        EthyleneGlycol = new Material.Builder(216, Serendustry.ID("ethylene_glycol"))
+                .color(0x8db8ba).liquid(new FluidBuilder())
+                .components(Carbon, 2, Hydrogen, 6, Oxygen, 2)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        paraXylene = new Material.Builder(217, Serendustry.ID("para_xylene"))
+                .color(0x6b6457).liquid(new FluidBuilder())
+                .components(Carbon, 8, Hydrogen, 10)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        HydrogenBromide = new Material.Builder(218, Serendustry.ID("hydrogen_bromide"))
+                .color(0xca9592).liquid(new FluidBuilder())
+                .components(Hydrogen, 1, Bromine, 1)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        TerephtalicAcid = new Material.Builder(219, Serendustry.ID("terephtalic_acid"))
+                .dust().color(0xa0b29b)
+                .components(Carbon, 8, Hydrogen, 6, Oxygen, 4)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        PolyethyleneTerephtalate = new Material.Builder(220, Serendustry.ID("polyethylene_terephtalate"))
+                .polymer(3).color(0x5ed95e).liquid(new FluidBuilder().temperature(600))
+                .components(Carbon, 10, Hydrogen, 8, Oxygen, 4)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING, GENERATE_FOIL)
+                .build();
+
+        MoPET = new Material.Builder(224, Serendustry.ID("mopet"))
+                .color(0x47b037)
+                .components(Carbon, 10, Hydrogen, 8, Oxygen, 4)
+                .flags(GENERATE_FOIL, DISABLE_DECOMPOSITION)
+                .build();
+
+        BoPET = new Material.Builder(221, Serendustry.ID("bopet"))
+                .color(0x37c037)
+                .components(Carbon, 10, Hydrogen, 8, Oxygen, 4)
+                .flags(GENERATE_FOIL, DISABLE_DECOMPOSITION)
+                .build();
+
+        HeatSetBoPET = new Material.Builder(225, Serendustry.ID("heat_set_bopet"))
+                .color(0x48c232)
+                .components(Carbon, 10, Hydrogen, 8, Oxygen, 4)
+                .flags(GENERATE_FOIL, DISABLE_DECOMPOSITION)
+                .build();
+
+        AluminizedBoPET = new Material.Builder(222, Serendustry.ID("aluminized_bopet"))
+                .color(0x37c064)
+                .components(Carbon, 10, Hydrogen, 8, Oxygen, 4)
+                .flags(GENERATE_FOIL, DISABLE_DECOMPOSITION)
+                .build();
+
+        LaminatedBoPET = new Material.Builder(223, Serendustry.ID("laminated_bopet"))
+                .color(0x1aec20)
+                .components(Carbon, 10, Hydrogen, 8, Oxygen, 4)
+                .flags(GENERATE_FOIL, DISABLE_DECOMPOSITION)
+                .build();
+
+        PositroniumHydride = new Material.Builder(226, Serendustry.ID("positronium_hydride"))
+                .color(0xDD23FF).liquid(new FluidBuilder())
+                .build();
+
+        IrradiatedDiamond = new Material.Builder(227, Serendustry.ID("irradiated_diamond"))
+                .gem(3)
+                .color(0x0bff9d).iconSet(DIAMOND)
+                .build();
+
+        NVCDiamond = new Material.Builder(228, Serendustry.ID("nvc_diamond"))
+                .gem(3)
+                .color(0x00e1ff).iconSet(DIAMOND)
+                .build();
+
+        cis12Dichloroethene = new Material.Builder(230, Serendustry.ID("cis_12_dichloroethene"))
+                .color(0x609247).liquid(new FluidBuilder())
+                .components(Carbon, 2, Hydrogen, 2, Chlorine, 2)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        SodiumZ12ethenedithiolate = new Material.Builder(231, Serendustry.ID("sodium_z_12_ethene_dithiolate"))
+                .dust().color(0xa0b2EE)
+                .components(Carbon, 2, Hydrogen, 2, Sodium, 2, Sulfur, 2)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        EthyleneDibromide = new Material.Builder(232, Serendustry.ID("ethylene_dibromide"))
+                .color(0xBB6247).liquid(new FluidBuilder())
+                .components(Ethylene, 1, Bromine, 2)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        Dihydro14Dithiine = new Material.Builder(233, Serendustry.ID("dihydro_14_dithiine"))
+                .color(0x809240).liquid(new FluidBuilder())
+                .components(Carbon, 4, Hydrogen, 6, Sulfur, 2)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        SodiumBromide = new Material.Builder(237, Serendustry.ID("sodium_bromide"))
+                .dust().color(0xF0b2AA)
+                .components(Sodium, 1, Bromine, 1)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        Butanol = new Material.Builder(234, Serendustry.ID("butanol"))
+                .color(0x902247).liquid(new FluidBuilder())
+                .components(Carbon, 4, Hydrogen, 9, Oxygen, 1, Hydrogen, 1)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        Bromobutane = new Material.Builder(235, Serendustry.ID("bromobutane"))
+                .color(0xAA3247).liquid(new FluidBuilder())
+                .components(Carbon, 4, Hydrogen, 9, Bromine, 1)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        nButyllithium = new Material.Builder(236, Serendustry.ID("n_butyllithium"))
+                .color(0x609247).liquid(new FluidBuilder())
+                .components(Carbon, 4, Hydrogen, 9, Lithium, 1)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        LithiumBromide = new Material.Builder(238, Serendustry.ID("lithium_bromide"))
+                .dust().color(0xFFC2CA)
+                .components(Lithium, 1, Bromine, 1)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        LithiumDiisopropylamide = new Material.Builder(239, Serendustry.ID("lithium_diisopropylamide"))
+                .dust().color(0xAAb2AA)
+                .components(Lithium, 1, Nitrogen, 1, Carbon, 6, Hydrogen, 14)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        Dihydro14dithiine23bislithiumSelenolate = new Material.Builder(240, Serendustry.ID("dihydro_14_dithiine_23_bis_lithium_selenolate"))
+                .color(0x6092AA).liquid(new FluidBuilder())
+                .components(Carbon, 4, Hydrogen, 4, Sulfur, 2, Selenium, 2, Lithium, 2)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        Diisopropylamine = new Material.Builder(241, Serendustry.ID("diisopropylamine"))
+                .color(0x506297).liquid(new FluidBuilder())
+                .components(Carbon, 6, Hydrogen, 15, Nitrogen, 1)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        PhosphorusTrichloride = new Material.Builder(242, Serendustry.ID("phosphorus_trichloride"))
+                .color(0xAACC27).liquid(new FluidBuilder())
+                .components(Phosphorus, 1, Chlorine, 3)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        TriethylPhosphite = new Material.Builder(243, Serendustry.ID("triethyl_phosphite"))
+                .color(0xAAFF37).liquid(new FluidBuilder())
+                .components(Phosphorus, 1, Oxygen, 3, Carbon, 6, Hydrogen, 15)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        Phosgene = new Material.Builder(244, Serendustry.ID("phosgene"))
+                .color(0x77FF67).liquid(new FluidBuilder())
+                .components(Carbon, 1, Oxygen, 1, Chlorine, 2)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        BETS = new Material.Builder(245, Serendustry.ID("bets"))
+                .dust().color(0x77DD22)
+                .components(Carbon, 10, Hydrogen, 8, Sulfur, 4, Selenium, 4)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        DiethylPhosphate = new Material.Builder(246, Serendustry.ID("diethyl_phosphate"))
+                .color(0x36BB87).liquid(new FluidBuilder())
+                .components(Carbon, 4, Hydrogen, 11, Oxygen, 3, Phosphorus, 1)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        Formaldehyde = new Material.Builder(247, Serendustry.ID("formaldehyde"))
+                .color(0x772277).liquid(new FluidBuilder())
+                .components(Carbon, 1, Water, 1)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        RheniumVIIOxide = new Material.Builder(248, Serendustry.ID("rhenium_vii_oxide"))
+                .dust().color(0x3333FF)
+                .components(Rhenium, 2, Oxygen, 7)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        AmmoniumPerrhenate = new Material.Builder(249, Serendustry.ID("ammonium_perrhenate"))
+                .dust().color(0x2255CC)
+                .components(Ammonia, 1, Rhenium, 1, Oxygen, 4)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        BETSPerrhenate = new Material.Builder(250, Serendustry.ID("bets_perrhenate"))
+                .dust().color(0x1177FF).liquid(new FluidBuilder())
+                .components(BETS, 1, Rhenium, 1, Oxygen, 4)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
+        ScUevSane = new Material.Builder(229, Serendustry.ID("sc_uev_sane"))
+                .ingot().liquid(new FluidBuilder().temperature(16000))
+                .color(0x00ffff).iconSet(BRIGHT)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING, GENERATE_FINE_WIRE)
+                .components(Taranium, 1, Hihiirokane, 1, BETSPerrhenate, 1, Originium, 1, Bromine, 1)
+                .cableProperties(V[UEV], 24, 0, true, 3)
+                .blastTemp(10800, GasTier.HIGHEST, VA[UEV], 20 * 60)
+                .build();
+
+        Propylene = new Material.Builder(251, Serendustry.ID("propylene"))
+                .color(0x4433BB).liquid(new FluidBuilder())
+                .components(Carbon, 3, Hydrogen, 3, Nitrogen, 1)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build();
+
     }
 }

@@ -16,7 +16,7 @@ public class LargeAlloySmelterRecipes {
         FUSION_RECIPES.recipeBuilder()
                 .fluidInputs(Erbium.getFluid(16)).fluidInputs(Palladium.getFluid(16))
                 .fluidOutputs(Flerovium.getFluid(16))
-                .duration(32).EUt(VA[ZPM]).EUToStart(640_000_000).buildAndRegister();
+                .duration(32).EUt(VA[ZPM]).EUToStart(200_000_000).buildAndRegister();
 
         FUSION_RECIPES.recipeBuilder()
                 .fluidInputs(Gold.getFluid(128)).fluidInputs(Thaumium.getFluid(128))

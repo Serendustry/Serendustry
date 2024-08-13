@@ -18,12 +18,20 @@ import static gregtech.common.blocks.MetaBlocks.MACHINE_CASING;
 import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_IV;
 import static gregtech.common.items.MetaItems.ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT;
 import static gregtech.common.metatileentities.MetaTileEntities.*;
+import static serendustry.item.SerendustryMetaItems.COIL_UHV;
 import static serendustry.item.SerendustryMetaItems.SUPREME_SMD_DIODE;
 import static serendustry.item.material.SerendustryMaterials.*;
 
 public class HTMachineRecipes {
 
     public static void init() {
+        // Voltage Coils
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(stickLong, MagneticHolmium)
+                .input(wireFine, Hihiirokane, 16)
+                .output(COIL_UHV)
+                .duration(200).EUt(VA[GTValues.UHV]).buildAndRegister();
+
          // Machine Casings
 
         // Todo: remove and replace UHV casing recipe
@@ -208,7 +216,7 @@ public class HTMachineRecipes {
          .output(ENERGY_INPUT_HATCH[GTValues.OpV])
          .duration(1000).EUt(VA[GTValues.OpV]).buildAndRegister();
 
-        // todo: high-amp and power transformer recipes
+        // todo: high-amp and power transformer recipes, UHV laser and substation hatches
 /*
          ASSEMBLER_RECIPES.recipeBuilder()
          .input(TRANSFORMER[GTValues.UHV])

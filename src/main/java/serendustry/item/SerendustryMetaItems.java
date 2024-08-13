@@ -120,6 +120,47 @@ public class SerendustryMetaItems {
     public static MetaItem<?>.MetaValueItem CATALYST_HAM_ALLOY;
     public static MetaItem<?>.MetaValueItem CATALYST_ARCANITE;
 
+    public static MetaItem<?>.MetaValueItem COIL_UHV;
+
+    public static MetaItem<?>.MetaValueItem ORUNDUM_SEED_CRYSTAL;
+    public static MetaItem<?>.MetaValueItem ORUNDUM_BOULE;
+    public static MetaItem<?>.MetaValueItem RAW_ORUNDUM_WAFER;
+    public static MetaItem<?>.MetaValueItem WRAPPED_ORUNDUM_WAFER;
+    public static MetaItem<?>.MetaValueItem INACTIVE_APU_WAFER;
+    public static MetaItem<?>.MetaValueItem ACTIVATED_APU_WAFER;
+    public static MetaItem<?>.MetaValueItem ACTIVATED_APU_CHIP;
+    public static MetaItem<?>.MetaValueItem MASK_ILC;
+    public static MetaItem<?>.MetaValueItem MASK_RAM;
+    public static MetaItem<?>.MetaValueItem MASK_CPU;
+    public static MetaItem<?>.MetaValueItem MASK_NAND;
+    public static MetaItem<?>.MetaValueItem MASK_NOR;
+    public static MetaItem<?>.MetaValueItem MASK_SSOC;
+    public static MetaItem<?>.MetaValueItem MASK_SOC;
+    public static MetaItem<?>.MetaValueItem MASK_ASOC;
+    public static MetaItem<?>.MetaValueItem MASK_HASOC;
+    public static MetaItem<?>.MetaValueItem MASK_ULPIC;
+    public static MetaItem<?>.MetaValueItem MASK_LPIC;
+    public static MetaItem<?>.MetaValueItem MASK_PIC;
+    public static MetaItem<?>.MetaValueItem MASK_HPIC;
+    public static MetaItem<?>.MetaValueItem MASK_UHPIC;
+    public static MetaItem<?>.MetaValueItem MASK_NCPU;
+    public static MetaItem<?>.MetaValueItem MASK_QCPU;
+    public static MetaItem<?>.MetaValueItem MASK_BLANK;
+    public static MetaItem<?>.MetaValueItem WAFER_OPIC;
+    public static MetaItem<?>.MetaValueItem CHIP_OPIC;
+
+    public static MetaItem<?>.MetaValueItem CATALYST_ABYSSAL_ALLOY;
+    public static MetaItem<?>.MetaValueItem LENS_ARRAY_HYPERAMPLIFYING;
+    public static MetaItem<?>.MetaValueItem LENS_ARRAY_HYPERPRECISE;
+    public static MetaItem<?>.MetaValueItem MASK_APU;
+
+    public static MetaItem<?>.MetaValueItem CIRC_POSITRONIC_ZPM;
+    public static MetaItem<?>.MetaValueItem CIRC_POSITRONIC_UV;
+    public static MetaItem<?>.MetaValueItem CIRC_POSITRONIC_UHV;
+    public static MetaItem<?>.MetaValueItem CIRC_POSITRONIC_UEV;
+    public static MetaItem<?>.MetaValueItem POSITRONIC_CHIP;
+    public static MetaItem<?>.MetaValueItem ENGRAVED_POSITRONIC_CHIP;
+
     public static void preInit() {
         ITEMS = new StandardMetaItem();
         // todo ???
@@ -227,17 +268,57 @@ public class SerendustryMetaItems {
         STAR_HARVESTING_DRONE = ITEMS.addItem(81, "star_harvesting_drone");
         SPACEWEED = ITEMS.addItem(82, "spaceweed");
         CRUSHED_SPACEWEED = ITEMS.addItem(83, "crushed_spaceweed");
-        CATALYST_STEELS = ITEMS.addItem(84, "catalyst_steels");
-        CATALYST_COPPER_ALLOYS = ITEMS.addItem(85, "catalyst_copper_alloys");
-        CATALYST_TIN_ALLOYS = ITEMS.addItem(86, "catalyst_tin_alloys");
-        CATALYST_GOLD_ALLOYS = ITEMS.addItem(87, "catalyst_gold_alloys");
-        CATALYST_BATTERY_ALLOY = ITEMS.addItem(88, "catalyst_battery_alloy");
-        CATALYST_SOLDERING_ALLOYS = ITEMS.addItem(89, "catalyst_soldering_alloys");
-        CATALYST_PLATINUM_GROUP_ALLOYS = ITEMS.addItem(90, "catalyst_platinum_group_alloys");
-        CATALYST_NAQUADAH_ALLOYS = ITEMS.addItem(91, "catalyst_naquadah_alloys");
-        CATALYST_SUPERCONDUCTORS = ITEMS.addItem(92, "catalyst_superconductors");
-        CATALYST_HAM_ALLOY = ITEMS.addItem(93, "catalyst_ham_alloy");
-        CATALYST_ARCANITE = ITEMS.addItem(94, "catalyst_arcanite");
-
+        CATALYST_STEELS = ITEMS.addItem(84, "catalyst_steels").setMaxStackSize(1);
+        CATALYST_COPPER_ALLOYS = ITEMS.addItem(85, "catalyst_copper_alloys").setMaxStackSize(1);
+        CATALYST_TIN_ALLOYS = ITEMS.addItem(86, "catalyst_tin_alloys").setMaxStackSize(1);
+        CATALYST_GOLD_ALLOYS = ITEMS.addItem(87, "catalyst_gold_alloys").setMaxStackSize(1);
+        CATALYST_BATTERY_ALLOY = ITEMS.addItem(88, "catalyst_battery_alloy").setMaxStackSize(1);
+        CATALYST_SOLDERING_ALLOYS = ITEMS.addItem(89, "catalyst_soldering_alloys").setMaxStackSize(1);
+        CATALYST_PLATINUM_GROUP_ALLOYS = ITEMS.addItem(90, "catalyst_platinum_group_alloys").setMaxStackSize(1);
+        CATALYST_NAQUADAH_ALLOYS = ITEMS.addItem(91, "catalyst_naquadah_alloys").setMaxStackSize(1);
+        CATALYST_SUPERCONDUCTORS = ITEMS.addItem(92, "catalyst_superconductors").setMaxStackSize(1);
+        CATALYST_HAM_ALLOY = ITEMS.addItem(93, "catalyst_ham_alloy").setMaxStackSize(1);
+        CATALYST_ARCANITE = ITEMS.addItem(94, "catalyst_arcanite").setMaxStackSize(1);
+        COIL_UHV = ITEMS.addItem(95, "coil_uhv");
+        ORUNDUM_SEED_CRYSTAL = ITEMS.addItem(96, "orundum_seed_crystal");
+        ORUNDUM_BOULE = ITEMS.addItem(97, "orundum_boule");
+        RAW_ORUNDUM_WAFER = ITEMS.addItem(98, "raw_orundum_wafer");
+        WRAPPED_ORUNDUM_WAFER = ITEMS.addItem(99, "wrapped_orundum_wafer");
+        INACTIVE_APU_WAFER = ITEMS.addItem(100, "inactive_apu_wafer");
+        ACTIVATED_APU_WAFER = ITEMS.addItem(101, "activated_apu_wafer");
+        ACTIVATED_APU_CHIP = ITEMS.addItem(102, "activated_apu_chip");
+        MASK_ILC = ITEMS.addItem(103, "mask_ilc");
+        MASK_RAM = ITEMS.addItem(104, "mask_ram");
+        MASK_CPU = ITEMS.addItem(105, "mask_cpu");
+        MASK_NAND = ITEMS.addItem(106, "mask_nand");
+        MASK_NOR = ITEMS.addItem(107, "mask_nor");
+        MASK_SSOC = ITEMS.addItem(108, "mask_ssoc");
+        MASK_SOC = ITEMS.addItem(109, "mask_soc");
+        MASK_ASOC = ITEMS.addItem(110, "mask_asoc");
+        MASK_HASOC = ITEMS.addItem(111, "mask_hasoc");
+        MASK_ULPIC = ITEMS.addItem(112, "mask_ulpic");
+        MASK_LPIC = ITEMS.addItem(113, "mask_lpic");
+        MASK_PIC = ITEMS.addItem(114, "mask_pic");
+        MASK_HPIC = ITEMS.addItem(115, "mask_hpic");
+        MASK_UHPIC = ITEMS.addItem(116, "mask_uhpic");
+        MASK_NCPU = ITEMS.addItem(117, "mask_ncpu");
+        MASK_QCPU = ITEMS.addItem(118, "mask_qcpu");
+        MASK_BLANK = ITEMS.addItem(119, "mask_blank");
+        WAFER_OPIC = ITEMS.addItem(120, "wafer_opic");
+        CHIP_OPIC = ITEMS.addItem(121, "chip_opic");
+        CATALYST_ABYSSAL_ALLOY = ITEMS.addItem(122, "catalyst_abyssal_alloy").setMaxStackSize(1);
+        LENS_ARRAY_HYPERAMPLIFYING = ITEMS.addItem(123, "lens_array_hyperamplifying");
+        LENS_ARRAY_HYPERPRECISE = ITEMS.addItem(124, "lens_array_hyperprecise");
+        MASK_APU = ITEMS.addItem(125, "mask_apu");
+        CIRC_POSITRONIC_ZPM = ITEMS.addItem(126, "circ_positronic_zpm").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.ZPM);
+        CIRC_POSITRONIC_UV = ITEMS.addItem(127, "circ_positronic_uv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.UV);
+        CIRC_POSITRONIC_UHV = ITEMS.addItem(128, "circ_positronic_uhv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.UHV);
+        CIRC_POSITRONIC_UEV = ITEMS.addItem(129, "circ_positronic_uev").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.UEV);
+        POSITRONIC_CHIP = ITEMS.addItem(130, "positronic_chip");
+        ENGRAVED_POSITRONIC_CHIP = ITEMS.addItem(131, "engraved_positronic_chip");
     }
 }

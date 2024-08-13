@@ -3,12 +3,16 @@ package serendustry;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.loaders.recipe.CraftingComponent.*;
+import static serendustry.item.SerendustryMetaItems.CHIP_OPIC;
+import static serendustry.item.SerendustryMetaItems.COIL_UHV;
 import static serendustry.item.material.SerendustryMaterials.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import gregtech.api.items.metaitem.MetaItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -94,10 +98,14 @@ public class SerendustryEventHandler {
         appendToComponent(GTValues.OpV, PIPE_REACTOR, pipeHugeFluid, RadoxPolymer);
 
         // Power Component
-        // TODO: Add something past UHPIC?
+        Map<Integer, Object> map = new HashMap<>();
+        map.put(GTValues.UHV, CHIP_OPIC.getStackForm());
+        POWER_COMPONENT.appendIngredients(map);
 
         // Voltage Coil
-        // TODO
+        Map<Integer, Object> map2 = new HashMap<>();
+        map2.put(GTValues.UHV, COIL_UHV.getStackForm());
+        VOLTAGE_COIL.appendIngredients(map2);
 
         // Spring
         appendToComponent(GTValues.UEV, SPRING, spring, Pikyonium, Lafium, Signalium, Bedrockium, Quantium);

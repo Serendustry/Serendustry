@@ -18,6 +18,9 @@ public class SerendustryMetaTileEntities {
     public static MetaTileEntityNebulaicNexus NEBULAIC_NEXUS;
     public static MetaTileEntityPlasmaFoundry PLASMA_FOUNDRY;
     public static MetaTileEntityGiantFractionatingColumn GIANT_FRACTIONATING_COLUMN;
+    public static MetaTileEntityCVDChamber CVD_CHAMBER;
+    public static MetaTileEntitySonicator SONICATOR;
+    public static MetaTileEntityHPLaserArray HP_LASER_ARRAY;
 
     public static void preInit() {
         // todo claim an id range
@@ -33,5 +36,11 @@ public class SerendustryMetaTileEntities {
                 new MetaTileEntityPlasmaFoundry(Serendustry.ID("plasma_foundry")));
         GIANT_FRACTIONATING_COLUMN = registerMetaTileEntity(4005,
                 new MetaTileEntityGiantFractionatingColumn(Serendustry.ID("giant_fractionating_column")));
+        CVD_CHAMBER = registerMetaTileEntity(4006,
+                new MetaTileEntityCVDChamber(Serendustry.ID("cvd_chamber")));
+        SONICATOR = registerMetaTileEntity(4007,
+                new MetaTileEntitySonicator(Serendustry.ID("sonicator")));
+        HP_LASER_ARRAY = registerMetaTileEntity(4008,
+                new MetaTileEntityHPLaserArray(Serendustry.ID("hp_laser_array")));
     }
 }

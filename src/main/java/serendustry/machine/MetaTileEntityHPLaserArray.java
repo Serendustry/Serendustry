@@ -18,24 +18,20 @@ import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
 
-public class MetaTileEntityGiantFractionatingColumn extends RecipeMapMultiblockController {
+public class MetaTileEntityHPLaserArray extends RecipeMapMultiblockController {
 
-    public MetaTileEntityGiantFractionatingColumn(ResourceLocation rl) {
-        super(rl, SerendustryRecipeMaps.GIANT_FRACTIONATING_COLUMN_RECIPES);
+    public MetaTileEntityHPLaserArray(ResourceLocation rl) {
+        super(rl, SerendustryRecipeMaps.HP_LASER_ARRAY_RECIPES);
     }
 
     @Override
-    public MetaTileEntityGiantFractionatingColumn createMetaTileEntity(IGregTechTileEntity te) {
-        return new MetaTileEntityGiantFractionatingColumn(metaTileEntityId);
+    public MetaTileEntityHPLaserArray createMetaTileEntity(IGregTechTileEntity te) {
+        return new MetaTileEntityHPLaserArray(metaTileEntityId);
     }
 
     @Override
     public @NotNull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("YYYY#YYYY", "YYY###YYY", "YY#####YY", "Y#######Y", "Y#######Y", "#########", "#########", "#########", "#########", "#########", "#########", "YYYY#YYYY", "YYY###YYY", "YY#####YY", "Y#######Y", "Y#######Y")
-                .aisle("YXXXXXXXY", "YXXXXXXXY", "YXXXXXXXY", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#CCCCCCC#", "#XXXXXXX#", "#CCCCCCC#", "#XXXXXXX#", "#XXXXXXX#", "YXXXXXXXY", "YXXXXXXXY", "Y#######Y", "#########", "#########")
-                .aisle("YXXXXXXXY", "YXXXXXXXY", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#XXXXXXX#", "YXXXXXXXY", "YXXXXXXXY", "#########", "#########", "#########")
-                .aisle("YXXXXXXXY", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#XXXXXXX#", "YXXXXXXXY", "#XXXXXXX#", "#########", "#########", "#########")
                 .aisle("#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#########", "#########", "#########")
                 .aisle("YXXXXXXXY", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#XXXXXXX#", "YXXXXXXXY", "#XXXXXXX#", "#########", "#########", "#########")
                 .aisle("YXXXXXXXY", "YXXXXXXXY", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#XXXXXXX#", "YXXXXXXXY", "YXXXXXXXY", "#########", "#########", "#########")
@@ -45,7 +41,7 @@ public class MetaTileEntityGiantFractionatingColumn extends RecipeMapMultiblockC
                 .where('S', selfPredicate())
                 .where('X', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PTFE_INERT_CASING)).setMinGlobalLimited(530))
                 .where('Y', states(getCasingState()).setMinGlobalLimited(134).or(autoAbilities()))
-                .where('C', states(MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.TRITANIUM)))
+                .where('C', states(MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.CUPRONICKEL)))
                 .where('#', air())
                 .build();
     }
@@ -54,8 +50,8 @@ public class MetaTileEntityGiantFractionatingColumn extends RecipeMapMultiblockC
         return Textures.INERT_PTFE_CASING; // todo
     }
 
-    // todo
+    // todo: add custom ??? Casings
     private IBlockState getCasingState() {
-        return MetaBlocks.MACHINE_CASING.getState(BlockMachineCasing.MachineCasingType.IV);
+        return MetaBlocks.MACHINE_CASING.getState(BlockMachineCasing.MachineCasingType.UHV);
     }
 }
