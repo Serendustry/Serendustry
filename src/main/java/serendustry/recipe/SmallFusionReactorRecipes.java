@@ -160,10 +160,10 @@ public class SmallFusionReactorRecipes {
                 .output(ingot, Iodine, 1)
                 .duration(400).EUt(VA[LuV]).buildAndRegister();
 
-        ALLOY_SMELTER_RECIPES.recipeBuilder()
+        /*ALLOY_SMELTER_RECIPES.recipeBuilder()
                 .input(ingot, Iron, 1).input(dust, Oxygen, 1)
                 .output(ingot, Selenium, 1)
-                .duration(400).EUt(VA[LuV]).buildAndRegister();
+                .duration(400).EUt(VA[LuV]).buildAndRegister();*/
 
         ALLOY_SMELTER_RECIPES.recipeBuilder()
                 .input(ingot, Gold, 1).input(dust, Carbon, 1)

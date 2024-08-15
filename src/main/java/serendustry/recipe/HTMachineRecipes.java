@@ -1,10 +1,8 @@
 package serendustry.recipe;
 
 import gregtech.api.GTValues;
-import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.stack.UnificationEntry;
 
 import static gregtech.api.GTValues.VA;
@@ -15,11 +13,9 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.blocks.BlockMachineCasing.MachineCasingType.*;
 
 import static gregtech.common.blocks.MetaBlocks.MACHINE_CASING;
-import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_IV;
 import static gregtech.common.items.MetaItems.ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT;
 import static gregtech.common.metatileentities.MetaTileEntities.*;
-import static serendustry.item.SerendustryMetaItems.COIL_UHV;
-import static serendustry.item.SerendustryMetaItems.SUPREME_SMD_DIODE;
+import static serendustry.item.SerendustryMetaItems.*;
 import static serendustry.item.material.SerendustryMaterials.*;
 
 public class HTMachineRecipes {
@@ -36,7 +32,7 @@ public class HTMachineRecipes {
 
         // Todo: remove and replace UHV casing recipe
          ModHandler.addShapedRecipe(true, "casing_uev", MACHINE_CASING.getItemVariant(UEV), "PPP", "PwP", "PPP", 'P',
-         new UnificationEntry(plate, HastelloyK243));
+         new UnificationEntry(plate, Infinity));
          ModHandler.addShapedRecipe(true, "casing_uiv", MACHINE_CASING.getItemVariant(UIV), "PPP", "PwP", "PPP", 'P',
          new UnificationEntry(plate, Enderiiium));
          ModHandler.addShapedRecipe(true, "casing_uxv", MACHINE_CASING.getItemVariant(UXV), "PPP", "PwP", "PPP", 'P',
@@ -47,7 +43,7 @@ public class HTMachineRecipes {
          new UnificationEntry(plateDense, Floppa));
 
          ASSEMBLER_RECIPES.recipeBuilder()
-         .input(plate, HastelloyK243, 8)
+         .input(plate, Infinity, 8)
          .circuitMeta(8)
          .outputs(MACHINE_CASING.getItemVariant(UEV))
          .duration(50).EUt(16).buildAndRegister();
@@ -91,7 +87,7 @@ public class HTMachineRecipes {
 
          ASSEMBLER_RECIPES.recipeBuilder()
          .inputs(MACHINE_CASING.getItemVariant(UEV))
-         .input(cableGtSingle, Lafium, 2)
+         .input(cableGtSingle, Quantium40, 2)
          .fluidInputs(RadoxPolymer.getFluid(288))
          .output(HULL[GTValues.UEV])
          .duration(50).EUt(16).buildAndRegister();
@@ -128,12 +124,12 @@ public class HTMachineRecipes {
 
          ASSEMBLY_LINE_RECIPES.recipeBuilder()
          .input(HULL[GTValues.UEV])
-         .input(spring, Lafium, 4)
-         .input(ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT, 4)
+         .input(spring, Quantium40, 4)
+         .input(CHIP_OPIC, 4)
          .input(circuit, MarkerMaterials.Tier.UEV)
-         .input(wireGtDouble, ScUev, 2)
+         .input(wireGtDouble, ScUevSane, 2)
          .fluidInputs(SodiumPotassium.getFluid(18000))
-         .fluidInputs(MutatedLivingSolder.getFluid(576))
+         .fluidInputs(SelfRepairingNanobots.getFluid(576))
          .output(ENERGY_OUTPUT_HATCH[GTValues.UEV])
          .duration(1000).EUt(VA[GTValues.UEV]).buildAndRegister();
 
@@ -174,12 +170,12 @@ public class HTMachineRecipes {
 
          ASSEMBLY_LINE_RECIPES.recipeBuilder()
          .input(HULL[GTValues.UEV])
-         .input(cableGtSingle, Lafium, 4)
-         .input(ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT, 4)
+         .input(cableGtSingle, Quantium40, 4)
+         .input(CHIP_OPIC, 4)
          .input(circuit, MarkerMaterials.Tier.UEV)
-         .input(wireGtDouble, ScUev, 2)
+         .input(wireGtDouble, ScUevSane, 2)
          .fluidInputs(SodiumPotassium.getFluid(18000))
-         .fluidInputs(MutatedLivingSolder.getFluid(576))
+         .fluidInputs(SelfRepairingNanobots.getFluid(576))
          .output(ENERGY_INPUT_HATCH[GTValues.UEV])
          .duration(1000).EUt(VA[GTValues.UEV]).buildAndRegister();
 

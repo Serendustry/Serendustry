@@ -16,6 +16,7 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
 import static gregtech.common.items.MetaItems.*;
 import static gregtech.common.metatileentities.MetaTileEntities.LASER_ENGRAVER;
+import static java.lang.Math.max;
 import static serendustry.item.SerendustryMetaItems.*;
 import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryMetaTileEntities.HP_LASER_ARRAY;
@@ -136,9 +137,9 @@ public class CircuitRecipes {
                         BlockGlassCasing.CasingType.FUSION_GLASS, 64))
                 .input(plate, Neutronium, 64)
                 .input(screw, HalkoniteSteel, 64)
-                .input(gemExquisite, Orundum, 8)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 8),
-                        MolybdeniteLubricant.getFluid(32000))
+                        MolybdeniteLubricant.getFluid(32000),
+                        Naquadria.getFluid(144 * 32))
                 .output(HP_LASER_ARRAY)
                 .stationResearch(b -> b
                         .researchStack(LASER_ENGRAVER[UHV].getStackForm())
@@ -163,7 +164,7 @@ public class CircuitRecipes {
                 .input(dust, Glass, 64)
                 .output(dust, ChromaticGlass)
                 .fluidOutputs(Glass.getFluid(144 * 16), ChromaticGlass.getFluid(72))
-                .duration(8).EUt(VA[UXV]).buildAndRegister();
+                .duration(4).EUt((int) V[MAX]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(lens, ChromaticGlass)
@@ -208,7 +209,7 @@ public class CircuitRecipes {
                         .notConsumable(masks[i]) // todo: partiallyConsumed
                         .input(wafersRaw[j])
                         .output(wafers[i], value[j] * amount[i] * 2)
-                        .duration(8 / value[j]).EUt(VA[UXV]).buildAndRegister();
+                        .duration(2 - j).EUt((int) V[MAX]).buildAndRegister();
             }
         }
 
@@ -231,16 +232,16 @@ public class CircuitRecipes {
                 .notConsumable(MASK_APU) // todo: partiallyConsumed
                 .input(WRAPPED_ORUNDUM_WAFER)
                 .fluidInputs(Originium.getFluid(36))
-                .output(INACTIVE_APU_WAFER, 4)
-                .duration(8).EUt(VA[UXV]).buildAndRegister();
+                .output(INACTIVE_APU_WAFER)
+                .duration(2).EUt((int) V[MAX]).buildAndRegister();
 
         HP_LASER_ARRAY_RECIPES.recipeBuilder()
                 .notConsumable(LENS_ARRAY_HYPERAMPLIFYING) // todo: partiallyConsumed
                 .input(lens, ChromaticGlass)
-                .input(foil, Gold, 64)
-                .fluidInputs(Hydrogen.getFluid(100000))
-                .fluidOutputs(Gold.getFluid(144 * 8), ChromaticGlass.getFluid(128), PositroniumHydride.getFluid(100))
-                .duration(4).EUt(VA[UXV]).buildAndRegister();
+                .input(plate, Gold, 64)
+                .fluidInputs(Hydrogen.getFluid(200000))
+                .fluidOutputs(Gold.getFluid(144 * 16), ChromaticGlass.getFluid(112), PositroniumHydride.getFluid(250))
+                .duration(2).EUt((int) V[MAX]).buildAndRegister();
 
         CHEMICAL_BATH_RECIPES.recipeBuilder()
                 .input(INACTIVE_APU_WAFER)
@@ -344,7 +345,7 @@ public class CircuitRecipes {
                 .chancedOutput(gemExquisite, IrradiatedDiamond, 500, 0)
                 .chancedOutputLogic(ChancedOutputLogic.XOR)
                 .fluidOutputs(Diamond.getFluid(72))
-                .duration(8).EUt(VA[UXV]).buildAndRegister();
+                .duration(2).EUt((int) V[MAX]).buildAndRegister();
 
         OrePrefix[] gems = { gem, gemFlawless, gemExquisite };
         int[] chance = { 2500, 5000, 10000 };
@@ -370,7 +371,7 @@ public class CircuitRecipes {
                 .fluidInputs(Naquadria.getFluid(144 * 2))
                 .output(ENGRAVED_POSITRONIC_CHIP)
                 .fluidOutputs(Orundum.getFluid(128))
-                .duration(8).EUt(VA[UXV]).buildAndRegister();
+                .duration(4).EUt((int) V[MAX]).buildAndRegister();
 
     }
 

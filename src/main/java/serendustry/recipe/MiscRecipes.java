@@ -74,10 +74,10 @@ public class MiscRecipes {
                 .duration(100).EUt(VA[UHV]).buildAndRegister();
 
         AUTOCLAVE_RECIPES.recipeBuilder()
-                .input(GRAVI_STAR, 8)
-                .fluidInputs(Quantium.getFluid(1250))
+                .input(GRAVI_STAR)
+                .fluidInputs(Quantium40.getFluid(144 * 2))
                 .output(QUANTIUM_STAR)
-                .duration(1920).EUt(VA[UXV]).buildAndRegister();
+                .duration(20 * 24).EUt(VA[UHV]).buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder()
                 .fluidInputs(Infinity.getFluid(100), Helium.getFluid(FluidStorageKeys.LIQUID, 100))

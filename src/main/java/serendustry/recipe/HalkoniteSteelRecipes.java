@@ -30,7 +30,7 @@ public class HalkoniteSteelRecipes {
         for (int i = 0; i < parts.length; i++) {
             CHEMICAL_BATH_RECIPES.recipeBuilder()
                     .input(parts[i], Duranium)
-                    .fluidInputs(HalkonitePreparationBase.getFluid((int) (144.0f * cost[i])))
+                    .fluidInputs(HalkonitePreparationBase.getFluid((int) (144 * cost[i])))
                     .output(parts[i], HalkoniteSteel)
                     .duration((int) (600 * cost[i])).EUt(VA[UV]).buildAndRegister();
         }

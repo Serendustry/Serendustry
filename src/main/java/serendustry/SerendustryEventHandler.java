@@ -74,17 +74,17 @@ public class SerendustryEventHandler {
                 Quantum);
 
         // Coils
-        appendToComponent(COIL_HEATING, wireGtDouble, Hihiirokane, Lafium, Signalium, Bedrockium, Quantium);
-        appendToComponent(COIL_HEATING_DOUBLE, wireGtQuadruple, Hihiirokane, Lafium, Signalium, Bedrockium, Quantium);
-        appendToComponent(COIL_ELECTRIC, wireGtOctal, Hihiirokane, Lafium, Signalium, Bedrockium, Quantium);
+        appendToComponent(COIL_HEATING, wireGtDouble, Hihiirokane, Quantium40, Signalium, Bedrockium, Quantium);
+        appendToComponent(COIL_HEATING_DOUBLE, wireGtQuadruple, Hihiirokane, Quantium40, Signalium, Bedrockium, Quantium);
+        appendToComponent(COIL_ELECTRIC, wireGtOctal, Hihiirokane, Quantium40, Signalium, Bedrockium, Quantium);
 
         // Sticks
-        appendToComponent(STICK_MAGNETIC, stickLong, MagneticHAMAlloy, TengamAttuned, TengamAttuned, KerrBlackHole,
+        appendToComponent(STICK_MAGNETIC, stickLong, TengamAttuned, TengamAttuned, TengamAttuned, KerrBlackHole,
                 KerrBlackHole);
         appendToComponent(GTValues.IV, STICK_ELECTROMAGNETIC, stickLong, VanadiumGallium, VanadiumGallium,
-                VanadiumGallium, VanadiumGallium, MagneticHAMAlloy, TengamAttuned, TengamAttuned, KerrBlackHole,
+                VanadiumGallium, VanadiumGallium, TengamAttuned, TengamAttuned, TengamAttuned, KerrBlackHole,
                 KerrBlackHole);
-        appendToComponent(GTValues.UEV, STICK_DISTILLATION, spring, Lafium, Signalium, Bedrockium, Quantium);
+        appendToComponent(GTValues.UEV, STICK_DISTILLATION, spring, Quantium40, Signalium, Bedrockium, Quantium);
 
         // Not used by base CEu
         appendToComponent(GTValues.UV, STICK_RADIOACTIVE, stickLong, Tritanium, EnrichedNaquadahAlloy, Actinoids,
@@ -108,7 +108,7 @@ public class SerendustryEventHandler {
         VOLTAGE_COIL.appendIngredients(map2);
 
         // Spring
-        appendToComponent(GTValues.UEV, SPRING, spring, Pikyonium, Lafium, Signalium, Bedrockium, Quantium);
+        appendToComponent(GTValues.UEV, SPRING, spring, Hihiirokane, Quantium40, Signalium, Bedrockium, Quantium);
     }
 
     private void appendToComponent(Component component, OrePrefix prefix, Material... materials) {

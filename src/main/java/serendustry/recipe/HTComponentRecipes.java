@@ -33,27 +33,26 @@ public class HTComponentRecipes {
                         .researchStack(ELECTRIC_MOTOR_UV.getStackForm())
                         .CWUt(64)
                         .EUt(VA[UV]))
-                .duration(800).EUt(300000).buildAndRegister();
+                .duration(800).EUt(500000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(stickLong, MagneticHAMAlloy, 2)
-                .input(stickLong, HastelloyK243, 4)
-                .input(ring, Lafium, 4)
-                .input(round, Arcanite, 8)
-                .input(wireFine, Aluminum, 64)
-                .input(wireFine, Aluminum, 64)
-                .input(wireFine, HastelloyK243, 64)
-                .input(wireFine, HastelloyK243, 64)
-                .input(cableGtSingle, Lafium, 2)
-                .fluidInputs(MutatedLivingSolder.getFluid(288))
-                .fluidInputs(OmniversalLubricant.getPlasma(1000))
-                .fluidInputs(TastyNeutronium.getFluid(576))
+                .input(stickLong, TengamAttuned, 2)
+                .input(stickLong, Infinity, 4)
+                .input(stickLong, AbyssalAlloy, 4)
+                .input(ring, Infinity, 4)
+                .input(round, Infinity, 8)
+                .input(wireFine, Quantium40, 64)
+                .input(wireFine, Quantium40, 64)
+                .input(cableGtSingle, Quantium40, 2)
+                .fluidInputs(SelfRepairingNanobots.getFluid(144 * 4))
+                .fluidInputs(Ferrofluid.getFluid(2000))
+                .fluidInputs(AbyssalAlloy.getFluid(144 * 4))
                 .output(ELECTRIC_MOTOR_UEV)
                 .stationResearch(b -> b
                         .researchStack(ELECTRIC_MOTOR_UHV.getStackForm())
-                        .CWUt(256)
+                        .CWUt(128)
                         .EUt(VA[UHV]))
-                .duration(1200).EUt(800000).buildAndRegister();
+                .duration(900).EUt(2000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(stickLong, TengamAttuned, 4)
@@ -140,21 +139,26 @@ public class HTComponentRecipes {
                         .researchStack(CONVEYOR_MODULE_UV.getStackForm())
                         .CWUt(64)
                         .EUt(VA[UV]))
-                .duration(800).EUt(300000).buildAndRegister();
+                .duration(800).EUt(500000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(ELECTRIC_MOTOR_UEV, 2)
-                .input(plate, HastelloyK243, 2)
-                .input(ring, HastelloyK243, 4)
-                .input(round, Lafium, 16)
-                .input(screw, Lafium, 4)
-                .input(cableGtSingle, Lafium, 2)
-                .fluidInputs(MutatedLivingSolder.getFluid(288))
-                .fluidInputs(OmniversalLubricant.getPlasma(1000))
-                .fluidInputs(RadoxPolymer.getFluid(288))
-                .fluidInputs(TastyNeutronium.getFluid(576))
+                .input(ELECTRIC_MOTOR_UHV, 2)
+                .input(plate, Infinity, 2)
+                .input(plate, AbyssalAlloy, 2)
+                .input(ring, Infinity, 4)
+                .input(round, Infinity, 16)
+                .input(screw, Infinity, 4)
+                .input(cableGtSingle, Quantium40, 2)
+                .fluidInputs(SelfRepairingNanobots.getFluid(144 * 4))
+                .fluidInputs(Ferrofluid.getFluid(2000))
+                .fluidInputs(RadoxPolymer.getFluid(144 * 2))
+                .fluidInputs(AbyssalAlloy.getFluid(144 * 4))
                 .output(CONVEYOR_MODULE_UEV)
-                .duration(1200).EUt(800000).buildAndRegister();
+                .stationResearch(b -> b
+                        .researchStack(CONVEYOR_MODULE_UHV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UHV]))
+                .duration(900).EUt(2000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_UIV, 2)
@@ -231,21 +235,26 @@ public class HTComponentRecipes {
                         .researchStack(ELECTRIC_PUMP_UV.getStackForm())
                         .CWUt(64)
                         .EUt(VA[UV]))
-                .duration(800).EUt(300000).buildAndRegister();
+                .duration(800).EUt(500000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(ELECTRIC_MOTOR_UEV)
-                .input(pipeLargeFluid, Lafium)
-                .input(plate, HastelloyK243, 2)
-                .input(screw, HastelloyK243, 8)
+                .input(ELECTRIC_MOTOR_UHV)
+                .input(pipeLargeFluid, Infinity)
+                .input(plate, Infinity, 2)
+                .input(plate, AbyssalAlloy, 2)
+                .input(screw, Infinity, 8)
                 .input(ring, RadoxPolymer, 8)
-                .input(rotor, TastyNeutronium, 1)
-                .input(cableGtSingle, Lafium, 2)
-                .fluidInputs(MutatedLivingSolder.getFluid(288))
-                .fluidInputs(OmniversalLubricant.getPlasma(1000))
-                .fluidInputs(TastyNeutronium.getFluid(576))
+                .input(rotor, AbyssalAlloy, 1)
+                .input(cableGtSingle, Quantium40, 2)
+                .fluidInputs(SelfRepairingNanobots.getFluid(144 * 4))
+                .fluidInputs(Ferrofluid.getFluid(2000))
+                .fluidInputs(AbyssalAlloy.getFluid(144 * 4))
                 .output(ELECTRIC_PUMP_UEV)
-                .duration(1200).EUt(800000).buildAndRegister();
+                .stationResearch(b -> b
+                        .researchStack(ELECTRIC_PUMP_UHV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UHV]))
+                .duration(900).EUt(2000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_UIV)
@@ -328,22 +337,27 @@ public class HTComponentRecipes {
                         .researchStack(ELECTRIC_PISTON_UV.getStackForm())
                         .CWUt(64)
                         .EUt(VA[UV]))
-                .duration(800).EUt(300000).buildAndRegister();
+                .duration(800).EUt(500000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(ELECTRIC_MOTOR_UEV)
-                .input(plate, HastelloyK243, 4)
-                .input(ring, HastelloyK243, 4)
-                .input(round, Lafium, 16)
-                .input(stick, HastelloyK243, 4)
-                .input(gear, Aluminum)
-                .input(gearSmall, Lafium, 2)
-                .input(cableGtSingle, Lafium, 2)
-                .fluidInputs(MutatedLivingSolder.getFluid(288))
-                .fluidInputs(OmniversalLubricant.getPlasma(1000))
-                .fluidInputs(TastyNeutronium.getFluid(576))
+                .input(ELECTRIC_MOTOR_UHV)
+                .input(plate, Infinity, 4)
+                .input(plate, AbyssalAlloy, 4)
+                .input(ring, Infinity, 4)
+                .input(round, Infinity, 16)
+                .input(stick, Infinity, 4)
+                .input(gear, AbyssalAlloy)
+                .input(gearSmall, AbyssalAlloy, 2)
+                .input(cableGtSingle, Quantium40, 2)
+                .fluidInputs(SelfRepairingNanobots.getFluid(144 * 2))
+                .fluidInputs(Ferrofluid.getFluid(2000))
+                .fluidInputs(AbyssalAlloy.getFluid(144 * 4))
                 .output(ELECTRIC_PISTON_UEV)
-                .duration(1200).EUt(800000).buildAndRegister();
+                .stationResearch(b -> b
+                        .researchStack(ELECTRIC_PISTON_UHV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UHV]))
+                .duration(900).EUt(2000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_UIV)
@@ -428,23 +442,28 @@ public class HTComponentRecipes {
                         .researchStack(ROBOT_ARM_UV.getStackForm())
                         .CWUt(64)
                         .EUt(VA[UV]))
-                .duration(800).EUt(300000).buildAndRegister();
+                .duration(800).EUt(500000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(stickLong, HastelloyK243, 4)
-                .input(gear, Aluminum, 1)
-                .input(gearSmall, Lafium, 3)
+                .input(stickLong, Infinity, 4)
+                .input(stickLong, AbyssalAlloy, 4)
+                .input(gear, Infinity, 1)
+                .input(gearSmall, Infinity, 3)
                 .input(ELECTRIC_MOTOR_UEV, 2)
                 .input(ELECTRIC_PISTON_UEV, 1)
                 .input(circuit, Tier.UEV, 1)
                 .input(circuit, Tier.UHV, 2)
                 .input(circuit, Tier.UV, 4)
-                .input(cableGtSingle, Lafium, 4)
-                .fluidInputs(MutatedLivingSolder.getFluid(288))
-                .fluidInputs(OmniversalLubricant.getPlasma(1000))
-                .fluidInputs(TastyNeutronium.getFluid(576))
+                .input(cableGtSingle, Quantium40, 4)
+                .fluidInputs(SelfRepairingNanobots.getFluid(144 * 12))
+                .fluidInputs(Ferrofluid.getFluid(2000))
+                .fluidInputs(AbyssalAlloy.getFluid(144 * 4))
                 .output(ROBOT_ARM_UEV)
-                .duration(1200).EUt(800000).buildAndRegister();
+                .stationResearch(b -> b
+                        .researchStack(ROBOT_ARM_UHV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UHV]))
+                .duration(900).EUt(2000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(stickLong, Enderiiium, 4)
@@ -518,7 +537,7 @@ public class HTComponentRecipes {
                 .input(frameGt, Neutronium)
                 .input(plate, Neutronium, 6)
                 .input(plate, HalkoniteSteel, 6)
-                .input(GRAVI_STAR, 2)
+                .input(GRAVI_STAR)
                 .input(EMITTER_UHV, 2)
                 .input(circuit, Tier.UHV, 2)
                 .input(wireFine, RutheniumTriniumAmericiumNeutronate, 64)
@@ -531,23 +550,26 @@ public class HTComponentRecipes {
                         .researchStack(FIELD_GENERATOR_UV.getStackForm())
                         .CWUt(64)
                         .EUt(VA[UV]))
-                .duration(800).EUt(300000).buildAndRegister();
+                .duration(800).EUt(500000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, HastelloyK243)
-                .input(plate, TastyNeutronium, 6)
-                .input(GRAVI_STAR, 4)
+                .input(frameGt, Infinity)
+                .input(plate, Infinity, 6)
+                .input(plate, AbyssalAlloy, 6)
+                .input(QUANTIUM_STAR)
                 .input(EMITTER_UEV, 2)
                 .input(circuit, Tier.UEV, 2)
-                .input(wireFine, ScUev, 64)
                 .input(wireFine, ScUevSane, 64)
-                .input(wireFine, TastyNeutronium, 64)
-                .input(wireFine, TastyNeutronium, 64)
-                .input(cableGtSingle, Lafium, 4)
-                .fluidInputs(MutatedLivingSolder.getFluid(288))
-                .fluidInputs(TastyNeutronium.getFluid(576))
+                .input(wireFine, ScUevSane, 64)
+                .input(cableGtSingle, Quantium40, 4)
+                .fluidInputs(SelfRepairingNanobots.getFluid(144 * 12))
+                .fluidInputs(AbyssalAlloy.getFluid(144 * 4))
                 .output(FIELD_GENERATOR_UEV)
-                .duration(1200).EUt(800000).buildAndRegister();
+                .stationResearch(b -> b
+                        .researchStack(FIELD_GENERATOR_UHV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UHV]))
+                .duration(900).EUt(2000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, Enderiiium)
@@ -622,7 +644,7 @@ public class HTComponentRecipes {
                 .input(ELECTRIC_MOTOR_UHV)
                 .input(plate, Neutronium, 4)
                 .input(plate, HalkoniteSteel, 4)
-                .input(GRAVI_STAR, 2)
+                .input(GRAVI_STAR)
                 .input(circuit, Tier.UHV, 2)
                 .input(foil, Hihiirokane, 64)
                 .input(foil, Hihiirokane, 64)
@@ -634,21 +656,26 @@ public class HTComponentRecipes {
                         .researchStack(SENSOR_UV.getStackForm())
                         .CWUt(64)
                         .EUt(VA[UV]))
-                .duration(800).EUt(300000).buildAndRegister();
+                .duration(800).EUt(500000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, HastelloyK243)
+                .input(frameGt, Infinity)
                 .input(ELECTRIC_MOTOR_UEV)
-                .input(plate, Aluminum, 4)
-                .input(GRAVI_STAR, 4)
+                .input(plate, Infinity, 4)
+                .input(plate, AbyssalAlloy, 4)
+                .input(QUANTIUM_STAR)
                 .input(circuit, Tier.UEV, 2)
-                .input(foil, TastyNeutronium, 64)
-                .input(foil, TastyNeutronium, 32)
-                .input(cableGtSingle, Lafium, 4)
-                .fluidInputs(MutatedLivingSolder.getFluid(288))
-                .fluidInputs(TastyNeutronium.getFluid(576))
+                .input(foil, Quantium40, 64)
+                .input(foil, Quantium40, 64)
+                .input(cableGtSingle, Quantium40, 4)
+                .fluidInputs(SelfRepairingNanobots.getFluid(144 * 8))
+                .fluidInputs(AbyssalAlloy.getFluid(144 * 4))
                 .output(SENSOR_UEV)
-                .duration(1200).EUt(800000).buildAndRegister();
+                .stationResearch(b -> b
+                        .researchStack(SENSOR_UHV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UHV]))
+                .duration(900).EUt(2000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, Enderiiium)
@@ -715,7 +742,7 @@ public class HTComponentRecipes {
                 .input(ELECTRIC_MOTOR_UHV)
                 .input(stickLong, Neutronium, 4)
                 .input(stickLong, HalkoniteSteel, 4)
-                .input(GRAVI_STAR, 2)
+                .input(GRAVI_STAR)
                 .input(circuit, Tier.UHV, 2)
                 .input(foil, Hihiirokane, 64)
                 .input(foil, Hihiirokane, 64)
@@ -727,21 +754,26 @@ public class HTComponentRecipes {
                         .researchStack(EMITTER_UV.getStackForm())
                         .CWUt(64)
                         .EUt(VA[UV]))
-                .duration(800).EUt(300000).buildAndRegister();
+                .duration(800).EUt(500000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, HastelloyK243)
+                .input(frameGt, Infinity)
                 .input(ELECTRIC_MOTOR_UEV)
-                .input(stickLong, Aluminum, 4)
-                .input(GRAVI_STAR, 4)
+                .input(stickLong, Infinity, 4)
+                .input(stickLong, AbyssalAlloy, 4)
+                .input(QUANTIUM_STAR)
                 .input(circuit, Tier.UEV, 2)
-                .input(foil, TastyNeutronium, 64)
-                .input(foil, TastyNeutronium, 32)
-                .input(cableGtSingle, Lafium, 4)
-                .fluidInputs(MutatedLivingSolder.getFluid(288))
-                .fluidInputs(TastyNeutronium.getFluid(576))
+                .input(foil, Quantium40, 64)
+                .input(foil, Quantium40, 64)
+                .input(cableGtSingle, Quantium40, 4)
+                .fluidInputs(SelfRepairingNanobots.getFluid(144 * 8))
+                .fluidInputs(AbyssalAlloy.getFluid(144 * 4))
                 .output(EMITTER_UEV)
-                .duration(1200).EUt(800000).buildAndRegister();
+                .stationResearch(b -> b
+                        .researchStack(EMITTER_UHV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UHV]))
+                .duration(900).EUt(2000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, Enderiiium)

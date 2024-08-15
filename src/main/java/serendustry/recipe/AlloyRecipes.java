@@ -470,23 +470,25 @@ public class AlloyRecipes {
                 .explosivesAmount(8)
                 .duration(20).EUt(VA[MAX]).buildAndRegister();
 
-        ALLOY_SMELTER_RECIPES.recipeBuilder()
+        BLAST_RECIPES.recipeBuilder()
                 .input(ingot, Steel).input(Items.BONE)
+                //.fluidInputs(Blood.getFluid(100))
                 .output(ingot, BoneSteel)
-                .duration(120).EUt(VA[LV]).buildAndRegister();
+                .blastFurnaceTemp(1800)
+                .duration(120).EUt(VA[MV]).buildAndRegister();
 
         // todo: remove normal Tungstencarbide recipe
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, Tungsten)
                 .fluidInputs(Chlorine.getFluid(6000))
                 .output(dust, TungstenHexachloride, 7)
-                .duration(240).EUt(VA[HV]).buildAndRegister();
+                .duration(20 * 5).EUt(VA[EV]).buildAndRegister();
 
         CVD_RECIPES.recipeBuilder()
                 .input(dust, TungstenHexachloride, 7)
                 .fluidInputs(Hydrogen.getFluid(2000), Methane.getFluid(1000))
                 .output(dust, TungstenCarbide)
                 .fluidOutputs(HydrochloricAcid.getFluid(6000))
-                .duration(240).EUt(VA[HV]).buildAndRegister();
+                .duration(20 * 5).EUt(VA[EV]).buildAndRegister();
     }
 }

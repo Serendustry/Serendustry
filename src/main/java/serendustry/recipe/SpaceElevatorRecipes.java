@@ -406,13 +406,25 @@ public class SpaceElevatorRecipes {
                 .input(PLANETOID_HARVESTING_DRONE)
                 //.input(TIBERIUM_PLANETOID_DATA) todo: add this
                 .fluidInputs(RocketFuel.getFluid(30000))
-                .output(ore, TiberiumRiparius, 64 * 2)
-                .output(ore, TiberiumVinifera, 64 * 2)
-                .output(ore, TiberiumCruentus, 64 * 2)
-                .output(ore, TiberiumAboreus, 64 * 2)
+                .output(ore, TiberiumRiparius, 64)
+                .output(ore, TiberiumVinifera, 64)
+                .output(ore, TiberiumCruentus, 64)
+                .output(ore, TiberiumAboreus, 64)
                 .output(ore, Originite, 16)
                 .output(Blocks.STONE, 64 * 256)
-                .output(SPACEWEED, 120) // ~21 Originium total, or 42 Orundum
+                .output(SPACEWEED, 120) // ~10.7 Originium, or 21.5 Orundum, or 5.4 boules
+                .duration(12000).EUt(VA[UHV]).buildAndRegister();
+
+        SPACE_ELEVATOR_RECIPES.recipeBuilder()
+                .input(PLANETOID_HARVESTING_DRONE)
+                //.input(EXOTIC_PLANETOID_DATA) todo: add this
+                .fluidInputs(RocketFuel.getFluid(30000))
+                .output(ore, Bromargyrite, 32) // ~32 buckets Bromine, or ~160 ScUevSane, or 10 Positronic Mainframes
+                .output(ore, Olsacherite, 32) // ~5.3 Selenium, or 41 BETS Perrhenate, or 205.38 ScUevSane, or 12.8 Positronic Mainframes
+                .output(ore, Renierite, 64 * 4) // ~22.24 Germanium, or 178 Abyssal Alloy, or 14.8 Positronic Mainframes
+                .output(ore, Originite, 8) // ~1.6 Originium, or 3.2 Orundum, or 0.8 boules
+                .output(Blocks.STONE, 64 * 256)
+                .output(SPACEWEED, 120)
                 .duration(12000).EUt(VA[UHV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()

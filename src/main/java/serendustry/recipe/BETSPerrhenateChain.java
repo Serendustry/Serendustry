@@ -59,7 +59,7 @@ public class BETSPerrhenateChain {
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Dihydro14Dithiine.getFluid(1000))
                 .input(dust, LithiumDiisopropylamide)
-                .input(dust, Selenium, 2) // todo: add way to get selenium
+                .input(dust, Selenium, 2)
                 .fluidOutputs(Dihydro14dithiine23bislithiumSelenolate.getFluid(1000), Diisopropylamine.getFluid(2000))
                 .duration(20 * 2).EUt(VA[UV]).buildAndRegister();
 

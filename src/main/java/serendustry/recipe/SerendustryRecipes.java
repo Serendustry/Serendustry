@@ -12,6 +12,7 @@ public class SerendustryRecipes {
         DestabilizedMatterChain.init();
         DragonEggRecipes.init();
         FerrofluidChain.init();
+        GermaniumChain.init();
         GiantFractionatingColumnRecipes.init();
         HalkoniteSteelRecipes.init();
         HTComponentRecipes.init();
@@ -27,6 +28,7 @@ public class SerendustryRecipes {
         PlasmaFuels.init();
         PlasmaMixerRecipes.init();
         RadoxChain.init();
+        SeleniumChain.init();
         SelfRepairingNanobotsRecipes.init();
         SemiconductorGradeSiliconChain.init();
         SmallFusionReactorRecipes.init();

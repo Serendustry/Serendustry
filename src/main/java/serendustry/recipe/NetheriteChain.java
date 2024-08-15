@@ -1,7 +1,8 @@
 package serendustry.recipe;
 
-import static gregtech.api.GTValues.HV;
-import static gregtech.api.GTValues.VA;
+import gregtech.api.unification.ore.OrePrefix;
+
+import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
@@ -33,10 +34,15 @@ public class NetheriteChain {
                 .blastFurnaceTemp(3600)
                 .duration(500).EUt(VA[HV]).buildAndRegister();
 
-        CHEMICAL_BATH_RECIPES.recipeBuilder()
-                .input(ingot, NetheriteRichAncientDebris)
-                .fluidInputs(Gold.getFluid(576))
-                .output(ingot, Netherite)
-                .duration(500).EUt(VA[HV]).buildAndRegister();
+        OrePrefix[] parts = { nugget, ingot, block, plate, stick, stickLong, bolt, screw };
+        float[] cost = { 0.11f, 1.0f, 9.0F, 1.0f, 0.5f, 1.0f, 0.125f, 0.125f };
+
+        for (int i = 0; i < parts.length; i++) {
+            CHEMICAL_BATH_RECIPES.recipeBuilder()
+                    .input(parts[i], NetheriteRichAncientDebris)
+                    .fluidInputs(Gold.getFluid((int) (144 * 4 * cost[i])))
+                    .output(parts[i], Netherite)
+                    .duration((int) (500 * cost[i])).EUt(VA[HV]).buildAndRegister();
+        }
     }
 }
