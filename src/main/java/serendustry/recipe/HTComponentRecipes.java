@@ -2,13 +2,18 @@ package serendustry.recipe;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.AUTOCLAVE_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static serendustry.item.SerendustryMetaItems.*;
 import static serendustry.item.material.SerendustryMaterials.*;
 
+import gregtech.api.recipes.GTRecipeHandler;
+import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials.Tier;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 
 public class HTComponentRecipes {
 
@@ -17,9 +22,27 @@ public class HTComponentRecipes {
         // Motors
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(stickLong, MagneticHolmium)
+                .input(stickLong, Tritanium, 4)
+                .input(ring, Tritanium, 4)
+                .input(round, Tritanium, 8)
+                .input(wireFine, Americium, 64)
+                .input(wireFine, Americium, 64)
+                .input(cableGtSingle, YttriumBariumCuprate, 2)
+                .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 4))
+                .fluidInputs(Ferrofluid.getFluid(500))
+                .fluidInputs(Naquadria.getFluid(144 * 4))
+                .output(ELECTRIC_MOTOR_UV)
+                .stationResearch(b -> b
+                        .researchStack(ELECTRIC_MOTOR_ZPM.getStackForm())
+                        .CWUt(32)
+                        .EUt(VA[ZPM]))
+                .duration(30 * 20).EUt(100000).buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(stickLong, MagneticHolmium, 2)
                 .input(stickLong, Neutronium, 4)
-                .input(stickLong, HalkoniteSteel, 4)
+                .input(stickLong, VibraniumAlloy, 4)
                 .input(ring, Neutronium, 4)
                 .input(round, Neutronium, 8)
                 .input(wireFine, Hihiirokane, 64)
@@ -37,10 +60,10 @@ public class HTComponentRecipes {
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(stickLong, TengamAttuned, 2)
-                .input(stickLong, Infinity, 4)
+                .input(stickLong, HalkoniteSteel, 4)
                 .input(stickLong, AbyssalAlloy, 4)
-                .input(ring, Infinity, 4)
-                .input(round, Infinity, 8)
+                .input(ring, HalkoniteSteel, 4)
+                .input(round, HalkoniteSteel, 8)
                 .input(wireFine, Quantium40, 64)
                 .input(wireFine, Quantium40, 64)
                 .input(cableGtSingle, Quantium40, 2)
@@ -125,7 +148,7 @@ public class HTComponentRecipes {
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_UHV, 2)
                 .input(plate, Neutronium, 2)
-                .input(plate, HalkoniteSteel, 2)
+                .input(plate, VibraniumAlloy, 2)
                 .input(ring, Neutronium, 4)
                 .input(round, Neutronium, 16)
                 .input(screw, Neutronium, 4)
@@ -143,11 +166,11 @@ public class HTComponentRecipes {
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_UHV, 2)
-                .input(plate, Infinity, 2)
+                .input(plate, HalkoniteSteel, 2)
                 .input(plate, AbyssalAlloy, 2)
-                .input(ring, Infinity, 4)
-                .input(round, Infinity, 16)
-                .input(screw, Infinity, 4)
+                .input(ring, HalkoniteSteel, 4)
+                .input(round, HalkoniteSteel, 16)
+                .input(screw, HalkoniteSteel, 4)
                 .input(cableGtSingle, Quantium40, 2)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 4))
                 .fluidInputs(Ferrofluid.getFluid(2000))
@@ -220,12 +243,12 @@ public class HTComponentRecipes {
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_UHV)
-                .input(pipeLargeFluid, Neutronium)
+                .input(pipeLargeFluid, VibraniumAlloy)
                 .input(plate, Neutronium, 2)
-                .input(plate, HalkoniteSteel, 2)
+                .input(plate, VibraniumAlloy, 2)
                 .input(screw, Neutronium, 8)
                 .input(ring, RadoxPolymer, 4)
-                .input(rotor, HalkoniteSteel, 1)
+                .input(rotor, VibraniumAlloy, 1)
                 .input(cableGtSingle, Hihiirokane, 2)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 2))
                 .fluidInputs(Ferrofluid.getFluid(1000))
@@ -239,10 +262,10 @@ public class HTComponentRecipes {
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_UHV)
-                .input(pipeLargeFluid, Infinity)
-                .input(plate, Infinity, 2)
+                .input(pipeLargeFluid, AbyssalAlloy)
+                .input(plate, HalkoniteSteel, 2)
                 .input(plate, AbyssalAlloy, 2)
-                .input(screw, Infinity, 8)
+                .input(screw, HalkoniteSteel, 8)
                 .input(ring, RadoxPolymer, 8)
                 .input(rotor, AbyssalAlloy, 1)
                 .input(cableGtSingle, Quantium40, 2)
@@ -322,12 +345,12 @@ public class HTComponentRecipes {
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_UHV)
                 .input(plate, Neutronium, 4)
-                .input(plate, HalkoniteSteel, 4)
+                .input(plate, VibraniumAlloy, 4)
                 .input(ring, Neutronium, 4)
                 .input(round, Neutronium, 16)
                 .input(stick, Neutronium, 4)
-                .input(gear, HalkoniteSteel)
-                .input(gearSmall, HalkoniteSteel, 2)
+                .input(gear, VibraniumAlloy)
+                .input(gearSmall, VibraniumAlloy, 2)
                 .input(cableGtSingle, Hihiirokane, 2)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 2))
                 .fluidInputs(Ferrofluid.getFluid(1000))
@@ -341,11 +364,11 @@ public class HTComponentRecipes {
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_UHV)
-                .input(plate, Infinity, 4)
+                .input(plate, HalkoniteSteel, 4)
                 .input(plate, AbyssalAlloy, 4)
-                .input(ring, Infinity, 4)
-                .input(round, Infinity, 16)
-                .input(stick, Infinity, 4)
+                .input(ring, HalkoniteSteel, 4)
+                .input(round, HalkoniteSteel, 16)
+                .input(stick, HalkoniteSteel, 4)
                 .input(gear, AbyssalAlloy)
                 .input(gearSmall, AbyssalAlloy, 2)
                 .input(cableGtSingle, Quantium40, 2)
@@ -425,7 +448,7 @@ public class HTComponentRecipes {
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(stickLong, Neutronium, 4)
-                .input(stickLong, HalkoniteSteel, 4)
+                .input(stickLong, VibraniumAlloy, 4)
                 .input(gear, Neutronium, 1)
                 .input(gearSmall, Neutronium, 3)
                 .input(ELECTRIC_MOTOR_UHV, 2)
@@ -445,10 +468,10 @@ public class HTComponentRecipes {
                 .duration(800).EUt(500000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(stickLong, Infinity, 4)
+                .input(stickLong, HalkoniteSteel, 4)
                 .input(stickLong, AbyssalAlloy, 4)
-                .input(gear, Infinity, 1)
-                .input(gearSmall, Infinity, 3)
+                .input(gear, HalkoniteSteel, 1)
+                .input(gearSmall, HalkoniteSteel, 3)
                 .input(ELECTRIC_MOTOR_UEV, 2)
                 .input(ELECTRIC_PISTON_UEV, 1)
                 .input(circuit, Tier.UEV, 1)
@@ -536,7 +559,7 @@ public class HTComponentRecipes {
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, Neutronium)
                 .input(plate, Neutronium, 6)
-                .input(plate, HalkoniteSteel, 6)
+                .input(plate, VibraniumAlloy, 6)
                 .input(GRAVI_STAR)
                 .input(EMITTER_UHV, 2)
                 .input(circuit, Tier.UHV, 2)
@@ -553,8 +576,8 @@ public class HTComponentRecipes {
                 .duration(800).EUt(500000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, Infinity)
-                .input(plate, Infinity, 6)
+                .input(frameGt, HalkoniteSteel)
+                .input(plate, HalkoniteSteel, 6)
                 .input(plate, AbyssalAlloy, 6)
                 .input(QUANTIUM_STAR)
                 .input(EMITTER_UEV, 2)
@@ -643,7 +666,7 @@ public class HTComponentRecipes {
                 .input(frameGt, Neutronium)
                 .input(ELECTRIC_MOTOR_UHV)
                 .input(plate, Neutronium, 4)
-                .input(plate, HalkoniteSteel, 4)
+                .input(plate, VibraniumAlloy, 4)
                 .input(GRAVI_STAR)
                 .input(circuit, Tier.UHV, 2)
                 .input(foil, Hihiirokane, 64)
@@ -659,9 +682,9 @@ public class HTComponentRecipes {
                 .duration(800).EUt(500000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, Infinity)
+                .input(frameGt, HalkoniteSteel)
                 .input(ELECTRIC_MOTOR_UEV)
-                .input(plate, Infinity, 4)
+                .input(plate, HalkoniteSteel, 4)
                 .input(plate, AbyssalAlloy, 4)
                 .input(QUANTIUM_STAR)
                 .input(circuit, Tier.UEV, 2)
@@ -741,7 +764,7 @@ public class HTComponentRecipes {
                 .input(frameGt, Neutronium)
                 .input(ELECTRIC_MOTOR_UHV)
                 .input(stickLong, Neutronium, 4)
-                .input(stickLong, HalkoniteSteel, 4)
+                .input(stickLong, VibraniumAlloy, 4)
                 .input(GRAVI_STAR)
                 .input(circuit, Tier.UHV, 2)
                 .input(foil, Hihiirokane, 64)
@@ -757,9 +780,9 @@ public class HTComponentRecipes {
                 .duration(800).EUt(500000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, Infinity)
+                .input(frameGt, HalkoniteSteel)
                 .input(ELECTRIC_MOTOR_UEV)
-                .input(stickLong, Infinity, 4)
+                .input(stickLong, HalkoniteSteel, 4)
                 .input(stickLong, AbyssalAlloy, 4)
                 .input(QUANTIUM_STAR)
                 .input(circuit, Tier.UEV, 2)

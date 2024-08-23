@@ -17,7 +17,7 @@ public class SelfRepairingNanobotsRecipes {
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(circuit, MarkerMaterials.Tier.UHV)
                 .input(ROBOT_ARM_UV)
-                .input(bolt, HalkoniteSteel, 32)
+                .input(bolt, VibraniumAlloy, 32)
                 .input(foil, ALMST, 64)
                 .input(cableGtSingle, Hihiirokane, 16)
                 .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 8), MolybdeniteLubricant.getFluid(8000))

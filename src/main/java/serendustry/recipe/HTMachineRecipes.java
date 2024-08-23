@@ -1,9 +1,13 @@
 package serendustry.recipe;
 
 import gregtech.api.GTValues;
+import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
+import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.stack.UnificationEntry;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
@@ -30,7 +34,6 @@ public class HTMachineRecipes {
 
          // Machine Casings
 
-        // Todo: remove and replace UHV casing recipe
          ModHandler.addShapedRecipe(true, "casing_uev", MACHINE_CASING.getItemVariant(UEV), "PPP", "PwP", "PPP", 'P',
          new UnificationEntry(plate, Infinity));
          ModHandler.addShapedRecipe(true, "casing_uiv", MACHINE_CASING.getItemVariant(UIV), "PPP", "PwP", "PPP", 'P',
@@ -73,10 +76,6 @@ public class HTMachineRecipes {
          .duration(50).EUt(16).buildAndRegister();
 
          // Machine Hull Assembler Recipes
-
-         // TODO: idk how this works someone help
-         /*GTRecipeHandler.removeRecipesByInputs(ASSEMBLER_RECIPES, MACHINE_CASING.getItemVariant(UHV));
-         new UnificationEntry(cableGtSingle, Europium), Polybenzimidazole.getFluid(288);*/
 
          ASSEMBLER_RECIPES.recipeBuilder()
          .inputs(MACHINE_CASING.getItemVariant(UHV))

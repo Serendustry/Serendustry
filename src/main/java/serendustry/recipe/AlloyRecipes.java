@@ -7,10 +7,13 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static gregtech.common.items.MetaItems.EMITTER_UV;
 import static gregtech.common.metatileentities.MetaTileEntities.*;
+import static serendustry.item.SerendustryMetaItems.CULTURE_STEM_CELL_WIRED;
 import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.LABORATORY_RECIPES;
 
+import gregtech.api.recipes.GTRecipeHandler;
+import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.ore.OrePrefix;
@@ -19,6 +22,8 @@ import net.minecraft.init.Blocks;
 
 import gregtech.api.fluids.store.FluidStorageKeys;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 
 public class AlloyRecipes {
 
@@ -266,7 +271,7 @@ public class AlloyRecipes {
 
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, StellarAlloy, 15).input(dust, ArceusAlloy2B, 10).input(dust, Lafium, 10)
-                .input(dust, Jasper, 5).input(dust, Americium, 5).input(dust, Pikyonium, 5).input(dust, Germanium, 5)
+                .input(dust, Jasper, 5).input(dust, Americium, 5).input(dust, EnergyCrystal, 5).input(dust, Germanium, 5)
                 .input(dust, SiliconCarbide, 5)
                 .fluidInputs(AssemblyLine.getPlasma(144))
                 .output(dust, Quantum, 60)
@@ -275,7 +280,7 @@ public class AlloyRecipes {
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .input(dust, Quantum, 60)
                 .output(dust, StellarAlloy, 15).output(dust, ArceusAlloy2B, 10).output(dust, Lafium, 10)
-                .output(dust, Jasper, 5).output(dust, Americium, 5).output(dust, Pikyonium, 5)
+                .output(dust, Jasper, 5).output(dust, Americium, 5).output(dust, EnergyCrystal, 5)
                 .output(dust, Germanium, 5).output(dust, SiliconCarbide, 5)
                 .fluidOutputs(AssemblyLine.getPlasma(144))
                 .duration(7200).EUt(60).buildAndRegister();
@@ -307,7 +312,7 @@ public class AlloyRecipes {
                 .duration(2760).EUt(60).buildAndRegister();
 
         LABORATORY_RECIPES.recipeBuilder()
-                .input(STEM_CELLS, 8).input(dust, SolderingAlloy, 4).input(dust, NetherStar)
+                .input(CULTURE_STEM_CELL_WIRED).input(dust, SolderingAlloy, 4).input(dust, NetherStar)
                 .fluidInputs(Iron.getPlasma(144), Nickel.getPlasma(144))
                 .fluidOutputs(MutatedLivingSolder.getFluid(576))
                 .requireInside(CHEMICAL_RECIPES, UV, 1)
@@ -402,7 +407,7 @@ public class AlloyRecipes {
 
         CHEMICAL_BATH_RECIPES.recipeBuilder()
                 .input(dust, Diamond)
-                .fluidInputs(Lava.getFluid(100))
+                .fluidInputs(Polyethylene.getFluid(100))
                 .output(dust, TerraCrystal)
                 .duration(30).EUt(VA[LV]).buildAndRegister();
 
@@ -445,7 +450,7 @@ public class AlloyRecipes {
                 .output(dust, Naquadria, 3)
                 .output(dust, Taranium, 1)
                 .output(dust, TungstenCarbide, 1)
-                .output(dust, Netherite, 1)
+                .output(dust, NetherizedDiamond, 1)
                 .output(dust, Germanium, 1)
                 .fluidOutputs(BlackStarMatter.getFluid(400))
                 .duration(2400).EUt(VA[UV]).buildAndRegister();
@@ -477,7 +482,6 @@ public class AlloyRecipes {
                 .blastFurnaceTemp(1800)
                 .duration(120).EUt(VA[MV]).buildAndRegister();
 
-        // todo: remove normal Tungstencarbide recipe
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, Tungsten)
                 .fluidInputs(Chlorine.getFluid(6000))
@@ -490,5 +494,18 @@ public class AlloyRecipes {
                 .output(dust, TungstenCarbide)
                 .fluidOutputs(HydrochloricAcid.getFluid(6000))
                 .duration(20 * 5).EUt(VA[EV]).buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder()
+                .input(dust, PostTransitionMetals).input(dust, Chrome).input(dust, Rhodium)
+                .input(dust, Europium).input(dust, Rutile).input(dust, Onionium)
+                .input(dust, ScUiv).input(dust, Jasper).input(dust, Shirabon)
+                .output(dust, Pinkium, 9)
+                .duration(1200).EUt(VA[MAX]).buildAndRegister();
+
+        BLAST_RECIPES.recipeBuilder()
+                .fluidInputs(RawAdamantium.getFluid(144), Krypton.getFluid(10))
+                .output(ingotHot, Adamantium)
+                .blastFurnaceTemp(10800)
+                .duration(737).EUt(VA[UV]).buildAndRegister();
     }
 }

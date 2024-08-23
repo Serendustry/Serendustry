@@ -7,6 +7,7 @@ public class SerendustryRecipes {
         AlloyRecipes.init();
         AnimalWasteRecipes.init();
         BETSPerrhenateChain.init();
+        BiolabRecipes.init();
         BoPETCHain.init();
         CircuitRecipes.init();
         DestabilizedMatterChain.init();
@@ -37,5 +38,9 @@ public class SerendustryRecipes {
         TaraniumChain.init();
         ToolPrefixHandlers.registerToolPrefixHandler();
         WasteFluidRecipes.init();
+    }
+
+    public static void removeRecipes() {
+        RemoveRecipes.init();
     }
 }

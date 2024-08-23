@@ -8,6 +8,8 @@ import static serendustry.item.material.SerendustryMaterials.*;
 public class LargeAlloySmelterRecipes {
 
     public static void init() {
+        //. Todo: remove and replace ALL fusion recipes
+        // Add recipe for Oganesson
         FUSION_RECIPES.recipeBuilder()
                 .fluidInputs(Dysprosium.getFluid(16)).fluidInputs(Indium.getFluid(16))
                 .fluidOutputs(Moscovium.getFluid(16))

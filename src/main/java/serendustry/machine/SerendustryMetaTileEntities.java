@@ -21,6 +21,7 @@ public class SerendustryMetaTileEntities {
     public static MetaTileEntityCVDChamber CVD_CHAMBER;
     public static MetaTileEntitySonicator SONICATOR;
     public static MetaTileEntityHPLaserArray HP_LASER_ARRAY;
+    public static MetaTileEntityBiolab BIOLAB;
 
     public static void preInit() {
         // todo claim an id range
@@ -42,5 +43,7 @@ public class SerendustryMetaTileEntities {
                 new MetaTileEntitySonicator(Serendustry.ID("sonicator")));
         HP_LASER_ARRAY = registerMetaTileEntity(4008,
                 new MetaTileEntityHPLaserArray(Serendustry.ID("hp_laser_array")));
+        BIOLAB = registerMetaTileEntity(4009,
+                new MetaTileEntityBiolab(Serendustry.ID("biolab")));
     }
 }

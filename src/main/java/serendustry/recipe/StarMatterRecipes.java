@@ -1,8 +1,7 @@
 package serendustry.recipe;
 
 import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
-import static gregtech.api.recipes.RecipeMaps.ELECTROLYZER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.EMITTER_ZPM;
@@ -14,8 +13,10 @@ import static serendustry.machine.SerendustryMetaTileEntities.NEBULAIC_NEXUS;
 import static serendustry.machine.SerendustryRecipeMaps.NEBULAIC_NEXUS_RECIPES;
 
 import gregtech.api.fluids.store.FluidStorageKeys;
+import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.Material;
+import net.minecraftforge.fluids.FluidStack;
 
 public class StarMatterRecipes {
 
@@ -25,7 +26,7 @@ public class StarMatterRecipes {
                 BlackStarMatter };
 
         for (int i = 0; i < amount.length; i++) {
-            ELECTROLYZER_RECIPES.recipeBuilder()
+            CENTRIFUGE_RECIPES.recipeBuilder()
                     .fluidInputs(matter[i].getFluid(10000))
                     .fluidOutputs(Iron.getFluid((int) (4 * 144 * 64 * amount[i])))
                     .fluidOutputs(Copper.getFluid((int) (4 * 144 * 64 * amount[i])))
@@ -47,12 +48,12 @@ public class StarMatterRecipes {
                 .input(circuit, MarkerMaterials.Tier.UV, 16)
                 .input(EMITTER_ZPM, 8)
                 .input(ROBOT_ARM_ZPM, 8)
-                .input(plate, HalkoniteSteel, 32)
+                .input(plateDense, VibraniumAlloy, 4)
                 .input(plate, Naquadria, 32)
                 .input(stickLong, Tritanium, 32)
-                .input(foil, Tritanium, 64)
-                .input(screw, HalkoniteSteel, 64)
-                .input(screw, HalkoniteSteel, 64)
+                .input(foil, Adamantium, 64)
+                .input(screw, VibraniumAlloy, 64)
+                .input(screw, VibraniumAlloy, 64)
                 .input(wireGtDouble, EnrichedNaquadahTriniumEuropiumDuranide, 64)
                 .input(cableGtDouble, Hihiirokane, 64)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 16))
@@ -83,7 +84,7 @@ public class StarMatterRecipes {
                 .input(ingot, StellarContainmentBase)
                 .fluidInputs(StellarBaptismSolution.getFluid(1000),
                         NeutronStarMatter.getFluid(500))
-                .output(ingot, Neutronium) // todo: change to ingotHot and remove fusion Nt recipe
+                .output(ingot, Neutronium) // todo: change to ingotHot
                 .duration(200).EUt(VA[UHV]).buildAndRegister();
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()

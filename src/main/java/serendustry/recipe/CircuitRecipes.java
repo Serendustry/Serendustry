@@ -16,7 +16,6 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
 import static gregtech.common.items.MetaItems.*;
 import static gregtech.common.metatileentities.MetaTileEntities.LASER_ENGRAVER;
-import static java.lang.Math.max;
 import static serendustry.item.SerendustryMetaItems.*;
 import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryMetaTileEntities.HP_LASER_ARRAY;
@@ -45,9 +44,6 @@ public class CircuitRecipes {
                 .blastFurnaceTemp(1784)
                 .duration(400 * 20).EUt(VA[MV]).buildAndRegister();
 
-        // todo: remove the original versions of these recipes
-        //GTRecipeHandler.removeRecipesByInputs(BLAST_RECIPES, ())
-
         BLAST_RECIPES.recipeBuilder()
                 .input(dust, SemiconductorGradeSilicon, 64)
                 .input(dust, Phosphorus, 8)
@@ -59,7 +55,7 @@ public class CircuitRecipes {
 
         BLAST_RECIPES.recipeBuilder()
                 .input(block, SemiconductorGradeSilicon, 16)
-                .input(ingot, Naquadah, 1)
+                .input(ingot, Naquadah)
                 .input(dust, GalliumArsenide)
                 .fluidInputs(Argon.getFluid(8000))
                 .output(NAQUADAH_BOULE)
@@ -136,7 +132,7 @@ public class CircuitRecipes {
                 .inputs(MetaBlocks.TRANSPARENT_CASING.getItemVariant(
                         BlockGlassCasing.CasingType.FUSION_GLASS, 64))
                 .input(plate, Neutronium, 64)
-                .input(screw, HalkoniteSteel, 64)
+                .input(screw, VibraniumAlloy, 64)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 8),
                         MolybdeniteLubricant.getFluid(32000),
                         Naquadria.getFluid(144 * 32))
@@ -148,18 +144,19 @@ public class CircuitRecipes {
                 .duration(6400).EUt(VA[UHV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
-                .input(lens, Orundum)
-                .input(gemExquisite, Orundum)
-                .input(gemExquisite, TiberiumRiparius, 4)
-                .input(gemExquisite, TiberiumVinifera, 4)
-                .input(foil, Naquadria, 32)
-                .input(cableGtSingle, Hihiirokane, 16)
-                .fluidInputs(SelfRepairingNanobots.getFluid(144 * 8))
+                .input(lens, Orundum, 4)
+                .input(gemExquisite, Orundum, 4)
+                .input(gemExquisite, TiberiumRiparius, 8)
+                .input(gemExquisite, TiberiumVinifera, 8)
+                .input(gemExquisite, Azbantium, 16)
+                .input(foil, Naquadria, 64)
+                .input(cableGtSingle, Hihiirokane, 32)
+                .fluidInputs(SelfRepairingNanobots.getFluid(144 * 16))
                 .output(LENS_ARRAY_HYPERAMPLIFYING)
                 .duration(1200).EUt(VA[UHV]).buildAndRegister();
 
         HP_LASER_ARRAY_RECIPES.recipeBuilder()
-                .notConsumable(LENS_ARRAY_HYPERAMPLIFYING) // todo: partiallyConsumed
+                .notConsumable(LENS_ARRAY_HYPERAMPLIFYING)
                 .input(lens, Glass)
                 .input(dust, Glass, 64)
                 .output(dust, ChromaticGlass)
@@ -167,13 +164,14 @@ public class CircuitRecipes {
                 .duration(4).EUt((int) V[MAX]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
-                .input(lens, ChromaticGlass)
-                .input(gemExquisite, ChromaticGlass)
-                .input(gemExquisite, TiberiumCruentus, 4)
-                .input(gemExquisite, TiberiumAboreus, 4)
-                .input(foil, Naquadria, 32)
-                .input(cableGtSingle, Hihiirokane, 16)
-                .fluidInputs(SelfRepairingNanobots.getFluid(144 * 8))
+                .input(lens, ChromaticGlass, 4)
+                .input(gemExquisite, ChromaticGlass, 4)
+                .input(gemExquisite, TiberiumCruentus, 8)
+                .input(gemExquisite, TiberiumAboreus, 8)
+                .input(gemExquisite, Azbantium, 16)
+                .input(foil, Naquadria, 64)
+                .input(cableGtSingle, Hihiirokane, 32)
+                .fluidInputs(SelfRepairingNanobots.getFluid(144 * 16))
                 .output(LENS_ARRAY_HYPERPRECISE)
                 .duration(1200).EUt(VA[UHV]).buildAndRegister();
 
@@ -205,7 +203,7 @@ public class CircuitRecipes {
 
             for(int j = 0; j < wafersRaw.length; j++) {
                 HP_LASER_ARRAY_RECIPES.recipeBuilder()
-                        .notConsumable(LENS_ARRAY_HYPERPRECISE) // todo: partiallyConsumed
+                        .notConsumable(LENS_ARRAY_HYPERPRECISE)
                         .notConsumable(masks[i]) // todo: partiallyConsumed
                         .input(wafersRaw[j])
                         .output(wafers[i], value[j] * amount[i] * 2)
@@ -228,7 +226,7 @@ public class CircuitRecipes {
                 .duration(2400).EUt(VA[UHV]).buildAndRegister();
 
         HP_LASER_ARRAY_RECIPES.recipeBuilder()
-                .notConsumable(LENS_ARRAY_HYPERPRECISE) // todo: partiallyConsumed
+                .notConsumable(LENS_ARRAY_HYPERPRECISE)
                 .notConsumable(MASK_APU) // todo: partiallyConsumed
                 .input(WRAPPED_ORUNDUM_WAFER)
                 .fluidInputs(Originium.getFluid(36))
@@ -236,7 +234,7 @@ public class CircuitRecipes {
                 .duration(2).EUt((int) V[MAX]).buildAndRegister();
 
         HP_LASER_ARRAY_RECIPES.recipeBuilder()
-                .notConsumable(LENS_ARRAY_HYPERAMPLIFYING) // todo: partiallyConsumed
+                .notConsumable(LENS_ARRAY_HYPERAMPLIFYING)
                 .input(lens, ChromaticGlass)
                 .input(plate, Gold, 64)
                 .fluidInputs(Hydrogen.getFluid(200000))
@@ -254,7 +252,7 @@ public class CircuitRecipes {
     }
 
     private static void boardRecipes() {
-        // todo: remove the original versions of these recipes
+
         CHEMICAL_RECIPES.recipeBuilder().duration(1500).EUt(VA[MV])
                 .input(MULTILAYER_FIBER_BOARD)
                 .input(foil, CarbonNanotubes, 8)
@@ -271,6 +269,48 @@ public class CircuitRecipes {
                 .cleanroom(CleanroomType.CLEANROOM)
                 .buildAndRegister();
 
+        MIXER_RECIPES.recipeBuilder()
+                .input(dust, Meat, 4)
+                .input(dust, Salt, 4)
+                .input(dust, Calcium, 4)
+                .input(dust, Agar, 4)
+                .input(dust, YeastExtract, 4)
+                .fluidInputs(Mutagen.getFluid(4000))
+                .fluidOutputs(RawGrowthMedium.getFluid(4000))
+                .EUt(VA[IV]).duration(60 * 20).buildAndRegister();
+
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().EUt(VA[LuV]).duration(60 * 20)
+                .input(MULTILAYER_FIBER_BOARD, 16)
+                .input(PETRI_DISH_STERILIZED)
+                .input(ELECTRIC_PUMP_LuV)
+                .input(SENSOR_IV)
+                .input(circuit, MarkerMaterials.Tier.IV)
+                .input(foil, NiobiumTitanium, 16)
+                .fluidInputs(SterileGrowthMedium.getFluid(4000))
+                .output(WETWARE_BOARD, 16)
+                .buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(CULTURE_STEM_CELL)
+                .input(screw, Osmiridium, 4)
+                .input(cableGtSingle, YttriumBariumCuprate, 2)
+                .fluidInputs(HighGradeSolderingAlloy.getFluid(144))
+                .output(CULTURE_STEM_CELL_WIRED)
+                .cleanroom(CleanroomType.STERILE_CLEANROOM)
+                .EUt(80000).duration(200).buildAndRegister();
+
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().EUt(80000).duration(600)
+                .input(WETWARE_CIRCUIT_BOARD)
+                .input(CULTURE_STEM_CELL_WIRED)
+                .input(pipeSmallFluid, Polybenzimidazole, 8)
+                .input(plate, Electrum, 8)
+                .input(foil, SiliconeRubber, 16)
+                .input(bolt, HSSE, 8)
+                .fluidInputs(SterileGrowthMedium.getFluid(250))
+                .output(NEURO_PROCESSOR)
+                .cleanroom(CleanroomType.STERILE_CLEANROOM)
+                .buildAndRegister();
+
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(plate, RadoxPolymer)
                 .input(foil, Gadonanotubes, 8)
@@ -282,7 +322,7 @@ public class CircuitRecipes {
 
     private static void componentRecipes() {
         ASSEMBLER_RECIPES.recipeBuilder()
-                .input(dust, Orundum)
+                .input(dust, Vibranium)
                 .input(wireFine, Gadonanotubes, 4)
                 .fluidInputs(RadoxPolymer.getFluid(72))
                 .output(SUPREME_SMD_RESISTOR, 8)
@@ -365,7 +405,7 @@ public class CircuitRecipes {
         }
 
         HP_LASER_ARRAY_RECIPES.recipeBuilder()
-                .notConsumable(LENS_ARRAY_HYPERAMPLIFYING) // todo: partiallyConsumed
+                .notConsumable(LENS_ARRAY_HYPERAMPLIFYING)
                 .input(lens, Orundum)
                 .input(POSITRONIC_CHIP)
                 .fluidInputs(Naquadria.getFluid(144 * 2))
@@ -388,22 +428,28 @@ public class CircuitRecipes {
                 .cleanroom(CleanroomType.CLEANROOM)
                 .duration(20 * 20).EUt(VA[UHV]).buildAndRegister();
 
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(COSMIC_CIRCUIT_BOARD)
                 .input(CIRC_POSITRONIC_ZPM, 2)
                 .input(SUPREME_SMD_INDUCTOR, 6)
                 .input(SUPREME_SMD_CAPACITOR, 12)
                 .input(RANDOM_ACCESS_MEMORY, 32)
                 .input(wireFine, Hihiirokane, 16)
+                .input(foil, Adamantium, 16)
+                .input(plate, VibraniumAlloy, 4)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144))
                 .output(CIRC_POSITRONIC_UV)
-                .cleanroom(CleanroomType.CLEANROOM)
+                .stationResearch(b -> b
+                        .researchStack(CIRC_POSITRONIC_ZPM.getStackForm())
+                        .CWUt(64)
+                        .EUt(VA[UV]))
                 .duration(20 * 20).EUt(VA[UHV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(COSMIC_CIRCUIT_BOARD)
                 .input(CIRC_POSITRONIC_UV, 2)
                 .input(SUPREME_SMD_DIODE, 8)
+                .input(SUPREME_SMD_RESISTOR, 8)
                 .input(NOR_MEMORY_CHIP, 32)
                 .input(RANDOM_ACCESS_MEMORY, 64)
                 .input(wireFine, Hihiirokane, 24)
@@ -430,6 +476,7 @@ public class CircuitRecipes {
                 .input(foil, SelfRepairingNanobots, 8)
                 .input(RANDOM_ACCESS_MEMORY, 64)
                 .input(wireGtDouble, ScUevSane, 16)
+                .input(plateDense, VibraniumAlloy)
                 .input(plate, AbyssalAlloy, 8)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 16))
                 .fluidInputs(PositroniumHydride.getFluid(10000))

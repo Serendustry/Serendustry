@@ -31,7 +31,7 @@ public class PlasmaFoundryRecipes {
         MetaItem<?>.MetaValueItem[] metaItemCatalysts = new MetaItem.MetaValueItem[] {
                 CATALYST_STEELS, CATALYST_COPPER_ALLOYS, CATALYST_TIN_ALLOYS, CATALYST_GOLD_ALLOYS, CATALYST_BATTERY_ALLOY, CATALYST_SOLDERING_ALLOYS,
                 CATALYST_PLATINUM_GROUP_ALLOYS, CATALYST_NAQUADAH_ALLOYS, CATALYST_SUPERCONDUCTORS,
-                CATALYST_HAM_ALLOY, CATALYST_ARCANITE, CATALYST_ABYSSAL_ALLOY
+                CATALYST_HAM_ALLOY, CATALYST_ARCANITE, CATALYST_ABYSSAL_ALLOY, CATALYST_VIBRANIUM_ALLOY
         };
         for(MetaItem<?>.MetaValueItem item : metaItemCatalysts) {
             PLASMA_FOUNDRY_RECIPES.registerCatalyst(item.getStackForm(), 50);
@@ -154,6 +154,17 @@ public class PlasmaFoundryRecipes {
                 .duration(1200).EUt(VA[ZPM]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Adamantium)
+                .input(circuit, MarkerMaterials.Tier.UHV)
+                .input(plate, Vibranium, 64)
+                .input(plateDense, Adamantium, 8)
+                .input(plate, Duranium, 64)
+                .input(gemExquisite, Azbantium, 16)
+                .fluidInputs(SelfRepairingNanobots.getFluid(144 * 4))
+                .output(CATALYST_VIBRANIUM_ALLOY)
+                .duration(1200).EUt(VA[UV]).buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder()
                 .input(frameGt, HastelloyK243)
                 .input(circuit, MarkerMaterials.Tier.UEV)
                 .input(Items.PORKCHOP, 64)
@@ -186,7 +197,7 @@ public class PlasmaFoundryRecipes {
                 .input(circuit, MarkerMaterials.Tier.UHV)
                 .input(plate, Naquadria, 64)
                 .input(wireFine, Taranium, 64)
-                .input(plate, Netherite, 64)
+                .input(stickLong, NetherizedDiamond, 64)
                 .input(gear, TungstenCarbide, 64)
                 .input(dust, Germanium, 64)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 4))
@@ -548,9 +559,31 @@ public class PlasmaFoundryRecipes {
                         HSSS.getFluid(144 * 8),
                         Nickel.getPlasma(144 * 8),
                         Iron.getPlasma(144 * 8))
+                .foundryCatalyst(CATALYST_PLATINUM_GROUP_ALLOYS)
+                .fluidOutputs(RawAdamantium.getFluid(144 * 64))
+                .duration(100*20*64/2/4).EUt(VA[UV]).buildAndRegister();
+
+        PLASMA_FOUNDRY_RECIPES.recipeBuilder()
+                .fluidInputs(Vibranium.getFluid(144 * 32),
+                        Adamantium.getFluid(144 * 16),
+                        Duranium.getFluid(144 * 8),
+                        Azbantium.getFluid(144 * 8),
+                        Tin.getPlasma(144 * 8),
+                        Americium.getPlasma(144 * 8))
+                .foundryCatalyst(CATALYST_VIBRANIUM_ALLOY)
+                .fluidOutputs(VibraniumAlloy.getFluid(144 * 64))
+                .duration(100*20*64/2/4).EUt(VA[UV]).buildAndRegister();
+
+        PLASMA_FOUNDRY_RECIPES.recipeBuilder()
+                .fluidInputs(Oganesson.getFluid(144 * 16),
+                        Azbantium.getFluid(144 * 16),
+                        HSSS.getFluid(144 * 16),
+                        Carbon.getFluid(144 * 8),
+                        CondensedStarMatter.getFluid(144 * 8),
+                        Iron.getPlasma(144 * 16))
                 .foundryCatalyst(CATALYST_STEELS)
                 .fluidOutputs(HalkonitePreparationBase.getFluid(144 * 64))
-                .duration(100*20*64/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(100*20*64/2/4).EUt(VA[UHV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Holmium.getFluid(144 * 32),
@@ -587,7 +620,7 @@ public class PlasmaFoundryRecipes {
                 .fluidInputs(Naquadria.getFluid(144 * 24),
                         Taranium.getFluid(144 * 8),
                         TungstenCarbide.getFluid(144 * 8),
-                        Netherite.getFluid(144 * 8),
+                        NetherizedDiamond.getFluid(144 * 8),
                         Germanium.getFluid(144 * 8),
                         BlackStarMatter.getFluid(3200))
                 .foundryCatalyst(CATALYST_ABYSSAL_ALLOY)

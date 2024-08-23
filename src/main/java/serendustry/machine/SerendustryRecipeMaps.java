@@ -24,6 +24,8 @@ public class SerendustryRecipeMaps {
             1, 0, 1, false);
     public static final RecipeMapHPLaserArray HP_LASER_ARRAY_RECIPES = new RecipeMapHPLaserArray("hp_laser_array", 3,
             6, 2, 3, false);
+    public static final RecipeMapBiolab BIOLAB_RECIPES = new RecipeMapBiolab("biolab", 2,
+            2, 2, 1, false);
     public static final RecipeMap<SimpleRecipeBuilder> DIGESTER_RECIPES = new RecipeMap<>("digester", 3, 9, 3, 3,
             new SimpleRecipeBuilder(), false);
 
@@ -43,5 +45,7 @@ public class SerendustryRecipeMaps {
         RecipeMaps.IMPLOSION_RECIPES.setMaxInputs(6);
         RecipeMaps.ASSEMBLER_RECIPES.setMaxFluidOutputs(1);
         RecipeMaps.CHEMICAL_RECIPES.setMaxFluidInputs(4);
+        RecipeMaps.FLUID_HEATER_RECIPES.setMaxInputs(1);
+        RecipeMaps.FLUID_HEATER_RECIPES.setMaxOutputs(1);
     }
 }

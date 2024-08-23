@@ -74,18 +74,6 @@ public class MysteriousBlobRecipes {
                 .duration(9600).EUt(VA[ZPM]).buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
-                .input(MYSTERIOUS_BLOB_NITROGEN)
-                .fluidInputs(Thaumium.getFluid(576))
-                .output(MYSTERIOUS_BLOB_OXYGEN)
-                .duration(9600).EUt(VA[UV]).buildAndRegister();
-
-        AUTOCLAVE_RECIPES.recipeBuilder()
-                .input(MYSTERIOUS_BLOB_OXYGEN)
-                .fluidInputs(Oxygen.getFluid(10000))
-                .fluidOutputs(OxygenPrime.getFluid(100))
-                .duration(9600).EUt(VA[UV]).buildAndRegister();
-
-        MIXER_RECIPES.recipeBuilder()
                 .input(MYSTERIOUS_BLOB_OXYGEN)
                 .fluidInputs(InfusedGold.getFluid(576))
                 .output(MYSTERIOUS_BLOB_NEON)

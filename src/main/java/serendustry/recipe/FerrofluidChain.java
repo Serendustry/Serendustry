@@ -1,5 +1,8 @@
 package serendustry.recipe;
 
+import gregtech.api.recipes.GTRecipeHandler;
+import net.minecraftforge.fluids.FluidStack;
+
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -22,17 +25,11 @@ public class FerrofluidChain {
                 .circuitMeta(2)
                 .duration(80).EUt(VA[LV]).buildAndRegister();
 
-       /* DISTILLERY_RECIPES.recipeBuilder() TODO: fix this crashing
-                .fluidInputs(SeedOil.getFluid(1000))
-                .output(dust, StearicAcid)
-                .circuitMeta(2)
-                .duration(240).EUt(VA[LV]).buildAndRegister();
-
         DISTILLATION_RECIPES.recipeBuilder()
                 .fluidInputs(SeedOil.getFluid(1000))
                 .output(dust, StearicAcid)
-                .circuitMeta(2)
-                .duration(240).EUt(VA[LV]).buildAndRegister();*/
+                .fluidOutputs(Lubricant.getFluid(500))
+                .duration(650).EUt(VA[MV]).buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, StearicAcid)

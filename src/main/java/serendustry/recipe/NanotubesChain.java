@@ -55,7 +55,7 @@ public class NanotubesChain {
                 .input(FIELD_GENERATOR_UHV)
                 .input(EMITTER_UHV, 4)
                 .input(plate, Neutronium, 16)
-                .input(stick, HalkoniteSteel, 64)
+                .input(stick, VibraniumAlloy, 64)
                 .input(foil, Naquadria, 64)
                 .input(cableGtDouble, Hihiirokane, 32)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 16))

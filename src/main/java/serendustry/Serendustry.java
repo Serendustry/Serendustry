@@ -3,11 +3,13 @@ package serendustry;
 import net.minecraft.client.renderer.entity.RenderCreeper;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLConstructionEvent;
@@ -30,6 +32,8 @@ import serendustry.item.material.SerendustryMaterials;
 import serendustry.machine.SerendustryMetaTileEntities;
 import serendustry.machine.SerendustryRecipeMaps;
 import serendustry.recipe.SerendustryRecipes;
+
+import static net.minecraftforge.fml.common.eventhandler.EventPriority.LOWEST;
 
 @Mod(modid = Tags.MODID,
      name = Tags.MODNAME,
@@ -70,6 +74,7 @@ public class Serendustry {
 
     @SubscribeEvent
     public void registerRecipes(RegistryEvent.Register<IRecipe> event) {
+        SerendustryRecipes.removeRecipes();
         SerendustryRecipes.registerRecipes();
     }
 

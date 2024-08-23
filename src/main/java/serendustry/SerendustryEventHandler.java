@@ -50,8 +50,8 @@ public class SerendustryEventHandler {
         appendToComponent(CABLE_TIER_UP, wireGtSingle, Hihiirokane, Lafium, Signalium, Bedrockium, Quantium);
 
         // Pipes
-        appendToComponent(PIPE_NORMAL, pipeNormalFluid, HalkoniteSteel, Lafium, StellarAlloy, ChargedDraconium, CallistoIce);
-        appendToComponent(PIPE_LARGE, pipeLargeFluid, HalkoniteSteel, Lafium, StellarAlloy, ChargedDraconium, CallistoIce);
+        appendToComponent(PIPE_NORMAL, pipeNormalFluid, VibraniumAlloy, HalkoniteSteel, StellarAlloy, ChargedDraconium, CallistoIce);
+        appendToComponent(PIPE_LARGE, pipeLargeFluid, VibraniumAlloy, HalkoniteSteel, StellarAlloy, ChargedDraconium, CallistoIce);
 
         // Glass
         appendToComponent(GLASS, block, ChromaticGlass, ChromaticGlass, ChromaticGlass, ChromaticGlass, ChromaticGlass);
@@ -63,7 +63,7 @@ public class SerendustryEventHandler {
         appendToComponent(HULL_PLATE, plate, RadoxPolymer, RadoxPolymer, RadoxPolymer, RadoxPolymer, RadoxPolymer);
 
         // Rotor
-        appendToComponent(ROTOR, rotor, HalkoniteSteel, TastyNeutronium, EnderiiumBase, InfinityCatalyst,
+        appendToComponent(ROTOR, rotor, VibraniumAlloy, HalkoniteSteel, EnderiiumBase, InfinityCatalyst,
                 Quantium);
 
         // Grinder

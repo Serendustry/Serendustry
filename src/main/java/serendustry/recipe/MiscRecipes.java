@@ -185,6 +185,7 @@ public class MiscRecipes {
                     .duration(256).EUt(VA[HV]).buildAndRegister();
 
             CVD_RECIPES.recipeBuilder()
+                    .circuitMeta(1)
                     .fluidInputs(Methane.getFluid(100), Hydrogen.getFluid(10000))
                     .output(gemExquisite, Diamond)
                     .duration(400).EUt(VA[HV]).buildAndRegister();
