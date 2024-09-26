@@ -380,6 +380,8 @@ public class SerendustryMaterials {
     public static Material ElvenElementium;
     public static Material GaiaSpirit;
 
+    public static Material OganessonTetratennesside;
+
     // Custom iconsets
     public static final MaterialIconSet INFINITY = new MaterialIconSet("infinity");
 
@@ -507,6 +509,7 @@ public class SerendustryMaterials {
         Moscovium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
         Diamond.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
         Germanium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
+        Tennessine.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
         Oganesson.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
 
         Samarium.setProperty(PropertyKey.ORE, new OreProperty());
@@ -930,7 +933,7 @@ public class SerendustryMaterials {
                 .build()
                 .setFormula("If");
 
-        Infinity = new Material.Builder(39, Serendustry.ID("infinity"))
+        Infinity = new Material.Builder(39, Serendustry.ID("infinity")) // todo: fix block not having custom texture
                 .ingot(3).liquid(new FluidBuilder().temperature(20000)).plasma()
                 .color(0xFFFFFF).iconSet(INFINITY)
                 .flags(STD_METAL, GENERATE_FOIL, GENERATE_FINE_WIRE, GENERATE_LONG_ROD,
@@ -938,7 +941,6 @@ public class SerendustryMaterials {
                 .blast(b -> b
                         .temp(10800, GasTier.HIGHEST)
                         .blastStats(VA[UXV], 12000))
-                .fluidPipeProperties(1000000, 7500, true, true, true, true)
                 .toolStats(ToolProperty.Builder.of(250.0f, 200.0f, 65535, 8)
                         .attackSpeed(1f).enchantability(33).magnetic().unbreakable().build())
                 .build()
@@ -1930,7 +1932,7 @@ public class SerendustryMaterials {
         Cyclopentadiene = new Material.Builder(171, Serendustry.ID("cyclopentadiene"))
                 .color(0xEFC76F).liquid(new FluidBuilder())
                 .build()
-                .setFormula("C5H6");
+                .setFormula("C5H6"); // todo: why numbers not little???
 
         ButeneMixture = new Material.Builder(172, Serendustry.ID("butene_mixture"))
                 .color(0x62512A).liquid(new FluidBuilder())
@@ -2044,7 +2046,7 @@ public class SerendustryMaterials {
                 .build();
 
         SemiconductorGradeSilicon = new Material.Builder(188, Serendustry.ID("semiconductor_grade_silicon"))
-                .ingot(1).color(0x3a395a).iconSet(SHINY)
+                .ingot(1).color(0x3a395a).iconSet(SHINY).liquid(new FluidBuilder().temperature(1200))
                 .components(Silicon, 1)
                 .flags(STD_METAL)
                 .blastTemp(2273, GasTier.LOW, VA[MV], 240)
@@ -2589,6 +2591,9 @@ public class SerendustryMaterials {
                 .flags(STD_METAL, DISABLE_DECOMPOSITION, GENERATE_FOIL, GENERATE_LONG_ROD, GENERATE_ROTOR, GENERATE_GEAR, GENERATE_SMALL_GEAR)
                 .components(Naquadria, 3, Taranium, 1, TungstenCarbide, 1, NetherizedDiamond, 1, Germanium, 1)
                 .blastTemp(10800, GasTier.HIGHEST, VA[UHV], 1600)
+                .toolStats(ToolProperty.Builder.of(200.0f, 190.0f, 65535, 7)
+                        .attackSpeed(1f).enchantability(33).build())
+                .fluidPipeProperties(14000, 5500, true, true, true, true) // todo compare to nt
                 .build()
                 .setFormula("W2(C(NrAu4))2TnGe(SiC)???");
 
@@ -2676,10 +2681,18 @@ public class SerendustryMaterials {
         oreProp.setOreByProducts(Azbantium, Azbantium, Azbantium, Azbantium);
         oreProp.setWashedIn(Diamond);
 
+        OganessonTetratennesside = new Material.Builder(282, Serendustry.ID("oganesson_tetratennesside"))
+                .ingot(3).liquid(new FluidBuilder().temperature(11500))
+                .color(0x7c00ad).iconSet(METALLIC)
+                .components(Oganesson, 1, Tennessine, 4)
+                .flags(STD_METAL)
+                .blastTemp(10800, GasTier.HIGHEST, VA[UV], 1500)
+                .build();
+
         HalkonitePreparationBase = new Material.Builder(163, Serendustry.ID("halkonite_preparation_base"))
                 .liquid(new FluidBuilder().temperature(8000))
                 .color(0x11B95A).iconSet(BRIGHT)
-                .components(Oganesson, 2, Azbantium, 2, HSSS, 2, Carbon, 1, CondensedStarMatter, 1) // todo: change this to take OgTs4?
+                .components(OganessonTetratennesside, 2, Azbantium, 2, HSSS, 2, Carbon, 1, CondensedStarMatter, 1)
                 .build();
 
         VibraniumAlloy = new Material.Builder(276, Serendustry.ID("vibranium_alloy"))
@@ -2697,6 +2710,7 @@ public class SerendustryMaterials {
                 .color(0x35273A).iconSet(DULL)
                 .flags(STD_METAL)
                 .blastTemp(10800, GasTier.HIGHEST, VA[MAX], 1900)
+                .fluidPipeProperties(18000, 6000, true, true, true, true) // todo compare to nt
                 .build();
 
         Manasteel = new Material.Builder(278, Serendustry.ID("manasteel"))
@@ -2713,7 +2727,7 @@ public class SerendustryMaterials {
                 .flags(STD_METAL)
                 .toolStats(ToolProperty.Builder.of(15.0f, 8.0f, 3072, 4)
                         .attackSpeed(1f).enchantability(33).build())
-                .blastTemp(4500, GasTier.HIGHEST, VA[MAX], 1900)
+                .blastTemp(4500, GasTier.MID, VA[EV], 900)
                 .build();
 
         ElvenElementium = new Material.Builder(280, Serendustry.ID("elven_elementium"))
@@ -2722,7 +2736,7 @@ public class SerendustryMaterials {
                 .flags(STD_METAL)
                 .toolStats(ToolProperty.Builder.of(18.0f, 7.0f, 1024, 3)
                         .attackSpeed(1f).enchantability(33).build())
-                .blastTemp(4500, GasTier.HIGHEST, VA[MAX], 1900)
+                .blastTemp(4500, GasTier.MID, VA[EV], 600)
                 .build();
 
         GaiaSpirit = new Material.Builder(281, Serendustry.ID("gaia_spirit")) // todo: add ingotGaiaSpirit oredict to botania's Gaia Spirit Ingot

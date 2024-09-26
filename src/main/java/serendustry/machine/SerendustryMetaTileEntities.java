@@ -22,6 +22,8 @@ public class SerendustryMetaTileEntities {
     public static MetaTileEntitySonicator SONICATOR;
     public static MetaTileEntityHPLaserArray HP_LASER_ARRAY;
     public static MetaTileEntityBiolab BIOLAB;
+    public static MetaTileEntityAdvancedFusionReactor ADVANCED_FUSION_REACTOR;
+    public static MetaTileEntityYggdrasil YGGDRASIL;
 
     public static void preInit() {
         // todo claim an id range
@@ -45,5 +47,9 @@ public class SerendustryMetaTileEntities {
                 new MetaTileEntityHPLaserArray(Serendustry.ID("hp_laser_array")));
         BIOLAB = registerMetaTileEntity(4009,
                 new MetaTileEntityBiolab(Serendustry.ID("biolab")));
+        ADVANCED_FUSION_REACTOR = registerMetaTileEntity(4010,
+                new MetaTileEntityAdvancedFusionReactor(Serendustry.ID("advanced_fusion_reactor")));
+        YGGDRASIL = registerMetaTileEntity(4011,
+                new MetaTileEntityYggdrasil(Serendustry.ID("yggdrasil")));
     }
 }

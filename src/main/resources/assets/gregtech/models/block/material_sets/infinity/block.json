@@ -1,5 +1,5 @@
 {
-  "parent": "item/generated",
+  "parent": "gregtech:block/tinted_cube_all",
   "textures": {
     "layer0": "gregtech:item/material_sets/infinity/block"
   }

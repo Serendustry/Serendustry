@@ -25,8 +25,13 @@ public class MetaTileEntityBiolab extends RecipeMapMultiblockController {
     }
 
     @Override
-    public MetaTileEntityHPLaserArray createMetaTileEntity(IGregTechTileEntity te) {
-        return new MetaTileEntityHPLaserArray(metaTileEntityId);
+    public MetaTileEntityBiolab createMetaTileEntity(IGregTechTileEntity te) {
+        return new MetaTileEntityBiolab(metaTileEntityId);
+    }
+
+    @Override
+    public boolean hasMaintenanceMechanics() {
+        return false;
     }
 
     @Override

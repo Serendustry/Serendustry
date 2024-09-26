@@ -39,38 +39,38 @@ public class SerendustryEventHandler {
     @SubscribeEvent
     public void appendCraftingComponent(GregTechAPI.RegisterEvent<CraftingComponent> event) {
         // Wires / Cables
-        appendToComponent(WIRE_ELECTRIC, wireGtSingle, Hihiirokane, Lafium, Signalium, Bedrockium, Quantium);
-        appendToComponent(WIRE_QUAD, wireGtQuadruple, Hihiirokane, Lafium, Signalium, Bedrockium, Quantium);
-        appendToComponent(WIRE_OCT, wireGtOctal, Hihiirokane, Lafium, Signalium, Bedrockium, Quantium);
-        appendToComponent(WIRE_HEX, wireGtHex, Hihiirokane, Lafium, Signalium, Bedrockium, Quantium);
-        appendToComponent(GTValues.UEV, CABLE, cableGtSingle, Lafium, Signalium, Bedrockium, Quantium);
-        appendToComponent(GTValues.UEV, CABLE_QUAD, cableGtQuadruple, Lafium, Signalium, Bedrockium, Quantium);
-        appendToComponent(GTValues.UEV, CABLE_OCT, cableGtOctal, Lafium, Signalium, Bedrockium, Quantium);
-        appendToComponent(GTValues.UEV, CABLE_HEX, cableGtHex, Lafium, Signalium, Bedrockium, Quantium);
-        appendToComponent(CABLE_TIER_UP, wireGtSingle, Hihiirokane, Lafium, Signalium, Bedrockium, Quantium);
+        appendToComponent(WIRE_ELECTRIC, wireGtSingle, Hihiirokane, Quantium40, Signalium, Bedrockium, Quantium);
+        appendToComponent(WIRE_QUAD, wireGtQuadruple, Hihiirokane, Quantium40, Signalium, Bedrockium, Quantium);
+        appendToComponent(WIRE_OCT, wireGtOctal, Hihiirokane, Quantium40, Signalium, Bedrockium, Quantium);
+        appendToComponent(WIRE_HEX, wireGtHex, Hihiirokane, Quantium40, Signalium, Bedrockium, Quantium);
+        appendToComponent(GTValues.UEV, CABLE, cableGtSingle, Quantium40, Signalium, Bedrockium, Quantium);
+        appendToComponent(GTValues.UEV, CABLE_QUAD, cableGtQuadruple, Quantium40, Signalium, Bedrockium, Quantium);
+        appendToComponent(GTValues.UEV, CABLE_OCT, cableGtOctal, Quantium40, Signalium, Bedrockium, Quantium);
+        appendToComponent(GTValues.UEV, CABLE_HEX, cableGtHex, Quantium40, Signalium, Bedrockium, Quantium);
+        appendToComponent(CABLE_TIER_UP, wireGtSingle, Hihiirokane, Quantium40, Signalium, Bedrockium, Quantium);
 
         // Pipes
-        appendToComponent(PIPE_NORMAL, pipeNormalFluid, VibraniumAlloy, HalkoniteSteel, StellarAlloy, ChargedDraconium, CallistoIce);
-        appendToComponent(PIPE_LARGE, pipeLargeFluid, VibraniumAlloy, HalkoniteSteel, StellarAlloy, ChargedDraconium, CallistoIce);
+        appendToComponent(PIPE_NORMAL, pipeNormalFluid, VibraniumAlloy, AbyssalAlloy, DeepDarkSteel, ChargedDraconium, CallistoIce);
+        appendToComponent(PIPE_LARGE, pipeLargeFluid, VibraniumAlloy, AbyssalAlloy, DeepDarkSteel, ChargedDraconium, CallistoIce);
 
         // Glass
         appendToComponent(GLASS, block, ChromaticGlass, ChromaticGlass, ChromaticGlass, ChromaticGlass, ChromaticGlass);
 
         // Plates
-        appendToComponent(GTValues.UEV, PLATE, plate, HastelloyK243, Enderiiium, AwakenedDraconium, Quantum);
-        appendToComponent(GTValues.UEV, DOUBLE_PLATE, plateDouble, HastelloyK243, Enderiiium, AwakenedDraconium,
+        appendToComponent(GTValues.UEV, PLATE, plate, HalkoniteSteel, Infinity, AwakenedDraconium, Quantum);
+        appendToComponent(GTValues.UEV, DOUBLE_PLATE, plateDouble, HalkoniteSteel, Infinity, AwakenedDraconium,
                 Quantum);
         appendToComponent(HULL_PLATE, plate, RadoxPolymer, RadoxPolymer, RadoxPolymer, RadoxPolymer, RadoxPolymer);
 
         // Rotor
-        appendToComponent(ROTOR, rotor, VibraniumAlloy, HalkoniteSteel, EnderiiumBase, InfinityCatalyst,
+        appendToComponent(ROTOR, rotor, VibraniumAlloy, HalkoniteSteel, Infinity, InfinityCatalyst,
                 Quantium);
 
         // Grinder
         // TODO: More Grinding Head tiers?
 
         // Sawblade
-        appendToComponent(SAWBLADE, toolHeadBuzzSaw, Neutronium, HastelloyK243, StellarAlloy, AwakenedDraconium,
+        appendToComponent(SAWBLADE, toolHeadBuzzSaw, Neutronium, AbyssalAlloy, Infinity, AwakenedDraconium,
                 Quantum);
 
         // Coils
@@ -79,12 +79,12 @@ public class SerendustryEventHandler {
         appendToComponent(COIL_ELECTRIC, wireGtOctal, Hihiirokane, Quantium40, Signalium, Bedrockium, Quantium);
 
         // Sticks
-        appendToComponent(STICK_MAGNETIC, stickLong, TengamAttuned, TengamAttuned, TengamAttuned, KerrBlackHole,
+        appendToComponent(STICK_MAGNETIC, stickLong, MagneticHolmium, TengamAttuned, TengamAttuned, KerrBlackHole,
                 KerrBlackHole);
         appendToComponent(GTValues.IV, STICK_ELECTROMAGNETIC, stickLong, VanadiumGallium, VanadiumGallium,
-                VanadiumGallium, VanadiumGallium, TengamAttuned, TengamAttuned, TengamAttuned, KerrBlackHole,
+                VanadiumGallium, MagneticHolmium, MagneticHolmium, TengamAttuned, TengamAttuned, KerrBlackHole,
                 KerrBlackHole);
-        appendToComponent(GTValues.UEV, STICK_DISTILLATION, spring, Quantium40, Signalium, Bedrockium, Quantium);
+        appendToComponent(GTValues.UEV, STICK_DISTILLATION, spring, Quantium40, Infinity, Bedrockium, Quantium);
 
         // Not used by base CEu
         appendToComponent(GTValues.UV, STICK_RADIOACTIVE, stickLong, Tritanium, EnrichedNaquadahAlloy, Actinoids,
@@ -108,7 +108,7 @@ public class SerendustryEventHandler {
         VOLTAGE_COIL.appendIngredients(map2);
 
         // Spring
-        appendToComponent(GTValues.UEV, SPRING, spring, Hihiirokane, Quantium40, Signalium, Bedrockium, Quantium);
+        appendToComponent(GTValues.UEV, SPRING, spring, Hihiirokane, Quantium40, Infinity, Bedrockium, Quantium);
     }
 
     private void appendToComponent(Component component, OrePrefix prefix, Material... materials) {

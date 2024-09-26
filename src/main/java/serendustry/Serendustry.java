@@ -29,6 +29,7 @@ import serendustry.entity.FriendlyCreeperEntity;
 import serendustry.item.SerendustryMetaItems;
 import serendustry.item.SerendustryToolItems;
 import serendustry.item.material.SerendustryMaterials;
+import serendustry.item.material.VazkiiWhatAreYouDoing;
 import serendustry.machine.SerendustryMetaTileEntities;
 import serendustry.machine.SerendustryRecipeMaps;
 import serendustry.recipe.SerendustryRecipes;
@@ -86,6 +87,11 @@ public class Serendustry {
     @SubscribeEvent
     public void registerMaterials(MaterialEvent event) {
         SerendustryMaterials.init();
+
+        // For some reason, Botania's Gaia Spirit Ingot is OreDicted as "gaiaIngot", so we need to add a normal OreDict to it for us to use
+        if (Loader.isModLoaded("botania")) {
+            VazkiiWhatAreYouDoing.init();
+        }
     }
 
     @SubscribeEvent

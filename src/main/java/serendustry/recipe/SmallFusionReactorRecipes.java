@@ -255,10 +255,10 @@ public class SmallFusionReactorRecipes {
                 .output(ingot, Livermorium, 1)
                 .duration(400).EUt(VA[ZPM] + 2).buildAndRegister();
 
-        ALLOY_SMELTER_RECIPES.recipeBuilder()
+        /*ALLOY_SMELTER_RECIPES.recipeBuilder()
                 .input(ingot, Iridium, 1).input(ingot, Zirconium, 1)
                 .output(ingot, Tennessine, 1)
-                .duration(400).EUt(VA[ZPM] + 2).buildAndRegister();
+                .duration(400).EUt(VA[ZPM] + 2).buildAndRegister();*/
 
         ALLOY_SMELTER_RECIPES.recipeBuilder()
                 .input(ingot, Promethium, 1).input(ingot, Technetium22, 1)

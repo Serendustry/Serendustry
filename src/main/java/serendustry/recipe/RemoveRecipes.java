@@ -118,9 +118,5 @@ public class RemoveRecipes {
                 MACHINE_CASING.getItemVariant(UHV),
                 OreDictUnifier.get(cableGtSingle, Europium, 2) },
                 new FluidStack[] { Polybenzimidazole.getFluid(288) });
-
-        // Botania compat (should be moved to a different file)
-        if (Loader.isModLoaded("botania")) { OreDictUnifier.registerOre(new ItemStack(Item.REGISTRY.getObject(new ResourceLocation("botania", "manaresource")), 1, 14), "ingotGaiaSpirit"); }
-
     }
 }

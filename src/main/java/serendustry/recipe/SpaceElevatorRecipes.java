@@ -153,7 +153,7 @@ public class SpaceElevatorRecipes {
                 .chancedOutput(PITCHBLENDE_PLANETOID_DATA, 300, 0)
                 .chancedOutput(COOPERITE_PLANETOID_DATA, 300, 0)
                 .chancedOutputLogic(ChancedOutputLogic.XOR)
-                .duration(4000).EUt(VA[UHV]).buildAndRegister();
+                .duration(8000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_SCANNING_DRONE_MK_2)
@@ -170,7 +170,7 @@ public class SpaceElevatorRecipes {
                 .chancedOutput(NETHERITE_PLANETOID_DATA, 900, 0)
                 .chancedOutput(TENGAM_PLANETOID_DATA, 700, 0)
                 .chancedOutputLogic(ChancedOutputLogic.XOR)
-                .duration(6000).EUt(VA[UHV]).buildAndRegister();
+                .duration(8000).EUt(VA[UHV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(STAR_SCANNING_DRONE)
@@ -185,7 +185,7 @@ public class SpaceElevatorRecipes {
                 .chancedOutput(BLACK_DWARF_STAR_DATA, 1200, 0)
                 .chancedOutput(NEUTRON_STAR_DATA, 2200, 0)
                 .chancedOutputLogic(ChancedOutputLogic.XOR)
-                .duration(6000).EUt(VA[UHV]).buildAndRegister();
+                .duration(12000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(STAR_SCANNING_DRONE_MK_2)
@@ -200,7 +200,7 @@ public class SpaceElevatorRecipes {
                 .chancedOutput(NEUTRON_STAR_DATA, 2200, 0)
                 .chancedOutput(PULSAR_STAR_DATA, 500, 0)
                 .chancedOutputLogic(ChancedOutputLogic.XOR)
-                .duration(9000).EUt(VA[UHV]).buildAndRegister();
+                .duration(12000).EUt(VA[UHV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_HARVESTING_DRONE)
@@ -209,7 +209,7 @@ public class SpaceElevatorRecipes {
                 .output(Blocks.STONE, 64 * 2048)
                 .output(Blocks.COBBLESTONE, 64 * 2048)
                 .output(SPACEWEED, 1)
-                .duration(100).EUt(VA[UHV]).buildAndRegister();
+                .duration(200).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_HARVESTING_DRONE)
@@ -217,7 +217,7 @@ public class SpaceElevatorRecipes {
                 .fluidInputs(RocketFuel.getFluid(100))
                 .output(Blocks.NETHERRACK, 64 * 4096)
                 .output(SPACEWEED, 1)
-                .duration(100).EUt(VA[UHV]).buildAndRegister();
+                .duration(200).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_HARVESTING_DRONE)
@@ -225,7 +225,7 @@ public class SpaceElevatorRecipes {
                 .fluidInputs(RocketFuel.getFluid(1000))
                 .output(Blocks.OBSIDIAN, 64 * 512)
                 .output(SPACEWEED, 20)
-                .duration(2000).EUt(VA[UHV]).buildAndRegister();
+                .duration(4000).EUt(VA[UHV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_HARVESTING_DRONE)
@@ -236,7 +236,7 @@ public class SpaceElevatorRecipes {
                 .output(ore, Gold, 64 * 16)
                 .output(Blocks.STONE, 64 * 256)
                 .output(SPACEWEED, 60)
-                .duration(6000).EUt(VA[UHV]).buildAndRegister();
+                .duration(12000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_HARVESTING_DRONE)
@@ -248,7 +248,7 @@ public class SpaceElevatorRecipes {
                 .output(ore, Realgar, 64 * 16)
                 .output(Blocks.STONE, 64 * 256)
                 .output(SPACEWEED, 60)
-                .duration(6000).EUt(VA[UHV]).buildAndRegister();
+                .duration(12000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_HARVESTING_DRONE)
@@ -260,7 +260,7 @@ public class SpaceElevatorRecipes {
                 .output(ore, Grossular, 64 * 16)
                 .output(Blocks.STONE, 64 * 256)
                 .output(SPACEWEED, 60)
-                .duration(6000).EUt(VA[UHV]).buildAndRegister();
+                .duration(12000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_HARVESTING_DRONE)
@@ -274,7 +274,7 @@ public class SpaceElevatorRecipes {
                 .output(ore, PeatCoal, 64 * 64)
                 .output(Blocks.STONE, 64 * 256)
                 .output(SPACEWEED, 30)
-                .duration(3000).EUt(VA[UHV]).buildAndRegister();
+                .duration(6000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_HARVESTING_DRONE)
@@ -285,7 +285,7 @@ public class SpaceElevatorRecipes {
                 .output(ore, Diamond, 64 * 8)
                 .output(Blocks.STONE, 64 * 256)
                 .output(SPACEWEED, 60)
-                .duration(6000).EUt(VA[UHV]).buildAndRegister();
+                .duration(12000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_HARVESTING_DRONE)
@@ -295,7 +295,7 @@ public class SpaceElevatorRecipes {
                 .output(ore, Tin, 64 * 48)
                 .output(Blocks.STONE, 64 * 256)
                 .output(SPACEWEED, 60)
-                .duration(6000).EUt(VA[UHV]).buildAndRegister();
+                .duration(12000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_HARVESTING_DRONE)
@@ -306,7 +306,7 @@ public class SpaceElevatorRecipes {
                 .output(ore, Pyrochlore, 64 * 48)
                 .output(Blocks.STONE, 64 * 256)
                 .output(SPACEWEED, 60)
-                .duration(6000).EUt(VA[UHV]).buildAndRegister();
+                .duration(12000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_HARVESTING_DRONE)
@@ -318,7 +318,7 @@ public class SpaceElevatorRecipes {
                 .output(ore, Pentlandite, 64 * 16)
                 .output(Blocks.STONE, 64 * 256)
                 .output(SPACEWEED, 60)
-                .duration(6000).EUt(VA[UHV]).buildAndRegister();
+                .duration(12000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_HARVESTING_DRONE)
@@ -330,7 +330,7 @@ public class SpaceElevatorRecipes {
                 .output(ore, Bornite, 64 * 12)
                 .output(Blocks.STONE, 64 * 256)
                 .output(SPACEWEED, 80)
-                .duration(8000).EUt(VA[UHV]).buildAndRegister();
+                .duration(16000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_HARVESTING_DRONE)
@@ -341,7 +341,7 @@ public class SpaceElevatorRecipes {
                 .output(ore, Neodymium, 64 * 24)
                 .output(Blocks.STONE, 64 * 256)
                 .output(SPACEWEED, 80)
-                .duration(8000).EUt(VA[UHV]).buildAndRegister();
+                .duration(16000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_HARVESTING_DRONE)
@@ -353,7 +353,7 @@ public class SpaceElevatorRecipes {
                 .output(ore, Netherite, 64 * 8)
                 .output(Blocks.NETHERRACK, 64 * 256)
                 .output(SPACEWEED, 80)
-                .duration(8000).EUt(VA[UHV]).buildAndRegister();
+                .duration(16000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_HARVESTING_DRONE)
@@ -363,7 +363,7 @@ public class SpaceElevatorRecipes {
                 .output(ore, Plutonium239, 64 * 16)
                 .output(Blocks.STONE, 64 * 256)
                 .output(SPACEWEED, 120)
-                .duration(12000).EUt(VA[UHV]).buildAndRegister();
+                .duration(24000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_HARVESTING_DRONE)
@@ -375,7 +375,7 @@ public class SpaceElevatorRecipes {
                 .output(ore, Diamond, 64 * 8)
                 .output(Blocks.STONE, 64 * 256)
                 .output(SPACEWEED, 120)
-                .duration(12000).EUt(VA[UHV]).buildAndRegister();
+                .duration(24000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_HARVESTING_DRONE)
@@ -387,7 +387,7 @@ public class SpaceElevatorRecipes {
                 .output(ore, Diamond, 64 * 8)
                 .output(Blocks.STONE, 64 * 256)
                 .output(SPACEWEED, 120)
-                .duration(12000).EUt(VA[UHV]).buildAndRegister();
+                .duration(24000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_HARVESTING_DRONE)
@@ -399,7 +399,7 @@ public class SpaceElevatorRecipes {
                 .output(ore, Samarium, 64 * 12)
                 .output(Blocks.STONE, 64 * 256)
                 .output(SPACEWEED, 120)
-                .duration(12000).EUt(VA[UHV]).buildAndRegister();
+                .duration(24000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_HARVESTING_DRONE)
@@ -410,7 +410,7 @@ public class SpaceElevatorRecipes {
                 .output(ore, Lead, 64 * 24)
                 .output(Blocks.STONE, 64 * 256)
                 .output(SPACEWEED, 60)
-                .duration(6000).EUt(VA[UHV]).buildAndRegister();
+                .duration(12000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_HARVESTING_DRONE)
@@ -436,7 +436,7 @@ public class SpaceElevatorRecipes {
                 .output(ore, CheeseMozzarella, 64 * 8)
                 .output(Blocks.STONE, 64 * 256)
                 .output(SPACEWEED, 30)
-                .duration(3000).EUt(VA[UHV]).buildAndRegister();
+                .duration(6000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_HARVESTING_DRONE)
@@ -459,7 +459,7 @@ public class SpaceElevatorRecipes {
                 .output(ore, Spessartine, 64 * 12)
                 .output(Blocks.STONE, 64 * 256)
                 .output(SPACEWEED, 60)
-                .duration(6000).EUt(VA[UHV]).buildAndRegister();
+                .duration(12000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_HARVESTING_DRONE)
@@ -471,7 +471,7 @@ public class SpaceElevatorRecipes {
                 .output(ore, Spodumene, 64 * 16)
                 .output(Blocks.STONE, 64 * 256)
                 .output(SPACEWEED, 60)
-                .duration(6000).EUt(VA[UHV]).buildAndRegister();
+                .duration(12000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_HARVESTING_DRONE)
@@ -483,7 +483,7 @@ public class SpaceElevatorRecipes {
                 .output(ore, Calcite, 64 * 16)
                 .output(Blocks.STONE, 64 * 256)
                 .output(SPACEWEED, 60)
-                .duration(6000).EUt(VA[UHV]).buildAndRegister();
+                .duration(12000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_HARVESTING_DRONE)
@@ -493,7 +493,7 @@ public class SpaceElevatorRecipes {
                 .output(ore, Uraninite, 64 * 64)
                 .output(Blocks.STONE, 64 * 256)
                 .output(SPACEWEED, 60)
-                .duration(6000).EUt(VA[UHV]).buildAndRegister();
+                .duration(12000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_HARVESTING_DRONE)
@@ -505,7 +505,7 @@ public class SpaceElevatorRecipes {
                 .output(ore, Barite, 64 * 16)
                 .output(Blocks.STONE, 64 * 256)
                 .output(SPACEWEED, 60)
-                .duration(6000).EUt(VA[UHV]).buildAndRegister();
+                .duration(12000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_HARVESTING_DRONE)
@@ -518,7 +518,7 @@ public class SpaceElevatorRecipes {
                 .output(ore, Originite, 16)
                 .output(Blocks.STONE, 64 * 256)
                 .output(SPACEWEED, 120) // ~10.7 Originium, or 21.5 Orundum, or 5.4 boules
-                .duration(12000).EUt(VA[UHV]).buildAndRegister();
+                .duration(24000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_HARVESTING_DRONE)
@@ -530,76 +530,76 @@ public class SpaceElevatorRecipes {
                 .output(ore, Originite, 8) // ~1.6 Originium, or 3.2 Orundum, or 0.8 boules
                 .output(Blocks.STONE, 64 * 256)
                 .output(SPACEWEED, 120)
-                .duration(12000).EUt(VA[UHV]).buildAndRegister();
+                .duration(24000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(STAR_HARVESTING_DRONE)
                 .input(YELLOW_DWARF_STAR_DATA)
                 .fluidInputs(RocketFuel.getFluid(20000))
                 .fluidOutputs(YellowStarMatter.getFluid(10000))
-                .duration(8000).EUt(VA[UHV]).buildAndRegister();
+                .duration(16000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(STAR_HARVESTING_DRONE)
                 .input(RED_DWARF_STAR_DATA)
                 .fluidInputs(RocketFuel.getFluid(20000))
                 .fluidOutputs(RedStarMatter.getFluid(10000))
-                .duration(8000).EUt(VA[UHV]).buildAndRegister();
+                .duration(16000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(STAR_HARVESTING_DRONE)
                 .input(RED_GIANT_STAR_DATA)
                 .fluidInputs(RocketFuel.getFluid(40000))
                 .fluidOutputs(RedStarMatter.getFluid(80000))
-                .duration(12000).EUt(VA[UEV]).buildAndRegister();
+                .duration(24000).EUt(VA[UHV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(STAR_HARVESTING_DRONE)
                 .input(RED_SUPERGIANT_STAR_DATA)
                 .fluidInputs(RocketFuel.getFluid(80000))
                 .fluidOutputs(RedStarMatter.getFluid(640000))
-                .duration(16000).EUt(VA[UIV]).buildAndRegister();
+                .duration(32000).EUt(VA[UEV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(STAR_HARVESTING_DRONE)
                 .input(BLUE_GIANT_STAR_DATA)
                 .fluidInputs(RocketFuel.getFluid(40000))
                 .fluidOutputs(BlueStarMatter.getFluid(80000))
-                .duration(20000).EUt(VA[UHV]).buildAndRegister();
+                .duration(40000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(STAR_HARVESTING_DRONE)
                 .input(WHITE_DWARF_STAR_DATA)
                 .fluidInputs(RocketFuel.getFluid(20000))
                 .fluidOutputs(WhiteStarMatter.getFluid(10000))
-                .duration(8000).EUt(VA[UHV]).buildAndRegister();
+                .duration(16000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(STAR_HARVESTING_DRONE)
                 .input(BROWN_DWARF_STAR_DATA)
                 .fluidInputs(RocketFuel.getFluid(20000))
                 .fluidOutputs(BrownStarMatter.getFluid(10000))
-                .duration(8000).EUt(VA[UHV]).buildAndRegister();
+                .duration(16000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(STAR_HARVESTING_DRONE)
                 .input(BLACK_DWARF_STAR_DATA)
                 .fluidInputs(RocketFuel.getFluid(20000))
                 .fluidOutputs(BlackStarMatter.getFluid(10000))
-                .duration(8000).EUt(VA[UHV]).buildAndRegister();
+                .duration(16000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(STAR_HARVESTING_DRONE)
                 .input(NEUTRON_STAR_DATA)
                 .fluidInputs(RocketFuel.getFluid(35000))
                 .fluidOutputs(NeutronStarMatter.getFluid(10000))
-                .duration(12000).EUt(VA[UHV]).buildAndRegister();
+                .duration(24000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(STAR_HARVESTING_DRONE)
                 .input(PULSAR_STAR_DATA)
                 .fluidInputs(RocketFuel.getFluid(80000))
                 .fluidOutputs(PulsarStarMatter.getFluid(10000))
-                .duration(6000).EUt(VA[UIV]).buildAndRegister();
+                .duration(12000).EUt(VA[UEV]).buildAndRegister();
     }
 }

@@ -63,6 +63,11 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController  
     }
 
     @Override
+    public boolean hasMaintenanceMechanics() {
+        return false;
+    }
+
+    @Override
     public boolean checkRecipe(@NotNull Recipe recipe, boolean consumeIfSuccess) {
         ItemStack[] expectedCatalysts = recipe.getProperty(PlasmaFoundryCatalystProperty.getInstance(), new ItemStack[0]);
         if(expectedCatalysts.length != 0) {

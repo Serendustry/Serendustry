@@ -1,0 +1,7 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "gregtech:item/metaitems/power_unit_uhv",
+    "layer1": "gregtech:items/tools/wrench_electric"
+  }
+}

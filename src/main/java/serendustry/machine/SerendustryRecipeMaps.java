@@ -7,7 +7,7 @@ import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 public class SerendustryRecipeMaps {
 
     public static final RecipeMapIndustrialLaboratory LABORATORY_RECIPES = new RecipeMapIndustrialLaboratory(
-            "industrial_laboratory", 4, 4, 4, 4, false);
+            "industrial_laboratory", 6, 6, 6, 6, false);
     public static final RecipeMapTranscendentPlasmaMixer PLASMA_MIXER_RECIPES = new RecipeMapTranscendentPlasmaMixer(
             "transcendent_plasma_mixer", 0, 0, 9, 2, false);
     public static final RecipeMapSpaceElevator SPACE_ELEVATOR_RECIPES = new RecipeMapSpaceElevator("space_elevator", 2,
@@ -28,6 +28,8 @@ public class SerendustryRecipeMaps {
             2, 2, 1, false);
     public static final RecipeMap<SimpleRecipeBuilder> DIGESTER_RECIPES = new RecipeMap<>("digester", 3, 9, 3, 3,
             new SimpleRecipeBuilder(), false);
+    public static final RecipeMapYggdrasil YGGDRASIL_RECIPES = new RecipeMapYggdrasil("yggdrasil", 1,
+            1, 1, 1, false);
 
     public static void preInit() {
         RecipeMaps.BLAST_RECIPES.setMaxFluidInputs(2);

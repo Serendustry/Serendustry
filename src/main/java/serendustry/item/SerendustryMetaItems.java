@@ -1,5 +1,7 @@
 package serendustry.item;
 
+import gregtech.api.GTValues;
+import gregtech.api.items.metaitem.ElectricStats;
 import net.minecraft.item.Item;
 
 import gregtech.api.items.metaitem.MetaItem;
@@ -182,6 +184,12 @@ public class SerendustryMetaItems {
     public static MetaItem<?>.MetaValueItem CATALYST_VIBRANIUM_ALLOY;
     public static MetaItem<?>.MetaValueItem NETHERITE_PLANETOID_DATA;
 
+    public static MetaItem<?>.MetaValueItem POWER_UNIT_UHV;
+    //public static MetaItem<?>.MetaValueItem TRISHULA;
+
+    public static MetaItem<?>.MetaValueItem CATALYST_HALKONITE;
+    public static MetaItem<?>.MetaValueItem CULTURE_XENOXENE;
+
     public static void preInit() {
         ITEMS = new StandardMetaItem();
         // todo ???
@@ -359,5 +367,9 @@ public class SerendustryMetaItems {
         VIBRANITE_PLANETOID_DATA = ITEMS.addItem(147, "vibranite_planetoid_data").setMaxStackSize(1);
         CATALYST_VIBRANIUM_ALLOY = ITEMS.addItem(148, "catalyst_vibranium_alloy").setMaxStackSize(1);
         NETHERITE_PLANETOID_DATA = ITEMS.addItem(149, "netherite_planetoid_data").setMaxStackSize(1);
+        POWER_UNIT_UHV = ITEMS.addItem(150, "power_unit_uhv").addComponents(ElectricStats.createElectricItem(Long.MAX_VALUE, GTValues.UHV)).setMaxStackSize(8);
+        //TRISHULA = ITEMS.addItem(151, "trishula");
+        CATALYST_HALKONITE = ITEMS.addItem(151, "catalyst_halkonite").setMaxStackSize(1);
+        CULTURE_XENOXENE = ITEMS.addItem(152, "culture_xenoxene");
     }
 }

@@ -1,14 +1,15 @@
 package serendustry.recipe;
 
+import gregtech.api.recipes.chance.output.ChancedOutputLogic;
+
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
-import static serendustry.item.SerendustryMetaItems.CRUSHED_SPACEWEED;
-import static serendustry.item.SerendustryMetaItems.SPACEWEED;
+import static gregtech.common.items.MetaItems.PETRI_DISH;
+import static serendustry.item.SerendustryMetaItems.*;
 import static serendustry.item.material.SerendustryMaterials.*;
-import static serendustry.machine.SerendustryRecipeMaps.GIANT_FRACTIONATING_COLUMN_RECIPES;
-import static serendustry.machine.SerendustryRecipeMaps.LABORATORY_RECIPES;
+import static serendustry.machine.SerendustryRecipeMaps.*;
 
 public class RadoxChain {
 
@@ -19,10 +20,19 @@ public class RadoxChain {
                 .fluidOutputs(Water.getFluid(10), Xenoxene.getFluid(1))
                 .duration(20).EUt(VA[ZPM]).buildAndRegister();
 
+        BIOLAB_RECIPES.recipeBuilder() // todo: make worse + add dupe
+                .input(CULTURE_STEM_CELL)
+                .input(CRUSHED_SPACEWEED, 32)
+                .chancedOutput(CULTURE_XENOXENE, 500, 0)
+                .chancedOutput(PETRI_DISH, 9500, 0)
+                .chancedOutputLogic(ChancedOutputLogic.XOR)
+                .fluidOutputs(Xenoxene.getFluid(50))
+                .duration(20 * 16).EUt(VA[UHV]).buildAndRegister();
+
         CHEMICAL_RECIPES.recipeBuilder()
+                .notConsumable(CULTURE_XENOXENE)
                 .input(CRUSHED_SPACEWEED, 16)
-                .input(dust, Trinium)
-                .fluidInputs(Oil.getFluid(1000))
+                .fluidInputs(Oil.getFluid(1000), Trinium.getFluid(144), Osmium.getFluid(144 * 2))
                 .fluidOutputs(Xenoxene.getFluid(250))
                 .duration(80).EUt(VA[ZPM]).buildAndRegister();
 

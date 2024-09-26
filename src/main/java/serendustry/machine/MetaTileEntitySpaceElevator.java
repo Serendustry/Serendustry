@@ -28,6 +28,11 @@ public class MetaTileEntitySpaceElevator extends RecipeMapMultiblockController {
     }
 
     @Override
+    public boolean hasMaintenanceMechanics() {
+        return false;
+    }
+
+    @Override
     public @NotNull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX")

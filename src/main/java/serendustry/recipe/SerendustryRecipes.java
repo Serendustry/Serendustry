@@ -18,6 +18,7 @@ public class SerendustryRecipes {
         HalkoniteSteelRecipes.init();
         HTComponentRecipes.init();
         HTMachineRecipes.init();
+        LaboratoryRecipes.init();
         LargeAlloySmelterRecipes.init();
         MagnetoResonaticRecipes.init();
         MiscRecipes.init();
@@ -36,7 +37,7 @@ public class SerendustryRecipes {
         SpaceElevatorRecipes.init();
         StarMatterRecipes.init();
         TaraniumChain.init();
-        ToolPrefixHandlers.registerToolPrefixHandler();
+        ToolPrefixHandlers.init();
         WasteFluidRecipes.init();
     }
 
