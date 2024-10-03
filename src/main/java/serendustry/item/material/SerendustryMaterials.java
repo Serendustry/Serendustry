@@ -343,7 +343,7 @@ public class SerendustryMaterials {
     public static Material Bromargyrite;
 
     public static Material Olsacherite;
-    public static Material SeleniumSludge;
+    public static Material SeleniumLeadSludge;
     public static Material SelenousAcid;
 
     public static Material Renierite;
@@ -381,6 +381,8 @@ public class SerendustryMaterials {
     public static Material GaiaSpirit;
 
     public static Material OganessonTetratennesside;
+    public static Material Crookesite;
+    public static Material SeleniumThalliumSludge;
 
     // Custom iconsets
     public static final MaterialIconSet INFINITY = new MaterialIconSet("infinity");
@@ -509,6 +511,9 @@ public class SerendustryMaterials {
         Moscovium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
         Diamond.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
         Germanium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
+        Selenium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
+        Rubidium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
+        Thallium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
         Tennessine.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
         Oganesson.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
 
@@ -2483,7 +2488,7 @@ public class SerendustryMaterials {
                 .flags(DECOMPOSITION_BY_ELECTROLYZING)
                 .build();
 
-        Bromargyrite = new Material.Builder(252, Serendustry.ID("bromargyrite")) // todo: add to se
+        Bromargyrite = new Material.Builder(252, Serendustry.ID("bromargyrite"))
                 .dust(3).ore(1, 1)
                 .color(0x82604F).iconSet(METALLIC)
                 .components(Silver, 1, Bromine, 1)
@@ -2494,20 +2499,20 @@ public class SerendustryMaterials {
         oreProp.setOreByProducts(Silver, Silver, Silver, Bromargyrite);
         oreProp.setWashedIn(Mercury);
 
-        Olsacherite = new Material.Builder(253, Serendustry.ID("olsacherite")) // todo: add to se
+        Olsacherite = new Material.Builder(253, Serendustry.ID("olsacherite"))
                 .dust(3).ore(1, 1)
                 .color(0x4270EE).iconSet(METALLIC)
                 .build()
                 .setFormula("Pb2(SeO4)(SO4)");
 
         oreProp = Olsacherite.getProperty(PropertyKey.ORE);
-        oreProp.setOreByProducts(Lead, Sulfur, Olsacherite, Olsacherite);
+        oreProp.setOreByProducts(Lead, Sulfur, Crookesite, Olsacherite);
         oreProp.setWashedIn(Mercury);
 
-        SeleniumSludge = new Material.Builder(254, Serendustry.ID("selenium_sludge"))
+        SeleniumLeadSludge = new Material.Builder(254, Serendustry.ID("selenium_lead_sludge"))
                 .dust().color(0x34DD41)
                 .build()
-                .setFormula("??Se??");
+                .setFormula("??Se,Pb??");
 
         SelenousAcid = new Material.Builder(255, Serendustry.ID("selenous_acid"))
                 .color(0x48FF62).liquid(new FluidBuilder())
@@ -2515,7 +2520,7 @@ public class SerendustryMaterials {
                 .flags(DISABLE_DECOMPOSITION)
                 .build();
 
-        Renierite = new Material.Builder(256, Serendustry.ID("renierite")) // todo: add to se
+        Renierite = new Material.Builder(256, Serendustry.ID("renierite"))
                 .dust(3).ore(1, 1)
                 .color(0x42EE62).iconSet(METALLIC)
                 .components(Copper, 11, Zinc, 11, Germanium, 2, Arsenic, 2, Iron, 4, Sulfur, 16)
@@ -2747,5 +2752,21 @@ public class SerendustryMaterials {
                         .attackSpeed(1f).enchantability(33).build())
                 .blastTemp(7200, GasTier.HIGH, VA[IV], 1000)
                 .build();
+
+        Crookesite = new Material.Builder(283, Serendustry.ID("crookesite"))
+                .dust(3).ore(1, 1)
+                .color(0x4FE35E).iconSet(METALLIC)
+                .build()
+                .setFormula("(Cu,Tl,Ag)2Se");
+
+        oreProp = Crookesite.getProperty(PropertyKey.ORE);
+        oreProp.setOreByProducts(Copper, Silver, Crookesite, Olsacherite);
+        oreProp.setWashedIn(Mercury);
+
+        SeleniumThalliumSludge = new Material.Builder(284, Serendustry.ID("selenium_thallium_sludge"))
+                .dust().color(0x3455AA)
+                .build()
+                .setFormula("??Se,Tl??");
+
     }
 }

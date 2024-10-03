@@ -14,6 +14,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
@@ -77,6 +78,11 @@ public class Serendustry {
     public void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         SerendustryRecipes.removeRecipes();
         SerendustryRecipes.registerRecipes();
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public void registerRecipesLate(RegistryEvent.Register<IRecipe> event) {
+        SerendustryRecipes.registerRecipesLate();
     }
 
     @SubscribeEvent

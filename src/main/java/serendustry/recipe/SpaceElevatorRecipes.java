@@ -526,6 +526,7 @@ public class SpaceElevatorRecipes {
                 .fluidInputs(RocketFuel.getFluid(30000))
                 .output(ore, Bromargyrite, 32) // ~32 buckets Bromine, or ~160 ScUevSane, or 10 Positronic Mainframes
                 .output(ore, Olsacherite, 32) // ~5.3 Selenium, or 41 BETS Perrhenate, or 205.38 ScUevSane, or 12.8 Positronic Mainframes
+                .output(ore, Olsacherite, 16) // ~4.57 Selenium and ~9.1 Thallium
                 .output(ore, Renierite, 64 * 4) // ~22.24 Germanium, or 178 Abyssal Alloy, or 14.8 Positronic Mainframes
                 .output(ore, Originite, 8) // ~1.6 Originium, or 3.2 Orundum, or 0.8 boules
                 .output(Blocks.STONE, 64 * 256)

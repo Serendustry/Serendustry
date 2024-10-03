@@ -2,6 +2,10 @@ package serendustry.recipe;
 
 public class SerendustryRecipes {
 
+    public static void removeRecipes() {
+        RemoveRecipes.init();
+    }
+
     public static void registerRecipes() {
         // registerPrefixHandlers() todo
         AlloyRecipes.init();
@@ -41,7 +45,7 @@ public class SerendustryRecipes {
         WasteFluidRecipes.init();
     }
 
-    public static void removeRecipes() {
-        RemoveRecipes.init();
+    public static void registerRecipesLate() {
+        PlasmaArcRecipes.init();
     }
 }

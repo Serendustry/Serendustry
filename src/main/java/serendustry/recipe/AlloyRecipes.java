@@ -317,7 +317,7 @@ public class AlloyRecipes {
                 .fluidOutputs(MutatedLivingSolder.getFluid(576))
                 .requireInside(CHEMICAL_RECIPES, UV, 1)
                 .requireInside(CHEMICAL_BATH_RECIPES, UV, 1)
-                .duration(600).EUt(VA[UHV]).buildAndRegister();
+                .duration(1200).EUt(VA[UV]).buildAndRegister();
 
         CHEMICAL_BATH_RECIPES.recipeBuilder()
                 .input(dust, Iron)

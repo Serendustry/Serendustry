@@ -587,7 +587,7 @@ public class PlasmaFoundryRecipes {
                 .duration(100*20*64/2/4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
-                .fluidInputs(Oganesson.getFluid(144 * 16),
+                .fluidInputs(OganessonTetratennesside.getFluid(144 * 16),
                         Azbantium.getFluid(144 * 16),
                         HSSS.getFluid(144 * 16),
                         Carbon.getFluid(144 * 8),

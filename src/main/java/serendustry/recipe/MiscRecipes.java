@@ -29,26 +29,6 @@ public class MiscRecipes {
                 .output(gem, MagnetoResonatic)
                 .duration(600).EUt(24).buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(HULL[EV])
-                .input(circuit, MarkerMaterials.Tier.EV, 4)
-                .input(circuit, MarkerMaterials.Tier.HV, 8)
-                .input(gear, Titanium, 4)
-                .input(stickLong, Rhopalthenit, 12)
-                .input(foil, Polytetrafluoroethylene, 32)
-                .input(wireFine, Niobium, 32)
-                .fluidInputs(SolderingAlloy.getFluid(2592))
-                .output(INDUSTRIAL_LABORATORY)
-                .duration(2400).EUt(VA[EV]).buildAndRegister();
-
-        LABORATORY_RECIPES.recipeBuilder()
-                .input(dust, Polytetrafluoroethylene, 15).input(dust, Polyethylene, 3).input(dust, Carbon)
-                .fluidInputs(Sodium.getFluid(1000))
-                .fluidOutputs(Teflon.getFluid(2880))
-                .requireInside(ALLOY_SMELTER_RECIPES, EV, 1)
-                .requireInside(CHEMICAL_RECIPES, EV, 1)
-                .duration(600).EUt(VA[IV]).buildAndRegister();
-
         LASER_ENGRAVER_RECIPES.recipeBuilder()
                 .input(dust, Glass, 64)
                 .input(QUANTUM_ANOMALY)

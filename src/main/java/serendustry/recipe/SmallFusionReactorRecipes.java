@@ -176,7 +176,7 @@ public class SmallFusionReactorRecipes {
                 .duration(400).EUt(VA[LuV]).buildAndRegister();
 
         ALLOY_SMELTER_RECIPES.recipeBuilder()
-                .input(ingot, Tantalum, 1).input(dust, Oxygen, 1)
+                .input(ingot, Chrome, 1).input(ingot, Lanthanum, 1)
                 .output(ingot, Thallium, 1)
                 .duration(400).EUt(VA[LuV]).buildAndRegister();
 

@@ -26,6 +26,8 @@ import gregtech.client.renderer.texture.Textures;
 
 import java.util.Arrays;
 
+import static gregtech.api.util.RelativeDirection.*;
+
 public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockController {
 
     public MetaTileEntityAdvancedFusionReactor(ResourceLocation rl) {
@@ -45,37 +47,217 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
 
     @Override
     public @NotNull BlockPattern createStructurePattern() {
-        return FactoryBlockPattern.start()
-                .aisle("###############", "######CGC######", "###############")
-                .aisle("######CCC######", "####GGAAAGG####", "######CCC######")
-                .aisle("####CC###CC####", "###CAACGCAAC###", "####CC###CC####")
-                .aisle("###C#######C###", "##CKCG###GCKC##", "###C#######C###")
-                .aisle("##C#########C##", "#GAC#######CAG#", "##C#########C##")
-                .aisle("##C#########C##", "#GAG#######GAG#", "##C#########C##")
-                .aisle("#C###########C#", "CAC#########CAC", "#C###########C#")
-                .aisle("#C###########C#", "GAG#########GAG", "#C###########C#")
-                .aisle("#C###########C#", "CAC#########CAC", "#C###########C#")
-                .aisle("##C#########C##", "#GAG#######GAG#", "##C#########C##")
-                .aisle("##C#########C##", "#GAC#######CAG#", "##C#########C##")
-                .aisle("###C#######C###", "##CKCG###GCKC##", "###C#######C###")
-                .aisle("####CC###CC####", "###CAACGCAAC###", "####CC###CC####")
-                .aisle("######CCC######", "####GGAAAGG####", "######CCC######")
-                .aisle("###############", "######CSC######", "###############")
-                .where('S', selfPredicate())
-                .where('G', states(getCasingState(), getGlassState()))
-                .where('C', states(getCasingState()).or(metaTileEntities(Arrays
+        return FactoryBlockPattern.start(RIGHT, DOWN, BACK)
+                .aisle(
+                        "          A   A          ",
+                        "                         ",
+                        "                         ",
+                        "                         ",
+                        "                         ",
+                        "                         ",
+                        "          A   A          "
+                ).aisle(
+                        "                         ",
+                        "          A   A          ",
+                        "          A   A          ",
+                        "                         ",
+                        "          A   A          ",
+                        "          A   A          ",
+                        "                         "
+                ).aisle(
+                        "      A           A      ",
+                        "                         ",
+                        "                         ",
+                        "          AACAA          ",
+                        "                         ",
+                        "                         ",
+                        "      A           A      "
+                ).aisle(
+                        "                         ",
+                        "      A           A      ",
+                        "      A   AAAAA   A      ",
+                        "       AAABBBBBAAA       ",
+                        "      A   AAAAA   A      ",
+                        "      A           A      ",
+                        "                         "
+                ).aisle(
+                        "                         ",
+                        "                         ",
+                        "       AAA  A  AAA       ",
+                        "      ABBBAABAABBBA      ",
+                        "       AAA  A  AAA       ",
+                        "                         ",
+                        "                         "
+                ).aisle(
+                        "                         ",
+                        "                         ",
+                        "      A     A     A      ",
+                        "     ABAAA ABA AAABA     ",
+                        "      A     A     A      ",
+                        "                         ",
+                        "                         "
+                ).aisle(
+                        "  A                   A  ",
+                        "   A                 A   ",
+                        "   A A      A      A A   ",
+                        "    ABA   AABAA   ABA    ",
+                        "   A A      A      A A   ",
+                        "   A                 A   ",
+                        "  A                   A  "
+                ).aisle(
+                        "                         ",
+                        "                         ",
+                        "    A     AAAAA     A    ",
+                        "   ABA   ABBBBBA   ABA   ",
+                        "    A     AAAAA     A    ",
+                        "                         ",
+                        "                         "
+                ).aisle(
+                        "                         ",
+                        "                         ",
+                        "    A    A  A  A    A    ",
+                        "   ABA  ABAABAABA  ABA   ",
+                        "    A    A  A  A    A    ",
+                        "                         ",
+                        "                         "
+                ).aisle(
+                        "                         ",
+                        "                         ",
+                        "    A   A   A   A   A    ",
+                        "   ABA ABA ABA ABA ABA   ",
+                        "    A   A   A   A   A    ",
+                        "                         ",
+                        "                         "
+                ).aisle(
+                        "A                       A",
+                        " A                     A ",
+                        " A A   A    A    A   A A ",
+                        "  ABA ABA  ABA  ABA ABA  ",
+                        " A A   A    A    A   A A ",
+                        " A                     A ",
+                        "A                       A"
+                ).aisle(
+                        "                         ",
+                        "                         ",
+                        "   A   A   A A   A   A   ",
+                        "  ABAAABAAABABAAABAAABA  ",
+                        "   A   A   A A   A   A   ",
+                        "                         ",
+                        "                         "
+                ).aisle(
+                        "                         ",
+                        "                         ",
+                        "   AAAAAAAA   AAAAAAAA   ",
+                        "  ABBBBBBBBA ABBBBBBBBA  ",
+                        "   AAAAAAAA   AAAAAAAA   ",
+                        "                         ",
+                        "                         "
+                ).aisle(
+                        "                         ",
+                        "                         ",
+                        "   A   A   A A   A   A   ",
+                        "  ABAAABAAABABAAABAAABA  ",
+                        "   A   A   A A   A   A   ",
+                        "                         ",
+                        "                         "
+                ).aisle(
+                        "A                       A",
+                        " A                     A ",
+                        " A A   A    A    A   A A ",
+                        "  ABA ABA  ABA  ABA ABA  ",
+                        " A A   A    A    A   A A ",
+                        " A                     A ",
+                        "A                       A"
+                ).aisle(
+                        "                         ",
+                        "                         ",
+                        "    A   A   A   A   A    ",
+                        "   ABA ABA ABA ABA ABA   ",
+                        "    A   A   A   A   A    ",
+                        "                         ",
+                        "                         "
+                ).aisle(
+                        "                         ",
+                        "                         ",
+                        "    A    A  A  A    A    ",
+                        "   ABA  ABAABAABA  ABA   ",
+                        "    A    A  A  A    A    ",
+                        "                         ",
+                        "                         "
+                ).aisle(
+                        "                         ",
+                        "                         ",
+                        "    A     AAAAA     A    ",
+                        "   ABA   ABBBBBA   ABA   ",
+                        "    A     AAAAA     A    ",
+                        "                         ",
+                        "                         "
+                ).aisle(
+                        "  A                   A  ",
+                        "   A                 A   ",
+                        "   A A      A      A A   ",
+                        "    ABA   AABAA   ABA    ",
+                        "   A A      A      A A   ",
+                        "   A                 A   ",
+                        "  A                   A  "
+                ).aisle(
+                        "                         ",
+                        "                         ",
+                        "      A     A     A      ",
+                        "     ABAAA ABA AAABA     ",
+                        "      A     A     A      ",
+                        "                         ",
+                        "                         "
+                ).aisle(
+                        "                         ",
+                        "                         ",
+                        "       AAA  A  AAA       ",
+                        "      ABBBAABAABBBA      ",
+                        "       AAA  A  AAA       ",
+                        "                         ",
+                        "                         "
+                ).aisle(
+                        "                         ",
+                        "      A           A      ",
+                        "      A   AAAAA   A      ",
+                        "       AAABBBBBAAA       ",
+                        "      A   AAAAA   A      ",
+                        "      A           A      ",
+                        "                         "
+                ).aisle(
+                        "      A           A      ",
+                        "                         ",
+                        "                         ",
+                        "          AAAAA          ",
+                        "                         ",
+                        "                         ",
+                        "      A           A      "
+                ).aisle(
+                        "                         ",
+                        "          A   A          ",
+                        "          A   A          ",
+                        "                         ",
+                        "          A   A          ",
+                        "          A   A          ",
+                        "                         "
+                ).aisle(
+                        "          A   A          ",
+                        "                         ",
+                        "                         ",
+                        "                         ",
+                        "                         ",
+                        "                         ",
+                        "          A   A          "
+                )
+                .where('C', selfPredicate())
+                .where('A', states(getCasingState()).or(metaTileEntities(Arrays
                         .stream(MetaTileEntities.ENERGY_INPUT_HATCH)
                         .filter(mte -> mte != null && mte.getTier() >= GTValues.UEV)
                         .toArray(MetaTileEntity[]::new))
                         .setPreviewCount(2)).or(abilities(MultiblockAbility.EXPORT_FLUIDS)).or(abilities(MultiblockAbility.IMPORT_FLUIDS)))
-                .where('K', states(getCoilState()))
-                .where('A', air())
-                .where('#', any())
+                .where('B', states(getCoilState()))
+                .where(' ', any())
                 .build();
-    }
-
-    private IBlockState getGlassState() {
-        return MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.FUSION_GLASS);
     }
 
     // todo: adv fusion casing
@@ -83,10 +265,12 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
         return MetaBlocks.FUSION_CASING.getState(BlockFusionCasing.CasingType.FUSION_CASING_MK3);
     }
 
+    // todo: adv fusion coil
     private IBlockState getCoilState() {
         return MetaBlocks.FUSION_CASING.getState(BlockFusionCasing.CasingType.FUSION_COIL);
     }
 
+    // todo: adv fusion texture (turns partially transparent when active)
     @SideOnly(Side.CLIENT)
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
@@ -96,18 +280,6 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
             return Textures.FUSION_TEXTURE;
         }
     }
-    /*
-    public static int getEUtForParallel(int parallel, int discount) {
-        return RecipeMapFurnace.RECIPE_EUT * Math.max(1, (parallel / 8) / discount);
-    }
-
-    public static int getMaxParallel(int heatingCoilLevel) {
-        return 32 * heatingCoilLevel;
-    }
-
-    public static int getDurationForParallel(int parallel, int parallelLimit) {
-        return (int) Math.max(1.0, RecipeMapFusionReactor.RECIPE_DURATION * 2 * parallel / Math.max(1, parallelLimit * 1.0));
-    }*/
 
     protected class AdvancedFusionReactorWorkable extends MultiblockRecipeLogic {
 
