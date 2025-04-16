@@ -8,6 +8,7 @@ import static gregtech.api.recipes.RecipeMaps.CENTRIFUGE_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.Materials.Benzene;
 import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.common.metatileentities.MetaTileEntities.DISTILLATION_TOWER;
 import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryMetaTileEntities.GIANT_FRACTIONATING_COLUMN;
 import static serendustry.machine.SerendustryRecipeMaps.GIANT_FRACTIONATING_COLUMN_RECIPES;
@@ -27,6 +28,7 @@ public class GiantFractionatingColumnRecipes {
                         MolybdeniteLubricant.getFluid(4000),
                         Osmium.getFluid(144 * 8))
                 .output(GIANT_FRACTIONATING_COLUMN)
+                .scannerResearch(DISTILLATION_TOWER.getStackForm())
                 .duration(1400).EUt(VA[LuV]).buildAndRegister();
 
         GIANT_FRACTIONATING_COLUMN_RECIPES.recipeBuilder()
@@ -34,7 +36,7 @@ public class GiantFractionatingColumnRecipes {
                 .fluidOutputs(Kerosene.getFluid(1000),
                         Cyclopentadiene.getFluid(1000),
                         ButeneMixture.getFluid(1000),
-                        Butane.getFluid(1000),
+                        Propylene.getFluid(1000),
                         Propene.getFluid(1000),
                         Ethylene.getFluid(1000),
                         Butadiene.getFluid(1000),

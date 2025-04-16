@@ -54,7 +54,7 @@ public class MetaTileEntityGiantFractionatingColumn extends RecipeMapMultiblockC
         return Textures.INERT_PTFE_CASING; // todo
     }
 
-    // todo: add custom ??? Casings - Pink
+    // todo
     private IBlockState getCasingState() {
         return MetaBlocks.MACHINE_CASING.getState(BlockMachineCasing.MachineCasingType.IV);
     }

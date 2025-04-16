@@ -9,6 +9,7 @@ import static gregtech.common.metatileentities.MetaTileEntities.HULL;
 import static serendustry.item.SerendustryMetaItems.*;
 import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryMetaTileEntities.*;
+import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.LABORATORY_RECIPES;
 
 import gregtech.api.fluids.store.FluidStorageKeys;
@@ -28,31 +29,11 @@ public class MiscRecipes {
                 .output(gem, MagnetoResonatic)
                 .duration(600).EUt(24).buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(HULL[EV])
-                .input(circuit, MarkerMaterials.Tier.EV, 4)
-                .input(circuit, MarkerMaterials.Tier.HV, 8)
-                .input(gear, Titanium, 4)
-                .input(stickLong, Rhopalthenit, 12)
-                .input(foil, Polytetrafluoroethylene, 32)
-                .input(wireFine, Niobium, 32)
-                .fluidInputs(SolderingAlloy.getFluid(2592))
-                .output(INDUSTRIAL_LABORATORY)
-                .duration(2400).EUt(VA[EV]).buildAndRegister();
-
-        LABORATORY_RECIPES.recipeBuilder()
-                .input(dust, Polytetrafluoroethylene, 15).input(dust, Polyethylene, 3).input(dust, Carbon)
-                .fluidInputs(Sodium.getFluid(1000))
-                .fluidOutputs(Teflon.getFluid(2880))
-                .requireInside(ALLOY_SMELTER_RECIPES, EV, 1)
-                .requireInside(CHEMICAL_RECIPES, EV, 1)
-                .duration(600).EUt(VA[IV]).buildAndRegister();
-
         LASER_ENGRAVER_RECIPES.recipeBuilder()
                 .input(dust, Glass, 64)
                 .input(QUANTUM_ANOMALY)
                 .output(dust, ChromaticGlass)
-                .duration(400).EUt(VA[UV]).buildAndRegister();
+                .duration(1200).EUt(VA[UHV]).buildAndRegister();
 
         LASER_ENGRAVER_RECIPES.recipeBuilder()
                 .input(dust, Redstone, 64)
@@ -73,10 +54,10 @@ public class MiscRecipes {
                 .duration(100).EUt(VA[UHV]).buildAndRegister();
 
         AUTOCLAVE_RECIPES.recipeBuilder()
-                .input(GRAVI_STAR, 8)
-                .fluidInputs(Quantium.getFluid(1250))
+                .input(GRAVI_STAR)
+                .fluidInputs(Quantium40.getFluid(144 * 2))
                 .output(QUANTIUM_STAR)
-                .duration(1920).EUt(VA[UXV]).buildAndRegister();
+                .duration(20 * 24).EUt(VA[UHV]).buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder()
                 .fluidInputs(Infinity.getFluid(100), Helium.getFluid(FluidStorageKeys.LIQUID, 100))
@@ -164,7 +145,7 @@ public class MiscRecipes {
                 .duration(40).EUt(VA[LV]).buildAndRegister();
 
         CHEMICAL_BATH_RECIPES.recipeBuilder()
-                .input(foil, WroughtNeutronium)
+                .input(foil, BoneSteel)
                 .fluidInputs(Oxygen.getFluid(1000))
                 .output(foil, Oxygen)
                 .duration(100).EUt(VA[UHV]).buildAndRegister();
@@ -182,6 +163,12 @@ public class MiscRecipes {
                     .fluidInputs(material.getFluid(1000))
                     .fluidOutputs(MolybdeniteLubricant.getFluid(1000))
                     .duration(256).EUt(VA[HV]).buildAndRegister();
+
+            CVD_RECIPES.recipeBuilder()
+                    .circuitMeta(1)
+                    .fluidInputs(Methane.getFluid(100), Hydrogen.getFluid(10000))
+                    .output(gemExquisite, Diamond)
+                    .duration(400).EUt(VA[HV]).buildAndRegister();
         }
     }
 }

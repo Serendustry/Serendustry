@@ -6,6 +6,7 @@ import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static gregtech.common.metatileentities.MetaTileEntities.HULL;
+import static serendustry.item.SerendustryMetaItems.CHIP_OPIC;
 import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryMetaTileEntities.TRANSCENDENT_PLASMA_MIXER;
 import static serendustry.machine.SerendustryRecipeMaps.PLASMA_MIXER_RECIPES;
@@ -17,10 +18,11 @@ public class PlasmaMixerRecipes {
                 .input(HULL[UXV])
                 .input(FIELD_GENERATOR_UXV)
                 .input(ROBOT_ARM_UXV, 2)
-                .input(ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT, 64)
+                .input(CHIP_OPIC, 64)
                 .input(plateDense, AwakenedDraconium, 2)
                 .input(plateDouble, CrystalMatrix, 8)
                 .input(wireGtQuadruple, Bedrockium, 8)
+                .input(foil, EnrichedTeflon, 64)
                 .fluidInputs(MutatedLivingSolder.getFluid(4608))
                 .fluidInputs(OmniversalLubricant.getPlasma(16000))
                 .fluidInputs(RadoxPolymer.getFluid(4608))
