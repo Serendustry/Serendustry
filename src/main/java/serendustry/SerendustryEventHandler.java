@@ -10,9 +10,7 @@ import static serendustry.item.material.SerendustryMaterials.*;
 import java.util.HashMap;
 import java.util.Map;
 
-import gregtech.api.items.metaitem.MetaItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;

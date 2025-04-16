@@ -575,7 +575,7 @@ public class SerendustryMaterials {
                 .flags(STD_METAL, DISABLE_DECOMPOSITION)
                 .components(Gold, 4)
                 .build()
-                .setFormula("(Au4Ma)", true);
+                .setFormula("Au4Ma", true);
 
         FluxedElectrum = new Material.Builder(3, Serendustry.ID("fluxed_electrum"))
                 .ingot(3).liquid(new FluidBuilder().temperature(8000))
@@ -796,7 +796,7 @@ public class SerendustryMaterials {
                 .components(MagnetoResonatic, 3, Cinobite, 1, Pikyonium, 1, Aluminum, 1)
                 .cableProperties(VA[UEV], 1, 0, true, 3)
                 .blast(b -> b
-                        .temp(11000, GasTier.HIGHEST)
+                        .temp(10800, GasTier.HIGHEST)
                         .blastStats(VA[UHV], 2000))
                 .build();
 
@@ -807,7 +807,7 @@ public class SerendustryMaterials {
                 .flags(STD_METAL, DISABLE_DECOMPOSITION, GENERATE_FINE_WIRE, GENERATE_FOIL, GENERATE_LONG_ROD,
                         GENERATE_ROTOR)
                 .blast(b -> b
-                        .temp(14000, GasTier.HIGHEST)
+                        .temp(10800, GasTier.HIGHEST)
                         .blastStats(VA[UHV], 8000))
                 .build()
                 .setFormula("Nt:tooth:", true);
@@ -824,7 +824,7 @@ public class SerendustryMaterials {
                 .flags(STD_METAL, DECOMPOSITION_BY_CENTRIFUGING, GENERATE_FINE_WIRE, GENERATE_GEAR, GENERATE_LONG_ROD)
                 .components(Luminessence, 2, TinAlloy, 1, RoseGold, 1, Phosphate, 1)
                 .blast(b -> b
-                        .temp(11000, GasTier.HIGHEST)
+                        .temp(10800, GasTier.HIGHEST)
                         .blastStats(VA[UHV], 3000))
                 .build();
 
@@ -836,7 +836,7 @@ public class SerendustryMaterials {
                 .components(Lumiium, 3, Aluminum, 2, FluxedElectrum, 1, Phosphate, 1)
                 .cableProperties(VA[UIV], 1, 819200)
                 .blast(b -> b
-                        .temp(11000, GasTier.HIGHEST)
+                        .temp(10800, GasTier.HIGHEST)
                         .blastStats(VA[UHV], 3500))
                 .build();
 
@@ -846,7 +846,7 @@ public class SerendustryMaterials {
                 .flags(STD_METAL, DECOMPOSITION_BY_CENTRIFUGING, GENERATE_ROTOR)
                 .components(Signalium, 4, EnderPearl, 2, TastyNeutronium, 2, Phosphate, 1)
                 .blast(b -> b
-                        .temp(11000, GasTier.HIGHEST)
+                        .temp(10800, GasTier.HIGHEST)
                         .blastStats(VA[UHV], 3800))
                 .build();
 
@@ -857,7 +857,7 @@ public class SerendustryMaterials {
                         GENERATE_BOLT_SCREW)
                 .components(EnderiiumBase, 4, InfusedGold, 1, Phosphate, 1)
                 .blast(b -> b
-                        .temp(11000, GasTier.HIGHEST)
+                        .temp(10800c, GasTier.HIGHEST)
                         .blastStats(VA[UHV], 4200))
                 .build();
 
@@ -1060,7 +1060,7 @@ public class SerendustryMaterials {
                         .temp(273, GasTier.HIGHEST)
                         .blastStats(VA[UXV], 2000))
                 .build()
-                .setFormula("(SpH2O)", true);
+                .setFormula("SpH2O", true);
 
         Ledox = new Material.Builder(51, Serendustry.ID("ledox"))
                 .ingot(3).liquid(new FluidBuilder().temperature(50000))
@@ -1071,7 +1071,7 @@ public class SerendustryMaterials {
                         .temp(10800, GasTier.HIGHEST)
                         .blastStats(VA[UXV], 7000))
                 .build()
-                .setFormula("(SpPb)", true);
+                .setFormula("SpPb", true);
 
         NaquadriaticTaranium = new Material.Builder(52, Serendustry.ID("naquadriatic_taranium"))
                 .ingot(3).liquid(new FluidBuilder().temperature(55000))
@@ -1126,7 +1126,7 @@ public class SerendustryMaterials {
                 .flags(STD_METAL, DECOMPOSITION_BY_CENTRIFUGING, GENERATE_FOIL)
                 .components(Copper, 40, Nickel, 22, Iron, 1, Manganese, 1)
                 .build()
-                .setFormula("(Cu40Ni22Fe1Mn1)", true);
+                .setFormula("Cu40Ni22Fe1Mn1", true);
 
         Xenoxene = new Material.Builder(59, Serendustry.ID("xenoxene"))
                 .fluid()
@@ -1546,10 +1546,10 @@ public class SerendustryMaterials {
                 .build();
 
         OxylatedMonazite = new Material.Builder(114, Serendustry.ID("oxylated_monazite"))
-                .fluid().build().setFormula("??????O4");
+                .fluid().build().setFormula("??????O4", true);
 
         AlkalineOxalateMixture = new Material.Builder(115, Serendustry.ID("alkaline_oxalate_mixture"))
-                .fluid().build().setFormula("?????O4");
+                .fluid().build().setFormula("?????O4", true);
 
         ErrorSerenibyss = new Material.Builder(116, Serendustry.ID("error_serenibyss"))
                 .flags(EXT2_METAL, MORTAR_GRINDABLE, GENERATE_ROTOR, GENERATE_SMALL_GEAR, GENERATE_SPRING,
@@ -1572,7 +1572,7 @@ public class SerendustryMaterials {
                 .build().setFormula("REPORT ERROR TO ENVOIDIA");
 
         PrimedAir = new Material.Builder(118, Serendustry.ID("primed_air"))
-                .fluid().color(0xbb9898).build().setFormula("SiO2");
+                .fluid().color(0xbb9898).build().setFormula("SiO2", true);
 
         ArgonPrime = new Material.Builder(119, Serendustry.ID("argon_prime"))
                 .fluid().color(0x1eff00).build().setFormula("ArΨ");
@@ -1633,7 +1633,7 @@ public class SerendustryMaterials {
                 .dust().color(0xa147c3).iconSet(DULL)
                 .components(Ammonia, 1, Hydrogen, 1, Nitrogen, 1, Oxygen, 3)
                 .build()
-                .setFormula("(NH4NO3)");
+                .setFormula("NH4NO3", true);
 
         SulfurousAcid = new Material.Builder(130, Serendustry.ID("sulfurous_acid"))
                 .fluid().color(0xebb33c)
@@ -1647,7 +1647,7 @@ public class SerendustryMaterials {
         SulfuricApatiteMix = new Material.Builder(132, Serendustry.ID("sulfuric_apatite_mix"))
                 .fluid().color(0x006a99)
                 .build()
-                .setFormula("(Ca5(PO4)3(F,Cl,OH))S?");
+                .setFormula("(Ca5(PO4)3(F,Cl,OH))S?", true);
 
         ISSulfuricAcid = new Material.Builder(133, Serendustry.ID("is_sulfuric_acid"))
                 .fluid().color(0xffb15d)
@@ -1856,7 +1856,7 @@ public class SerendustryMaterials {
                 .flags(NO_UNIFICATION, NO_WORKING, NO_SMASHING, NO_SMELTING, GENERATE_PLATE, GENERATE_ROD, DISABLE_DECOMPOSITION, GENERATE_LONG_ROD, GENERATE_GEAR, GENERATE_SMALL_GEAR,
                         GENERATE_BOLT_SCREW, GENERATE_ROTOR, GENERATE_DENSE, GENERATE_RING, GENERATE_ROUND, GENERATE_FRAME)
                 .build()
-                .setFormula("Nt(Tr3Ds2(Al2Li2MgSc2Ti3)2(((FeW)CrMo2V)6Ir2Os))");
+                .setFormula("Nt(Tr3Ds2(Al2Li2MgSc2Ti3)2(((FeW)CrMo2V)6Ir2Os))", true);
 
         HAMAlloy = new Material.Builder(156, Serendustry.ID("ham_alloy"))
                 .color(0xCA8BEC).iconSet(DULL).liquid(new FluidBuilder().temperature(1500))
@@ -1932,27 +1932,27 @@ public class SerendustryMaterials {
         Kerosene = new Material.Builder(170, Serendustry.ID("kerosene"))
                 .color(0x5B4600).liquid(new FluidBuilder())
                 .build()
-                .setFormula("C12H26");
+                .setFormula("C12H26", true);
 
         Cyclopentadiene = new Material.Builder(171, Serendustry.ID("cyclopentadiene"))
                 .color(0xEFC76F).liquid(new FluidBuilder())
                 .build()
-                .setFormula("C5H6"); // todo: why numbers not little???
+                .setFormula("C5H6", true);
 
         ButeneMixture = new Material.Builder(172, Serendustry.ID("butene_mixture"))
                 .color(0x62512A).liquid(new FluidBuilder())
                 .build()
-                .setFormula("C4H8");
+                .setFormula("C4H8", true);
 
         Butene1 = new Material.Builder(174, Serendustry.ID("butene_1"))
                 .color(0xA58640).liquid(new FluidBuilder())
                 .build()
-                .setFormula("C4H8");
+                .setFormula("C4H8", true);
 
         Butene2 = new Material.Builder(175, Serendustry.ID("butene_2"))
                 .color(0x3D321B).liquid(new FluidBuilder())
                 .build()
-                .setFormula("C4H8");
+                .setFormula("C4H8", true);
 
         IgnisCrystal = new Material.Builder(176, Serendustry.ID("ignis_crystal"))
                 .gem().fluid().color(0xFF0000).iconSet(SHINY)
@@ -2025,7 +2025,7 @@ public class SerendustryMaterials {
                 .flags(STD_METAL, DISABLE_DECOMPOSITION, NO_WORKING, GENERATE_ROUND)
                 .components(Thorium, 4, EnergyCrystal, 4, OrdoCrystal, 1, PerditioCrystal, 1)
                 .blastTemp(10800, GasTier.HIGHEST, VA[UEV], 8000)
-                .build().setFormula("Th4(⬟⬢⬣)4????");
+                .build().setFormula("Th4(⬟⬢⬣)4????", true);
 
         ChromiumDopedMolybdenite = new Material.Builder(184, Serendustry.ID("chromium_doped_molybdenite"))
                 .dust().color(0x9C5fB5)
@@ -2210,7 +2210,7 @@ public class SerendustryMaterials {
                 .cableProperties(V[EV], 4, 0, true, 4500)
                 .blastTemp(3600, GasTier.MID, VA[HV], 600)
                 .build()
-                .setFormula("NrAu4");
+                .setFormula("NrAu4", true);
 
         oreProp = Netherite.getProperty(PropertyKey.ORE);
         oreProp.setOreByProducts(RawAncientDebris, NetheritePoorAncientDebris, NetheritePoorAncientDebris, NetheriteRichAncientDebris);
@@ -2503,7 +2503,7 @@ public class SerendustryMaterials {
                 .dust(3).ore(1, 1)
                 .color(0x4270EE).iconSet(METALLIC)
                 .build()
-                .setFormula("Pb2(SeO4)(SO4)");
+                .setFormula("Pb2(SeO4)(SO4)", true);
 
         oreProp = Olsacherite.getProperty(PropertyKey.ORE);
         oreProp.setOreByProducts(Lead, Sulfur, Crookesite, Olsacherite);
@@ -2526,7 +2526,7 @@ public class SerendustryMaterials {
                 .components(Copper, 11, Zinc, 11, Germanium, 2, Arsenic, 2, Iron, 4, Sulfur, 16)
                 .flags(DISABLE_DECOMPOSITION)
                 .build()
-                .setFormula("(Cu,Zn)11(Ge,As)2Fe4S16");
+                .setFormula("(Cu,Zn)11(Ge,As)2Fe4S16", true);
 
         oreProp = Renierite.getProperty(PropertyKey.ORE);
         oreProp.setOreByProducts(Copper, Arsenic, Renierite, Renierite);
@@ -2569,14 +2569,14 @@ public class SerendustryMaterials {
                         .attackSpeed(1f).enchantability(33).build())
                 .components(Diamond, 1, Netherite, 1)
                 .build()
-                .setFormula("C(NrAu4)");
+                .setFormula("C(NrAu4)", true);
 
         HotHalkoniteSteel = new Material.Builder(262, Serendustry.ID("hot_halkonite_steel"))
                 .ingot().color(0xe9ffe0).iconSet(BRIGHT)
                 .flags(NO_UNIFICATION, NO_WORKING, NO_SMASHING, NO_SMELTING, GENERATE_PLATE, GENERATE_ROD, DISABLE_DECOMPOSITION, GENERATE_LONG_ROD, GENERATE_GEAR, GENERATE_SMALL_GEAR,
                         GENERATE_BOLT_SCREW, GENERATE_ROTOR, GENERATE_DENSE, GENERATE_RING, GENERATE_ROUND, GENERATE_FRAME)
                 .build()
-                .setFormula("Nt(Tr3Ds2(Al2Li2MgSc2Ti3)2(((FeW)CrMo2V)6Ir2Os))");
+                .setFormula("Nt(Tr3Ds2(Al2Li2MgSc2Ti3)2(((FeW)CrMo2V)6Ir2Os))", true);
 
         Xenotime = new Material.Builder(263, Serendustry.ID("xenotime")) // todo: add xenoline
                 .dust(3).ore(1, 1).fluid()
@@ -2600,7 +2600,7 @@ public class SerendustryMaterials {
                         .attackSpeed(1f).enchantability(33).build())
                 .fluidPipeProperties(14000, 5500, true, true, true, true) // todo compare to nt
                 .build()
-                .setFormula("W2(C(NrAu4))2TnGe(SiC)???");
+                .setFormula("W2(C(NrAu4))2TnGe(SiC)???", true);
 
         Pinkium = new Material.Builder(264, Serendustry.ID("pinkium"))
                 .ingot(3).liquid(new FluidBuilder().temperature(14500))
@@ -2744,7 +2744,7 @@ public class SerendustryMaterials {
                 .blastTemp(4500, GasTier.MID, VA[EV], 600)
                 .build();
 
-        GaiaSpirit = new Material.Builder(281, Serendustry.ID("gaia_spirit")) // todo: add ingotGaiaSpirit oredict to botania's Gaia Spirit Ingot
+        GaiaSpirit = new Material.Builder(281, Serendustry.ID("gaia_spirit"))
                 .ingot(3).liquid(new FluidBuilder().temperature(2800))
                 .color(0xFFFFFF).iconSet(BRIGHT) // todo: custom texture
                 .flags(STD_METAL)
@@ -2757,7 +2757,7 @@ public class SerendustryMaterials {
                 .dust(3).ore(1, 1)
                 .color(0x4FE35E).iconSet(METALLIC)
                 .build()
-                .setFormula("(Cu,Tl,Ag)2Se");
+                .setFormula("(Cu,Tl,Ag)2Se", true);
 
         oreProp = Crookesite.getProperty(PropertyKey.ORE);
         oreProp.setOreByProducts(Copper, Silver, Crookesite, Olsacherite);

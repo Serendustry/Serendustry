@@ -446,6 +446,18 @@ serendustry.machine.yggdrasil.tooltip=§bCapable of rewriting the laws of realit
 serendustry.machine.advanced_fusion_reactor.name=Advanced Fusion Reactor
 serendustry.machine.advanced_fusion_reactor.tooltip=Unlike a regular fusion reactor, hatches can be placed anywhere. Only accepts up to §e2§7 energy hatches up to §e16a§7 each, and they must be §aUEV§7-tier or higher/nHas §e32§7 parallel, and overclocks normally/nIgnores recipe EU to start
 
+recipemap.giant_fractionating_column.name=Giant Fractionating Column
+recipemap.industrial_laboratory.name=Industrial Laboratory
+recipemap.hp_laser_array.name=High-Power Laser Array
+recipemap.plasma_foundry.name=Plasma Foundry
+recipemap.sonicator.name=Sonicator
+recipemap.space_elevator.name=Space Elevator
+recipemap.biolab.name=Biolab
+recipemap.nebulaic_nexus.name=Nebulaic Nexus
+recipemap.cvd_chamber.name=Chemical Vapor Deposition Chamber
+recipemap.transcendent_plasma_mixer.name=Transcendent Plasma Mixer
+
+
 entity.serendustry.friendly_creeper.name=Friendly Creeper
 
 item.gt.tool.skookum_choocher.name=%s Skookum Choocher
