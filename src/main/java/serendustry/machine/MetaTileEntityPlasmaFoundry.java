@@ -13,12 +13,15 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentBase;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -41,8 +44,8 @@ import java.util.Objects;
 import static gregtech.api.util.GTUtility.getMetaTileEntity;
 import static serendustry.item.SerendustryMetaItems.*;
 
-public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
-    private static final String NO_CATALYST = "gregtech.chance_logic.none";
+public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController  {
+    private static final String NO_CATALYST = "serendustry.machine.plasma_foundry.no_catalyst";
     private final int CATALYST = 32842846;
 
     private ItemStackHandler controllerSlot;
@@ -51,12 +54,17 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
 
     public MetaTileEntityPlasmaFoundry(ResourceLocation rl) {
         super(rl, SerendustryRecipeMaps.PLASMA_FOUNDRY_RECIPES);
-        controllerSlot = new ItemStackHandler(1);
+        itemInventory = controllerSlot = new ItemStackHandler(1);
     }
 
     @Override
     public MetaTileEntityPlasmaFoundry createMetaTileEntity(IGregTechTileEntity te) {
         return new MetaTileEntityPlasmaFoundry(metaTileEntityId);
+    }
+
+    @Override
+    public boolean hasMaintenanceMechanics() {
+        return false;
     }
 
     @Override
@@ -104,7 +112,7 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("serendustry.machine.plasma_foundry.flavor"));
         tooltip.add(I18n.format("serendustry.machine.plasma_foundry.description"));
-        String catalyst = I18n.format("serendustry.machine.plasma_foundry.no_catalyst");
+        String catalyst = I18n.format(NO_CATALYST);
         NBTTagCompound tag = stack.getTagCompound();
         if(tag != null) {
             ItemStack catalystStack = new ItemStack(tag.getCompoundTag("Catalyst"));

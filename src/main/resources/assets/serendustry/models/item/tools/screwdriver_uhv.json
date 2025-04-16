@@ -1,0 +1,7 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "serendustry:item/tools/handle_electric_screwdriver_uhv",
+    "layer1": "gregtech:items/tools/screwdriver"
+  }
+}

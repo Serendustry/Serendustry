@@ -3,15 +3,18 @@ package serendustry;
 import net.minecraft.client.renderer.entity.RenderCreeper;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
@@ -27,9 +30,12 @@ import serendustry.entity.FriendlyCreeperEntity;
 import serendustry.item.SerendustryMetaItems;
 import serendustry.item.SerendustryToolItems;
 import serendustry.item.material.SerendustryMaterials;
+import serendustry.item.material.VazkiiWhatAreYouDoing;
 import serendustry.machine.SerendustryMetaTileEntities;
 import serendustry.machine.SerendustryRecipeMaps;
 import serendustry.recipe.SerendustryRecipes;
+
+import static net.minecraftforge.fml.common.eventhandler.EventPriority.LOWEST;
 
 @Mod(modid = Tags.MODID,
      name = Tags.MODNAME,
@@ -70,7 +76,13 @@ public class Serendustry {
 
     @SubscribeEvent
     public void registerRecipes(RegistryEvent.Register<IRecipe> event) {
+        SerendustryRecipes.removeRecipes();
         SerendustryRecipes.registerRecipes();
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public void registerRecipesLate(RegistryEvent.Register<IRecipe> event) {
+        SerendustryRecipes.registerRecipesLate();
     }
 
     @SubscribeEvent
@@ -81,6 +93,11 @@ public class Serendustry {
     @SubscribeEvent
     public void registerMaterials(MaterialEvent event) {
         SerendustryMaterials.init();
+
+        // For some reason, Botania's Gaia Spirit Ingot is OreDicted as "gaiaIngot", so we need to add a normal OreDict to it for us to use
+        if (Loader.isModLoaded("botania")) {
+            VazkiiWhatAreYouDoing.init();
+        }
     }
 
     @SubscribeEvent

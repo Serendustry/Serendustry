@@ -1,18 +1,24 @@
 package serendustry.recipe;
 
 import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
-import static gregtech.api.recipes.RecipeMaps.ELECTROLYZER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.EMITTER_UV;
+import static gregtech.common.items.MetaItems.*;
+import static gregtech.common.metatileentities.MetaTileEntities.ADVANCED_LARGE_MINER;
+import static gregtech.common.metatileentities.MetaTileEntities.FUSION_REACTOR;
 import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryMetaTileEntities.NEBULAIC_NEXUS;
 import static serendustry.machine.SerendustryRecipeMaps.NEBULAIC_NEXUS_RECIPES;
 
 import gregtech.api.fluids.store.FluidStorageKeys;
+import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.Material;
+import gregtech.common.items.MetaItems;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.fluids.FluidStack;
 
 public class StarMatterRecipes {
 
@@ -22,67 +28,81 @@ public class StarMatterRecipes {
                 BlackStarMatter };
 
         for (int i = 0; i < amount.length; i++) {
-            ELECTROLYZER_RECIPES.recipeBuilder()
-                    .fluidInputs(matter[i].getFluid(10000))
-                    .fluidOutputs(Iron.getFluid((int) (4 * 144 * 64 * amount[i])))
-                    .fluidOutputs(Copper.getFluid((int) (4 * 144 * 64 * amount[i])))
-                    .fluidOutputs(Chrome.getFluid((int) (4 * 144 * 64 * amount[i])))
-                    .fluidOutputs(CarbonMonoxide.getFluid((int) (4 * 50000 * amount[i])))
-                    .fluidOutputs(CarbonDioxide.getFluid((int) (4 * 50000 * amount[i])))
-                    .fluidOutputs(Methane.getFluid((int) (4 * 100000 * amount[i])))
+            CENTRIFUGE_RECIPES.recipeBuilder()
+                    .fluidInputs(matter[i].getFluid(15_000))
+                    .fluidOutputs(Hydrogen.getFluid((int) (4 * 15_000_000 * amount[i])))
+                    .fluidOutputs(Helium.getFluid((int) (4 * 1_500_000 * amount[i])))
+                    .fluidOutputs(CarbonMonoxide.getFluid((int) (4 * 50_000 * amount[i])))
+                    .fluidOutputs(CarbonDioxide.getFluid((int) (4 * 50_000 * amount[i])))
+                    .fluidOutputs(Methane.getFluid((int) (4 * 100_000 * amount[i])))
                     .duration(12000).EUt(VA[UHV]).buildAndRegister();
         }
 
         ELECTROLYZER_RECIPES.recipeBuilder()
                 .fluidInputs(PulsarStarMatter.getFluid(10000))
                 .fluidOutputs(TengamRaw.getFluid(144 * 64))
-                .fluidOutputs(Neutronium.getFluid(144 * 64))
+                .fluidOutputs(NeutronStarMatter.getFluid(10000))
+                .fluidOutputs(Hydrogen.getFluid(1_000_000))
+                .fluidOutputs(Helium.getFluid(100_000))
                 .duration(12000).EUt(VA[UEV]).buildAndRegister();
+
+        ItemStack itemStack = MetaItems.FLUID_CELL.getStackForm();
+        NBTTagCompound fluidTag = new NBTTagCompound();
+        fluidTag.setTag("Fluid", YellowStarMatter.getFluid(1000).writeToNBT(new NBTTagCompound()));
+        itemStack.setTagCompound(fluidTag); // todo: fix (this is just an empty cell)
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(circuit, MarkerMaterials.Tier.UHV, 4)
                 .input(circuit, MarkerMaterials.Tier.UV, 16)
-                .input(EMITTER_UV, 8)
-                .input(plate, Neutronium, 32)
-                .input(stickLong, HalkoniteSteel, 32)
-                .input(bolt, HalkoniteSteel, 64)
-                .input(screw, HalkoniteSteel, 64)
-                .input(foil, Hihiirokane, 64)
-                .input(foil, Hihiirokane, 64)
+                .input(EMITTER_ZPM, 8)
+                .input(ROBOT_ARM_ZPM, 8)
+                .input(plateDense, VibraniumAlloy, 4)
+                .input(plate, Naquadria, 32)
+                .input(stickLong, Tritanium, 32)
+                .input(foil, Adamantium, 64)
+                .input(screw, VibraniumAlloy, 64)
+                .input(screw, VibraniumAlloy, 64)
                 .input(wireGtDouble, EnrichedNaquadahTriniumEuropiumDuranide, 64)
-                .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 32))
-                .fluidInputs(Neutronium.getFluid(144 * 16))
-                .fluidInputs(Darmstadtium.getFluid(144 * 16))
-                .fluidInputs(Moscovium.getFluid(144 * 16))
+                .input(cableGtDouble, Hihiirokane, 64)
+                .fluidInputs(SelfRepairingNanobots.getFluid(144 * 16))
+                .fluidInputs(Osmium.getFluid(144 * 16))
+                .fluidInputs(NaquadahAlloy.getFluid(144 * 16))
+                .fluidInputs(Hihiirokane.getFluid(144 * 16))
                 .output(NEBULAIC_NEXUS)
+                .stationResearch(b -> b
+                        .researchStack(itemStack)
+                        .CWUt(64)
+                        .EUt(VA[UV]))
                 .duration(6400).EUt(VA[UV]).buildAndRegister();
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
-                .input(ingot, Neutronium)
-                .fluidInputs(Tritanium.getFluid(144),
-                        Darmstadtium.getFluid(144),
-                        Americium.getFluid(144),
-                        Helium.getFluid(FluidStorageKeys.PLASMA,1000))
+                .input(ingot, Darmstadtium)
+                .fluidInputs(Helium.getFluid(FluidStorageKeys.PLASMA,1000))
                 .output(ingotHot, StellarContainmentBase)
-                .duration(250).EUt(VA[UHV]).buildAndRegister();
+                .duration(400).EUt(VA[UV]).buildAndRegister();
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
-                .fluidInputs(Neutronium.getFluid(144),
-                        Oxygen.getFluid(FluidStorageKeys.LIQUID, 5000),
+                .fluidInputs(Naquadria.getFluid(144 * 4),
+                        Oxygen.getFluid(FluidStorageKeys.LIQUID, 1000),
                         Helium.getFluid(FluidStorageKeys.LIQUID,500))
-                .fluidOutputs(StellarBaptismSolution.getFluid(500))
-                .duration(120).EUt(VA[UHV]).buildAndRegister();
+                .fluidOutputs(StellarBaptismSolution.getFluid(1000))
+                .duration(200).EUt(VA[UV]).buildAndRegister();
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
                 .input(ingot, StellarContainmentBase)
-                .fluidInputs(StellarBaptismSolution.getFluid(500),
-                        YellowStarMatter.getFluid(400),
-                        RedStarMatter.getFluid(400),
-                        BlueStarMatter.getFluid(200),
-                        WhiteStarMatter.getFluid(200),
-                        BrownStarMatter.getFluid(200),
-                        BlackStarMatter.getFluid(100))
-                .output(ingotHot, CondensedStarMatter)
-                .duration(400).EUt(VA[UHV]).buildAndRegister();
+                .fluidInputs(StellarBaptismSolution.getFluid(1000),
+                        NeutronStarMatter.getFluid(500))
+                .output(ingot, Neutronium) // todo: change to ingotHot
+                .duration(320).EUt(VA[UV]).buildAndRegister();
+
+        NEBULAIC_NEXUS_RECIPES.recipeBuilder()
+                .fluidInputs(YellowStarMatter.getFluid(500),
+                        RedStarMatter.getFluid(500),
+                        BlueStarMatter.getFluid(500),
+                        WhiteStarMatter.getFluid(500),
+                        BrownStarMatter.getFluid(500),
+                        BlackStarMatter.getFluid(500))
+                .fluidOutputs(CondensedStarMatter.getFluid(1000))
+                .duration(800).EUt(VA[UV]).buildAndRegister();
     }
 }
