@@ -4,7 +4,7 @@ import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.loaders.recipe.CraftingComponent.*;
 import static serendustry.item.SerendustryMetaItems.CHIP_OPIC;
-import static serendustry.item.SerendustryMetaItems.COIL_UHV;
+import static serendustry.item.SerendustryMetaItems.*;
 import static serendustry.item.material.SerendustryMaterials.*;
 
 import java.util.HashMap;
@@ -103,6 +103,11 @@ public class SerendustryEventHandler {
         // Voltage Coil
         Map<Integer, Object> map2 = new HashMap<>();
         map2.put(GTValues.UHV, COIL_UHV.getStackForm());
+        map2.put(GTValues.UEV, COIL_UEV.getStackForm());
+        map2.put(GTValues.UIV, COIL_UIV.getStackForm());
+        map2.put(GTValues.UXV, COIL_UXV.getStackForm());
+        map2.put(GTValues.OpV, COIL_OpV.getStackForm());
+        map2.put(GTValues.MAX, COIL_MAX.getStackForm());
         VOLTAGE_COIL.appendIngredients(map2);
 
         // Spring

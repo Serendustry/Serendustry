@@ -31,7 +31,7 @@ public class PlasmaFoundryRecipes {
         MetaItem<?>.MetaValueItem[] metaItemCatalysts = new MetaItem.MetaValueItem[] {
                 CATALYST_STEELS, CATALYST_COPPER_ALLOYS, CATALYST_TIN_ALLOYS, CATALYST_GOLD_ALLOYS, CATALYST_BATTERY_ALLOY, CATALYST_SOLDERING_ALLOYS,
                 CATALYST_PLATINUM_GROUP_ALLOYS, CATALYST_NAQUADAH_ALLOYS, CATALYST_SUPERCONDUCTORS,
-                CATALYST_HAM_ALLOY, CATALYST_ARCANITE, CATALYST_ABYSSAL_ALLOY, CATALYST_VIBRANIUM_ALLOY, CATALYST_HALKONITE
+                CATALYST_HAM_ALLOY, CATALYST_ARCANITE, CATALYST_ABYSSAL_ALLOY, CATALYST_VIBRANIUM_ALLOY, CATALYST_HALKONITE, CATALYST_OGANESSON_TETRATENNESSIDE
         };
         for(MetaItem<?>.MetaValueItem item : metaItemCatalysts) {
             PLASMA_FOUNDRY_RECIPES.registerCatalyst(item.getStackForm(), 50);
@@ -214,6 +214,15 @@ public class PlasmaFoundryRecipes {
                 .input(dust, Germanium, 64)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 8))
                 .output(CATALYST_HALKONITE)
+                .duration(1200).EUt(VA[UHV]).buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Neutronium)
+                .input(circuit, MarkerMaterials.Tier.UEV)
+                .input(plateDense, Oganesson, 64)
+                .input(plateDense, Tennessine, 64)
+                .fluidInputs(SelfRepairingNanobots.getFluid(144 * 8))
+                .output(CATALYST_OGANESSON_TETRATENNESSIDE)
                 .duration(1200).EUt(VA[UHV]).buildAndRegister();
     }
 
@@ -585,6 +594,14 @@ public class PlasmaFoundryRecipes {
                 .foundryCatalyst(CATALYST_VIBRANIUM_ALLOY)
                 .fluidOutputs(VibraniumAlloy.getFluid(144 * 64))
                 .duration(100*20*64/2/4).EUt(VA[UV]).buildAndRegister();
+
+        PLASMA_FOUNDRY_RECIPES.recipeBuilder()
+                .fluidInputs(Oganesson.getFluid(144 * 16),
+                        Tennessine.getFluid(144 * 64),
+                        Nickel.getPlasma(144 * 24))
+                .foundryCatalyst(CATALYST_OGANESSON_TETRATENNESSIDE)
+                .fluidOutputs(OganessonTetratennesside.getFluid(144 * 80))
+                .duration(100*20*80/2/4).EUt(VA[UHV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(OganessonTetratennesside.getFluid(144 * 16),

@@ -123,6 +123,11 @@ public class SerendustryMetaItems {
     public static MetaItem<?>.MetaValueItem CATALYST_ARCANITE;
 
     public static MetaItem<?>.MetaValueItem COIL_UHV;
+    public static MetaItem<?>.MetaValueItem COIL_UEV;
+    public static MetaItem<?>.MetaValueItem COIL_UIV;
+    public static MetaItem<?>.MetaValueItem COIL_UXV;
+    public static MetaItem<?>.MetaValueItem COIL_OpV;
+    public static MetaItem<?>.MetaValueItem COIL_MAX;
 
     public static MetaItem<?>.MetaValueItem ORUNDUM_SEED_CRYSTAL;
     public static MetaItem<?>.MetaValueItem ORUNDUM_BOULE;
@@ -189,6 +194,23 @@ public class SerendustryMetaItems {
 
     public static MetaItem<?>.MetaValueItem CATALYST_HALKONITE;
     public static MetaItem<?>.MetaValueItem CULTURE_XENOXENE;
+    public static MetaItem<?>.MetaValueItem CATALYST_OGANESSON_TETRATENNESSIDE;
+
+    public static MetaItem<?>.MetaValueItem CIRCUIT_ANY_ULV;
+    public static MetaItem<?>.MetaValueItem CIRCUIT_ANY_LV;
+    public static MetaItem<?>.MetaValueItem CIRCUIT_ANY_MV;
+    public static MetaItem<?>.MetaValueItem CIRCUIT_ANY_HV;
+    public static MetaItem<?>.MetaValueItem CIRCUIT_ANY_EV;
+    public static MetaItem<?>.MetaValueItem CIRCUIT_ANY_IV;
+    public static MetaItem<?>.MetaValueItem CIRCUIT_ANY_LuV;
+    public static MetaItem<?>.MetaValueItem CIRCUIT_ANY_ZPM;
+    public static MetaItem<?>.MetaValueItem CIRCUIT_ANY_UV;
+    public static MetaItem<?>.MetaValueItem CIRCUIT_ANY_UHV;
+    public static MetaItem<?>.MetaValueItem CIRCUIT_ANY_UEV;
+    public static MetaItem<?>.MetaValueItem CIRCUIT_ANY_UIV;
+    public static MetaItem<?>.MetaValueItem CIRCUIT_ANY_UXV;
+    public static MetaItem<?>.MetaValueItem CIRCUIT_ANY_OpV;
+    public static MetaItem<?>.MetaValueItem CIRCUIT_ANY_MAX;
 
     public static void preInit() {
         ITEMS = new StandardMetaItem();
@@ -371,5 +393,26 @@ public class SerendustryMetaItems {
         //TRISHULA = ITEMS.addItem(151, "trishula");
         CATALYST_HALKONITE = ITEMS.addItem(151, "catalyst_halkonite").setMaxStackSize(1);
         CULTURE_XENOXENE = ITEMS.addItem(152, "culture_xenoxene");
+        CATALYST_OGANESSON_TETRATENNESSIDE = ITEMS.addItem(153, "catalyst_oganesson_tetratennesside").setMaxStackSize(1);
+        COIL_UEV = ITEMS.addItem(154, "coil_uev");
+        COIL_UIV = ITEMS.addItem(155, "coil_uiv");
+        COIL_UXV = ITEMS.addItem(156, "coil_uxv");
+        COIL_OpV = ITEMS.addItem(157, "coil_opv");
+        COIL_MAX = ITEMS.addItem(158, "coil_max");
+        CIRCUIT_ANY_ULV = ITEMS.addItem(159, "circuit_any_ulv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.ULV);
+        CIRCUIT_ANY_LV = ITEMS.addItem(160, "circuit_any_lv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.LV);
+        CIRCUIT_ANY_MV = ITEMS.addItem(161, "circuit_any_mv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.MV);
+        CIRCUIT_ANY_HV = ITEMS.addItem(162, "circuit_any_hv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.HV);
+        CIRCUIT_ANY_EV = ITEMS.addItem(163, "circuit_any_ev").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.EV);
+        CIRCUIT_ANY_IV = ITEMS.addItem(164, "circuit_any_iv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.IV);
+        CIRCUIT_ANY_LuV = ITEMS.addItem(165, "circuit_any_luv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.LuV);
+        CIRCUIT_ANY_ZPM = ITEMS.addItem(166, "circuit_any_zpm").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.ZPM);
+        CIRCUIT_ANY_UV = ITEMS.addItem(167, "circuit_any_uv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UV);
+        CIRCUIT_ANY_UHV = ITEMS.addItem(168, "circuit_any_uhv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UHV);
+        CIRCUIT_ANY_UEV = ITEMS.addItem(169, "circuit_any_uev").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UEV);
+        CIRCUIT_ANY_UIV = ITEMS.addItem(170, "circuit_any_uiv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UIV);
+        CIRCUIT_ANY_UXV = ITEMS.addItem(171, "circuit_any_uxv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UXV);
+        CIRCUIT_ANY_OpV = ITEMS.addItem(172, "circuit_any_opv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.OpV);
+        CIRCUIT_ANY_MAX = ITEMS.addItem(173, "circuit_any_max").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.MAX);
     }
 }

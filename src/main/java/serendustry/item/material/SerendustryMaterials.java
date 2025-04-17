@@ -13,17 +13,13 @@ import static gregtech.api.unification.material.info.MaterialIconSet.*;
 import static gregtech.api.unification.material.info.MaterialIconSet.LIGNITE;
 
 import gregtech.api.unification.material.info.MaterialIconSet;
-import net.minecraft.init.Enchantments;
 
 import gregtech.api.fluids.FluidBuilder;
 import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.properties.*;
 import gregtech.api.unification.material.properties.BlastProperty.GasTier;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.Loader;
+import gregtech.api.unification.ore.OrePrefix;
 import serendustry.Serendustry;
 
 public class SerendustryMaterials {
@@ -390,161 +386,46 @@ public class SerendustryMaterials {
     public static void init() {
         // This should probably be a loop, but I never intended for it to get this big; it just kind of slowly grew over
         // time, and now it's too late for me to want to change it
-        Rhenium.setProperty(PropertyKey.DUST, new DustProperty());
-        Gadolinium.setProperty(PropertyKey.DUST, new DustProperty());
-        Polonium.setProperty(PropertyKey.DUST, new DustProperty());
-        Strontium.setProperty(PropertyKey.DUST, new DustProperty());
-        Promethium.setProperty(PropertyKey.DUST, new DustProperty());
-        Technetium.setProperty(PropertyKey.DUST, new DustProperty());
-        Ytterbium.setProperty(PropertyKey.DUST, new DustProperty());
-        Rubidium.setProperty(PropertyKey.DUST, new DustProperty());
-        Tellurium.setProperty(PropertyKey.DUST, new DustProperty());
-        Zirconium.setProperty(PropertyKey.DUST, new DustProperty());
-        Germanium.setProperty(PropertyKey.DUST, new DustProperty());
-        Scandium.setProperty(PropertyKey.DUST, new DustProperty());
-        Protactinium.setProperty(PropertyKey.DUST, new DustProperty());
-        Holmium.setProperty(PropertyKey.DUST, new DustProperty());
-        Radium.setProperty(PropertyKey.DUST, new DustProperty());
-        Francium.setProperty(PropertyKey.DUST, new DustProperty());
-        Terbium.setProperty(PropertyKey.DUST, new DustProperty());
-        Thulium.setProperty(PropertyKey.DUST, new DustProperty());
-        Erbium.setProperty(PropertyKey.DUST, new DustProperty());
-        Dysprosium.setProperty(PropertyKey.DUST, new DustProperty());
-        Praseodymium.setProperty(PropertyKey.DUST, new DustProperty());
-        Actinium.setProperty(PropertyKey.DUST, new DustProperty());
-        Curium.setProperty(PropertyKey.DUST, new DustProperty());
-        Berkelium.setProperty(PropertyKey.DUST, new DustProperty());
-        Neptunium.setProperty(PropertyKey.DUST, new DustProperty());
-        Californium.setProperty(PropertyKey.DUST, new DustProperty());
-        Iodine.setProperty(PropertyKey.DUST, new DustProperty());
-        Hafnium.setProperty(PropertyKey.DUST, new DustProperty());
-        Thallium.setProperty(PropertyKey.DUST, new DustProperty());
-        Selenium.setProperty(PropertyKey.DUST, new DustProperty());
-        Astatine.setProperty(PropertyKey.DUST, new DustProperty());
 
-        Einsteinium.setProperty(PropertyKey.DUST, new DustProperty());
-        Fermium.setProperty(PropertyKey.DUST, new DustProperty());
-        Mendelevium.setProperty(PropertyKey.DUST, new DustProperty());
-        Nobelium.setProperty(PropertyKey.DUST, new DustProperty());
-        Lawrencium.setProperty(PropertyKey.DUST, new DustProperty());
-        Rutherfordium.setProperty(PropertyKey.DUST, new DustProperty());
-        Dubnium.setProperty(PropertyKey.DUST, new DustProperty());
-        Seaborgium.setProperty(PropertyKey.DUST, new DustProperty());
-        Bohrium.setProperty(PropertyKey.DUST, new DustProperty());
-        Hassium.setProperty(PropertyKey.DUST, new DustProperty());
-        Meitnerium.setProperty(PropertyKey.DUST, new DustProperty());
-        Roentgenium.setProperty(PropertyKey.DUST, new DustProperty());
-        Copernicium.setProperty(PropertyKey.DUST, new DustProperty());
-        Nihonium.setProperty(PropertyKey.DUST, new DustProperty());
-        Flerovium.setProperty(PropertyKey.DUST, new DustProperty());
-        Moscovium.setProperty(PropertyKey.DUST, new DustProperty());
-        Livermorium.setProperty(PropertyKey.DUST, new DustProperty());
-        Tennessine.setProperty(PropertyKey.DUST, new DustProperty());
-        Oganesson.setProperty(PropertyKey.DUST, new DustProperty());
+        Material[] addDustIngot = { Rhenium, Gadolinium, Polonium, Strontium, Promethium, Technetium, Ytterbium, Rubidium, Tellurium, Zirconium, Germanium, Scandium, Protactinium, Holmium, Radium, Francium, Terbium,
+                Thulium, Erbium, Dysprosium, Praseodymium, Actinium, Curium, Berkelium, Neptunium, Californium, Iodine, Hafnium, Thallium, Selenium, Astatine, Einsteinium, Fermium, Mendelevium, Nobelium, Lawrencium,
+                Rutherfordium, Dubnium, Seaborgium, Bohrium, Hassium, Meitnerium, Roentgenium, Copernicium, Nihonium, Flerovium, Moscovium, Livermorium, Tennessine, Oganesson };
 
-        Rhenium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Gadolinium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Polonium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Strontium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Promethium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Technetium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Ytterbium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Rubidium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Tellurium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Zirconium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Germanium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Scandium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Protactinium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Holmium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Radium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Francium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Terbium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Thulium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Erbium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Dysprosium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Praseodymium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Actinium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Curium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Berkelium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Neptunium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Californium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Iodine.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Hafnium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Thallium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Selenium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Astatine.setProperty(PropertyKey.INGOT, new IngotProperty());
+        for (Material material : addDustIngot) {
+            if (!material.hasProperty(PropertyKey.DUST)) {material.setProperty(PropertyKey.DUST, new DustProperty());}
+            if (!material.hasProperty(PropertyKey.INGOT)) {material.setProperty(PropertyKey.INGOT, new IngotProperty());}
+        }
 
-        Einsteinium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Fermium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Mendelevium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Nobelium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Lawrencium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Rutherfordium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Dubnium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Seaborgium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Bohrium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Hassium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Meitnerium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Roentgenium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Copernicium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Nihonium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Flerovium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Moscovium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Livermorium.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Tennessine.setProperty(PropertyKey.INGOT, new IngotProperty());
-        Oganesson.setProperty(PropertyKey.INGOT, new IngotProperty());
+        // TODO: only add if it doesn't already exist
+        Material[] addLiquid = { Holmium, Thulium, Dysprosium, Scandium, Promethium, Electrotine, Cadmium, Boron, Barium, Calcium, Sodium, Bromine, Erbium, Moscovium, Diamond, Germanium, Selenium, Rubidium, Thallium, Tennessine, Oganesson };
+
+        for (Material material : addLiquid) {
+            material.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
+        }
+
+        // TODO: only add if it doesn't already exists
+        Material[] addPlasma = { Water, Redstone, Glass, Lead };
+
+        for (Material material : addPlasma) {
+            material.getProperty(PropertyKey.FLUID).enqueueRegistration(FluidStorageKeys.PLASMA, new FluidBuilder());
+        }
+
+        // TODO: only add if it doesn't already exist
+        Material[] addLiquidPlasma = { Flerovium, Phosphorus, Protactinium };
+
+        for(Material material : addLiquidPlasma) {
+            FluidProperty fp = new FluidProperty();
+            fp.enqueueRegistration(FluidStorageKeys.LIQUID, new FluidBuilder());
+            fp.enqueueRegistration(FluidStorageKeys.PLASMA, new FluidBuilder());
+            material.setProperty(PropertyKey.FLUID, fp);
+        }
+
         Lutetium.setProperty(PropertyKey.INGOT, new IngotProperty());
 
-        Holmium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
-        Thulium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
-        Dysprosium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
-        Scandium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
-        Promethium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
-        Electrotine.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
-        Cadmium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
-        Boron.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
-        Barium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
-        Calcium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
-        Sodium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
-        Bromine.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
-        Erbium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
-        Moscovium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
-        Diamond.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
-        Germanium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
-        Selenium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
-        Rubidium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
-        Thallium.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
-        Tennessine.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
-        Oganesson.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
-
-        Samarium.setProperty(PropertyKey.ORE, new OreProperty());
+        if (!Samarium.hasProperty(PropertyKey.ORE)) {Samarium.setProperty(PropertyKey.ORE, new OreProperty());}
         OreProperty oreProp = Samarium.getProperty(PropertyKey.ORE);
         oreProp.setOreByProducts(Bastnasite, Monazite, Neodymium, Samarium);
         oreProp.setWashedIn(Mercury);
-
-        Water.getProperty(PropertyKey.FLUID).getStorage().enqueueRegistration(FluidStorageKeys.PLASMA,
-                new FluidBuilder());
-        Redstone.getProperty(PropertyKey.FLUID).getStorage().enqueueRegistration(FluidStorageKeys.PLASMA,
-                new FluidBuilder());
-        Glass.getProperty(PropertyKey.FLUID).getStorage().enqueueRegistration(FluidStorageKeys.PLASMA,
-                new FluidBuilder());
-        Lead.getProperty(PropertyKey.FLUID).getStorage().enqueueRegistration(FluidStorageKeys.PLASMA,
-                new FluidBuilder());
-
-        FluidProperty fp = new FluidProperty();
-        fp.getStorage().enqueueRegistration(FluidStorageKeys.LIQUID, new FluidBuilder());
-        fp.getStorage().enqueueRegistration(FluidStorageKeys.PLASMA, new FluidBuilder());
-        Flerovium.setProperty(PropertyKey.FLUID, fp);
-
-        fp = new FluidProperty();
-        fp.getStorage().enqueueRegistration(FluidStorageKeys.LIQUID, new FluidBuilder());
-        fp.getStorage().enqueueRegistration(FluidStorageKeys.PLASMA, new FluidBuilder());
-        Phosphorus.setProperty(PropertyKey.FLUID, fp);
-
-        fp = new FluidProperty();
-        fp.getStorage().enqueueRegistration(FluidStorageKeys.LIQUID, new FluidBuilder());
-        fp.getStorage().enqueueRegistration(FluidStorageKeys.PLASMA, new FluidBuilder());
-        Protactinium.setProperty(PropertyKey.FLUID, fp);
 
         SolderingAlloy.addFlags(GENERATE_PLATE);
         TinAlloy.addFlags(GENERATE_FINE_WIRE, GENERATE_FOIL);
@@ -554,6 +435,8 @@ public class SerendustryMaterials {
         Holmium.addFlags(GENERATE_LONG_ROD);
         PolyvinylChloride.addFlags(GENERATE_LENS);
         Neutronium.addFlags(GENERATE_SMALL_GEAR, GENERATE_ROUND, GENERATE_RING, GENERATE_DENSE, GENERATE_ROTOR, GENERATE_LONG_ROD);
+        Oganesson.addFlags(GENERATE_DENSE);
+        Tennessine.addFlags(GENERATE_DENSE);
 
         // To make Skookum Choochers generate
         Diamond.addFlags(GENERATE_LONG_ROD);
@@ -564,6 +447,14 @@ public class SerendustryMaterials {
         Holmium.setMaterialRGB(0x130793);
         Holmium.setMaterialIconSet(SHINY);
 
+        OrePrefix.gemFlawless.maxStackSize = 64;
+        OrePrefix.gemExquisite.maxStackSize = 64;
+        OrePrefix.plateDouble.maxStackSize = 64;
+        OrePrefix.plateDense.maxStackSize = 64;
+        OrePrefix.rotor.maxStackSize = 64;
+        OrePrefix.gear.maxStackSize = 64;
+
+        // Serendustry materials
         AnimalWaste = new Material.Builder(1, Serendustry.ID("animal_waste"))
                 .gem().fluid().color(0x7B5C00)
                 .flags(STD_METAL, NO_SMASHING, NO_SMELTING, GENERATE_LENS)
@@ -857,7 +748,7 @@ public class SerendustryMaterials {
                         GENERATE_BOLT_SCREW)
                 .components(EnderiiumBase, 4, InfusedGold, 1, Phosphate, 1)
                 .blast(b -> b
-                        .temp(10800c, GasTier.HIGHEST)
+                        .temp(10800, GasTier.HIGHEST)
                         .blastStats(VA[UHV], 4200))
                 .build();
 
@@ -1174,8 +1065,7 @@ public class SerendustryMaterials {
         Floppa = new Material.Builder(67, Serendustry.ID("floppa"))
                 .ingot(3).liquid(new FluidBuilder().temperature(800000))
                 .color(0x9E5625).iconSet(SHINY)
-                .flags(STD_METAL, GENERATE_DENSE, GENERATE_LONG_ROD, GENERATE_FINE_WIRE, GENERATE_SMALL_GEAR,
-                        GENERATE_FOIL)
+                .flags(STD_METAL, GENERATE_DENSE, GENERATE_LONG_ROD, GENERATE_FINE_WIRE, GENERATE_SMALL_GEAR, GENERATE_FOIL, GENERATE_SPRING)
                 .components(Flerovium, 1, Oxygen, 1, Phosphorus, 1, Protactinium, 1)
                 .blast(b -> b
                         .temp(10800, GasTier.HIGHEST)
@@ -2022,7 +1912,7 @@ public class SerendustryMaterials {
         Arcanite = new Material.Builder(183, Serendustry.ID("arcanite"))
                 .ingot().fluid()
                 .color(0x7B825B).iconSet(DULL)
-                .flags(STD_METAL, DISABLE_DECOMPOSITION, NO_WORKING, GENERATE_ROUND)
+                .flags(STD_METAL, NO_UNIFICATION, DISABLE_DECOMPOSITION, NO_WORKING, GENERATE_ROUND)
                 .components(Thorium, 4, EnergyCrystal, 4, OrdoCrystal, 1, PerditioCrystal, 1)
                 .blastTemp(10800, GasTier.HIGHEST, VA[UEV], 8000)
                 .build().setFormula("Th4(⬟⬢⬣)4????", true);

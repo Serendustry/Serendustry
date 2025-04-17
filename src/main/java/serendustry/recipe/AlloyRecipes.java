@@ -438,12 +438,29 @@ public class AlloyRecipes {
                 .duration(400).EUt(VA[EV]).buildAndRegister();
 
         LASER_ENGRAVER_RECIPES.recipeBuilder()
-                .input(ingot, Arcanite)
-                .notConsumable(lens, EnergyCrystal)
+                .fluidInputs(Arcanite.getFluid(144))
+                .notConsumable(lens, IgnisCrystal)
                 .notConsumable(lens, OrdoCrystal)
                 .notConsumable(lens, PerditioCrystal)
-                .output(round, Arcanite, 9)
+                .notConsumable(lens, EnergyCrystal)
+                .output(ingot, Arcanite, 1)
                 .duration(3200).EUt(VA[UEV]).buildAndRegister();
+
+        LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .input(ingot, Arcanite)
+                .notConsumable(lens, AquaCrystal)
+                .notConsumable(lens, AerCrystal)
+                .notConsumable(lens, PerditioCrystal)
+                .output(nugget, Arcanite, 9)
+                .duration(3200).EUt(VA[UEV]).buildAndRegister();
+
+        LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .input(nugget, Arcanite)
+                .notConsumable(lens, TerraCrystal)
+                .notConsumable(lens, AerCrystal)
+                .notConsumable(lens, OrdoCrystal)
+                .output(round, Arcanite)
+                .duration(356).EUt(VA[UEV]).buildAndRegister();
 
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .input(dust, AbyssalAlloy, 8)

@@ -1,12 +1,15 @@
 package serendustry.recipe;
 
+import gregtech.api.GTValues;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.metatileentity.multiblock.CleanroomType;
 import gregtech.api.recipes.chance.output.ChancedOutputLogic;
 import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.material.Material;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.MetaBlocks;
+import serendustry.SValues;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
@@ -24,15 +27,10 @@ import static serendustry.machine.SerendustryRecipeMaps.HP_LASER_ARRAY_RECIPES;
 
 public class CircuitRecipes {
     public static void init() {
-        maskRecipes();
         waferRecipes();
         boardRecipes();
         componentRecipes();
         circuitRecipes();
-    }
-
-    private static void maskRecipes() {
-
     }
 
     private static void waferRecipes() {
@@ -61,15 +59,6 @@ public class CircuitRecipes {
                 .output(NAQUADAH_BOULE)
                 .blastFurnaceTemp(5400)
                 .duration(750 * 20).EUt(VA[EV]).buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder()
-                .input(block, SemiconductorGradeSilicon, 32)
-                .input(ingot, Neutronium, 4)
-                .input(dust, GalliumArsenide, 2)
-                .fluidInputs(Xenon.getFluid(8000))
-                .output(NEUTRONIUM_BOULE)
-                .blastFurnaceTemp(6484)
-                .duration(900 * 20).EUt(VA[IV]).buildAndRegister();
 
         CVD_RECIPES.recipeBuilder()
                 .input(dust, Originium, 4)
@@ -178,13 +167,11 @@ public class CircuitRecipes {
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(foil, LaminatedBoPET, 16)
                 .input(foil, Polybenzimidazole, 64)
-                .input(NEUTRONIUM_WAFER)
+                .input(WRAPPED_ORUNDUM_WAFER)
                 .fluidInputs(Chrome.getFluid(144 * 8))
                 .output(MASK_BLANK)
                 .duration(800).EUt(VA[UHV]).buildAndRegister();
 
-        MetaItem.MetaValueItem[] wafersRaw = { NEUTRONIUM_WAFER, WRAPPED_ORUNDUM_WAFER };
-        int[] value = { 1, 4 };
         MetaItem.MetaValueItem[] wafers = {INTEGRATED_LOGIC_CIRCUIT_WAFER, RANDOM_ACCESS_MEMORY_WAFER, CENTRAL_PROCESSING_UNIT_WAFER, NAND_MEMORY_CHIP_WAFER,
                 NOR_MEMORY_CHIP_WAFER, SIMPLE_SYSTEM_ON_CHIP_WAFER, SYSTEM_ON_CHIP_WAFER, ADVANCED_SYSTEM_ON_CHIP_WAFER, HIGHLY_ADVANCED_SOC_WAFER,
         ULTRA_LOW_POWER_INTEGRATED_CIRCUIT_WAFER, LOW_POWER_INTEGRATED_CIRCUIT_WAFER, POWER_INTEGRATED_CIRCUIT_WAFER, HIGH_POWER_INTEGRATED_CIRCUIT_WAFER,
@@ -201,14 +188,12 @@ public class CircuitRecipes {
                     .output(masks[i])
                     .duration(800).EUt(VA[UHV]).buildAndRegister();
 
-            for(int j = 0; j < wafersRaw.length; j++) {
-                HP_LASER_ARRAY_RECIPES.recipeBuilder()
-                        .notConsumable(LENS_ARRAY_HYPERPRECISE)
-                        .notConsumable(masks[i]) // todo: partiallyConsumed
-                        .input(wafersRaw[j])
-                        .output(wafers[i], value[j] * amount[i] * 2)
-                        .duration(2 - j).EUt((int) V[MAX]).buildAndRegister();
-            }
+            HP_LASER_ARRAY_RECIPES.recipeBuilder()
+                    .notConsumable(LENS_ARRAY_HYPERPRECISE)
+                    .notConsumable(masks[i]) // todo: partiallyConsumed
+                    .input(WRAPPED_ORUNDUM_WAFER)
+                    .output(wafers[i], amount[i] * 8)
+                    .duration(8).EUt(VA[UEV]).buildAndRegister();
         }
 
         LASER_ENGRAVER_RECIPES.recipeBuilder()
@@ -416,6 +401,21 @@ public class CircuitRecipes {
     }
 
     private static void circuitRecipes() {
+
+        for(int i = GTValues.ULV; i <= GTValues.MAX; i++) {
+            FORMING_PRESS_RECIPES.recipeBuilder()
+                    .input(circuit, SValues.Tier_MarkerMaterial[i])
+                    .circuitMeta(1)
+                    .output(SValues.Tier_AnyCircuit[i])
+                    .duration(1).EUt(1).buildAndRegister();
+
+            FORMING_PRESS_RECIPES.recipeBuilder()
+                    .input(circuit, SValues.Tier_MarkerMaterial[i], 64)
+                    .circuitMeta(2)
+                    .output(SValues.Tier_AnyCircuit[i], 64)
+                    .duration(1).EUt(1).buildAndRegister();
+        }
+
         CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
                 .input(COSMIC_CIRCUIT_BOARD)
                 .input(ENGRAVED_POSITRONIC_CHIP)

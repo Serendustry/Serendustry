@@ -112,11 +112,5 @@ public class RemoveRecipes {
                         OreDictUnifier.get(foil, SiliconeRubber, 16),
                         OreDictUnifier.get(bolt, HSSE, 8) },
                 new FluidStack[] { SterileGrowthMedium.getFluid(250) });
-
-        // UHV Machine Hull
-        GTRecipeHandler.removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[] {
-                MACHINE_CASING.getItemVariant(UHV),
-                OreDictUnifier.get(cableGtSingle, Europium, 2) },
-                new FluidStack[] { Polybenzimidazole.getFluid(288) });
     }
 }

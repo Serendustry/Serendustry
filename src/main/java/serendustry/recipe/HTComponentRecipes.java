@@ -91,6 +91,10 @@ public class HTComponentRecipes {
                 .fluidInputs(OmniversalLubricant.getPlasma(2000))
                 .fluidInputs(Signalium.getFluid(576))
                 .output(ELECTRIC_MOTOR_UIV)
+                .stationResearch(b -> b
+                        .researchStack(ELECTRIC_MOTOR_UEV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UEV]))
                 .duration(1600).EUt(2000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -107,6 +111,10 @@ public class HTComponentRecipes {
                 .fluidInputs(OmniversalLubricant.getPlasma(4000))
                 .fluidInputs(Bedrockium.getFluid(576))
                 .output(ELECTRIC_MOTOR_UXV)
+                .stationResearch(b -> b
+                        .researchStack(ELECTRIC_MOTOR_UIV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UIV]))
                 .duration(2400).EUt(6000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -124,6 +132,10 @@ public class HTComponentRecipes {
                 .fluidInputs(Periodicium.getFluid(576))
                 .fluidInputs(Shirabon.getFluid(144))
                 .output(ELECTRIC_MOTOR_OpV)
+                .stationResearch(b -> b
+                        .researchStack(ELECTRIC_MOTOR_UXV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UXV]))
                 .duration(3600).EUt(20000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -141,6 +153,10 @@ public class HTComponentRecipes {
                 .fluidInputs(MultiversalAlloy.getFluid(2304))
                 .fluidInputs(TransResidue.getFluid(64000))
                 .output(ELECTRIC_MOTOR_MAX)
+                .stationResearch(b -> b
+                        .researchStack(ELECTRIC_MOTOR_OpV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[OpV]))
                 .duration(6400).EUt(VA[MAX]).buildAndRegister();
 
         // Conveyors
@@ -195,6 +211,10 @@ public class HTComponentRecipes {
                 .fluidInputs(RadoxPolymer.getFluid(576))
                 .fluidInputs(Signalium.getFluid(576))
                 .output(CONVEYOR_MODULE_UIV)
+                .stationResearch(b -> b
+                        .researchStack(CONVEYOR_MODULE_UEV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UEV]))
                 .duration(1600).EUt(2000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -209,6 +229,10 @@ public class HTComponentRecipes {
                 .fluidInputs(RadoxPolymer.getFluid(1152))
                 .fluidInputs(Bedrockium.getFluid(576))
                 .output(CONVEYOR_MODULE_UXV)
+                .stationResearch(b -> b
+                        .researchStack(CONVEYOR_MODULE_UIV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UIV]))
                 .duration(2400).EUt(6000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -223,6 +247,10 @@ public class HTComponentRecipes {
                 .fluidInputs(Periodicium.getFluid(576))
                 .fluidInputs(Shirabon.getFluid(144))
                 .output(CONVEYOR_MODULE_OpV)
+                .stationResearch(b -> b
+                        .researchStack(CONVEYOR_MODULE_UXV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UXV]))
                 .duration(3600).EUt(20000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -237,6 +265,10 @@ public class HTComponentRecipes {
                 .fluidInputs(MultiversalAlloy.getFluid(2304))
                 .fluidInputs(TransResidue.getFluid(64000))
                 .output(CONVEYOR_MODULE_MAX)
+                .stationResearch(b -> b
+                        .researchStack(CONVEYOR_MODULE_OpV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[OpV]))
                 .duration(6400).EUt(VA[MAX]).buildAndRegister();
 
         // Pumps
@@ -291,6 +323,10 @@ public class HTComponentRecipes {
                 .fluidInputs(OmniversalLubricant.getPlasma(2000))
                 .fluidInputs(Signalium.getFluid(576))
                 .output(ELECTRIC_PUMP_UIV)
+                .stationResearch(b -> b
+                        .researchStack(ELECTRIC_PUMP_UEV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UEV]))
                 .duration(1600).EUt(2000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -305,6 +341,10 @@ public class HTComponentRecipes {
                 .fluidInputs(OmniversalLubricant.getPlasma(4000))
                 .fluidInputs(Bedrockium.getFluid(576))
                 .output(ELECTRIC_PUMP_UXV)
+                .stationResearch(b -> b
+                        .researchStack(ELECTRIC_PUMP_UIV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UIV]))
                 .duration(2400).EUt(6000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -320,6 +360,10 @@ public class HTComponentRecipes {
                 .fluidInputs(Periodicium.getFluid(576))
                 .fluidInputs(Shirabon.getFluid(144))
                 .output(ELECTRIC_PUMP_OpV)
+                .stationResearch(b -> b
+                        .researchStack(ELECTRIC_PUMP_UXV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UXV]))
                 .duration(3600).EUt(20000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -338,6 +382,10 @@ public class HTComponentRecipes {
                 .fluidInputs(MultiversalAlloy.getFluid(2304))
                 .fluidInputs(TransResidue.getFluid(64000))
                 .output(ELECTRIC_PUMP_MAX)
+                .stationResearch(b -> b
+                        .researchStack(ELECTRIC_PUMP_OpV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[OpV]))
                 .duration(6400).EUt(VA[MAX]).buildAndRegister();
 
         // Pistons
@@ -395,6 +443,10 @@ public class HTComponentRecipes {
                 .fluidInputs(OmniversalLubricant.getPlasma(2000))
                 .fluidInputs(Signalium.getFluid(576))
                 .output(ELECTRIC_PISTON_UIV)
+                .stationResearch(b -> b
+                        .researchStack(ELECTRIC_PISTON_UEV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UEV]))
                 .duration(1600).EUt(2000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -410,6 +462,10 @@ public class HTComponentRecipes {
                 .fluidInputs(OmniversalLubricant.getPlasma(4000))
                 .fluidInputs(Bedrockium.getFluid(576))
                 .output(ELECTRIC_PISTON_UXV)
+                .stationResearch(b -> b
+                        .researchStack(ELECTRIC_PISTON_UIV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UIV]))
                 .duration(2400).EUt(6000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -426,6 +482,10 @@ public class HTComponentRecipes {
                 .fluidInputs(Periodicium.getFluid(576))
                 .fluidInputs(Shirabon.getFluid(144))
                 .output(ELECTRIC_PISTON_OpV)
+                .stationResearch(b -> b
+                        .researchStack(ELECTRIC_PISTON_UXV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UXV]))
                 .duration(3600).EUt(6000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -442,6 +502,10 @@ public class HTComponentRecipes {
                 .fluidInputs(MultiversalAlloy.getFluid(2304))
                 .fluidInputs(TransResidue.getFluid(64000))
                 .output(ELECTRIC_PISTON_MAX)
+                .stationResearch(b -> b
+                        .researchStack(ELECTRIC_PISTON_OpV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[OpV]))
                 .duration(6400).EUt(6000000).buildAndRegister();
 
         // Robot Arms
@@ -502,6 +566,10 @@ public class HTComponentRecipes {
                 .fluidInputs(OmniversalLubricant.getPlasma(2000))
                 .fluidInputs(Signalium.getFluid(576))
                 .output(ROBOT_ARM_UIV)
+                .stationResearch(b -> b
+                        .researchStack(ROBOT_ARM_UEV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UEV]))
                 .duration(1600).EUt(2000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -518,6 +586,10 @@ public class HTComponentRecipes {
                 .fluidInputs(OmniversalLubricant.getPlasma(4000))
                 .fluidInputs(Bedrockium.getFluid(576))
                 .output(ROBOT_ARM_UXV)
+                .stationResearch(b -> b
+                        .researchStack(ROBOT_ARM_UIV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UIV]))
                 .duration(2400).EUt(6000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -535,6 +607,10 @@ public class HTComponentRecipes {
                 .fluidInputs(Periodicium.getFluid(576))
                 .fluidInputs(Shirabon.getFluid(144))
                 .output(ROBOT_ARM_OpV)
+                .stationResearch(b -> b
+                        .researchStack(ROBOT_ARM_UXV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UXV]))
                 .duration(3600).EUt(20000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -552,6 +628,10 @@ public class HTComponentRecipes {
                 .fluidInputs(MultiversalAlloy.getFluid(2304))
                 .fluidInputs(TransResidue.getFluid(64000))
                 .output(ROBOT_ARM_MAX)
+                .stationResearch(b -> b
+                        .researchStack(ROBOT_ARM_OpV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[OpV]))
                 .duration(6400).EUt(VA[MAX]).buildAndRegister();
 
         // Field Generators
@@ -608,6 +688,10 @@ public class HTComponentRecipes {
                 .fluidInputs(MutatedLivingSolder.getFluid(576))
                 .fluidInputs(Signalium.getFluid(576))
                 .output(FIELD_GENERATOR_UIV)
+                .stationResearch(b -> b
+                        .researchStack(FIELD_GENERATOR_UEV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UEV]))
                 .duration(1600).EUt(2000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -624,6 +708,10 @@ public class HTComponentRecipes {
                 .fluidInputs(MutatedLivingSolder.getFluid(1152))
                 .fluidInputs(Bedrockium.getFluid(576))
                 .output(FIELD_GENERATOR_UXV)
+                .stationResearch(b -> b
+                        .researchStack(FIELD_GENERATOR_UIV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UIV]))
                 .duration(2400).EUt(6000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -641,6 +729,10 @@ public class HTComponentRecipes {
                 .fluidInputs(Periodicium.getFluid(576))
                 .fluidInputs(Shirabon.getFluid(144))
                 .output(FIELD_GENERATOR_OpV)
+                .stationResearch(b -> b
+                        .researchStack(FIELD_GENERATOR_UXV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UXV]))
                 .duration(3600).EUt(20000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -658,6 +750,10 @@ public class HTComponentRecipes {
                 .fluidInputs(MultiversalAlloy.getFluid(2304))
                 .fluidInputs(TransResidue.getFluid(64000))
                 .output(FIELD_GENERATOR_MAX)
+                .stationResearch(b -> b
+                        .researchStack(FIELD_GENERATOR_OpV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[OpV]))
                 .duration(6400).EUt(VA[MAX]).buildAndRegister();
 
         // Sensors
@@ -712,6 +808,10 @@ public class HTComponentRecipes {
                 .fluidInputs(MutatedLivingSolder.getFluid(576))
                 .fluidInputs(Signalium.getFluid(576))
                 .output(SENSOR_UIV)
+                .stationResearch(b -> b
+                        .researchStack(SENSOR_UEV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UEV]))
                 .duration(1600).EUt(2000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -726,6 +826,10 @@ public class HTComponentRecipes {
                 .fluidInputs(MutatedLivingSolder.getFluid(1152))
                 .fluidInputs(Bedrockium.getFluid(576))
                 .output(SENSOR_UXV)
+                .stationResearch(b -> b
+                        .researchStack(SENSOR_UIV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UIV]))
                 .duration(2400).EUt(6000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -741,6 +845,10 @@ public class HTComponentRecipes {
                 .fluidInputs(Periodicium.getFluid(576))
                 .fluidInputs(Shirabon.getFluid(144))
                 .output(SENSOR_OpV)
+                .stationResearch(b -> b
+                        .researchStack(SENSOR_UXV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UXV]))
                 .duration(3600).EUt(20000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -756,6 +864,10 @@ public class HTComponentRecipes {
                 .fluidInputs(MultiversalAlloy.getFluid(2304))
                 .fluidInputs(TransResidue.getFluid(64000))
                 .output(SENSOR_MAX)
+                .stationResearch(b -> b
+                        .researchStack(SENSOR_OpV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[OpV]))
                 .duration(6400).EUt(VA[MAX]).buildAndRegister();
 
         // Emitters
@@ -810,6 +922,10 @@ public class HTComponentRecipes {
                 .fluidInputs(MutatedLivingSolder.getFluid(576))
                 .fluidInputs(Signalium.getFluid(576))
                 .output(EMITTER_UIV)
+                .stationResearch(b -> b
+                        .researchStack(EMITTER_UEV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UEV]))
                 .duration(1600).EUt(2000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -824,6 +940,10 @@ public class HTComponentRecipes {
                 .fluidInputs(MutatedLivingSolder.getFluid(1152))
                 .fluidInputs(Bedrockium.getFluid(576))
                 .output(EMITTER_UXV)
+                .stationResearch(b -> b
+                        .researchStack(EMITTER_UIV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UIV]))
                 .duration(2400).EUt(6000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -839,6 +959,10 @@ public class HTComponentRecipes {
                 .fluidInputs(Periodicium.getFluid(576))
                 .fluidInputs(Shirabon.getFluid(144))
                 .output(EMITTER_OpV)
+                .stationResearch(b -> b
+                        .researchStack(EMITTER_UXV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[UXV]))
                 .duration(3600).EUt(20000000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -854,6 +978,10 @@ public class HTComponentRecipes {
                 .fluidInputs(MultiversalAlloy.getFluid(2304))
                 .fluidInputs(TransResidue.getFluid(64000))
                 .output(EMITTER_MAX)
+                .stationResearch(b -> b
+                        .researchStack(EMITTER_OpV.getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[OpV]))
                 .duration(6400).EUt(VA[MAX]).buildAndRegister();
     }
 }

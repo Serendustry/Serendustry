@@ -83,6 +83,4 @@ run/
 logs/
 
 # Personal
-todo_rough.txt
-changelog.txt
-Serendustry_Sheet.ods
+*.ods
