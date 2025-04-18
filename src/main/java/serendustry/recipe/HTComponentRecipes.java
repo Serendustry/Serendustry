@@ -181,7 +181,7 @@ public class HTComponentRecipes {
                 .duration(800).EUt(500000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(ELECTRIC_MOTOR_UHV, 2)
+                .input(ELECTRIC_MOTOR_UEV, 2)
                 .input(plate, HalkoniteSteel, 2)
                 .input(plate, AbyssalAlloy, 2)
                 .input(ring, HalkoniteSteel, 4)
@@ -293,7 +293,7 @@ public class HTComponentRecipes {
                 .duration(800).EUt(500000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(ELECTRIC_MOTOR_UHV)
+                .input(ELECTRIC_MOTOR_UEV)
                 .input(pipeLargeFluid, AbyssalAlloy)
                 .input(plate, HalkoniteSteel, 2)
                 .input(plate, AbyssalAlloy, 2)
@@ -411,7 +411,7 @@ public class HTComponentRecipes {
                 .duration(800).EUt(500000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(ELECTRIC_MOTOR_UHV)
+                .input(ELECTRIC_MOTOR_UEV)
                 .input(plate, HalkoniteSteel, 4)
                 .input(plate, AbyssalAlloy, 4)
                 .input(ring, HalkoniteSteel, 4)
@@ -656,7 +656,7 @@ public class HTComponentRecipes {
                 .duration(800).EUt(500000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, HalkoniteSteel)
+                .input(frameGt, AbyssalAlloy)
                 .input(plate, HalkoniteSteel, 6)
                 .input(plate, AbyssalAlloy, 6)
                 .input(QUANTIUM_STAR)
@@ -778,7 +778,7 @@ public class HTComponentRecipes {
                 .duration(800).EUt(500000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, HalkoniteSteel)
+                .input(frameGt, AbyssalAlloy)
                 .input(ELECTRIC_MOTOR_UEV)
                 .input(plate, HalkoniteSteel, 4)
                 .input(plate, AbyssalAlloy, 4)
@@ -892,7 +892,7 @@ public class HTComponentRecipes {
                 .duration(800).EUt(500000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, HalkoniteSteel)
+                .input(frameGt, AbyssalAlloy)
                 .input(ELECTRIC_MOTOR_UEV)
                 .input(stickLong, HalkoniteSteel, 4)
                 .input(stickLong, AbyssalAlloy, 4)

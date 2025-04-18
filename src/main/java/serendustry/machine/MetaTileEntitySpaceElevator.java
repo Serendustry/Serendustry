@@ -1,5 +1,6 @@
 package serendustry.machine;
 
+import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
@@ -39,7 +40,9 @@ public class MetaTileEntitySpaceElevator extends RecipeMapMultiblockController {
                 .aisle("XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX")
                 .aisle("XXX", "XXX", "XXX", "XXX", "XSX", "XXX", "XXX", "XXX", "XXX")
                 .where('S', selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(40).or(autoAbilities()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(40).or(autoAbilities(false, false, true, true, true, true, false))
+                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setMinGlobalLimited(0).setMaxGlobalLimited(2))
+                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setMaxGlobalLimited(1)))
                 .build();
     }
 

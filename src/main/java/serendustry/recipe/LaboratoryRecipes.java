@@ -23,7 +23,7 @@ public class LaboratoryRecipes {
                .input(plate, Polybenzimidazole, 64)
                .input(wireFine, CarbonNanotubes, 64)
                .input(wireFine, CarbonNanotubes, 64)
-               .fluidInputs(Plutonium241.getFluid(64 * L))
+               .fluidInputs(HighGradeSolderingAlloy.getFluid(16 * L))
                .output(INDUSTRIAL_LABORATORY)
                .duration(2400).EUt(VA[LuV]).buildAndRegister();
 

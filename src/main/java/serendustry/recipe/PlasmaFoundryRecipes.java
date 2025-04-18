@@ -160,7 +160,7 @@ public class PlasmaFoundryRecipes {
                 .input(plateDense, Adamantium, 8)
                 .input(plate, Duranium, 64)
                 .input(gemExquisite, Azbantium, 16)
-                .fluidInputs(SelfRepairingNanobots.getFluid(144 * 4))
+                .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 16))
                 .output(CATALYST_VIBRANIUM_ALLOY)
                 .duration(1200).EUt(VA[UV]).buildAndRegister();
 
@@ -206,24 +206,23 @@ public class PlasmaFoundryRecipes {
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(frameGt, Neutronium)
-                .input(circuit, MarkerMaterials.Tier.UEV)
-                .input(plate, Naquadria, 64)
-                .input(wireFine, Taranium, 64)
-                .input(stickLong, NetherizedDiamond, 64)
-                .input(gear, TungstenCarbide, 64)
-                .input(dust, Germanium, 64)
+                .input(circuit, MarkerMaterials.Tier.UHV)
+                .input(plateDense, Oganesson, 16)
+                .input(plateDense, Tennessine, 16)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 8))
-                .output(CATALYST_HALKONITE)
+                .output(CATALYST_OGANESSON_TETRATENNESSIDE)
                 .duration(1200).EUt(VA[UHV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(frameGt, Neutronium)
                 .input(circuit, MarkerMaterials.Tier.UEV)
-                .input(plateDense, Oganesson, 64)
-                .input(plateDense, Tennessine, 64)
-                .fluidInputs(SelfRepairingNanobots.getFluid(144 * 8))
-                .output(CATALYST_OGANESSON_TETRATENNESSIDE)
-                .duration(1200).EUt(VA[UHV]).buildAndRegister();
+                .input(plate, OganessonTetratennesside, 64)
+                .input(stickLong, Azbantium, 64)
+                .input(gear, HSSS, 64)
+                .input(dust, Carbon, 64)
+                .fluidInputs(SelfRepairingNanobots.getFluid(144 * 32))
+                .output(CATALYST_HALKONITE)
+                .duration(1800).EUt(VA[UEV]).buildAndRegister();
     }
 
     private static void alloyRecipes() {

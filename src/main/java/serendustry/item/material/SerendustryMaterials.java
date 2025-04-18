@@ -12,6 +12,7 @@ import static gregtech.api.unification.material.info.MaterialFlags.NO_SMELTING;
 import static gregtech.api.unification.material.info.MaterialIconSet.*;
 import static gregtech.api.unification.material.info.MaterialIconSet.LIGNITE;
 
+import gregtech.api.fluids.store.FluidStorageKey;
 import gregtech.api.unification.material.info.MaterialIconSet;
 
 import gregtech.api.fluids.FluidBuilder;
@@ -380,44 +381,91 @@ public class SerendustryMaterials {
     public static Material Crookesite;
     public static Material SeleniumThalliumSludge;
 
+    public static Material XenomagneticSeparationCatalyst;
+    public static Material TengamResidue;
+    public static Material TengamSludge;
+    public static Material AntimonyTengamide;
+    public static Material PlutoniumHydride;
+    public static Material Plutonium3Phosphide;
+    public static Material Phosphine;
+    public static Material XenomagneticAttunementCatalyst;
+    public static Material SodiumHypophosphite;
+    public static Material PotassiumHydroxide;
+    public static Material PotassiumHypophosphite;
+    public static Material PotassiumChloride;
+
+    public static Material ExoHalkoniteSteel;
+    public static Material HotExoHalkoniteSteel;
+
     // Custom iconsets
     public static final MaterialIconSet INFINITY = new MaterialIconSet("infinity");
+    public static final MaterialIconSet HALKONITE_STEEL = new MaterialIconSet("halkonite_steel");
+    public static final MaterialIconSet HOT_HALKONITE_STEEL = new MaterialIconSet("hot_halkonite_steel");
+    public static final MaterialIconSet EXO_HALKONITE_STEEL = new MaterialIconSet("exo_halkonite_steel");
+    public static final MaterialIconSet HOT_EXO_HALKONITE_STEEL = new MaterialIconSet("hot_exo_halkonite_steel");
 
     public static void init() {
-        // This should probably be a loop, but I never intended for it to get this big; it just kind of slowly grew over
-        // time, and now it's too late for me to want to change it
-
-        Material[] addDustIngot = { Rhenium, Gadolinium, Polonium, Strontium, Promethium, Technetium, Ytterbium, Rubidium, Tellurium, Zirconium, Germanium, Scandium, Protactinium, Holmium, Radium, Francium, Terbium,
+        Material[] addDustIngot = {Rhenium, Gadolinium, Polonium, Strontium, Promethium, Technetium, Ytterbium, Rubidium, Tellurium, Zirconium, Germanium, Scandium, Protactinium, Holmium, Radium, Francium, Terbium,
                 Thulium, Erbium, Dysprosium, Praseodymium, Actinium, Curium, Berkelium, Neptunium, Californium, Iodine, Hafnium, Thallium, Selenium, Astatine, Einsteinium, Fermium, Mendelevium, Nobelium, Lawrencium,
-                Rutherfordium, Dubnium, Seaborgium, Bohrium, Hassium, Meitnerium, Roentgenium, Copernicium, Nihonium, Flerovium, Moscovium, Livermorium, Tennessine, Oganesson };
+                Rutherfordium, Dubnium, Seaborgium, Bohrium, Hassium, Meitnerium, Roentgenium, Copernicium, Nihonium, Flerovium, Moscovium, Livermorium, Tennessine, Oganesson};
 
         for (Material material : addDustIngot) {
             if (!material.hasProperty(PropertyKey.DUST)) {material.setProperty(PropertyKey.DUST, new DustProperty());}
             if (!material.hasProperty(PropertyKey.INGOT)) {material.setProperty(PropertyKey.INGOT, new IngotProperty());}
         }
 
-        // TODO: only add if it doesn't already exist
         Material[] addLiquid = { Holmium, Thulium, Dysprosium, Scandium, Promethium, Electrotine, Cadmium, Boron, Barium, Calcium, Sodium, Bromine, Erbium, Moscovium, Diamond, Germanium, Selenium, Rubidium, Thallium, Tennessine, Oganesson };
+        for(Material material : addLiquid) {
+            FluidProperty prop = material.getProperty(PropertyKey.FLUID);
+            boolean newProp = false;
 
-        for (Material material : addLiquid) {
-            material.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
+            if (prop == null) { // No fluids registered, register a FluidProperty
+                prop = new FluidProperty();
+                newProp = true;
+            }
+
+            FluidStorageKey key = FluidStorageKeys.LIQUID;
+            if (prop.get(key) == null && prop.getQueuedBuilder(key) == null) // If no registered fluid, and no enqueued fluid to be registered
+                prop.enqueueRegistration(key, new FluidBuilder()); // Register Fluid
+
+            if (newProp)
+                material.setProperty(PropertyKey.FLUID, prop);
         }
 
-        // TODO: only add if it doesn't already exists
         Material[] addPlasma = { Water, Redstone, Glass, Lead };
+        for(Material material : addPlasma) {
+            FluidProperty prop = material.getProperty(PropertyKey.FLUID);
+            boolean newProp = false;
 
-        for (Material material : addPlasma) {
-            material.getProperty(PropertyKey.FLUID).enqueueRegistration(FluidStorageKeys.PLASMA, new FluidBuilder());
+            if (prop == null) {
+                prop = new FluidProperty();
+                newProp = true;
+            }
+
+            FluidStorageKey key = FluidStorageKeys.PLASMA;
+            if (prop.get(key) == null && prop.getQueuedBuilder(key) == null)
+                prop.enqueueRegistration(key, new FluidBuilder());
+
+            if (newProp)
+                material.setProperty(PropertyKey.FLUID, prop);
         }
 
-        // TODO: only add if it doesn't already exist
         Material[] addLiquidPlasma = { Flerovium, Phosphorus, Protactinium };
-
         for(Material material : addLiquidPlasma) {
-            FluidProperty fp = new FluidProperty();
-            fp.enqueueRegistration(FluidStorageKeys.LIQUID, new FluidBuilder());
-            fp.enqueueRegistration(FluidStorageKeys.PLASMA, new FluidBuilder());
-            material.setProperty(PropertyKey.FLUID, fp);
+            FluidProperty prop = material.getProperty(PropertyKey.FLUID);
+            boolean newProp = false;
+
+            if (prop == null) {
+                prop = new FluidProperty();
+                newProp = true;
+            }
+            for (FluidStorageKey key : new FluidStorageKey[] { FluidStorageKeys.LIQUID, FluidStorageKeys.PLASMA }) {
+                if (prop.get(key) == null && prop.getQueuedBuilder(key) == null)
+                    prop.enqueueRegistration(key, new FluidBuilder());
+            }
+
+            if (newProp)
+                material.setProperty(PropertyKey.FLUID, prop);
         }
 
         Lutetium.setProperty(PropertyKey.INGOT, new IngotProperty());
@@ -596,7 +644,7 @@ public class SerendustryMaterials {
         Pikyonium = new Material.Builder(15, Serendustry.ID("pikyonium"))
                 .ingot(3).liquid(new FluidBuilder().temperature(6000))
                 .color(0x3160AE).iconSet(SHINY)
-                .flags(EXT2_METAL, DECOMPOSITION_BY_CENTRIFUGING, GENERATE_SMALL_GEAR, GENERATE_FINE_WIRE)
+                .flags(STD_METAL, DECOMPOSITION_BY_CENTRIFUGING)
                 .components(Inconel792, 8, EglinSteel, 5, NaquadahEnriched, 4, TungstenSteel, 4, Cerium, 3, Onionium, 7)
                 .blast(b -> b
                         .temp(9000, GasTier.HIGHEST)
@@ -1397,13 +1445,12 @@ public class SerendustryMaterials {
         TengamAttuned = new Material.Builder(106, Serendustry.ID("tengam_attuned"))
                 .ingot(3)
                 .color(0xD5FF80).iconSet(MAGNETIC)
-                .flags(STD_METAL, GENERATE_LONG_ROD, IS_MAGNETIC)
+                .flags(STD_METAL, GENERATE_LONG_ROD, NO_WORKING, NO_UNIFICATION)
                 .components(TengamPurified, 1)
                 .ingotSmeltInto(TengamPurified)
                 .arcSmeltInto(TengamPurified)
                 .macerateInto(TengamPurified)
                 .build();
-        TengamPurified.getProperty(PropertyKey.INGOT).setMagneticMaterial(TengamAttuned);
 
         DissolutionWater = new Material.Builder(107, Serendustry.ID("dissolution_water"))
                 .fluid().build();
@@ -1488,8 +1535,7 @@ public class SerendustryMaterials {
         Rhopalthenit = new Material.Builder(126, Serendustry.ID("rhopalthenit"))
                 .ingot(3).liquid(new FluidBuilder().temperature(8500))
                 .color(0x03c073).iconSet(SHINY)
-                .flags(STD_METAL, DECOMPOSITION_BY_CENTRIFUGING, GENERATE_FRAME, GENERATE_RING, GENERATE_FINE_WIRE,
-                        GENERATE_LONG_ROD, GENERATE_BOLT_SCREW)
+                .flags(STD_METAL, DECOMPOSITION_BY_CENTRIFUGING, GENERATE_BOLT_SCREW)
                 .components(Rhodium, 1, Palladium, 1, Ruthenium, 1)
                 .blast(b -> b
                         .temp(3500, GasTier.MID)
@@ -1514,7 +1560,7 @@ public class SerendustryMaterials {
                         GENERATE_SMALL_GEAR)
                 .components(Neutronium, 1)
                 .blast(b -> b
-                        .temp(19800, GasTier.HIGHEST)
+                        .temp(10800, GasTier.HIGHEST)
                         .blastStats(VA[UHV], 10000))
                 .build()
                 .setFormula("*Nt*");
@@ -1742,7 +1788,7 @@ public class SerendustryMaterials {
                 .build();
 
         HalkoniteSteel = new Material.Builder(155, Serendustry.ID("halkonite_steel"))
-                .ingot().color(0x4BCD83).iconSet(BRIGHT)
+                .color(0xFFFFFF).iconSet(HALKONITE_STEEL)
                 .flags(NO_UNIFICATION, NO_WORKING, NO_SMASHING, NO_SMELTING, GENERATE_PLATE, GENERATE_ROD, DISABLE_DECOMPOSITION, GENERATE_LONG_ROD, GENERATE_GEAR, GENERATE_SMALL_GEAR,
                         GENERATE_BOLT_SCREW, GENERATE_ROTOR, GENERATE_DENSE, GENERATE_RING, GENERATE_ROUND, GENERATE_FRAME)
                 .build()
@@ -2462,7 +2508,7 @@ public class SerendustryMaterials {
                 .setFormula("C(NrAu4)", true);
 
         HotHalkoniteSteel = new Material.Builder(262, Serendustry.ID("hot_halkonite_steel"))
-                .ingot().color(0xe9ffe0).iconSet(BRIGHT)
+                .color(0xffffff).iconSet(HOT_HALKONITE_STEEL)
                 .flags(NO_UNIFICATION, NO_WORKING, NO_SMASHING, NO_SMELTING, GENERATE_PLATE, GENERATE_ROD, DISABLE_DECOMPOSITION, GENERATE_LONG_ROD, GENERATE_GEAR, GENERATE_SMALL_GEAR,
                         GENERATE_BOLT_SCREW, GENERATE_ROTOR, GENERATE_DENSE, GENERATE_RING, GENERATE_ROUND, GENERATE_FRAME)
                 .build()
@@ -2483,7 +2529,7 @@ public class SerendustryMaterials {
         AbyssalAlloy = new Material.Builder(209, Serendustry.ID("abyssal_alloy"))
                 .ingot(3).liquid(new FluidBuilder().temperature(14500))
                 .color(0xAD94A4).iconSet(BRIGHT)
-                .flags(STD_METAL, DISABLE_DECOMPOSITION, GENERATE_FOIL, GENERATE_LONG_ROD, GENERATE_ROTOR, GENERATE_GEAR, GENERATE_SMALL_GEAR)
+                .flags(STD_METAL, DISABLE_DECOMPOSITION, GENERATE_FOIL, GENERATE_LONG_ROD, GENERATE_ROTOR, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_FRAME)
                 .components(Naquadria, 3, Taranium, 1, TungstenCarbide, 1, NetherizedDiamond, 1, Germanium, 1)
                 .blastTemp(10800, GasTier.HIGHEST, VA[UHV], 1600)
                 .toolStats(ToolProperty.Builder.of(200.0f, 190.0f, 65535, 7)
@@ -2569,6 +2615,7 @@ public class SerendustryMaterials {
         Azbantium = new Material.Builder(275, Serendustry.ID("azbantium"))
                 .gem(3).ore(1, 1).liquid(new FluidBuilder().temperature(18000))
                 .color(0x470d69).iconSet(DIAMOND)
+                .flags(GENERATE_LONG_ROD)
                 .build()
                 .setFormula("Az");
 
@@ -2658,5 +2705,95 @@ public class SerendustryMaterials {
                 .build()
                 .setFormula("??Se,Tl??");
 
+        XenomagneticSeparationCatalyst = new Material.Builder(285, Serendustry.ID("xenomagnetic_separation_catalyst"))
+                .dust(3).fluid()
+                .color(0xfa3fff).iconSet(SHINY)
+                .build();
+
+        TengamResidue = new Material.Builder(286, Serendustry.ID("tengam_residue"))
+                .dust(3)
+                .color(0x1b960a).iconSet(MAGNETIC)
+                .build()
+                .setFormula("??M??");
+
+        TengamSludge = new Material.Builder(287, Serendustry.ID("tengam_sludge"))
+                .fluid()
+                .color(0x439537)
+                .build()
+                .setFormula("??M??");
+
+        AntimonyTengamide = new Material.Builder(288, Serendustry.ID("antimony_tengamide"))
+                .dust(3)
+                .color(0x5ceba7).iconSet(MAGNETIC)
+                .build()
+                .setFormula("SbM");
+
+        PlutoniumHydride = new Material.Builder(289, Serendustry.ID("plutonium_hydride"))
+                .dust(3)
+                .color(0x823ec5).iconSet(METALLIC)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Plutonium241, 1, Hydrogen, 2)
+                .build();
+
+        Plutonium3Phosphide = new Material.Builder(290, Serendustry.ID("plutonium_3_phosphide"))
+                .dust(3)
+                .color(0xdf8933).iconSet(MAGNETIC)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Plutonium241, 1, Phosphorus, 1)
+                .build();
+
+        Phosphine = new Material.Builder(291, Serendustry.ID("phosphine"))
+                .fluid()
+                .color(0xdddf33)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Phosphorus, 1, Hydrogen, 3)
+                .build();
+
+        XenomagneticAttunementCatalyst = new Material.Builder(292, Serendustry.ID("xenomagnetic_attunement_catalyst"))
+                .dust(3).fluid()
+                .color(0xb33fff).iconSet(SHINY)
+                .build();
+
+        PotassiumHydroxide = new Material.Builder(293, Serendustry.ID("potassium_hydroxide"))
+                .dust(3)
+                .color(0xefff3f).iconSet(DULL)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Potassium, 1, Oxygen, 1, Hydrogen, 1)
+                .build();
+
+        SodiumHypophosphite = new Material.Builder(294, Serendustry.ID("sodium_hypophosphite"))
+                .dust(3)
+                .color(0x3fb2ff).iconSet(SHINY)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Sodium, 1, Hydrogen, 2, Phosphorus, 1, Oxygen, 2)
+                .build();
+
+        PotassiumHypophosphite = new Material.Builder(295, Serendustry.ID("potassium_hypophosphite"))
+                .dust(3)
+                .color(0x5dee47).iconSet(SHINY)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Potassium, 1, Hydrogen, 2, Phosphorus, 1, Oxygen, 2)
+                .build();
+
+        PotassiumChloride = new Material.Builder(296, Serendustry.ID("potassium_chloride"))
+                .fluid()
+                .color(0x40be16)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Potassium, 1, Chlorine, 1)
+                .build();
+
+        ExoHalkoniteSteel = new Material.Builder(297, Serendustry.ID("exo_halkonite_steel"))
+                .color(0xFFFFFF).iconSet(EXO_HALKONITE_STEEL)
+                .flags(NO_UNIFICATION, NO_WORKING, NO_SMASHING, NO_SMELTING, GENERATE_PLATE, GENERATE_ROD, DISABLE_DECOMPOSITION, GENERATE_LONG_ROD, GENERATE_GEAR, GENERATE_SMALL_GEAR,
+                        GENERATE_BOLT_SCREW, GENERATE_ROTOR, GENERATE_DENSE, GENERATE_RING, GENERATE_ROUND, GENERATE_FRAME)
+                .build()
+                .setFormula("???", true);
+
+        HotExoHalkoniteSteel = new Material.Builder(298, Serendustry.ID("hot_exo_halkonite_steel"))
+                .color(0xffffff).iconSet(HOT_EXO_HALKONITE_STEEL)
+                .flags(NO_UNIFICATION, NO_WORKING, NO_SMASHING, NO_SMELTING, GENERATE_PLATE, GENERATE_ROD, DISABLE_DECOMPOSITION, GENERATE_LONG_ROD, GENERATE_GEAR, GENERATE_SMALL_GEAR,
+                        GENERATE_BOLT_SCREW, GENERATE_ROTOR, GENERATE_DENSE, GENERATE_RING, GENERATE_ROUND, GENERATE_FRAME)
+                .build()
+                .setFormula("???", true);
     }
 }

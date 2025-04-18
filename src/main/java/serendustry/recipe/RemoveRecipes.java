@@ -71,6 +71,16 @@ public class RemoveRecipes {
                         OreDictUnifier.get(foil, Platinum, 8)},
                 new FluidStack[] { Iron3Chloride.getFluid(2000) });
 
+        GTRecipeHandler.removeRecipesByInputs(LARGE_CHEMICAL_RECIPES,
+                new ItemStack[] { MULTILAYER_FIBER_BOARD.getStackForm(),
+                        OreDictUnifier.get(foil, Platinum, 8)},
+                new FluidStack[] { SodiumPersulfate.getFluid(4000) });
+
+        GTRecipeHandler.removeRecipesByInputs(LARGE_CHEMICAL_RECIPES,
+                new ItemStack[] { MULTILAYER_FIBER_BOARD.getStackForm(),
+                        OreDictUnifier.get(foil, Platinum, 8)},
+                new FluidStack[] { Iron3Chloride.getFluid(2000) });
+
         // Apple -> Methane
         GTRecipeHandler.removeRecipesByInputs(CENTRIFUGE_RECIPES, new ItemStack[] { new ItemStack(Items.APPLE) });
 
@@ -102,6 +112,11 @@ public class RemoveRecipes {
                         OreDictUnifier.get(circuit, MarkerMaterials.Tier.IV),
                         OreDictUnifier.get(foil, NiobiumTitanium, 16)},
                 new FluidStack[] { SterileGrowthMedium.getFluid(4000) });
+
+        // Stem Cells
+        GTRecipeHandler.removeRecipesByInputs(CHEMICAL_RECIPES,
+                new ItemStack[] {OreDictUnifier.get(dust, Osmiridium)},
+                new FluidStack[] {SterileGrowthMedium.getFluid(500), Bacteria.getFluid(500)});
 
         // Neuro Processor
         GTRecipeHandler.removeRecipesByInputs(CIRCUIT_ASSEMBLER_RECIPES, new ItemStack[] {

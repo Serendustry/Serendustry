@@ -35,7 +35,9 @@ public class SerendustryRecipeMaps {
         RecipeMaps.BLAST_RECIPES.setMaxFluidInputs(2);
         RecipeMaps.BLAST_RECIPES.setMaxFluidOutputs(2);
         RecipeMaps.CENTRIFUGE_RECIPES.setMaxOutputs(9);
+        RecipeMaps.ELECTROMAGNETIC_SEPARATOR_RECIPES.setMaxFluidInputs(1);
         RecipeMaps.ELECTROMAGNETIC_SEPARATOR_RECIPES.setMaxOutputs(6);
+        RecipeMaps.POLARIZER_RECIPES.setMaxFluidInputs(1);
         RecipeMaps.LASER_ENGRAVER_RECIPES.setMaxInputs(4);
         RecipeMaps.LASER_ENGRAVER_RECIPES.setMaxFluidInputs(1);
         RecipeMaps.MIXER_RECIPES.setMaxInputs(9);

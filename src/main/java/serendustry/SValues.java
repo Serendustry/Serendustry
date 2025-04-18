@@ -10,7 +10,7 @@ import static serendustry.item.SerendustryMetaItems.*;
 import static serendustry.item.material.SerendustryMaterials.*;
 
 public class SValues {
-    public static final Material[] Tier_Plate = {WroughtIron, Steel, Aluminium, StainlessSteel, Titanium, TungstenSteel, RhodiumPlatedPalladium, NaquadahAlloy, Darmstadtium, Neutronium, HalkoniteSteel, Infinity, AwakenedDraconium, Quantum, Floppa};
+    public static final Material[] Tier_Plate = {WroughtIron, Steel, Aluminium, StainlessSteel, Titanium, TungstenSteel, RhodiumPlatedPalladium, NaquadahAlloy, Darmstadtium, Neutronium, AbyssalAlloy, Infinity, AwakenedDraconium, Quantum, Floppa};
     public static final Material[] Tier_Cable = {RedAlloy, Tin, Copper, Gold, Aluminium, Platinum, NiobiumTitanium, VanadiumGallium, YttriumBariumCuprate, Europium, Quantium40, Signalium, Bedrockium, Quantium, Floppa};
     public static final Material[] Tier_Magnet = {Floppa, IronMagnetic, SteelMagnetic, SteelMagnetic, NeodymiumMagnetic, NeodymiumMagnetic, SamariumMagnetic, SamariumMagnetic, MagneticHolmium, MagneticHolmium, TengamAttuned,
             TengamAttuned, KerrBlackHole, KerrBlackHole, KerrBlackHole};

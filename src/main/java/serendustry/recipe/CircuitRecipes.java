@@ -150,7 +150,7 @@ public class CircuitRecipes {
                 .input(dust, Glass, 64)
                 .output(dust, ChromaticGlass)
                 .fluidOutputs(Glass.getFluid(144 * 16), ChromaticGlass.getFluid(72))
-                .duration(4).EUt((int) V[MAX]).buildAndRegister();
+                .duration(24).EUt(VA[UEV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(lens, ChromaticGlass, 4)
@@ -169,7 +169,7 @@ public class CircuitRecipes {
                 .input(foil, Polybenzimidazole, 64)
                 .input(WRAPPED_ORUNDUM_WAFER)
                 .fluidInputs(Chrome.getFluid(144 * 8))
-                .output(MASK_BLANK)
+                .output(MASK_BLANK, 64)
                 .duration(800).EUt(VA[UHV]).buildAndRegister();
 
         MetaItem.MetaValueItem[] wafers = {INTEGRATED_LOGIC_CIRCUIT_WAFER, RANDOM_ACCESS_MEMORY_WAFER, CENTRAL_PROCESSING_UNIT_WAFER, NAND_MEMORY_CHIP_WAFER,
@@ -183,14 +183,14 @@ public class CircuitRecipes {
         for(int i = 0; i < wafers.length; i++) {
             LASER_ENGRAVER_RECIPES.recipeBuilder()
                     .notConsumable(lens, ChromaticGlass)
-                    .input(MASK_BLANK)
+                    .input(MASK_BLANK, 64)
                     .input(wafers[i])
-                    .output(masks[i])
+                    .output(masks[i], 64)
                     .duration(800).EUt(VA[UHV]).buildAndRegister();
 
             HP_LASER_ARRAY_RECIPES.recipeBuilder()
                     .notConsumable(LENS_ARRAY_HYPERPRECISE)
-                    .notConsumable(masks[i]) // todo: partiallyConsumed
+                    .input(masks[i])
                     .input(WRAPPED_ORUNDUM_WAFER)
                     .output(wafers[i], amount[i] * 8)
                     .duration(8).EUt(VA[UEV]).buildAndRegister();
@@ -198,9 +198,9 @@ public class CircuitRecipes {
 
         LASER_ENGRAVER_RECIPES.recipeBuilder()
                 .notConsumable(lens, Orundum)
-                .input(MASK_BLANK)
+                .input(MASK_BLANK, 64)
                 .input(INACTIVE_APU_WAFER)
-                .output(MASK_APU)
+                .output(MASK_APU, 64)
                 .duration(1600).EUt(VA[UHV]).buildAndRegister();
 
         LASER_ENGRAVER_RECIPES.recipeBuilder()
@@ -212,11 +212,11 @@ public class CircuitRecipes {
 
         HP_LASER_ARRAY_RECIPES.recipeBuilder()
                 .notConsumable(LENS_ARRAY_HYPERPRECISE)
-                .notConsumable(MASK_APU) // todo: partiallyConsumed
+                .input(MASK_APU)
                 .input(WRAPPED_ORUNDUM_WAFER)
                 .fluidInputs(Originium.getFluid(36))
                 .output(INACTIVE_APU_WAFER)
-                .duration(2).EUt((int) V[MAX]).buildAndRegister();
+                .duration(24).EUt(VA[UEV]).buildAndRegister();
 
         HP_LASER_ARRAY_RECIPES.recipeBuilder()
                 .notConsumable(LENS_ARRAY_HYPERAMPLIFYING)
@@ -224,7 +224,7 @@ public class CircuitRecipes {
                 .input(plate, Gold, 64)
                 .fluidInputs(Hydrogen.getFluid(200000))
                 .fluidOutputs(Gold.getFluid(144 * 16), ChromaticGlass.getFluid(112), PositroniumHydride.getFluid(250))
-                .duration(2).EUt((int) V[MAX]).buildAndRegister();
+                .duration(8).EUt(VA[UEV]).buildAndRegister();
 
         CHEMICAL_BATH_RECIPES.recipeBuilder()
                 .input(INACTIVE_APU_WAFER)
@@ -361,6 +361,7 @@ public class CircuitRecipes {
         HP_LASER_ARRAY_RECIPES.recipeBuilder()
                 .input(lens, Diamond)
                 .input(gemExquisite, Diamond)
+                .notConsumable(LENS_ARRAY_HYPERAMPLIFYING)
                 .fluidInputs(Americium.getFluid(144), Beryllium.getFluid(144))
                 .chancedOutput(dustTiny, IrradiatedDiamond, 2500, 0)
                 .chancedOutput(dustSmall, IrradiatedDiamond, 2500, 0)
@@ -370,7 +371,7 @@ public class CircuitRecipes {
                 .chancedOutput(gemExquisite, IrradiatedDiamond, 500, 0)
                 .chancedOutputLogic(ChancedOutputLogic.XOR)
                 .fluidOutputs(Diamond.getFluid(72))
-                .duration(2).EUt((int) V[MAX]).buildAndRegister();
+                .duration(24).EUt(VA[UEV]).buildAndRegister();
 
         OrePrefix[] gems = { gem, gemFlawless, gemExquisite };
         int[] chance = { 2500, 5000, 10000 };
@@ -396,7 +397,7 @@ public class CircuitRecipes {
                 .fluidInputs(Naquadria.getFluid(144 * 2))
                 .output(ENGRAVED_POSITRONIC_CHIP)
                 .fluidOutputs(Orundum.getFluid(128))
-                .duration(4).EUt((int) V[MAX]).buildAndRegister();
+                .duration(24).EUt(VA[UEV]).buildAndRegister();
 
     }
 

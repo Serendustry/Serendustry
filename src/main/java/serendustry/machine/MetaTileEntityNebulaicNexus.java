@@ -64,7 +64,7 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
 
     @Override
     public @NotNull BlockPattern createStructurePattern() {
-        return FactoryBlockPattern.start(RIGHT, DOWN, BACK)
+        return FactoryBlockPattern.start(LEFT, DOWN, FRONT)
                 .aisle(
                         "                               ",
                         "                               ",

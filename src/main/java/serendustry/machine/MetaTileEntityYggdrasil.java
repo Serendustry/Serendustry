@@ -1,5 +1,6 @@
 package serendustry.machine;
 
+import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockWireCoil;
@@ -43,7 +44,10 @@ public class MetaTileEntityYggdrasil extends RecipeMapMultiblockController {
 
                 .where('S', selfPredicate())
                 .where('X', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PTFE_INERT_CASING)).setMinGlobalLimited(530))
-                .where('Y', states(getCasingState()).setMinGlobalLimited(1).or(autoAbilities()))
+                .where('Y', states(getCasingState()).setMinGlobalLimited(1).or(autoAbilities(false, false, true, true, true, true, false))
+                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setMinGlobalLimited(0).setMaxGlobalLimited(2))
+                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setMaxGlobalLimited(1))
+                        .or(abilities(MultiblockAbility.INPUT_LASER).setMaxGlobalLimited(1)))
                 .where('C', states(MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.CUPRONICKEL)))
                 .where('#', air())
                 .build();

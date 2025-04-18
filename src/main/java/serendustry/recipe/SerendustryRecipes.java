@@ -41,6 +41,7 @@ public class SerendustryRecipes {
         SpaceElevatorRecipes.init();
         StarMatterRecipes.init();
         TaraniumChain.init();
+        TengamChain.init();
         ToolPrefixHandlers.init();
         WasteFluidRecipes.init();
     }

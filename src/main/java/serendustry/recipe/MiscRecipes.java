@@ -113,17 +113,6 @@ public class MiscRecipes {
                 .blastFurnaceTemp(10800)
                 .duration(100).EUt(VA[UHV]).buildAndRegister();
 
-        ELECTROMAGNETIC_SEPARATOR_RECIPES.recipeBuilder()
-                .input(dust, TengamRaw)
-                .chancedOutput(dust, IronMagnetic, 2700, 0)
-                .chancedOutput(dust, SteelMagnetic, 2000, 0)
-                .chancedOutput(dust, NeodymiumMagnetic, 1600, 0)
-                .chancedOutput(dust, SamariumMagnetic, 1400, 0)
-                .chancedOutput(dust, MagnetoResonatic, 1200, 0)
-                .chancedOutput(dust, TengamPurified, 1100, 0)
-                .chancedOutputLogic(ChancedOutputLogic.XOR)
-                .duration(120).EUt(VA[UV]).buildAndRegister();
-
         ModHandler.addSmeltingRecipe(OreDictUnifier.get(nugget, Neutronium),
                 OreDictUnifier.get(nugget, WroughtNeutronium));
 

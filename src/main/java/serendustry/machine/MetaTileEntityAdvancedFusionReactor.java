@@ -47,7 +47,7 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
 
     @Override
     public @NotNull BlockPattern createStructurePattern() {
-        return FactoryBlockPattern.start(RIGHT, DOWN, BACK)
+        return FactoryBlockPattern.start(LEFT, DOWN, FRONT)
                 .aisle(
                         "          A   A          ",
                         "                         ",
@@ -250,11 +250,13 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
                         "          A   A          "
                 )
                 .where('C', selfPredicate())
-                .where('A', states(getCasingState()).or(metaTileEntities(Arrays
+                .where('A', states(getCasingState()).setMinGlobalLimited(464).or(metaTileEntities(Arrays
                         .stream(MetaTileEntities.ENERGY_INPUT_HATCH)
                         .filter(mte -> mte != null && mte.getTier() >= GTValues.UEV)
                         .toArray(MetaTileEntity[]::new))
-                        .setPreviewCount(2)).or(abilities(MultiblockAbility.EXPORT_FLUIDS)).or(abilities(MultiblockAbility.IMPORT_FLUIDS)))
+                        .setPreviewCount(2).setMinGlobalLimited(1))
+                        .or(abilities(MultiblockAbility.EXPORT_FLUIDS).setPreviewCount(1).setMinGlobalLimited(1))
+                        .or(abilities(MultiblockAbility.IMPORT_FLUIDS).setPreviewCount(2).setMinGlobalLimited(2)))
                 .where('B', states(getCoilState()))
                 .where(' ', any())
                 .build();

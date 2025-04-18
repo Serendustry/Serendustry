@@ -169,7 +169,7 @@ public class SerendustryMetaItems {
     public static MetaItem<?>.MetaValueItem ENGRAVED_POSITRONIC_CHIP;
 
     public static MetaItem<?>.MetaValueItem PLANETOID_SCANNING_DRONE_MK_2;
-    public static MetaItem<?>.MetaValueItem STAR_SCANNING_DRONE_MK_2;
+    // EMPTY ID
     public static MetaItem<?>.MetaValueItem TIBERIUM_PLANETOID_DATA;
     public static MetaItem<?>.MetaValueItem EXOTIC_PLANETOID_DATA;
     public static MetaItem<?>.MetaValueItem XENOTIME_PLANETOID_DATA;
@@ -223,36 +223,21 @@ public class SerendustryMetaItems {
                 .setMaxStackSize(1);
         WASTE_FLUID_EXTRACTOR_FILLED = ITEMS.addItem(1, "waste_fluid_extractor_filled").setMaxStackSize(1);
         ERROR_INGOT = ITEMS.addItem(2, "error_ingot");
-        MAGNETO_RESONATIC_ULV = ITEMS.addItem(3, "magneto_resonatic_ulv").setUnificationData(OrePrefix.circuit,
-                MarkerMaterials.Tier.ULV);
-        MAGNETO_RESONATIC_LV = ITEMS.addItem(4, "magneto_resonatic_lv").setUnificationData(OrePrefix.circuit,
-                MarkerMaterials.Tier.LV);
-        MAGNETO_RESONATIC_MV = ITEMS.addItem(5, "magneto_resonatic_mv").setUnificationData(OrePrefix.circuit,
-                MarkerMaterials.Tier.MV);
-        MAGNETO_RESONATIC_HV = ITEMS.addItem(6, "magneto_resonatic_hv").setUnificationData(OrePrefix.circuit,
-                MarkerMaterials.Tier.HV);
-        MAGNETO_RESONATIC_EV = ITEMS.addItem(7, "magneto_resonatic_ev").setUnificationData(OrePrefix.circuit,
-                MarkerMaterials.Tier.EV);
-        MAGNETO_RESONATIC_IV = ITEMS.addItem(8, "magneto_resonatic_iv").setUnificationData(OrePrefix.circuit,
-                MarkerMaterials.Tier.IV);
-        MAGNETO_RESONATIC_LuV = ITEMS.addItem(9, "magneto_resonatic_luv").setUnificationData(OrePrefix.circuit,
-                MarkerMaterials.Tier.LuV);
-        MAGNETO_RESONATIC_ZPM = ITEMS.addItem(10, "magneto_resonatic_zpm").setUnificationData(OrePrefix.circuit,
-                MarkerMaterials.Tier.ZPM);
-        MAGNETO_RESONATIC_UV = ITEMS.addItem(11, "magneto_resonatic_uv").setUnificationData(OrePrefix.circuit,
-                MarkerMaterials.Tier.UV);
-        MAGNETO_RESONATIC_UHV = ITEMS.addItem(12, "magneto_resonatic_uhv").setUnificationData(OrePrefix.circuit,
-                MarkerMaterials.Tier.UHV);
-        MAGNETO_RESONATIC_UEV = ITEMS.addItem(13, "magneto_resonatic_uev").setUnificationData(OrePrefix.circuit,
-                MarkerMaterials.Tier.UEV);
-        MAGNETO_RESONATIC_UIV = ITEMS.addItem(14, "magneto_resonatic_uiv").setUnificationData(OrePrefix.circuit,
-                MarkerMaterials.Tier.UIV);
-        MAGNETO_RESONATIC_UXV = ITEMS.addItem(15, "magneto_resonatic_uxv").setUnificationData(OrePrefix.circuit,
-                MarkerMaterials.Tier.UXV);
-        MAGNETO_RESONATIC_OpV = ITEMS.addItem(16, "magneto_resonatic_opv").setUnificationData(OrePrefix.circuit,
-                MarkerMaterials.Tier.OpV);
-        MAGNETO_RESONATIC_MAX = ITEMS.addItem(17, "magneto_resonatic_max").setUnificationData(OrePrefix.circuit,
-                MarkerMaterials.Tier.MAX);
+        MAGNETO_RESONATIC_ULV = ITEMS.addItem(3, "magneto_resonatic_ulv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.ULV);
+        MAGNETO_RESONATIC_LV = ITEMS.addItem(4, "magneto_resonatic_lv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.LV);
+        MAGNETO_RESONATIC_MV = ITEMS.addItem(5, "magneto_resonatic_mv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.MV);
+        MAGNETO_RESONATIC_HV = ITEMS.addItem(6, "magneto_resonatic_hv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.HV);
+        MAGNETO_RESONATIC_EV = ITEMS.addItem(7, "magneto_resonatic_ev").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.EV);
+        MAGNETO_RESONATIC_IV = ITEMS.addItem(8, "magneto_resonatic_iv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.IV);
+        MAGNETO_RESONATIC_LuV = ITEMS.addItem(9, "magneto_resonatic_luv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.LuV);
+        MAGNETO_RESONATIC_ZPM = ITEMS.addItem(10, "magneto_resonatic_zpm").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.ZPM);
+        MAGNETO_RESONATIC_UV = ITEMS.addItem(11, "magneto_resonatic_uv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UV);
+        MAGNETO_RESONATIC_UHV = ITEMS.addItem(12, "magneto_resonatic_uhv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UHV);
+        MAGNETO_RESONATIC_UEV = ITEMS.addItem(13, "magneto_resonatic_uev").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UEV);
+        MAGNETO_RESONATIC_UIV = ITEMS.addItem(14, "magneto_resonatic_uiv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UIV);
+        MAGNETO_RESONATIC_UXV = ITEMS.addItem(15, "magneto_resonatic_uxv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UXV);
+        MAGNETO_RESONATIC_OpV = ITEMS.addItem(16, "magneto_resonatic_opv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.OpV);
+        MAGNETO_RESONATIC_MAX = ITEMS.addItem(17, "magneto_resonatic_max").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.MAX);
         MAGNETO_RESONATIC_BOULE = ITEMS.addItem(18, "magneto_resonatic_boule");
         MAGNETO_RESONATIC_WAFER = ITEMS.addItem(19, "magneto_resonatic_wafer");
         RESONANCE_WAFER = ITEMS.addItem(20, "resonance_wafer");
@@ -283,39 +268,39 @@ public class SerendustryMetaItems {
         HOT_WOOD_INGOT = ITEMS.addItem(45, "hot_wood_ingot");
         PLANETOID_SCANNING_DRONE = ITEMS.addItem(46, "planetoid_scanning_drone");
         PLANETOID_HARVESTING_DRONE = ITEMS.addItem(47, "planetoid_harvesting_drone");
-        STONE_PLANETOID_DATA = ITEMS.addItem(48, "stone_planetoid_data").setMaxStackSize(1);
-        OBSIDIAN_PLANETOID_DATA = ITEMS.addItem(49, "obsidian_planetoid_data").setMaxStackSize(1);
-        MAGNETITE_PLANETOID_DATA = ITEMS.addItem(50, "magnetite_planetoid_data").setMaxStackSize(1);
-        CHALCOPYRITE_PLANETOID_DATA = ITEMS.addItem(51, "chalcopyrite_planetoid_data").setMaxStackSize(1);
-        PYROLUSITE_PLANETOID_DATA = ITEMS.addItem(52, "pyrolusite_planetoid_data").setMaxStackSize(1);
-        COAL_PLANETOID_DATA = ITEMS.addItem(53, "coal_planetoid_data").setMaxStackSize(1);
-        GRAPHITE_PLANETOID_DATA = ITEMS.addItem(54, "graphite_planetoid_data").setMaxStackSize(1);
-        CASSITERITE_PLANETOID_DATA = ITEMS.addItem(55, "cassiterite_planetoid_data").setMaxStackSize(1);
-        APATITE_PLANETOID_DATA = ITEMS.addItem(56, "apatite_planetoid_data").setMaxStackSize(1);
-        NICKEL_PLANETOID_DATA = ITEMS.addItem(57, "nickel_planetoid_data").setMaxStackSize(1);
-        COOPERITE_PLANETOID_DATA = ITEMS.addItem(58, "cooperite_planetoid_data").setMaxStackSize(1);
-        MONAZITE_PLANETOID_DATA = ITEMS.addItem(59, "monazite_planetoid_data").setMaxStackSize(1);
-        NAQUADAH_PLANETOID_DATA = ITEMS.addItem(60, "naquadah_planetoid_data").setMaxStackSize(1);
-        GALENA_PLANETOID_DATA = ITEMS.addItem(61, "galena_planetoid_data").setMaxStackSize(1);
-        TENGAM_PLANETOID_DATA = ITEMS.addItem(62, "tengam_planetoid_data").setMaxStackSize(1);
-        CHEESE_PLANETOID_DATA = ITEMS.addItem(63, "cheese_planetoid_data").setMaxStackSize(1);
-        GEM_PLANETOID_DATA = ITEMS.addItem(64, "gem_planetoid_data").setMaxStackSize(1);
-        SALT_PLANETOID_DATA = ITEMS.addItem(65, "salt_planetoid_data").setMaxStackSize(1);
-        LAPIS_PLANETOID_DATA = ITEMS.addItem(66, "lapis_planetoid_data").setMaxStackSize(1);
-        YELLOW_DWARF_STAR_DATA = ITEMS.addItem(67, "yellow_dwarf_star_data").setMaxStackSize(1);
-        RED_DWARF_STAR_DATA = ITEMS.addItem(68, "red_dwarf_star_data").setMaxStackSize(1);
-        RED_GIANT_STAR_DATA = ITEMS.addItem(69, "red_giant_star_data").setMaxStackSize(1);
-        RED_SUPERGIANT_STAR_DATA = ITEMS.addItem(70, "red_supergiant_star_data").setMaxStackSize(1);
-        BLUE_GIANT_STAR_DATA = ITEMS.addItem(71, "blue_giant_star_data").setMaxStackSize(1);
-        WHITE_DWARF_STAR_DATA = ITEMS.addItem(72, "white_dwarf_star_data").setMaxStackSize(1);
-        BROWN_DWARF_STAR_DATA = ITEMS.addItem(73, "brown_dwarf_star_data").setMaxStackSize(1);
-        BLACK_DWARF_STAR_DATA = ITEMS.addItem(74, "black_dwarf_star_data").setMaxStackSize(1);
-        NEUTRON_STAR_DATA = ITEMS.addItem(75, "neutron_star_data").setMaxStackSize(1);
-        PULSAR_STAR_DATA = ITEMS.addItem(76, "pulsar_star_data").setMaxStackSize(1);
+        STONE_PLANETOID_DATA = ITEMS.addItem(48, "stone_planetoid_data");
+        OBSIDIAN_PLANETOID_DATA = ITEMS.addItem(49, "obsidian_planetoid_data");
+        MAGNETITE_PLANETOID_DATA = ITEMS.addItem(50, "magnetite_planetoid_data");
+        CHALCOPYRITE_PLANETOID_DATA = ITEMS.addItem(51, "chalcopyrite_planetoid_data");
+        PYROLUSITE_PLANETOID_DATA = ITEMS.addItem(52, "pyrolusite_planetoid_data");
+        COAL_PLANETOID_DATA = ITEMS.addItem(53, "coal_planetoid_data");
+        GRAPHITE_PLANETOID_DATA = ITEMS.addItem(54, "graphite_planetoid_data");
+        CASSITERITE_PLANETOID_DATA = ITEMS.addItem(55, "cassiterite_planetoid_data");
+        APATITE_PLANETOID_DATA = ITEMS.addItem(56, "apatite_planetoid_data");
+        NICKEL_PLANETOID_DATA = ITEMS.addItem(57, "nickel_planetoid_data");
+        COOPERITE_PLANETOID_DATA = ITEMS.addItem(58, "cooperite_planetoid_data");
+        MONAZITE_PLANETOID_DATA = ITEMS.addItem(59, "monazite_planetoid_data");
+        NAQUADAH_PLANETOID_DATA = ITEMS.addItem(60, "naquadah_planetoid_data");
+        GALENA_PLANETOID_DATA = ITEMS.addItem(61, "galena_planetoid_data");
+        TENGAM_PLANETOID_DATA = ITEMS.addItem(62, "tengam_planetoid_data");
+        CHEESE_PLANETOID_DATA = ITEMS.addItem(63, "cheese_planetoid_data");
+        GEM_PLANETOID_DATA = ITEMS.addItem(64, "gem_planetoid_data");
+        SALT_PLANETOID_DATA = ITEMS.addItem(65, "salt_planetoid_data");
+        LAPIS_PLANETOID_DATA = ITEMS.addItem(66, "lapis_planetoid_data");
+        YELLOW_DWARF_STAR_DATA = ITEMS.addItem(67, "yellow_dwarf_star_data");
+        RED_DWARF_STAR_DATA = ITEMS.addItem(68, "red_dwarf_star_data");
+        RED_GIANT_STAR_DATA = ITEMS.addItem(69, "red_giant_star_data");
+        RED_SUPERGIANT_STAR_DATA = ITEMS.addItem(70, "red_supergiant_star_data");
+        BLUE_GIANT_STAR_DATA = ITEMS.addItem(71, "blue_giant_star_data");
+        WHITE_DWARF_STAR_DATA = ITEMS.addItem(72, "white_dwarf_star_data");
+        BROWN_DWARF_STAR_DATA = ITEMS.addItem(73, "brown_dwarf_star_data");
+        BLACK_DWARF_STAR_DATA = ITEMS.addItem(74, "black_dwarf_star_data");
+        NEUTRON_STAR_DATA = ITEMS.addItem(75, "neutron_star_data");
+        PULSAR_STAR_DATA = ITEMS.addItem(76, "pulsar_star_data");
         STAR_SCANNING_DRONE = ITEMS.addItem(77, "star_scanning_drone");
-        NETHERRACK_PLANETOID_DATA = ITEMS.addItem(78, "netherrack_planetoid_data").setMaxStackSize(1);
-        PITCHBLENDE_PLANETOID_DATA = ITEMS.addItem(79, "pitchblende_planetoid_data").setMaxStackSize(1);
-        QUARTZ_PLANETOID_DATA = ITEMS.addItem(80, "quartz_planetoid_data").setMaxStackSize(1);
+        NETHERRACK_PLANETOID_DATA = ITEMS.addItem(78, "netherrack_planetoid_data");
+        PITCHBLENDE_PLANETOID_DATA = ITEMS.addItem(79, "pitchblende_planetoid_data");
+        QUARTZ_PLANETOID_DATA = ITEMS.addItem(80, "quartz_planetoid_data");
         STAR_HARVESTING_DRONE = ITEMS.addItem(81, "star_harvesting_drone");
         SPACEWEED = ITEMS.addItem(82, "spaceweed");
         CRUSHED_SPACEWEED = ITEMS.addItem(83, "crushed_spaceweed");
@@ -361,21 +346,17 @@ public class SerendustryMetaItems {
         LENS_ARRAY_HYPERAMPLIFYING = ITEMS.addItem(123, "lens_array_hyperamplifying");
         LENS_ARRAY_HYPERPRECISE = ITEMS.addItem(124, "lens_array_hyperprecise");
         MASK_APU = ITEMS.addItem(125, "mask_apu");
-        CIRC_POSITRONIC_ZPM = ITEMS.addItem(126, "circ_positronic_zpm").setUnificationData(OrePrefix.circuit,
-                MarkerMaterials.Tier.ZPM);
-        CIRC_POSITRONIC_UV = ITEMS.addItem(127, "circ_positronic_uv").setUnificationData(OrePrefix.circuit,
-                MarkerMaterials.Tier.UV);
-        CIRC_POSITRONIC_UHV = ITEMS.addItem(128, "circ_positronic_uhv").setUnificationData(OrePrefix.circuit,
-                MarkerMaterials.Tier.UHV);
-        CIRC_POSITRONIC_UEV = ITEMS.addItem(129, "circ_positronic_uev").setUnificationData(OrePrefix.circuit,
-                MarkerMaterials.Tier.UEV);
+        CIRC_POSITRONIC_ZPM = ITEMS.addItem(126, "circ_positronic_zpm").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.ZPM);
+        CIRC_POSITRONIC_UV = ITEMS.addItem(127, "circ_positronic_uv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UV);
+        CIRC_POSITRONIC_UHV = ITEMS.addItem(128, "circ_positronic_uhv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UHV);
+        CIRC_POSITRONIC_UEV = ITEMS.addItem(129, "circ_positronic_uev").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UEV);
         POSITRONIC_CHIP = ITEMS.addItem(130, "positronic_chip");
         ENGRAVED_POSITRONIC_CHIP = ITEMS.addItem(131, "engraved_positronic_chip");
         PLANETOID_SCANNING_DRONE_MK_2 = ITEMS.addItem(132, "planetoid_scanning_drone_mk_2");
-        STAR_SCANNING_DRONE_MK_2 = ITEMS.addItem(133, "star_scanning_drone_mk_2");
-        TIBERIUM_PLANETOID_DATA = ITEMS.addItem(134, "tiberium_planetoid_data").setMaxStackSize(1);
-        EXOTIC_PLANETOID_DATA = ITEMS.addItem(135, "exotic_planetoid_data").setMaxStackSize(1);
-        XENOTIME_PLANETOID_DATA = ITEMS.addItem(136, "xenotime_planetoid_data").setMaxStackSize(1);
+        // EMPTY ID
+        TIBERIUM_PLANETOID_DATA = ITEMS.addItem(134, "tiberium_planetoid_data");
+        EXOTIC_PLANETOID_DATA = ITEMS.addItem(135, "exotic_planetoid_data");
+        XENOTIME_PLANETOID_DATA = ITEMS.addItem(136, "xenotime_planetoid_data");
       // EMPTY ID
         PETRI_DISH_STERILIZED = ITEMS.addItem(138, "petri_dish_sterilized");
         CULTURE_E_COLI = ITEMS.addItem(139, "culture_e_coli");
@@ -385,10 +366,10 @@ public class SerendustryMetaItems {
         CULTURE_YEAST_RUPTURED = ITEMS.addItem(143, "culture_yeast_ruptured");
         CULTURE_RED_ALGAE_BOILED = ITEMS.addItem(144, "culture_red_algae_boiled");
         CULTURE_STEM_CELL_WIRED = ITEMS.addItem(145, "culture_stem_cell_wired");
-        AZBANTIUM_PLANETOID_DATA = ITEMS.addItem(146, "azbantium_planetoid_data").setMaxStackSize(1);
-        VIBRANITE_PLANETOID_DATA = ITEMS.addItem(147, "vibranite_planetoid_data").setMaxStackSize(1);
+        AZBANTIUM_PLANETOID_DATA = ITEMS.addItem(146, "azbantium_planetoid_data");
+        VIBRANITE_PLANETOID_DATA = ITEMS.addItem(147, "vibranite_planetoid_data");
         CATALYST_VIBRANIUM_ALLOY = ITEMS.addItem(148, "catalyst_vibranium_alloy").setMaxStackSize(1);
-        NETHERITE_PLANETOID_DATA = ITEMS.addItem(149, "netherite_planetoid_data").setMaxStackSize(1);
+        NETHERITE_PLANETOID_DATA = ITEMS.addItem(149, "netherite_planetoid_data");
         POWER_UNIT_UHV = ITEMS.addItem(150, "power_unit_uhv").addComponents(ElectricStats.createElectricItem(Long.MAX_VALUE, GTValues.UHV)).setMaxStackSize(8);
         //TRISHULA = ITEMS.addItem(151, "trishula");
         CATALYST_HALKONITE = ITEMS.addItem(151, "catalyst_halkonite").setMaxStackSize(1);

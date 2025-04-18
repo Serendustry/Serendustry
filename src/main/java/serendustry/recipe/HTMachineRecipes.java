@@ -130,7 +130,7 @@ public class HTMachineRecipes {
          .fluidInputs(SelfRepairingNanobots.getFluid(576))
          .output(ENERGY_OUTPUT_HATCH[GTValues.UEV])
                  .stationResearch(b -> b
-                         .researchStack(ENERGY_INPUT_HATCH[GTValues.UHV].getStackForm())
+                         .researchStack(ENERGY_OUTPUT_HATCH[GTValues.UHV].getStackForm())
                          .CWUt(128)
                          .EUt(VA[GTValues.UEV]))
          .duration(1000).EUt(VA[GTValues.UEV]).buildAndRegister();
@@ -145,7 +145,7 @@ public class HTMachineRecipes {
          .fluidInputs(MutatedLivingSolder.getFluid(1152))
          .output(ENERGY_OUTPUT_HATCH[GTValues.UIV])
                  .stationResearch(b -> b
-                         .researchStack(ENERGY_INPUT_HATCH[GTValues.UEV].getStackForm())
+                         .researchStack(ENERGY_OUTPUT_HATCH[GTValues.UEV].getStackForm())
                          .CWUt(128)
                          .EUt(VA[GTValues.UIV]))
          .duration(1000).EUt(VA[GTValues.UIV]).buildAndRegister();
@@ -160,7 +160,7 @@ public class HTMachineRecipes {
          .fluidInputs(MutatedLivingSolder.getFluid(2304))
          .output(ENERGY_OUTPUT_HATCH[GTValues.UXV])
                  .stationResearch(b -> b
-                         .researchStack(ENERGY_INPUT_HATCH[GTValues.UIV].getStackForm())
+                         .researchStack(ENERGY_OUTPUT_HATCH[GTValues.UIV].getStackForm())
                          .CWUt(128)
                          .EUt(VA[GTValues.UXV]))
          .duration(1000).EUt(VA[GTValues.UXV]).buildAndRegister();
@@ -175,7 +175,7 @@ public class HTMachineRecipes {
          .fluidInputs(MutatedLivingSolder.getFluid(4608))
          .output(ENERGY_OUTPUT_HATCH[GTValues.OpV])
                  .stationResearch(b -> b
-                         .researchStack(ENERGY_INPUT_HATCH[GTValues.UXV].getStackForm())
+                         .researchStack(ENERGY_OUTPUT_HATCH[GTValues.UXV].getStackForm())
                          .CWUt(128)
                          .EUt(VA[GTValues.OpV]))
          .duration(1000).EUt(VA[GTValues.OpV]).buildAndRegister();

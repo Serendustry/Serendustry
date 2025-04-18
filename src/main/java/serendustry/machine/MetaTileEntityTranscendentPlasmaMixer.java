@@ -2,6 +2,7 @@ package serendustry.machine;
 
 import javax.annotation.Nonnull;
 
+import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
@@ -38,7 +39,10 @@ public class MetaTileEntityTranscendentPlasmaMixer extends RecipeMapMultiblockCo
                 .aisle("XXX", "XXX", "XXX")
                 .aisle("XXX", "XSX", "XXX")
                 .where('S', selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(60).or(autoAbilities()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(60).or(autoAbilities(false, false, true, true, true, true, false))
+                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setMinGlobalLimited(0).setMaxGlobalLimited(2))
+                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setMaxGlobalLimited(1))
+                        .or(abilities(MultiblockAbility.INPUT_LASER).setMaxGlobalLimited(1)))
                 .build();
     }
 
