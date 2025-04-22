@@ -83,10 +83,18 @@ public class SerendustryMetaItems {
     public static MetaItem<?>.MetaValueItem GALENA_PLANETOID_DATA;
     public static MetaItem<?>.MetaValueItem TENGAM_PLANETOID_DATA;
     public static MetaItem<?>.MetaValueItem CHEESE_PLANETOID_DATA;
-
     public static MetaItem<?>.MetaValueItem GEM_PLANETOID_DATA;
     public static MetaItem<?>.MetaValueItem SALT_PLANETOID_DATA;
     public static MetaItem<?>.MetaValueItem LAPIS_PLANETOID_DATA;
+    public static MetaItem<?>.MetaValueItem NETHERRACK_PLANETOID_DATA;
+    public static MetaItem<?>.MetaValueItem PITCHBLENDE_PLANETOID_DATA;
+    public static MetaItem<?>.MetaValueItem QUARTZ_PLANETOID_DATA;
+    public static MetaItem<?>.MetaValueItem AZBANTIUM_PLANETOID_DATA;
+    public static MetaItem<?>.MetaValueItem VIBRANITE_PLANETOID_DATA;
+    public static MetaItem<?>.MetaValueItem NETHERITE_PLANETOID_DATA;
+    public static MetaItem<?>.MetaValueItem DRACONIUM_PLANETOID_DATA;
+    public static MetaItem<?>.MetaValueItem REDSTONE_PLANETOID_DATA;
+    public static MetaItem<?>.MetaValueItem END_STONE_PLANETOID_DATA;
 
     public static MetaItem<?>.MetaValueItem YELLOW_DWARF_STAR_DATA;
     public static MetaItem<?>.MetaValueItem RED_DWARF_STAR_DATA;
@@ -95,16 +103,11 @@ public class SerendustryMetaItems {
     public static MetaItem<?>.MetaValueItem BLUE_GIANT_STAR_DATA;
     public static MetaItem<?>.MetaValueItem WHITE_DWARF_STAR_DATA;
     public static MetaItem<?>.MetaValueItem BROWN_DWARF_STAR_DATA;
-
     public static MetaItem<?>.MetaValueItem BLACK_DWARF_STAR_DATA;
     public static MetaItem<?>.MetaValueItem NEUTRON_STAR_DATA;
     public static MetaItem<?>.MetaValueItem PULSAR_STAR_DATA;
 
-    // this is messy but i didn't want to move IDs around
     public static MetaItem<?>.MetaValueItem STAR_SCANNING_DRONE;
-    public static MetaItem<?>.MetaValueItem NETHERRACK_PLANETOID_DATA;
-    public static MetaItem<?>.MetaValueItem PITCHBLENDE_PLANETOID_DATA;
-    public static MetaItem<?>.MetaValueItem QUARTZ_PLANETOID_DATA;
     public static MetaItem<?>.MetaValueItem STAR_HARVESTING_DRONE;
 
     public static MetaItem<?>.MetaValueItem SPACEWEED;
@@ -121,6 +124,12 @@ public class SerendustryMetaItems {
     public static MetaItem<?>.MetaValueItem CATALYST_SUPERCONDUCTORS;
     public static MetaItem<?>.MetaValueItem CATALYST_HAM_ALLOY;
     public static MetaItem<?>.MetaValueItem CATALYST_ARCANITE;
+    public static MetaItem<?>.MetaValueItem CATALYST_ABYSSAL_ALLOY;
+    public static MetaItem<?>.MetaValueItem CATALYST_VIBRANIUM_ALLOY;
+    public static MetaItem<?>.MetaValueItem CATALYST_OGANESSON_TETRATENNESSIDE;
+    public static MetaItem<?>.MetaValueItem CATALYST_HALKONITE;
+    public static MetaItem<?>.MetaValueItem CATALYST_AWAKENED_DRACONIUM;
+    public static MetaItem<?>.MetaValueItem CATALYST_EXO_HALKONITE;
 
     public static MetaItem<?>.MetaValueItem COIL_UHV;
     public static MetaItem<?>.MetaValueItem COIL_UEV;
@@ -156,7 +165,6 @@ public class SerendustryMetaItems {
     public static MetaItem<?>.MetaValueItem WAFER_OPIC;
     public static MetaItem<?>.MetaValueItem CHIP_OPIC;
 
-    public static MetaItem<?>.MetaValueItem CATALYST_ABYSSAL_ALLOY;
     public static MetaItem<?>.MetaValueItem LENS_ARRAY_HYPERAMPLIFYING;
     public static MetaItem<?>.MetaValueItem LENS_ARRAY_HYPERPRECISE;
     public static MetaItem<?>.MetaValueItem MASK_APU;
@@ -183,18 +191,10 @@ public class SerendustryMetaItems {
     public static MetaItem<?>.MetaValueItem CULTURE_YEAST_RUPTURED;
     public static MetaItem<?>.MetaValueItem CULTURE_RED_ALGAE_BOILED;
     public static MetaItem<?>.MetaValueItem CULTURE_STEM_CELL_WIRED;
-
-    public static MetaItem<?>.MetaValueItem AZBANTIUM_PLANETOID_DATA;
-    public static MetaItem<?>.MetaValueItem VIBRANITE_PLANETOID_DATA;
-    public static MetaItem<?>.MetaValueItem CATALYST_VIBRANIUM_ALLOY;
-    public static MetaItem<?>.MetaValueItem NETHERITE_PLANETOID_DATA;
+    public static MetaItem<?>.MetaValueItem CULTURE_XENOXENE;
 
     public static MetaItem<?>.MetaValueItem POWER_UNIT_UHV;
     //public static MetaItem<?>.MetaValueItem TRISHULA;
-
-    public static MetaItem<?>.MetaValueItem CATALYST_HALKONITE;
-    public static MetaItem<?>.MetaValueItem CULTURE_XENOXENE;
-    public static MetaItem<?>.MetaValueItem CATALYST_OGANESSON_TETRATENNESSIDE;
 
     public static MetaItem<?>.MetaValueItem CIRCUIT_ANY_ULV;
     public static MetaItem<?>.MetaValueItem CIRCUIT_ANY_LV;
@@ -211,6 +211,26 @@ public class SerendustryMetaItems {
     public static MetaItem<?>.MetaValueItem CIRCUIT_ANY_UXV;
     public static MetaItem<?>.MetaValueItem CIRCUIT_ANY_OpV;
     public static MetaItem<?>.MetaValueItem CIRCUIT_ANY_MAX;
+
+    public static MetaItem<?>.MetaValueItem STELLAR_ESSENCE_BLANK;
+    public static MetaItem<?>.MetaValueItem STELLAR_ESSENCE_OVERWORLD;
+    public static MetaItem<?>.MetaValueItem STELLAR_ESSENCE_NETHER;
+    public static MetaItem<?>.MetaValueItem STELLAR_ESSENCE_END;
+
+    public static MetaItem<?>.MetaValueItem CIRC_ENTROPIC_UV;
+    public static MetaItem<?>.MetaValueItem CIRC_ENTROPIC_UHV;
+    public static MetaItem<?>.MetaValueItem CIRC_ENTROPIC_UEV;
+    public static MetaItem<?>.MetaValueItem CIRC_ENTROPIC_UIV;
+    public static MetaItem<?>.MetaValueItem ENTROPIC_CIRCUIT_BOARD;
+
+    public static MetaItem<?>.MetaValueItem DEEP_DARK_SCANNING_DRONE;
+    public static MetaItem<?>.MetaValueItem DEEP_DARK_HARVESTING_DRONE;
+    public static MetaItem<?>.MetaValueItem DEEP_DARK_PLANETOID_DATA;
+
+    public static MetaItem<?>.MetaValueItem HKSP_DD;
+    public static MetaItem<?>.MetaValueItem HKSP_C;
+    public static MetaItem<?>.MetaValueItem HKSP_BC;
+    public static MetaItem<?>.MetaValueItem HKSP_F;
 
     public static void preInit() {
         ITEMS = new StandardMetaItem();
@@ -395,5 +415,26 @@ public class SerendustryMetaItems {
         CIRCUIT_ANY_UXV = ITEMS.addItem(171, "circuit_any_uxv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UXV);
         CIRCUIT_ANY_OpV = ITEMS.addItem(172, "circuit_any_opv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.OpV);
         CIRCUIT_ANY_MAX = ITEMS.addItem(173, "circuit_any_max").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.MAX);
+        STELLAR_ESSENCE_BLANK = ITEMS.addItem(174, "stellar_essence_blank");
+        STELLAR_ESSENCE_OVERWORLD = ITEMS.addItem(175, "stellar_essence_overworld");
+        STELLAR_ESSENCE_NETHER = ITEMS.addItem(176, "stellar_essence_nether");
+        STELLAR_ESSENCE_END = ITEMS.addItem(177, "stellar_essence_end");
+        CIRC_ENTROPIC_UV = ITEMS.addItem(178, "circ_entropic_uv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UV);
+        CIRC_ENTROPIC_UHV = ITEMS.addItem(179, "circ_entropic_uhv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UHV);
+        CIRC_ENTROPIC_UEV = ITEMS.addItem(180, "circ_entropic_uev").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UEV);
+        CIRC_ENTROPIC_UIV = ITEMS.addItem(181, "circ_entropic_uiv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UIV);
+        ENTROPIC_CIRCUIT_BOARD = ITEMS.addItem(182, "entropic_circuit_board");
+        DRACONIUM_PLANETOID_DATA = ITEMS.addItem(183, "draconium_planetoid_data");
+        CATALYST_AWAKENED_DRACONIUM = ITEMS.addItem(184, "catalyst_awakened_draconium").setMaxStackSize(1);
+        REDSTONE_PLANETOID_DATA = ITEMS.addItem(185, "redstone_planetoid_data");
+        DEEP_DARK_SCANNING_DRONE = ITEMS.addItem(186, "deep_dark_scanning_drone");
+        DEEP_DARK_HARVESTING_DRONE = ITEMS.addItem(187, "deep_dark_harvesting_drone");
+        DEEP_DARK_PLANETOID_DATA = ITEMS.addItem(188, "deep_dark_planetoid_data");
+        END_STONE_PLANETOID_DATA = ITEMS.addItem(189, "end_stone_planetoid_data");
+        HKSP_DD = ITEMS.addItem(190, "hksp_dd");
+        HKSP_C = ITEMS.addItem(191, "hksp_c");
+        HKSP_BC = ITEMS.addItem(192, "hksp_bc");
+        HKSP_F = ITEMS.addItem(193, "hksp_f");
+        CATALYST_EXO_HALKONITE = ITEMS.addItem(194, "catalyst_exo_halkonite").setMaxStackSize(1);
     }
 }

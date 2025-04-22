@@ -5,10 +5,12 @@ import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static java.lang.Math.max;
+import static serendustry.item.SerendustryMetaItems.CULTURE_STEM_CELL_WIRED;
 import static serendustry.item.material.SerendustryMaterials.*;
 
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.material.Material;
 import gregtech.api.unification.ore.OrePrefix;
 
 
@@ -28,32 +30,53 @@ public class SelfRepairingNanobotsRecipes {
                         .EUt(VA[UV]))
                 .duration(400).EUt(400000).buildAndRegister();
 
-        OrePrefix[] parts = { dust, plate, foil };
-        float[] cost = { 1.0F, 1.0f, 0.25F };
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(circuit, MarkerMaterials.Tier.UEV, 2)
+                .input(ROBOT_ARM_UEV)
+                .input(CULTURE_STEM_CELL_WIRED, 16)
+                .input(bolt, HalkoniteSteel, 64)
+                .input(foil, TengamAttuned, 64)
+                .input(foil, RadoxPolymer, 64)
+                .input(cableGtSingle, Quantium40, 32)
+                .input(wireGtSingle, Hypogen, 16)
+                .fluidInputs(SelfRepairingNanobots.getFluid(144 * 128),
+                        Ferrofluid.getFluid(16000))
+                .output(dust, SentientNanobots, 64)
+                .stationResearch(b -> b
+                        .researchStack(OreDictUnifier.get(dust, SelfRepairingNanobots))
+                        .CWUt(144)
+                        .EUt(VA[UEV]))
+                .duration(800).EUt(800000).buildAndRegister();
 
-        for (int i = 0; i < parts.length; i++) {
-            for (int j = 0; j < parts.length; j++) {
+        Material[] materials = {SelfRepairingNanobots, SentientNanobots};
+        OrePrefix[] parts = {dust, plate, foil};
+        float[] cost = {1.0F, 1.0f, 0.25F};
 
-                if(i == j) continue;
+        for (Material material : materials) {
+            for (int i = 0; i < parts.length; i++) {
+                for (int j = 0; j < parts.length; j++) {
+
+                    if (i == j) continue;
+
+                    ASSEMBLER_RECIPES.recipeBuilder()
+                            .input(parts[i], material, (int) (max(cost[j] / cost[i], 1)))
+                            .circuitMeta(j + 1)
+                            .output(parts[j], material, (int) (max(cost[i] / cost[j], 1)))
+                            .duration((int) (80 * cost[j])).EUt(VA[UV]).buildAndRegister();
+                }
 
                 ASSEMBLER_RECIPES.recipeBuilder()
-                        .input(parts[i], SelfRepairingNanobots, (int) (max(cost[j] / cost[i], 1)))
-                        .circuitMeta(j + 1)
-                        .output(parts[j], SelfRepairingNanobots, (int) (max(cost[i] / cost[j], 1)))
-                        .duration((int) (80 * cost[j])).EUt(VA[UV]).buildAndRegister();
+                        .input(parts[i], material)
+                        .circuitMeta(parts.length + 1)
+                        .fluidOutputs(material.getFluid((int) (144 * cost[i])))
+                        .duration((int) (80 * cost[i])).EUt(VA[UV]).buildAndRegister();
+
+                ASSEMBLER_RECIPES.recipeBuilder()
+                        .fluidInputs(material.getFluid((int) (144 * cost[i])))
+                        .circuitMeta(i + 1)
+                        .output(parts[i], material)
+                        .duration((int) (80 * cost[i])).EUt(VA[UV]).buildAndRegister();
             }
-
-            ASSEMBLER_RECIPES.recipeBuilder()
-                    .input(parts[i], SelfRepairingNanobots)
-                    .circuitMeta(parts.length + 1)
-                    .fluidOutputs(SelfRepairingNanobots.getFluid((int) (144 * cost[i])))
-                    .duration((int) (80 * cost[i])).EUt(VA[UV]).buildAndRegister();
-
-            ASSEMBLER_RECIPES.recipeBuilder()
-                    .fluidInputs(SelfRepairingNanobots.getFluid((int) (144 * cost[i])))
-                    .circuitMeta(i + 1)
-                    .output(parts[i], SelfRepairingNanobots)
-                    .duration((int) (80 * cost[i])).EUt(VA[UV]).buildAndRegister();
         }
     }
 }

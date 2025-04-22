@@ -103,7 +103,7 @@ public class CircuitRecipes {
 
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT_WAFER)
-                .input(dust, Orundum, 4)
+                .input(dust, Orundum)
                 .fluidInputs(Naquadria.getFluid(L * 16))
                 .output(WAFER_OPIC)
                 .cleanroom(CleanroomType.CLEANROOM)
@@ -165,12 +165,22 @@ public class CircuitRecipes {
                 .duration(1200).EUt(VA[UHV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
+                .circuitMeta(6)
+                .input(foil, LaminatedBoPET, 16)
+                .input(foil, Polybenzimidazole, 64)
+                .input(WRAPPED_ORUNDUM_WAFER)
+                .fluidInputs(Chrome.getFluid(144 * 8))
+                .output(MASK_BLANK, 48)
+                .duration(800).EUt(VA[UHV]).buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .notConsumable(STELLAR_ESSENCE_NETHER)
                 .input(foil, LaminatedBoPET, 16)
                 .input(foil, Polybenzimidazole, 64)
                 .input(WRAPPED_ORUNDUM_WAFER)
                 .fluidInputs(Chrome.getFluid(144 * 8))
                 .output(MASK_BLANK, 64)
-                .duration(800).EUt(VA[UHV]).buildAndRegister();
+                .duration(600).EUt(VA[UHV]).buildAndRegister();
 
         MetaItem.MetaValueItem[] wafers = {INTEGRATED_LOGIC_CIRCUIT_WAFER, RANDOM_ACCESS_MEMORY_WAFER, CENTRAL_PROCESSING_UNIT_WAFER, NAND_MEMORY_CHIP_WAFER,
                 NOR_MEMORY_CHIP_WAFER, SIMPLE_SYSTEM_ON_CHIP_WAFER, SYSTEM_ON_CHIP_WAFER, ADVANCED_SYSTEM_ON_CHIP_WAFER, HIGHLY_ADVANCED_SOC_WAFER,
@@ -303,6 +313,14 @@ public class CircuitRecipes {
                 .output(COSMIC_CIRCUIT_BOARD)
                 .cleanroom(CleanroomType.CLEANROOM)
                 .EUt(VA[UHV]).duration(1000).buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(COSMIC_CIRCUIT_BOARD)
+                .input(foil, Taranium, 2)
+                .fluidInputs(LCNS.getFluid(1000), RadoxPolymer.getFluid(144*2), ChromaticGlass.getFluid(288*2))
+                .output(ENTROPIC_CIRCUIT_BOARD)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .EUt(VA[UEV]).duration(1000).buildAndRegister();
     }
 
     private static void componentRecipes() {
@@ -489,5 +507,86 @@ public class CircuitRecipes {
                         .CWUt(128)
                         .EUt(VA[UHV]))
                 .duration(100 * 20).EUt(VA[UHV]).buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(ENTROPIC_CIRCUIT_BOARD)
+                .input(ACTIVATED_APU_CHIP)
+                .input(foil, TengamAttuned, 4)
+                .input(plate, HalkoniteSteel)
+                .input(SUPREME_SMD_CAPACITOR, 16)
+                .input(SUPREME_SMD_TRANSISTOR, 16)
+                .input(wireFine, Quantium40, 8)
+                .fluidInputs(SelfRepairingNanobots.getFluid(144))
+                .fluidInputs(LCNS.getFluid(1000))
+                .output(CIRC_ENTROPIC_UV)
+                .stationResearch(b -> b
+                        .researchStack(CIRC_POSITRONIC_UEV.getStackForm())
+                        .CWUt(144)
+                        .EUt(VA[UEV]))
+                .duration(20 * 20).EUt(VA[UEV]).buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(ENTROPIC_CIRCUIT_BOARD)
+                .input(CIRC_ENTROPIC_UV, 2)
+                .input(SUPREME_SMD_INDUCTOR, 12)
+                .input(SUPREME_SMD_CAPACITOR, 24)
+                .input(RANDOM_ACCESS_MEMORY, 64)
+                .input(wireFine, Quantium40, 16)
+                .input(foil, Quantium40, 16)
+                .input(plate, TengamAttuned, 4)
+                .fluidInputs(SelfRepairingNanobots.getFluid(144*2))
+                .fluidInputs(LCNS.getFluid(2000))
+                .output(CIRC_ENTROPIC_UHV)
+                .stationResearch(b -> b
+                        .researchStack(CIRC_ENTROPIC_UV.getStackForm())
+                        .CWUt(144)
+                        .EUt(VA[UEV]))
+                .duration(20 * 20).EUt(VA[UEV]).buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(ENTROPIC_CIRCUIT_BOARD)
+                .input(CIRC_ENTROPIC_UHV, 2)
+                .input(SUPREME_SMD_DIODE, 16)
+                .input(SUPREME_SMD_RESISTOR, 16)
+                .input(NOR_MEMORY_CHIP, 64)
+                .input(RANDOM_ACCESS_MEMORY, 64)
+                .input(RANDOM_ACCESS_MEMORY, 64)
+                .input(wireFine, Quantium40, 24)
+                .input(foil, RadoxPolymer, 16)
+                .input(plate, HalkoniteSteel, 4)
+                .fluidInputs(SelfRepairingNanobots.getFluid(144*8))
+                .fluidInputs(LCNS.getFluid(4000))
+                .output(CIRC_ENTROPIC_UEV)
+                .stationResearch(b -> b
+                        .researchStack(CIRC_ENTROPIC_UHV.getStackForm())
+                        .CWUt(144)
+                        .EUt(VA[UEV]))
+                .duration(20 * 20).EUt(VA[UEV]).buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(frameGt, AwakenedDraconium, 2)
+                .input(CIRC_ENTROPIC_UEV, 2)
+                .input(SUPREME_SMD_RESISTOR, 64)
+                .input(SUPREME_SMD_TRANSISTOR, 64)
+                .input(SUPREME_SMD_CAPACITOR, 64)
+                .input(SUPREME_SMD_DIODE, 64)
+                .input(SUPREME_SMD_INDUCTOR, 64)
+                .input(foil, AwakenedDraconium, 16)
+                .input(foil, Hypogen, 8)
+                .input(foil, SentientNanobots, 8)
+                .input(RANDOM_ACCESS_MEMORY, 64)
+                .input(wireGtDouble, Hypogen, 16)
+                .input(plateDense, HalkoniteSteel)
+                .input(plate, AwakenedDraconium, 8)
+                .fluidInputs(SentientNanobots.getFluid(144*16))
+                .fluidInputs(LCNS.getFluid(8000))
+                .fluidInputs(Originium.getFluid(144*2))
+                .fluidInputs(Rhugnor.getFluid(144*4))
+                .output(CIRC_ENTROPIC_UIV)
+                .stationResearch(b -> b
+                        .researchStack(CIRC_ENTROPIC_UEV.getStackForm())
+                        .CWUt(144)
+                        .EUt(VA[UIV]))
+                .duration(100 * 20).EUt(VA[UEV]).buildAndRegister();
     }
 }

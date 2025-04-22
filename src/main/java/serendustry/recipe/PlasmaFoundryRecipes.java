@@ -2,6 +2,7 @@ package serendustry.recipe;
 
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.unification.material.MarkerMaterials;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import serendustry.machine.MetaTileEntityPlasmaFoundry;
 
@@ -12,7 +13,6 @@ import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static gregtech.common.metatileentities.MetaTileEntities.ALLOY_SMELTER;
-import static gregtech.common.metatileentities.MetaTileEntities.LASER_ENGRAVER;
 import static serendustry.item.SerendustryMetaItems.*;
 import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryMetaTileEntities.PLASMA_FOUNDRY;
@@ -25,17 +25,6 @@ public class PlasmaFoundryRecipes {
         catalysts();
         catalystRecipes();
         alloyRecipes();
-    }
-
-    private static void catalysts() {
-        MetaItem<?>.MetaValueItem[] metaItemCatalysts = new MetaItem.MetaValueItem[] {
-                CATALYST_STEELS, CATALYST_COPPER_ALLOYS, CATALYST_TIN_ALLOYS, CATALYST_GOLD_ALLOYS, CATALYST_BATTERY_ALLOY, CATALYST_SOLDERING_ALLOYS,
-                CATALYST_PLATINUM_GROUP_ALLOYS, CATALYST_NAQUADAH_ALLOYS, CATALYST_SUPERCONDUCTORS,
-                CATALYST_HAM_ALLOY, CATALYST_ARCANITE, CATALYST_ABYSSAL_ALLOY, CATALYST_VIBRANIUM_ALLOY, CATALYST_HALKONITE, CATALYST_OGANESSON_TETRATENNESSIDE
-        };
-        for(MetaItem<?>.MetaValueItem item : metaItemCatalysts) {
-            PLASMA_FOUNDRY_RECIPES.registerCatalyst(item.getStackForm(), 50);
-        }
     }
 
     private static void multiRecipes() {
@@ -58,6 +47,18 @@ public class PlasmaFoundryRecipes {
                         .CWUt(32)
                         .EUt(VA[ZPM]))
                 .duration(6400).EUt(VA[ZPM]).buildAndRegister();
+    }
+
+    private static void catalysts() {
+        MetaItem<?>.MetaValueItem[] metaItemCatalysts = new MetaItem.MetaValueItem[] {
+                CATALYST_STEELS, CATALYST_COPPER_ALLOYS, CATALYST_TIN_ALLOYS, CATALYST_GOLD_ALLOYS, CATALYST_BATTERY_ALLOY, CATALYST_SOLDERING_ALLOYS,
+                CATALYST_PLATINUM_GROUP_ALLOYS, CATALYST_NAQUADAH_ALLOYS, CATALYST_SUPERCONDUCTORS, CATALYST_HAM_ALLOY, CATALYST_ARCANITE,
+                CATALYST_ABYSSAL_ALLOY, CATALYST_VIBRANIUM_ALLOY, CATALYST_HALKONITE, CATALYST_OGANESSON_TETRATENNESSIDE, CATALYST_AWAKENED_DRACONIUM,
+                CATALYST_EXO_HALKONITE
+        };
+        for(MetaItem<?>.MetaValueItem item : metaItemCatalysts) {
+            PLASMA_FOUNDRY_RECIPES.registerCatalyst(item.getStackForm(), 50);
+        }
     }
 
     private static void catalystRecipes() {
@@ -223,6 +224,26 @@ public class PlasmaFoundryRecipes {
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 32))
                 .output(CATALYST_HALKONITE)
                 .duration(1800).EUt(VA[UEV]).buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, AbyssalAlloy)
+                .input(circuit, MarkerMaterials.Tier.UEV)
+                .input(plate, Draconium, 64)
+                .input(plateDouble, Dragonblood, 64)
+                .input(Blocks.REDSTONE_BLOCK, 64)
+                .fluidInputs(SelfRepairingNanobots.getFluid(144 * 64))
+                .output(CATALYST_AWAKENED_DRACONIUM)
+                .duration(2400).EUt(VA[UEV]).buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, DeepDarkSteel)
+                .input(circuit, MarkerMaterials.Tier.UIV)
+                .input(plate, HalkoniteSteel, 64)
+                .input(gear, Infinity, 64)
+                .input(plateDense, AwakenedDraconium, 64)
+                .fluidInputs(SentientNanobots.getFluid(144 * 32))
+                .output(CATALYST_EXO_HALKONITE)
+                .duration(3200).EUt(VA[UIV]).buildAndRegister();
     }
 
     private static void alloyRecipes() {
@@ -645,15 +666,15 @@ public class PlasmaFoundryRecipes {
                 .duration(400000).EUt(VA[UEV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
-                .fluidInputs(Naquadria.getFluid(144 * 24),
-                        Taranium.getFluid(144 * 8),
+                .fluidInputs(NaquadriaticTaranium.getFluid(144 * 32),
                         TungstenCarbide.getFluid(144 * 8),
                         NetherizedDiamond.getFluid(144 * 8),
                         Germanium.getFluid(144 * 8),
-                        BlackStarMatter.getFluid(3200))
+                        BlackStarMatter.getFluid(3200),
+                        Iron.getPlasma(144 * 128))
                 .foundryCatalyst(CATALYST_ABYSSAL_ALLOY)
                 .fluidOutputs(AbyssalAlloy.getFluid(144 * 64))
-                .duration(100*20*64/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(100*20*64/2/4/2).EUt(VA[UEV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Taranium.getFluid(144 * 13),
@@ -661,9 +682,30 @@ public class PlasmaFoundryRecipes {
                         BETSPerrhenate.getFluid(144 * 13),
                         Orundum.getFluid(144 * 13),
                         Bromine.getFluid(13000),
-                        Americium.getPlasma(144 * 16))
+                        Americium.getPlasma(144 * 64))
                 .foundryCatalyst(CATALYST_SUPERCONDUCTORS)
                 .fluidOutputs(ScUevSane.getFluid(144 * 65))
-                .duration(100*20*64/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(100*20*64/2/4/2).EUt(VA[UEV]).buildAndRegister();
+
+        PLASMA_FOUNDRY_RECIPES.recipeBuilder()
+                .fluidInputs(Draconium.getFluid(144 * 64),
+                        Dragonblood.getFluid(144 * 64),
+                        Redstone.getFluid(144 * 128),
+                        CondensedStarMatter.getFluid(10000),
+                        Flerovium.getPlasma(144 * 32))
+                .foundryCatalyst(CATALYST_AWAKENED_DRACONIUM)
+                .fluidOutputs(AwakenedDraconium.getFluid(144 * 64))
+                .duration(100*20*64/2/4/2).EUt(VA[UIV]).buildAndRegister();
+
+        PLASMA_FOUNDRY_RECIPES.recipeBuilder()
+                .fluidInputs(HalkonitePreparationBase.getFluid(144 * 128),
+                        Infinity.getFluid(144 * 64),
+                        AwakenedDraconium.getFluid(144 * 16),
+                        ExoticUnreality.getFluid(8000),
+                        TrilithiumResin.getFluid(12000),
+                        Dragonblood.getPlasma(144 * 32))
+                .fluidOutputs(ExoHalkoniteBase.getFluid(144 * 64))
+                .foundryCatalyst(CATALYST_EXO_HALKONITE)
+                .duration(100*20*64/2/4/2).EUt(VA[UXV]).buildAndRegister();
     }
 }

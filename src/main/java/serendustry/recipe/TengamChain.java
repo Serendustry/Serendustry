@@ -108,8 +108,8 @@ public class TengamChain {
                 .output(dust, XenomagneticAttunementCatalyst, 8)
                 .duration(180).EUt(VA[GTValues.UEV]).buildAndRegister();
 
-        OrePrefix[] parts = { ingot, plate, stick, stickLong };
-        float[] cost = { 1.0f, 1.0f, 0.5f, 1.0f };
+        OrePrefix[] parts = { ingot, plate, stick, stickLong, foil };
+        float[] cost = { 1.0f, 1.0f, 0.5f, 1.0f, 0.25F };
 
         for (int i = 0; i < parts.length; i++) {
             POLARIZER_RECIPES.recipeBuilder()
@@ -127,13 +127,13 @@ public class TengamChain {
                     .duration((int) (98 * cost[i])).EUt(VA[GTValues.HV]).buildAndRegister();
 
             ARC_FURNACE_RECIPES.recipeBuilder()
-                    .input(parts[i], TengamAttuned, cost[i] % 1 == 0 ? 1 : 2)
+                    .input(parts[i], TengamAttuned, (int) (1 / cost[i]))
                     .fluidOutputs(Oxygen.getFluid((int) (98 * cost[i])))
                     .output(ingot, TengamPurified)
                     .duration((int) (98 * cost[i])).EUt(VA[GTValues.HV]).buildAndRegister();
 
             MACERATOR_RECIPES.recipeBuilder()
-                    .input(parts[i], TengamAttuned, cost[i] % 1 == 0 ? 1 : 2)
+                    .input(parts[i], TengamAttuned, (int) (1 / cost[i]))
                     .output(dust, TengamPurified)
                     .duration((int) (98 * cost[i])).EUt(VA[GTValues.LV]).buildAndRegister();
         }

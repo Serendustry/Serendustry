@@ -35,8 +35,6 @@ import serendustry.machine.SerendustryMetaTileEntities;
 import serendustry.machine.SerendustryRecipeMaps;
 import serendustry.recipe.SerendustryRecipes;
 
-import static net.minecraftforge.fml.common.eventhandler.EventPriority.LOWEST;
-
 @Mod(modid = Tags.MODID,
      name = Tags.MODNAME,
      version = Tags.VERSION,
@@ -82,6 +80,7 @@ public class Serendustry {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public void registerRecipesLate(RegistryEvent.Register<IRecipe> event) {
+        SerendustryRecipes.removeRecipesLate();
         SerendustryRecipes.registerRecipesLate();
     }
 

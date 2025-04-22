@@ -7,6 +7,7 @@ import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
+import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_OVERWORLD;
 import static serendustry.item.material.SerendustryMaterials.*;
 
 public class FerrofluidChain {
@@ -60,9 +61,17 @@ public class FerrofluidChain {
                 .duration(480).EUt(VA[IV]).buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
+                .circuitMeta(6)
                 .input(dust, MagneticNanoparticleMixture, 10)
                 .fluidInputs(Kerosene.getFluid(1000))
                 .fluidOutputs(Ferrofluid.getFluid(1000))
                 .duration(2400).EUt(VA[ZPM]).buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder()
+                .notConsumable(STELLAR_ESSENCE_OVERWORLD)
+                .input(dust, MagneticNanoparticleMixture, 8)
+                .fluidInputs(Kerosene.getFluid(800))
+                .fluidOutputs(Ferrofluid.getFluid(1000))
+                .duration(2000).EUt(VA[ZPM]).buildAndRegister();
     }
 }

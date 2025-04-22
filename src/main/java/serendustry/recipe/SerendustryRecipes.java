@@ -22,8 +22,10 @@ public class SerendustryRecipes {
         HalkoniteSteelRecipes.init();
         HTComponentRecipes.init();
         HTMachineRecipes.init();
+        InfinityChain.init();
         LaboratoryRecipes.init();
         LargeAlloySmelterRecipes.init();
+        LCNSChain.init();
         MagnetoResonaticRecipes.init();
         MiscRecipes.init();
         MysteriousBlobRecipes.init();
@@ -33,6 +35,7 @@ public class SerendustryRecipes {
         PlasmaFoundryRecipes.init();
         PlasmaFuels.init();
         PlasmaMixerRecipes.init();
+        Quantium40Chain.init();
         RadoxChain.init();
         SeleniumChain.init();
         SelfRepairingNanobotsRecipes.init();
@@ -40,13 +43,22 @@ public class SerendustryRecipes {
         SmallFusionReactorRecipes.init();
         SpaceElevatorRecipes.init();
         StarMatterRecipes.init();
+        StellarEngineRecipes.init();
+        StellarIncubatorRecipes.init();
         TaraniumChain.init();
         TengamChain.init();
         ToolPrefixHandlers.init();
         WasteFluidRecipes.init();
     }
 
+    public static void removeRecipesLate() {
+        RemoveRecipes.initLate();
+    }
+
     public static void registerRecipesLate() {
         PlasmaArcRecipes.init();
+        ElectricImplosionCompressorRecipes.init();
+        DeepDarkPlanetoid.init();
+        PlasmaCondenserRecipes.init();
     }
 }

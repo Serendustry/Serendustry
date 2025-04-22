@@ -24,32 +24,32 @@ public class SerendustryMetaTileEntities {
     public static MetaTileEntityBiolab BIOLAB;
     public static MetaTileEntityAdvancedFusionReactor ADVANCED_FUSION_REACTOR;
     public static MetaTileEntityYggdrasil YGGDRASIL;
+    public static MetaTileEntityStellarIncubator STELLAR_INCUBATOR;
+    public static MetaTileEntityFlamelCrucible FLAMEL_CRUCIBLE;
+    public static MetaTileEntityDehydrator DEHYDRATOR;
+    public static MetaTileEntityStellarEngine STELLAR_ENGINE;
+    public static MetaTileEntityPlasmaCondenser PLASMA_CONDENSER;
+    public static MetaTileEntityElectricImplosionCompressor ELECTRIC_IMPLOSION_COMPRESSOR;
 
     public static void preInit() {
         // todo claim an id range
-        INDUSTRIAL_LABORATORY = registerMetaTileEntity(4000,
-                new MetaTileEntityIndustrialLaboratory(Serendustry.ID("industrial_laboratory")));
-        TRANSCENDENT_PLASMA_MIXER = registerMetaTileEntity(4001,
-                new MetaTileEntityTranscendentPlasmaMixer(Serendustry.ID("transcendent_plasma_mixer")));
-        SPACE_ELEVATOR = registerMetaTileEntity(4002,
-                new MetaTileEntitySpaceElevator(Serendustry.ID("space_elevator")));
-        NEBULAIC_NEXUS = registerMetaTileEntity(4003,
-                new MetaTileEntityNebulaicNexus(Serendustry.ID("nebulaic_nexus")));
-        PLASMA_FOUNDRY = registerMetaTileEntity(4004,
-                new MetaTileEntityPlasmaFoundry(Serendustry.ID("plasma_foundry")));
-        GIANT_FRACTIONATING_COLUMN = registerMetaTileEntity(4005,
-                new MetaTileEntityGiantFractionatingColumn(Serendustry.ID("giant_fractionating_column")));
-        CVD_CHAMBER = registerMetaTileEntity(4006,
-                new MetaTileEntityCVDChamber(Serendustry.ID("cvd_chamber")));
-        SONICATOR = registerMetaTileEntity(4007,
-                new MetaTileEntitySonicator(Serendustry.ID("sonicator")));
-        HP_LASER_ARRAY = registerMetaTileEntity(4008,
-                new MetaTileEntityHPLaserArray(Serendustry.ID("hp_laser_array")));
-        BIOLAB = registerMetaTileEntity(4009,
-                new MetaTileEntityBiolab(Serendustry.ID("biolab")));
-        ADVANCED_FUSION_REACTOR = registerMetaTileEntity(4010,
-                new MetaTileEntityAdvancedFusionReactor(Serendustry.ID("advanced_fusion_reactor")));
-        YGGDRASIL = registerMetaTileEntity(4011,
-                new MetaTileEntityYggdrasil(Serendustry.ID("yggdrasil")));
+        INDUSTRIAL_LABORATORY = registerMetaTileEntity(4000, new MetaTileEntityIndustrialLaboratory(Serendustry.ID("industrial_laboratory")));
+        TRANSCENDENT_PLASMA_MIXER = registerMetaTileEntity(4001, new MetaTileEntityTranscendentPlasmaMixer(Serendustry.ID("transcendent_plasma_mixer")));
+        SPACE_ELEVATOR = registerMetaTileEntity(4002, new MetaTileEntitySpaceElevator(Serendustry.ID("space_elevator")));
+        NEBULAIC_NEXUS = registerMetaTileEntity(4003, new MetaTileEntityNebulaicNexus(Serendustry.ID("nebulaic_nexus")));
+        PLASMA_FOUNDRY = registerMetaTileEntity(4004, new MetaTileEntityPlasmaFoundry(Serendustry.ID("plasma_foundry")));
+        GIANT_FRACTIONATING_COLUMN = registerMetaTileEntity(4005, new MetaTileEntityGiantFractionatingColumn(Serendustry.ID("giant_fractionating_column")));
+        CVD_CHAMBER = registerMetaTileEntity(4006, new MetaTileEntityCVDChamber(Serendustry.ID("cvd_chamber")));
+        SONICATOR = registerMetaTileEntity(4007, new MetaTileEntitySonicator(Serendustry.ID("sonicator")));
+        HP_LASER_ARRAY = registerMetaTileEntity(4008, new MetaTileEntityHPLaserArray(Serendustry.ID("hp_laser_array")));
+        BIOLAB = registerMetaTileEntity(4009, new MetaTileEntityBiolab(Serendustry.ID("biolab")));
+        ADVANCED_FUSION_REACTOR = registerMetaTileEntity(4010, new MetaTileEntityAdvancedFusionReactor(Serendustry.ID("advanced_fusion_reactor")));
+        YGGDRASIL = registerMetaTileEntity(4011, new MetaTileEntityYggdrasil(Serendustry.ID("yggdrasil")));
+        STELLAR_INCUBATOR = registerMetaTileEntity(4012, new MetaTileEntityStellarIncubator(Serendustry.ID("stellar_incubator")));
+        FLAMEL_CRUCIBLE = registerMetaTileEntity(4013, new MetaTileEntityFlamelCrucible(Serendustry.ID("flamel_crucible")));
+        DEHYDRATOR = registerMetaTileEntity(4014, new MetaTileEntityDehydrator(Serendustry.ID("dehydrator")));
+        STELLAR_ENGINE = registerMetaTileEntity(4015, new MetaTileEntityStellarEngine(Serendustry.ID("stellar_engine")));
+        PLASMA_CONDENSER = registerMetaTileEntity(4016, new MetaTileEntityPlasmaCondenser(Serendustry.ID("plasma_condenser")));
+        ELECTRIC_IMPLOSION_COMPRESSOR = registerMetaTileEntity(4017, new MetaTileEntityElectricImplosionCompressor(Serendustry.ID("electric_implosion_compressor")));
     }
 }

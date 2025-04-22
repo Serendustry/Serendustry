@@ -16,7 +16,7 @@ import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
 public class SemiconductorGradeSiliconChain {
     public static void init() {
 
-        CHEMICAL_RECIPES.recipeBuilder()
+        FLUID_HEATER_RECIPES.recipeBuilder()
                 .input(dust, SiliconDioxide, 3)
                 .input(dust, Magnesium, 2)
                 .output(dust, MagnesiumSilicide, 3)

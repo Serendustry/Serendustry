@@ -66,7 +66,7 @@ public class BiolabRecipes {
                 .input(dust, Meat)
                 .fluidInputs(PotatoDextroseBroth.getFluid(500))
                 .chancedOutput(CULTURE_E_COLI, 1000, 0)
-                .chancedOutput(PETRI_DISH, 9000, 0)
+                .chancedOutput(PETRI_DISH, 10000, 0)
                 .chancedOutputLogic(ChancedOutputLogic.XOR)
                 .duration(20 * 12).EUt(VA[LuV]).buildAndRegister();
 
@@ -75,7 +75,7 @@ public class BiolabRecipes {
                 .input(PETRI_DISH_STERILIZED)
                 .fluidInputs(PotatoDextroseBroth.getFluid(500))
                 .chancedOutput(CULTURE_E_COLI, 5000, 0)
-                .chancedOutput(PETRI_DISH, 5000, 0)
+                .chancedOutput(PETRI_DISH, 10000, 0)
                 .chancedOutputLogic(ChancedOutputLogic.XOR)
                 .duration(20 * 4).EUt(VA[LuV]).buildAndRegister();
 
@@ -100,14 +100,14 @@ public class BiolabRecipes {
 
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .input(Items.APPLE)
-                .fluidOutputs(Methane.getFluid(18), YeastRichMixture.getFluid(50)) // todo : check if this is the right amt of methanol
+                .fluidOutputs(Methane.getFluid(18), YeastRichMixture.getFluid(50)) // todo : check if this is the right amt of methane
                 .duration(20 * 8).EUt(VA[IV]).buildAndRegister();
 
         BIOLAB_RECIPES.recipeBuilder()
                 .input(PETRI_DISH_STERILIZED)
                 .fluidInputs(YeastRichMixture.getFluid(500), PotatoDextroseBroth.getFluid(500))
                 .chancedOutput(CULTURE_YEAST, 1000, 0)
-                .chancedOutput(PETRI_DISH, 9000, 0)
+                .chancedOutput(PETRI_DISH, 10000, 0)
                 .chancedOutputLogic(ChancedOutputLogic.XOR)
                 .duration(20 * 12).EUt(VA[LuV]).buildAndRegister();
 
@@ -116,7 +116,7 @@ public class BiolabRecipes {
                 .input(PETRI_DISH_STERILIZED)
                 .fluidInputs(PotatoDextroseBroth.getFluid(500))
                 .chancedOutput(CULTURE_YEAST, 5000, 0)
-                .chancedOutput(PETRI_DISH, 5000, 0)
+                .chancedOutput(PETRI_DISH, 10000, 0)
                 .chancedOutputLogic(ChancedOutputLogic.XOR)
                 .duration(20 * 4).EUt(VA[LuV]).buildAndRegister();
 
@@ -134,7 +134,7 @@ public class BiolabRecipes {
                 .input(Blocks.WATERLILY)
                 .fluidInputs(PotatoDextroseBroth.getFluid(500))
                 .chancedOutput(CULTURE_RED_ALGAE, 1000, 0)
-                .chancedOutput(PETRI_DISH, 9000, 0)
+                .chancedOutput(PETRI_DISH, 10000, 0)
                 .chancedOutputLogic(ChancedOutputLogic.XOR)
                 .duration(20 * 12).EUt(VA[LuV]).buildAndRegister();
 
@@ -143,7 +143,7 @@ public class BiolabRecipes {
                 .input(PETRI_DISH_STERILIZED)
                 .fluidInputs(PotatoDextroseBroth.getFluid(500))
                 .chancedOutput(CULTURE_RED_ALGAE, 5000, 0)
-                .chancedOutput(PETRI_DISH, 5000, 0)
+                .chancedOutput(PETRI_DISH, 10000, 0)
                 .chancedOutputLogic(ChancedOutputLogic.XOR)
                 .duration(20 * 4).EUt(VA[LuV]).buildAndRegister();
 
@@ -167,7 +167,7 @@ public class BiolabRecipes {
                 .fluidInputs(Bacteria.getFluid(1000),
                         SterileGrowthMedium.getFluid(1000))
                 .chancedOutput(CULTURE_STEM_CELL, 1000, 0)
-                .chancedOutput(PETRI_DISH, 9000, 0)
+                .chancedOutput(PETRI_DISH, 10000, 0)
                 .chancedOutputLogic(ChancedOutputLogic.XOR)
                 .fluidOutputs(BacterialSludge.getFluid(500))
                 .duration(20 * 12).EUt(VA[LuV]).buildAndRegister();
@@ -177,7 +177,7 @@ public class BiolabRecipes {
                 .input(PETRI_DISH_STERILIZED)
                 .fluidInputs(SterileGrowthMedium.getFluid(500))
                 .chancedOutput(CULTURE_STEM_CELL, 5000, 0)
-                .chancedOutput(PETRI_DISH, 5000, 0)
+                .chancedOutput(PETRI_DISH, 10000, 0)
                 .chancedOutputLogic(ChancedOutputLogic.XOR)
                 .duration(20 * 4).EUt(VA[LuV]).buildAndRegister();
     }

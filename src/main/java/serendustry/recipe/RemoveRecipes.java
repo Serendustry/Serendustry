@@ -1,5 +1,6 @@
 package serendustry.recipe;
 
+import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
@@ -11,14 +12,19 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.Loader;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.blocks.BlockMachineCasing.MachineCasingType.UHV;
 import static gregtech.common.blocks.MetaBlocks.MACHINE_CASING;
 import static gregtech.common.items.MetaItems.*;
+import static serendustry.item.material.SerendustryMaterials.DeepDarkSteel;
 
 public class RemoveRecipes {
+
     public static void init() {
         // UV Motor
         GTRecipeHandler.removeRecipesByInputs(ASSEMBLY_LINE_RECIPES, new ItemStack[] { OreDictUnifier.get(stickLong, SamariumMagnetic), OreDictUnifier.get(stickLong, Tritanium, 4), OreDictUnifier.get(ring, Tritanium, 4), OreDictUnifier.get(round, Tritanium, 8),
@@ -127,5 +133,12 @@ public class RemoveRecipes {
                         OreDictUnifier.get(foil, SiliconeRubber, 16),
                         OreDictUnifier.get(bolt, HSSE, 8) },
                 new FluidStack[] { SterileGrowthMedium.getFluid(250) });
+    }
+
+    public static void initLate() {
+        // Deep Dark Steel Hot Ingot cooling
+        GTRecipeHandler.removeRecipesByInputs(VACUUM_RECIPES, new ItemStack[] {
+                        OreDictUnifier.get(ingotHot, DeepDarkSteel)},
+                new FluidStack[] {Helium.getFluid(FluidStorageKeys.LIQUID, 500)});
     }
 }

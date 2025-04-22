@@ -7,6 +7,8 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static gregtech.common.metatileentities.MetaTileEntities.ADVANCED_LARGE_MINER;
 import static gregtech.common.metatileentities.MetaTileEntities.FUSION_REACTOR;
+import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_BLANK;
+import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_OVERWORLD;
 import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryMetaTileEntities.NEBULAIC_NEXUS;
 import static serendustry.machine.SerendustryRecipeMaps.NEBULAIC_NEXUS_RECIPES;
@@ -89,11 +91,20 @@ public class StarMatterRecipes {
                 .duration(200).EUt(VA[UV]).buildAndRegister();
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
+                .circuitMeta(6)
                 .input(ingot, StellarContainmentBase)
                 .fluidInputs(StellarBaptismSolution.getFluid(1000),
                         NeutronStarMatter.getFluid(500))
                 .output(ingot, Neutronium) // todo: change to ingotHot
                 .duration(320).EUt(VA[UV]).buildAndRegister();
+
+        NEBULAIC_NEXUS_RECIPES.recipeBuilder()
+                .notConsumable(STELLAR_ESSENCE_OVERWORLD)
+                .input(ingot, StellarContainmentBase)
+                .fluidInputs(StellarBaptismSolution.getFluid(800),
+                        NeutronStarMatter.getFluid(400))
+                .output(ingot, Neutronium) // todo: change to ingotHot
+                .duration(240).EUt(VA[UV]).buildAndRegister();
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
                 .fluidInputs(YellowStarMatter.getFluid(500),
@@ -104,5 +115,13 @@ public class StarMatterRecipes {
                         BlackStarMatter.getFluid(500))
                 .fluidOutputs(CondensedStarMatter.getFluid(1000))
                 .duration(800).EUt(VA[UV]).buildAndRegister();
+
+        NEBULAIC_NEXUS_RECIPES.recipeBuilder()
+                .input(gemExquisite, Orundum, 8)
+                .fluidInputs(CondensedStarMatter.getFluid(32000),
+                        Neutronium.getFluid(144 * 64))
+                .output(STELLAR_ESSENCE_BLANK)
+                .duration(40000).EUt(VA[UEV]).buildAndRegister();
+
     }
 }

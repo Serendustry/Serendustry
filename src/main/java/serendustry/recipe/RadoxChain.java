@@ -20,14 +20,24 @@ public class RadoxChain {
                 .fluidOutputs(Water.getFluid(10), Xenoxene.getFluid(1))
                 .duration(20).EUt(VA[ZPM]).buildAndRegister();
 
-        BIOLAB_RECIPES.recipeBuilder() // todo: make worse + add dupe
+        BIOLAB_RECIPES.recipeBuilder()
                 .input(CULTURE_STEM_CELL)
-                .input(CRUSHED_SPACEWEED, 32)
-                .chancedOutput(CULTURE_XENOXENE, 500, 0)
-                .chancedOutput(PETRI_DISH, 9500, 0)
+                .input(CRUSHED_SPACEWEED, 64)
+                .chancedOutput(CULTURE_XENOXENE, 250, 0)
+                .chancedOutput(PETRI_DISH, 10000, 0)
                 .chancedOutputLogic(ChancedOutputLogic.XOR)
-                .fluidOutputs(Xenoxene.getFluid(50))
-                .duration(20 * 16).EUt(VA[UHV]).buildAndRegister();
+                .fluidOutputs(Xenoxene.getFluid(25))
+                .duration(20 * 64).EUt(VA[UHV]).buildAndRegister();
+
+        BIOLAB_RECIPES.recipeBuilder()
+                .input(CULTURE_XENOXENE)
+                .input(PETRI_DISH_STERILIZED)
+                .input(CRUSHED_SPACEWEED, 64)
+                .chancedOutput(CULTURE_XENOXENE, 5000, 0)
+                .chancedOutput(PETRI_DISH, 10000, 0)
+                .chancedOutputLogic(ChancedOutputLogic.XOR)
+                .fluidOutputs(Xenoxene.getFluid(25))
+                .duration(20 * 64).EUt(VA[UHV]).buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder()
                 .notConsumable(CULTURE_XENOXENE)
@@ -78,11 +88,21 @@ public class RadoxChain {
                 .duration(3200).EUt(VA[ZPM]).buildAndRegister();
 
         LABORATORY_RECIPES.recipeBuilder()
+                .circuitMeta(6)
                 .input(dust, Neutronium).input(dust, Tritanium, 4)
                 .fluidInputs(PurifiedRadox.getFluid(1500), Argon.getPlasma(500))
                 .fluidOutputs(RadoxPolymer.getFluid(1440))
                 .requireInside(CHEMICAL_RECIPES, UV, 1)
                 .requireInside(CHEMICAL_BATH_RECIPES, UV, 1)
                 .duration(1600).EUt(VA[ZPM]).buildAndRegister();
+
+        LABORATORY_RECIPES.recipeBuilder()
+                .notConsumable(STELLAR_ESSENCE_OVERWORLD)
+                .input(dust, Neutronium).input(dust, Tritanium, 2)
+                .fluidInputs(PurifiedRadox.getFluid(1250), Argon.getPlasma(500))
+                .fluidOutputs(RadoxPolymer.getFluid(1440))
+                .requireInside(CHEMICAL_RECIPES, UV, 1)
+                .requireInside(CHEMICAL_BATH_RECIPES, UV, 1)
+                .duration(1200).EUt(VA[ZPM]).buildAndRegister();
     }
 }

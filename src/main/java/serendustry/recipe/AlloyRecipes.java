@@ -8,6 +8,7 @@ import static gregtech.common.items.MetaItems.*;
 import static gregtech.common.items.MetaItems.EMITTER_UV;
 import static gregtech.common.metatileentities.MetaTileEntities.*;
 import static serendustry.item.SerendustryMetaItems.CULTURE_STEM_CELL_WIRED;
+import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_END;
 import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.LABORATORY_RECIPES;
@@ -209,18 +210,6 @@ public class AlloyRecipes {
                 .explosivesAmount(4)
                 .duration(20).EUt(VA[UHV]).buildAndRegister();
 
-        IMPLOSION_RECIPES.recipeBuilder()
-                .input(dust, CrystalMatrix, 8).input(dust, Neutronium, 8)
-                .output(dust, InfinityCatalyst)
-                .explosivesAmount(4)
-                .duration(20).EUt(VA[UHV]).buildAndRegister();
-
-        IMPLOSION_RECIPES.recipeBuilder()
-                .input(dust, TinAlloy, 8).input(Blocks.DRAGON_EGG)
-                .output(dust, Draconium)
-                .explosivesAmount(4)
-                .duration(20).EUt(VA[UHV]).buildAndRegister();
-
         AUTOCLAVE_RECIPES.recipeBuilder()
                 .input(dust, Draconium)
                 .fluidInputs(Redstone.getFluid(1000))
@@ -291,11 +280,11 @@ public class AlloyRecipes {
                 .output(dust, Quantium)
                 .duration(200).EUt(VA[UIV]).buildAndRegister();
 
-        CHEMICAL_BATH_RECIPES.recipeBuilder()
-                .input(dust, Naquadria, 4)
-                .fluidInputs(CoalTar.getFluid(1000))
-                .output(dust, NaquadriaticTaranium, 5)
-                .duration(500).EUt(VA[UV]).buildAndRegister();
+        MIXER_RECIPES.recipeBuilder()
+                .input(dust, Naquadria, 3)
+                .input(dust, Taranium, 1)
+                .output(dust, NaquadriaticTaranium, 4)
+                .duration(20 * 45).EUt(VA[UEV]).buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, Quantum, 5).input(dust, Ledox, 4).input(dust, AwakenedDraconium, 3)
@@ -499,7 +488,7 @@ public class AlloyRecipes {
                 .blastFurnaceTemp(1800)
                 .duration(120).EUt(VA[MV]).buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder()
+        FLUID_HEATER_RECIPES.recipeBuilder()
                 .input(dust, Tungsten)
                 .fluidInputs(Chlorine.getFluid(6000))
                 .output(dust, TungstenHexachloride, 7)
@@ -524,5 +513,28 @@ public class AlloyRecipes {
                 .output(ingotHot, Adamantium)
                 .blastFurnaceTemp(10800)
                 .duration(737).EUt(VA[UV]).buildAndRegister();
+
+        BLAST_RECIPES.recipeBuilder()
+                .circuitMeta(6)
+                .input(dust, DeepDarkIron)
+                .fluidInputs(CondensedStarMatter.getFluid(1000), Xenon.getFluid(10))
+                .output(ingotHot, DeepDarkSteel)
+                .blastFurnaceTemp(10800)
+                .duration(20*90).EUt(VA[UXV]).buildAndRegister();
+
+        BLAST_RECIPES.recipeBuilder()
+                .notConsumable(STELLAR_ESSENCE_END)
+                .input(dust, DeepDarkIron)
+                .fluidInputs(CondensedStarMatter.getFluid(800), Xenon.getFluid(10))
+                .output(ingotHot, DeepDarkSteel)
+                .blastFurnaceTemp(10800)
+                .duration(20*60).EUt(VA[UXV]).buildAndRegister();
+
+        VACUUM_RECIPES.recipeBuilder()
+                .input(ingotHot, DeepDarkSteel)
+                .fluidInputs(BlackStarMatter.getFluid(500), Helium.getFluid(FluidStorageKeys.LIQUID, 5000))
+                .output(ingot, DeepDarkSteel)
+                .fluidOutputs(Helium.getFluid(5000))
+                .duration(20*90).EUt(VA[UXV]).buildAndRegister();
     }
 }

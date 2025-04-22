@@ -13,7 +13,11 @@ import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryMetaTileEntities.SPACE_ELEVATOR;
 import static serendustry.machine.SerendustryRecipeMaps.SPACE_ELEVATOR_RECIPES;
 
+import gregtech.api.GregTechAPI;
+import gregtech.api.recipes.RecipeMap;
+import gregtech.api.unification.material.Material;
 import gregtech.common.metatileentities.MetaTileEntities;
+import gregtech.core.unification.material.internal.MaterialRegistryManager;
 import net.minecraft.init.Blocks;
 
 import gregtech.api.recipes.chance.output.ChancedOutputLogic;
@@ -64,10 +68,9 @@ public class SpaceElevatorRecipes {
                 .input(stick, Neutronium, 16)
                 .input(screw, Neutronium, 32)
                 .input(wireFine, Hihiirokane, 32)
-                .input(wireFine, Tritanium, 32)
                 .input(wireFine, Tritanium, 64)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 12))
-                .output(PLANETOID_SCANNING_DRONE_MK_2, 4)
+                .output(PLANETOID_SCANNING_DRONE_MK_2, 48)
                 .duration(2400).EUt(VA[UHV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
@@ -110,27 +113,53 @@ public class SpaceElevatorRecipes {
                 .output(STAR_HARVESTING_DRONE, 4)
                 .duration(1200).EUt(VA[UHV]).buildAndRegister();
 
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(MetaTileEntities.SCANNER[UEV])
+                .input(circuit, MarkerMaterials.Tier.UIV, 1)
+                .input(SENSOR_UEV, 4)
+                .input(plate, Draconium, 32)
+                .input(stick, HalkoniteSteel, 16)
+                .input(screw, HalkoniteSteel, 32)
+                .input(wireFine, Originium, 32)
+                .input(wireFine, AwakenedDraconium, 64)
+                .fluidInputs(SentientNanobots.getFluid(144 * 12))
+                .output(DEEP_DARK_SCANNING_DRONE, 8)
+                .duration(4800).EUt(VA[UEV]).buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(toolHeadDrill, AbyssalAlloy, 4)
+                .input(circuit, MarkerMaterials.Tier.UEV, 2)
+                .input(ROBOT_ARM_UEV)
+                .input(ELECTRIC_PISTON_UEV, 4)
+                .input(plate, HalkoniteSteel, 8)
+                .input(screw, AwakenedDraconium, 64)
+                .input(wireFine, Originium, 32)
+                .input(wireFine, AwakenedDraconium, 64)
+                .fluidInputs(SentientNanobots.getFluid(144 * 12))
+                .output(DEEP_DARK_HARVESTING_DRONE, 4)
+                .duration(2400).EUt(VA[UEV]).buildAndRegister();
+
         // todo: planetoids for more ores, fluid drones?
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(PLANETOID_SCANNING_DRONE)
                 .input(TOOL_DATA_MODULE)
                 .fluidInputs(RocketFuel.getFluid(500))
-                .chancedOutput(AZBANTIUM_PLANETOID_DATA, 300, 0)
-                .chancedOutput(VIBRANITE_PLANETOID_DATA, 300, 0)
-                .chancedOutput(STONE_PLANETOID_DATA, 300, 0)
-                .chancedOutput(NETHERRACK_PLANETOID_DATA, 300, 0)
-                .chancedOutput(OBSIDIAN_PLANETOID_DATA, 300, 0)
-                .chancedOutput(MAGNETITE_PLANETOID_DATA, 600, 0)
-                .chancedOutput(CHALCOPYRITE_PLANETOID_DATA, 600, 0)
-                .chancedOutput(PYROLUSITE_PLANETOID_DATA, 600, 0)
+                .chancedOutput(STONE_PLANETOID_DATA, 800, 0)
+                .chancedOutput(NETHERRACK_PLANETOID_DATA, 800, 0)
+                .chancedOutput(END_STONE_PLANETOID_DATA, 800, 0)
+                .chancedOutput(OBSIDIAN_PLANETOID_DATA, 800, 0)
+                .chancedOutput(MAGNETITE_PLANETOID_DATA, 500, 0)
+                .chancedOutput(CHALCOPYRITE_PLANETOID_DATA, 500, 0)
+                .chancedOutput(REDSTONE_PLANETOID_DATA, 500, 0)
+                .chancedOutput(PYROLUSITE_PLANETOID_DATA, 500, 0)
                 .chancedOutput(COAL_PLANETOID_DATA, 500, 0)
                 .chancedOutput(GRAPHITE_PLANETOID_DATA, 500, 0)
-                .chancedOutput(CASSITERITE_PLANETOID_DATA, 600, 0)
+                .chancedOutput(CASSITERITE_PLANETOID_DATA, 500, 0)
                 .chancedOutput(APATITE_PLANETOID_DATA, 500, 0)
-                .chancedOutput(NICKEL_PLANETOID_DATA, 600, 0)
-                .chancedOutput(GALENA_PLANETOID_DATA, 600, 0)
-                .chancedOutput(CHEESE_PLANETOID_DATA, 300, 0)
+                .chancedOutput(NICKEL_PLANETOID_DATA, 500, 0)
+                .chancedOutput(GALENA_PLANETOID_DATA, 500, 0)
+                .chancedOutput(CHEESE_PLANETOID_DATA, 500, 0)
                 .chancedOutput(GEM_PLANETOID_DATA, 500, 0)
                 .chancedOutput(SALT_PLANETOID_DATA, 500, 0)
                 .chancedOutput(LAPIS_PLANETOID_DATA, 500, 0)
@@ -138,6 +167,8 @@ public class SpaceElevatorRecipes {
                 .chancedOutput(MONAZITE_PLANETOID_DATA, 500, 0)
                 .chancedOutput(PITCHBLENDE_PLANETOID_DATA, 300, 0)
                 .chancedOutput(COOPERITE_PLANETOID_DATA, 300, 0)
+                .chancedOutput(AZBANTIUM_PLANETOID_DATA, 300, 0)
+                .chancedOutput(VIBRANITE_PLANETOID_DATA, 300, 0)
                 //.chancedOutputLogic(ChancedOutputLogic.XOR)
                 .duration(800).EUt(VA[UV]).buildAndRegister();
 
@@ -145,6 +176,25 @@ public class SpaceElevatorRecipes {
                 .input(PLANETOID_SCANNING_DRONE_MK_2)
                 .input(TOOL_DATA_MODULE)
                 .fluidInputs(RocketFuel.getFluid(1000))
+                .chancedOutput(STONE_PLANETOID_DATA, 2000, 0)
+                .chancedOutput(NETHERRACK_PLANETOID_DATA, 2000, 0)
+                .chancedOutput(END_STONE_PLANETOID_DATA, 2000, 0)
+                .chancedOutput(OBSIDIAN_PLANETOID_DATA, 2000, 0)
+                .chancedOutput(MAGNETITE_PLANETOID_DATA, 1250, 0)
+                .chancedOutput(CHALCOPYRITE_PLANETOID_DATA, 1250, 0)
+                .chancedOutput(REDSTONE_PLANETOID_DATA, 1250, 0)
+                .chancedOutput(PYROLUSITE_PLANETOID_DATA, 1250, 0)
+                .chancedOutput(COAL_PLANETOID_DATA, 1250, 0)
+                .chancedOutput(GRAPHITE_PLANETOID_DATA, 1250, 0)
+                .chancedOutput(CASSITERITE_PLANETOID_DATA, 1250, 0)
+                .chancedOutput(APATITE_PLANETOID_DATA, 1250, 0)
+                .chancedOutput(NICKEL_PLANETOID_DATA, 1250, 0)
+                .chancedOutput(GALENA_PLANETOID_DATA, 1250, 0)
+                .chancedOutput(CHEESE_PLANETOID_DATA, 1250, 0)
+                .chancedOutput(GEM_PLANETOID_DATA, 1250, 0)
+                .chancedOutput(SALT_PLANETOID_DATA, 1250, 0)
+                .chancedOutput(LAPIS_PLANETOID_DATA, 1250, 0)
+                .chancedOutput(QUARTZ_PLANETOID_DATA, 1250, 0)
                 .chancedOutput(COOPERITE_PLANETOID_DATA, 1200, 0)
                 .chancedOutput(XENOTIME_PLANETOID_DATA, 1200, 0)
                 .chancedOutput(NAQUADAH_PLANETOID_DATA, 1200, 0)
@@ -155,8 +205,16 @@ public class SpaceElevatorRecipes {
                 .chancedOutput(VIBRANITE_PLANETOID_DATA, 900, 0)
                 .chancedOutput(NETHERITE_PLANETOID_DATA, 900, 0)
                 .chancedOutput(TENGAM_PLANETOID_DATA, 700, 0)
+                .chancedOutput(DRACONIUM_PLANETOID_DATA, 500, 0)
                 //.chancedOutputLogic(ChancedOutputLogic.XOR)
                 .duration(800).EUt(VA[UHV]).buildAndRegister();
+
+        SPACE_ELEVATOR_RECIPES.recipeBuilder()
+                .input(DEEP_DARK_SCANNING_DRONE)
+                .input(TOOL_DATA_MODULE)
+                .fluidInputs(RocketFuel.getFluid(100000))
+                .output(DEEP_DARK_PLANETOID_DATA)
+                .duration(1600).EUt(VA[UEV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(STAR_SCANNING_DRONE)
@@ -178,7 +236,7 @@ public class SpaceElevatorRecipes {
                 .input(PLANETOID_HARVESTING_DRONE)
                 .input(STONE_PLANETOID_DATA)
                 .fluidInputs(RocketFuel.getFluid(100))
-                .output(Blocks.STONE, 64 * 2048)
+                .output(Blocks.STONE, 64 * 2048) // total 262144 stone; abt 2.6m per set of mk2 scanners
                 .output(Blocks.COBBLESTONE, 64 * 2048)
                 .output(SPACEWEED, 1)
                 .duration(200).EUt(VA[UV]).buildAndRegister();
@@ -188,6 +246,14 @@ public class SpaceElevatorRecipes {
                 .input(NETHERRACK_PLANETOID_DATA)
                 .fluidInputs(RocketFuel.getFluid(100))
                 .output(Blocks.NETHERRACK, 64 * 4096)
+                .output(SPACEWEED, 1)
+                .duration(200).EUt(VA[UV]).buildAndRegister();
+
+        SPACE_ELEVATOR_RECIPES.recipeBuilder()
+                .input(PLANETOID_HARVESTING_DRONE)
+                .input(END_STONE_PLANETOID_DATA)
+                .fluidInputs(RocketFuel.getFluid(100))
+                .output(Blocks.END_STONE, 64 * 4096)
                 .output(SPACEWEED, 1)
                 .duration(200).EUt(VA[UV]).buildAndRegister();
 
@@ -206,6 +272,15 @@ public class SpaceElevatorRecipes {
                 .output(ore, Magnetite, 64 * 64)
                 .output(ore, VanadiumMagnetite, 64 * 32)
                 .output(ore, Gold, 64 * 16)
+                .output(Blocks.STONE, 64 * 256)
+                .output(SPACEWEED, 60)
+                .duration(12000).EUt(VA[UV]).buildAndRegister();
+
+        SPACE_ELEVATOR_RECIPES.recipeBuilder()
+                .input(PLANETOID_HARVESTING_DRONE)
+                .input(REDSTONE_PLANETOID_DATA)
+                .fluidInputs(RocketFuel.getFluid(10000))
+                .output(ore, Redstone, 64 * 128)
                 .output(Blocks.STONE, 64 * 256)
                 .output(SPACEWEED, 60)
                 .duration(12000).EUt(VA[UV]).buildAndRegister();
@@ -498,12 +573,21 @@ public class SpaceElevatorRecipes {
                 .fluidInputs(RocketFuel.getFluid(30000))
                 .output(ore, Bromargyrite, 32) // ~32 buckets Bromine, or ~160 ScUevSane, or 10 Positronic Mainframes
                 .output(ore, Olsacherite, 32) // ~5.3 Selenium, or 41 BETS Perrhenate, or 205.38 ScUevSane, or 12.8 Positronic Mainframes
-                .output(ore, Crookesite, 16) // ~4.57 Selenium and ~9.1 Thallium
+                .output(ore, Crookesite, 16) // ~4.57 Selenium, or ~35 BETS Perrhenate, and ~9.1 Thallium
+                .output(ore, Rheniite, 3) // ~2 Rhenium, or ~82 BETS Perrhenate
                 .output(ore, Renierite, 64 * 4) // ~22.24 Germanium, or 178 Abyssal Alloy, or 14.8 Positronic Mainframes
                 .output(ore, Originite, 8) // ~1.6 Originium, or 3.2 Orundum, or 0.8 boules
                 .output(Blocks.STONE, 64 * 256)
                 .output(SPACEWEED, 120)
                 .duration(24000).EUt(VA[UV]).buildAndRegister();
+
+        SPACE_ELEVATOR_RECIPES.recipeBuilder()
+                .input(PLANETOID_HARVESTING_DRONE)
+                .input(DRACONIUM_PLANETOID_DATA)
+                .fluidInputs(RocketFuel.getFluid(60000))
+                .output(ore, Draconium, 64)
+                .output(SPACEWEED, 240)
+                .duration(48000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(STAR_HARVESTING_DRONE)

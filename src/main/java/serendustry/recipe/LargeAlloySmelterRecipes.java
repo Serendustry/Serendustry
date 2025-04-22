@@ -4,13 +4,16 @@ import static gregtech.api.GTValues.IV;
 import static gregtech.api.GTValues.LuV;
 import static gregtech.api.GTValues.UEV;
 import static gregtech.api.GTValues.UHV;
+import static gregtech.api.GTValues.UIV;
 import static gregtech.api.GTValues.UV;
+import static gregtech.api.GTValues.UXV;
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.FUSION_RECIPES;
 import static gregtech.api.unification.material.Materials.Aluminium;
 import static gregtech.api.unification.material.Materials.Americium;
 import static gregtech.api.unification.material.Materials.Beryllium;
+import static gregtech.api.unification.material.Materials.Bromine;
 import static gregtech.api.unification.material.Materials.Dysprosium;
 import static gregtech.api.unification.material.Materials.Erbium;
 import static gregtech.api.unification.material.Materials.Europium;
@@ -46,12 +49,16 @@ import static serendustry.item.material.SerendustryMaterials.Adamantium;
 import static serendustry.item.material.SerendustryMaterials.Aluminum;
 import static serendustry.item.material.SerendustryMaterials.AwakenedDraconium;
 import static serendustry.item.material.SerendustryMaterials.ChargedDraconium;
+import static serendustry.item.material.SerendustryMaterials.DeepDarkIron;
+import static serendustry.item.material.SerendustryMaterials.Dragonblood;
 import static serendustry.item.material.SerendustryMaterials.HalkoniteSteel;
 import static serendustry.item.material.SerendustryMaterials.Hihiirokane;
+import static serendustry.item.material.SerendustryMaterials.Hypogen;
 import static serendustry.item.material.SerendustryMaterials.Infinity;
 import static serendustry.item.material.SerendustryMaterials.InfinityCatalyst;
 import static serendustry.item.material.SerendustryMaterials.InfusedGold;
 import static serendustry.item.material.SerendustryMaterials.Quantium40;
+import static serendustry.item.material.SerendustryMaterials.Rhugnor;
 import static serendustry.item.material.SerendustryMaterials.ScUevSane;
 import static serendustry.item.material.SerendustryMaterials.SelfRepairingNanobots;
 import static serendustry.item.material.SerendustryMaterials.TastyNeutronium;
@@ -118,14 +125,9 @@ public class LargeAlloySmelterRecipes {
                 .duration(260).EUt(VA[UV]).EUToStart(640_000_000).buildAndRegister();
 
         FUSION_RECIPES.recipeBuilder()
-                .fluidInputs(ChargedDraconium.getFluid(64)).fluidInputs(TastyNeutronium.getFluid(32))
-                .fluidOutputs(AwakenedDraconium.getFluid(32))
-                .duration(260).EUt(VA[UV]).EUToStart(640_000_000).buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder()
-                .fluidInputs(InfinityCatalyst.getFluid(256)).fluidInputs(TastyNeutronium.getFluid(256))
-                .fluidOutputs(Infinity.getFluid(8))
-                .duration(4000).EUt(VA[UV]).EUToStart(640_000_000).buildAndRegister();
+                .fluidInputs(InfinityCatalyst.getFluid(2560)).fluidInputs(TastyNeutronium.getFluid(2560))
+                .fluidOutputs(Infinity.getFluid(4))
+                .duration(80000).EUt(VA[UV]).EUToStart(640_000_000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(FIELD_GENERATOR_UEV, 8)
@@ -146,5 +148,22 @@ public class LargeAlloySmelterRecipes {
                         .CWUt(128)
                         .EUt(VA[UHV]))
                 .duration(6400).EUt(VA[UEV]).buildAndRegister();
+
+        // adv fusion only
+
+        FUSION_RECIPES.recipeBuilder()
+                .fluidInputs(Bromine.getFluid(1000)).fluidInputs(Gold.getFluid(144*4))
+                .fluidOutputs(Flerovium.getPlasma(144))
+                .duration(4000).EUt(VA[UIV]).EUToStart(640_000_000).buildAndRegister();
+
+        FUSION_RECIPES.recipeBuilder()
+                .fluidInputs(Infinity.getFluid(144)).fluidInputs(DeepDarkIron.getFluid(288))
+                .fluidOutputs(Rhugnor.getFluid(144))
+                .duration(250).EUt(VA[UXV]).EUToStart(640_000_000).buildAndRegister();
+
+        FUSION_RECIPES.recipeBuilder()
+                .fluidInputs(Dragonblood.getFluid(144), Rhugnor.getFluid(288))
+                .fluidOutputs(Hypogen.getFluid(36))
+                .duration(500).EUt(VA[UXV]).EUToStart(640_000_000).buildAndRegister();
     }
 }

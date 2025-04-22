@@ -59,60 +59,6 @@ public class MiscRecipes {
                 .output(QUANTIUM_STAR)
                 .duration(20 * 24).EUt(VA[UHV]).buildAndRegister();
 
-        BLAST_RECIPES.recipeBuilder()
-                .fluidInputs(Infinity.getFluid(100), Helium.getFluid(FluidStorageKeys.LIQUID, 100))
-                .fluidOutputs(Infinity.getPlasma(100), Helium.getPlasma(100))
-                .blastFurnaceTemp(10800)
-                .duration(100).EUt(VA[UHV]).buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder()
-                .fluidInputs(Periodicium.getFluid(100), Helium.getFluid(FluidStorageKeys.LIQUID, 100))
-                .fluidOutputs(Periodicium.getPlasma(100), Helium.getPlasma(100))
-                .blastFurnaceTemp(10800)
-                .duration(100).EUt(VA[UHV]).buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder()
-                .fluidInputs(Shirabon.getFluid(100), Helium.getFluid(FluidStorageKeys.LIQUID, 100))
-                .fluidOutputs(Shirabon.getPlasma(100), Helium.getPlasma(100))
-                .blastFurnaceTemp(10800)
-                .duration(100).EUt(VA[UHV]).buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder()
-                .fluidInputs(Flerovium.getFluid(100), Helium.getFluid(FluidStorageKeys.LIQUID, 100))
-                .fluidOutputs(Flerovium.getPlasma(100), Helium.getPlasma(100))
-                .blastFurnaceTemp(10800)
-                .duration(100).EUt(VA[UHV]).buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder()
-                .fluidInputs(Phosphorus.getFluid(100), Helium.getFluid(FluidStorageKeys.LIQUID, 100))
-                .fluidOutputs(Phosphorus.getPlasma(100), Helium.getPlasma(100))
-                .blastFurnaceTemp(10800)
-                .duration(100).EUt(VA[UHV]).buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder()
-                .fluidInputs(Protactinium.getFluid(100), Helium.getFluid(FluidStorageKeys.LIQUID, 100))
-                .fluidOutputs(Protactinium.getPlasma(100), Helium.getPlasma(100))
-                .blastFurnaceTemp(10800)
-                .duration(100).EUt(VA[UHV]).buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder()
-                .fluidInputs(Redstone.getFluid(100), Helium.getFluid(FluidStorageKeys.LIQUID, 100))
-                .fluidOutputs(Redstone.getPlasma(100), Helium.getPlasma(100))
-                .blastFurnaceTemp(10800)
-                .duration(100).EUt(VA[UHV]).buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder()
-                .fluidInputs(Glass.getFluid(100), Helium.getFluid(FluidStorageKeys.LIQUID, 100))
-                .fluidOutputs(Glass.getPlasma(100), Helium.getPlasma(100))
-                .blastFurnaceTemp(10800)
-                .duration(100).EUt(VA[UHV]).buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder()
-                .fluidInputs(Lead.getFluid(100), Helium.getFluid(FluidStorageKeys.LIQUID, 100))
-                .fluidOutputs(Lead.getPlasma(100), Helium.getPlasma(100))
-                .blastFurnaceTemp(10800)
-                .duration(100).EUt(VA[UHV]).buildAndRegister();
-
         ModHandler.addSmeltingRecipe(OreDictUnifier.get(nugget, Neutronium),
                 OreDictUnifier.get(nugget, WroughtNeutronium));
 

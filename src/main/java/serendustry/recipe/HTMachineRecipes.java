@@ -7,6 +7,8 @@ import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.blocks.BlockMachineCasing;
 import serendustry.SValues;
 
+import static gregtech.api.GTValues.UEV;
+import static gregtech.api.GTValues.UIV;
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
@@ -14,13 +16,99 @@ import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
 import static gregtech.common.blocks.MetaBlocks.MACHINE_CASING;
+import static gregtech.common.items.MetaItems.CONVEYOR_MODULE_UIV;
+import static gregtech.common.items.MetaItems.ELECTRIC_MOTOR_UIV;
+import static gregtech.common.items.MetaItems.ELECTRIC_PISTON_UV;
+import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_UHV;
+import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_UIV;
+import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UHV;
+import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UIV;
+import static gregtech.common.items.MetaItems.ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT;
 import static gregtech.common.metatileentities.MetaTileEntities.*;
 import static serendustry.item.SerendustryMetaItems.*;
 import static serendustry.item.material.SerendustryMaterials.*;
+import static serendustry.machine.SerendustryMetaTileEntities.ADVANCED_FUSION_REACTOR;
+import static serendustry.machine.SerendustryMetaTileEntities.ELECTRIC_IMPLOSION_COMPRESSOR;
+import static serendustry.machine.SerendustryMetaTileEntities.FLAMEL_CRUCIBLE;
+import static serendustry.machine.SerendustryMetaTileEntities.PLASMA_CONDENSER;
 
 public class HTMachineRecipes {
 
     public static void init() {
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(frameGt, Neutronium, 16)
+                .input(ELECTRIC_PISTON_UV, 32)
+                .input(circuit, MarkerMaterials.Tier.UHV, 8)
+                .input(circuit, MarkerMaterials.Tier.UV, 16)
+                .input(plateDense, Neutronium, 8)
+                .input(gear, Naquadria, 16)
+                .input(ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT, 32)
+                .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 32),
+                        Neutronium.getFluid(144 * 16))
+                .output(ELECTRIC_IMPLOSION_COMPRESSOR)
+                .stationResearch(b -> b
+                        .researchStack(IMPLOSION_COMPRESSOR.getStackForm())
+                        .CWUt(64)
+                        .EUt(VA[GTValues.UV]))
+                .duration(8000).EUt(VA[GTValues.UHV]).buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(STELLAR_ESSENCE_OVERWORLD)
+                .input(frameGt, Neutronium, 32)
+                .input(FIELD_GENERATOR_UHV, 16)
+                .input(ELECTRIC_PUMP_UHV, 32)
+                .input(circuit, MarkerMaterials.Tier.UHV, 64)
+                .input(plateDense, Neutronium, 16)
+                .input(gear, Adamantium, 32)
+                .input(gear, Naquadria, 32)
+                .input(plate, Azbantium, 32)
+                .input(stickLong, Neutronium, 32)
+                .input(stickLong, Naquadria, 64)
+                .input(CHIP_OPIC, 16)
+                .input(gemExquisite, TiberiumAboreus, 64)
+                .input(gemExquisite, TiberiumCruentus, 64)
+                .input(gemExquisite, TiberiumRiparius, 64)
+                .input(gemExquisite, TiberiumVinifera, 64)
+                .fluidInputs(SelfRepairingNanobots.getFluid(144 * 16),
+                        Neutronium.getFluid(144 * 32),
+                        VibraniumAlloy.getFluid(144 * 64),
+                        Originium.getFluid(144 * 4))
+                .output(FLAMEL_CRUCIBLE)
+                .stationResearch(b -> b
+                        .researchStack(LARGE_CHEMICAL_REACTOR.getStackForm())
+                        .CWUt(144)
+                        .EUt(VA[GTValues.UHV]))
+                .duration(16000).EUt(VA[GTValues.UHV]).buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(frameGt, DeepDarkSteel, 32)
+                .input(FIELD_GENERATOR_UIV, 12)
+                .input(ELECTRIC_PUMP_UIV, 16)
+                .input(CONVEYOR_MODULE_UIV, 16)
+                .input(ELECTRIC_MOTOR_UIV, 16)
+                .input(circuit, MarkerMaterials.Tier.UIV, 16)
+                .input(circuit, MarkerMaterials.Tier.UEV, 32)
+                .input(circuit, MarkerMaterials.Tier.UHV, 64)
+                .input(plateDense, Neutronium, 64)
+                .input(plateDense, AwakenedDraconium, 32)
+                .input(plateDense, DeepDarkSteel, 32)
+                .input(gear, HalkoniteSteel, 32)
+                .input(gear, DeepDarkSteel, 32)
+                .input(gear, Infinity, 32)
+                .input(wireGtSingle, Hypogen, 64)
+                .input(cableGtDouble, Quantium40, 64)
+                .fluidInputs(SentientNanobots.getFluid(144 * 64),
+                        Hypogen.getFluid(144 * 32),
+                        Infinity.getFluid(144 * 64),
+                        Flerovium.getPlasma(144 * 256))
+                .output(PLASMA_CONDENSER)
+                .stationResearch(b -> b
+                        .researchStack(ADVANCED_FUSION_REACTOR.getStackForm())
+                        .CWUt(144)
+                        .EUt(VA[UEV]))
+                .duration(25600).EUt(VA[UIV]).buildAndRegister();
+
         // Voltage Coils
         for(int i = GTValues.UHV; i <= GTValues.MAX; i++) {
             ASSEMBLER_RECIPES.recipeBuilder()
@@ -92,7 +180,7 @@ public class HTMachineRecipes {
 
          ASSEMBLER_RECIPES.recipeBuilder()
          .inputs(MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UIV))
-         .input(cableGtSingle, SValues.Tier_Cable[GTValues.UIV], 2)
+         .input(wireGtSingle, SValues.Tier_Cable[GTValues.UIV], 2)
          .fluidInputs(RadoxPolymer.getFluid(288))
          .output(HULL[GTValues.UIV])
          .duration(50).EUt(16).buildAndRegister();
@@ -199,10 +287,9 @@ public class HTMachineRecipes {
 
          ASSEMBLY_LINE_RECIPES.recipeBuilder()
          .input(HULL[GTValues.UIV])
-         .input(cableGtSingle, SValues.Tier_Cable[GTValues.UIV], 4)
          .input(CHIP_OPIC, 8)
          .input(circuit, MarkerMaterials.Tier.UIV)
-         .input(wireGtDouble, SValues.Tier_Superconductor[GTValues.UIV], 2)
+         .input(wireGtDouble, SValues.Tier_Superconductor[GTValues.UIV], 4)
          .fluidInputs(SodiumPotassium.getFluid(24000))
          .fluidInputs(MutatedLivingSolder.getFluid(1152))
          .output(ENERGY_INPUT_HATCH[GTValues.UIV])

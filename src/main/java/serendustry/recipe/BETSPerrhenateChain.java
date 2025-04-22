@@ -3,6 +3,8 @@ package serendustry.recipe;
 import static gregtech.api.GTValues.UV;
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.CHEMICAL_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.FLUID_HEATER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.LARGE_CHEMICAL_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
 import static serendustry.item.material.SerendustryMaterials.*;
@@ -50,7 +52,7 @@ public class BETSPerrhenateChain {
                 .fluidOutputs(nButyllithium.getFluid(1000))
                 .duration(20 * 2).EUt(VA[UV]).buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder()
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Ammonia.getFluid(1000), Acetone.getFluid(2000), Hydrogen.getFluid(4000), nButyllithium.getFluid(1000))
                 .output(dust, LithiumDiisopropylamide, 22)
                 .fluidOutputs(Butane.getFluid(1000), Water.getFluid(2000))
@@ -87,7 +89,7 @@ public class BETSPerrhenateChain {
                 .fluidOutputs(DiethylPhosphate.getFluid(1000), Formaldehyde.getFluid(2000))
                 .duration(20 * 24).EUt(VA[UV]).buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder()
+        FLUID_HEATER_RECIPES.recipeBuilder()
                 .input(dust, Rhenium, 2)
                 .fluidInputs(Oxygen.getFluid(7000))
                 .output(dust, RheniumVIIOxide, 9)
