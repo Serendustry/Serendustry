@@ -1,5 +1,6 @@
 package serendustry.machine;
 
+import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockWireCoil;
 import net.minecraft.block.state.IBlockState;
@@ -17,6 +18,11 @@ import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
+import serendustry.item.material.SerendustryMaterials;
+
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
 
 public class MetaTileEntityDehydrator extends RecipeMapMultiblockController {
 
@@ -30,28 +36,96 @@ public class MetaTileEntityDehydrator extends RecipeMapMultiblockController {
     }
 
     @Override
-    public @NotNull BlockPattern createStructurePattern() {
-        return FactoryBlockPattern.start()
-                .aisle("#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#########", "#########", "#########")
-                .aisle("YXXXXXXXY", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#XXXXXXX#", "YXXXXXXXY", "#XXXXXXX#", "#########", "#########", "#########")
-                .aisle("YXXXXXXXY", "YXXXXXXXY", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#XXXXXXX#", "YXXXXXXXY", "YXXXXXXXY", "#########", "#########", "#########")
-                .aisle("YXXXXXXXY", "YXXXSXXXY", "YXXXXXXXY", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#CCCCCCC#", "#XXXXXXX#", "#CCCCCCC#", "#XXXXXXX#", "#XXXXXXX#", "YXXXXXXXY", "YXXXXXXXY", "Y#######Y", "#########", "#########")
-                .aisle("YYYY#YYYY", "YYY###YYY", "YY#####YY", "Y#######Y", "Y#######Y", "#########", "#########", "#########", "#########", "#########", "#########", "YYYY#YYYY", "YYY###YYY", "YY#####YY", "Y#######Y", "Y#######Y")
+    public boolean hasMaintenanceMechanics() {
+        return false;
+    }
 
-                .where('S', selfPredicate())
-                .where('X', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PTFE_INERT_CASING)).setMinGlobalLimited(530))
-                .where('Y', states(getCasingState()).setMinGlobalLimited(134).or(autoAbilities()))
-                .where('C', states(MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.TRITANIUM)))
-                .where('#', air())
+    @Override
+    public @NotNull BlockPattern createStructurePattern() {
+        return FactoryBlockPattern.start(LEFT, DOWN, FRONT)
+                .aisle(
+                        "BBBBBBBBBBBB",
+                        "B          B",
+                        "B          B",
+                        "B          B",
+                        "B          B",
+                        "B          B",
+                        "A          A",
+                        "AAAAAAAAAAAA"
+                ).aisle(
+                        "B          B",
+                        " AAAAAAAAAA ",
+                        " ACCCCCCAAA ",
+                        " ACCCCCCAAA ",
+                        " ACCCCCCADA ",
+                        " ACCCCCCAAA ",
+                        " AAAAAAAAAA ",
+                        "AAAAAAAAAAAA"
+                ).aisle(
+                        "B          B",
+                        " AAAAAAAAAA ",
+                        " C        C ",
+                        " C        C ",
+                        " C        C ",
+                        " C        C ",
+                        " AAAAAAAAAA ",
+                        "AAAAAAAAAAAA"
+                ).aisle(
+                        "B          B",
+                        " AAAAAAAAAA ",
+                        " C        C ",
+                        " C        C ",
+                        " C        C ",
+                        " C        C ",
+                        " AAAAAAAAAA ",
+                        "AAAAAAAAAAAA"
+                ).aisle(
+                        "B          B",
+                        " AAAAAAAAAA ",
+                        " C        C ",
+                        " C        C ",
+                        " C        C ",
+                        " C        C ",
+                        " AAAAAAAAAA ",
+                        "AAAAAAAAAAAA"
+                ).aisle(
+                        "B          B",
+                        " AAAAAAAAAA ",
+                        " C        C ",
+                        " C        C ",
+                        " C        C ",
+                        " C        C ",
+                        " AAAAAAAAAA ",
+                        "AAAAAAAAAAAA"
+                ).aisle(
+                        "B          B",
+                        " AAAAAAAAAA ",
+                        " AAAAAAAAAA ",
+                        " AAAAAAAAAA ",
+                        " AAAAAAAAAA ",
+                        " AAAAAAAAAA ",
+                        " AAAAAAAAAA ",
+                        "AAAAAAAAAAAA"
+                ).aisle(
+                        "BBBBBBBBBBBB",
+                        "B          B",
+                        "B          B",
+                        "B          B",
+                        "B          B",
+                        "B          B",
+                        "A          A",
+                        "AAAAAAAAAAAA"
+                )
+
+                .where('D', selfPredicate())
+                .where('A', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST)) // todo
+                        .setMinGlobalLimited(262).or(autoAbilities()))
+                .where('B', frames(SerendustryMaterials.Adamantium))
+                .where('C', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS))) // todo
                 .build();
     }
 
     public ICubeRenderer getBaseTexture(@Nullable IMultiblockPart part) {
-        return Textures.INERT_PTFE_CASING; // todo
-    }
-
-    // todo
-    private IBlockState getCasingState() {
-        return MetaBlocks.MACHINE_CASING.getState(BlockMachineCasing.MachineCasingType.IV);
+        return Textures.ROBUST_TUNGSTENSTEEL_CASING; // todo
     }
 }

@@ -30,6 +30,11 @@ public class MetaTileEntitySonicator extends RecipeMapMultiblockController {
     }
 
     @Override
+    public boolean hasMaintenanceMechanics() {
+        return false;
+    }
+
+    @Override
     public @NotNull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#########", "#########", "#########")

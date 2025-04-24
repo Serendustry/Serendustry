@@ -3,6 +3,7 @@ package serendustry.recipe;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.properties.PropertyKey;
 
 import static gregtech.api.GTValues.MAX;
 import static gregtech.api.GTValues.UEV;
@@ -74,20 +75,33 @@ public class StellarEngineRecipes {
 
         SimpleRecipeBuilder builder = STELLAR_ENGINE_RECIPES.recipeBuilder();
         builder.input(STELLAR_ESSENCE_OVERWORLD);
-        for(Material material : materials) {builder.fluidOutputs(material.getPlasma(1_000_000));} //6,944.5 ingots
+        for(Material material : materials) {
+            // Whether to measure by ingots or buckets
+            boolean isSolid = material.hasProperty(PropertyKey.DUST) || material.hasProperty(PropertyKey.INGOT) || material.hasProperty(PropertyKey.GEM);
+
+            builder.fluidOutputs(material.getPlasma(isSolid ? 144_000 : 1_000_000)); // 1,000 ingots
+        }
         builder.fluidOutputs(Realitium.getFluid(1000))
                 .duration(20*60*60*8).EUt(VA[MAX]).buildAndRegister();
 
         builder = STELLAR_ENGINE_RECIPES.recipeBuilder();
         builder.input(STELLAR_ESSENCE_NETHER);
-        for(Material material : materials2) {builder.fluidOutputs(material.getPlasma(1_000_000));}
+        for(Material material : materials2) {
+            boolean isSolid = material.hasProperty(PropertyKey.DUST) || material.hasProperty(PropertyKey.INGOT) || material.hasProperty(PropertyKey.GEM);
+
+            builder.fluidOutputs(material.getPlasma(isSolid ? 144_000 : 1_000_000));
+        }
         builder.fluidOutputs(Realitium.getFluid(6000))
                 .duration(20*60*60*32).EUt(VA[MAX]).buildAndRegister();
 
         builder = STELLAR_ENGINE_RECIPES.recipeBuilder();
         builder.input(STELLAR_ESSENCE_END);
-        for(Material material : materials3) {builder.fluidOutputs(material.getPlasma(1_000_000));}
-        builder.fluidOutputs(Realitium.getFluid(32000))
+        for(Material material : materials3) {
+            boolean isSolid = material.hasProperty(PropertyKey.DUST) || material.hasProperty(PropertyKey.INGOT) || material.hasProperty(PropertyKey.GEM);
+
+            builder.fluidOutputs(material.getPlasma(isSolid ? 144_000 : 1_000_000));
+        }
+        builder.fluidOutputs(Realitium.getFluid(36000))
                 .duration(20*60*60*128).EUt(VA[MAX]).buildAndRegister();
     }
 }

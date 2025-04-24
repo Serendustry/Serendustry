@@ -250,26 +250,17 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
                         "          A   A          "
                 )
                 .where('C', selfPredicate())
-                .where('A', states(getCasingState()).setMinGlobalLimited(464).or(metaTileEntities(Arrays
+                .where('A', states(MetaBlocks.FUSION_CASING.getState(BlockFusionCasing.CasingType.FUSION_CASING_MK3)) // todo: adv fusion casing + allow glass
+                        .setMinGlobalLimited(478).or(metaTileEntities(Arrays
                         .stream(MetaTileEntities.ENERGY_INPUT_HATCH)
                         .filter(mte -> mte != null && mte.getTier() >= GTValues.UEV)
                         .toArray(MetaTileEntity[]::new))
                         .setPreviewCount(2).setMinGlobalLimited(1))
                         .or(abilities(MultiblockAbility.EXPORT_FLUIDS).setPreviewCount(1).setMinGlobalLimited(1))
                         .or(abilities(MultiblockAbility.IMPORT_FLUIDS).setPreviewCount(2).setMinGlobalLimited(2)))
-                .where('B', states(getCoilState()))
+                .where('B', states(MetaBlocks.FUSION_CASING.getState(BlockFusionCasing.CasingType.FUSION_COIL))) // todo: adv fusion coil
                 .where(' ', any())
                 .build();
-    }
-
-    // todo: adv fusion casing
-    private IBlockState getCasingState() {
-        return MetaBlocks.FUSION_CASING.getState(BlockFusionCasing.CasingType.FUSION_CASING_MK3);
-    }
-
-    // todo: adv fusion coil
-    private IBlockState getCoilState() {
-        return MetaBlocks.FUSION_CASING.getState(BlockFusionCasing.CasingType.FUSION_COIL);
     }
 
     // todo: adv fusion texture (turns partially transparent when active)
@@ -282,6 +273,8 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
             return Textures.FUSION_TEXTURE;
         }
     }
+
+    // todo: big laser rendering
 
     protected class AdvancedFusionReactorWorkable extends MultiblockRecipeLogic {
 

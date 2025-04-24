@@ -2,6 +2,7 @@ package serendustry.machine;
 
 import javax.annotation.Nonnull;
 
+import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.client.utils.TooltipHelper;
 import net.minecraft.client.resources.I18n;
@@ -26,6 +27,7 @@ import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController {
@@ -40,6 +42,32 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
         return new MetaTileEntityFlamelCrucible(metaTileEntityId);
     }
 
+    @Override
+    public boolean hasMaintenanceMechanics() {
+        return false;
+    }
+
+    @Override
+    protected void formStructure(PatternMatchContext context) {
+        super.formStructure(context);
+
+        List<IEnergyContainer> energyInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
+        List<IEnergyContainer> substationInput = new ArrayList<>(getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
+        List<IEnergyContainer> laserInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_LASER));
+
+        if(!energyInput.isEmpty() && !substationInput.isEmpty() && !laserInput.isEmpty()) {
+            invalidateStructure();
+        }
+
+        // todo: give error message to multiblock builder and make JEI not show mixed hatches
+
+        /*List<IEnergyContainer> powerInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
+        powerInput.addAll(getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
+        powerInput.addAll(getAbilities(MultiblockAbility.INPUT_LASER));
+
+        this.powerInput = new EnergyContainerList(powerInput);*/  // todo: update ceu so this works and check if this even needed
+    }
+
     @Nonnull
     @Override
     protected BlockPattern createStructurePattern() {
@@ -51,9 +79,9 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                 .aisle("XXX", "XSX", "XXX")
                 .where('S', selfPredicate())
                 .where('X', states(getCasingState()).setMinGlobalLimited(60).or(autoAbilities(false, false, true, true, true, true, false))
-                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setMinGlobalLimited(0).setMaxGlobalLimited(2))
-                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setMaxGlobalLimited(1))
-                        .or(abilities(MultiblockAbility.INPUT_LASER).setMaxGlobalLimited(1)))
+                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0).setMinGlobalLimited(0).setMaxGlobalLimited(2))
+                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(0).setMaxGlobalLimited(1))
+                        .or(abilities(MultiblockAbility.INPUT_LASER).setPreviewCount(1).setMaxGlobalLimited(1)))
                 .build();
     }
 
@@ -70,11 +98,6 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
     @Override
     public void invalidateStructure() {
         super.invalidateStructure();
-    }
-
-    @Override
-    protected void formStructure(PatternMatchContext context) {
-        super.formStructure(context);
     }
 
     @Override

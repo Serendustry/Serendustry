@@ -34,7 +34,7 @@ public class InfinityChain {
         int[] Tier3Q = {2, 2, 4, 2, 1};
 
         CENTRIFUGE_RECIPES.recipeBuilder()
-                .circuitMeta(6)
+                .circuitMeta(0)
                 .fluidInputs(InfinityCatalyst.getFluid(144)) // ~2.048 Infinity per InfCat
                 .chancedOutput(dust, InfinityPale, 8000, 0)
                 .chancedOutput(dust, InfinityFleeting, 8000, 0)

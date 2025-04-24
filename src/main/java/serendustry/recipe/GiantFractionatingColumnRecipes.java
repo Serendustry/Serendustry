@@ -17,12 +17,13 @@ public class GiantFractionatingColumnRecipes {
     public static void init() {
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(frameGt, NaquadahAlloy, 8)
                 .input(circuit, MarkerMaterials.Tier.ZPM, 4)
                 .input(circuit, MarkerMaterials.Tier.LuV, 32)
-                .input(plate, RhodiumPlatedPalladium, 32)
-                .input(plate, Ruridit, 32)
-                .input(stickLong, Osmiridium, 32)
-                .input(gear, NaquadahAlloy, 16)
+                .input(plateDense, RhodiumPlatedPalladium, 8)
+                .input(plate, Ruridit, 16)
+                .input(stickLong, Osmiridium, 16)
+                .input(gear, NaquadahAlloy, 8)
                 .input(wireGtQuadruple, VanadiumGallium, 32)
                 .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 16),
                         MolybdeniteLubricant.getFluid(4000),
@@ -42,7 +43,7 @@ public class GiantFractionatingColumnRecipes {
                         Butadiene.getFluid(1000),
                         Toluene.getFluid(1000),
                         Benzene.getFluid(1000))
-                .duration(860).EUt(VA[LuV]).buildAndRegister();
+                .duration(20*30).EUt(VA[UEV]).buildAndRegister();
 
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .fluidInputs(ButeneMixture.getFluid(1000))

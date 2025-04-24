@@ -63,7 +63,7 @@ public class RadoxChain {
                         OilHeavy.getFluid(200),
                         DistilledWater.getFluid(500),
                         Water.getFluid(1000))
-                .duration(1600).EUt(VA[ZPM]).buildAndRegister();
+                .duration(20*45).EUt(VA[UIV]).buildAndRegister();
 
         CRACKING_RECIPES.recipeBuilder()
                 .fluidInputs(LightRadox.getFluid(100), Iron.getPlasma(25))
@@ -88,7 +88,7 @@ public class RadoxChain {
                 .duration(3200).EUt(VA[ZPM]).buildAndRegister();
 
         LABORATORY_RECIPES.recipeBuilder()
-                .circuitMeta(6)
+                .circuitMeta(0)
                 .input(dust, Neutronium).input(dust, Tritanium, 4)
                 .fluidInputs(PurifiedRadox.getFluid(1500), Argon.getPlasma(500))
                 .fluidOutputs(RadoxPolymer.getFluid(1440))

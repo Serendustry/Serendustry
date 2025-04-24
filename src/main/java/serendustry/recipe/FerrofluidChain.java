@@ -61,7 +61,7 @@ public class FerrofluidChain {
                 .duration(480).EUt(VA[IV]).buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
-                .circuitMeta(6)
+                .circuitMeta(0)
                 .input(dust, MagneticNanoparticleMixture, 10)
                 .fluidInputs(Kerosene.getFluid(1000))
                 .fluidOutputs(Ferrofluid.getFluid(1000))

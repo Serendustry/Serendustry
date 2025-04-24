@@ -11,6 +11,7 @@ import static serendustry.item.SerendustryMetaItems.CULTURE_STEM_CELL_WIRED;
 import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_END;
 import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
+import static serendustry.machine.SerendustryRecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.LABORATORY_RECIPES;
 
 import gregtech.api.recipes.GTRecipeHandler;
@@ -204,10 +205,9 @@ public class AlloyRecipes {
                 .output(dust, ScUiv, 9)
                 .duration(1500).EUt(VA[UHV]).buildAndRegister();
 
-        IMPLOSION_RECIPES.recipeBuilder()
+        ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES.recipeBuilder()
                 .input(gemExquisite, Diamond).input(dust, NetherStar)
                 .output(dust, CrystalMatrix)
-                .explosivesAmount(4)
                 .duration(20).EUt(VA[UHV]).buildAndRegister();
 
         AUTOCLAVE_RECIPES.recipeBuilder()
@@ -467,18 +467,16 @@ public class AlloyRecipes {
                 .output(dust, Tairitsu, 32)
                 .duration(2400).EUt(VA[UHV]).buildAndRegister();
 
-        IMPLOSION_RECIPES.recipeBuilder()
+        ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES.recipeBuilder()
                 .input(gemExquisite, LigniteCoal).input(gemExquisite, AnthraciteCoal)
                 .input(gemExquisite, BituminousCoal).input(gemExquisite, SubBituminousCoal).input(gemExquisite, PeatCoal)
                 .output(dust, CondensedCoal)
-                .explosivesAmount(8)
                 .duration(20).EUt(VA[MAX]).buildAndRegister();
 
-        IMPLOSION_RECIPES.recipeBuilder()
+        ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES.recipeBuilder()
                 .input(gemExquisite, TiberiumAboreus).input(gemExquisite, TiberiumCruentus).input(gemExquisite, TiberiumRiparius)
                 .input(gemExquisite, TiberiumVinifera).input(crushedCentrifuged, Originite)
                 .output(dust, ExtremelyUnstableTiberium)
-                .explosivesAmount(8)
                 .duration(20).EUt(VA[MAX]).buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder()
@@ -515,7 +513,7 @@ public class AlloyRecipes {
                 .duration(737).EUt(VA[UV]).buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder()
-                .circuitMeta(6)
+                .circuitMeta(0)
                 .input(dust, DeepDarkIron)
                 .fluidInputs(CondensedStarMatter.getFluid(1000), Xenon.getFluid(10))
                 .output(ingotHot, DeepDarkSteel)

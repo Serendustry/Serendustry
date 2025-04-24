@@ -113,18 +113,18 @@ public class CircuitRecipes {
                 .output(CHIP_OPIC, 2).cleanroom(CleanroomType.CLEANROOM).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, Neutronium, 32)
+                .input(frameGt, Neutronium, 8)
                 .input(FIELD_GENERATOR_UHV, 8)
                 .input(ROBOT_ARM_UHV, 8)
                 .input(EMITTER_UHV, 8)
                 .input(circuit, MarkerMaterials.Tier.UHV, 16)
                 .inputs(MetaBlocks.TRANSPARENT_CASING.getItemVariant(
-                        BlockGlassCasing.CasingType.FUSION_GLASS, 64))
-                .input(plate, Neutronium, 64)
+                        BlockGlassCasing.CasingType.FUSION_GLASS, 16))
+                .input(plate, Neutronium, 32)
                 .input(screw, VibraniumAlloy, 64)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 8),
                         MolybdeniteLubricant.getFluid(32000),
-                        Naquadria.getFluid(144 * 32))
+                        Naquadria.getFluid(144 * 16))
                 .output(HP_LASER_ARRAY)
                 .stationResearch(b -> b
                         .researchStack(LASER_ENGRAVER[UHV].getStackForm())
@@ -165,7 +165,7 @@ public class CircuitRecipes {
                 .duration(1200).EUt(VA[UHV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
-                .circuitMeta(6)
+                .circuitMeta(0)
                 .input(foil, LaminatedBoPET, 16)
                 .input(foil, Polybenzimidazole, 64)
                 .input(WRAPPED_ORUNDUM_WAFER)

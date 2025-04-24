@@ -1,0 +1,178 @@
+Structure:
+
+Blocks:
+A -> ofBlock...(gt.blockcasings2, 0, ...);
+B -> ofBlock...(gt.blockcasings8, 0, ...);
+C -> ofBlock...(gt.blockframes, 32, ...);
+D -> ofBlock...(tile.stainedGlass, 0, ...);
+
+Tiles:
+
+Special Tiles:
+E -> ofSpecialTileAdder(gregtech.api.metatileentity.BaseMetaTileEntity, ...); // You will probably want to change it to something else
+
+Offsets:
+15 12 2
+
+Normal Scan:
+new String[][]{{
+    "                  ",
+    "                  ",
+    "                  ",
+    "                  ",
+    "                  ",
+    "                  ",
+    " AAAAAAAAA        ",
+    " AADDDDDAA        ",
+    " AADDDDDAA        ",
+    " AADDDDDAA        ",
+    " AADDDDDAA        ",
+    " AADDDDDAA        ",
+    " AADDDDDAA        ",
+    " AAAAAAAAA        ",
+    " AAAAAAAAA        "
+},{
+    "                  ",
+    "                  ",
+    "                  ",
+    "                  ",
+    "                  ",
+    " AAAAAAAAA        ",
+    "A         A       ",
+    "A         A       ",
+    "A         A       ",
+    "A         A       ",
+    "A         A       ",
+    "A         A       ",
+    "A         A       ",
+    "A         A       ",
+    " AAAAAAAAA        "
+},{
+    "                  ",
+    "                  ",
+    "                  ",
+    "                  ",
+    "                  ",
+    " AAAAAAAAA        ",
+    "A         A       ",
+    "A         A       ",
+    "A         A       ",
+    "A         A       ",
+    "A         A  AAAAA",
+    "A         A  AAAAA",
+    "A         A  ADEDA",
+    "A         A  AAAAA",
+    " AAAAAAAAA   AAAAA"
+},{
+    "                  ",
+    "                  ",
+    "                  ",
+    "                  ",
+    "                  ",
+    " AAAAAAAAA        ",
+    "A         A       ",
+    "A         A       ",
+    "A         A       ",
+    "A         A  AAAAA",
+    "A         A  A   A",
+    "A         A  A   A",
+    "A         A  A   A",
+    "A         A  A   A",
+    " AAAAAAAAA   AAAAA"
+},{
+    "                  ",
+    "     CCCCCCCCCCC  ",
+    "     C         C  ",
+    "     C         C  ",
+    "     C         C  ",
+    " AAAACAAAA     C  ",
+    "A    C    A    C  ",
+    "A    C    A    C  ",
+    "A    C    A    C  ",
+    "A    C    A  AAAAA",
+    "A    C    A  A C A",
+    "A    C    A  A C A",
+    "A    C    A  A C A",
+    "A    C    A  A C A",
+    " AAAABAAAA   AABAA"
+},{
+    "     CCCCCCCCCCC  ",
+    "    CBBBBBBBBBBBC ",
+    "    CBCCCCCCCCCBC ",
+    "    CBC       CBC ",
+    "    CBC       CBC ",
+    " AAACBCAAA    CBC ",
+    "A   CBC   A   CBC ",
+    "A   CBC   A   CBC ",
+    "A   CBC   A   CBC ",
+    "A   CBC   A  AABAA",
+    "A   CBC   A  ACBCA",
+    "A   CBC   A  ACBCA",
+    "A   CBC   A  ACBCA",
+    "A   CBC   A  ACBCA",
+    " AAABBBAAA   ABBBA"
+},{
+    "                  ",
+    "     CCCCCCCCCCC  ",
+    "     C         C  ",
+    "     C         C  ",
+    "     C         C  ",
+    " AAAACAAAA     C  ",
+    "A    C    A    C  ",
+    "A    C    A    C  ",
+    "A    C    A    C  ",
+    "A    C    A  AAAAA",
+    "A    C    A  A C A",
+    "A    C    A  A C A",
+    "A    C    A  A C A",
+    "A    C    A  A C A",
+    " AAAABAAAA   AABAA"
+},{
+    "                  ",
+    "                  ",
+    "                  ",
+    "                  ",
+    "                  ",
+    " AAAAAAAAA        ",
+    "A         A       ",
+    "A         A       ",
+    "A         A       ",
+    "A         A  AAAAA",
+    "A         A  A   A",
+    "A         A  A   A",
+    "A         A  A   A",
+    "A         A  A   A",
+    " AAAAAAAAA   AAAAA"
+},{
+    "                  ",
+    "                  ",
+    "                  ",
+    "                  ",
+    "                  ",
+    " AAAAAAAAA        ",
+    "A         A       ",
+    "A         A       ",
+    "A         A       ",
+    "A         A  AAAAA",
+    "A         A  AAAAA",
+    "A         A  AAAAA",
+    "A         A  AAAAA",
+    "A         A  AAAAA",
+    " AAAAAAAAA   AAAAA"
+},{
+    "                  ",
+    "                  ",
+    "                  ",
+    "                  ",
+    "                  ",
+    " AAAAAAAAA        ",
+    " AAAAAAAAA        ",
+    " AAAAAAAAA        ",
+    " AAAAAAAAA        ",
+    " AAAAAAAAA        ",
+    " AAAAAAAAA        ",
+    " AAAAAAAAA        ",
+    " AAAAAAAAA        ",
+    " AAAAAAAAA        ",
+    " AAAAAAAAA        "
+}}

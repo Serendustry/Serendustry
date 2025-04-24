@@ -31,7 +31,7 @@ public class DragonEggRecipes {
                 .duration(250).EUt(VA[UHV]).buildAndRegister();
 
         LABORATORY_RECIPES.recipeBuilder()
-                .circuitMeta(6)
+                .circuitMeta(0)
                 .input(Blocks.DRAGON_EGG, 4)
                 .fluidOutputs(Dragonblood.getFluid(144))
                 .requireInside(RecipeMaps.MACERATOR_RECIPES, UEV, 1)

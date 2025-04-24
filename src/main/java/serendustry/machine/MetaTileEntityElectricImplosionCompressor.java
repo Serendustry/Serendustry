@@ -1,6 +1,11 @@
 package serendustry.machine;
 
+import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
+import gregtech.api.pattern.PatternMatchContext;
+import gregtech.api.unification.material.Materials;
+import gregtech.common.blocks.BlockGlassCasing;
+import gregtech.common.blocks.BlockMetalCasing;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
@@ -16,6 +21,14 @@ import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
+import serendustry.item.material.SerendustryMaterials;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
 
 public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblockController {
 
@@ -34,24 +47,310 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
     }
 
     @Override
+    protected void formStructure(PatternMatchContext context) {
+        super.formStructure(context);
+
+        List<IEnergyContainer> energyInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
+        List<IEnergyContainer> substationInput = new ArrayList<>(getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
+
+        if(!energyInput.isEmpty() && !substationInput.isEmpty()) {
+            invalidateStructure();
+        }
+
+        // todo: give error message to multiblock builder and make JEI not show mixed hatches
+
+        /*List<IEnergyContainer> powerInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
+        powerInput.addAll(getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
+
+        this.powerInput = new EnergyContainerList(powerInput);*/  // todo: update ceu so this works and check if this even needed
+    }
+
+    @Override
     public @NotNull BlockPattern createStructurePattern() {
-        return FactoryBlockPattern.start()
-                .aisle("XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX")
-                .aisle("XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX")
-                .aisle("XXX", "XXX", "XXX", "XXX", "XSX", "XXX", "XXX", "XXX", "XXX")
-                .where('S', selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(40).or(autoAbilities(false, false, true, true, true, true, false))
-                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setMinGlobalLimited(0).setMaxGlobalLimited(2))
-                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setMaxGlobalLimited(1)))
+        return FactoryBlockPattern.start(LEFT, DOWN, FRONT)
+                .aisle(
+                        "               ",
+                        "               ",
+                        "               ",
+                        "               ",
+                        "               ",
+                        "               ",
+                        "               ",
+                        "               ",
+                        "               ",
+                        "               ",
+                        "               ",
+                        "               ",
+                        "               ",
+                        "               ",
+                        "               ",
+                        "               ",
+                        "      AAA      "
+                ).aisle(
+                        "               ",
+                        "               ",
+                        "               ",
+                        "       A       ",
+                        "       A       ",
+                        "      DAD      ",
+                        "      DAD      ",
+                        "      DAD      ",
+                        "      DAD      ",
+                        "      DAD      ",
+                        "      DAD      ",
+                        "      DAD      ",
+                        "      DAD      ",
+                        "      DED      ",
+                        "      DAD      ",
+                        "      AAA      ",
+                        "     AAAAA     "
+                ).aisle(
+                        "               ",
+                        "               ",
+                        "       A       ",
+                        "       B       ",
+                        "      DAD      ",
+                        "     B   B     ",
+                        "     B   B     ",
+                        "     B   B     ",
+                        "     B   B     ",
+                        "     B   B     ",
+                        "     B   B     ",
+                        "     B   B     ",
+                        "     B   B     ",
+                        "     B   B     ",
+                        "     B   B     ",
+                        "     AAAAA     ",
+                        "    AAAAAAA    "
+                ).aisle(
+                        "               ",
+                        "               ",
+                        "       A       ",
+                        "       B       ",
+                        "     DBABD     ",
+                        "    D     D    ",
+                        "    D     D    ",
+                        "    D     D    ",
+                        "    D     D    ",
+                        "    D     D    ",
+                        "    D     D    ",
+                        "    D     D    ",
+                        "    D     D    ",
+                        "    D     D    ",
+                        "    D     D    ",
+                        "    AAAAAAA    ",
+                        "   AAAAAAAAA   "
+                ).aisle(
+                        "               ",
+                        "               ",
+                        "       A       ",
+                        "     DBBBD     ",
+                        "    D  A  D    ",
+                        "   D       D   ",
+                        "   D       D   ",
+                        "   D       D   ",
+                        "   D  CCC  D   ",
+                        "   D       D   ",
+                        "   D       D   ",
+                        "   D       D   ",
+                        "   D       D   ",
+                        "   D  CCC  D   ",
+                        "   D  AAA  D   ",
+                        "   AAAAAAAAA   ",
+                        "  AAAAAAAAAAA  "
+                ).aisle(
+                        "               ",
+                        "               ",
+                        "     BBABB     ",
+                        "    D  A  D    ",
+                        "   D   A   D   ",
+                        "  B    A    B  ",
+                        "  B    A    B  ",
+                        "  B    A    B  ",
+                        "  B  CCCCC  B  ",
+                        "  B   CCC   B  ",
+                        "  B         B  ",
+                        "  B         B  ",
+                        "  B   CCC   B  ",
+                        "  B  CCCCC  B  ",
+                        "  B  AAAAA  B  ",
+                        "  AAAAAAAAAAA  ",
+                        " AAAAAAAAAAAAA "
+                ).aisle(
+                        "       B       ",
+                        "      BAB      ",
+                        "     BAAAB     ",
+                        "    B  BB B    ",
+                        "  DB   A   BD  ",
+                        " D     B     D ",
+                        " D     A     D ",
+                        " D     B     D ",
+                        " D  CCCCCCC  D ",
+                        " D   CCCCC   D ",
+                        " D           D ",
+                        " D           D ",
+                        " D   CCCCC   D ",
+                        " D  CCCCCCC  D ",
+                        " D  AAAAAAA  D ",
+                        " AAAAAAAAAAAAA ",
+                        "AAAAAAAAAAAAAAA"
+                ).aisle(
+                        "      BAB      ",
+                        "      AAA      ",
+                        "  AAAAAAAAAAA  ",
+                        " ABBBABABABBBA ",
+                        " AAAAAAAAAAAAA ",
+                        " A   ABABA   A ",
+                        " A   AAAAA   A ",
+                        " A   ABABA   A ",
+                        " A  CCCCCCC  A ",
+                        " A   CCCCC   A ",
+                        " AA          A ",
+                        " A           A ",
+                        " A   CCCCC   A ",
+                        " A  CCCCCCC  A ",
+                        " A  AAAAAAA  A ",
+                        " AAAAAAAAAAAAA ",
+                        "AAAAAAAAAAAAAAA"
+                ).aisle(
+                        "       B       ",
+                        "      BAB      ",
+                        "     BAAAB     ",
+                        "    B BBB B    ",
+                        "  DB   A   BD  ",
+                        " D     B     D ",
+                        " D     A     D ",
+                        " D     B     D ",
+                        " D  CCCCCCC  D ",
+                        " D   CCCCC   D ",
+                        " D           D ",
+                        " D           D ",
+                        " D   CCCCC   D ",
+                        " D  CCCCCCC  D ",
+                        " D  AAAAAAA  D ",
+                        " AAAAAAAAAAAAA ",
+                        "AAAAAAAAAAAAAAA"
+                ).aisle(
+                        "               ",
+                        "               ",
+                        "     BBABB     ",
+                        "    D  A  D    ",
+                        "   D   A   D   ",
+                        "  B    A    B  ",
+                        "  B    A    B  ",
+                        "  B    A    B  ",
+                        "  B  CCCCC  B  ",
+                        "  B   CCC   B  ",
+                        "  B         B  ",
+                        "  B         B  ",
+                        "  B   CCC   B  ",
+                        "  B  CCCCC  B  ",
+                        "  B  AAAAA  B  ",
+                        "  AAAAAAAAAAA  ",
+                        " AAAAAAAAAAAAA "
+                ).aisle(
+                        "               ",
+                        "               ",
+                        "       A       ",
+                        "     DBBBD     ",
+                        "    D  A  D    ",
+                        "   D       D   ",
+                        "   D       D   ",
+                        "   D       D   ",
+                        "   D  CCC  D   ",
+                        "   D       D   ",
+                        "   D       D   ",
+                        "   D       D   ",
+                        "   D       D   ",
+                        "   D  CCC  D   ",
+                        "   D  AAA  D   ",
+                        "   AAAAAAAAA   ",
+                        "  AAAAAAAAAAA  "
+                ).aisle(
+                        "               ",
+                        "               ",
+                        "       A       ",
+                        "       B       ",
+                        "     DBABD     ",
+                        "    D     D    ",
+                        "    D     D    ",
+                        "    D     D    ",
+                        "    D     D    ",
+                        "    D     D    ",
+                        "    D     D    ",
+                        "    D     D    ",
+                        "    D     D    ",
+                        "    D     D    ",
+                        "    D     D    ",
+                        "    AAAAAAA    ",
+                        "   AAAAAAAAA   "
+                ).aisle(
+                        "               ",
+                        "               ",
+                        "       A       ",
+                        "       B       ",
+                        "      DAD      ",
+                        "     B   B     ",
+                        "     B   B     ",
+                        "     B   B     ",
+                        "     B   B     ",
+                        "     B   B     ",
+                        "     B   B     ",
+                        "     B   B     ",
+                        "     B   B     ",
+                        "     B   B     ",
+                        "     B   B     ",
+                        "     AAAAA     ",
+                        "    AAAAAAA    "
+                ).aisle(
+                        "               ",
+                        "               ",
+                        "               ",
+                        "       A       ",
+                        "       A       ",
+                        "      DAD      ",
+                        "      DAD      ",
+                        "      DAD      ",
+                        "      DAD      ",
+                        "      DAD      ",
+                        "      DAD      ",
+                        "      DAD      ",
+                        "      DAD      ",
+                        "      DAD      ",
+                        "      DAD      ",
+                        "      AAA      ",
+                        "     AAAAA     "
+                ).aisle(
+                        "               ",
+                        "               ",
+                        "               ",
+                        "               ",
+                        "               ",
+                        "               ",
+                        "               ",
+                        "               ",
+                        "               ",
+                        "               ",
+                        "               ",
+                        "               ",
+                        "               ",
+                        "               ",
+                        "               ",
+                        "               ",
+                        "      AAA      "
+                )
+                .where('E', selfPredicate())
+                .where('A', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST)) // todo
+                        .setMinGlobalLimited(401).or(autoAbilities(false, false, true, true, true, true, false))
+                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0).setMinGlobalLimited(0).setMaxGlobalLimited(2))
+                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(1).setMaxGlobalLimited(1)))
+                .where('B', frames(Materials.NaquadahAlloy))
+                .where('C', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID))) // todo: Nt blocks or custom hammer block
+                .where('D', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS))) // todo
                 .build();
     }
 
     public ICubeRenderer getBaseTexture(@Nullable IMultiblockPart part) {
-        return Textures.INERT_PTFE_CASING; // todo
-    }
-
-    // todo: add custom ??? Casing
-    private IBlockState getCasingState() {
-        return MetaBlocks.MACHINE_CASING.getState(BlockMachineCasing.MachineCasingType.UV);
+        return Textures.ROBUST_TUNGSTENSTEEL_CASING; // todo
     }
 }

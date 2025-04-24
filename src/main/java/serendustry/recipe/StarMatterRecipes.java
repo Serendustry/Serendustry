@@ -54,15 +54,15 @@ public class StarMatterRecipes {
         itemStack.setTagCompound(fluidTag); // todo: fix (this is just an empty cell)
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(frameGt, Adamantium, 8)
                 .input(circuit, MarkerMaterials.Tier.UHV, 4)
                 .input(circuit, MarkerMaterials.Tier.UV, 16)
                 .input(EMITTER_ZPM, 8)
                 .input(ROBOT_ARM_ZPM, 8)
                 .input(plateDense, VibraniumAlloy, 4)
-                .input(plate, Naquadria, 32)
-                .input(stickLong, Tritanium, 32)
+                .input(plate, Naquadria, 16)
+                .input(stickLong, Tritanium, 16)
                 .input(foil, Adamantium, 64)
-                .input(screw, VibraniumAlloy, 64)
                 .input(screw, VibraniumAlloy, 64)
                 .input(wireGtDouble, EnrichedNaquadahTriniumEuropiumDuranide, 64)
                 .input(cableGtDouble, Hihiirokane, 64)
@@ -91,11 +91,11 @@ public class StarMatterRecipes {
                 .duration(200).EUt(VA[UV]).buildAndRegister();
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
-                .circuitMeta(6)
+                .circuitMeta(0)
                 .input(ingot, StellarContainmentBase)
                 .fluidInputs(StellarBaptismSolution.getFluid(1000),
                         NeutronStarMatter.getFluid(500))
-                .output(ingot, Neutronium) // todo: change to ingotHot
+                .output(ingotHot, Neutronium)
                 .duration(320).EUt(VA[UV]).buildAndRegister();
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
@@ -103,7 +103,7 @@ public class StarMatterRecipes {
                 .input(ingot, StellarContainmentBase)
                 .fluidInputs(StellarBaptismSolution.getFluid(800),
                         NeutronStarMatter.getFluid(400))
-                .output(ingot, Neutronium) // todo: change to ingotHot
+                .output(ingotHot, Neutronium)
                 .duration(240).EUt(VA[UV]).buildAndRegister();
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()

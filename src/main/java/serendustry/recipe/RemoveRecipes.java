@@ -42,7 +42,7 @@ public class RemoveRecipes {
         GTRecipeHandler.removeRecipesByInputs(DISTILLATION_RECIPES, new FluidStack[] { SeedOil.getFluid(24) });
 
         // Tungsten Carbide
-        GTRecipeHandler.removeRecipesByInputs(MIXER_RECIPES,new ItemStack[] {
+        GTRecipeHandler.removeRecipesByInputs(MIXER_RECIPES, new ItemStack[] {
                 OreDictUnifier.get(dust, Tungsten),
                 OreDictUnifier.get(dust, Carbon),
                 IntCircuitIngredient.getIntegratedCircuit(1)});

@@ -52,6 +52,11 @@ public class MetaTileEntityIndustrialLaboratory extends RecipeMapMultiblockContr
         return new MetaTileEntityIndustrialLaboratory(metaTileEntityId);
     }
 
+    @Override
+    public boolean hasMaintenanceMechanics() {
+        return false;
+    }
+
     @Nonnull
     @Override
     protected BlockPattern createStructurePattern() {

@@ -125,7 +125,7 @@ public class Quantium40Chain {
                 .duration(200*8).EUt(VA[UV]).buildAndRegister();
 
         HP_LASER_ARRAY_RECIPES.recipeBuilder()
-                .circuitMeta(6)
+                .circuitMeta(0)
                 .notConsumable(LENS_ARRAY_HYPERAMPLIFYING)
                 .input(dust, Potassium, 64 * 8)
                 .output(dust, Potassium40)

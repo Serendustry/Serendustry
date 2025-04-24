@@ -575,6 +575,8 @@ public class SerendustryMaterials {
         Holmium.setMaterialRGB(0x130793);
         Holmium.setMaterialIconSet(SHINY);
 
+        Neutronium.setProperty(PropertyKey.BLAST, new BlastProperty(10800, GasTier.HIGHEST));
+
         OrePrefix.gemFlawless.maxStackSize = 64;
         OrePrefix.gemExquisite.maxStackSize = 64;
         OrePrefix.plateDouble.maxStackSize = 64;
@@ -1181,7 +1183,7 @@ public class SerendustryMaterials {
         RadoxPolymer = new Material.Builder(66, Serendustry.ID("radox_polymer"))
                 .polymer(3).fluid()
                 .color(0xBB2BE0)
-                .flags(GENERATE_FOIL, GENERATE_RING, GENERATE_DENSE)
+                .flags(GENERATE_FOIL, GENERATE_RING)
                 .fluidPipeProperties(1200, 5500, true, true, true, false)
                 .build();
 
@@ -2784,7 +2786,7 @@ public class SerendustryMaterials {
                 .color(0xce79ff).iconSet(BRIGHT)
                 .components(Vibranium, 4, Adamantium, 2, Duranium, 1, Azbantium, 1)
                 .flags(GENERATE_PLATE, GENERATE_ROD, DISABLE_DECOMPOSITION, GENERATE_LONG_ROD, GENERATE_GEAR, GENERATE_SMALL_GEAR,
-                        GENERATE_BOLT_SCREW, GENERATE_ROTOR, GENERATE_DENSE, GENERATE_RING)
+                        GENERATE_BOLT_SCREW, GENERATE_ROTOR, GENERATE_DENSE, GENERATE_RING, GENERATE_FRAME)
                 .blast(b -> b
                         .temp(10800, GasTier.HIGHEST)
                         .blastStats(VA[UV], 1100))

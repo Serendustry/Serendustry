@@ -16,7 +16,6 @@ import static serendustry.item.SerendustryMetaItems.SPACEWEED;
 import static serendustry.machine.SerendustryRecipeMaps.SPACE_ELEVATOR_RECIPES;
 
 public class DeepDarkPlanetoid {
-
     static Material[] materials = GregTechAPI.materialManager.getRegisteredMaterials().toArray(new Material[0]);
 
     public static void init() {

@@ -52,9 +52,11 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
         List<IEnergyContainer> energyInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
         List<IEnergyContainer> substationInput = new ArrayList<>(getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
 
-        if(!energyInput.isEmpty() && !substationInput.isEmpty()) { // todo: give error message to multiblock builder and make JEI not show mixed hatches
+        if(!energyInput.isEmpty() && !substationInput.isEmpty()) { 
             invalidateStructure();
         }
+
+        // todo: give error message to multiblock builder and make JEI not show mixed hatches
 
         /*List<IEnergyContainer> powerInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
         powerInput.addAll(getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
@@ -936,9 +938,9 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
 
                 .where('D', selfPredicate())
                 .where('C', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PTFE_INERT_CASING)) // todo: some sort of superdense carbide casing?
-                        .setMinGlobalLimited(780).or(autoAbilities(false, false, true, true, true, true, false))
-                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setMinGlobalLimited(0).setMaxGlobalLimited(2))
-                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setMaxGlobalLimited(1)))
+                        .setMinGlobalLimited(803).or(autoAbilities(false, false, true, true, true, true, false))
+                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0).setMinGlobalLimited(0).setMaxGlobalLimited(2))
+                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(1).setMaxGlobalLimited(1)))
                         .where('B', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE))) // todo: adamantium casing
                 .where('A', states(MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.TRITANIUM)))
                 .where(' ', any())

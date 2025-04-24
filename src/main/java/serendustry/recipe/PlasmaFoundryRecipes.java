@@ -29,11 +29,12 @@ public class PlasmaFoundryRecipes {
 
     private static void multiRecipes() {
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(frameGt, NaquadahAlloy, 8)
                 .input(circuit, MarkerMaterials.Tier.UV, 32)
                 .input(ROBOT_ARM_ZPM, 8)
                 .input(ELECTRIC_PUMP_ZPM, 16)
                 .input(ELECTRIC_PISTON_ZPM, 16)
-                .input(frameGt, NaquadahAlloy, 16)
+                .input(plateDense, NaquadahAlloy, 4)
                 .input(plate, Duranium, 64)
                 .input(plate, Osmiridium, 64)
                 .input(stick, Americium, 64)

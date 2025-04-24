@@ -37,15 +37,16 @@ public class HTMachineRecipes {
     public static void init() {
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, Neutronium, 16)
+                .input(frameGt, Neutronium, 4)
                 .input(ELECTRIC_PISTON_UV, 32)
                 .input(circuit, MarkerMaterials.Tier.UHV, 8)
                 .input(circuit, MarkerMaterials.Tier.UV, 16)
-                .input(plateDense, Neutronium, 8)
+                .input(plateDense, NaquadahAlloy, 16)
+                .input(gear, Neutronium, 8)
                 .input(gear, Naquadria, 16)
                 .input(ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT, 32)
                 .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 32),
-                        Neutronium.getFluid(144 * 16))
+                        Neutronium.getFluid(144 * 8))
                 .output(ELECTRIC_IMPLOSION_COMPRESSOR)
                 .stationResearch(b -> b
                         .researchStack(IMPLOSION_COMPRESSOR.getStackForm())
@@ -55,7 +56,7 @@ public class HTMachineRecipes {
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(STELLAR_ESSENCE_OVERWORLD)
-                .input(frameGt, Neutronium, 32)
+                .input(frameGt, Neutronium, 8)
                 .input(FIELD_GENERATOR_UHV, 16)
                 .input(ELECTRIC_PUMP_UHV, 32)
                 .input(circuit, MarkerMaterials.Tier.UHV, 64)
@@ -71,8 +72,8 @@ public class HTMachineRecipes {
                 .input(gemExquisite, TiberiumRiparius, 64)
                 .input(gemExquisite, TiberiumVinifera, 64)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 16),
-                        Neutronium.getFluid(144 * 32),
-                        VibraniumAlloy.getFluid(144 * 64),
+                        Neutronium.getFluid(144 * 16),
+                        VibraniumAlloy.getFluid(144 * 32),
                         Originium.getFluid(144 * 4))
                 .output(FLAMEL_CRUCIBLE)
                 .stationResearch(b -> b
@@ -291,7 +292,7 @@ public class HTMachineRecipes {
          .input(circuit, MarkerMaterials.Tier.UIV)
          .input(wireGtDouble, SValues.Tier_Superconductor[GTValues.UIV], 4)
          .fluidInputs(SodiumPotassium.getFluid(24000))
-         .fluidInputs(MutatedLivingSolder.getFluid(1152))
+         .fluidInputs(SentientNanobots.getFluid(576))
          .output(ENERGY_INPUT_HATCH[GTValues.UIV])
                  .stationResearch(b -> b
                          .researchStack(ENERGY_INPUT_HATCH[GTValues.UEV].getStackForm())

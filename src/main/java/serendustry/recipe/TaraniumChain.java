@@ -1,16 +1,28 @@
 package serendustry.recipe;
 
 import gregtech.api.GTValues;
+import gregtech.api.unification.material.MarkerMaterials;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 
 import static gregtech.api.GTValues.VA;
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.CENTRIFUGE_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.CHEMICAL_BATH_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.ELECTROMAGNETIC_SEPARATOR_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.ore.OrePrefix.cableGtDouble;
+import static gregtech.api.unification.ore.OrePrefix.circuit;
 import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.frameGt;
+import static gregtech.api.unification.ore.OrePrefix.gear;
+import static gregtech.api.unification.ore.OrePrefix.plateDense;
 import static gregtech.api.unification.ore.OrePrefix.stickLong;
+import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_UHV;
+import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_UV;
 import static serendustry.item.material.SerendustryMaterials.*;
+import static serendustry.machine.SerendustryMetaTileEntities.DEHYDRATOR;
 import static serendustry.machine.SerendustryRecipeMaps.DEHYDRATOR_RECIPES;
 
 public class TaraniumChain {
@@ -32,6 +44,27 @@ public class TaraniumChain {
                 .fluidInputs(AquaRegia.getFluid(100))
                 .fluidOutputs(TaraniumPoorSludge.getFluid(100))
                 .duration(20).EUt(VA[GTValues.UHV]).buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(frameGt, Neutronium, 8)
+                .input(ELECTRIC_PUMP_UHV, 16)
+                .input(ELECTRIC_PUMP_UV, 32)
+                .input(circuit, MarkerMaterials.Tier.UHV, 32)
+                .input(plateDense, Neutronium, 8)
+                .input(plateDense, Adamantium, 16)
+                .input(plateDense, Darmstadtium, 16)
+                .input(gear, Naquadria, 16)
+                .input(stickLong, VibraniumAlloy, 32)
+                .input(cableGtDouble, Hihiirokane, 16)
+                .fluidInputs(SelfRepairingNanobots.getFluid(144 * 16),
+                        Neutronium.getFluid(144 * 8),
+                        Adamantium.getFluid(144 * 16))
+                .output(DEHYDRATOR)
+                .stationResearch(b -> b
+                        .researchStack(new ItemStack(Items.WATER_BUCKET))
+                        .CWUt(128)
+                        .EUt(VA[GTValues.UHV]))
+                .duration(8000).EUt(VA[GTValues.UHV]).buildAndRegister();
 
         DEHYDRATOR_RECIPES.recipeBuilder()
                 .fluidInputs(TaraniumPoorSludge.getFluid(1000)) // 64*10 = 640 stone
@@ -78,9 +111,9 @@ public class TaraniumChain {
 
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .fluidInputs(SeparatedTaraniumAlloy.getFluid(144*8)) // 409600*8=3276800 stone OR 25600*8=204800 stone
-                .fluidOutputs(Naquadah.getFluid(144*3),
-                        Azbantium.getFluid(144*2),
-                        Vibranium.getFluid(144*2),
+                .fluidOutputs(Naquadah.getFluid(144*5),
+                        Azbantium.getFluid(144),
+                        Vibranium.getFluid(144),
                         Taranium.getFluid(144))
                 .duration(20*10*8*5*8).EUt(VA[GTValues.UHV]).buildAndRegister();
 

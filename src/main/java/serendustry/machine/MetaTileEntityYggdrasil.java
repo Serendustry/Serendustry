@@ -1,6 +1,8 @@
 package serendustry.machine;
 
+import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
+import gregtech.api.pattern.PatternMatchContext;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockWireCoil;
@@ -20,6 +22,9 @@ import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MetaTileEntityYggdrasil extends RecipeMapMultiblockController {
 
     public MetaTileEntityYggdrasil(ResourceLocation rl) {
@@ -37,6 +42,27 @@ public class MetaTileEntityYggdrasil extends RecipeMapMultiblockController {
     }
 
     @Override
+    protected void formStructure(PatternMatchContext context) {
+        super.formStructure(context);
+
+        List<IEnergyContainer> energyInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
+        List<IEnergyContainer> substationInput = new ArrayList<>(getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
+        List<IEnergyContainer> laserInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_LASER));
+
+        if(!energyInput.isEmpty() && !substationInput.isEmpty() && !laserInput.isEmpty()) {
+            invalidateStructure();
+        }
+
+        // todo: give error message to multiblock builder and make JEI not show mixed hatches
+
+        /*List<IEnergyContainer> powerInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
+        powerInput.addAll(getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
+        powerInput.addAll(getAbilities(MultiblockAbility.INPUT_LASER));
+
+        this.powerInput = new EnergyContainerList(powerInput);*/  // todo: update ceu so this works and check if this even needed
+    }
+
+    @Override
     public @NotNull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#C#####C#")
@@ -45,9 +71,9 @@ public class MetaTileEntityYggdrasil extends RecipeMapMultiblockController {
                 .where('S', selfPredicate())
                 .where('X', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PTFE_INERT_CASING)).setMinGlobalLimited(530))
                 .where('Y', states(getCasingState()).setMinGlobalLimited(1).or(autoAbilities(false, false, true, true, true, true, false))
-                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setMinGlobalLimited(0).setMaxGlobalLimited(2))
-                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setMaxGlobalLimited(1))
-                        .or(abilities(MultiblockAbility.INPUT_LASER).setMaxGlobalLimited(1)))
+                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0).setMinGlobalLimited(0).setMaxGlobalLimited(2))
+                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(0).setMaxGlobalLimited(1))
+                        .or(abilities(MultiblockAbility.INPUT_LASER).setPreviewCount(1).setMaxGlobalLimited(1)))
                 .where('C', states(MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.CUPRONICKEL)))
                 .where('#', air())
                 .build();

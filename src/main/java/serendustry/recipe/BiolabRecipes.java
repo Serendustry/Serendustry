@@ -28,6 +28,7 @@ public class BiolabRecipes {
                 .duration(20 * 2).EUt(VA[IV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(frameGt, Europium, 8)
                 .input(circuit, MarkerMaterials.Tier.UV, 8)
                 .input(ROBOT_ARM_ZPM, 4)
                 .input(SENSOR_ZPM, 4)

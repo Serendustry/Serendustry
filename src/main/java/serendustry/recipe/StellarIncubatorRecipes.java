@@ -53,7 +53,7 @@ public class StellarIncubatorRecipes {
                 .duration(10000).EUt(VA[MAX]).buildAndRegister();
 
         STELLAR_INCUBATOR_RECIPES.recipeBuilder()
-                .input(STELLAR_ESSENCE_BLANK, 2)
+                .input(STELLAR_ESSENCE_BLANK, 4)
                 .input(circuit, MarkerMaterials.Tier.UEV, 64)
                 .input(gemExquisite, Azbantium, 32)
                 .fluidInputs(RadoxPolymer.getFluid(144 * 64),
@@ -63,12 +63,32 @@ public class StellarIncubatorRecipes {
                 .duration(25000).EUt(VA[MAX]).buildAndRegister();
 
         STELLAR_INCUBATOR_RECIPES.recipeBuilder()
+                .input(STELLAR_ESSENCE_BLANK)
+                .input(circuit, MarkerMaterials.Tier.UHV, 48)
+                .input(gemExquisite, TiberiumAboreus, 32)
+                .fluidInputs(RadoxPolymer.getFluid(144 * 16),
+                        Neutronium.getFluid(144 * 16),
+                        Realitium.getFluid(50))
+                .output(STELLAR_ESSENCE_OVERWORLD)
+                .duration(5000).EUt(VA[MAX]).buildAndRegister();
+
+        STELLAR_INCUBATOR_RECIPES.recipeBuilder()
                 .input(STELLAR_ESSENCE_BLANK, 4)
+                .input(circuit, MarkerMaterials.Tier.UEV, 48)
+                .input(gemExquisite, Azbantium, 16)
+                .fluidInputs(RadoxPolymer.getFluid(144 * 32),
+                        Neutronium.getFluid(144 * 32),
+                        Realitium.getFluid(200))
+                .output(STELLAR_ESSENCE_NETHER)
+                .duration(12500).EUt(VA[MAX]).buildAndRegister();
+
+        STELLAR_INCUBATOR_RECIPES.recipeBuilder()
+                .input(STELLAR_ESSENCE_BLANK, 16)
                 .input(circuit, MarkerMaterials.Tier.UIV, 64)
                 .input(gemExquisite, Orundum, 32)
                 .fluidInputs(RadoxPolymer.getFluid(144 * 128),
                         Neutronium.getFluid(144 * 128),
-                        Flerovium.getPlasma(144 * 128))
+                        Realitium.getFluid(800))
                 .output(STELLAR_ESSENCE_END)
                 .duration(67500).EUt(VA[MAX]).buildAndRegister();
     }

@@ -23,6 +23,12 @@ public class SerendustryRecipeMaps {
     public static final RecipeMap<SimpleRecipeBuilder> STELLAR_ENGINE_RECIPES = new RecipeMap<>("stellar_engine", 1, 0, 0, 32, new SimpleRecipeBuilder(), false);
     public static final RecipeMap<SimpleRecipeBuilder> PLASMA_CONDENSER_RECIPES = new RecipeMap<>("plasma_condenser", 0, 0, 2, 1, new SimpleRecipeBuilder(), false);
     public static final RecipeMap<SimpleRecipeBuilder> ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES = new RecipeMap<>("electric_implosion_compressor", 6, 2, 0, 0, new SimpleRecipeBuilder(), false);
+    /*public static final RecipeMap<SimpleRecipeBuilder> ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES = new RecipeMapBuilder<>("electric_implosion_compressor",
+            new SimpleRecipeBuilder().duration(1).EUt(GTValues.VA[GTValues.UEV]))
+            .itemInputs(2)
+            .itemOutputs(2)
+            .sound(SoundEvents.ENTITY_GENERIC_EXPLODE)
+            .build();*/
 
     public static void preInit() {
         RecipeMaps.BLAST_RECIPES.setMaxFluidInputs(2);
