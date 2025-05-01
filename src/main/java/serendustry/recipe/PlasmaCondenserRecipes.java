@@ -41,13 +41,13 @@ public class PlasmaCondenserRecipes {
                     .fluidInputs(BlackStarMatter.getFluid(isExotic ? 1000 : 10),
                             material.getPlasma(isSolid ? 144 : 1000))
                     .fluidOutputs(material.getFluid(isSolid ? 144 : 1000))
-                    .duration(isExotic ? 32*20 : 32).EUt(GTValues.VA[isExotic ? GTValues.MAX : GTValues.UEV]).buildAndRegister();
+                    .duration(isExotic ? 16*20 : 16).EUt(GTValues.VA[isExotic ? GTValues.MAX : GTValues.UHV]).buildAndRegister();
 
             PLASMA_CONDENSER_RECIPES.recipeBuilder()
                     .fluidInputs(CondensedStarMatter.getFluid(isExotic ? 1000 : 10),
                             material.getFluid(isSolid ? 144 : 1000))
                     .fluidOutputs(material.getPlasma(isSolid ? 144 : 1000))
-                    .duration(isExotic ? 32*20 : 32).EUt(GTValues.VA[isExotic ? GTValues.MAX : GTValues.UEV]).buildAndRegister();
+                    .duration(isExotic ? 16*20 : 16).EUt(GTValues.VA[isExotic ? GTValues.MAX : GTValues.UHV]).buildAndRegister();
         }
     }
 }

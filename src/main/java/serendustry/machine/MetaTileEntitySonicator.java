@@ -1,5 +1,7 @@
 package serendustry.machine;
 
+import gregtech.api.unification.material.Materials;
+import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockWireCoil;
 import net.minecraft.block.state.IBlockState;
@@ -17,6 +19,10 @@ import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
+
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
 
 public class MetaTileEntitySonicator extends RecipeMapMultiblockController {
 
@@ -36,27 +42,179 @@ public class MetaTileEntitySonicator extends RecipeMapMultiblockController {
 
     @Override
     public @NotNull BlockPattern createStructurePattern() {
-        return FactoryBlockPattern.start()
-                .aisle("#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#########", "#########", "#########")
-                .aisle("YXXXXXXXY", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#XXXXXXX#", "YXXXXXXXY", "#XXXXXXX#", "#########", "#########", "#########")
-                .aisle("YXXXXXXXY", "YXXXXXXXY", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#XXXXXXX#", "YXXXXXXXY", "YXXXXXXXY", "#########", "#########", "#########")
-                .aisle("YXXXXXXXY", "YXXXSXXXY", "YXXXXXXXY", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#CCCCCCC#", "#XXXXXXX#", "#CCCCCCC#", "#XXXXXXX#", "#XXXXXXX#", "YXXXXXXXY", "YXXXXXXXY", "Y#######Y", "#########", "#########")
-                .aisle("YYYY#YYYY", "YYY###YYY", "YY#####YY", "Y#######Y", "Y#######Y", "#########", "#########", "#########", "#########", "#########", "#########", "YYYY#YYYY", "YYY###YYY", "YY#####YY", "Y#######Y", "Y#######Y")
+        return FactoryBlockPattern.start(LEFT, DOWN, FRONT)
+                .aisle(
+                        "                  ",
+                        "                  ",
+                        "                  ",
+                        "                  ",
+                        "                  ",
+                        "                  ",
+                        " AAAAAAAAA        ",
+                        " AADDDDDAA        ",
+                        " AADDDDDAA        ",
+                        " AADDDDDAA        ",
+                        " AADDDDDAA        ",
+                        " AADDDDDAA        ",
+                        " AADDDDDAA        ",
+                        " AAAAAAAAA        ",
+                        " AAAAAAAAA        "
+                ).aisle(
+                        "                  ",
+                        "                  ",
+                        "                  ",
+                        "                  ",
+                        "                  ",
+                        " AAAAAAAAA        ",
+                        "A         A       ",
+                        "A         A       ",
+                        "A         A       ",
+                        "A         A       ",
+                        "A         A       ",
+                        "A         A       ",
+                        "A         A       ",
+                        "A         A       ",
+                        " AAAAAAAAA        "
+                ).aisle(
+                        "                  ",
+                        "                  ",
+                        "                  ",
+                        "                  ",
+                        "                  ",
+                        " AAAAAAAAA        ",
+                        "A         A       ",
+                        "A         A       ",
+                        "A         A       ",
+                        "A         A       ",
+                        "A         A  AAAAA",
+                        "A         A  AAAAA",
+                        "A         A  ADEDA",
+                        "A         A  AAAAA",
+                        " AAAAAAAAA   AAAAA"
+                ).aisle(
+                        "                  ",
+                        "                  ",
+                        "                  ",
+                        "                  ",
+                        "                  ",
+                        " AAAAAAAAA        ",
+                        "A         A       ",
+                        "A         A       ",
+                        "A         A       ",
+                        "A         A  AAAAA",
+                        "A         A  A   A",
+                        "A         A  A   A",
+                        "A         A  A   A",
+                        "A         A  A   A",
+                        " AAAAAAAAA   AAAAA"
+                ).aisle(
+                        "                  ",
+                        "     CCCCCCCCCCC  ",
+                        "     C         C  ",
+                        "     C         C  ",
+                        "     C         C  ",
+                        " AAAACAAAA     C  ",
+                        "A    C    A    C  ",
+                        "A    C    A    C  ",
+                        "A    C    A    C  ",
+                        "A    C    A  AAAAA",
+                        "A    C    A  A C A",
+                        "A    C    A  A C A",
+                        "A    C    A  A C A",
+                        "A    C    A  A C A",
+                        " AAAABAAAA   AABAA"
+                ).aisle(
+                        "     CCCCCCCCCCC  ",
+                        "    CBBBBBBBBBBBC ",
+                        "    CBCCCCCCCCCBC ",
+                        "    CBC       CBC ",
+                        "    CBC       CBC ",
+                        " AAACBCAAA    CBC ",
+                        "A   CBC   A   CBC ",
+                        "A   CBC   A   CBC ",
+                        "A   CBC   A   CBC ",
+                        "A   CBC   A  AABAA",
+                        "A   CBC   A  ACBCA",
+                        "A   CBC   A  ACBCA",
+                        "A   CBC   A  ACBCA",
+                        "A   CBC   A  ACBCA",
+                        " AAABBBAAA   ABBBA"
+                ).aisle(
+                        "                  ",
+                        "     CCCCCCCCCCC  ",
+                        "     C         C  ",
+                        "     C         C  ",
+                        "     C         C  ",
+                        " AAAACAAAA     C  ",
+                        "A    C    A    C  ",
+                        "A    C    A    C  ",
+                        "A    C    A    C  ",
+                        "A    C    A  AAAAA",
+                        "A    C    A  A C A",
+                        "A    C    A  A C A",
+                        "A    C    A  A C A",
+                        "A    C    A  A C A",
+                        " AAAABAAAA   AABAA"
+                ).aisle(
+                        "                  ",
+                        "                  ",
+                        "                  ",
+                        "                  ",
+                        "                  ",
+                        " AAAAAAAAA        ",
+                        "A         A       ",
+                        "A         A       ",
+                        "A         A       ",
+                        "A         A  AAAAA",
+                        "A         A  A   A",
+                        "A         A  A   A",
+                        "A         A  A   A",
+                        "A         A  A   A",
+                        " AAAAAAAAA   AAAAA"
+                ).aisle(
+                        "                  ",
+                        "                  ",
+                        "                  ",
+                        "                  ",
+                        "                  ",
+                        " AAAAAAAAA        ",
+                        "A         A       ",
+                        "A         A       ",
+                        "A         A       ",
+                        "A         A  AAAAA",
+                        "A         A  AAAAA",
+                        "A         A  AAAAA",
+                        "A         A  AAAAA",
+                        "A         A  AAAAA",
+                        " AAAAAAAAA   AAAAA"
+                ).aisle(
+                        "                  ",
+                        "                  ",
+                        "                  ",
+                        "                  ",
+                        "                  ",
+                        " AAAAAAAAA        ",
+                        " AAAAAAAAA        ",
+                        " AAAAAAAAA        ",
+                        " AAAAAAAAA        ",
+                        " AAAAAAAAA        ",
+                        " AAAAAAAAA        ",
+                        " AAAAAAAAA        ",
+                        " AAAAAAAAA        ",
+                        " AAAAAAAAA        ",
+                        " AAAAAAAAA        "
+                )
 
-                .where('S', selfPredicate())
-                .where('X', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PTFE_INERT_CASING)).setMinGlobalLimited(530))
-                .where('Y', states(getCasingState()).setMinGlobalLimited(134).or(autoAbilities()))
-                .where('C', states(MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.TRITANIUM)))
-                .where('#', air())
+                .where('E', selfPredicate())
+                .where('A', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST)) // todo
+                        .setMinGlobalLimited(526).or(autoAbilities()))
+                .where('B', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE)))
+                .where('C', frames(Materials.NaquadahAlloy))
+                .where('D', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS))) // todo
                 .build();
     }
 
     public ICubeRenderer getBaseTexture(@Nullable IMultiblockPart part) {
-        return Textures.INERT_PTFE_CASING; // todo
-    }
-
-    // todo
-    private IBlockState getCasingState() {
-        return MetaBlocks.MACHINE_CASING.getState(BlockMachineCasing.MachineCasingType.IV);
+        return Textures.ROBUST_TUNGSTENSTEEL_CASING; // todo
     }
 }

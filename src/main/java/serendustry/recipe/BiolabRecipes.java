@@ -1,5 +1,6 @@
 package serendustry.recipe;
 
+import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.metatileentity.multiblock.CleanroomType;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.chance.output.ChancedOutputLogic;
@@ -92,13 +93,6 @@ public class BiolabRecipes {
                 .fluidOutputs(Formaldehyde.getFluid(10000))
                 .duration(20 * 8).EUt(VA[HV]).buildAndRegister();
 
-        AUTOCLAVE_RECIPES.recipeBuilder()
-                .input(CULTURE_E_COLI)
-                .fluidInputs(Formaldehyde.getFluid(500))
-                .output(PETRI_DISH)
-                .fluidOutputs(BiologicalWaste.getFluid(1000))
-                .duration(20).EUt(VA[IV]).buildAndRegister();
-
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .input(Items.APPLE)
                 .fluidOutputs(Methane.getFluid(18), YeastRichMixture.getFluid(50)) // todo : check if this is the right amt of methane
@@ -181,5 +175,15 @@ public class BiolabRecipes {
                 .chancedOutput(PETRI_DISH, 10000, 0)
                 .chancedOutputLogic(ChancedOutputLogic.XOR)
                 .duration(20 * 4).EUt(VA[LuV]).buildAndRegister();
+
+        MetaItem.MetaValueItem[] cultures = {CULTURE_E_COLI, CULTURE_YEAST, CULTURE_YEAST_RUPTURED, CULTURE_RED_ALGAE, CULTURE_RED_ALGAE_BOILED, CULTURE_STEM_CELL, CULTURE_XENOXENE};
+
+        for(MetaItem.MetaValueItem culture : cultures)
+            AUTOCLAVE_RECIPES.recipeBuilder()
+                    .input(culture)
+                    .fluidInputs(Formaldehyde.getFluid(500))
+                    .output(PETRI_DISH)
+                    .fluidOutputs(BiologicalWaste.getFluid(1000))
+                    .duration(20).EUt(VA[IV]).buildAndRegister();
     }
 }

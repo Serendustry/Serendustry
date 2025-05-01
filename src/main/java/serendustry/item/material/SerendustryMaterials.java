@@ -1012,7 +1012,7 @@ public class SerendustryMaterials {
                         .temp(8950, GasTier.HIGHEST)
                         .blastStats(VA[UIV], 8500))
                 .build()
-                .setFormula("§6*§dDc§6*§e");
+                .setFormula("§6*Dc*§e");
 
         Bedrockium = new Material.Builder(43, Serendustry.ID("bedrockium"))
                 .ingot(3).liquid(new FluidBuilder().temperature(45000))
@@ -2942,14 +2942,14 @@ public class SerendustryMaterials {
                 .flags(NO_UNIFICATION, NO_WORKING, NO_SMASHING, NO_SMELTING, GENERATE_PLATE, GENERATE_ROD, DISABLE_DECOMPOSITION, GENERATE_LONG_ROD, GENERATE_GEAR, GENERATE_SMALL_GEAR,
                         GENERATE_BOLT_SCREW, GENERATE_ROTOR, GENERATE_DENSE, GENERATE_RING, GENERATE_ROUND, GENERATE_FRAME)
                 .build()
-                .setFormula("§dDDFe§e((Tr3Ds2(Al2Li2MgSc2Ti3)2(((FeW)CrMo2V)6Ir2Os)))8§c§k*§r§aI§bf§d§k*§r§e4§6§f*§dDc§6§f*§eLi3", true);
+                .setFormula("§dDDFe§e((Tr3Ds2(Al2Li2MgSc2Ti3)2(((FeW)CrMo2V)6Ir2Os)))8§c§k*§r§aI§bf§d§k*§r§e4§6*Dc*§eLi3", true);
 
         HotExoHalkoniteSteel = new Material.Builder(298, Serendustry.ID("hot_exo_halkonite_steel"))
                 .color(0xffffff).iconSet(HOT_EXO_HALKONITE_STEEL)
                 .flags(NO_UNIFICATION, NO_WORKING, NO_SMASHING, NO_SMELTING, GENERATE_PLATE, GENERATE_ROD, DISABLE_DECOMPOSITION, GENERATE_LONG_ROD, GENERATE_GEAR, GENERATE_SMALL_GEAR,
                         GENERATE_BOLT_SCREW, GENERATE_ROTOR, GENERATE_DENSE, GENERATE_RING, GENERATE_ROUND, GENERATE_FRAME)
                 .build()
-                .setFormula("§dDDFe§e((Tr3Ds2(Al2Li2MgSc2Ti3)2(((FeW)CrMo2V)6Ir2Os)))8§c§k*§r§aI§bf§d§k*§r§e4§6*§dDc§6*§eLi3", true);
+                .setFormula("§dDDFe§e((Tr3Ds2(Al2Li2MgSc2Ti3)2(((FeW)CrMo2V)6Ir2Os)))8§c§k*§r§aI§bf§d§k*§r§e4§6*Dc*§eLi3", true);
 
         Hypogen = new Material.Builder(299, Serendustry.ID("hypogen"))
                 .ingot(3).liquid(new FluidBuilder().temperature(86000)).plasma(new FluidBuilder().temperature(750000))
