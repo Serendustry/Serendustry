@@ -46,7 +46,8 @@ public class MetaTileEntityStellarIncubator extends RecipeMapMultiblockControlle
         List<IEnergyContainer> substationInput = new ArrayList<>(getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
         List<IEnergyContainer> laserInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_LASER));
 
-        if(!energyInput.isEmpty() && !substationInput.isEmpty() && !laserInput.isEmpty()) {
+        // Allow only 1 type of energy input at a time
+        if((!energyInput.isEmpty() && !substationInput.isEmpty()) || (!energyInput.isEmpty() && !laserInput.isEmpty()) || (!substationInput.isEmpty() && !laserInput.isEmpty())) {
             invalidateStructure();
         }
 

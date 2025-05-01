@@ -21,6 +21,8 @@ import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
+import serendustry.blocks.BlockSerendustryMetalCasing;
+import serendustry.blocks.SerendustryMetaBlocks;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +55,8 @@ public class MetaTileEntityStellarEngine extends RecipeMapMultiblockController {
         List<IEnergyContainer> substationInput = new ArrayList<>(getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
         List<IEnergyContainer> laserInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_LASER));
 
-        if(!energyInput.isEmpty() && !substationInput.isEmpty() && !laserInput.isEmpty()) {
+        // Allow only 1 type of energy input at a time
+        if((!energyInput.isEmpty() && !substationInput.isEmpty()) || (!energyInput.isEmpty() && !laserInput.isEmpty()) || (!substationInput.isEmpty() && !laserInput.isEmpty())) {
             invalidateStructure();
         }
 
@@ -3857,7 +3860,7 @@ public class MetaTileEntityStellarEngine extends RecipeMapMultiblockController {
 
                 .where('D', selfPredicate())
                 .where('A', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PTFE_INERT_CASING))) // todo
-                .where('B', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE)) // todo
+                .where('B', states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING.getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.ADAMANTIUM))
                         .setMinGlobalLimited(4333).or(autoAbilities(false, false, true, true, true, true, false))
                         .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0).setMinGlobalLimited(0).setMaxGlobalLimited(2))
                         .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(0).setMaxGlobalLimited(1))

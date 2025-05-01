@@ -46,8 +46,10 @@ public class MetaTileEntitySpaceElevator extends RecipeMapMultiblockController {
 
         List<IEnergyContainer> energyInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
         List<IEnergyContainer> substationInput = new ArrayList<>(getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
+        List<IEnergyContainer> laserInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_LASER));
 
-        if(!energyInput.isEmpty() && !substationInput.isEmpty()) {
+        // Allow only 1 type of energy input at a time
+        if((!energyInput.isEmpty() && !substationInput.isEmpty()) || (!energyInput.isEmpty() && !laserInput.isEmpty()) || (!substationInput.isEmpty() && !laserInput.isEmpty())) {
             invalidateStructure();
         }
 
@@ -4322,7 +4324,8 @@ public class MetaTileEntitySpaceElevator extends RecipeMapMultiblockController {
                 .where('A', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST)) // todo
                         .setMinGlobalLimited(6303).or(autoAbilities(false, false, true, true, true, true, false))
                         .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0).setMinGlobalLimited(0).setMaxGlobalLimited(2))
-                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(1).setMaxGlobalLimited(1)))
+                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(0).setMaxGlobalLimited(1))
+                        .or(abilities(MultiblockAbility.INPUT_LASER).setPreviewCount(1).setMaxGlobalLimited(1)))
                 .where('B', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PTFE_INERT_CASING))) // todo
                 .where('C', frames(Materials.NaquadahAlloy))
                 .build();

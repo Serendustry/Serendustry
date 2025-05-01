@@ -591,6 +591,8 @@ serendustry.material.unreal_goop=§5Unreal Goop
 serendustry.material.exotic_unreality=§dExotic Unreality
 serendustry.material.exo_halkonite_base=§bexo-§fHalkonite Base
 
+tile.serendustry_metal_casing.adamantium.name=Immaculate Adamantium Casing
+
 serendustry.machine.industrial_laboratory.name=Industrial Laboratory
 serendustry.machine.industrial_laboratory.tooltip=§bEverything coming together to make breakthroughs§7/nEach recipe requires certain singleblock machines of at least a certain tier to be placed in the space inside the Laboratory/nAccepts §e1-2§7 regular §fEnergy Hatches§7
 serendustry.machine.industrial_laboratory.jei_header=Machines Required:

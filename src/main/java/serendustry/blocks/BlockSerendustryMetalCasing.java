@@ -1,0 +1,64 @@
+package serendustry.blocks;
+
+import gregtech.api.block.VariantBlock;
+
+import gregtech.api.unification.material.Material;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
+
+import org.jetbrains.annotations.NotNull;
+import serendustry.item.material.SerendustryMaterials;
+
+
+public class BlockSerendustryMetalCasing extends VariantBlock<BlockSerendustryMetalCasing.SerendustryMetalCasingType> {
+    public BlockSerendustryMetalCasing () {
+        super(net.minecraft.block.material.Material.IRON);
+        setTranslationKey("serendustry_metal_casing");
+        setHardness(5.0f);
+        setResistance(10.0f);
+        setHarvestLevel("wrench", 3);
+        setSoundType(SoundType.METAL);
+        setDefaultState(getState(SerendustryMetalCasingType.ADAMANTIUM));
+    }
+
+    @Override
+    public boolean canCreatureSpawn(@NotNull IBlockState state, @NotNull IBlockAccess world, @NotNull BlockPos pos, @NotNull EntityLiving.SpawnPlacementType type) {
+        return false;
+    }
+
+    public enum SerendustryMetalCasingType implements IStringSerializable {
+        ADAMANTIUM("adamantium", SerendustryMaterials.Adamantium);
+
+        private final String name;
+        private final Material material;
+
+        SerendustryMetalCasingType(String name, Material material) {
+            this.name = name;
+            this.material = material;
+        }
+
+        @NotNull
+        @Override
+        public String getName() {
+            return this.name;
+        }
+
+        public Material getMaterial() {
+            return this.material;
+        }
+
+        /*@Override
+        public int getHarvestLevel(IBlockState state) {
+            return harvestLevel;
+        }
+
+        @Override
+        public String getHarvestTool(IBlockState state) {
+            return ToolClasses.WRENCH;
+        }*/
+    }
+}
