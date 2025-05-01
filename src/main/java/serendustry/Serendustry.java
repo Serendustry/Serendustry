@@ -31,6 +31,7 @@ import gregtech.api.unification.material.event.MaterialEvent;
 import gregtech.api.unification.material.event.MaterialRegistryEvent;
 import gregtech.api.block.VariantItemBlock;
 import serendustry.blocks.SerendustryMetaBlocks;
+import serendustry.client.renderer.texture.Textures;
 import serendustry.entity.FriendlyCreeperEntity;
 import serendustry.item.SerendustryMetaItems;
 import serendustry.item.SerendustryToolItems;
@@ -72,6 +73,8 @@ public class Serendustry {
         SerendustryToolItems.init();
         if (event.getSide() == Side.CLIENT) {
             RenderingRegistry.registerEntityRenderingHandler(FriendlyCreeperEntity.class, RenderCreeper::new);
+            Textures.preInit();
+            SerendustryMetaBlocks.registerItemModels();
         }
     }
 

@@ -3,5 +3,9 @@ package serendustry.client.renderer.texture;
 import gregtech.client.renderer.texture.cube.SimpleOverlayRenderer;
 
 public class Textures {
-    public static final SimpleOverlayRenderer ADAMANTIUM = new SimpleOverlayRenderer("casing/solid/adamantium");
+    public static SimpleOverlayRenderer ADAMANTIUM;
+
+    public static void preInit() {
+        ADAMANTIUM = new SimpleOverlayRenderer("casing/solid/adamantium");
+    }
 }
