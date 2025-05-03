@@ -4,7 +4,6 @@ import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static serendustry.item.SerendustryMetaItems.CATALYST_HALKONITE;
 import static serendustry.item.SerendustryMetaItems.HKSP_BC;
 import static serendustry.item.SerendustryMetaItems.HKSP_C;
 import static serendustry.item.SerendustryMetaItems.HKSP_DD;
@@ -12,7 +11,6 @@ import static serendustry.item.SerendustryMetaItems.HKSP_F;
 import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryRecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.NEBULAIC_NEXUS_RECIPES;
-import static serendustry.machine.SerendustryRecipeMaps.PLASMA_FOUNDRY_RECIPES;
 
 import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.unification.ore.OrePrefix;
@@ -20,8 +18,8 @@ import gregtech.api.unification.ore.OrePrefix;
 public class HalkoniteSteelRecipes {
 
     public static void init() {
-        OrePrefix[] parts = {plate, stick, stickLong, bolt, screw, gear, gearSmall, rotor, plateDense, ring, round};
-        float[] cost = {1.0f, 0.5f, 1.0f, 0.125f, 0.125f, 4.0f, 1.0f,  5.0f, 9.0f, 0.25f, 0.112f};
+        OrePrefix[] parts = { plate, stick, stickLong, bolt, screw, gear, gearSmall, rotor, plateDense, ring, round };
+        float[] cost = { 1.0f, 0.5f, 1.0f, 0.125f, 0.125f, 4.0f, 1.0f, 5.0f, 9.0f, 0.25f, 0.112f };
 
         for (int i = 0; i < parts.length; i++) {
             CHEMICAL_BATH_RECIPES.recipeBuilder()
@@ -55,25 +53,25 @@ public class HalkoniteSteelRecipes {
                 .fluidInputs(ChromaticGlass.getPlasma(144 * 16),
                         Neutronium.getPlasma(144 * 32))
                 .output(HKSP_DD)
-                .duration(20*60*10*2).EUt(VA[UXV]).buildAndRegister();
+                .duration(20 * 60 * 10 * 2).EUt(VA[UXV]).buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder()
                 .input(HKSP_DD)
-                .fluidInputs(Dragonblood.getPlasma(144*128),
-                        Draconium.getPlasma(144*128))
+                .fluidInputs(Dragonblood.getPlasma(144 * 128),
+                        Draconium.getPlasma(144 * 128))
                 .output(HKSP_C)
                 .blastFurnaceTemp(10800)
-                .duration(20*60*10).EUt(VA[UXV]).buildAndRegister();
+                .duration(20 * 60 * 10).EUt(VA[UXV]).buildAndRegister();
 
         ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES.recipeBuilder()
                 .input(HKSP_C)
                 .output(HKSP_BC)
-                .duration(20*60*10*2).EUt(VA[UXV]).buildAndRegister();
+                .duration(20 * 60 * 10 * 2).EUt(VA[UXV]).buildAndRegister();
 
         FORGE_HAMMER_RECIPES.recipeBuilder()
                 .input(HKSP_BC)
                 .output(HKSP_F, 4)
-                .duration(20*60*10).EUt(VA[UXV]).buildAndRegister();
+                .duration(20 * 60 * 10).EUt(VA[UXV]).buildAndRegister();
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
                 .input(HKSP_F)
@@ -81,20 +79,20 @@ public class HalkoniteSteelRecipes {
                         AwakenedDraconium.getPlasma(144 * 16))
                 .output(dust, DarkAsh)
                 .fluidOutputs(UnrealGoop.getFluid(10))
-                .duration(20*60*10*2).EUt(VA[UXV]).buildAndRegister();
+                .duration(20 * 60 * 10 * 2).EUt(VA[UXV]).buildAndRegister();
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
                 .notConsumable(lens, Dilithium)
                 .fluidInputs(UnrealGoop.getFluid(10),
                         Hypogen.getPlasma(144 * 16))
                 .fluidOutputs(ExoticUnreality.getFluid(1000))
-                .duration(20*60*10*2).EUt(VA[UXV]).buildAndRegister();
+                .duration(20 * 60 * 10 * 2).EUt(VA[UXV]).buildAndRegister();
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
                 .input(gemExquisite, Dilithium)
                 .fluidInputs(ExoticUnreality.getFluid(1000))
                 .output(dust, Trilithium)
-                .duration(20*60*10*2).EUt(VA[UXV]).buildAndRegister();
+                .duration(20 * 60 * 10 * 2).EUt(VA[UXV]).buildAndRegister();
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
                 .notConsumable(lens, Trilithium)
@@ -102,7 +100,6 @@ public class HalkoniteSteelRecipes {
                 .fluidInputs(Rhugnor.getPlasma(144 * 4))
                 .fluidOutputs(ExoticUnreality.getFluid(1000),
                         TrilithiumResin.getFluid(1500))
-                .duration(20*60*10*2).EUt(VA[UXV]).buildAndRegister();
-
+                .duration(20 * 60 * 10 * 2).EUt(VA[UXV]).buildAndRegister();
     }
 }

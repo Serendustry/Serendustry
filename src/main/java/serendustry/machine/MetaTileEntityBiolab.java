@@ -1,9 +1,9 @@
 package serendustry.machine;
 
-import gregtech.common.blocks.BlockGlassCasing;
-import gregtech.common.blocks.BlockMetalCasing;
-import gregtech.common.blocks.BlockWireCoil;
-import net.minecraft.block.state.IBlockState;
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
+
 import net.minecraft.util.ResourceLocation;
 
 import org.jetbrains.annotations.NotNull;
@@ -16,12 +16,9 @@ import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
-import gregtech.common.blocks.BlockMachineCasing;
+import gregtech.common.blocks.BlockGlassCasing;
+import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
-
-import static gregtech.api.util.RelativeDirection.DOWN;
-import static gregtech.api.util.RelativeDirection.FRONT;
-import static gregtech.api.util.RelativeDirection.LEFT;
 
 public class MetaTileEntityBiolab extends RecipeMapMultiblockController {
 
@@ -47,38 +44,37 @@ public class MetaTileEntityBiolab extends RecipeMapMultiblockController {
                         "       AAA",
                         "       ACA",
                         "       AAA",
-                        "AAAAAAAAAA"
-                ).aisle(
+                        "AAAAAAAAAA")
+                .aisle(
                         "AAAAAAAAAA",
                         " AAAAAA  A",
                         " BBBBBA  B",
                         " AAAAAA  A",
-                        "AAAAAAAAAA"
-                ).aisle(
+                        "AAAAAAAAAA")
+                .aisle(
                         "AAAAAAAAAA",
                         " A       A",
                         " B       B",
                         " A       A",
-                        "AAAAAAAAAA"
-                ).aisle(
+                        "AAAAAAAAAA")
+                .aisle(
                         "AAAAAAAAAA",
                         " A      A ",
                         " B      B ",
                         " A      A ",
-                        "AAAAAAAAAA"
-                ).aisle(
+                        "AAAAAAAAAA")
+                .aisle(
                         "AAAAAAAAAA",
                         " AAAAAAAA ",
                         " BBBBBBBB ",
                         " AAAAAAAA ",
-                        "AAAAAAAAAA"
-                ).aisle(
+                        "AAAAAAAAAA")
+                .aisle(
                         "AAAAAAAAAA",
                         "          ",
                         "          ",
                         "          ",
-                        "AAAAAAAAAA"
-                )
+                        "AAAAAAAAAA")
 
                 .where('C', selfPredicate())
                 .where('A', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PTFE_INERT_CASING))

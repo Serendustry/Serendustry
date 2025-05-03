@@ -1,7 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.unification.material.MarkerMaterials;
-
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.CENTRIFUGE_RECIPES;
@@ -13,9 +11,11 @@ import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryMetaTileEntities.GIANT_FRACTIONATING_COLUMN;
 import static serendustry.machine.SerendustryRecipeMaps.GIANT_FRACTIONATING_COLUMN_RECIPES;
 
-public class GiantFractionatingColumnRecipes {
-    public static void init() {
+import gregtech.api.unification.material.MarkerMaterials;
 
+public class GiantFractionatingColumnRecipes {
+
+    public static void init() {
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, NaquadahAlloy, 8)
                 .input(circuit, MarkerMaterials.Tier.ZPM, 4)
@@ -43,7 +43,7 @@ public class GiantFractionatingColumnRecipes {
                         Butadiene.getFluid(1000),
                         Toluene.getFluid(1000),
                         Benzene.getFluid(1000))
-                .duration(20*30).EUt(VA[UEV]).buildAndRegister();
+                .duration(20 * 30).EUt(VA[UEV]).buildAndRegister();
 
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .fluidInputs(ButeneMixture.getFluid(1000))

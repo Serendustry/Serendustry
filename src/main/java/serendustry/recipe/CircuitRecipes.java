@@ -1,16 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.GTValues;
-import gregtech.api.items.metaitem.MetaItem;
-import gregtech.api.metatileentity.multiblock.CleanroomType;
-import gregtech.api.recipes.chance.output.ChancedOutputLogic;
-import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.ore.OrePrefix;
-import gregtech.common.blocks.BlockGlassCasing;
-import gregtech.common.blocks.MetaBlocks;
-import serendustry.SValues;
-
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
@@ -25,7 +14,18 @@ import static serendustry.machine.SerendustryMetaTileEntities.HP_LASER_ARRAY;
 import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.HP_LASER_ARRAY_RECIPES;
 
+import gregtech.api.GTValues;
+import gregtech.api.items.metaitem.MetaItem;
+import gregtech.api.metatileentity.multiblock.CleanroomType;
+import gregtech.api.recipes.chance.output.ChancedOutputLogic;
+import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.ore.OrePrefix;
+import gregtech.common.blocks.BlockGlassCasing;
+import gregtech.common.blocks.MetaBlocks;
+import serendustry.SValues;
+
 public class CircuitRecipes {
+
     public static void init() {
         waferRecipes();
         boardRecipes();
@@ -109,7 +109,8 @@ public class CircuitRecipes {
                 .cleanroom(CleanroomType.CLEANROOM)
                 .duration(600).EUt(VA[UHV]).buildAndRegister();
 
-        CUTTER_RECIPES.recipeBuilder().duration(600).EUt(VA[UV]).input(WAFER_OPIC).fluidInputs(MolybdeniteLubricant.getFluid(250))
+        CUTTER_RECIPES.recipeBuilder().duration(600).EUt(VA[UV]).input(WAFER_OPIC)
+                .fluidInputs(MolybdeniteLubricant.getFluid(250))
                 .output(CHIP_OPIC, 2).cleanroom(CleanroomType.CLEANROOM).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -182,15 +183,20 @@ public class CircuitRecipes {
                 .output(MASK_BLANK, 64)
                 .duration(600).EUt(VA[UHV]).buildAndRegister();
 
-        MetaItem.MetaValueItem[] wafers = {INTEGRATED_LOGIC_CIRCUIT_WAFER, RANDOM_ACCESS_MEMORY_WAFER, CENTRAL_PROCESSING_UNIT_WAFER, NAND_MEMORY_CHIP_WAFER,
-                NOR_MEMORY_CHIP_WAFER, SIMPLE_SYSTEM_ON_CHIP_WAFER, SYSTEM_ON_CHIP_WAFER, ADVANCED_SYSTEM_ON_CHIP_WAFER, HIGHLY_ADVANCED_SOC_WAFER,
-        ULTRA_LOW_POWER_INTEGRATED_CIRCUIT_WAFER, LOW_POWER_INTEGRATED_CIRCUIT_WAFER, POWER_INTEGRATED_CIRCUIT_WAFER, HIGH_POWER_INTEGRATED_CIRCUIT_WAFER,
-        ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT_WAFER, NANO_CENTRAL_PROCESSING_UNIT_WAFER, QUBIT_CENTRAL_PROCESSING_UNIT_WAFER};
-        MetaItem.MetaValueItem[] masks = {MASK_ILC, MASK_RAM, MASK_CPU, MASK_NAND, MASK_NOR, MASK_SSOC, MASK_SOC, MASK_ASOC, MASK_HASOC,
-                MASK_ULPIC, MASK_LPIC, MASK_PIC, MASK_HPIC, MASK_UHPIC, MASK_NCPU, MASK_QCPU};
+        MetaItem.MetaValueItem[] wafers = { INTEGRATED_LOGIC_CIRCUIT_WAFER, RANDOM_ACCESS_MEMORY_WAFER,
+                CENTRAL_PROCESSING_UNIT_WAFER, NAND_MEMORY_CHIP_WAFER,
+                NOR_MEMORY_CHIP_WAFER, SIMPLE_SYSTEM_ON_CHIP_WAFER, SYSTEM_ON_CHIP_WAFER, ADVANCED_SYSTEM_ON_CHIP_WAFER,
+                HIGHLY_ADVANCED_SOC_WAFER,
+                ULTRA_LOW_POWER_INTEGRATED_CIRCUIT_WAFER, LOW_POWER_INTEGRATED_CIRCUIT_WAFER,
+                POWER_INTEGRATED_CIRCUIT_WAFER, HIGH_POWER_INTEGRATED_CIRCUIT_WAFER,
+                ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT_WAFER, NANO_CENTRAL_PROCESSING_UNIT_WAFER,
+                QUBIT_CENTRAL_PROCESSING_UNIT_WAFER };
+        MetaItem.MetaValueItem[] masks = { MASK_ILC, MASK_RAM, MASK_CPU, MASK_NAND, MASK_NOR, MASK_SSOC, MASK_SOC,
+                MASK_ASOC, MASK_HASOC,
+                MASK_ULPIC, MASK_LPIC, MASK_PIC, MASK_HPIC, MASK_UHPIC, MASK_NCPU, MASK_QCPU };
         int[] amount = { 16, 16, 16, 8, 8, 16, 8, 2, 1, 16, 16, 8, 4, 1, 8, 4 };
 
-        for(int i = 0; i < wafers.length; i++) {
+        for (int i = 0; i < wafers.length; i++) {
             LASER_ENGRAVER_RECIPES.recipeBuilder()
                     .notConsumable(lens, ChromaticGlass)
                     .input(MASK_BLANK, 64)
@@ -211,6 +217,13 @@ public class CircuitRecipes {
                 .input(MASK_BLANK, 64)
                 .input(INACTIVE_APU_WAFER)
                 .output(MASK_APU, 64)
+                .duration(1600).EUt(VA[UHV]).buildAndRegister();
+
+        LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .notConsumable(lens, ChromaticGlass)
+                .input(WRAPPED_ORUNDUM_WAFER)
+                .fluidInputs(Neutronium.getFluid(288))
+                .output(HIGHLY_ADVANCED_SOC_WAFER)
                 .duration(1600).EUt(VA[UHV]).buildAndRegister();
 
         LASER_ENGRAVER_RECIPES.recipeBuilder()
@@ -242,12 +255,12 @@ public class CircuitRecipes {
                 .output(ACTIVATED_APU_WAFER)
                 .duration(20 * 40).EUt(VA[UHV]).buildAndRegister();
 
-        CUTTER_RECIPES.recipeBuilder().duration(20 * 40).EUt(VA[UV]).input(ACTIVATED_APU_WAFER).fluidInputs(MolybdeniteLubricant.getFluid(250))
+        CUTTER_RECIPES.recipeBuilder().duration(20 * 40).EUt(VA[UV]).input(ACTIVATED_APU_WAFER)
+                .fluidInputs(MolybdeniteLubricant.getFluid(250))
                 .output(ACTIVATED_APU_CHIP, 6).cleanroom(CleanroomType.CLEANROOM).buildAndRegister();
     }
 
     private static void boardRecipes() {
-
         CHEMICAL_RECIPES.recipeBuilder().duration(1500).EUt(VA[MV])
                 .input(MULTILAYER_FIBER_BOARD)
                 .input(foil, CarbonNanotubes, 8)
@@ -317,7 +330,7 @@ public class CircuitRecipes {
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(COSMIC_CIRCUIT_BOARD)
                 .input(foil, Taranium, 2)
-                .fluidInputs(LCNS.getFluid(1000), RadoxPolymer.getFluid(144*2), ChromaticGlass.getFluid(288*2))
+                .fluidInputs(LCNS.getFluid(1000), RadoxPolymer.getFluid(144 * 2), ChromaticGlass.getFluid(288 * 2))
                 .output(ENTROPIC_CIRCUIT_BOARD)
                 .cleanroom(CleanroomType.CLEANROOM)
                 .EUt(VA[UEV]).duration(1000).buildAndRegister();
@@ -394,7 +407,7 @@ public class CircuitRecipes {
         OrePrefix[] gems = { gem, gemFlawless, gemExquisite };
         int[] chance = { 2500, 5000, 10000 };
 
-        for(int i = 0; i < gems.length; i++) {
+        for (int i = 0; i < gems.length; i++) {
             BLAST_RECIPES.recipeBuilder()
                     .input(gems[i], IrradiatedDiamond)
                     .fluidInputs(Radon.getFluid(2000))
@@ -416,12 +429,10 @@ public class CircuitRecipes {
                 .output(ENGRAVED_POSITRONIC_CHIP)
                 .fluidOutputs(Orundum.getFluid(128))
                 .duration(24).EUt(VA[UEV]).buildAndRegister();
-
     }
 
     private static void circuitRecipes() {
-
-        for(int i = GTValues.ULV; i <= GTValues.MAX; i++) {
+        for (int i = GTValues.ULV; i <= GTValues.MAX; i++) {
             FORMING_PRESS_RECIPES.recipeBuilder()
                     .input(circuit, SValues.Tier_MarkerMaterial[i])
                     .circuitMeta(1)
@@ -534,7 +545,7 @@ public class CircuitRecipes {
                 .input(wireFine, Quantium40, 16)
                 .input(foil, Quantium40, 16)
                 .input(plate, TengamAttuned, 4)
-                .fluidInputs(SelfRepairingNanobots.getFluid(144*2))
+                .fluidInputs(SelfRepairingNanobots.getFluid(144 * 2))
                 .fluidInputs(LCNS.getFluid(2000))
                 .output(CIRC_ENTROPIC_UHV)
                 .stationResearch(b -> b
@@ -554,7 +565,7 @@ public class CircuitRecipes {
                 .input(wireFine, Quantium40, 24)
                 .input(foil, RadoxPolymer, 16)
                 .input(plate, HalkoniteSteel, 4)
-                .fluidInputs(SelfRepairingNanobots.getFluid(144*8))
+                .fluidInputs(SelfRepairingNanobots.getFluid(144 * 8))
                 .fluidInputs(LCNS.getFluid(4000))
                 .output(CIRC_ENTROPIC_UEV)
                 .stationResearch(b -> b
@@ -578,10 +589,10 @@ public class CircuitRecipes {
                 .input(wireGtDouble, Hypogen, 16)
                 .input(plateDense, HalkoniteSteel)
                 .input(plate, AwakenedDraconium, 8)
-                .fluidInputs(SentientNanobots.getFluid(144*16))
+                .fluidInputs(SentientNanobots.getFluid(144 * 16))
                 .fluidInputs(LCNS.getFluid(8000))
-                .fluidInputs(Originium.getFluid(144*2))
-                .fluidInputs(Rhugnor.getFluid(144*4))
+                .fluidInputs(Originium.getFluid(144 * 2))
+                .fluidInputs(Rhugnor.getFluid(144 * 4))
                 .output(CIRC_ENTROPIC_UIV)
                 .stationResearch(b -> b
                         .researchStack(CIRC_ENTROPIC_UEV.getStackForm())

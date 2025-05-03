@@ -1,9 +1,9 @@
 package serendustry.item;
 
-import gregtech.api.GTValues;
-import gregtech.api.items.metaitem.ElectricStats;
 import net.minecraft.item.Item;
 
+import gregtech.api.GTValues;
+import gregtech.api.items.metaitem.ElectricStats;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.items.metaitem.StandardMetaItem;
 import gregtech.api.unification.material.MarkerMaterials;
@@ -65,7 +65,8 @@ public class SerendustryMetaItems {
     public static MetaItem<?>.MetaValueItem PLANETOID_SCANNING_DRONE;
     public static MetaItem<?>.MetaValueItem PLANETOID_HARVESTING_DRONE;
 
-    // todo: data should have x durability and lose 1 per craft, also dont use a separate metaitem for each one, or at least autogenerate them
+    // todo: data should have x durability and lose 1 per craft, also dont use a separate metaitem for each one, or at
+    // least autogenerate them
     public static MetaItem<?>.MetaValueItem STONE_PLANETOID_DATA;
     public static MetaItem<?>.MetaValueItem OBSIDIAN_PLANETOID_DATA;
 
@@ -130,6 +131,8 @@ public class SerendustryMetaItems {
     public static MetaItem<?>.MetaValueItem CATALYST_HALKONITE;
     public static MetaItem<?>.MetaValueItem CATALYST_AWAKENED_DRACONIUM;
     public static MetaItem<?>.MetaValueItem CATALYST_EXO_HALKONITE;
+    public static MetaItem<?>.MetaValueItem CATALYST_TITANIUM_ALLOYS;
+    public static MetaItem<?>.MetaValueItem CATALYST_VANADIUM_ALLOYS;
 
     public static MetaItem<?>.MetaValueItem COIL_UHV;
     public static MetaItem<?>.MetaValueItem COIL_UEV;
@@ -182,7 +185,7 @@ public class SerendustryMetaItems {
     public static MetaItem<?>.MetaValueItem EXOTIC_PLANETOID_DATA;
     public static MetaItem<?>.MetaValueItem XENOTIME_PLANETOID_DATA;
 
-// EMPTY ID
+    // EMPTY ID
     public static MetaItem<?>.MetaValueItem PETRI_DISH_STERILIZED;
     public static MetaItem<?>.MetaValueItem CULTURE_E_COLI;
     public static MetaItem<?>.MetaValueItem CULTURE_YEAST;
@@ -194,7 +197,7 @@ public class SerendustryMetaItems {
     public static MetaItem<?>.MetaValueItem CULTURE_XENOXENE;
 
     public static MetaItem<?>.MetaValueItem POWER_UNIT_UHV;
-    //public static MetaItem<?>.MetaValueItem TRISHULA;
+    // public static MetaItem<?>.MetaValueItem TRISHULA;
 
     public static MetaItem<?>.MetaValueItem CIRCUIT_ANY_ULV;
     public static MetaItem<?>.MetaValueItem CIRCUIT_ANY_LV;
@@ -243,21 +246,36 @@ public class SerendustryMetaItems {
                 .setMaxStackSize(1);
         WASTE_FLUID_EXTRACTOR_FILLED = ITEMS.addItem(1, "waste_fluid_extractor_filled").setMaxStackSize(1);
         ERROR_INGOT = ITEMS.addItem(2, "error_ingot");
-        MAGNETO_RESONATIC_ULV = ITEMS.addItem(3, "magneto_resonatic_ulv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.ULV);
-        MAGNETO_RESONATIC_LV = ITEMS.addItem(4, "magneto_resonatic_lv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.LV);
-        MAGNETO_RESONATIC_MV = ITEMS.addItem(5, "magneto_resonatic_mv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.MV);
-        MAGNETO_RESONATIC_HV = ITEMS.addItem(6, "magneto_resonatic_hv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.HV);
-        MAGNETO_RESONATIC_EV = ITEMS.addItem(7, "magneto_resonatic_ev").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.EV);
-        MAGNETO_RESONATIC_IV = ITEMS.addItem(8, "magneto_resonatic_iv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.IV);
-        MAGNETO_RESONATIC_LuV = ITEMS.addItem(9, "magneto_resonatic_luv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.LuV);
-        MAGNETO_RESONATIC_ZPM = ITEMS.addItem(10, "magneto_resonatic_zpm").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.ZPM);
-        MAGNETO_RESONATIC_UV = ITEMS.addItem(11, "magneto_resonatic_uv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UV);
-        MAGNETO_RESONATIC_UHV = ITEMS.addItem(12, "magneto_resonatic_uhv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UHV);
-        MAGNETO_RESONATIC_UEV = ITEMS.addItem(13, "magneto_resonatic_uev").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UEV);
-        MAGNETO_RESONATIC_UIV = ITEMS.addItem(14, "magneto_resonatic_uiv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UIV);
-        MAGNETO_RESONATIC_UXV = ITEMS.addItem(15, "magneto_resonatic_uxv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UXV);
-        MAGNETO_RESONATIC_OpV = ITEMS.addItem(16, "magneto_resonatic_opv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.OpV);
-        MAGNETO_RESONATIC_MAX = ITEMS.addItem(17, "magneto_resonatic_max").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.MAX);
+        MAGNETO_RESONATIC_ULV = ITEMS.addItem(3, "magneto_resonatic_ulv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.ULV);
+        MAGNETO_RESONATIC_LV = ITEMS.addItem(4, "magneto_resonatic_lv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.LV);
+        MAGNETO_RESONATIC_MV = ITEMS.addItem(5, "magneto_resonatic_mv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.MV);
+        MAGNETO_RESONATIC_HV = ITEMS.addItem(6, "magneto_resonatic_hv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.HV);
+        MAGNETO_RESONATIC_EV = ITEMS.addItem(7, "magneto_resonatic_ev").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.EV);
+        MAGNETO_RESONATIC_IV = ITEMS.addItem(8, "magneto_resonatic_iv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.IV);
+        MAGNETO_RESONATIC_LuV = ITEMS.addItem(9, "magneto_resonatic_luv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.LuV);
+        MAGNETO_RESONATIC_ZPM = ITEMS.addItem(10, "magneto_resonatic_zpm").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.ZPM);
+        MAGNETO_RESONATIC_UV = ITEMS.addItem(11, "magneto_resonatic_uv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.UV);
+        MAGNETO_RESONATIC_UHV = ITEMS.addItem(12, "magneto_resonatic_uhv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.UHV);
+        MAGNETO_RESONATIC_UEV = ITEMS.addItem(13, "magneto_resonatic_uev").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.UEV);
+        MAGNETO_RESONATIC_UIV = ITEMS.addItem(14, "magneto_resonatic_uiv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.UIV);
+        MAGNETO_RESONATIC_UXV = ITEMS.addItem(15, "magneto_resonatic_uxv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.UXV);
+        MAGNETO_RESONATIC_OpV = ITEMS.addItem(16, "magneto_resonatic_opv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.OpV);
+        MAGNETO_RESONATIC_MAX = ITEMS.addItem(17, "magneto_resonatic_max").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.MAX);
         MAGNETO_RESONATIC_BOULE = ITEMS.addItem(18, "magneto_resonatic_boule");
         MAGNETO_RESONATIC_WAFER = ITEMS.addItem(19, "magneto_resonatic_wafer");
         RESONANCE_WAFER = ITEMS.addItem(20, "resonance_wafer");
@@ -366,10 +384,14 @@ public class SerendustryMetaItems {
         LENS_ARRAY_HYPERAMPLIFYING = ITEMS.addItem(123, "lens_array_hyperamplifying");
         LENS_ARRAY_HYPERPRECISE = ITEMS.addItem(124, "lens_array_hyperprecise");
         MASK_APU = ITEMS.addItem(125, "mask_apu");
-        CIRC_POSITRONIC_ZPM = ITEMS.addItem(126, "circ_positronic_zpm").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.ZPM);
-        CIRC_POSITRONIC_UV = ITEMS.addItem(127, "circ_positronic_uv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UV);
-        CIRC_POSITRONIC_UHV = ITEMS.addItem(128, "circ_positronic_uhv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UHV);
-        CIRC_POSITRONIC_UEV = ITEMS.addItem(129, "circ_positronic_uev").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UEV);
+        CIRC_POSITRONIC_ZPM = ITEMS.addItem(126, "circ_positronic_zpm").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.ZPM);
+        CIRC_POSITRONIC_UV = ITEMS.addItem(127, "circ_positronic_uv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.UV);
+        CIRC_POSITRONIC_UHV = ITEMS.addItem(128, "circ_positronic_uhv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.UHV);
+        CIRC_POSITRONIC_UEV = ITEMS.addItem(129, "circ_positronic_uev").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.UEV);
         POSITRONIC_CHIP = ITEMS.addItem(130, "positronic_chip");
         ENGRAVED_POSITRONIC_CHIP = ITEMS.addItem(131, "engraved_positronic_chip");
         PLANETOID_SCANNING_DRONE_MK_2 = ITEMS.addItem(132, "planetoid_scanning_drone_mk_2");
@@ -377,7 +399,7 @@ public class SerendustryMetaItems {
         TIBERIUM_PLANETOID_DATA = ITEMS.addItem(134, "tiberium_planetoid_data");
         EXOTIC_PLANETOID_DATA = ITEMS.addItem(135, "exotic_planetoid_data");
         XENOTIME_PLANETOID_DATA = ITEMS.addItem(136, "xenotime_planetoid_data");
-      // EMPTY ID
+        // EMPTY ID
         PETRI_DISH_STERILIZED = ITEMS.addItem(138, "petri_dish_sterilized");
         CULTURE_E_COLI = ITEMS.addItem(139, "culture_e_coli");
         CULTURE_YEAST = ITEMS.addItem(140, "culture_yeast");
@@ -390,39 +412,60 @@ public class SerendustryMetaItems {
         VIBRANITE_PLANETOID_DATA = ITEMS.addItem(147, "vibranite_planetoid_data");
         CATALYST_VIBRANIUM_ALLOY = ITEMS.addItem(148, "catalyst_vibranium_alloy").setMaxStackSize(1);
         NETHERITE_PLANETOID_DATA = ITEMS.addItem(149, "netherite_planetoid_data");
-        POWER_UNIT_UHV = ITEMS.addItem(150, "power_unit_uhv").addComponents(ElectricStats.createElectricItem(Long.MAX_VALUE, GTValues.UHV)).setMaxStackSize(8);
-        //TRISHULA = ITEMS.addItem(151, "trishula");
+        POWER_UNIT_UHV = ITEMS.addItem(150, "power_unit_uhv")
+                .addComponents(ElectricStats.createElectricItem(Long.MAX_VALUE, GTValues.UHV)).setMaxStackSize(8);
+        // TRISHULA = ITEMS.addItem(151, "trishula");
         CATALYST_HALKONITE = ITEMS.addItem(151, "catalyst_halkonite").setMaxStackSize(1);
         CULTURE_XENOXENE = ITEMS.addItem(152, "culture_xenoxene");
-        CATALYST_OGANESSON_TETRATENNESSIDE = ITEMS.addItem(153, "catalyst_oganesson_tetratennesside").setMaxStackSize(1);
+        CATALYST_OGANESSON_TETRATENNESSIDE = ITEMS.addItem(153, "catalyst_oganesson_tetratennesside")
+                .setMaxStackSize(1);
         COIL_UEV = ITEMS.addItem(154, "coil_uev");
         COIL_UIV = ITEMS.addItem(155, "coil_uiv");
         COIL_UXV = ITEMS.addItem(156, "coil_uxv");
         COIL_OpV = ITEMS.addItem(157, "coil_opv");
         COIL_MAX = ITEMS.addItem(158, "coil_max");
-        CIRCUIT_ANY_ULV = ITEMS.addItem(159, "circuit_any_ulv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.ULV);
-        CIRCUIT_ANY_LV = ITEMS.addItem(160, "circuit_any_lv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.LV);
-        CIRCUIT_ANY_MV = ITEMS.addItem(161, "circuit_any_mv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.MV);
-        CIRCUIT_ANY_HV = ITEMS.addItem(162, "circuit_any_hv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.HV);
-        CIRCUIT_ANY_EV = ITEMS.addItem(163, "circuit_any_ev").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.EV);
-        CIRCUIT_ANY_IV = ITEMS.addItem(164, "circuit_any_iv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.IV);
-        CIRCUIT_ANY_LuV = ITEMS.addItem(165, "circuit_any_luv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.LuV);
-        CIRCUIT_ANY_ZPM = ITEMS.addItem(166, "circuit_any_zpm").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.ZPM);
-        CIRCUIT_ANY_UV = ITEMS.addItem(167, "circuit_any_uv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UV);
-        CIRCUIT_ANY_UHV = ITEMS.addItem(168, "circuit_any_uhv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UHV);
-        CIRCUIT_ANY_UEV = ITEMS.addItem(169, "circuit_any_uev").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UEV);
-        CIRCUIT_ANY_UIV = ITEMS.addItem(170, "circuit_any_uiv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UIV);
-        CIRCUIT_ANY_UXV = ITEMS.addItem(171, "circuit_any_uxv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UXV);
-        CIRCUIT_ANY_OpV = ITEMS.addItem(172, "circuit_any_opv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.OpV);
-        CIRCUIT_ANY_MAX = ITEMS.addItem(173, "circuit_any_max").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.MAX);
+        CIRCUIT_ANY_ULV = ITEMS.addItem(159, "circuit_any_ulv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.ULV);
+        CIRCUIT_ANY_LV = ITEMS.addItem(160, "circuit_any_lv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.LV);
+        CIRCUIT_ANY_MV = ITEMS.addItem(161, "circuit_any_mv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.MV);
+        CIRCUIT_ANY_HV = ITEMS.addItem(162, "circuit_any_hv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.HV);
+        CIRCUIT_ANY_EV = ITEMS.addItem(163, "circuit_any_ev").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.EV);
+        CIRCUIT_ANY_IV = ITEMS.addItem(164, "circuit_any_iv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.IV);
+        CIRCUIT_ANY_LuV = ITEMS.addItem(165, "circuit_any_luv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.LuV);
+        CIRCUIT_ANY_ZPM = ITEMS.addItem(166, "circuit_any_zpm").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.ZPM);
+        CIRCUIT_ANY_UV = ITEMS.addItem(167, "circuit_any_uv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.UV);
+        CIRCUIT_ANY_UHV = ITEMS.addItem(168, "circuit_any_uhv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.UHV);
+        CIRCUIT_ANY_UEV = ITEMS.addItem(169, "circuit_any_uev").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.UEV);
+        CIRCUIT_ANY_UIV = ITEMS.addItem(170, "circuit_any_uiv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.UIV);
+        CIRCUIT_ANY_UXV = ITEMS.addItem(171, "circuit_any_uxv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.UXV);
+        CIRCUIT_ANY_OpV = ITEMS.addItem(172, "circuit_any_opv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.OpV);
+        CIRCUIT_ANY_MAX = ITEMS.addItem(173, "circuit_any_max").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.MAX);
         STELLAR_ESSENCE_BLANK = ITEMS.addItem(174, "stellar_essence_blank");
         STELLAR_ESSENCE_OVERWORLD = ITEMS.addItem(175, "stellar_essence_overworld");
         STELLAR_ESSENCE_NETHER = ITEMS.addItem(176, "stellar_essence_nether");
         STELLAR_ESSENCE_END = ITEMS.addItem(177, "stellar_essence_end");
-        CIRC_ENTROPIC_UV = ITEMS.addItem(178, "circ_entropic_uv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UV);
-        CIRC_ENTROPIC_UHV = ITEMS.addItem(179, "circ_entropic_uhv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UHV);
-        CIRC_ENTROPIC_UEV = ITEMS.addItem(180, "circ_entropic_uev").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UEV);
-        CIRC_ENTROPIC_UIV = ITEMS.addItem(181, "circ_entropic_uiv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UIV);
+        CIRC_ENTROPIC_UV = ITEMS.addItem(178, "circ_entropic_uv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.UV);
+        CIRC_ENTROPIC_UHV = ITEMS.addItem(179, "circ_entropic_uhv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.UHV);
+        CIRC_ENTROPIC_UEV = ITEMS.addItem(180, "circ_entropic_uev").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.UEV);
+        CIRC_ENTROPIC_UIV = ITEMS.addItem(181, "circ_entropic_uiv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.UIV);
         ENTROPIC_CIRCUIT_BOARD = ITEMS.addItem(182, "entropic_circuit_board");
         DRACONIUM_PLANETOID_DATA = ITEMS.addItem(183, "draconium_planetoid_data");
         CATALYST_AWAKENED_DRACONIUM = ITEMS.addItem(184, "catalyst_awakened_draconium").setMaxStackSize(1);
@@ -436,5 +479,7 @@ public class SerendustryMetaItems {
         HKSP_BC = ITEMS.addItem(192, "hksp_bc");
         HKSP_F = ITEMS.addItem(193, "hksp_f");
         CATALYST_EXO_HALKONITE = ITEMS.addItem(194, "catalyst_exo_halkonite").setMaxStackSize(1);
+        CATALYST_TITANIUM_ALLOYS = ITEMS.addItem(195, "catalyst_titanium_alloys").setMaxStackSize(1);
+        CATALYST_VANADIUM_ALLOYS = ITEMS.addItem(196, "catalyst_vanadium_alloys").setMaxStackSize(1);
     }
 }

@@ -2,18 +2,13 @@ package serendustry.recipe;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
-import static gregtech.api.recipes.RecipeMaps.AUTOCLAVE_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static serendustry.item.SerendustryMetaItems.*;
 import static serendustry.item.material.SerendustryMaterials.*;
 
-import gregtech.api.recipes.GTRecipeHandler;
-import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials.Tier;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.FluidStack;
 
 public class HTComponentRecipes {
 
@@ -37,7 +32,7 @@ public class HTComponentRecipes {
                         .researchStack(ELECTRIC_MOTOR_ZPM.getStackForm())
                         .CWUt(32)
                         .EUt(VA[ZPM]))
-                .duration(30 * 20).EUt(100000).buildAndRegister();
+                .duration(30 * 20).EUt(VA[ZPM]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(stickLong, MagneticHolmium, 2)
@@ -57,7 +52,7 @@ public class HTComponentRecipes {
                         .researchStack(ELECTRIC_MOTOR_UV.getStackForm())
                         .CWUt(64)
                         .EUt(VA[UV]))
-                .duration(300).EUt(VA[UHV]).buildAndRegister();
+                .duration(30 * 20).EUt(VA[UV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(stickLong, TengamAttuned, 4)
@@ -78,7 +73,7 @@ public class HTComponentRecipes {
                         .researchStack(ELECTRIC_MOTOR_UHV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UHV]))
-                .duration(450).EUt(VA[UEV]).buildAndRegister();
+                .duration(30 * 30).EUt(VA[UHV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(stickLong, TengamAttuned, 6)
@@ -101,7 +96,7 @@ public class HTComponentRecipes {
                         .researchStack(ELECTRIC_MOTOR_UEV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UEV]))
-                .duration(600).EUt(VA[UIV]).buildAndRegister();
+                .duration(30 * 45).EUt(VA[UEV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(stickLong, KerrBlackHole)
@@ -121,7 +116,7 @@ public class HTComponentRecipes {
                         .researchStack(ELECTRIC_MOTOR_UIV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UIV]))
-                .duration(900).EUt(VA[UXV]).buildAndRegister();
+                .duration(30 * 65).EUt(VA[UIV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(stickLong, KerrBlackHole, 2)
@@ -142,7 +137,7 @@ public class HTComponentRecipes {
                         .researchStack(ELECTRIC_MOTOR_UXV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UXV]))
-                .duration(900).EUt(VA[UXV]).buildAndRegister();
+                .duration(30 * 65).EUt(VA[UIV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(stickLong, KerrBlackHole, 8)
@@ -163,7 +158,7 @@ public class HTComponentRecipes {
                         .researchStack(ELECTRIC_MOTOR_OpV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[OpV]))
-                .duration(4050).EUt(VA[MAX]).buildAndRegister();
+                .duration(30 * 300).EUt(VA[OpV]).buildAndRegister();
 
         // Conveyors
 
@@ -184,7 +179,7 @@ public class HTComponentRecipes {
                         .researchStack(CONVEYOR_MODULE_UV.getStackForm())
                         .CWUt(64)
                         .EUt(VA[UV]))
-                .duration(300).EUt(VA[UHV]).buildAndRegister();
+                .duration(30 * 20).EUt(VA[UV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_UEV, 2)
@@ -203,7 +198,7 @@ public class HTComponentRecipes {
                         .researchStack(CONVEYOR_MODULE_UHV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UHV]))
-                .duration(450).EUt(VA[UEV]).buildAndRegister();
+                .duration(30 * 30).EUt(VA[UHV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_UIV, 2)
@@ -222,7 +217,7 @@ public class HTComponentRecipes {
                         .researchStack(CONVEYOR_MODULE_UEV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UEV]))
-                .duration(600).EUt(VA[UIV]).buildAndRegister();
+                .duration(30 * 45).EUt(VA[UEV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_UXV, 2)
@@ -240,7 +235,7 @@ public class HTComponentRecipes {
                         .researchStack(CONVEYOR_MODULE_UIV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UIV]))
-                .duration(900).EUt(VA[UXV]).buildAndRegister();
+                .duration(30 * 65).EUt(VA[UIV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_OpV, 2)
@@ -258,7 +253,7 @@ public class HTComponentRecipes {
                         .researchStack(CONVEYOR_MODULE_UXV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UXV]))
-                .duration(1350).EUt(VA[OpV]).buildAndRegister();
+                .duration(30 * 100).EUt(VA[UXV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_MAX, 2)
@@ -276,7 +271,7 @@ public class HTComponentRecipes {
                         .researchStack(CONVEYOR_MODULE_OpV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[OpV]))
-                .duration(4050).EUt(VA[MAX]).buildAndRegister();
+                .duration(30 * 300).EUt(VA[OpV]).buildAndRegister();
 
         // Pumps
 
@@ -297,7 +292,7 @@ public class HTComponentRecipes {
                         .researchStack(ELECTRIC_PUMP_UV.getStackForm())
                         .CWUt(64)
                         .EUt(VA[UV]))
-                .duration(300).EUt(VA[UHV]).buildAndRegister();
+                .duration(30 * 20).EUt(VA[UV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_UEV)
@@ -316,7 +311,7 @@ public class HTComponentRecipes {
                         .researchStack(ELECTRIC_PUMP_UHV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UHV]))
-                .duration(450).EUt(VA[UEV]).buildAndRegister();
+                .duration(30 * 30).EUt(VA[UHV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_UIV)
@@ -335,7 +330,7 @@ public class HTComponentRecipes {
                         .researchStack(ELECTRIC_PUMP_UEV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UEV]))
-                .duration(600).EUt(VA[UIV]).buildAndRegister();
+                .duration(30 * 45).EUt(VA[UEV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_UXV)
@@ -353,7 +348,7 @@ public class HTComponentRecipes {
                         .researchStack(ELECTRIC_PUMP_UIV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UIV]))
-                .duration(900).EUt(VA[UXV]).buildAndRegister();
+                .duration(30 * 65).EUt(VA[UIV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_OpV)
@@ -372,7 +367,7 @@ public class HTComponentRecipes {
                         .researchStack(ELECTRIC_PUMP_UXV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UXV]))
-                .duration(1350).EUt(VA[OpV]).buildAndRegister();
+                .duration(30 * 100).EUt(VA[UXV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_MAX)
@@ -394,7 +389,7 @@ public class HTComponentRecipes {
                         .researchStack(ELECTRIC_PUMP_OpV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[OpV]))
-                .duration(4050).EUt(VA[MAX]).buildAndRegister();
+                .duration(30 * 300).EUt(VA[OpV]).buildAndRegister();
 
         // Pistons
 
@@ -416,7 +411,7 @@ public class HTComponentRecipes {
                         .researchStack(ELECTRIC_PISTON_UV.getStackForm())
                         .CWUt(64)
                         .EUt(VA[UV]))
-                .duration(300).EUt(VA[UHV]).buildAndRegister();
+                .duration(30 * 20).EUt(VA[UV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_UEV)
@@ -436,7 +431,7 @@ public class HTComponentRecipes {
                         .researchStack(ELECTRIC_PISTON_UHV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UHV]))
-                .duration(450).EUt(VA[UEV]).buildAndRegister();
+                .duration(30 * 30).EUt(VA[UHV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_UIV)
@@ -456,7 +451,7 @@ public class HTComponentRecipes {
                         .researchStack(ELECTRIC_PISTON_UEV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UEV]))
-                .duration(600).EUt(VA[UIV]).buildAndRegister();
+                .duration(30 * 45).EUt(VA[UEV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_UXV)
@@ -475,7 +470,7 @@ public class HTComponentRecipes {
                         .researchStack(ELECTRIC_PISTON_UIV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UIV]))
-                .duration(900).EUt(VA[UXV]).buildAndRegister();
+                .duration(30 * 65).EUt(VA[UIV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_OpV)
@@ -538,7 +533,7 @@ public class HTComponentRecipes {
                         .researchStack(ROBOT_ARM_UV.getStackForm())
                         .CWUt(64)
                         .EUt(VA[UV]))
-                .duration(300).EUt(VA[UHV]).buildAndRegister();
+                .duration(30 * 20).EUt(VA[UV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(stickLong, HalkoniteSteel, 8)
@@ -559,7 +554,7 @@ public class HTComponentRecipes {
                         .researchStack(ROBOT_ARM_UHV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UHV]))
-                .duration(450).EUt(VA[UEV]).buildAndRegister();
+                .duration(30 * 30).EUt(VA[UHV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(stickLong, DeepDarkSteel, 10)
@@ -580,7 +575,7 @@ public class HTComponentRecipes {
                         .researchStack(ROBOT_ARM_UEV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UEV]))
-                .duration(600).EUt(VA[UIV]).buildAndRegister();
+                .duration(30 * 45).EUt(VA[UEV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(stickLong, AwakenedDraconium, 4)
@@ -600,7 +595,7 @@ public class HTComponentRecipes {
                         .researchStack(ROBOT_ARM_UIV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UIV]))
-                .duration(900).EUt(VA[UXV]).buildAndRegister();
+                .duration(30 * 65).EUt(VA[UIV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(stickLong, Quantum, 4)
@@ -621,7 +616,7 @@ public class HTComponentRecipes {
                         .researchStack(ROBOT_ARM_UXV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UXV]))
-                .duration(1350).EUt(VA[OpV]).buildAndRegister();
+                .duration(30 * 100).EUt(VA[UXV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(stickLong, Floppa, 4)
@@ -642,7 +637,7 @@ public class HTComponentRecipes {
                         .researchStack(ROBOT_ARM_OpV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[OpV]))
-                .duration(4050).EUt(VA[MAX]).buildAndRegister();
+                .duration(30 * 300).EUt(VA[OpV]).buildAndRegister();
 
         // Field Generators
 
@@ -664,7 +659,7 @@ public class HTComponentRecipes {
                         .researchStack(FIELD_GENERATOR_UV.getStackForm())
                         .CWUt(64)
                         .EUt(VA[UV]))
-                .duration(300).EUt(VA[UHV]).buildAndRegister();
+                .duration(30 * 20).EUt(VA[UV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, AbyssalAlloy)
@@ -685,7 +680,7 @@ public class HTComponentRecipes {
                         .researchStack(FIELD_GENERATOR_UHV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UHV]))
-                .duration(450).EUt(VA[UEV]).buildAndRegister();
+                .duration(30 * 30).EUt(VA[UHV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, DeepDarkSteel)
@@ -707,7 +702,7 @@ public class HTComponentRecipes {
                         .researchStack(FIELD_GENERATOR_UEV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UEV]))
-                .duration(600).EUt(VA[UIV]).buildAndRegister();
+                .duration(30 * 45).EUt(VA[UEV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, InfinityCatalyst)
@@ -727,7 +722,7 @@ public class HTComponentRecipes {
                         .researchStack(FIELD_GENERATOR_UIV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UIV]))
-                .duration(900).EUt(VA[UXV]).buildAndRegister();
+                .duration(30 * 65).EUt(VA[UIV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, Quantum)
@@ -748,7 +743,7 @@ public class HTComponentRecipes {
                         .researchStack(FIELD_GENERATOR_UXV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UXV]))
-                .duration(1350).EUt(VA[OpV]).buildAndRegister();
+                .duration(30 * 100).EUt(VA[UXV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, Shirabon)
@@ -769,7 +764,7 @@ public class HTComponentRecipes {
                         .researchStack(FIELD_GENERATOR_OpV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[OpV]))
-                .duration(4050).EUt(VA[MAX]).buildAndRegister();
+                .duration(30 * 300).EUt(VA[OpV]).buildAndRegister();
 
         // Sensors
 
@@ -791,7 +786,7 @@ public class HTComponentRecipes {
                         .researchStack(SENSOR_UV.getStackForm())
                         .CWUt(64)
                         .EUt(VA[UV]))
-                .duration(300).EUt(VA[UHV]).buildAndRegister();
+                .duration(30 * 20).EUt(VA[UV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, AbyssalAlloy)
@@ -812,7 +807,7 @@ public class HTComponentRecipes {
                         .researchStack(SENSOR_UHV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UHV]))
-                .duration(450).EUt(VA[UEV]).buildAndRegister();
+                .duration(30 * 30).EUt(VA[UHV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, DeepDarkSteel)
@@ -834,7 +829,7 @@ public class HTComponentRecipes {
                         .researchStack(SENSOR_UEV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UEV]))
-                .duration(600).EUt(VA[UIV]).buildAndRegister();
+                .duration(30 * 45).EUt(VA[UEV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, InfinityCatalyst)
@@ -852,7 +847,7 @@ public class HTComponentRecipes {
                         .researchStack(SENSOR_UIV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UIV]))
-                .duration(900).EUt(VA[UXV]).buildAndRegister();
+                .duration(30 * 65).EUt(VA[UIV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, Quantum)
@@ -871,7 +866,7 @@ public class HTComponentRecipes {
                         .researchStack(SENSOR_UXV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UXV]))
-                .duration(1350).EUt(VA[OpV]).buildAndRegister();
+                .duration(30 * 100).EUt(VA[UXV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, Shirabon)
@@ -890,7 +885,7 @@ public class HTComponentRecipes {
                         .researchStack(SENSOR_OpV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[OpV]))
-                .duration(4050).EUt(VA[MAX]).buildAndRegister();
+                .duration(30 * 300).EUt(VA[OpV]).buildAndRegister();
 
         // Emitters
 
@@ -912,7 +907,7 @@ public class HTComponentRecipes {
                         .researchStack(EMITTER_UV.getStackForm())
                         .CWUt(64)
                         .EUt(VA[UV]))
-                .duration(300).EUt(VA[UHV]).buildAndRegister();
+                .duration(30 * 20).EUt(VA[UV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, AbyssalAlloy)
@@ -933,7 +928,7 @@ public class HTComponentRecipes {
                         .researchStack(EMITTER_UHV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UHV]))
-                .duration(450).EUt(VA[UEV]).buildAndRegister();
+                .duration(30 * 30).EUt(VA[UHV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, DeepDarkSteel)
@@ -955,7 +950,7 @@ public class HTComponentRecipes {
                         .researchStack(EMITTER_UEV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UEV]))
-                .duration(600).EUt(VA[UIV]).buildAndRegister();
+                .duration(30 * 45).EUt(VA[UEV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, InfinityCatalyst)
@@ -973,7 +968,7 @@ public class HTComponentRecipes {
                         .researchStack(EMITTER_UIV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UIV]))
-                .duration(900).EUt(VA[UXV]).buildAndRegister();
+                .duration(30 * 65).EUt(VA[UIV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, Quantum)
@@ -992,7 +987,7 @@ public class HTComponentRecipes {
                         .researchStack(EMITTER_UXV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UXV]))
-                .duration(1350).EUt(VA[OpV]).buildAndRegister();
+                .duration(30 * 100).EUt(VA[UXV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, Shirabon)
@@ -1011,6 +1006,6 @@ public class HTComponentRecipes {
                         .researchStack(EMITTER_OpV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[OpV]))
-                .duration(4050).EUt(VA[MAX]).buildAndRegister();
+                .duration(30 * 300).EUt(VA[OpV]).buildAndRegister();
     }
 }

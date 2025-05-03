@@ -1,11 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.items.metaitem.MetaItem;
-import gregtech.api.unification.material.MarkerMaterials;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import serendustry.machine.MetaTileEntityPlasmaFoundry;
-
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
@@ -17,6 +11,12 @@ import static serendustry.item.SerendustryMetaItems.*;
 import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryMetaTileEntities.PLASMA_FOUNDRY;
 import static serendustry.machine.SerendustryRecipeMaps.PLASMA_FOUNDRY_RECIPES;
+
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+
+import gregtech.api.items.metaitem.MetaItem;
+import gregtech.api.unification.material.MarkerMaterials;
 
 public class PlasmaFoundryRecipes {
 
@@ -52,12 +52,16 @@ public class PlasmaFoundryRecipes {
 
     private static void catalysts() {
         MetaItem<?>.MetaValueItem[] metaItemCatalysts = new MetaItem.MetaValueItem[] {
-                CATALYST_STEELS, CATALYST_COPPER_ALLOYS, CATALYST_TIN_ALLOYS, CATALYST_GOLD_ALLOYS, CATALYST_BATTERY_ALLOY, CATALYST_SOLDERING_ALLOYS,
-                CATALYST_PLATINUM_GROUP_ALLOYS, CATALYST_NAQUADAH_ALLOYS, CATALYST_SUPERCONDUCTORS, CATALYST_HAM_ALLOY, CATALYST_ARCANITE,
-                CATALYST_ABYSSAL_ALLOY, CATALYST_VIBRANIUM_ALLOY, CATALYST_HALKONITE, CATALYST_OGANESSON_TETRATENNESSIDE, CATALYST_AWAKENED_DRACONIUM,
-                CATALYST_EXO_HALKONITE
+                CATALYST_STEELS, CATALYST_COPPER_ALLOYS, CATALYST_TIN_ALLOYS, CATALYST_GOLD_ALLOYS,
+                CATALYST_BATTERY_ALLOY, CATALYST_SOLDERING_ALLOYS,
+                CATALYST_PLATINUM_GROUP_ALLOYS, CATALYST_NAQUADAH_ALLOYS, CATALYST_SUPERCONDUCTORS, CATALYST_HAM_ALLOY,
+                CATALYST_ARCANITE,
+                CATALYST_ABYSSAL_ALLOY, CATALYST_VIBRANIUM_ALLOY, CATALYST_HALKONITE,
+                CATALYST_OGANESSON_TETRATENNESSIDE, CATALYST_AWAKENED_DRACONIUM,
+                CATALYST_EXO_HALKONITE,
+                CATALYST_TITANIUM_ALLOYS, CATALYST_VANADIUM_ALLOYS
         };
-        for(MetaItem<?>.MetaValueItem item : metaItemCatalysts) {
+        for (MetaItem<?>.MetaValueItem item : metaItemCatalysts) {
             PLASMA_FOUNDRY_RECIPES.registerCatalyst(item.getStackForm(), 50);
         }
     }
@@ -142,6 +146,16 @@ public class PlasmaFoundryRecipes {
                 .input(wireGtDouble, EnrichedNaquadahTriniumEuropiumDuranide, 64)
                 .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 8))
                 .output(CATALYST_NAQUADAH_ALLOYS)
+                .duration(1200).EUt(VA[ZPM]).buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, NaquadahAlloy)
+                .input(circuit, MarkerMaterials.Tier.UV)
+                .input(stickLong, NiobiumTitanium, 64)
+                .input(plate, IndiumTinBariumTitaniumCuprate, 64)
+                .input(ingot, ALMST, 64)
+                .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 8))
+                .output(CATALYST_TITANIUM_ALLOYS)
                 .duration(1200).EUt(VA[ZPM]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
@@ -248,7 +262,6 @@ public class PlasmaFoundryRecipes {
     }
 
     private static void alloyRecipes() {
-
         // Recipe duration: Original 1x EBF blast time * quantity / 2 once for every tier up to UV / 4 an extra time
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
@@ -256,7 +269,7 @@ public class PlasmaFoundryRecipes {
                         Oxygen.getPlasma(100))
                 .foundryCatalyst(CATALYST_STEELS)
                 .fluidOutputs(Steel.getFluid(144 * 1024))
-                .duration(25*20*1024/2/2/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(25 * 20 * 1024 / 2 / 2 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(BlackBronze.getFluid(144 * 75),
@@ -265,7 +278,7 @@ public class PlasmaFoundryRecipes {
                         Helium.getPlasma(1000))
                 .foundryCatalyst(CATALYST_STEELS, CATALYST_COPPER_ALLOYS)
                 .fluidOutputs(BlackSteel.getFluid(144 * 500))
-                .duration(76*20*500/2/2/2/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(76 * 20 * 500 / 2 / 2 / 2 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Iron.getFluid(144 * 336),
@@ -275,7 +288,7 @@ public class PlasmaFoundryRecipes {
                         Nitrogen.getPlasma(1000))
                 .foundryCatalyst(CATALYST_STEELS)
                 .fluidOutputs(StainlessSteel.getFluid(144 * 504))
-                .duration(55*20*504/2/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(55 * 20 * 504 / 2 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(RoseGold.getFluid(144 * 32),
@@ -285,7 +298,7 @@ public class PlasmaFoundryRecipes {
                         Tin.getPlasma(144 * 8))
                 .foundryCatalyst(CATALYST_STEELS, CATALYST_COPPER_ALLOYS, CATALYST_GOLD_ALLOYS)
                 .fluidOutputs(BlueSteel.getFluid(144 * 512))
-                .duration(50*20*512/2/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(50 * 20 * 512 / 2 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(SterlingSilver.getFluid(144 * 32),
@@ -295,7 +308,7 @@ public class PlasmaFoundryRecipes {
                         Tin.getPlasma(144 * 8))
                 .foundryCatalyst(CATALYST_STEELS, CATALYST_COPPER_ALLOYS)
                 .fluidOutputs(RedSteel.getFluid(144 * 512))
-                .duration(50*20*512/2/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(50 * 20 * 512 / 2 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Iron.getFluid(144 * 128),
@@ -303,7 +316,24 @@ public class PlasmaFoundryRecipes {
                         Iron.getPlasma(144 * 32))
                 .foundryCatalyst(CATALYST_STEELS)
                 .fluidOutputs(TungstenSteel.getFluid(144 * 256))
-                .duration(50*20*256/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(50 * 20 * 256 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
+
+        PLASMA_FOUNDRY_RECIPES.recipeBuilder()
+                .fluidInputs(Steel.getFluid(144 * 32 * 7),
+                        Vanadium.getFluid(144 * 32),
+                        Chrome.getFluid(144 * 32),
+                        Oxygen.getPlasma(4000))
+                .foundryCatalyst(CATALYST_STEELS, CATALYST_VANADIUM_ALLOYS)
+                .fluidOutputs(VanadiumSteel.getFluid(144 * 32 * 9))
+                .duration(80 * 20 * 32 * 9 / 2 / 2 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
+
+        PLASMA_FOUNDRY_RECIPES.recipeBuilder()
+                .fluidInputs(Vanadium.getFluid(144 * 32 * 3),
+                        Gallium.getFluid(144 * 32),
+                        Tin.getPlasma(144 * 8))
+                .foundryCatalyst(CATALYST_VANADIUM_ALLOYS)
+                .fluidOutputs(VanadiumGallium.getFluid(144 * 128))
+                .duration(80 * 20 * 32 * 9 / 2 / 2 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(TungstenSteel.getFluid(144 * 120),
@@ -311,9 +341,9 @@ public class PlasmaFoundryRecipes {
                         Molybdenum.getFluid(144 * 48),
                         Vanadium.getFluid(144 * 24),
                         Tin.getPlasma(144 * 8))
-                .foundryCatalyst(CATALYST_STEELS)
+                .foundryCatalyst(CATALYST_STEELS, CATALYST_VANADIUM_ALLOYS)
                 .fluidOutputs(HSSG.getFluid(144 * 216))
-                .duration(65*20*216/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(65 * 20 * 216 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(HSSG.getFluid(144 * 144),
@@ -323,7 +353,7 @@ public class PlasmaFoundryRecipes {
                         Oxygen.getPlasma(1000))
                 .foundryCatalyst(CATALYST_STEELS)
                 .fluidOutputs(HSSE.getFluid(144 * 216))
-                .duration(70*20*216/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(70 * 20 * 216 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(HSSG.getFluid(144 * 144),
@@ -332,7 +362,7 @@ public class PlasmaFoundryRecipes {
                         Nitrogen.getPlasma(1000))
                 .foundryCatalyst(CATALYST_STEELS, CATALYST_PLATINUM_GROUP_ALLOYS)
                 .fluidOutputs(HSSS.getFluid(144 * 216))
-                .duration(75*20*216/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(75 * 20 * 216 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Manganese.getFluid(144 * 256),
@@ -340,7 +370,7 @@ public class PlasmaFoundryRecipes {
                         Helium.getPlasma(1000))
                 .foundryCatalyst(CATALYST_SUPERCONDUCTORS)
                 .fluidOutputs(ManganesePhosphide.getFluid(144 * 512))
-                .duration(50*20*512/2/2/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(50 * 20 * 512 / 2 / 2 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Magnesium.getFluid(144 * 160),
@@ -348,7 +378,7 @@ public class PlasmaFoundryRecipes {
                         Helium.getPlasma(1000))
                 .foundryCatalyst(CATALYST_SUPERCONDUCTORS)
                 .fluidOutputs(MagnesiumDiboride.getFluid(144 * 480))
-                .duration(50*20*480/2/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(50 * 20 * 480 / 2 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Barium.getFluid(144 * 64),
@@ -358,7 +388,7 @@ public class PlasmaFoundryRecipes {
                         Oxygen.getPlasma(4000))
                 .foundryCatalyst(CATALYST_SUPERCONDUCTORS, CATALYST_COPPER_ALLOYS)
                 .fluidOutputs(MercuryBariumCalciumCuprate.getFluid(144 * 512))
-                .duration(75*20*512/2/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(75 * 20 * 512 / 2 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Uranium238.getFluid(144 * 64),
@@ -366,7 +396,7 @@ public class PlasmaFoundryRecipes {
                         Nitrogen.getPlasma(1000))
                 .foundryCatalyst(CATALYST_SUPERCONDUCTORS, CATALYST_PLATINUM_GROUP_ALLOYS)
                 .fluidOutputs(UraniumTriplatinum.getFluid(144 * 256))
-                .duration(75*20*256/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(75 * 20 * 256 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Samarium.getFluid(144 * 64),
@@ -375,7 +405,7 @@ public class PlasmaFoundryRecipes {
                         Oxygen.getPlasma(12000))
                 .foundryCatalyst(CATALYST_SUPERCONDUCTORS)
                 .fluidOutputs(SamariumIronArsenicOxide.getFluid(144 * 256))
-                .duration(75*20*256/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(75 * 20 * 256 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Indium.getFluid(144 * 64),
@@ -384,9 +414,9 @@ public class PlasmaFoundryRecipes {
                         Titanium.getFluid(144 * 16),
                         Copper.getFluid(144 * 112),
                         Oxygen.getPlasma(24000))
-                .foundryCatalyst(CATALYST_SUPERCONDUCTORS, CATALYST_COPPER_ALLOYS, CATALYST_TIN_ALLOYS)
+                .foundryCatalyst(CATALYST_SUPERCONDUCTORS, CATALYST_COPPER_ALLOYS, CATALYST_TIN_ALLOYS, CATALYST_TITANIUM_ALLOYS)
                 .fluidOutputs(IndiumTinBariumTitaniumCuprate.getFluid(144 * 256))
-                .duration(50*20*256/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(50 * 20 * 256 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Uranium238.getFluid(144 * 32),
@@ -395,7 +425,7 @@ public class PlasmaFoundryRecipes {
                         Argon.getPlasma(1000))
                 .foundryCatalyst(CATALYST_SUPERCONDUCTORS, CATALYST_NAQUADAH_ALLOYS)
                 .fluidOutputs(UraniumRhodiumDinaquadide.getFluid(144 * 128))
-                .duration(75*20*128/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(75 * 20 * 128 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(NaquadahEnriched.getFluid(144 * 27),
@@ -405,7 +435,7 @@ public class PlasmaFoundryRecipes {
                         Nickel.getPlasma(1000))
                 .foundryCatalyst(CATALYST_SUPERCONDUCTORS, CATALYST_NAQUADAH_ALLOYS)
                 .fluidOutputs(EnrichedNaquadahTriniumEuropiumDuranide.getFluid(144 * 60))
-                .duration(60*20*60/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(60 * 20 * 60 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Ruthenium.getFluid(144 * 5),
@@ -415,7 +445,7 @@ public class PlasmaFoundryRecipes {
                         Oxygen.getPlasma(12000))
                 .foundryCatalyst(CATALYST_SUPERCONDUCTORS, CATALYST_PLATINUM_GROUP_ALLOYS)
                 .fluidOutputs(RutheniumTriniumAmericiumNeutronate.getFluid(144 * 70))
-                .duration(50*20*70/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(50 * 20 * 70 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Copper.getFluid(144 * 768),
@@ -423,7 +453,7 @@ public class PlasmaFoundryRecipes {
                         Helium.getPlasma(100))
                 .foundryCatalyst(CATALYST_COPPER_ALLOYS, CATALYST_TIN_ALLOYS)
                 .fluidOutputs(Bronze.getFluid(144 * 1024))
-                .duration(15*20*1024/2/2/2/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(15 * 20 * 1024 / 2 / 2 / 2 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Copper.getFluid(144 * 768),
@@ -431,7 +461,7 @@ public class PlasmaFoundryRecipes {
                         Helium.getPlasma(100))
                 .foundryCatalyst(CATALYST_COPPER_ALLOYS)
                 .fluidOutputs(Brass.getFluid(144 * 1024))
-                .duration(15*20*1024/2/2/2/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(15 * 20 * 1024 / 2 / 2 / 2 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Copper.getFluid(144 * 1024),
@@ -439,7 +469,7 @@ public class PlasmaFoundryRecipes {
                         Helium.getPlasma(100))
                 .foundryCatalyst(CATALYST_COPPER_ALLOYS)
                 .fluidOutputs(RedAlloy.getFluid(144 * 1024))
-                .duration(15*20*1024/2/2/2/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(15 * 20 * 1024 / 2 / 2 / 2 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Copper.getFluid(144 * 1024),
@@ -447,7 +477,7 @@ public class PlasmaFoundryRecipes {
                         Helium.getPlasma(100))
                 .foundryCatalyst(CATALYST_COPPER_ALLOYS)
                 .fluidOutputs(BlueAlloy.getFluid(144 * 1024))
-                .duration(15*20*1024/2/2/2/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(15 * 20 * 1024 / 2 / 2 / 2 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Copper.getFluid(144 * 512),
@@ -455,7 +485,7 @@ public class PlasmaFoundryRecipes {
                         Helium.getPlasma(100))
                 .foundryCatalyst(CATALYST_COPPER_ALLOYS)
                 .fluidOutputs(Cupronickel.getFluid(144 * 1024))
-                .duration(15*20*1024/2/2/2/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(15 * 20 * 1024 / 2 / 2 / 2 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Copper.getFluid(144 * 672),
@@ -464,7 +494,7 @@ public class PlasmaFoundryRecipes {
                         Helium.getPlasma(100))
                 .foundryCatalyst(CATALYST_COPPER_ALLOYS, CATALYST_TIN_ALLOYS)
                 .fluidOutputs(Potin.getFluid(144 * 1008))
-                .duration(15*20*1008/2/2/2/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(15 * 20 * 1008 / 2 / 2 / 2 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Copper.getFluid(144 * 300),
@@ -472,7 +502,7 @@ public class PlasmaFoundryRecipes {
                         Helium.getPlasma(1000))
                 .foundryCatalyst(CATALYST_COPPER_ALLOYS, CATALYST_GOLD_ALLOYS)
                 .fluidOutputs(BlackBronze.getFluid(144 * 500))
-                .duration(50*20*500/2/2/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(50 * 20 * 500 / 2 / 2 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Bismuth.getFluid(144 * 100),
@@ -480,7 +510,7 @@ public class PlasmaFoundryRecipes {
                         Helium.getPlasma(1000))
                 .foundryCatalyst(CATALYST_COPPER_ALLOYS)
                 .fluidOutputs(BismuthBronze.getFluid(144 * 500))
-                .duration(50*20*500/2/2/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(50 * 20 * 500 / 2 / 2 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Silver.getFluid(144 * 400),
@@ -488,7 +518,7 @@ public class PlasmaFoundryRecipes {
                         Helium.getPlasma(1000))
                 .foundryCatalyst(CATALYST_COPPER_ALLOYS)
                 .fluidOutputs(SterlingSilver.getFluid(144 * 500))
-                .duration(50*20*500/2/2/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(50 * 20 * 500 / 2 / 2 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Gold.getFluid(144 * 400),
@@ -496,7 +526,7 @@ public class PlasmaFoundryRecipes {
                         Helium.getPlasma(1000))
                 .foundryCatalyst(CATALYST_COPPER_ALLOYS, CATALYST_GOLD_ALLOYS)
                 .fluidOutputs(RoseGold.getFluid(144 * 500))
-                .duration(50*20*500/2/2/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(50 * 20 * 500 / 2 / 2 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Gold.getFluid(144 * 512),
@@ -504,7 +534,7 @@ public class PlasmaFoundryRecipes {
                         Helium.getPlasma(100))
                 .foundryCatalyst(CATALYST_GOLD_ALLOYS)
                 .fluidOutputs(Electrum.getFluid(144 * 1024))
-                .duration(15*20*1024/2/2/2/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(15 * 20 * 1024 / 2 / 2 / 2 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Lead.getFluid(144 * 832),
@@ -512,7 +542,7 @@ public class PlasmaFoundryRecipes {
                         Helium.getPlasma(100))
                 .foundryCatalyst(CATALYST_BATTERY_ALLOY)
                 .fluidOutputs(BatteryAlloy.getFluid(144 * 1040))
-                .duration(15*20*1040/2/2/2/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(15 * 20 * 1040 / 2 / 2 / 2 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Tin.getFluid(144 * 624),
@@ -521,7 +551,7 @@ public class PlasmaFoundryRecipes {
                         Helium.getPlasma(100))
                 .foundryCatalyst(CATALYST_SOLDERING_ALLOYS)
                 .fluidOutputs(SolderingAlloy.getFluid(144 * 1040))
-                .duration(15*20*1040/2/2/2/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(15 * 20 * 1040 / 2 / 2 / 2 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Cadmium.getFluid(144 * 96),
@@ -530,7 +560,7 @@ public class PlasmaFoundryRecipes {
                         Nitrogen.getPlasma(1000))
                 .foundryCatalyst(CATALYST_SOLDERING_ALLOYS)
                 .fluidOutputs(HighGradeSolderingAlloy.getFluid(144 * 192))
-                .duration(75*20*192/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(75 * 20 * 192 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Tin.getFluid(144 * 512),
@@ -538,7 +568,7 @@ public class PlasmaFoundryRecipes {
                         Helium.getPlasma(100))
                 .foundryCatalyst(CATALYST_TIN_ALLOYS)
                 .fluidOutputs(TinAlloy.getFluid(144 * 1024))
-                .duration(15*20*1024/2/2/2/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(15 * 20 * 1024 / 2 / 2 / 2 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Ruthenium.getFluid(144 * 144),
@@ -547,7 +577,7 @@ public class PlasmaFoundryRecipes {
                         Argon.getPlasma(1000))
                 .foundryCatalyst(CATALYST_PLATINUM_GROUP_ALLOYS)
                 .fluidOutputs(RTMAlloy.getFluid(144 * 252))
-                .duration(70*20*252/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(70 * 20 * 252 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Yttrium.getFluid(144 * 15),
@@ -556,7 +586,7 @@ public class PlasmaFoundryRecipes {
                         Oxygen.getPlasma(24000))
                 .foundryCatalyst(CATALYST_COPPER_ALLOYS)
                 .fluidOutputs(YttriumBariumCuprate.getFluid(144 * 195))
-                .duration(50*20*65/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(50 * 20 * 65 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Ruthenium.getFluid(144 * 120),
@@ -564,7 +594,7 @@ public class PlasmaFoundryRecipes {
                         Argon.getPlasma(1000))
                 .foundryCatalyst(CATALYST_PLATINUM_GROUP_ALLOYS)
                 .fluidOutputs(Ruridit.getFluid(144 * 180))
-                .duration(80*20*180/2/2/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(80 * 20 * 180 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Osmium.getFluid(144 * 32),
@@ -572,7 +602,14 @@ public class PlasmaFoundryRecipes {
                         Tin.getPlasma(144 * 16))
                 .foundryCatalyst(CATALYST_PLATINUM_GROUP_ALLOYS)
                 .fluidOutputs(Osmiridium.getFluid(144 * 128))
-                .duration(50*20*128/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(50 * 20 * 128 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
+
+        PLASMA_FOUNDRY_RECIPES.recipeBuilder()
+                .fluidInputs(Iron.getFluid(144 * 1024),
+                        Oxygen.getPlasma(100))
+                .foundryCatalyst(CATALYST_STEELS)
+                .fluidOutputs(Steel.getFluid(144 * 1024))
+                .duration(25 * 20 * 1024 / 2 / 2 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Naquadah.getFluid(144 * 64),
@@ -581,7 +618,7 @@ public class PlasmaFoundryRecipes {
                         Iron.getPlasma(144 * 8))
                 .foundryCatalyst(CATALYST_NAQUADAH_ALLOYS)
                 .fluidOutputs(NaquadahAlloy.getFluid(144 * 128))
-                .duration(50*20*128/2/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(50 * 20 * 128 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(RoseGold.getFluid(144 * 24),
@@ -592,7 +629,7 @@ public class PlasmaFoundryRecipes {
                         Argon.getPlasma(1000))
                 .foundryCatalyst(CATALYST_GOLD_ALLOYS, CATALYST_NAQUADAH_ALLOYS)
                 .fluidOutputs(Hihiirokane.getFluid(144 * 64))
-                .duration(100*20*64/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(100 * 20 * 64 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Tritanium.getFluid(144 * 24),
@@ -603,7 +640,26 @@ public class PlasmaFoundryRecipes {
                         Iron.getPlasma(144 * 8))
                 .foundryCatalyst(CATALYST_PLATINUM_GROUP_ALLOYS)
                 .fluidOutputs(RawAdamantium.getFluid(144 * 64))
-                .duration(100*20*64/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(100 * 20 * 64 / 2 / 4).EUt(VA[UV]).buildAndRegister();
+
+        PLASMA_FOUNDRY_RECIPES.recipeBuilder()
+                .fluidInputs(Niobium.getFluid(144 * 32),
+                        Titanium.getFluid(144 * 32),
+                        Nitrogen.getPlasma(2000))
+                .foundryCatalyst(CATALYST_TITANIUM_ALLOYS)
+                .fluidOutputs(NiobiumTitanium.getFluid(144 * 64))
+                .duration(20 * 45 * 64 / 2 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
+
+        PLASMA_FOUNDRY_RECIPES.recipeBuilder()
+                .fluidInputs(Aluminium.getFluid(144 * 32),
+                        Lithium.getFluid(144 * 32),
+                        Magnesium.getFluid(144 * 16),
+                        Scandium.getFluid(144 * 32),
+                        Titanium.getFluid(144 * 48),
+                        Iron.getPlasma(144 * 8))
+                .foundryCatalyst(CATALYST_TITANIUM_ALLOYS)
+                .fluidOutputs(ALMST.getFluid(144 * 16 * 9))
+                .duration(45 * 20 * 16 * 9 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Vibranium.getFluid(144 * 32),
@@ -614,7 +670,7 @@ public class PlasmaFoundryRecipes {
                         Americium.getPlasma(144 * 8))
                 .foundryCatalyst(CATALYST_VIBRANIUM_ALLOY)
                 .fluidOutputs(VibraniumAlloy.getFluid(144 * 64))
-                .duration(100*20*64/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(100 * 20 * 64 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Oganesson.getFluid(144 * 16),
@@ -622,7 +678,7 @@ public class PlasmaFoundryRecipes {
                         Nickel.getPlasma(144 * 24))
                 .foundryCatalyst(CATALYST_OGANESSON_TETRATENNESSIDE)
                 .fluidOutputs(OganessonTetratennesside.getFluid(144 * 80))
-                .duration(100*20*80/2/4).EUt(VA[UHV]).buildAndRegister();
+                .duration(100 * 20 * 80 / 2 / 4).EUt(VA[UHV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(OganessonTetratennesside.getFluid(144 * 16),
@@ -633,7 +689,7 @@ public class PlasmaFoundryRecipes {
                         Iron.getPlasma(144 * 16))
                 .foundryCatalyst(CATALYST_HALKONITE)
                 .fluidOutputs(HalkonitePreparationBase.getFluid(144 * 64))
-                .duration(100*20*64/2/4).EUt(VA[UHV]).buildAndRegister();
+                .duration(100 * 20 * 64 / 2 / 4).EUt(VA[UHV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Holmium.getFluid(144 * 32),
@@ -643,7 +699,7 @@ public class PlasmaFoundryRecipes {
                         Tin.getPlasma(144 * 8))
                 .foundryCatalyst(CATALYST_HAM_ALLOY)
                 .fluidOutputs(HAMAlloy.getFluid(144 * 64))
-                .duration(100*20*64/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(100 * 20 * 64 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Flerovium.getFluid(144 * 32),
@@ -653,7 +709,7 @@ public class PlasmaFoundryRecipes {
                         Nitrogen.getPlasma(1000))
                 .foundryCatalyst(CATALYST_SOLDERING_ALLOYS)
                 .fluidOutputs(SuperheavySolderingAlloy.getFluid(144 * 64))
-                .duration(100*20*64/2/4).EUt(VA[UV]).buildAndRegister();
+                .duration(100 * 20 * 64 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Thorium.getFluid(144 * 108),
@@ -675,7 +731,7 @@ public class PlasmaFoundryRecipes {
                         Iron.getPlasma(144 * 128))
                 .foundryCatalyst(CATALYST_ABYSSAL_ALLOY)
                 .fluidOutputs(AbyssalAlloy.getFluid(144 * 64))
-                .duration(100*20*64/2/4/2).EUt(VA[UEV]).buildAndRegister();
+                .duration(100 * 20 * 64 / 2 / 4 / 2).EUt(VA[UEV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Taranium.getFluid(144 * 13),
@@ -686,7 +742,7 @@ public class PlasmaFoundryRecipes {
                         Americium.getPlasma(144 * 64))
                 .foundryCatalyst(CATALYST_SUPERCONDUCTORS)
                 .fluidOutputs(ScUevSane.getFluid(144 * 65))
-                .duration(100*20*64/2/4/2).EUt(VA[UEV]).buildAndRegister();
+                .duration(100 * 20 * 64 / 2 / 4 / 2).EUt(VA[UEV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Draconium.getFluid(144 * 64),
@@ -696,7 +752,7 @@ public class PlasmaFoundryRecipes {
                         Flerovium.getPlasma(144 * 32))
                 .foundryCatalyst(CATALYST_AWAKENED_DRACONIUM)
                 .fluidOutputs(AwakenedDraconium.getFluid(144 * 64))
-                .duration(100*20*64/2/4/2).EUt(VA[UIV]).buildAndRegister();
+                .duration(100 * 20 * 64 / 2 / 4 / 2).EUt(VA[UIV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(HalkonitePreparationBase.getFluid(144 * 128),
@@ -707,6 +763,6 @@ public class PlasmaFoundryRecipes {
                         Dragonblood.getPlasma(144 * 32))
                 .fluidOutputs(ExoHalkoniteBase.getFluid(144 * 64))
                 .foundryCatalyst(CATALYST_EXO_HALKONITE)
-                .duration(100*20*64/2/4/2).EUt(VA[UXV]).buildAndRegister();
+                .duration(100 * 20 * 64 / 2 / 4 / 2).EUt(VA[UXV]).buildAndRegister();
     }
 }

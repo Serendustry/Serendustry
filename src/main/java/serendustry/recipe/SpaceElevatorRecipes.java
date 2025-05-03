@@ -7,26 +7,24 @@ import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static gregtech.common.metatileentities.MetaTileEntities.ADVANCED_LARGE_MINER;
-import static gregtech.common.metatileentities.MetaTileEntities.ALLOY_SMELTER;
 import static serendustry.item.SerendustryMetaItems.*;
 import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryMetaTileEntities.SPACE_ELEVATOR;
 import static serendustry.machine.SerendustryRecipeMaps.SPACE_ELEVATOR_RECIPES;
 
-import gregtech.api.GregTechAPI;
-import gregtech.api.recipes.RecipeMap;
-import gregtech.api.unification.material.Material;
-import gregtech.common.metatileentities.MetaTileEntities;
-import gregtech.core.unification.material.internal.MaterialRegistryManager;
 import net.minecraft.init.Blocks;
 
-import gregtech.api.recipes.chance.output.ChancedOutputLogic;
 import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.common.metatileentities.MetaTileEntities;
+import serendustry.blocks.BlockSerendustryMultiCasing;
+import serendustry.blocks.SerendustryMetaBlocks;
 
 public class SpaceElevatorRecipes {
 
     public static void init() {
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .inputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(
+                                BlockSerendustryMultiCasing.SerendustryMultiCasingType.SPACE_ELEVATOR, 4))
                 .input(circuit, MarkerMaterials.Tier.UHV, 16)
                 .input(circuit, MarkerMaterials.Tier.UV, 64)
                 .input(SENSOR_ZPM, 32)
@@ -36,13 +34,13 @@ public class SpaceElevatorRecipes {
                 .input(screw, Adamantium, 64)
                 .input(wireGtQuadruple, EnrichedNaquadahTriniumEuropiumDuranide, 64)
                 .input(cableGtQuadruple, Hihiirokane, 64)
-                .fluidInputs(SelfRepairingNanobots.getFluid(144 * 32))
+                .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 64))
                 .fluidInputs(MolybdeniteLubricant.getFluid(64000))
                 .fluidInputs(Naquadria.getFluid(144 * 64))
                 .fluidInputs(Europium.getFluid(144 * 64))
                 .output(SPACE_ELEVATOR)
                 .stationResearch(b -> b
-                        .researchStack(ADVANCED_LARGE_MINER.getStackForm())
+                        .researchStack(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.SPACE_ELEVATOR))
                         .CWUt(64)
                         .EUt(VA[UV]))
                 .duration(9600).EUt(VA[UV]).buildAndRegister();
@@ -169,7 +167,7 @@ public class SpaceElevatorRecipes {
                 .chancedOutput(COOPERITE_PLANETOID_DATA, 300, 0)
                 .chancedOutput(AZBANTIUM_PLANETOID_DATA, 300, 0)
                 .chancedOutput(VIBRANITE_PLANETOID_DATA, 300, 0)
-                //.chancedOutputLogic(ChancedOutputLogic.XOR)
+                // .chancedOutputLogic(ChancedOutputLogic.XOR)
                 .duration(800).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
@@ -206,7 +204,7 @@ public class SpaceElevatorRecipes {
                 .chancedOutput(NETHERITE_PLANETOID_DATA, 900, 0)
                 .chancedOutput(TENGAM_PLANETOID_DATA, 700, 0)
                 .chancedOutput(DRACONIUM_PLANETOID_DATA, 500, 0)
-                //.chancedOutputLogic(ChancedOutputLogic.XOR)
+                // .chancedOutputLogic(ChancedOutputLogic.XOR)
                 .duration(800).EUt(VA[UHV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
@@ -229,7 +227,7 @@ public class SpaceElevatorRecipes {
                 .chancedOutput(BLACK_DWARF_STAR_DATA, 1150, 0)
                 .chancedOutput(NEUTRON_STAR_DATA, 2200, 0)
                 .chancedOutput(PULSAR_STAR_DATA, 300, 0)
-                //.chancedOutputLogic(ChancedOutputLogic.XOR)
+                // .chancedOutputLogic(ChancedOutputLogic.XOR)
                 .duration(1200).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
@@ -572,7 +570,8 @@ public class SpaceElevatorRecipes {
                 .input(EXOTIC_PLANETOID_DATA)
                 .fluidInputs(RocketFuel.getFluid(30000))
                 .output(ore, Bromargyrite, 32) // ~32 buckets Bromine, or ~160 ScUevSane, or 10 Positronic Mainframes
-                .output(ore, Olsacherite, 32) // ~5.3 Selenium, or 41 BETS Perrhenate, or 205.38 ScUevSane, or 12.8 Positronic Mainframes
+                .output(ore, Olsacherite, 32) // ~5.3 Selenium, or 41 BETS Perrhenate, or 205.38 ScUevSane, or 12.8
+                                              // Positronic Mainframes
                 .output(ore, Crookesite, 16) // ~4.57 Selenium, or ~35 BETS Perrhenate, and ~9.1 Thallium
                 .output(ore, Rheniite, 3) // ~2 Rhenium, or ~82 BETS Perrhenate
                 .output(ore, Renierite, 64 * 4) // ~22.24 Germanium, or 178 Abyssal Alloy, or 14.8 Positronic Mainframes

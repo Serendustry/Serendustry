@@ -5,22 +5,19 @@ import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
-import static gregtech.common.metatileentities.MetaTileEntities.ADVANCED_LARGE_MINER;
-import static gregtech.common.metatileentities.MetaTileEntities.FUSION_REACTOR;
 import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_BLANK;
 import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_OVERWORLD;
 import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryMetaTileEntities.NEBULAIC_NEXUS;
 import static serendustry.machine.SerendustryRecipeMaps.NEBULAIC_NEXUS_RECIPES;
 
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+
 import gregtech.api.fluids.store.FluidStorageKeys;
-import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.Material;
 import gregtech.common.items.MetaItems;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.fluids.FluidStack;
 
 public class StarMatterRecipes {
 
@@ -79,14 +76,14 @@ public class StarMatterRecipes {
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
                 .input(ingot, Darmstadtium)
-                .fluidInputs(Helium.getFluid(FluidStorageKeys.PLASMA,1000))
+                .fluidInputs(Helium.getFluid(FluidStorageKeys.PLASMA, 1000))
                 .output(ingotHot, StellarContainmentBase)
                 .duration(400).EUt(VA[UV]).buildAndRegister();
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
                 .fluidInputs(Naquadria.getFluid(144 * 4),
                         Oxygen.getFluid(FluidStorageKeys.LIQUID, 1000),
-                        Helium.getFluid(FluidStorageKeys.LIQUID,500))
+                        Helium.getFluid(FluidStorageKeys.LIQUID, 500))
                 .fluidOutputs(StellarBaptismSolution.getFluid(1000))
                 .duration(200).EUt(VA[UV]).buildAndRegister();
 
@@ -122,6 +119,5 @@ public class StarMatterRecipes {
                         Neutronium.getFluid(144 * 64))
                 .output(STELLAR_ESSENCE_BLANK)
                 .duration(40000).EUt(VA[UEV]).buildAndRegister();
-
     }
 }

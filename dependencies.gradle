@@ -26,9 +26,11 @@ dependencies {
 
     // Hard Dependencies
     implementation("gregtech:gregtech:2.8.10-beta:dev") { transitive = false } // GTCEu 2.8.10
+    //implementation("gregtech:gregtech:2.8.10-beta:dev") { transitive = false } // GTCEu 2.8.10
     implementation "codechicken:codechickenlib:3.2.3.358:dev" // CCL 3.2.3.358
 
     // Soft Dependencies
     compileOnlyApi rfg.deobf("curse.maven:ctm-267602:2915363") // CTM 1.0.2.31
-    compileOnlyApi "appeng:ae2-uel:v0.56.4:dev" // AE2UEL 0.56.2
+    /*compileOnlyApi*/ implementation rfg.deobf("curse.maven:ae2-extended-life-570458:5411078")// AE2UEL 0.56.6
+    implementation rfg.deobf("curse.maven:ae2-fluid-crafting-rework-623955:5751930") // AE2FC 2.6.6-r
 }

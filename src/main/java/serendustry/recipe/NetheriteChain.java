@@ -1,14 +1,15 @@
 package serendustry.recipe;
 
-import gregtech.api.unification.ore.OrePrefix;
-
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static serendustry.item.material.SerendustryMaterials.*;
 
+import gregtech.api.unification.ore.OrePrefix;
+
 public class NetheriteChain {
+
     public static void init() {
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .input(dust, RawAncientDebris)
@@ -53,7 +54,7 @@ public class NetheriteChain {
         OrePrefix[] gems = { gem, gemFlawless, gemExquisite };
         int[] value = { 1, 2, 4 };
 
-        for(int i = 0; i < gems.length; i++) {
+        for (int i = 0; i < gems.length; i++) {
             CHEMICAL_BATH_RECIPES.recipeBuilder()
                     .input(gems[i], Diamond)
                     .fluidInputs(Netherite.getFluid(144 * value[i]))

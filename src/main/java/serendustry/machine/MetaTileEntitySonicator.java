@@ -1,10 +1,9 @@
 package serendustry.machine;
 
-import gregtech.api.unification.material.Materials;
-import gregtech.common.blocks.BlockGlassCasing;
-import gregtech.common.blocks.BlockMetalCasing;
-import gregtech.common.blocks.BlockWireCoil;
-import net.minecraft.block.state.IBlockState;
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
+
 import net.minecraft.util.ResourceLocation;
 
 import org.jetbrains.annotations.NotNull;
@@ -15,14 +14,13 @@ import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
+import gregtech.api.unification.material.Materials;
 import gregtech.client.renderer.ICubeRenderer;
-import gregtech.client.renderer.texture.Textures;
-import gregtech.common.blocks.BlockMachineCasing;
+import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.MetaBlocks;
-
-import static gregtech.api.util.RelativeDirection.DOWN;
-import static gregtech.api.util.RelativeDirection.FRONT;
-import static gregtech.api.util.RelativeDirection.LEFT;
+import serendustry.blocks.BlockSerendustryMetalCasing;
+import serendustry.blocks.SerendustryMetaBlocks;
+import serendustry.client.renderer.texture.SerendustryTextures;
 
 public class MetaTileEntitySonicator extends RecipeMapMultiblockController {
 
@@ -58,8 +56,8 @@ public class MetaTileEntitySonicator extends RecipeMapMultiblockController {
                         " AADDDDDAA        ",
                         " AADDDDDAA        ",
                         " AAAAAAAAA        ",
-                        " AAAAAAAAA        "
-                ).aisle(
+                        " AAAAAAAAA        ")
+                .aisle(
                         "                  ",
                         "                  ",
                         "                  ",
@@ -74,8 +72,8 @@ public class MetaTileEntitySonicator extends RecipeMapMultiblockController {
                         "A         A       ",
                         "A         A       ",
                         "A         A       ",
-                        " AAAAAAAAA        "
-                ).aisle(
+                        " AAAAAAAAA        ")
+                .aisle(
                         "                  ",
                         "                  ",
                         "                  ",
@@ -90,8 +88,8 @@ public class MetaTileEntitySonicator extends RecipeMapMultiblockController {
                         "A         A  AAAAA",
                         "A         A  ADEDA",
                         "A         A  AAAAA",
-                        " AAAAAAAAA   AAAAA"
-                ).aisle(
+                        " AAAAAAAAA   AAAAA")
+                .aisle(
                         "                  ",
                         "                  ",
                         "                  ",
@@ -106,8 +104,8 @@ public class MetaTileEntitySonicator extends RecipeMapMultiblockController {
                         "A         A  A   A",
                         "A         A  A   A",
                         "A         A  A   A",
-                        " AAAAAAAAA   AAAAA"
-                ).aisle(
+                        " AAAAAAAAA   AAAAA")
+                .aisle(
                         "                  ",
                         "     CCCCCCCCCCC  ",
                         "     C         C  ",
@@ -122,8 +120,8 @@ public class MetaTileEntitySonicator extends RecipeMapMultiblockController {
                         "A    C    A  A C A",
                         "A    C    A  A C A",
                         "A    C    A  A C A",
-                        " AAAABAAAA   AABAA"
-                ).aisle(
+                        " AAAABAAAA   AABAA")
+                .aisle(
                         "     CCCCCCCCCCC  ",
                         "    CBBBBBBBBBBBC ",
                         "    CBCCCCCCCCCBC ",
@@ -138,8 +136,8 @@ public class MetaTileEntitySonicator extends RecipeMapMultiblockController {
                         "A   CBC   A  ACBCA",
                         "A   CBC   A  ACBCA",
                         "A   CBC   A  ACBCA",
-                        " AAABBBAAA   ABBBA"
-                ).aisle(
+                        " AAABBBAAA   ABBBA")
+                .aisle(
                         "                  ",
                         "     CCCCCCCCCCC  ",
                         "     C         C  ",
@@ -154,8 +152,8 @@ public class MetaTileEntitySonicator extends RecipeMapMultiblockController {
                         "A    C    A  A C A",
                         "A    C    A  A C A",
                         "A    C    A  A C A",
-                        " AAAABAAAA   AABAA"
-                ).aisle(
+                        " AAAABAAAA   AABAA")
+                .aisle(
                         "                  ",
                         "                  ",
                         "                  ",
@@ -170,8 +168,8 @@ public class MetaTileEntitySonicator extends RecipeMapMultiblockController {
                         "A         A  A   A",
                         "A         A  A   A",
                         "A         A  A   A",
-                        " AAAAAAAAA   AAAAA"
-                ).aisle(
+                        " AAAAAAAAA   AAAAA")
+                .aisle(
                         "                  ",
                         "                  ",
                         "                  ",
@@ -186,8 +184,8 @@ public class MetaTileEntitySonicator extends RecipeMapMultiblockController {
                         "A         A  AAAAA",
                         "A         A  AAAAA",
                         "A         A  AAAAA",
-                        " AAAAAAAAA   AAAAA"
-                ).aisle(
+                        " AAAAAAAAA   AAAAA")
+                .aisle(
                         "                  ",
                         "                  ",
                         "                  ",
@@ -202,19 +200,22 @@ public class MetaTileEntitySonicator extends RecipeMapMultiblockController {
                         " AAAAAAAAA        ",
                         " AAAAAAAAA        ",
                         " AAAAAAAAA        ",
-                        " AAAAAAAAA        "
-                )
+                        " AAAAAAAAA        ")
 
                 .where('E', selfPredicate())
-                .where('A', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST)) // todo
-                        .setMinGlobalLimited(526).or(autoAbilities()))
-                .where('B', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE)))
+                .where('A',
+                        states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
+                                .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.CARBON))
+                                        .setMinGlobalLimited(526).or(autoAbilities()))
+                .where('B',
+                        states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
+                                .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.ADAMANTIUM)))
                 .where('C', frames(Materials.NaquadahAlloy))
                 .where('D', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS))) // todo
                 .build();
     }
 
     public ICubeRenderer getBaseTexture(@Nullable IMultiblockPart part) {
-        return Textures.ROBUST_TUNGSTENSTEEL_CASING; // todo
+        return SerendustryTextures.CASING_ADAMANTIUM;
     }
 }

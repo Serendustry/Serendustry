@@ -1,12 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.GTValues;
-import gregtech.api.recipes.ModHandler;
-import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.stack.UnificationEntry;
-import gregtech.common.blocks.BlockMachineCasing;
-import serendustry.SValues;
-
 import static gregtech.api.GTValues.UEV;
 import static gregtech.api.GTValues.UIV;
 import static gregtech.api.GTValues.VA;
@@ -14,7 +7,6 @@ import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-
 import static gregtech.common.blocks.MetaBlocks.MACHINE_CASING;
 import static gregtech.common.items.MetaItems.CONVEYOR_MODULE_UIV;
 import static gregtech.common.items.MetaItems.ELECTRIC_MOTOR_UIV;
@@ -23,18 +15,47 @@ import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_UHV;
 import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_UIV;
 import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UHV;
 import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UIV;
+import static gregtech.common.items.MetaItems.ROBOT_ARM_UV;
 import static gregtech.common.items.MetaItems.ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT;
 import static gregtech.common.metatileentities.MetaTileEntities.*;
 import static serendustry.item.SerendustryMetaItems.*;
 import static serendustry.item.material.SerendustryMaterials.*;
+import static serendustry.machine.SerendustryMetaTileEntities.ADVANCED_ASSEMBLY_LINE;
 import static serendustry.machine.SerendustryMetaTileEntities.ADVANCED_FUSION_REACTOR;
 import static serendustry.machine.SerendustryMetaTileEntities.ELECTRIC_IMPLOSION_COMPRESSOR;
 import static serendustry.machine.SerendustryMetaTileEntities.FLAMEL_CRUCIBLE;
 import static serendustry.machine.SerendustryMetaTileEntities.PLASMA_CONDENSER;
 
+import gregtech.api.GTValues;
+import gregtech.api.recipes.ModHandler;
+import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.stack.UnificationEntry;
+import gregtech.common.blocks.BlockMachineCasing;
+import serendustry.SValues;
+
 public class HTMachineRecipes {
 
     public static void init() {
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(frameGt, Adamantium, 4)
+                .input(ROBOT_ARM_UV, 8)
+                .input(circuit, MarkerMaterials.Tier.UHV, 4)
+                .input(circuit, MarkerMaterials.Tier.UV, 8)
+                .input(plateDense, Adamantium, 4)
+                .input(plate, Tritanium, 16)
+                .input(plate, Polybenzimidazole, 64)
+                .input(gear, Neutronium, 8)
+                .input(gear, Naquadria, 16)
+                .input(ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT, 16)
+                .input(cableGtDouble, YttriumBariumCuprate, 16)
+                .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 16),
+                        Naquadria.getFluid(144 * 8))
+                .output(ADVANCED_ASSEMBLY_LINE)
+                .stationResearch(b -> b
+                        .researchStack(ASSEMBLY_LINE.getStackForm())
+                        .CWUt(64)
+                        .EUt(VA[GTValues.UV]))
+                .duration(8000).EUt(VA[GTValues.UHV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, Neutronium, 4)
@@ -45,6 +66,7 @@ public class HTMachineRecipes {
                 .input(gear, Neutronium, 8)
                 .input(gear, Naquadria, 16)
                 .input(ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT, 32)
+                .input(cableGtDouble, Hihiirokane, 16)
                 .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 32),
                         Neutronium.getFluid(144 * 8))
                 .output(ELECTRIC_IMPLOSION_COMPRESSOR)
@@ -111,7 +133,7 @@ public class HTMachineRecipes {
                 .duration(25600).EUt(VA[UIV]).buildAndRegister();
 
         // Voltage Coils
-        for(int i = GTValues.UHV; i <= GTValues.MAX; i++) {
+        for (int i = GTValues.UHV; i <= GTValues.MAX; i++) {
             ASSEMBLER_RECIPES.recipeBuilder()
                     .input(stickLong, SValues.Tier_Magnet[i])
                     .input(wireFine, SValues.Tier_Cable[i], 16)
@@ -120,217 +142,222 @@ public class HTMachineRecipes {
                     .duration(200).EUt(VA[i]).buildAndRegister();
         }
 
-         // Machine Casings
+        // Machine Casings
 
-         ModHandler.addShapedRecipe(true, "casing_uev", MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UEV), "PPP", "PwP", "PPP", 'P',
-         new UnificationEntry(plate, SValues.Tier_Plate[GTValues.UEV]));
-         ModHandler.addShapedRecipe(true, "casing_uiv", MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UIV), "PPP", "PwP", "PPP", 'P',
-         new UnificationEntry(plate, SValues.Tier_Plate[GTValues.UIV]));
-         ModHandler.addShapedRecipe(true, "casing_uxv", MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UXV), "PPP", "PwP", "PPP", 'P',
-         new UnificationEntry(plate, SValues.Tier_Plate[GTValues.UXV]));
-         ModHandler.addShapedRecipe(true, "casing_opv", MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.OpV), "PPP", "PwP", "PPP", 'P',
-         new UnificationEntry(plate, SValues.Tier_Plate[GTValues.OpV]));
-         ModHandler.addShapedRecipe(true, "casing_max", MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MAX), "PPP", "PwP", "PPP", 'P',
-         new UnificationEntry(plateDense, SValues.Tier_Plate[GTValues.MAX]));
+        ModHandler.addShapedRecipe(true, "casing_uev",
+                MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UEV), "PPP", "PwP", "PPP", 'P',
+                new UnificationEntry(plate, SValues.Tier_Plate[GTValues.UEV]));
+        ModHandler.addShapedRecipe(true, "casing_uiv",
+                MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UIV), "PPP", "PwP", "PPP", 'P',
+                new UnificationEntry(plate, SValues.Tier_Plate[GTValues.UIV]));
+        ModHandler.addShapedRecipe(true, "casing_uxv",
+                MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UXV), "PPP", "PwP", "PPP", 'P',
+                new UnificationEntry(plate, SValues.Tier_Plate[GTValues.UXV]));
+        ModHandler.addShapedRecipe(true, "casing_opv",
+                MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.OpV), "PPP", "PwP", "PPP", 'P',
+                new UnificationEntry(plate, SValues.Tier_Plate[GTValues.OpV]));
+        ModHandler.addShapedRecipe(true, "casing_max",
+                MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MAX), "PPP", "PwP", "PPP", 'P',
+                new UnificationEntry(plateDense, SValues.Tier_Plate[GTValues.MAX]));
 
-         ASSEMBLER_RECIPES.recipeBuilder()
-         .input(plate, SValues.Tier_Plate[GTValues.UEV], 8)
-         .circuitMeta(8)
-         .outputs(MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UEV))
-         .duration(50).EUt(16).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(plate, SValues.Tier_Plate[GTValues.UEV], 8)
+                .circuitMeta(8)
+                .outputs(MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UEV))
+                .duration(50).EUt(16).buildAndRegister();
 
-         ASSEMBLER_RECIPES.recipeBuilder()
-         .input(plate, SValues.Tier_Plate[GTValues.UIV], 8)
-         .circuitMeta(8)
-         .outputs(MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UIV))
-         .duration(50).EUt(16).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(plate, SValues.Tier_Plate[GTValues.UIV], 8)
+                .circuitMeta(8)
+                .outputs(MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UIV))
+                .duration(50).EUt(16).buildAndRegister();
 
-         ASSEMBLER_RECIPES.recipeBuilder()
-         .input(plate, SValues.Tier_Plate[GTValues.UXV], 8)
-         .circuitMeta(8)
-         .outputs(MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UXV))
-         .duration(50).EUt(16).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(plate, SValues.Tier_Plate[GTValues.UXV], 8)
+                .circuitMeta(8)
+                .outputs(MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UXV))
+                .duration(50).EUt(16).buildAndRegister();
 
-         ASSEMBLER_RECIPES.recipeBuilder()
-         .input(plate, SValues.Tier_Plate[GTValues.OpV], 8)
-         .circuitMeta(8)
-         .outputs(MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.OpV))
-         .duration(50).EUt(16).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(plate, SValues.Tier_Plate[GTValues.OpV], 8)
+                .circuitMeta(8)
+                .outputs(MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.OpV))
+                .duration(50).EUt(16).buildAndRegister();
 
-         ASSEMBLER_RECIPES.recipeBuilder()
-         .input(plateDense, SValues.Tier_Plate[GTValues.MAX], 8)
-         .circuitMeta(8)
-         .outputs(MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MAX))
-         .duration(50).EUt(16).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(plateDense, SValues.Tier_Plate[GTValues.MAX], 8)
+                .circuitMeta(8)
+                .outputs(MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MAX))
+                .duration(50).EUt(16).buildAndRegister();
 
-         // Machine Hull Assembler Recipes
+        // Machine Hull Assembler Recipes
 
-         ASSEMBLER_RECIPES.recipeBuilder()
-         .inputs(MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UHV))
-         .input(cableGtSingle, SValues.Tier_Cable[GTValues.UHV], 2)
-         .fluidInputs(RadoxPolymer.getFluid(288))
-         .output(HULL[GTValues.UHV])
-         .duration(50).EUt(16).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UHV))
+                .input(cableGtSingle, SValues.Tier_Cable[GTValues.UHV], 2)
+                .fluidInputs(RadoxPolymer.getFluid(288))
+                .output(HULL[GTValues.UHV])
+                .duration(50).EUt(16).buildAndRegister();
 
-         ASSEMBLER_RECIPES.recipeBuilder()
-         .inputs(MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UEV))
-         .input(cableGtSingle, SValues.Tier_Cable[GTValues.UEV], 2)
-         .fluidInputs(RadoxPolymer.getFluid(288))
-         .output(HULL[GTValues.UEV])
-         .duration(50).EUt(16).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UEV))
+                .input(cableGtSingle, SValues.Tier_Cable[GTValues.UEV], 2)
+                .fluidInputs(RadoxPolymer.getFluid(288))
+                .output(HULL[GTValues.UEV])
+                .duration(50).EUt(16).buildAndRegister();
 
-         ASSEMBLER_RECIPES.recipeBuilder()
-         .inputs(MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UIV))
-         .input(wireGtSingle, SValues.Tier_Cable[GTValues.UIV], 2)
-         .fluidInputs(RadoxPolymer.getFluid(288))
-         .output(HULL[GTValues.UIV])
-         .duration(50).EUt(16).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UIV))
+                .input(wireGtSingle, SValues.Tier_Cable[GTValues.UIV], 2)
+                .fluidInputs(RadoxPolymer.getFluid(288))
+                .output(HULL[GTValues.UIV])
+                .duration(50).EUt(16).buildAndRegister();
 
-         ASSEMBLER_RECIPES.recipeBuilder()
-         .inputs(MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UXV))
-         .input(cableGtSingle, SValues.Tier_Cable[GTValues.UXV], 2)
-         .fluidInputs(RadoxPolymer.getFluid(288))
-         .output(HULL[GTValues.UXV])
-         .duration(50).EUt(16).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UXV))
+                .input(cableGtSingle, SValues.Tier_Cable[GTValues.UXV], 2)
+                .fluidInputs(RadoxPolymer.getFluid(288))
+                .output(HULL[GTValues.UXV])
+                .duration(50).EUt(16).buildAndRegister();
 
-         ASSEMBLER_RECIPES.recipeBuilder()
-         .inputs(MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.OpV))
-         .input(cableGtSingle, SValues.Tier_Cable[GTValues.OpV], 2)
-         .fluidInputs(RadoxPolymer.getFluid(288))
-         .output(HULL[GTValues.OpV])
-         .duration(50).EUt(16).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.OpV))
+                .input(cableGtSingle, SValues.Tier_Cable[GTValues.OpV], 2)
+                .fluidInputs(RadoxPolymer.getFluid(288))
+                .output(HULL[GTValues.OpV])
+                .duration(50).EUt(16).buildAndRegister();
 
-         ASSEMBLER_RECIPES.recipeBuilder()
-         .inputs(MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MAX))
-         .input(wireGtHex, SValues.Tier_Cable[GTValues.MAX], 2)
-         .fluidInputs(Floppa.getFluid(2592))
-         .output(HULL[GTValues.MAX])
-         .duration(50).EUt(16).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MAX))
+                .input(wireGtHex, SValues.Tier_Cable[GTValues.MAX], 2)
+                .fluidInputs(Floppa.getFluid(2592))
+                .output(HULL[GTValues.MAX])
+                .duration(50).EUt(16).buildAndRegister();
 
-         // Energy Output Hatches
+        // Energy Output Hatches
 
-         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-         .input(HULL[GTValues.UEV])
-         .input(spring, SValues.Tier_Cable[GTValues.UEV], 4)
-         .input(CHIP_OPIC, 4)
-         .input(circuit, MarkerMaterials.Tier.UEV)
-         .input(wireGtDouble, SValues.Tier_Superconductor[GTValues.UEV], 2)
-         .fluidInputs(SodiumPotassium.getFluid(18000))
-         .fluidInputs(SelfRepairingNanobots.getFluid(576))
-         .output(ENERGY_OUTPUT_HATCH[GTValues.UEV])
-                 .stationResearch(b -> b
-                         .researchStack(ENERGY_OUTPUT_HATCH[GTValues.UHV].getStackForm())
-                         .CWUt(128)
-                         .EUt(VA[GTValues.UEV]))
-         .duration(1000).EUt(VA[GTValues.UEV]).buildAndRegister();
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(HULL[GTValues.UEV])
+                .input(spring, SValues.Tier_Cable[GTValues.UEV], 4)
+                .input(CHIP_OPIC, 4)
+                .input(circuit, MarkerMaterials.Tier.UEV)
+                .input(wireGtDouble, SValues.Tier_Superconductor[GTValues.UEV], 2)
+                .fluidInputs(SodiumPotassium.getFluid(18000))
+                .fluidInputs(SelfRepairingNanobots.getFluid(576))
+                .output(ENERGY_OUTPUT_HATCH[GTValues.UEV])
+                .stationResearch(b -> b
+                        .researchStack(ENERGY_OUTPUT_HATCH[GTValues.UHV].getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[GTValues.UEV]))
+                .duration(1000).EUt(VA[GTValues.UEV]).buildAndRegister();
 
-         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-         .input(HULL[GTValues.UIV])
-         .input(spring, SValues.Tier_Cable[GTValues.UIV], 4)
-         .input(CHIP_OPIC, 8)
-         .input(circuit, MarkerMaterials.Tier.UIV)
-         .input(wireGtDouble, SValues.Tier_Superconductor[GTValues.UIV], 2)
-         .fluidInputs(SodiumPotassium.getFluid(24000))
-         .fluidInputs(MutatedLivingSolder.getFluid(1152))
-         .output(ENERGY_OUTPUT_HATCH[GTValues.UIV])
-                 .stationResearch(b -> b
-                         .researchStack(ENERGY_OUTPUT_HATCH[GTValues.UEV].getStackForm())
-                         .CWUt(128)
-                         .EUt(VA[GTValues.UIV]))
-         .duration(1000).EUt(VA[GTValues.UIV]).buildAndRegister();
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(HULL[GTValues.UIV])
+                .input(spring, SValues.Tier_Cable[GTValues.UIV], 4)
+                .input(CHIP_OPIC, 8)
+                .input(circuit, MarkerMaterials.Tier.UIV)
+                .input(wireGtDouble, SValues.Tier_Superconductor[GTValues.UIV], 2)
+                .fluidInputs(SodiumPotassium.getFluid(24000))
+                .fluidInputs(MutatedLivingSolder.getFluid(1152))
+                .output(ENERGY_OUTPUT_HATCH[GTValues.UIV])
+                .stationResearch(b -> b
+                        .researchStack(ENERGY_OUTPUT_HATCH[GTValues.UEV].getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[GTValues.UIV]))
+                .duration(1000).EUt(VA[GTValues.UIV]).buildAndRegister();
 
-         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-         .input(HULL[GTValues.UXV])
-         .input(spring, SValues.Tier_Cable[GTValues.UXV], 4)
-         .input(CHIP_OPIC, 16)
-         .input(circuit, MarkerMaterials.Tier.UXV)
-         .input(wireGtDouble, SValues.Tier_Superconductor[GTValues.UXV], 2)
-         .fluidInputs(SodiumPotassium.getFluid(32000))
-         .fluidInputs(MutatedLivingSolder.getFluid(2304))
-         .output(ENERGY_OUTPUT_HATCH[GTValues.UXV])
-                 .stationResearch(b -> b
-                         .researchStack(ENERGY_OUTPUT_HATCH[GTValues.UIV].getStackForm())
-                         .CWUt(128)
-                         .EUt(VA[GTValues.UXV]))
-         .duration(1000).EUt(VA[GTValues.UXV]).buildAndRegister();
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(HULL[GTValues.UXV])
+                .input(spring, SValues.Tier_Cable[GTValues.UXV], 4)
+                .input(CHIP_OPIC, 16)
+                .input(circuit, MarkerMaterials.Tier.UXV)
+                .input(wireGtDouble, SValues.Tier_Superconductor[GTValues.UXV], 2)
+                .fluidInputs(SodiumPotassium.getFluid(32000))
+                .fluidInputs(MutatedLivingSolder.getFluid(2304))
+                .output(ENERGY_OUTPUT_HATCH[GTValues.UXV])
+                .stationResearch(b -> b
+                        .researchStack(ENERGY_OUTPUT_HATCH[GTValues.UIV].getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[GTValues.UXV]))
+                .duration(1000).EUt(VA[GTValues.UXV]).buildAndRegister();
 
-         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-         .input(HULL[GTValues.OpV])
-         .input(spring, SValues.Tier_Cable[GTValues.OpV], 4)
-         .input(CHIP_OPIC, 32)
-         .input(circuit, MarkerMaterials.Tier.OpV)
-         .input(wireGtDouble, SValues.Tier_Superconductor[GTValues.OpV], 2)
-         .fluidInputs(SodiumPotassium.getFluid(64000))
-         .fluidInputs(MutatedLivingSolder.getFluid(4608))
-         .output(ENERGY_OUTPUT_HATCH[GTValues.OpV])
-                 .stationResearch(b -> b
-                         .researchStack(ENERGY_OUTPUT_HATCH[GTValues.UXV].getStackForm())
-                         .CWUt(128)
-                         .EUt(VA[GTValues.OpV]))
-         .duration(1000).EUt(VA[GTValues.OpV]).buildAndRegister();
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(HULL[GTValues.OpV])
+                .input(spring, SValues.Tier_Cable[GTValues.OpV], 4)
+                .input(CHIP_OPIC, 32)
+                .input(circuit, MarkerMaterials.Tier.OpV)
+                .input(wireGtDouble, SValues.Tier_Superconductor[GTValues.OpV], 2)
+                .fluidInputs(SodiumPotassium.getFluid(64000))
+                .fluidInputs(MutatedLivingSolder.getFluid(4608))
+                .output(ENERGY_OUTPUT_HATCH[GTValues.OpV])
+                .stationResearch(b -> b
+                        .researchStack(ENERGY_OUTPUT_HATCH[GTValues.UXV].getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[GTValues.OpV]))
+                .duration(1000).EUt(VA[GTValues.OpV]).buildAndRegister();
 
-         // Energy Input Hatches
+        // Energy Input Hatches
 
-         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-         .input(HULL[GTValues.UEV])
-         .input(cableGtSingle, SValues.Tier_Cable[GTValues.UEV], 4)
-         .input(CHIP_OPIC, 4)
-         .input(circuit, MarkerMaterials.Tier.UEV)
-         .input(wireGtDouble, SValues.Tier_Superconductor[GTValues.UEV], 2)
-         .fluidInputs(SodiumPotassium.getFluid(18000))
-         .fluidInputs(SelfRepairingNanobots.getFluid(576))
-         .output(ENERGY_INPUT_HATCH[GTValues.UEV])
-                 .stationResearch(b -> b
-                         .researchStack(ENERGY_INPUT_HATCH[GTValues.UHV].getStackForm())
-                         .CWUt(128)
-                         .EUt(VA[GTValues.UEV]))
-         .duration(1000).EUt(VA[GTValues.UEV]).buildAndRegister();
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(HULL[GTValues.UEV])
+                .input(cableGtSingle, SValues.Tier_Cable[GTValues.UEV], 4)
+                .input(CHIP_OPIC, 4)
+                .input(circuit, MarkerMaterials.Tier.UEV)
+                .input(wireGtDouble, SValues.Tier_Superconductor[GTValues.UEV], 2)
+                .fluidInputs(SodiumPotassium.getFluid(18000))
+                .fluidInputs(SelfRepairingNanobots.getFluid(576))
+                .output(ENERGY_INPUT_HATCH[GTValues.UEV])
+                .stationResearch(b -> b
+                        .researchStack(ENERGY_INPUT_HATCH[GTValues.UHV].getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[GTValues.UEV]))
+                .duration(1000).EUt(VA[GTValues.UEV]).buildAndRegister();
 
-         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-         .input(HULL[GTValues.UIV])
-         .input(CHIP_OPIC, 8)
-         .input(circuit, MarkerMaterials.Tier.UIV)
-         .input(wireGtDouble, SValues.Tier_Superconductor[GTValues.UIV], 4)
-         .fluidInputs(SodiumPotassium.getFluid(24000))
-         .fluidInputs(SentientNanobots.getFluid(576))
-         .output(ENERGY_INPUT_HATCH[GTValues.UIV])
-                 .stationResearch(b -> b
-                         .researchStack(ENERGY_INPUT_HATCH[GTValues.UEV].getStackForm())
-                         .CWUt(128)
-                         .EUt(VA[GTValues.UIV]))
-         .duration(1000).EUt(VA[GTValues.UIV]).buildAndRegister();
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(HULL[GTValues.UIV])
+                .input(CHIP_OPIC, 8)
+                .input(circuit, MarkerMaterials.Tier.UIV)
+                .input(wireGtDouble, SValues.Tier_Superconductor[GTValues.UIV], 4)
+                .fluidInputs(SodiumPotassium.getFluid(24000))
+                .fluidInputs(SentientNanobots.getFluid(576))
+                .output(ENERGY_INPUT_HATCH[GTValues.UIV])
+                .stationResearch(b -> b
+                        .researchStack(ENERGY_INPUT_HATCH[GTValues.UEV].getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[GTValues.UIV]))
+                .duration(1000).EUt(VA[GTValues.UIV]).buildAndRegister();
 
-         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-         .input(HULL[GTValues.UXV])
-         .input(cableGtSingle, SValues.Tier_Cable[GTValues.UXV], 4)
-         .input(CHIP_OPIC, 16)
-         .input(circuit, MarkerMaterials.Tier.UXV)
-         .input(wireGtDouble, SValues.Tier_Superconductor[GTValues.UXV], 2)
-         .fluidInputs(SodiumPotassium.getFluid(32000))
-         .fluidInputs(MutatedLivingSolder.getFluid(2304))
-         .output(ENERGY_INPUT_HATCH[GTValues.UXV])
-                 .stationResearch(b -> b
-                         .researchStack(ENERGY_INPUT_HATCH[GTValues.UIV].getStackForm())
-                         .CWUt(128)
-                         .EUt(VA[GTValues.UXV]))
-         .duration(1000).EUt(VA[GTValues.UXV]).buildAndRegister();
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(HULL[GTValues.UXV])
+                .input(cableGtSingle, SValues.Tier_Cable[GTValues.UXV], 4)
+                .input(CHIP_OPIC, 16)
+                .input(circuit, MarkerMaterials.Tier.UXV)
+                .input(wireGtDouble, SValues.Tier_Superconductor[GTValues.UXV], 2)
+                .fluidInputs(SodiumPotassium.getFluid(32000))
+                .fluidInputs(MutatedLivingSolder.getFluid(2304))
+                .output(ENERGY_INPUT_HATCH[GTValues.UXV])
+                .stationResearch(b -> b
+                        .researchStack(ENERGY_INPUT_HATCH[GTValues.UIV].getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[GTValues.UXV]))
+                .duration(1000).EUt(VA[GTValues.UXV]).buildAndRegister();
 
-         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-         .input(HULL[GTValues.OpV])
-         .input(cableGtSingle, SValues.Tier_Cable[GTValues.OpV], 4)
-         .input(CHIP_OPIC, 32)
-         .input(circuit, MarkerMaterials.Tier.OpV)
-         .input(wireGtDouble, SValues.Tier_Superconductor[GTValues.OpV], 2)
-         .fluidInputs(SodiumPotassium.getFluid(64000))
-         .fluidInputs(MutatedLivingSolder.getFluid(4608))
-         .output(ENERGY_INPUT_HATCH[GTValues.OpV])
-                 .stationResearch(b -> b
-                         .researchStack(ENERGY_INPUT_HATCH[GTValues.UXV].getStackForm())
-                         .CWUt(128)
-                         .EUt(VA[GTValues.OpV]))
-         .duration(1000).EUt(VA[GTValues.OpV]).buildAndRegister();
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(HULL[GTValues.OpV])
+                .input(cableGtSingle, SValues.Tier_Cable[GTValues.OpV], 4)
+                .input(CHIP_OPIC, 32)
+                .input(circuit, MarkerMaterials.Tier.OpV)
+                .input(wireGtDouble, SValues.Tier_Superconductor[GTValues.OpV], 2)
+                .fluidInputs(SodiumPotassium.getFluid(64000))
+                .fluidInputs(MutatedLivingSolder.getFluid(4608))
+                .output(ENERGY_INPUT_HATCH[GTValues.OpV])
+                .stationResearch(b -> b
+                        .researchStack(ENERGY_INPUT_HATCH[GTValues.UXV].getStackForm())
+                        .CWUt(128)
+                        .EUt(VA[GTValues.OpV]))
+                .duration(1000).EUt(VA[GTValues.OpV]).buildAndRegister();
 
-        for(int i = GTValues.UHV; i <= GTValues.UXV; i++) {
+        for (int i = GTValues.UHV; i <= GTValues.UXV; i++) {
 
             // Transformers
             ASSEMBLER_RECIPES.recipeBuilder()
@@ -389,7 +416,7 @@ public class HTMachineRecipes {
                 .output(POWER_TRANSFORMER[GTValues.OpV])
                 .duration(400).EUt(VA[GTValues.OpV - 1]).buildAndRegister();
 
-        for(int i = GTValues.UHV; i <= GTValues.OpV; i++) {
+        for (int i = GTValues.UHV; i <= GTValues.OpV; i++) {
             // Lasers
             ASSEMBLER_RECIPES.recipeBuilder()
                     .input(HULL[i])
@@ -452,9 +479,7 @@ public class HTMachineRecipes {
                     .duration(1200).EUt(VA[i]).buildAndRegister();
         }
 
-
         // todo: UHV 4a/16a/64a hatches
-        
 
         // The stuff below is commented out because none of these things actually get generated at high tiers, probably
         // by mistake. Uncomment it if that gets changed

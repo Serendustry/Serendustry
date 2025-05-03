@@ -1,34 +1,33 @@
 package serendustry.machine;
 
-import gregtech.api.capability.IEnergyContainer;
-import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import gregtech.api.pattern.PatternMatchContext;
-import gregtech.api.unification.material.Materials;
-import gregtech.common.blocks.BlockGlassCasing;
-import gregtech.common.blocks.BlockMetalCasing;
-import net.minecraft.block.state.IBlockState;
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.util.ResourceLocation;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
+import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
+import gregtech.api.pattern.PatternMatchContext;
+import gregtech.api.unification.material.Materials;
 import gregtech.client.renderer.ICubeRenderer;
-import gregtech.client.renderer.texture.Textures;
-import gregtech.common.blocks.BlockMachineCasing;
+import gregtech.common.blocks.BlockGlassCasing;
+import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
-import serendustry.item.material.SerendustryMaterials;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static gregtech.api.util.RelativeDirection.DOWN;
-import static gregtech.api.util.RelativeDirection.FRONT;
-import static gregtech.api.util.RelativeDirection.LEFT;
+import serendustry.blocks.BlockSerendustryMetalCasing;
+import serendustry.blocks.SerendustryMetaBlocks;
+import serendustry.client.renderer.texture.SerendustryTextures;
 
 public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblockController {
 
@@ -51,18 +50,21 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
         super.formStructure(context);
 
         List<IEnergyContainer> energyInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
-        List<IEnergyContainer> substationInput = new ArrayList<>(getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
+        List<IEnergyContainer> substationInput = new ArrayList<>(
+                getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
 
-        if(!energyInput.isEmpty() && !substationInput.isEmpty()) {
+        if (!energyInput.isEmpty() && !substationInput.isEmpty()) {
             invalidateStructure();
         }
 
         // todo: give error message to multiblock builder and make JEI not show mixed hatches
 
-        /*List<IEnergyContainer> powerInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
-        powerInput.addAll(getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
-
-        this.powerInput = new EnergyContainerList(powerInput);*/  // todo: update ceu so this works and check if this even needed
+        /*
+         * List<IEnergyContainer> powerInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
+         * powerInput.addAll(getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
+         * 
+         * this.powerInput = new EnergyContainerList(powerInput);
+         */  // todo: update ceu so this works and check if this even needed
     }
 
     @Override
@@ -85,8 +87,8 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
                         "               ",
                         "               ",
                         "               ",
-                        "      AAA      "
-                ).aisle(
+                        "      AAA      ")
+                .aisle(
                         "               ",
                         "               ",
                         "               ",
@@ -103,8 +105,8 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
                         "      DED      ",
                         "      DAD      ",
                         "      AAA      ",
-                        "     AAAAA     "
-                ).aisle(
+                        "     AAAAA     ")
+                .aisle(
                         "               ",
                         "               ",
                         "       A       ",
@@ -121,8 +123,8 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
                         "     B   B     ",
                         "     B   B     ",
                         "     AAAAA     ",
-                        "    AAAAAAA    "
-                ).aisle(
+                        "    AAAAAAA    ")
+                .aisle(
                         "               ",
                         "               ",
                         "       A       ",
@@ -139,8 +141,8 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
                         "    D     D    ",
                         "    D     D    ",
                         "    AAAAAAA    ",
-                        "   AAAAAAAAA   "
-                ).aisle(
+                        "   AAAAAAAAA   ")
+                .aisle(
                         "               ",
                         "               ",
                         "       A       ",
@@ -157,8 +159,8 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
                         "   D  CCC  D   ",
                         "   D  AAA  D   ",
                         "   AAAAAAAAA   ",
-                        "  AAAAAAAAAAA  "
-                ).aisle(
+                        "  AAAAAAAAAAA  ")
+                .aisle(
                         "               ",
                         "               ",
                         "     BBABB     ",
@@ -175,8 +177,8 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
                         "  B  CCCCC  B  ",
                         "  B  AAAAA  B  ",
                         "  AAAAAAAAAAA  ",
-                        " AAAAAAAAAAAAA "
-                ).aisle(
+                        " AAAAAAAAAAAAA ")
+                .aisle(
                         "       B       ",
                         "      BAB      ",
                         "     BAAAB     ",
@@ -193,8 +195,8 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
                         " D  CCCCCCC  D ",
                         " D  AAAAAAA  D ",
                         " AAAAAAAAAAAAA ",
-                        "AAAAAAAAAAAAAAA"
-                ).aisle(
+                        "AAAAAAAAAAAAAAA")
+                .aisle(
                         "      BAB      ",
                         "      AAA      ",
                         "  AAAAAAAAAAA  ",
@@ -211,8 +213,8 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
                         " A  CCCCCCC  A ",
                         " A  AAAAAAA  A ",
                         " AAAAAAAAAAAAA ",
-                        "AAAAAAAAAAAAAAA"
-                ).aisle(
+                        "AAAAAAAAAAAAAAA")
+                .aisle(
                         "       B       ",
                         "      BAB      ",
                         "     BAAAB     ",
@@ -229,8 +231,8 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
                         " D  CCCCCCC  D ",
                         " D  AAAAAAA  D ",
                         " AAAAAAAAAAAAA ",
-                        "AAAAAAAAAAAAAAA"
-                ).aisle(
+                        "AAAAAAAAAAAAAAA")
+                .aisle(
                         "               ",
                         "               ",
                         "     BBABB     ",
@@ -247,8 +249,8 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
                         "  B  CCCCC  B  ",
                         "  B  AAAAA  B  ",
                         "  AAAAAAAAAAA  ",
-                        " AAAAAAAAAAAAA "
-                ).aisle(
+                        " AAAAAAAAAAAAA ")
+                .aisle(
                         "               ",
                         "               ",
                         "       A       ",
@@ -265,8 +267,8 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
                         "   D  CCC  D   ",
                         "   D  AAA  D   ",
                         "   AAAAAAAAA   ",
-                        "  AAAAAAAAAAA  "
-                ).aisle(
+                        "  AAAAAAAAAAA  ")
+                .aisle(
                         "               ",
                         "               ",
                         "       A       ",
@@ -283,8 +285,8 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
                         "    D     D    ",
                         "    D     D    ",
                         "    AAAAAAA    ",
-                        "   AAAAAAAAA   "
-                ).aisle(
+                        "   AAAAAAAAA   ")
+                .aisle(
                         "               ",
                         "               ",
                         "       A       ",
@@ -301,8 +303,8 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
                         "     B   B     ",
                         "     B   B     ",
                         "     AAAAA     ",
-                        "    AAAAAAA    "
-                ).aisle(
+                        "    AAAAAAA    ")
+                .aisle(
                         "               ",
                         "               ",
                         "               ",
@@ -319,8 +321,8 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
                         "      DAD      ",
                         "      DAD      ",
                         "      AAA      ",
-                        "     AAAAA     "
-                ).aisle(
+                        "     AAAAA     ")
+                .aisle(
                         "               ",
                         "               ",
                         "               ",
@@ -337,20 +339,24 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
                         "               ",
                         "               ",
                         "               ",
-                        "      AAA      "
-                )
+                        "      AAA      ")
                 .where('E', selfPredicate())
-                .where('A', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST)) // todo
-                        .setMinGlobalLimited(401).or(autoAbilities(false, false, true, true, true, true, false))
-                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0).setMinGlobalLimited(0).setMaxGlobalLimited(2))
-                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(1).setMaxGlobalLimited(1)))
+                .where('A',
+                        states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
+                                .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.ADAMANTIUM))
+                                        .setMinGlobalLimited(401)
+                                        .or(autoAbilities(false, false, true, true, true, true, false))
+                                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0)
+                                                .setMinGlobalLimited(0).setMaxGlobalLimited(2))
+                                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(1)
+                                                .setMaxGlobalLimited(1)))
                 .where('B', frames(Materials.NaquadahAlloy))
-                .where('C', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID))) // todo: Nt blocks or custom hammer block
+                .where('C', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID))) // todo: tiered hammer blocks
                 .where('D', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS))) // todo
                 .build();
     }
 
     public ICubeRenderer getBaseTexture(@Nullable IMultiblockPart part) {
-        return Textures.ROBUST_TUNGSTENSTEEL_CASING; // todo
+        return SerendustryTextures.CASING_ADAMANTIUM;
     }
 }

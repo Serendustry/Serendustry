@@ -1,10 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.recipes.builders.SimpleRecipeBuilder;
-import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.properties.PropertyKey;
-
 import static gregtech.api.GTValues.MAX;
 import static gregtech.api.GTValues.UEV;
 import static gregtech.api.GTValues.UIV;
@@ -37,7 +32,13 @@ import static serendustry.machine.SerendustryMetaTileEntities.STELLAR_ENGINE;
 import static serendustry.machine.SerendustryMetaTileEntities.STELLAR_INCUBATOR;
 import static serendustry.machine.SerendustryRecipeMaps.STELLAR_ENGINE_RECIPES;
 
+import gregtech.api.recipes.builders.SimpleRecipeBuilder;
+import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.properties.PropertyKey;
+
 public class StellarEngineRecipes {
+
     public static void init() {
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, DeepDarkSteel, 32)
@@ -67,41 +68,48 @@ public class StellarEngineRecipes {
                         .EUt(VA[UEV]))
                 .duration(25600).EUt(VA[UIV]).buildAndRegister();
 
-        Material[] materials = {Hydrogen, Helium, Lithium, Beryllium, Boron, Carbon, Nitrogen, Oxygen, Fluorine, Sodium, Magnesium, Aluminium, Silicon, Phosphorus, Sulfur, Chlorine,
-                Potassium, Calcium, Chrome, Magnesium, Iron, Cobalt, Nickel, Copper, Zinc, Silver, Tin, Mercury, Lead};
-        Material[] materials2 = {Neon, Argon, Scandium, Titanium, Vanadium, Gallium, Arsenic, Krypton, Yttrium, Niobium, Molybdenum, Ruthenium, Rhodium, Palladium, Cadmium, Indium, Antimony, Xenon, Hafnium,
-                Tantalum, Tungsten, Osmium, Iridium, Platinum, Gold, Bismuth, Radon, Thorium, Uranium238, Plutonium239, Plutonium241};
-        Material[] materials3 = {Germanium, Selenium, Bromine, Rubidium, Rhenium, Thallium, Flerovium, Moscovium, Tennessine, Oganesson};
+        Material[] materials = { Hydrogen, Helium, Lithium, Beryllium, Boron, Carbon, Nitrogen, Oxygen, Fluorine,
+                Sodium, Magnesium, Aluminium, Silicon, Phosphorus, Sulfur, Chlorine,
+                Potassium, Calcium, Chrome, Magnesium, Iron, Cobalt, Nickel, Copper, Zinc, Silver, Tin, Mercury, Lead };
+        Material[] materials2 = { Neon, Argon, Scandium, Titanium, Vanadium, Gallium, Arsenic, Krypton, Yttrium,
+                Niobium, Molybdenum, Ruthenium, Rhodium, Palladium, Cadmium, Indium, Antimony, Xenon, Hafnium,
+                Tantalum, Tungsten, Osmium, Iridium, Platinum, Gold, Bismuth, Radon, Thorium, Uranium238, Plutonium239,
+                Plutonium241 };
+        Material[] materials3 = { Germanium, Selenium, Bromine, Rubidium, Rhenium, Thallium, Flerovium, Moscovium,
+                Tennessine, Oganesson };
 
         SimpleRecipeBuilder builder = STELLAR_ENGINE_RECIPES.recipeBuilder();
         builder.input(STELLAR_ESSENCE_OVERWORLD);
-        for(Material material : materials) {
+        for (Material material : materials) {
             // Whether to measure by ingots or buckets
-            boolean isSolid = material.hasProperty(PropertyKey.DUST) || material.hasProperty(PropertyKey.INGOT) || material.hasProperty(PropertyKey.GEM);
+            boolean isSolid = material.hasProperty(PropertyKey.DUST) || material.hasProperty(PropertyKey.INGOT) ||
+                    material.hasProperty(PropertyKey.GEM);
 
             builder.fluidOutputs(material.getPlasma(isSolid ? 144_000 : 1_000_000)); // 1,000 ingots
         }
         builder.fluidOutputs(Realitium.getFluid(1000))
-                .duration(20*60*60*8).EUt(VA[MAX]).buildAndRegister();
+                .duration(20 * 60 * 60 * 8).EUt(VA[MAX]).buildAndRegister();
 
         builder = STELLAR_ENGINE_RECIPES.recipeBuilder();
         builder.input(STELLAR_ESSENCE_NETHER);
-        for(Material material : materials2) {
-            boolean isSolid = material.hasProperty(PropertyKey.DUST) || material.hasProperty(PropertyKey.INGOT) || material.hasProperty(PropertyKey.GEM);
+        for (Material material : materials2) {
+            boolean isSolid = material.hasProperty(PropertyKey.DUST) || material.hasProperty(PropertyKey.INGOT) ||
+                    material.hasProperty(PropertyKey.GEM);
 
             builder.fluidOutputs(material.getPlasma(isSolid ? 144_000 : 1_000_000));
         }
         builder.fluidOutputs(Realitium.getFluid(6000))
-                .duration(20*60*60*32).EUt(VA[MAX]).buildAndRegister();
+                .duration(20 * 60 * 60 * 32).EUt(VA[MAX]).buildAndRegister();
 
         builder = STELLAR_ENGINE_RECIPES.recipeBuilder();
         builder.input(STELLAR_ESSENCE_END);
-        for(Material material : materials3) {
-            boolean isSolid = material.hasProperty(PropertyKey.DUST) || material.hasProperty(PropertyKey.INGOT) || material.hasProperty(PropertyKey.GEM);
+        for (Material material : materials3) {
+            boolean isSolid = material.hasProperty(PropertyKey.DUST) || material.hasProperty(PropertyKey.INGOT) ||
+                    material.hasProperty(PropertyKey.GEM);
 
             builder.fluidOutputs(material.getPlasma(isSolid ? 144_000 : 1_000_000));
         }
         builder.fluidOutputs(Realitium.getFluid(36000))
-                .duration(20*60*60*128).EUt(VA[MAX]).buildAndRegister();
+                .duration(20 * 60 * 60 * 128).EUt(VA[MAX]).buildAndRegister();
     }
 }

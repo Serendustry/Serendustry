@@ -1,6 +1,5 @@
 package serendustry.recipe;
 
-import static gregtech.api.GTValues.L;
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.GTValues.ZPM;
 import static gregtech.api.recipes.RecipeMaps.BLAST_RECIPES;
@@ -25,23 +24,24 @@ import static serendustry.item.material.SerendustryMaterials.SeleniumThalliumSlu
 import static serendustry.item.material.SerendustryMaterials.SelenousAcid;
 
 public class SeleniumChain {
+
     public static void init() {
-            CHEMICAL_BATH_RECIPES.recipeBuilder()
-                    .input(dust, Olsacherite, 12)
-                    .fluidInputs(NitricAcid.getFluid(1000))
-                    .output(dustImpure, Lead)
-                    .output(dustImpure, Sulfur)
-                    .output(dust, SeleniumLeadSludge, 10)
-                    .duration(20 * 20).EUt(VA[ZPM]).buildAndRegister();
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(dust, Olsacherite, 12)
+                .fluidInputs(NitricAcid.getFluid(1000))
+                .output(dustImpure, Lead)
+                .output(dustImpure, Sulfur)
+                .output(dust, SeleniumLeadSludge, 10)
+                .duration(20 * 20).EUt(VA[ZPM]).buildAndRegister();
 
-            MIXER_RECIPES.recipeBuilder()
-                    .input(dust, SeleniumLeadSludge, 10)
-                    .fluidInputs(Water.getFluid(1000))
-                    .output(dustImpure, Lead)
-                    .fluidOutputs(SelenousAcid.getFluid(1000))
-                    .duration(20 * 20).EUt(VA[ZPM]).buildAndRegister();
+        MIXER_RECIPES.recipeBuilder()
+                .input(dust, SeleniumLeadSludge, 10)
+                .fluidInputs(Water.getFluid(1000))
+                .output(dustImpure, Lead)
+                .fluidOutputs(SelenousAcid.getFluid(1000))
+                .duration(20 * 20).EUt(VA[ZPM]).buildAndRegister();
 
-            CHEMICAL_BATH_RECIPES.recipeBuilder()
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
                 .input(dust, Crookesite, 7)
                 .fluidInputs(NitricAcid.getFluid(1000))
                 .output(dustImpure, Copper, 2)
@@ -49,17 +49,17 @@ public class SeleniumChain {
                 .output(dust, SeleniumThalliumSludge, 3)
                 .duration(20 * 20).EUt(VA[ZPM]).buildAndRegister();
 
-            MIXER_RECIPES.recipeBuilder()
+        MIXER_RECIPES.recipeBuilder()
                 .input(dust, SeleniumThalliumSludge, 3)
                 .fluidInputs(Water.getFluid(1000))
                 .output(dust, Thallium, 2)
                 .fluidOutputs(SelenousAcid.getFluid(1000))
                 .duration(20 * 20).EUt(VA[ZPM]).buildAndRegister();
 
-            BLAST_RECIPES.recipeBuilder()
-                    .fluidInputs(SelenousAcid.getFluid(1000), SulfurDioxide.getFluid(1000))
-                    .output(ingot, Selenium) // todo: change to ingotHot
-                    .blastFurnaceTemp(10800)
-                    .duration(20 * 20).EUt(VA[ZPM]).buildAndRegister();
+        BLAST_RECIPES.recipeBuilder()
+                .fluidInputs(SelenousAcid.getFluid(1000), SulfurDioxide.getFluid(1000))
+                .output(ingot, Selenium) // todo: change to ingotHot
+                .blastFurnaceTemp(10800)
+                .duration(20 * 20).EUt(VA[ZPM]).buildAndRegister();
     }
 }

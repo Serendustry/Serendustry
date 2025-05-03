@@ -1,17 +1,18 @@
 package serendustry.recipe;
 
-import gregtech.api.GTValues;
-import gregtech.api.recipes.ModHandler;
-import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.ore.OrePrefix;
-
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static serendustry.item.material.SerendustryMaterials.*;
 
+import gregtech.api.GTValues;
+import gregtech.api.recipes.ModHandler;
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.ore.OrePrefix;
+
 public class TengamChain {
+
     public static void init() {
         CHEMICAL_BATH_RECIPES.recipeBuilder()
                 .input(dust, MagneticHolmium)
@@ -137,6 +138,5 @@ public class TengamChain {
                     .output(dust, TengamPurified)
                     .duration((int) (98 * cost[i])).EUt(VA[GTValues.LV]).buildAndRegister();
         }
-
     }
 }

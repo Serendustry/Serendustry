@@ -1,42 +1,41 @@
 package serendustry.machine;
 
-import javax.annotation.Nonnull;
-
-import gregtech.api.capability.IEnergyContainer;
-import gregtech.api.capability.impl.MultiblockRecipeLogic;
-import gregtech.api.unification.material.Materials;
-import gregtech.client.utils.TooltipHelper;
-import gregtech.common.blocks.BlockGlassCasing;
-import gregtech.common.blocks.BlockMetalCasing;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.init.Blocks;
-import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
-
-import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import gregtech.api.recipes.RecipeMaps;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-
-import gregtech.api.metatileentity.MetaTileEntity;
-import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
-import gregtech.api.metatileentity.multiblock.IMultiblockPart;
-import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
-import gregtech.api.pattern.BlockPattern;
-import gregtech.api.pattern.FactoryBlockPattern;
-import gregtech.api.pattern.PatternMatchContext;
-import gregtech.client.renderer.ICubeRenderer;
-import gregtech.client.renderer.texture.Textures;
-import gregtech.common.blocks.BlockMachineCasing;
-import gregtech.common.blocks.MetaBlocks;
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static gregtech.api.util.RelativeDirection.DOWN;
-import static gregtech.api.util.RelativeDirection.FRONT;
-import static gregtech.api.util.RelativeDirection.LEFT;
+import javax.annotation.Nonnull;
+
+import net.minecraft.client.resources.I18n;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
+
+import org.jetbrains.annotations.Nullable;
+
+import gregtech.api.capability.IEnergyContainer;
+import gregtech.api.capability.impl.MultiblockRecipeLogic;
+import gregtech.api.metatileentity.MetaTileEntity;
+import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
+import gregtech.api.metatileentity.multiblock.IMultiblockPart;
+import gregtech.api.metatileentity.multiblock.MultiblockAbility;
+import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
+import gregtech.api.pattern.BlockPattern;
+import gregtech.api.pattern.FactoryBlockPattern;
+import gregtech.api.pattern.PatternMatchContext;
+import gregtech.api.recipes.RecipeMaps;
+import gregtech.client.renderer.ICubeRenderer;
+import gregtech.client.utils.TooltipHelper;
+import gregtech.common.blocks.BlockGlassCasing;
+import gregtech.common.blocks.MetaBlocks;
+import serendustry.blocks.BlockSerendustryMetalCasing;
+import serendustry.blocks.SerendustryMetaBlocks;
+import serendustry.client.renderer.texture.SerendustryTextures;
+import serendustry.item.material.SerendustryMaterials;
 
 public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController {
 
@@ -60,21 +59,26 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
         super.formStructure(context);
 
         List<IEnergyContainer> energyInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
-        List<IEnergyContainer> substationInput = new ArrayList<>(getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
+        List<IEnergyContainer> substationInput = new ArrayList<>(
+                getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
         List<IEnergyContainer> laserInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_LASER));
 
         // Allow only 1 type of energy input at a time
-        if((!energyInput.isEmpty() && !substationInput.isEmpty()) || (!energyInput.isEmpty() && !laserInput.isEmpty()) || (!substationInput.isEmpty() && !laserInput.isEmpty())) {
+        if ((!energyInput.isEmpty() && !substationInput.isEmpty()) ||
+                (!energyInput.isEmpty() && !laserInput.isEmpty()) ||
+                (!substationInput.isEmpty() && !laserInput.isEmpty())) {
             invalidateStructure();
         }
 
         // todo: give error message to multiblock builder and make JEI not show mixed hatches
 
-        /*List<IEnergyContainer> powerInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
-        powerInput.addAll(getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
-        powerInput.addAll(getAbilities(MultiblockAbility.INPUT_LASER));
-
-        this.powerInput = new EnergyContainerList(powerInput);*/  // todo: update ceu so this works and check if this even needed
+        /*
+         * List<IEnergyContainer> powerInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
+         * powerInput.addAll(getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
+         * powerInput.addAll(getAbilities(MultiblockAbility.INPUT_LASER));
+         * 
+         * this.powerInput = new EnergyContainerList(powerInput);
+         */  // todo: update ceu so this works and check if this even needed
     }
 
     @Nonnull
@@ -117,8 +121,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
-                        "                            BBBBBBBBB                            "
-                ).aisle(
+                        "                            BBBBBBBBB                            ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -153,8 +157,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
-                        "                           BBBBBBBBBBB                           "
-                ).aisle(
+                        "                           BBBBBBBBBBB                           ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -189,8 +193,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
-                        "                         BBBBBBBBBBBBBBB                         "
-                ).aisle(
+                        "                         BBBBBBBBBBBBBBB                         ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -225,8 +229,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
-                        "                         BBBBBBBBBBBBBBB                         "
-                ).aisle(
+                        "                         BBBBBBBBBBBBBBB                         ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -261,8 +265,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                                                                 ",
                         "                                                                 ",
                         "                             AAAAAAA                             ",
-                        "  BBBBBBB               BBBBBBBBBBBBBBBBB               BBBBBBB  "
-                ).aisle(
+                        "  BBBBBBB               BBBBBBBBBBBBBBBBB               BBBBBBB  ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -297,8 +301,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                              BAAAB                              ",
                         "                              BCCCB                              ",
                         "                            AAAAAAAAA                            ",
-                        " BBBBBBBBB             BBBBBBBBBBBBBBBBBBB             BBBBBBBBB "
-                ).aisle(
+                        " BBBBBBBBB             BBBBBBBBBBBBBBBBBBB             BBBBBBBBB ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -333,8 +337,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                             A     A                             ",
                         "                             A     A                             ",
                         "   AAAAA                   AAAAAAAAAAA                   AAAAA   ",
-                        "BBBBBBBBBBB            BBBBBBBBBBBBBBBBBBB            BBBBBBBBBBB"
-                ).aisle(
+                        "BBBBBBBBBBB            BBBBBBBBBBBBBBBBBBB            BBBBBBBBBBB")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -369,8 +373,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "    BCB                     B       B                     BCB    ",
                         "    BBB                     B       B                     BBB    ",
                         "  AAAAAAA                  AAAAAAAAAAA                  AAAAAAA  ",
-                        "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
-                ).aisle(
+                        "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB")
+                .aisle(
                         "                              EEEEE                              ",
                         "                           EEE     EEE                           ",
                         "                       EEEE     B     EEE                        ",
@@ -405,8 +409,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "   B   B                    A       A                    B   B   ",
                         "   B   B                    C       C                    B   B   ",
                         "  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  ",
-                        "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
-                ).aisle(
+                        "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB")
+                .aisle(
                         "                                D                                ",
                         "                              EE EE                              ",
                         "                           EEE B B EEE                           ",
@@ -441,8 +445,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "   C B C                    A   B   A                    C B C   ",
                         "   B B B                    C   B   C                    B B B   ",
                         "  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAABAAA  ",
-                        "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
-                ).aisle(
+                        "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB")
+                .aisle(
                         "                              EE EE                              ",
                         "                           EEE EE  EEE                           ",
                         "                        EEE     B     EEE                        ",
@@ -477,8 +481,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "   B   B                    A       A                    B   B   ",
                         "   B   B                    C       C                    B   B   ",
                         "  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  ",
-                        "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
-                ).aisle(
+                        "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB")
+                .aisle(
                         "                               E E                               ",
                         "                                E                                ",
                         "                               E                                 ",
@@ -513,8 +517,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "    BCB                     B       B                     BCB    ",
                         "    BBB                     B       B                     BBB    ",
                         "  AAAAAAA                  AAAAAAAAAAA                  AAAAAAA  ",
-                        "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
-                ).aisle(
+                        "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB")
+                .aisle(
                         "                                                                 ",
                         "                               E E                               ",
                         "                                E                                ",
@@ -549,8 +553,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                             A     A                             ",
                         "                             A     A                             ",
                         "   AAAAA                   AAAAAAAAAAA                   AAAAA   ",
-                        "BBBBBBBBBBB            BBBBBBBBBBBBBBBBBBB            BBBBBBBBBBB"
-                ).aisle(
+                        "BBBBBBBBBBB            BBBBBBBBBBBBBBBBBBB            BBBBBBBBBBB")
+                .aisle(
                         "                                                                 ",
                         "                               E E                               ",
                         "                                E                                ",
@@ -585,8 +589,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                              BAAAB                              ",
                         "                              BCCCB                              ",
                         "                           AAAAAAAAAAA                           ",
-                        " BBBBBBBBB             BBBBBBBBBBBBBBBBBBB             BBBBBBBBB "
-                ).aisle(
+                        " BBBBBBBBB             BBBBBBBBBBBBBBBBBBB             BBBBBBBBB ")
+                .aisle(
                         "                                                                 ",
                         "                               E E                               ",
                         "                                E                                ",
@@ -621,8 +625,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                                                                 ",
                         "                                                                 ",
                         "                          AAAAAAAAAAAAA                          ",
-                        "  BBBBBBB               BBBBBBBBBBBBBBBBB               BBBBBBB  "
-                ).aisle(
+                        "  BBBBBBB               BBBBBBBBBBBBBBBBB               BBBBBBB  ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                               E E                               ",
@@ -657,8 +661,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                                                                 ",
                         "                                                                 ",
                         "                         AAA   AAA   AAA                         ",
-                        "                        BBBBBBBBBBBBBBBBB                        "
-                ).aisle(
+                        "                        BBBBBBBBBBBBBBBBB                        ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                               E E                               ",
@@ -693,8 +697,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                                                                 ",
                         "                                                                 ",
                         "                        AAA    AAA    AAA                        ",
-                        "                       BBBBBBBBBBBBBBBBBBB                       "
-                ).aisle(
+                        "                       BBBBBBBBBBBBBBBBBBB                       ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                               E E                               ",
@@ -729,8 +733,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                                                                 ",
                         "                                                                 ",
                         "                       AAA     AAA     AAA                       ",
-                        "                      BBBBBBBBBBBBBBBBBBBBB                      "
-                ).aisle(
+                        "                      BBBBBBBBBBBBBBBBBBBBB                      ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -765,8 +769,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                                                                 ",
                         "                                                                 ",
                         "                      AAA      AAA      AAA                      ",
-                        "                     BBBBB  BBBBBBBBB  BBBBB                     "
-                ).aisle(
+                        "                     BBBBB  BBBBBBBBB  BBBBB                     ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -801,8 +805,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                                                                 ",
                         "                                                                 ",
                         "                     AAA       AAA       AAA                     ",
-                        "                    BBBBB     BBBBB     BBBBB                    "
-                ).aisle(
+                        "                    BBBBB     BBBBB     BBBBB                    ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -837,8 +841,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                                                                 ",
                         "                                                                 ",
                         "                    AAA        AAA        AAA                    ",
-                        "                   BBBBB      BBBBB      BBBBB                   "
-                ).aisle(
+                        "                   BBBBB      BBBBB      BBBBB                   ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -873,8 +877,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                                                                 ",
                         "                                                                 ",
                         "                   AAA         AAA         AAA                   ",
-                        "                  BBBBB       BBBBB       BBBBB                  "
-                ).aisle(
+                        "                  BBBBB       BBBBB       BBBBB                  ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -909,8 +913,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                                                                 ",
                         "                                                                 ",
                         "                  AAA          AAA          AAA                  ",
-                        "                 BBBBB        BBBBB        BBBBB                 "
-                ).aisle(
+                        "                 BBBBB        BBBBB        BBBBB                 ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -945,8 +949,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                                                                 ",
                         "                                                                 ",
                         "                 AAA           AAA           AAA                 ",
-                        "                BBBBB         BBBBB         BBBBB                "
-                ).aisle(
+                        "                BBBBB         BBBBB         BBBBB                ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -981,8 +985,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                                                                 ",
                         "                                                                 ",
                         "                AAA            AAA            AAA                ",
-                        "               BBBBB          BBBBB          BBBBB               "
-                ).aisle(
+                        "               BBBBB          BBBBB          BBBBB               ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -1017,8 +1021,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                                                                 ",
                         "                                                                 ",
                         "               AAA             AAA             AAA               ",
-                        "              BBBBB           BBBBB           BBBBB              "
-                ).aisle(
+                        "              BBBBB           BBBBB           BBBBB              ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -1053,8 +1057,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                                                                 ",
                         "                                                                 ",
                         "              AAA              AAA              AAA              ",
-                        "       BBBBBBBBBBB            BBBBB            BBBBBBBBBBB       "
-                ).aisle(
+                        "       BBBBBBBBBBB            BBBBB            BBBBBBBBBBB       ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -1089,8 +1093,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                                                                 ",
                         "                                                                 ",
                         "             AAA               AAA               AAA             ",
-                        "      BBBBBBBBBBB             BBBBB             BBBBBBBBBBB      "
-                ).aisle(
+                        "      BBBBBBBBBBB             BBBBB             BBBBBBBBBBB      ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -1125,8 +1129,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                                                                 ",
                         "                                                                 ",
                         "        AAAAAAA                AAA                AAAAAAA        ",
-                        "     BBBBBBBBBBB              BBBBB              BBBBBBBBBBB     "
-                ).aisle(
+                        "     BBBBBBBBBBB              BBBBB              BBBBBBBBBBB     ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -1161,8 +1165,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "         BCB                                         BCB         ",
                         "         BBB                                         BBB         ",
                         "       AAAAAAA                 AAA                 AAAAAAA       ",
-                        "     BBBBBBBBBBB              BBBBB              BBBBBBBBBBB     "
-                ).aisle(
+                        "     BBBBBBBBBBB              BBBBB              BBBBBBBBBBB     ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -1197,8 +1201,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "        B   B                                       B   B        ",
                         "        B   B                                       B   B        ",
                         "       AAAAAAA                 AAA                 AAAAAAA       ",
-                        "     BBBBBBBBBBB              BBBBB              BBBBBBBBBBB     "
-                ).aisle(
+                        "     BBBBBBBBBBB              BBBBB              BBBBBBBBBBB     ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -1233,8 +1237,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "        C B C                                       C B C        ",
                         "        B B B                                       B B B        ",
                         "       AAABAAA                 AAA                 AAABAAA       ",
-                        "     BBBBBBBBBBB              BBBBB              BBBBBBBBBBB     "
-                ).aisle(
+                        "     BBBBBBBBBBB              BBBBB              BBBBBBBBBBB     ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -1269,8 +1273,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "        B   B                                       B   B        ",
                         "        B   B                                       B   B        ",
                         "       AAAAAAA                 AAA                 AAAAAAA       ",
-                        "     BBBBBBBBBBB             BBBBBBB             BBBBBBBBBBB     "
-                ).aisle(
+                        "     BBBBBBBBBBB             BBBBBBB             BBBBBBBBBBB     ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -1305,8 +1309,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "         BCB                                         BCB         ",
                         "         BBB                                         BBB         ",
                         "       AAAAAAA                 AAA                 AAAAAAA       ",
-                        "     BBBBBBBBBBB            BBBBBBBBB            BBBBBBBBBBB     "
-                ).aisle(
+                        "     BBBBBBBBBBB            BBBBBBBBB            BBBBBBBBBBB     ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -1341,8 +1345,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                                                                 ",
                         "                                                                 ",
                         "        AAAAA                 AAAAA                 AAAAA        ",
-                        "     BBBBBBBBBBB           BBBBBBBBBBB           BBBBBBBBBBB     "
-                ).aisle(
+                        "     BBBBBBBBBBB           BBBBBBBBBBB           BBBBBBBBBBB     ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -1377,8 +1381,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                               BCB                               ",
                         "                               BBB                               ",
                         "                             AAAAAAA                             ",
-                        "      BBBBBBBBB            BBBBBBBBBBB            BBBBBBBBB      "
-                ).aisle(
+                        "      BBBBBBBBB            BBBBBBBBBBB            BBBBBBBBB      ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -1413,8 +1417,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                              B   B                              ",
                         "                              B   B                              ",
                         "                             AAAAAAA                             ",
-                        "       BBBBBBB             BBBBBBBBBBB             BBBBBBB       "
-                ).aisle(
+                        "       BBBBBBB             BBBBBBBBBBB             BBBBBBB       ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -1449,8 +1453,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                              C B C                              ",
                         "                              B B B                              ",
                         "                             AAABAAA                             ",
-                        "                           BBBBBBBBBBB                           "
-                ).aisle(
+                        "                           BBBBBBBBBBB                           ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -1485,8 +1489,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                              B   B                              ",
                         "                              B   B                              ",
                         "                             AAAAAAA                             ",
-                        "                           BBBBBBBBBBB                           "
-                ).aisle(
+                        "                           BBBBBBBBBBB                           ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -1521,8 +1525,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                               BCB                               ",
                         "                               BBB                               ",
                         "                             AAAAAAA                             ",
-                        "                           BBBBBBBBBBB                           "
-                ).aisle(
+                        "                           BBBBBBBBBBB                           ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -1557,8 +1561,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                                                                 ",
                         "                                                                 ",
                         "                              AAAAA                              ",
-                        "                           BBBBBBBBBBB                           "
-                ).aisle(
+                        "                           BBBBBBBBBBB                           ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -1593,8 +1597,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
-                        "                            BBBBBBBBB                            "
-                ).aisle(
+                        "                            BBBBBBBBB                            ")
+                .aisle(
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
@@ -1629,17 +1633,24 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
                         "                                                                 ",
                         "                                                                 ",
                         "                                                                 ",
-                        "                             BBBBBBB                             "
-                )
+                        "                             BBBBBBB                             ")
 
                 .where('F', selfPredicate())
-                .where('B', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PTFE_INERT_CASING)) // todo
-                        .setMinGlobalLimited(1789).or(autoAbilities(false, false, true, true, true, true, false))
-                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0).setMinGlobalLimited(0).setMaxGlobalLimited(2))
-                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(0).setMaxGlobalLimited(1))
-                        .or(abilities(MultiblockAbility.INPUT_LASER).setPreviewCount(1).setMaxGlobalLimited(1)))
-                .where('A', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE))) // todo
-                .where('C', frames(Materials.NaquadahAlloy))
+                .where('B',
+                        states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
+                                .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.CARBON))
+                                        .setMinGlobalLimited(1789)
+                                        .or(autoAbilities(false, false, true, true, true, true, false))
+                                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0)
+                                                .setMinGlobalLimited(0).setMaxGlobalLimited(2))
+                                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(0)
+                                                .setMaxGlobalLimited(1))
+                                        .or(abilities(MultiblockAbility.INPUT_LASER).setPreviewCount(1)
+                                                .setMaxGlobalLimited(1)))
+                .where('A',
+                        states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
+                                .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.ADAMANTIUM)))
+                .where('C', frames(SerendustryMaterials.Adamantium))
                 .where('D', states(Blocks.LAVA.getBlockState().getBaseState()))
                 .where('E', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.FUSION_GLASS))) // todo
                 .build();
@@ -1647,7 +1658,7 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return Textures.INERT_PTFE_CASING; // todo
+        return SerendustryTextures.CASING_CARBON;
     }
 
     @Override

@@ -47,8 +47,6 @@ import static gregtech.common.metatileentities.MetaTileEntities.FUSION_REACTOR;
 import static serendustry.item.material.SerendustryMaterials.AbyssalAlloy;
 import static serendustry.item.material.SerendustryMaterials.Adamantium;
 import static serendustry.item.material.SerendustryMaterials.Aluminum;
-import static serendustry.item.material.SerendustryMaterials.AwakenedDraconium;
-import static serendustry.item.material.SerendustryMaterials.ChargedDraconium;
 import static serendustry.item.material.SerendustryMaterials.DeepDarkIron;
 import static serendustry.item.material.SerendustryMaterials.Dragonblood;
 import static serendustry.item.material.SerendustryMaterials.HalkoniteSteel;
@@ -68,7 +66,7 @@ import static serendustry.machine.SerendustryMetaTileEntities.ADVANCED_FUSION_RE
 public class LargeAlloySmelterRecipes {
 
     public static void init() {
-        //. Todo: remove and replace ALL fusion recipes
+        // . Todo: remove and replace ALL fusion recipes
         FUSION_RECIPES.recipeBuilder()
                 .fluidInputs(Beryllium.getFluid(16)).fluidInputs(Lithium.getFluid(16))
                 .fluidOutputs(Nitrogen.getPlasma(100))
@@ -77,11 +75,6 @@ public class LargeAlloySmelterRecipes {
         FUSION_RECIPES.recipeBuilder()
                 .fluidInputs(Dysprosium.getFluid(16)).fluidInputs(Indium.getFluid(16))
                 .fluidOutputs(Moscovium.getFluid(16))
-                .duration(16).EUt(VA[LuV]).EUToStart(200_000_000).buildAndRegister();
-
-        FUSION_RECIPES.recipeBuilder()
-                .fluidInputs(Erbium.getFluid(16)).fluidInputs(Palladium.getFluid(16))
-                .fluidOutputs(Flerovium.getFluid(16))
                 .duration(16).EUt(VA[LuV]).EUToStart(200_000_000).buildAndRegister();
 
         FUSION_RECIPES.recipeBuilder()
@@ -152,7 +145,7 @@ public class LargeAlloySmelterRecipes {
         // adv fusion only
 
         FUSION_RECIPES.recipeBuilder()
-                .fluidInputs(Bromine.getFluid(1000)).fluidInputs(Gold.getFluid(144*4))
+                .fluidInputs(Bromine.getFluid(1000)).fluidInputs(Gold.getFluid(144 * 4))
                 .fluidOutputs(Flerovium.getPlasma(144))
                 .duration(4000).EUt(VA[UIV]).EUToStart(640_000_000).buildAndRegister();
 

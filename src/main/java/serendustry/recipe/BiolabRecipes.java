@@ -1,15 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.items.metaitem.MetaItem;
-import gregtech.api.metatileentity.multiblock.CleanroomType;
-import gregtech.api.recipes.ModHandler;
-import gregtech.api.recipes.chance.output.ChancedOutputLogic;
-import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.common.blocks.BlockCleanroomCasing;
-import gregtech.common.blocks.MetaBlocks;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -20,7 +10,18 @@ import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryMetaTileEntities.BIOLAB;
 import static serendustry.machine.SerendustryRecipeMaps.BIOLAB_RECIPES;
 
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+
+import gregtech.api.items.metaitem.MetaItem;
+import gregtech.api.recipes.ModHandler;
+import gregtech.api.recipes.chance.output.ChancedOutputLogic;
+import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.common.blocks.BlockCleanroomCasing;
+import gregtech.common.blocks.MetaBlocks;
+
 public class BiolabRecipes {
+
     public static void init() {
         AUTOCLAVE_RECIPES.recipeBuilder()
                 .input(PETRI_DISH)
@@ -34,7 +35,7 @@ public class BiolabRecipes {
                 .input(ROBOT_ARM_ZPM, 4)
                 .input(SENSOR_ZPM, 4)
                 .inputs(MetaBlocks.CLEANROOM_CASING.getItemVariant(
-                                BlockCleanroomCasing.CasingType.FILTER_CASING_STERILE, 32))
+                        BlockCleanroomCasing.CasingType.FILTER_CASING_STERILE, 32))
                 .input(plateDense, NaquadahAlloy, 4)
                 .input(cableGtDouble, Europium, 8)
                 .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 16), Europium.getFluid(144 * 8))
@@ -95,7 +96,8 @@ public class BiolabRecipes {
 
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .input(Items.APPLE)
-                .fluidOutputs(Methane.getFluid(18), YeastRichMixture.getFluid(50)) // todo : check if this is the right amt of methane
+                .fluidOutputs(Methane.getFluid(18), YeastRichMixture.getFluid(50)) // todo : check if this is the right
+                                                                                   // amt of methane
                 .duration(20 * 8).EUt(VA[IV]).buildAndRegister();
 
         BIOLAB_RECIPES.recipeBuilder()
@@ -176,9 +178,10 @@ public class BiolabRecipes {
                 .chancedOutputLogic(ChancedOutputLogic.XOR)
                 .duration(20 * 4).EUt(VA[LuV]).buildAndRegister();
 
-        MetaItem.MetaValueItem[] cultures = {CULTURE_E_COLI, CULTURE_YEAST, CULTURE_YEAST_RUPTURED, CULTURE_RED_ALGAE, CULTURE_RED_ALGAE_BOILED, CULTURE_STEM_CELL, CULTURE_XENOXENE};
+        MetaItem.MetaValueItem[] cultures = { CULTURE_E_COLI, CULTURE_YEAST, CULTURE_YEAST_RUPTURED, CULTURE_RED_ALGAE,
+                CULTURE_RED_ALGAE_BOILED, CULTURE_STEM_CELL, CULTURE_XENOXENE };
 
-        for(MetaItem.MetaValueItem culture : cultures)
+        for (MetaItem.MetaValueItem culture : cultures)
             AUTOCLAVE_RECIPES.recipeBuilder()
                     .input(culture)
                     .fluidInputs(Formaldehyde.getFluid(500))

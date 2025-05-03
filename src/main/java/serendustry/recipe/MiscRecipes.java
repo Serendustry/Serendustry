@@ -5,20 +5,17 @@ import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
-import static gregtech.common.metatileentities.MetaTileEntities.HULL;
 import static serendustry.item.SerendustryMetaItems.*;
 import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryMetaTileEntities.*;
 import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
-import static serendustry.machine.SerendustryRecipeMaps.LABORATORY_RECIPES;
+
+import net.minecraft.init.Items;
 
 import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.recipes.ModHandler;
-import gregtech.api.recipes.chance.output.ChancedOutputLogic;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.Material;
-import net.minecraft.init.Items;
 
 public class MiscRecipes {
 
@@ -105,5 +102,22 @@ public class MiscRecipes {
                     .output(gemExquisite, Diamond)
                     .duration(400).EUt(VA[HV]).buildAndRegister();
         }
+
+        // test recipe
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(stickLong, Neutronium)
+                .input(gearSmall, Neutronium)
+                .input(plate, Iron)
+                .fluidInputs(Hydrogen.getFluid(1))
+                .output(Items.EGG)
+                .duration(20*60*60).EUt(VA[UV]).buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(stickLong, Adamantium)
+                .input(gearSmall, Neutronium)
+                .input(plate, Iron)
+                .fluidInputs(Hydrogen.getFluid(1))
+                .output(Items.EGG)
+                .duration(20).EUt(VA[LV]).buildAndRegister();
     }
 }

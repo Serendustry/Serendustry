@@ -1,30 +1,30 @@
 package serendustry.machine;
 
-import gregtech.api.capability.IEnergyContainer;
-import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import gregtech.api.pattern.PatternMatchContext;
-import gregtech.api.unification.material.Materials;
-import gregtech.common.blocks.BlockMetalCasing;
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.util.ResourceLocation;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
+import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
+import gregtech.api.pattern.PatternMatchContext;
+import gregtech.api.unification.material.Materials;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
+import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static gregtech.api.util.RelativeDirection.DOWN;
-import static gregtech.api.util.RelativeDirection.FRONT;
-import static gregtech.api.util.RelativeDirection.LEFT;
 
 public class MetaTileEntityGiantFractionatingColumn extends RecipeMapMultiblockController {
 
@@ -47,18 +47,21 @@ public class MetaTileEntityGiantFractionatingColumn extends RecipeMapMultiblockC
         super.formStructure(context);
 
         List<IEnergyContainer> energyInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
-        List<IEnergyContainer> substationInput = new ArrayList<>(getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
+        List<IEnergyContainer> substationInput = new ArrayList<>(
+                getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
 
-        if(!energyInput.isEmpty() && !substationInput.isEmpty()) {
+        if (!energyInput.isEmpty() && !substationInput.isEmpty()) {
             invalidateStructure();
         }
 
         // todo: give error message to multiblock builder and make JEI not show mixed hatches
 
-        /*List<IEnergyContainer> powerInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
-        powerInput.addAll(getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
-
-        this.powerInput = new EnergyContainerList(powerInput);*/  // todo: update ceu so this works and check if this even needed
+        /*
+         * List<IEnergyContainer> powerInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
+         * powerInput.addAll(getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
+         * 
+         * this.powerInput = new EnergyContainerList(powerInput);
+         */  // todo: update ceu so this works and check if this even needed
     }
 
     @Override
@@ -105,8 +108,8 @@ public class MetaTileEntityGiantFractionatingColumn extends RecipeMapMultiblockC
                         "               ",
                         "               ",
                         "               ",
-                        "    BBBBBBB    "
-                ).aisle(
+                        "    BBBBBBB    ")
+                .aisle(
                         "               ",
                         "               ",
                         "               ",
@@ -147,8 +150,8 @@ public class MetaTileEntityGiantFractionatingColumn extends RecipeMapMultiblockC
                         "    AAAAAAA    ",
                         "    AAACAAA    ",
                         "    AAAAAAA    ",
-                        "   BAAAAAAAB   "
-                ).aisle(
+                        "   BAAAAAAAB   ")
+                .aisle(
                         "               ",
                         "               ",
                         "               ",
@@ -189,8 +192,8 @@ public class MetaTileEntityGiantFractionatingColumn extends RecipeMapMultiblockC
                         "   A       A   ",
                         "   A       A   ",
                         "   A       A   ",
-                        "  BAAAAAAAAAB  "
-                ).aisle(
+                        "  BAAAAAAAAAB  ")
+                .aisle(
                         "               ",
                         "               ",
                         "               ",
@@ -231,8 +234,8 @@ public class MetaTileEntityGiantFractionatingColumn extends RecipeMapMultiblockC
                         "  A         A  ",
                         "  A         A  ",
                         "  A         A  ",
-                        " BAAAAAAAAAAAB "
-                ).aisle(
+                        " BAAAAAAAAAAAB ")
+                .aisle(
                         "               ",
                         "               ",
                         "     AAAAA     ",
@@ -273,8 +276,8 @@ public class MetaTileEntityGiantFractionatingColumn extends RecipeMapMultiblockC
                         " A           A ",
                         " A           A ",
                         " A           A ",
-                        "BAAAAAAAAAAAAAB"
-                ).aisle(
+                        "BAAAAAAAAAAAAAB")
+                .aisle(
                         "      BBB      ",
                         "      AAA      ",
                         "    AA   AA    ",
@@ -315,8 +318,8 @@ public class MetaTileEntityGiantFractionatingColumn extends RecipeMapMultiblockC
                         " A           A ",
                         " A           A ",
                         " A           A ",
-                        "BAAAAAAAAAAAAAB"
-                ).aisle(
+                        "BAAAAAAAAAAAAAB")
+                .aisle(
                         "     B   B     ",
                         "     AAAAA     ",
                         "    A     A    ",
@@ -357,8 +360,8 @@ public class MetaTileEntityGiantFractionatingColumn extends RecipeMapMultiblockC
                         " A           A ",
                         " A           A ",
                         " A           A ",
-                        "BAAAAAAAAAAAAAB"
-                ).aisle(
+                        "BAAAAAAAAAAAAAB")
+                .aisle(
                         "     B B B     ",
                         "     AAAAA     ",
                         "    A     A    ",
@@ -399,8 +402,8 @@ public class MetaTileEntityGiantFractionatingColumn extends RecipeMapMultiblockC
                         " A           A ",
                         " A           A ",
                         " A           A ",
-                        "BAAAAAAAAAAAAAB"
-                ).aisle(
+                        "BAAAAAAAAAAAAAB")
+                .aisle(
                         "     B   B     ",
                         "     AAAAA     ",
                         "    A     A    ",
@@ -441,8 +444,8 @@ public class MetaTileEntityGiantFractionatingColumn extends RecipeMapMultiblockC
                         " A           A ",
                         " A           A ",
                         " A           A ",
-                        "BAAAAAAAAAAAAAB"
-                ).aisle(
+                        "BAAAAAAAAAAAAAB")
+                .aisle(
                         "      BBB      ",
                         "      AAA      ",
                         "    AA   AA    ",
@@ -483,8 +486,8 @@ public class MetaTileEntityGiantFractionatingColumn extends RecipeMapMultiblockC
                         " A           A ",
                         " A           A ",
                         " A           A ",
-                        "BAAAAAAAAAAAAAB"
-                ).aisle(
+                        "BAAAAAAAAAAAAAB")
+                .aisle(
                         "               ",
                         "               ",
                         "     AAAAA     ",
@@ -525,8 +528,8 @@ public class MetaTileEntityGiantFractionatingColumn extends RecipeMapMultiblockC
                         " A           A ",
                         " A           A ",
                         " A           A ",
-                        "BAAAAAAAAAAAAAB"
-                ).aisle(
+                        "BAAAAAAAAAAAAAB")
+                .aisle(
                         "               ",
                         "               ",
                         "               ",
@@ -567,8 +570,8 @@ public class MetaTileEntityGiantFractionatingColumn extends RecipeMapMultiblockC
                         "  A         A  ",
                         "  A         A  ",
                         "  A         A  ",
-                        " BAAAAAAAAAAAB "
-                ).aisle(
+                        " BAAAAAAAAAAAB ")
+                .aisle(
                         "               ",
                         "               ",
                         "               ",
@@ -609,8 +612,8 @@ public class MetaTileEntityGiantFractionatingColumn extends RecipeMapMultiblockC
                         "   A       A   ",
                         "   A       A   ",
                         "   A       A   ",
-                        "  BAAAAAAAAAB  "
-                ).aisle(
+                        "  BAAAAAAAAAB  ")
+                .aisle(
                         "               ",
                         "               ",
                         "               ",
@@ -651,8 +654,8 @@ public class MetaTileEntityGiantFractionatingColumn extends RecipeMapMultiblockC
                         "    AAAAAAA    ",
                         "    AAAAAAA    ",
                         "    AAAAAAA    ",
-                        "   BAAAAAAAB   "
-                ).aisle(
+                        "   BAAAAAAAB   ")
+                .aisle(
                         "               ",
                         "               ",
                         "               ",
@@ -695,15 +698,19 @@ public class MetaTileEntityGiantFractionatingColumn extends RecipeMapMultiblockC
                         "               ",
                         "    BBBBBBB    ")
                 .where('C', selfPredicate())
-                    .where('A', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID)) // todo
-                            .setMinGlobalLimited(1490).or(autoAbilities(false, false, true, true, true, true, false))
-                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0).setMinGlobalLimited(0).setMaxGlobalLimited(2))
-                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(1).setMaxGlobalLimited(1)))
-                    .where('B', frames(Materials.NaquadahAlloy))
-                        .build();
+                .where('A',
+                        states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST)) // todo
+                                .setMinGlobalLimited(1490)
+                                .or(autoAbilities(false, false, true, true, true, true, false))
+                                .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0).setMinGlobalLimited(0)
+                                        .setMaxGlobalLimited(2))
+                                .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(1)
+                                        .setMaxGlobalLimited(1)))
+                .where('B', frames(Materials.NaquadahAlloy))
+                .build();
     }
 
     public ICubeRenderer getBaseTexture(@Nullable IMultiblockPart part) {
-        return Textures.SOLID_STEEL_CASING; // todo
+        return Textures.ROBUST_TUNGSTENSTEEL_CASING; // todo
     }
 }

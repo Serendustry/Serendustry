@@ -13,6 +13,7 @@ public class SerendustryRecipes {
         BETSPerrhenateChain.init();
         BiolabRecipes.init();
         BoPETCHain.init();
+        CasingRecipes.init();
         CircuitRecipes.init();
         DestabilizedMatterChain.init();
         DragonEggRecipes.init();

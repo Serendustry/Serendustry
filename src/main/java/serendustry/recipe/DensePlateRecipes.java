@@ -1,14 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.GTValues;
-import gregtech.api.GregTechAPI;
-import gregtech.api.recipes.GTRecipeHandler;
-import gregtech.api.recipes.ingredients.IntCircuitIngredient;
-import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.ore.OrePrefix;
-import net.minecraft.item.ItemStack;
-
 import static gregtech.api.recipes.RecipeMaps.BENDER_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.IMPLOSION_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
@@ -19,38 +10,56 @@ import static gregtech.api.unification.ore.OrePrefix.plateDense;
 import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryRecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES;
 
+import net.minecraft.item.ItemStack;
+
+import gregtech.api.GTValues;
+import gregtech.api.GregTechAPI;
+import gregtech.api.recipes.GTRecipeHandler;
+import gregtech.api.recipes.ingredients.IntCircuitIngredient;
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.ore.OrePrefix;
+
 public class DensePlateRecipes {
+
     static Material[] materials = GregTechAPI.materialManager.getRegisteredMaterials().toArray(new Material[0]);
 
     public static void init() {
-
         // Materials to not generate recipes for
-        Material[] skips = {HotHalkoniteSteel, HalkoniteSteel, HotExoHalkoniteSteel, ExoHalkoniteSteel, ErrorEnvoidia, ErrorSerenibyss};
+        Material[] skips = { HotHalkoniteSteel, HalkoniteSteel, HotExoHalkoniteSteel, ExoHalkoniteSteel, ErrorEnvoidia,
+                ErrorSerenibyss };
 
         // Special cased high tier materials
-        Material[] highTiers = {NaquadahAlloy, Darmstadtium, Adamantium, VibraniumAlloy};
-        Material[] higherTiers = {Oganesson, Tennessine, Neutronium, Infinity, AwakenedDraconium, DeepDarkSteel, Floppa};
+        Material[] highTiers = { Carbon, NaquadahAlloy, Darmstadtium, Adamantium, VibraniumAlloy };
+        Material[] higherTiers = { Oganesson, Tennessine, Neutronium, Infinity, AwakenedDraconium, DeepDarkSteel,
+                Floppa };
         int NORMAL = 0, HIGH = 1, HIGHER = 2;
-        int[] Tiers = {GTValues.EV, GTValues.LuV};
+        int[] Tiers = { GTValues.EV, GTValues.LuV };
 
-        for(Material material : materials) {
-            if(material.hasFlag(GENERATE_DENSE)){
+        for (Material material : materials) {
+            if (material.hasFlag(GENERATE_DENSE)) {
 
                 // Skip certain materials
                 boolean skipMat = false;
-                for(Material skip : skips){if(skip == material){skipMat = true;}}
-                if(skipMat){continue;}
+                for (Material skip : skips) {
+                    if (skip == material) {
+                        skipMat = true;
+                    }
+                }
+                if (skipMat) {
+                    continue;
+                }
 
                 // Special cases for certain high tier materials
                 int tier = NORMAL;
-                for(Material highTier : highTiers) {
+                for (Material highTier : highTiers) {
                     if (highTier == material) {
                         tier = HIGH;
                         break;
                     }
                 }
-                if(tier == NORMAL){
-                    for(Material higherTier : higherTiers) {
+                if (tier == NORMAL) {
+                    for (Material higherTier : higherTiers) {
                         if (higherTier == material) {
                             tier = HIGHER;
                             break;
@@ -59,7 +68,7 @@ public class DensePlateRecipes {
                 }
 
                 // Add implosion compressor dense plate recipe
-                if(tier != HIGHER) {
+                if (tier != HIGHER) {
                     IMPLOSION_RECIPES.recipeBuilder()
                             .input(plate, material, 9)
                             .explosivesAmount(18 + (tier * 18))
@@ -67,8 +76,7 @@ public class DensePlateRecipes {
                             .duration(20 * 9 + (tier * 20 * 9))
                             .EUt(GTValues.VA[Tiers[tier]])
                             .buildAndRegister();
-                }
-                else {
+                } else {
                     ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES.recipeBuilder()
                             .input(plate, material, 9)
                             .output(plateDense, material)
@@ -78,10 +86,10 @@ public class DensePlateRecipes {
                 }
 
                 // Remove normal dense plate recipes
-                for(OrePrefix part : new OrePrefix[] {plate, ingot}) {
-                    GTRecipeHandler.removeRecipesByInputs(BENDER_RECIPES, new ItemStack[]{
+                for (OrePrefix part : new OrePrefix[] { plate, ingot }) {
+                    GTRecipeHandler.removeRecipesByInputs(BENDER_RECIPES, new ItemStack[] {
                             OreDictUnifier.get(part, material, 9),
-                            IntCircuitIngredient.getIntegratedCircuit(9)});
+                            IntCircuitIngredient.getIntegratedCircuit(9) });
                 }
             }
         }

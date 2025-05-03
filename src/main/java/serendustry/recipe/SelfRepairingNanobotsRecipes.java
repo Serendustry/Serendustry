@@ -13,8 +13,8 @@ import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.ore.OrePrefix;
 
-
 public class SelfRepairingNanobotsRecipes {
+
     public static void init() {
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(circuit, MarkerMaterials.Tier.UHV)
@@ -48,9 +48,9 @@ public class SelfRepairingNanobotsRecipes {
                         .EUt(VA[UEV]))
                 .duration(800).EUt(800000).buildAndRegister();
 
-        Material[] materials = {SelfRepairingNanobots, SentientNanobots};
-        OrePrefix[] parts = {dust, plate, foil};
-        float[] cost = {1.0F, 1.0f, 0.25F};
+        Material[] materials = { SelfRepairingNanobots, SentientNanobots };
+        OrePrefix[] parts = { dust, plate, foil };
+        float[] cost = { 1.0F, 1.0f, 0.25F };
 
         for (Material material : materials) {
             for (int i = 0; i < parts.length; i++) {

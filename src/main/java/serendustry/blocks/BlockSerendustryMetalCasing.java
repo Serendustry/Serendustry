@@ -1,8 +1,5 @@
 package serendustry.blocks;
 
-import gregtech.api.block.VariantBlock;
-
-import gregtech.api.unification.material.Material;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
@@ -11,26 +8,34 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
 import org.jetbrains.annotations.NotNull;
+
+import gregtech.api.block.VariantBlock;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.Materials;
 import serendustry.item.material.SerendustryMaterials;
 
-
 public class BlockSerendustryMetalCasing extends VariantBlock<BlockSerendustryMetalCasing.SerendustryMetalCasingType> {
-    public BlockSerendustryMetalCasing () {
+
+    public BlockSerendustryMetalCasing() {
         super(net.minecraft.block.material.Material.IRON);
         setTranslationKey("serendustry_metal_casing");
         setHardness(5.0f);
         setResistance(10.0f);
         setHarvestLevel("wrench", 3);
         setSoundType(SoundType.METAL);
-        setDefaultState(getState(SerendustryMetalCasingType.ADAMANTIUM));
+        setDefaultState(getState(SerendustryMetalCasingType.AMERICIUM));
     }
 
     @Override
-    public boolean canCreatureSpawn(@NotNull IBlockState state, @NotNull IBlockAccess world, @NotNull BlockPos pos, @NotNull EntityLiving.SpawnPlacementType type) {
+    public boolean canCreatureSpawn(@NotNull IBlockState state, @NotNull IBlockAccess world, @NotNull BlockPos pos,
+                                    @NotNull EntityLiving.SpawnPlacementType type) {
         return false;
     }
 
     public enum SerendustryMetalCasingType implements IStringSerializable {
+
+        AMERICIUM("americium", Materials.Americium),
+        CARBON("carbon", Materials.Carbon),
         ADAMANTIUM("adamantium", SerendustryMaterials.Adamantium);
 
         private final String name;
@@ -50,15 +55,5 @@ public class BlockSerendustryMetalCasing extends VariantBlock<BlockSerendustryMe
         public Material getMaterial() {
             return this.material;
         }
-
-        /*@Override
-        public int getHarvestLevel(IBlockState state) {
-            return harvestLevel;
-        }
-
-        @Override
-        public String getHarvestTool(IBlockState state) {
-            return ToolClasses.WRENCH;
-        }*/
     }
 }

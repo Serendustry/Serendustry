@@ -5,7 +5,6 @@ import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
-import static gregtech.common.items.MetaItems.EMITTER_UV;
 import static gregtech.common.metatileentities.MetaTileEntities.*;
 import static serendustry.item.SerendustryMetaItems.CULTURE_STEM_CELL_WIRED;
 import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_END;
@@ -14,18 +13,9 @@ import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.LABORATORY_RECIPES;
 
-import gregtech.api.recipes.GTRecipeHandler;
-import gregtech.api.recipes.ingredients.IntCircuitIngredient;
-import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.ore.OrePrefix;
-import gregtech.api.unification.stack.UnificationEntry;
-import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 
 import gregtech.api.fluids.store.FluidStorageKeys;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.FluidStack;
 
 public class AlloyRecipes {
 
@@ -260,7 +250,8 @@ public class AlloyRecipes {
 
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, StellarAlloy, 15).input(dust, ArceusAlloy2B, 10).input(dust, Lafium, 10)
-                .input(dust, Jasper, 5).input(dust, Americium, 5).input(dust, EnergyCrystal, 5).input(dust, Germanium, 5)
+                .input(dust, Jasper, 5).input(dust, Americium, 5).input(dust, EnergyCrystal, 5)
+                .input(dust, Germanium, 5)
                 .input(dust, SiliconCarbide, 5)
                 .fluidInputs(AssemblyLine.getPlasma(144))
                 .output(dust, Quantum, 60)
@@ -469,19 +460,21 @@ public class AlloyRecipes {
 
         ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES.recipeBuilder()
                 .input(gemExquisite, LigniteCoal).input(gemExquisite, AnthraciteCoal)
-                .input(gemExquisite, BituminousCoal).input(gemExquisite, SubBituminousCoal).input(gemExquisite, PeatCoal)
+                .input(gemExquisite, BituminousCoal).input(gemExquisite, SubBituminousCoal)
+                .input(gemExquisite, PeatCoal)
                 .output(dust, CondensedCoal)
                 .duration(20).EUt(VA[MAX]).buildAndRegister();
 
         ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES.recipeBuilder()
-                .input(gemExquisite, TiberiumAboreus).input(gemExquisite, TiberiumCruentus).input(gemExquisite, TiberiumRiparius)
+                .input(gemExquisite, TiberiumAboreus).input(gemExquisite, TiberiumCruentus)
+                .input(gemExquisite, TiberiumRiparius)
                 .input(gemExquisite, TiberiumVinifera).input(crushedCentrifuged, Originite)
                 .output(dust, ExtremelyUnstableTiberium)
                 .duration(20).EUt(VA[MAX]).buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder()
                 .input(ingot, Steel).input(Items.BONE)
-                //.fluidInputs(Blood.getFluid(100))
+                // .fluidInputs(Blood.getFluid(100))
                 .output(ingot, BoneSteel)
                 .blastFurnaceTemp(1800)
                 .duration(120).EUt(VA[MV]).buildAndRegister();
@@ -518,7 +511,7 @@ public class AlloyRecipes {
                 .fluidInputs(CondensedStarMatter.getFluid(1000), Xenon.getFluid(10))
                 .output(ingotHot, DeepDarkSteel)
                 .blastFurnaceTemp(10800)
-                .duration(20*90).EUt(VA[UXV]).buildAndRegister();
+                .duration(20 * 90).EUt(VA[UXV]).buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder()
                 .notConsumable(STELLAR_ESSENCE_END)
@@ -526,13 +519,13 @@ public class AlloyRecipes {
                 .fluidInputs(CondensedStarMatter.getFluid(800), Xenon.getFluid(10))
                 .output(ingotHot, DeepDarkSteel)
                 .blastFurnaceTemp(10800)
-                .duration(20*60).EUt(VA[UXV]).buildAndRegister();
+                .duration(20 * 60).EUt(VA[UXV]).buildAndRegister();
 
         VACUUM_RECIPES.recipeBuilder()
                 .input(ingotHot, DeepDarkSteel)
                 .fluidInputs(BlackStarMatter.getFluid(500), Helium.getFluid(FluidStorageKeys.LIQUID, 5000))
                 .output(ingot, DeepDarkSteel)
                 .fluidOutputs(Helium.getFluid(5000))
-                .duration(20*90).EUt(VA[UXV]).buildAndRegister();
+                .duration(20 * 90).EUt(VA[UXV]).buildAndRegister();
     }
 }

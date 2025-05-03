@@ -6,29 +6,49 @@ import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 
 public class SerendustryRecipeMaps {
 
-    public static final RecipeMapIndustrialLaboratory LABORATORY_RECIPES = new RecipeMapIndustrialLaboratory("industrial_laboratory", 6, 6, 6, 6, false);
-    public static final RecipeMap<SimpleRecipeBuilder> PLASMA_MIXER_RECIPES = new RecipeMap<>("transcendent_plasma_mixer", 0, 0, 9, 2, new SimpleRecipeBuilder(), false);
-    public static final RecipeMap<SimpleRecipeBuilder> SPACE_ELEVATOR_RECIPES = new RecipeMap<>("space_elevator", 2, 30000, 1, 3, new SimpleRecipeBuilder(), false);
-    public static final RecipeMap<SimpleRecipeBuilder> NEBULAIC_NEXUS_RECIPES = new RecipeMap<>("nebulaic_nexus", 2, 1, 6, 2, new SimpleRecipeBuilder(), false);
-    public static final RecipeMapPlasmaFoundry PLASMA_FOUNDRY_RECIPES = new RecipeMapPlasmaFoundry("plasma_foundry", 0, 0, 6, 2, false);
-    public static final RecipeMap<SimpleRecipeBuilder> GIANT_FRACTIONATING_COLUMN_RECIPES = new RecipeMap<>("giant_fractionating_column", 0, 0, 1, 9, new SimpleRecipeBuilder(), false);
-    public static final RecipeMap<SimpleRecipeBuilder> CVD_RECIPES = new RecipeMap<>("cvd_chamber", 4, 1, 2, 1, new SimpleRecipeBuilder(), false);
-    public static final RecipeMap<SimpleRecipeBuilder> SONICATOR_RECIPES = new RecipeMap<>("sonicator", 3, 1, 1, 1, new SimpleRecipeBuilder(), false);
-    public static final RecipeMap<SimpleRecipeBuilder> HP_LASER_ARRAY_RECIPES = new RecipeMap<>("hp_laser_array", 3, 6, 2, 3, new SimpleRecipeBuilder(), false);
-    public static final RecipeMap<SimpleRecipeBuilder> BIOLAB_RECIPES = new RecipeMap<>("biolab", 3, 2, 2, 1, new SimpleRecipeBuilder(), false);
-    public static final RecipeMap<SimpleRecipeBuilder> DIGESTER_RECIPES = new RecipeMap<>("digester", 3, 9, 3, 3, new SimpleRecipeBuilder(), false);
-    public static final RecipeMap<SimpleRecipeBuilder> YGGDRASIL_RECIPES = new RecipeMap<>("yggdrasil", 1, 1, 1, 1, new SimpleRecipeBuilder(), false);
-    public static final RecipeMap<SimpleRecipeBuilder> STELLAR_INCUBATOR_RECIPES = new RecipeMap<>("stellar_incubator", 3, 1, 3, 0, new SimpleRecipeBuilder(), false);
-    public static final RecipeMap<SimpleRecipeBuilder> DEHYDRATOR_RECIPES = new RecipeMap<>("dehydrator", 0, 9, 1, 0, new SimpleRecipeBuilder(), false);
-    public static final RecipeMap<SimpleRecipeBuilder> STELLAR_ENGINE_RECIPES = new RecipeMap<>("stellar_engine", 1, 0, 0, 32, new SimpleRecipeBuilder(), false);
-    public static final RecipeMap<SimpleRecipeBuilder> PLASMA_CONDENSER_RECIPES = new RecipeMap<>("plasma_condenser", 0, 0, 2, 1, new SimpleRecipeBuilder(), false);
-    public static final RecipeMap<SimpleRecipeBuilder> ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES = new RecipeMap<>("electric_implosion_compressor", 6, 2, 0, 0, new SimpleRecipeBuilder(), false);
-    /*public static final RecipeMap<SimpleRecipeBuilder> ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES = new RecipeMapBuilder<>("electric_implosion_compressor",
-            new SimpleRecipeBuilder().duration(1).EUt(GTValues.VA[GTValues.UEV]))
-            .itemInputs(2)
-            .itemOutputs(2)
-            .sound(SoundEvents.ENTITY_GENERIC_EXPLODE)
-            .build();*/
+    public static final RecipeMapIndustrialLaboratory LABORATORY_RECIPES = new RecipeMapIndustrialLaboratory(
+            "industrial_laboratory", 6, 6, 6, 6, false);
+    public static final RecipeMap<SimpleRecipeBuilder> PLASMA_MIXER_RECIPES = new RecipeMap<>(
+            "transcendent_plasma_mixer", 0, 0, 9, 2, new SimpleRecipeBuilder(), false);
+    public static final RecipeMap<SimpleRecipeBuilder> SPACE_ELEVATOR_RECIPES = new RecipeMap<>("space_elevator", 2,
+            30000, 1, 3, new SimpleRecipeBuilder(), false);
+    public static final RecipeMap<SimpleRecipeBuilder> NEBULAIC_NEXUS_RECIPES = new RecipeMap<>("nebulaic_nexus", 2, 1,
+            6, 2, new SimpleRecipeBuilder(), false);
+    public static final RecipeMapPlasmaFoundry PLASMA_FOUNDRY_RECIPES = new RecipeMapPlasmaFoundry("plasma_foundry", 0,
+            0, 6, 2, false);
+    public static final RecipeMap<SimpleRecipeBuilder> GIANT_FRACTIONATING_COLUMN_RECIPES = new RecipeMap<>(
+            "giant_fractionating_column", 0, 0, 1, 9, new SimpleRecipeBuilder(), false);
+    public static final RecipeMap<SimpleRecipeBuilder> CVD_RECIPES = new RecipeMap<>("cvd_chamber", 4, 1, 2, 1,
+            new SimpleRecipeBuilder(), false);
+    public static final RecipeMap<SimpleRecipeBuilder> SONICATOR_RECIPES = new RecipeMap<>("sonicator", 3, 1, 1, 1,
+            new SimpleRecipeBuilder(), false);
+    public static final RecipeMap<SimpleRecipeBuilder> HP_LASER_ARRAY_RECIPES = new RecipeMap<>("hp_laser_array", 3, 6,
+            2, 3, new SimpleRecipeBuilder(), false);
+    public static final RecipeMap<SimpleRecipeBuilder> BIOLAB_RECIPES = new RecipeMap<>("biolab", 3, 2, 2, 1,
+            new SimpleRecipeBuilder(), false);
+    public static final RecipeMap<SimpleRecipeBuilder> DIGESTER_RECIPES = new RecipeMap<>("digester", 3, 9, 3, 3,
+            new SimpleRecipeBuilder(), false);
+    public static final RecipeMap<SimpleRecipeBuilder> YGGDRASIL_RECIPES = new RecipeMap<>("yggdrasil", 1, 1, 1, 1,
+            new SimpleRecipeBuilder(), false);
+    public static final RecipeMap<SimpleRecipeBuilder> STELLAR_INCUBATOR_RECIPES = new RecipeMap<>("stellar_incubator",
+            3, 1, 3, 0, new SimpleRecipeBuilder(), false);
+    public static final RecipeMap<SimpleRecipeBuilder> DEHYDRATOR_RECIPES = new RecipeMap<>("dehydrator", 0, 9, 1, 0,
+            new SimpleRecipeBuilder(), false);
+    public static final RecipeMap<SimpleRecipeBuilder> STELLAR_ENGINE_RECIPES = new RecipeMap<>("stellar_engine", 1, 0,
+            0, 32, new SimpleRecipeBuilder(), false);
+    public static final RecipeMap<SimpleRecipeBuilder> PLASMA_CONDENSER_RECIPES = new RecipeMap<>("plasma_condenser", 0,
+            0, 2, 1, new SimpleRecipeBuilder(), false);
+    public static final RecipeMap<SimpleRecipeBuilder> ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES = new RecipeMap<>(
+            "electric_implosion_compressor", 6, 2, 0, 0, new SimpleRecipeBuilder(), false);
+    /*
+     * public static final RecipeMap<SimpleRecipeBuilder> ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES = new
+     * RecipeMapBuilder<>("electric_implosion_compressor",
+     * new SimpleRecipeBuilder().duration(1).EUt(GTValues.VA[GTValues.UEV]))
+     * .itemInputs(2)
+     * .itemOutputs(2)
+     * .sound(SoundEvents.ENTITY_GENERIC_EXPLODE)
+     * .build();
+     */
 
     public static void preInit() {
         RecipeMaps.BLAST_RECIPES.setMaxFluidInputs(2);

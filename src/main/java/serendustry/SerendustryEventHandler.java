@@ -3,8 +3,8 @@ package serendustry;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.loaders.recipe.CraftingComponent.*;
-import static serendustry.item.SerendustryMetaItems.CHIP_OPIC;
 import static serendustry.item.SerendustryMetaItems.*;
+import static serendustry.item.SerendustryMetaItems.CHIP_OPIC;
 import static serendustry.item.material.SerendustryMaterials.*;
 
 import java.util.HashMap;
@@ -48,8 +48,10 @@ public class SerendustryEventHandler {
         appendToComponent(CABLE_TIER_UP, wireGtSingle, Hihiirokane, Quantium40, Signalium, Bedrockium, Quantium);
 
         // Pipes
-        appendToComponent(PIPE_NORMAL, pipeNormalFluid, VibraniumAlloy, AbyssalAlloy, DeepDarkSteel, ChargedDraconium, CallistoIce);
-        appendToComponent(PIPE_LARGE, pipeLargeFluid, VibraniumAlloy, AbyssalAlloy, DeepDarkSteel, ChargedDraconium, CallistoIce);
+        appendToComponent(PIPE_NORMAL, pipeNormalFluid, VibraniumAlloy, AbyssalAlloy, DeepDarkSteel, ChargedDraconium,
+                CallistoIce);
+        appendToComponent(PIPE_LARGE, pipeLargeFluid, VibraniumAlloy, AbyssalAlloy, DeepDarkSteel, ChargedDraconium,
+                CallistoIce);
 
         // Glass
         appendToComponent(GLASS, block, ChromaticGlass, ChromaticGlass, ChromaticGlass, ChromaticGlass, ChromaticGlass);
@@ -73,7 +75,8 @@ public class SerendustryEventHandler {
 
         // Coils
         appendToComponent(COIL_HEATING, wireGtDouble, Hihiirokane, Quantium40, Signalium, Bedrockium, Quantium);
-        appendToComponent(COIL_HEATING_DOUBLE, wireGtQuadruple, Hihiirokane, Quantium40, Signalium, Bedrockium, Quantium);
+        appendToComponent(COIL_HEATING_DOUBLE, wireGtQuadruple, Hihiirokane, Quantium40, Signalium, Bedrockium,
+                Quantium);
         appendToComponent(COIL_ELECTRIC, wireGtOctal, Hihiirokane, Quantium40, Signalium, Bedrockium, Quantium);
 
         // Sticks

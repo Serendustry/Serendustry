@@ -5,7 +5,6 @@ import static gregtech.api.GTValues.UV;
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.BLAST_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.CHEMICAL_RECIPES;
-import static gregtech.api.recipes.RecipeMaps.IMPLOSION_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.LARGE_CHEMICAL_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.MIXER_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.VACUUM_RECIPES;
@@ -18,6 +17,7 @@ import static serendustry.machine.SerendustryRecipeMaps.ELECTRIC_IMPLOSION_COMPR
 import static serendustry.machine.SerendustryRecipeMaps.HP_LASER_ARRAY_RECIPES;
 
 public class Quantium40Chain {
+
     public static void init() {
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Toluene.getFluid(1000),
@@ -52,7 +52,7 @@ public class Quantium40Chain {
                         Glyoxal.getFluid(3000))
                 .output(dust, HexabenzylHexaazaisowurtzitane)
                 .fluidOutputs(Water.getFluid(6000))
-                .duration(200*6).EUt(VA[UV]).buildAndRegister();
+                .duration(200 * 6).EUt(VA[UV]).buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Ethenone.getFluid(1000),
@@ -68,7 +68,7 @@ public class Quantium40Chain {
                 .output(dust, TetraacetylHexaazaisowurtzitane)
                 .fluidOutputs(Ethylbenzene.getFluid(4000),
                         CarbonDioxide.getFluid(4000))
-                .duration(200*4).EUt(VA[UV]).buildAndRegister();
+                .duration(200 * 4).EUt(VA[UV]).buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder()
                 .input(dust, Borax)
@@ -76,7 +76,7 @@ public class Quantium40Chain {
                 .output(dust, BoronTrioxide, 2)
                 .output(dust, SodiumSulfate)
                 .blastFurnaceTemp(8000)
-                .duration(200*2).EUt(VA[UV]).buildAndRegister();
+                .duration(200 * 2).EUt(VA[UV]).buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, BoronTrioxide)
@@ -91,7 +91,7 @@ public class Quantium40Chain {
                         BoronTrifluoride.getFluid(4000))
                 .output(dust, NitroniumTetrafluoroborate, 8)
                 .fluidOutputs(Water.getFluid(1000))
-                .duration(200*2).EUt(VA[UV]).buildAndRegister();
+                .duration(200 * 2).EUt(VA[UV]).buildAndRegister();
 
         VACUUM_RECIPES.recipeBuilder()
                 .fluidInputs(NitricOxide.getFluid(1000),
@@ -111,7 +111,7 @@ public class Quantium40Chain {
                         BoronTrifluoride.getFluid(4000))
                 .output(dust, NitrosylTetrafluoroborate, 7)
                 .fluidOutputs(Water.getFluid(1000))
-                .duration(200*2).EUt(VA[UV]).buildAndRegister();
+                .duration(200 * 2).EUt(VA[UV]).buildAndRegister();
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, TetraacetylHexaazaisowurtzitane)
@@ -122,7 +122,7 @@ public class Quantium40Chain {
                 .fluidOutputs(BoronTrifluoride.getFluid(24000),
                         Ethylbenzene.getFluid(2000),
                         CarbonMonoxide.getFluid(2000))
-                .duration(200*8).EUt(VA[UV]).buildAndRegister();
+                .duration(200 * 8).EUt(VA[UV]).buildAndRegister();
 
         HP_LASER_ARRAY_RECIPES.recipeBuilder()
                 .circuitMeta(0)
@@ -143,6 +143,5 @@ public class Quantium40Chain {
                 .input(dust, HNIW, 4)
                 .output(dust, Quantium40)
                 .duration(20).EUt(VA[UEV]).buildAndRegister();
-
     }
 }

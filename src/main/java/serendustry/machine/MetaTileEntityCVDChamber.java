@@ -1,9 +1,9 @@
 package serendustry.machine;
 
-import gregtech.common.blocks.BlockGlassCasing;
-import gregtech.common.blocks.BlockMetalCasing;
-import gregtech.common.blocks.BlockWireCoil;
-import net.minecraft.block.state.IBlockState;
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
+
 import net.minecraft.util.ResourceLocation;
 
 import org.jetbrains.annotations.NotNull;
@@ -16,12 +16,9 @@ import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
-import gregtech.common.blocks.BlockMachineCasing;
+import gregtech.common.blocks.BlockGlassCasing;
+import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
-
-import static gregtech.api.util.RelativeDirection.DOWN;
-import static gregtech.api.util.RelativeDirection.FRONT;
-import static gregtech.api.util.RelativeDirection.LEFT;
 
 public class MetaTileEntityCVDChamber extends RecipeMapMultiblockController {
 
@@ -45,39 +42,40 @@ public class MetaTileEntityCVDChamber extends RecipeMapMultiblockController {
                 .aisle(
                         "AAA",
                         "ACA",
-                        "AAA"
-                ).aisle(
+                        "AAA")
+                .aisle(
                         "AAA",
                         "B B",
-                        "AAA"
-                ).aisle(
+                        "AAA")
+                .aisle(
                         "AAA",
                         "B B",
-                        "AAA"
-                ).aisle(
+                        "AAA")
+                .aisle(
                         "AAA",
                         "B B",
-                        "AAA"
-                ).aisle(
+                        "AAA")
+                .aisle(
                         "AAA",
                         "B B",
-                        "AAA"
-                ).aisle(
+                        "AAA")
+                .aisle(
                         "AAA",
                         "B B",
-                        "AAA"
-                ).aisle(
+                        "AAA")
+                .aisle(
                         "AAA",
                         "ABA",
-                        "AAA"
-                )
+                        "AAA")
                 .where('C', selfPredicate())
-                .where('A', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE)).setMinGlobalLimited(38).or(autoAbilities()))
+                .where('A',
+                        states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN))
+                                .setMinGlobalLimited(38).or(autoAbilities()))
                 .where('B', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS)))
                 .build();
     }
 
     public ICubeRenderer getBaseTexture(@Nullable IMultiblockPart part) {
-        return Textures.STABLE_TITANIUM_CASING;
+        return Textures.CLEAN_STAINLESS_STEEL_CASING;
     }
 }

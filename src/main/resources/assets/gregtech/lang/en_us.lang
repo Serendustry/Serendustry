@@ -207,6 +207,8 @@ metaitem.catalyst_awakened_draconium.name=Awakened Draconium Catalyst
 metaitem.catalyst_awakened_draconium.tooltip=Enables the Plasma Foundry to create Awakened Draconium/n§eHas 50 uses
 metaitem.catalyst_exo_halkonite.name=§bexo-§fHalkonite Steel Catalyst
 metaitem.catalyst_exo_halkonite.tooltip=Enables the Plasma Foundry to create §bexo-§7Halkonite Base/n§eHas 50 uses
+metaitem.catalyst_titanium_alloys.name=Titanium Alloys Catalyst
+metaitem.catalyst_titanium_alloys.tooltip=Enables the Plasma Foundry to create titanium-based alloys/n§bAccepted for Niobium-Titanium, ALMST, and Indium Tin Barium Titanium Cuprate/n§eHas 50 uses
 
 metaitem.circuit_any_ulv.name=Any ULV Circuit
 metaitem.circuit_any_lv.name=Any LV Circuit
@@ -591,7 +593,30 @@ serendustry.material.unreal_goop=§5Unreal Goop
 serendustry.material.exotic_unreality=§dExotic Unreality
 serendustry.material.exo_halkonite_base=§bexo-§fHalkonite Base
 
+tile.serendustry_metal_casing.americium.name=Flawless Americium Casing
+tile.serendustry_metal_casing.carbon.name=Ultradense Carbon Casing
 tile.serendustry_metal_casing.adamantium.name=Immaculate Adamantium Casing
+
+tile.serendustry_multi_casing.space_elevator.name=Space Elevator Casing
+
+tile.serendustry_multi_casing.hammer_neutronium.name=Neutronium Hammer Casing
+tile.serendustry_multi_casing.hammer_halkonite.name=§bproto-§fHalkonite Steel Hammer Casing
+tile.serendustry_multi_casing.hammer_ehk.name=§bexo-§fHalkonite Steel Hammer Casing
+
+tile.aal_core_casing.uv.name=Advanced Assembly Core (UV)
+tile.aal_core_casing.uv.tooltip=Allows the Advanced Assembly Line to perform recipes less than or equal to §3UV§7-Tier/nFor each tier that cores exceed recipe tier, recipe duration is §fhalved§7
+tile.aal_core_casing.uhv.name=Advanced Assembly Core (UHV)
+tile.aal_core_casing.uv.tooltip=Allows the Advanced Assembly Line to perform recipes less than or equal to §3UHV§7-Tier/nFor each tier that cores exceed recipe tier, recipe duration is §fhalved§7
+tile.aal_core_casing.uev.name=Advanced Assembly Core (UEV)
+tile.aal_core_casing.uv.tooltip=Allows the Advanced Assembly Line to perform recipes less than or equal to §3UEV§7-Tier/nFor each tier that cores exceed recipe tier, recipe duration is §fhalved§7
+tile.aal_core_casing.uiv.name=Advanced Assembly Core (UIV)
+tile.aal_core_casing.uv.tooltip=Allows the Advanced Assembly Line to perform recipes less than or equal to §3UIV§7-Tier/nFor each tier that cores exceed recipe tier, recipe duration is §fhalved§7
+tile.aal_core_casing.uxv.name=Advanced Assembly Core (UXV)
+tile.aal_core_casing.uv.tooltip=Allows the Advanced Assembly Line to perform recipes less than or equal to §3UXV§7-Tier/nFor each tier that cores exceed recipe tier, recipe duration is §fhalved§7
+tile.aal_core_casing.opv.name=Advanced Assembly Core (OpV)
+tile.aal_core_casing.uv.tooltip=Allows the Advanced Assembly Line to perform recipes less than or equal to §3OpV§7-Tier/nFor each tier that cores exceed recipe tier, recipe duration is §fhalved§7
+tile.aal_core_casing.max.name=Advanced Assembly Core (MAX)
+tile.aal_core_casing.uv.tooltip=Allows the Advanced Assembly Line to perform all recipes/nFor each tier that cores exceed recipe tier, recipe duration is §fhalved§7
 
 serendustry.machine.industrial_laboratory.name=Industrial Laboratory
 serendustry.machine.industrial_laboratory.tooltip=§bEverything coming together to make breakthroughs§7/nEach recipe requires certain singleblock machines of at least a certain tier to be placed in the space inside the Laboratory/nAccepts §e1-2§7 regular §fEnergy Hatches§7
@@ -604,7 +629,9 @@ serendustry.machine.nebulaic_nexus.name=Nebulaic Nexus
 serendustry.machine.nebulaic_nexus.tooltip=§bThe birthplace of a new star§7/nAccepts §e1-2§7 regular §fEnergy Hatches§7 or §e1§7 §dSubstation§7 hatch
 serendustry.machine.plasma_foundry.name=Plasma Foundry
 serendustry.machine.plasma_foundry.flavor=§bThe power of plasma courses through your alloys!
-serendustry.machine.plasma_foundry.description=Creates alloys in liquid form at far faster speeds than previously thought possible in bulk. Recipes require §aCatalysts§7 to run. When a §aCatalyst§7 is placed inside the §fcontroller slot§7, it will be §cconsumed§7, and that controller will be bound to that catalyst, and §conly§7 that catalyst, until it breaks. Catalysts break after §e50§7 recipes./n§7Accepts §e1-2§7 regular §fEnergy Hatches§7
+serendustry.machine.plasma_foundry.description1=Creates alloys in liquid form at far faster speeds than previously thought possible in bulk. Recipes require §aCatalysts§7 to run. When a §aCatalyst§7 is placed inside the §fcontroller slot§7, it will be §cconsumed§7, and that controller will be bound to that catalyst, and §conly§7 that catalyst, until it breaks. Catalysts break after §e50§7 recipes.§7Accepts §e1-2§7 regular §fEnergy Hatches§7/n§eRequires 3 Lava source blocks to form§7
+serendustry.machine.plasma_foundry.description2=§7Accepts §e1-2§7 regular §fEnergy Hatches§7
+serendustry.machine.plasma_foundry.description3=§eRequires 3 Lava source blocks to form§7
 serendustry.machine.plasma_foundry.catalyst=Contained Catalyst:
 serendustry.machine.plasma_foundry.no_catalyst=None
 serendustry.machine.giant_fractionating_column.name=Giant Fractionating Column
@@ -618,13 +645,13 @@ serendustry.machine.hp_laser_array.tooltip=§bCall forth the Heaven-Searing Ligh
 serendustry.machine.biolab.name=Biolab
 serendustry.machine.biolab.tooltip=§bIt's time to play God§7/nAccepts §e1-2§7 regular §fEnergy Hatches§7
 serendustry.machine.yggdrasil.name=Yggdrasil
-serendustry.machine.yggdrasil.tooltip=§bCapable of rewriting the laws of reality across infinite dimensions to bring objects into new forms§f/nPerforms the tasks of different machines based on the §aProgrammed Circuit§7 present in a given Input Bus. 1 = Assembler, 2 = Circuit Assembler, 3 = Assembly Line (input order doesn't matter), 4 = Yggdrasil (todo: change to custom item, not circuits)/nAccepts §e1-2§7 regular §fEnergy Hatches§7, §e1§7 §dSubstation§7 hatch, or §e1§7 §dLaser§7 hatch/nBy default, has no parallels. Placing a §eReality Distortion Amplifier§7 in the controller slot will consume it and permanently increase maximum parallels by §e4§7, with no practical limit/nConsumes §exL/s§7 of §e???§7 some fluid idk per parallel while operating
+serendustry.machine.yggdrasil.tooltip=§cWIP! Does not function as intended!§7/n§bCapable of rewriting the laws of reality across infinite dimensions to bring objects into new forms§f/nPerforms the tasks of different machines based on the §aProgrammed Circuit§7 present in a given Input Bus. 1 = Assembler, 2 = Circuit Assembler, 3 = Assembly Line (input order doesn't matter), 4 = Yggdrasil (todo: change to custom item, not circuits)/nAccepts §e1-2§7 regular §fEnergy Hatches§7, §e1§7 §dSubstation§7 hatch, or §e1§7 §dLaser§7 hatch/nBy default, has no parallels. Placing a §eReality Distortion Amplifier§7 in the controller slot will consume it and permanently increase maximum parallels by §e4§7, with no practical limit/nConsumes §exL/s§7 of §e???§7 some fluid idk per parallel while operating
 serendustry.machine.advanced_fusion_reactor.name=Advanced Fusion Reactor
 serendustry.machine.advanced_fusion_reactor.tooltip=§bA SUPERNOVA AT YOUR BECK AND CALL, RIVALING THE FIST OF GOD/n§7Unlike a regular fusion reactor, hatches can be placed anywhere. Accepts §e1-2§7 regular §fEnergy Hatches§7, and they must be §3UEV§7-tier or higher/nHas §e32§7 parallel, and overclocks normally/n§eIgnores recipe EU to start
 serendustry.machine.stellar_incubator.name=Stellar Incubator
 serendustry.machine.stellar_incubator.tooltip=§bDilutes reality itself into the palm of your hand§7/nAccepts §e1-2§7 regular §fEnergy Hatches§7, §e1§7 §dSubstation§7 hatch, or §e1§7 §dLaser§7 hatch
 serendustry.machine.flamel_crucible.name=Flamel's Crucible
-serendustry.machine.flamel_crucible.tooltip=§bThe greatest alchemical achievement§7/nPerforms all §eLarge Chemical Reactor§7 recipes/nAccepts §e1-2§7 regular §fEnergy Hatches§7, §e1§7 §dSubstation§7 hatch, or §e1§7 §dLaser§7 hatch
+serendustry.machine.flamel_crucible.tooltip=§bThe greatest alchemical achievement§7/nPerforms all §eLarge Chemical Reactor§7 recipes/nAccepts §e1-2§7 regular §fEnergy Hatches§7, §e1§7 §dSubstation§7 hatch, or §e1§7 §dLaser§7 hatch/n§eRequires 1 Lava source block to form
 serendustry.machine.dehydrator.name=Dehydrator
 serendustry.machine.dehydrator.tooltip=§bEliminates all moisture from molecules§7/nAccepts §e1-2§7 regular §fEnergy Hatches§7
 serendustry.machine.stellar_engine.name=Stellar Engine
@@ -632,7 +659,10 @@ serendustry.machine.stellar_engine.tooltip=§bRip through the fabric of all real
 serendustry.machine.plasma_condenser.name=Plasma Condenser
 serendustry.machine.plasma_condenser.tooltip=§bCreating and cooling plasmas at unforetold speeds§7/nAccepts §e1-2§7 regular §fEnergy Hatches§ or §e1§7 §dSubstation§7 hatch, or §e1§7 §dLaser§7 hatch/nHas §e1,024§7 parallel
 serendustry.machine.electric_implosion_compressor.name=Electric Implosion Compressor
-serendustry.machine.electric_implosion_compressor.tooltip=§bKABOOOM!!! Basically 2 giant hammers§7/nPerforms all §eImplosion Compressor§7 recipes and some unique ones/nAccepts §e1-2§7 regular §fEnergy Hatches§7 or §e1§7 §dSubstation§7 hatch/nHas §e256§7 parallel
+serendustry.machine.electric_implosion_compressor.tooltip=§bKABOOOM!!! Basically 2 giant hammers§7/nPerforms all §eImplosion Compressor§7 recipes and some unique ones/nAccepts §e1-2§7 regular §fEnergy Hatches§7 or §e1§7 §dSubstation§7 hatch/nHas §e256§7 parallel (TODO: Hammer casings)
+serendustry.machine.advanced_assembly_line.name=Advanced Assembly Line
+serendustry.machine.advanced_assembly_line.tooltip=§bThe machine does not isolate man from the great problems of nature but plunges him more deeply into them§7/nPerforms all §eAssembly Line§7 recipes/nCan only perform recipes less than or equal to the tier of §eAdvanced Assembly Core§7 in the structure/nFor each tier that cores exceed recipe tier, recipe duration is §fhalved§7/nAccepts §e1-2§7 regular §fEnergy Hatches§7 or §e1§7 §dSubstation§7 hatch
+serendustry.machine.advanced_assembly_line.tier=§cAll cores must be the same tier§r
 
 recipemap.giant_fractionating_column.name=Giant Fractionating Column
 recipemap.industrial_laboratory.name=Industrial Laboratory

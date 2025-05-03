@@ -1,29 +1,28 @@
 package serendustry.machine;
 
-import gregtech.api.capability.IEnergyContainer;
-import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import gregtech.api.pattern.PatternMatchContext;
-import gregtech.api.recipes.RecipeMaps;
-import gregtech.common.blocks.BlockMetalCasing;
-import gregtech.common.blocks.BlockWireCoil;
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
+import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
+import gregtech.api.pattern.PatternMatchContext;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.BlockMachineCasing;
+import gregtech.common.blocks.BlockMetalCasing;
+import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MetaTileEntityYggdrasil extends RecipeMapMultiblockController {
 
@@ -46,35 +45,48 @@ public class MetaTileEntityYggdrasil extends RecipeMapMultiblockController {
         super.formStructure(context);
 
         List<IEnergyContainer> energyInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
-        List<IEnergyContainer> substationInput = new ArrayList<>(getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
+        List<IEnergyContainer> substationInput = new ArrayList<>(
+                getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
         List<IEnergyContainer> laserInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_LASER));
 
         // Allow only 1 type of energy input at a time
-        if((!energyInput.isEmpty() && !substationInput.isEmpty()) || (!energyInput.isEmpty() && !laserInput.isEmpty()) || (!substationInput.isEmpty() && !laserInput.isEmpty())) {
+        if ((!energyInput.isEmpty() && !substationInput.isEmpty()) ||
+                (!energyInput.isEmpty() && !laserInput.isEmpty()) ||
+                (!substationInput.isEmpty() && !laserInput.isEmpty())) {
             invalidateStructure();
         }
 
         // todo: give error message to multiblock builder and make JEI not show mixed hatches
 
-        /*List<IEnergyContainer> powerInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
-        powerInput.addAll(getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
-        powerInput.addAll(getAbilities(MultiblockAbility.INPUT_LASER));
-
-        this.powerInput = new EnergyContainerList(powerInput);*/  // todo: update ceu so this works and check if this even needed
+        /*
+         * List<IEnergyContainer> powerInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
+         * powerInput.addAll(getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
+         * powerInput.addAll(getAbilities(MultiblockAbility.INPUT_LASER));
+         * 
+         * this.powerInput = new EnergyContainerList(powerInput);
+         */  // todo: update ceu so this works and check if this even needed
     }
 
     @Override
     public @NotNull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#C#####C#")
-                .aisle("#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#XXXXXXX#", "YXXXSXXXY", "#XXXXXXX#", "#########", "#########", "#########")
+                .aisle("#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#C#####C#",
+                        "#XXXXXXX#", "#C#####C#")
+                .aisle("#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#XXXXXXX#", "YXXXSXXXY", "#XXXXXXX#", "#########",
+                        "#########", "#########")
 
                 .where('S', selfPredicate())
-                .where('X', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PTFE_INERT_CASING)).setMinGlobalLimited(530))
-                .where('Y', states(getCasingState()).setMinGlobalLimited(1).or(autoAbilities(false, false, true, true, true, true, false))
-                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0).setMinGlobalLimited(0).setMaxGlobalLimited(2))
-                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(0).setMaxGlobalLimited(1))
-                        .or(abilities(MultiblockAbility.INPUT_LASER).setPreviewCount(1).setMaxGlobalLimited(1)))
+                .where('X',
+                        states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PTFE_INERT_CASING))
+                                .setMinGlobalLimited(530))
+                .where('Y',
+                        states(getCasingState()).setMinGlobalLimited(1)
+                                .or(autoAbilities(false, false, true, true, true, true, false))
+                                .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0).setMinGlobalLimited(0)
+                                        .setMaxGlobalLimited(2))
+                                .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(0)
+                                        .setMaxGlobalLimited(1))
+                                .or(abilities(MultiblockAbility.INPUT_LASER).setPreviewCount(1).setMaxGlobalLimited(1)))
                 .where('C', states(MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.CUPRONICKEL)))
                 .where('#', air())
                 .build();

@@ -1,35 +1,20 @@
 package serendustry.item;
 
-import gregtech.api.GTValues;
-import gregtech.api.capability.GregtechCapabilities;
-import gregtech.api.recipes.ModHandler;
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.ore.OrePrefix;
-import gregtech.api.unification.stack.UnificationEntry;
-import gregtech.common.items.tool.*;
-import gregtech.core.sound.GTSoundEvents;
+import static gregtech.common.items.ToolItems.register;
+import static serendustry.item.SerendustryMetaItems.POWER_UNIT_UHV;
+
+import java.util.function.Supplier;
+
 import net.minecraft.entity.monster.EntityGolem;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.init.SoundEvents;
-
-import gregtech.api.items.toolitem.*;
-import gregtech.common.items.ToolItems;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
+
+import gregtech.api.GTValues;
+import gregtech.api.items.toolitem.*;
+import gregtech.common.items.tool.*;
+import gregtech.core.sound.GTSoundEvents;
 import serendustry.Serendustry;
-
-import java.util.Objects;
-import java.util.function.Supplier;
-
-import static gregtech.api.unification.material.Materials.Neutronium;
-import static gregtech.common.items.MetaItems.ELECTRIC_MOTOR_UHV;
-import static gregtech.common.items.MetaItems.ULTIMATE_BATTERY;
-import static gregtech.common.items.ToolItems.register;
-import static gregtech.loaders.recipe.handlers.ToolRecipeHandler.motorItems;
-import static serendustry.item.SerendustryMetaItems.POWER_UNIT_UHV;
-import static serendustry.item.material.SerendustryMaterials.PolyethyleneTerephtalate;
-import static serendustry.item.material.SerendustryMaterials.RadoxPolymer;
 
 public class SerendustryToolItems {
 
@@ -39,7 +24,7 @@ public class SerendustryToolItems {
     public static IGTTool WRENCH_UHV;
     public static IGTTool SCREWDRIVER_UHV;
     public static IGTTool WIRECUTTER_UHV;
-    public static IGTTool TRISHULA;
+    // public static IGTTool TRISHULA;
 
     public static final Supplier<ItemStack> SUPPLY_POWER_UNIT_UHV = () -> POWER_UNIT_UHV.getStackForm();
 
@@ -114,18 +99,21 @@ public class SerendustryToolItems {
                 .toolClasses(ToolClasses.WIRE_CUTTER)
                 .electric(GTValues.UHV));
 
-        /*TRISHULA = register(ItemGTTool.Builder.of(Serendustry.MODID, "trishula")
-                .toolStats(b -> {
-                    return b.blockBreaking().aoe(8, 8, 16).sneakBypassUse()
-                            .attackDamage(65536.0f).attackSpeed(-2.8f)
-                            .behaviors(BlockRotatingBehavior.INSTANCE,
-                                    HarvestIceBehavior.INSTANCE, DisableShieldBehavior.INSTANCE,
-                                    TreeFellingBehavior.INSTANCE);
-                })
-                .oreDict(ToolOreDict.toolDrill)
-                .secondaryOreDicts("toolWrench", "toolWireCutter")
-                .sound(SoundEvents.BLOCK_ANVIL_LAND)
-                .toolClasses(ToolClasses.PICKAXE, ToolClasses.AXE, ToolClasses.SHOVEL, ToolClasses.WRENCH, ToolClasses.WIRE_CUTTER)
-                .electric(GTValues.LuV));*/
+        /*
+         * TRISHULA = register(ItemGTTool.Builder.of(Serendustry.MODID, "trishula")
+         * .toolStats(b -> {
+         * return b.blockBreaking().aoe(8, 8, 16).sneakBypassUse()
+         * .attackDamage(65536.0f).attackSpeed(-2.8f)
+         * .behaviors(BlockRotatingBehavior.INSTANCE,
+         * HarvestIceBehavior.INSTANCE, DisableShieldBehavior.INSTANCE,
+         * TreeFellingBehavior.INSTANCE);
+         * })
+         * .oreDict(ToolOreDict.toolDrill)
+         * .secondaryOreDicts("toolWrench", "toolWireCutter")
+         * .sound(SoundEvents.BLOCK_ANVIL_LAND)
+         * .toolClasses(ToolClasses.PICKAXE, ToolClasses.AXE, ToolClasses.SHOVEL, ToolClasses.WRENCH,
+         * ToolClasses.WIRE_CUTTER)
+         * .electric(GTValues.LuV));
+         */
     }
 }

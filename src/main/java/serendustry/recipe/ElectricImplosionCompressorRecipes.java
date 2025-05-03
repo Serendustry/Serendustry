@@ -1,15 +1,7 @@
 package serendustry.recipe;
 
-import gregtech.api.GTValues;
-import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.recipes.ingredients.GTRecipeInput;
-import gregtech.api.recipes.Recipe;
-import gregtech.api.recipes.recipeproperties.ImplosionExplosiveProperty;
-//import gregtech.api.recipes.properties.impl.ImplosionExplosiveProperty;
-import gregtech.api.util.ItemStackHashStrategy;
-import it.unimi.dsi.fastutil.Hash;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import net.minecraft.item.ItemStack;
+import static java.lang.Math.max;
+import static serendustry.machine.SerendustryRecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +9,15 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
-import static java.lang.Math.max;
-import static serendustry.machine.SerendustryRecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES;
+import net.minecraft.item.ItemStack;
 
+import gregtech.api.recipes.Recipe;
+import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.recipes.ingredients.GTRecipeInput;
+import gregtech.api.recipes.recipeproperties.ImplosionExplosiveProperty;
+import gregtech.api.util.ItemStackHashStrategy;
+import it.unimi.dsi.fastutil.Hash;
+import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
 
 public class ElectricImplosionCompressorRecipes {
 
@@ -54,12 +52,13 @@ public class ElectricImplosionCompressorRecipes {
      * Implosion Compressor, this code will have to be adjusted.
      */
     public static void buildElectricImplosionRecipes() {
-
         RecipeMaps.IMPLOSION_RECIPES.getRecipeList().forEach(recipe -> {
 
             // Get the explosive type used in this recipe
-            //ItemStack explosive = (ItemStack) recipe.propertyStorage().get(ImplosionExplosiveProperty.getInstance(), ItemStack.EMPTY);
-            ItemStack explosive = (ItemStack) recipe.getRecipePropertyStorage().getRecipePropertyValue(ImplosionExplosiveProperty.getInstance(), ItemStack.EMPTY);
+            // ItemStack explosive = (ItemStack) recipe.propertyStorage().get(ImplosionExplosiveProperty.getInstance(),
+            // ItemStack.EMPTY);
+            ItemStack explosive = (ItemStack) recipe.getRecipePropertyStorage()
+                    .getRecipePropertyValue(ImplosionExplosiveProperty.getInstance(), ItemStack.EMPTY);
 
             // Get the input list, converting from CountableIngredient to ItemStack
             AtomicInteger stackCount = new AtomicInteger();
@@ -88,7 +87,6 @@ public class ElectricImplosionCompressorRecipes {
      * @param inputs The Set of inputs without an explosive present.
      */
     private static void registerRecipe(Recipe recipe, Set<ItemStack> inputs) {
-
         // Check if this recipe has already been set
         for (Set<ItemStack> inputSet : usedRecipes)
             if (inputSet.containsAll(inputs))

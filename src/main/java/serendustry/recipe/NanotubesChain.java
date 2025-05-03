@@ -1,8 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.MarkerMaterials;
-
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -13,7 +10,11 @@ import static serendustry.machine.SerendustryMetaTileEntities.SONICATOR;
 import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.SONICATOR_RECIPES;
 
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.MarkerMaterials;
+
 public class NanotubesChain {
+
     public static void init() {
         FLUID_HEATER_RECIPES.recipeBuilder()
                 .fluidInputs(Methane.getFluid(1000))

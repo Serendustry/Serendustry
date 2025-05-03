@@ -1,8 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.recipes.GTRecipeHandler;
-import net.minecraftforge.fluids.FluidStack;
-
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -11,6 +8,7 @@ import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_OVERWORLD;
 import static serendustry.item.material.SerendustryMaterials.*;
 
 public class FerrofluidChain {
+
     public static void init() {
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, Iron)

@@ -1,35 +1,33 @@
 package serendustry.machine;
 
-import gregtech.api.capability.IEnergyContainer;
-import gregtech.api.capability.impl.EnergyContainerList;
-import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import gregtech.api.pattern.PatternMatchContext;
-import gregtech.common.blocks.BlockMetalCasing;
-import gregtech.common.blocks.BlockWireCoil;
-import net.minecraft.block.state.IBlockState;
+import static gregtech.api.util.RelativeDirection.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.util.ResourceLocation;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
+import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
+import gregtech.api.pattern.PatternMatchContext;
 import gregtech.client.renderer.ICubeRenderer;
-import gregtech.client.renderer.texture.Textures;
-import gregtech.common.blocks.BlockMachineCasing;
+import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static gregtech.api.util.RelativeDirection.*;
+import serendustry.blocks.BlockSerendustryMetalCasing;
+import serendustry.blocks.SerendustryMetaBlocks;
+import serendustry.client.renderer.texture.SerendustryTextures;
 
 public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
 
-    //private IEnergyContainer powerInput; // todo: update ceu so this works and check if this even needed
+    // private IEnergyContainer powerInput; // todo: update ceu so this works and check if this even needed
 
     public MetaTileEntityNebulaicNexus(ResourceLocation rl) {
         super(rl, SerendustryRecipeMaps.NEBULAIC_NEXUS_RECIPES);
@@ -50,18 +48,21 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
         super.formStructure(context);
 
         List<IEnergyContainer> energyInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
-        List<IEnergyContainer> substationInput = new ArrayList<>(getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
+        List<IEnergyContainer> substationInput = new ArrayList<>(
+                getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
 
-        if(!energyInput.isEmpty() && !substationInput.isEmpty()) { 
+        if (!energyInput.isEmpty() && !substationInput.isEmpty()) {
             invalidateStructure();
         }
 
         // todo: give error message to multiblock builder and make JEI not show mixed hatches
 
-        /*List<IEnergyContainer> powerInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
-        powerInput.addAll(getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
-
-        this.powerInput = new EnergyContainerList(powerInput);*/  // todo: update ceu so this works and check if this even needed
+        /*
+         * List<IEnergyContainer> powerInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
+         * powerInput.addAll(getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
+         * 
+         * this.powerInput = new EnergyContainerList(powerInput);
+         */  // todo: update ceu so this works and check if this even needed
     }
 
     @Override
@@ -94,8 +95,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "                               ",
                         "                               ",
                         "                               ",
-                        "                               "
-                ).aisle(
+                        "                               ")
+                .aisle(
                         "                               ",
                         "                               ",
                         "                               ",
@@ -122,8 +123,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "                               ",
                         "                               ",
                         "                               ",
-                        "                               "
-                ).aisle(
+                        "                               ")
+                .aisle(
                         "                               ",
                         "                               ",
                         "                               ",
@@ -150,8 +151,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "                               ",
                         "                               ",
                         "                               ",
-                        "                               "
-                ).aisle(
+                        "                               ")
+                .aisle(
                         "                               ",
                         "                               ",
                         "                               ",
@@ -178,8 +179,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "                               ",
                         "                               ",
                         "                               ",
-                        "                               "
-                ).aisle(
+                        "                               ")
+                .aisle(
                         "                               ",
                         "                               ",
                         "                               ",
@@ -206,8 +207,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "              CCC              ",
                         "               C               ",
                         "               C               ",
-                        "                               "
-                ).aisle(
+                        "                               ")
+                .aisle(
                         "                               ",
                         "                               ",
                         "                               ",
@@ -234,8 +235,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "              CCC              ",
                         "              CCC              ",
                         "              CCC              ",
-                        "              CCC              "
-                ).aisle(
+                        "              CCC              ")
+                .aisle(
                         "                               ",
                         "                               ",
                         "               C               ",
@@ -262,8 +263,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "                               ",
                         "               C               ",
                         "               C               ",
-                        "              CCC              "
-                ).aisle(
+                        "              CCC              ")
+                .aisle(
                         "                               ",
                         "                               ",
                         "               C               ",
@@ -290,8 +291,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "                               ",
                         "                               ",
                         "                               ",
-                        "              CCC              "
-                ).aisle(
+                        "              CCC              ")
+                .aisle(
                         "                               ",
                         "                               ",
                         "               C               ",
@@ -318,8 +319,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "               B               ",
                         "               B               ",
                         "                               ",
-                        "              CCC              "
-                ).aisle(
+                        "              CCC              ")
+                .aisle(
                         "                               ",
                         "                               ",
                         "               C               ",
@@ -346,8 +347,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "              BBB              ",
                         "              BBB              ",
                         "              BBB              ",
-                        "             CCCCC             "
-                ).aisle(
+                        "             CCCCC             ")
+                .aisle(
                         "                               ",
                         "                               ",
                         "              CCC              ",
@@ -374,8 +375,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "                               ",
                         "                               ",
                         "              BBB              ",
-                        "            CCBBBCC            "
-                ).aisle(
+                        "            CCBBBCC            ")
+                .aisle(
                         "                               ",
                         "               C               ",
                         "             CCBCC             ",
@@ -402,8 +403,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "                               ",
                         "                               ",
                         "                               ",
-                        "             BBCBB             "
-                ).aisle(
+                        "             BBCBB             ")
+                .aisle(
                         "                               ",
                         "              CCC              ",
                         "            CCBBBCC            ",
@@ -430,8 +431,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "                               ",
                         "                               ",
                         "                               ",
-                        "          C   CCC   C          "
-                ).aisle(
+                        "          C   CCC   C          ")
+                .aisle(
                         "               C               ",
                         "             CCCCC             ",
                         "           CCBBBBBCC           ",
@@ -458,8 +459,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "                               ",
                         "                               ",
                         "               C               ",
-                        "         CCB CCCCC BCC         "
-                ).aisle(
+                        "         CCB CCCCC BCC         ")
+                .aisle(
                         "              CCC              ",
                         "            CCCCCCC            ",
                         "          CCBBBBBBBCC          ",
@@ -486,8 +487,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "    CC   B           B   CC    ",
                         "     C   B     C     B   C     ",
                         "     C   BB   CCC   BB   C     ",
-                        "     CCCCCBBCCCCCCCBBCCCCC     "
-                ).aisle(
+                        "     CCCCCBBCCCCCCCBBCCCCC     ")
+                .aisle(
                         "             CCCCC             ",
                         "           CCCCCCCCC           ",
                         "      CCCCCBBBBBBBBBCCCCC      ",
@@ -514,8 +515,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "    CC  BB     D     BB  CC    ",
                         "    CCC BB    CCC    BB CCC    ",
                         "    CCC  BB  CCCCC  BB  CCC    ",
-                        "     CCCCCBCCCCCCCCCBCCCCC     "
-                ).aisle(
+                        "     CCCCCBCCCCCCCCCBCCCCC     ")
+                .aisle(
                         "              CCC              ",
                         "            CCCCCCC            ",
                         "          CCBBBBBBBCC          ",
@@ -542,8 +543,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "    CC   B           B   CC    ",
                         "     C   B     C     B   C     ",
                         "     C   BB   CCC   BB   C     ",
-                        "     CCCCCBBCCCCCCCBBCCCCC     "
-                ).aisle(
+                        "     CCCCCBBCCCCCCCBBCCCCC     ")
+                .aisle(
                         "               C               ",
                         "             CCCCC             ",
                         "           CCBBBBBCC           ",
@@ -570,8 +571,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "                               ",
                         "                               ",
                         "               C               ",
-                        "         CCB CCCCC BCC         "
-                ).aisle(
+                        "         CCB CCCCC BCC         ")
+                .aisle(
                         "                               ",
                         "              CCC              ",
                         "            CCBBBCC            ",
@@ -598,8 +599,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "                               ",
                         "                               ",
                         "                               ",
-                        "          C   CCC   C          "
-                ).aisle(
+                        "          C   CCC   C          ")
+                .aisle(
                         "                               ",
                         "               C               ",
                         "             CCBCC             ",
@@ -626,8 +627,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "                               ",
                         "                               ",
                         "                               ",
-                        "             BBCBB             "
-                ).aisle(
+                        "             BBCBB             ")
+                .aisle(
                         "                               ",
                         "                               ",
                         "              CCC              ",
@@ -654,8 +655,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "                               ",
                         "                               ",
                         "              BBB              ",
-                        "            CCBBBCC            "
-                ).aisle(
+                        "            CCBBBCC            ")
+                .aisle(
                         "                               ",
                         "                               ",
                         "               C               ",
@@ -682,8 +683,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "              BBB              ",
                         "              BBB              ",
                         "              BBB              ",
-                        "             CCCCC             "
-                ).aisle(
+                        "             CCCCC             ")
+                .aisle(
                         "                               ",
                         "                               ",
                         "               C               ",
@@ -710,8 +711,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "               B               ",
                         "               B               ",
                         "                               ",
-                        "              CCC              "
-                ).aisle(
+                        "              CCC              ")
+                .aisle(
                         "                               ",
                         "                               ",
                         "               C               ",
@@ -738,8 +739,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "                               ",
                         "                               ",
                         "                               ",
-                        "              CCC              "
-                ).aisle(
+                        "              CCC              ")
+                .aisle(
                         "                               ",
                         "                               ",
                         "               C               ",
@@ -766,8 +767,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "                               ",
                         "               C               ",
                         "               C               ",
-                        "              CCC              "
-                ).aisle(
+                        "              CCC              ")
+                .aisle(
                         "                               ",
                         "                               ",
                         "                               ",
@@ -794,8 +795,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "              CCC              ",
                         "              CCC              ",
                         "              CCC              ",
-                        "              CCC              "
-                ).aisle(
+                        "              CCC              ")
+                .aisle(
                         "                               ",
                         "                               ",
                         "                               ",
@@ -822,8 +823,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "              CCC              ",
                         "               C               ",
                         "               C               ",
-                        "                               "
-                ).aisle(
+                        "                               ")
+                .aisle(
                         "                               ",
                         "                               ",
                         "                               ",
@@ -850,8 +851,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "                               ",
                         "                               ",
                         "                               ",
-                        "                               "
-                ).aisle(
+                        "                               ")
+                .aisle(
                         "                               ",
                         "                               ",
                         "                               ",
@@ -878,8 +879,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "                               ",
                         "                               ",
                         "                               ",
-                        "                               "
-                ).aisle(
+                        "                               ")
+                .aisle(
                         "                               ",
                         "                               ",
                         "                               ",
@@ -906,8 +907,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "                               ",
                         "                               ",
                         "                               ",
-                        "                               "
-                ).aisle(
+                        "                               ")
+                .aisle(
                         "                               ",
                         "                               ",
                         "                               ",
@@ -937,17 +938,24 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                         "                               ")
 
                 .where('D', selfPredicate())
-                .where('C', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PTFE_INERT_CASING)) // todo: some sort of superdense carbide casing?
-                        .setMinGlobalLimited(803).or(autoAbilities(false, false, true, true, true, true, false))
-                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0).setMinGlobalLimited(0).setMaxGlobalLimited(2))
-                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(1).setMaxGlobalLimited(1)))
-                        .where('B', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE))) // todo: adamantium casing
+                .where('C',
+                        states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
+                                .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.CARBON))
+                                        .setMinGlobalLimited(803)
+                                        .or(autoAbilities(false, false, true, true, true, true, false))
+                                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0)
+                                                .setMinGlobalLimited(0).setMaxGlobalLimited(2))
+                                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(1)
+                                                .setMaxGlobalLimited(1)))
+                .where('B',
+                        states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
+                                .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.AMERICIUM)))
                 .where('A', states(MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.TRITANIUM)))
                 .where(' ', any())
                 .build();
     }
 
     public ICubeRenderer getBaseTexture(@Nullable IMultiblockPart part) {
-        return Textures.INERT_PTFE_CASING; // todo
+        return SerendustryTextures.CASING_CARBON; // todo
     }
 }

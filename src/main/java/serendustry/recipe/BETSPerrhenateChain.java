@@ -10,6 +10,7 @@ import static gregtech.api.unification.ore.OrePrefix.dust;
 import static serendustry.item.material.SerendustryMaterials.*;
 
 public class BETSPerrhenateChain {
+
     public static void init() {
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Acetylene.getFluid(1000), Chlorine.getFluid(2000))
@@ -53,7 +54,8 @@ public class BETSPerrhenateChain {
                 .duration(20 * 2).EUt(VA[UV]).buildAndRegister();
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(Ammonia.getFluid(1000), Acetone.getFluid(2000), Hydrogen.getFluid(4000), nButyllithium.getFluid(1000))
+                .fluidInputs(Ammonia.getFluid(1000), Acetone.getFluid(2000), Hydrogen.getFluid(4000),
+                        nButyllithium.getFluid(1000))
                 .output(dust, LithiumDiisopropylamide, 22)
                 .fluidOutputs(Butane.getFluid(1000), Water.getFluid(2000))
                 .duration(20 * 16).EUt(VA[UV]).buildAndRegister();
@@ -83,7 +85,8 @@ public class BETSPerrhenateChain {
                 .duration(20 * 20).EUt(VA[UV]).buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(Dihydro14dithiine23bislithiumSelenolate.getFluid(2000), TriethylPhosphite.getFluid(1000), Phosgene.getFluid(2000))
+                .fluidInputs(Dihydro14dithiine23bislithiumSelenolate.getFluid(2000), TriethylPhosphite.getFluid(1000),
+                        Phosgene.getFluid(2000))
                 .output(dust, BETS, 26)
                 .output(dust, LithiumChloride, 8)
                 .fluidOutputs(DiethylPhosphate.getFluid(1000), Formaldehyde.getFluid(2000))

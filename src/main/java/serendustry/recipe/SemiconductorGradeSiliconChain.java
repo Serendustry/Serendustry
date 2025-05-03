@@ -1,8 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.GTValues;
-import gregtech.api.unification.material.MarkerMaterials;
-
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -13,9 +10,12 @@ import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryMetaTileEntities.CVD_CHAMBER;
 import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
 
-public class SemiconductorGradeSiliconChain {
-    public static void init() {
+import gregtech.api.GTValues;
+import gregtech.api.unification.material.MarkerMaterials;
 
+public class SemiconductorGradeSiliconChain {
+
+    public static void init() {
         FLUID_HEATER_RECIPES.recipeBuilder()
                 .input(dust, SiliconDioxide, 3)
                 .input(dust, Magnesium, 2)

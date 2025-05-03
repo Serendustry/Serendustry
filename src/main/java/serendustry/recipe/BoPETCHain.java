@@ -1,7 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.items.metaitem.MetaItem;
-
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.GTValues.ZPM;
 import static gregtech.api.recipes.RecipeMaps.*;
@@ -12,6 +10,7 @@ import static serendustry.item.material.SerendustryMaterials.SiliconCarbide;
 import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
 
 public class BoPETCHain {
+
     public static void init() {
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, Silver)
@@ -86,7 +85,5 @@ public class BoPETCHain {
                 .fluidInputs(RadoxPolymer.getFluid(18))
                 .output(foil, LaminatedBoPET)
                 .duration(30).EUt(VA[ZPM]).buildAndRegister();
-
-
     }
 }

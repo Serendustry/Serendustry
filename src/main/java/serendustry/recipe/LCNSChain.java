@@ -10,6 +10,7 @@ import static gregtech.api.unification.ore.OrePrefix.dust;
 import static serendustry.item.material.SerendustryMaterials.*;
 
 public class LCNSChain {
+
     public static void init() {
         FLUID_HEATER_RECIPES.recipeBuilder()
                 .fluidInputs(Nitrobenzene.getFluid(1000),
