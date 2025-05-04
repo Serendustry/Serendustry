@@ -34,6 +34,7 @@ import gregtech.api.block.VariantItemBlock;
 import gregtech.api.unification.material.event.MaterialEvent;
 import gregtech.api.unification.material.event.MaterialRegistryEvent;
 import serendustry.blocks.BlockAALCoreCasing;
+import serendustry.blocks.BlockEICHammerCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.entity.FriendlyCreeperEntity;
@@ -46,7 +47,9 @@ import serendustry.machine.SerendustryRecipeMaps;
 import serendustry.recipe.SerendustryRecipes;
 
 import static serendustry.api.SerendustryAPI.AAL_CORE_CASINGS;
+import static serendustry.api.SerendustryAPI.EIC_HAMMER_CASINGS;
 import static serendustry.blocks.SerendustryMetaBlocks.AAL_CORE_CASING;
+import static serendustry.blocks.SerendustryMetaBlocks.EIC_HAMMER_CASING;
 
 @Mod(modid = Tags.MODID,
      name = Tags.MODNAME,
@@ -87,6 +90,10 @@ public class Serendustry {
 
         for (BlockAALCoreCasing.AALCoreCasingType type : BlockAALCoreCasing.AALCoreCasingType.values()) {
             AAL_CORE_CASINGS.put(AAL_CORE_CASING.getState(type), type);
+        }
+
+        for (BlockEICHammerCasing.EICHammerCasingType type : BlockEICHammerCasing.EICHammerCasingType.values()) {
+            EIC_HAMMER_CASINGS.put(EIC_HAMMER_CASING.getState(type), type);
         }
 
         IForgeRegistry<Block> registry = event.getRegistry();

@@ -22,7 +22,8 @@ public class SelfRepairingNanobotsRecipes {
                 .input(bolt, VibraniumAlloy, 32)
                 .input(foil, ALMST, 64)
                 .input(cableGtSingle, Hihiirokane, 16)
-                .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 8), MolybdeniteLubricant.getFluid(8000))
+                .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 8),
+                        MolybdeniteLubricant.getFluid(8000))
                 .output(dust, SelfRepairingNanobots, 64)
                 .stationResearch(b -> b
                         .researchStack(OreDictUnifier.get(plate, HighGradeSolderingAlloy))

@@ -24,6 +24,9 @@ import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.*;
 import gregtech.common.metatileentities.MetaTileEntities;
+import serendustry.blocks.BlockSerendustryMultiCasing;
+import serendustry.blocks.SerendustryMetaBlocks;
+import serendustry.client.renderer.texture.SerendustryTextures;
 
 public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockController {
 
@@ -72,7 +75,7 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
                 .aisle(
                         "                         ",
                         "      A           A      ",
-                        "      A   AAAAA   A      ",
+                        "      A   DDDDD   A      ",
                         "       AAABBBBBAAA       ",
                         "      A   AAAAA   A      ",
                         "      A           A      ",
@@ -80,7 +83,7 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
                 .aisle(
                         "                         ",
                         "                         ",
-                        "       AAA  A  AAA       ",
+                        "       DDD  D  DDD       ",
                         "      ABBBAABAABBBA      ",
                         "       AAA  A  AAA       ",
                         "                         ",
@@ -88,7 +91,7 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
                 .aisle(
                         "                         ",
                         "                         ",
-                        "      A     A     A      ",
+                        "      D     D     D      ",
                         "     ABAAA ABA AAABA     ",
                         "      A     A     A      ",
                         "                         ",
@@ -96,7 +99,7 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
                 .aisle(
                         "  A                   A  ",
                         "   A                 A   ",
-                        "   A A      A      A A   ",
+                        "   A D      D      D A   ",
                         "    ABA   AABAA   ABA    ",
                         "   A A      A      A A   ",
                         "   A                 A   ",
@@ -104,7 +107,7 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
                 .aisle(
                         "                         ",
                         "                         ",
-                        "    A     AAAAA     A    ",
+                        "    D     DDDDD     D    ",
                         "   ABA   ABBBBBA   ABA   ",
                         "    A     AAAAA     A    ",
                         "                         ",
@@ -112,7 +115,7 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
                 .aisle(
                         "                         ",
                         "                         ",
-                        "    A    A  A  A    A    ",
+                        "    D    D  D  D    D    ",
                         "   ABA  ABAABAABA  ABA   ",
                         "    A    A  A  A    A    ",
                         "                         ",
@@ -120,7 +123,7 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
                 .aisle(
                         "                         ",
                         "                         ",
-                        "    A   A   A   A   A    ",
+                        "    D   D   D   D   D    ",
                         "   ABA ABA ABA ABA ABA   ",
                         "    A   A   A   A   A    ",
                         "                         ",
@@ -128,7 +131,7 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
                 .aisle(
                         "A                       A",
                         " A                     A ",
-                        " A A   A    A    A   A A ",
+                        " A D   D    D    D   D A ",
                         "  ABA ABA  ABA  ABA ABA  ",
                         " A A   A    A    A   A A ",
                         " A                     A ",
@@ -136,7 +139,7 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
                 .aisle(
                         "                         ",
                         "                         ",
-                        "   A   A   A A   A   A   ",
+                        "   D   D   D D   D   D   ",
                         "  ABAAABAAABABAAABAAABA  ",
                         "   A   A   A A   A   A   ",
                         "                         ",
@@ -144,7 +147,7 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
                 .aisle(
                         "                         ",
                         "                         ",
-                        "   AAAAAAAA   AAAAAAAA   ",
+                        "   DDDDDDDD   DDDDDDDD   ",
                         "  ABBBBBBBBA ABBBBBBBBA  ",
                         "   AAAAAAAA   AAAAAAAA   ",
                         "                         ",
@@ -152,7 +155,7 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
                 .aisle(
                         "                         ",
                         "                         ",
-                        "   A   A   A A   A   A   ",
+                        "   D   D   D D   D   D   ",
                         "  ABAAABAAABABAAABAAABA  ",
                         "   A   A   A A   A   A   ",
                         "                         ",
@@ -160,7 +163,7 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
                 .aisle(
                         "A                       A",
                         " A                     A ",
-                        " A A   A    A    A   A A ",
+                        " A D   D    D    D   D A ",
                         "  ABA ABA  ABA  ABA ABA  ",
                         " A A   A    A    A   A A ",
                         " A                     A ",
@@ -168,7 +171,7 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
                 .aisle(
                         "                         ",
                         "                         ",
-                        "    A   A   A   A   A    ",
+                        "    D   D   D   D   D    ",
                         "   ABA ABA ABA ABA ABA   ",
                         "    A   A   A   A   A    ",
                         "                         ",
@@ -176,7 +179,7 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
                 .aisle(
                         "                         ",
                         "                         ",
-                        "    A    A  A  A    A    ",
+                        "    D    D  D  D    D    ",
                         "   ABA  ABAABAABA  ABA   ",
                         "    A    A  A  A    A    ",
                         "                         ",
@@ -184,7 +187,7 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
                 .aisle(
                         "                         ",
                         "                         ",
-                        "    A     AAAAA     A    ",
+                        "    D     DDDDD     D    ",
                         "   ABA   ABBBBBA   ABA   ",
                         "    A     AAAAA     A    ",
                         "                         ",
@@ -192,7 +195,7 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
                 .aisle(
                         "  A                   A  ",
                         "   A                 A   ",
-                        "   A A      A      A A   ",
+                        "   A D      D      D A   ",
                         "    ABA   AABAA   ABA    ",
                         "   A A      A      A A   ",
                         "   A                 A   ",
@@ -200,7 +203,7 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
                 .aisle(
                         "                         ",
                         "                         ",
-                        "      A     A     A      ",
+                        "      D     D     D      ",
                         "     ABAAA ABA AAABA     ",
                         "      A     A     A      ",
                         "                         ",
@@ -208,7 +211,7 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
                 .aisle(
                         "                         ",
                         "                         ",
-                        "       AAA  A  AAA       ",
+                        "       DDD  D  DDD       ",
                         "      ABBBAABAABBBA      ",
                         "       AAA  A  AAA       ",
                         "                         ",
@@ -216,7 +219,7 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
                 .aisle(
                         "                         ",
                         "      A           A      ",
-                        "      A   AAAAA   A      ",
+                        "      A   DDDDD   A      ",
                         "       AAABBBBBAAA       ",
                         "      A   AAAAA   A      ",
                         "      A           A      ",
@@ -246,24 +249,15 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
                         "                         ",
                         "          A   A          ")
                 .where('C', selfPredicate())
-                .where('A', states(MetaBlocks.FUSION_CASING.getState(BlockFusionCasing.CasingType.FUSION_CASING_MK3)) // todo:
-                                                                                                                      // adv
-                                                                                                                      // fusion
-                                                                                                                      // casing
-                                                                                                                      // +
-                                                                                                                      // allow
-                                                                                                                      // glass
-                        .setMinGlobalLimited(478).or(metaTileEntities(Arrays
+                .where('A', states(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getState(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION))
+                        .setMinGlobalLimited(365).or(autoAbilities()))
+                        /*.or(metaTileEntities(Arrays
                                 .stream(MetaTileEntities.ENERGY_INPUT_HATCH)
                                 .filter(mte -> mte != null && mte.getTier() >= GTValues.UEV)
                                 .toArray(MetaTileEntity[]::new))
-                                        .setPreviewCount(2).setMinGlobalLimited(1))
-                        .or(abilities(MultiblockAbility.EXPORT_FLUIDS).setPreviewCount(1).setMinGlobalLimited(1))
-                        .or(abilities(MultiblockAbility.IMPORT_FLUIDS).setPreviewCount(2).setMinGlobalLimited(2)))
-                .where('B', states(MetaBlocks.FUSION_CASING.getState(BlockFusionCasing.CasingType.FUSION_COIL))) // todo:
-                                                                                                                 // adv
-                                                                                                                 // fusion
-                                                                                                                 // coil
+                                        .setPreviewCount(2).setMinGlobalLimited(1))*/
+                .where('B', states(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getState(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL)))
+                .where('D', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.FUSION_GLASS)))
                 .where(' ', any())
                 .build();
     }
@@ -273,9 +267,9 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
         if (this.recipeMapWorkable.isActive()) {
-            return Textures.ACTIVE_FUSION_TEXTURE;
+            return SerendustryTextures.CASING_ADV_FUSION_ACTIVE;
         } else {
-            return Textures.FUSION_TEXTURE;
+            return SerendustryTextures.CASING_ADV_FUSION;
         }
     }
 

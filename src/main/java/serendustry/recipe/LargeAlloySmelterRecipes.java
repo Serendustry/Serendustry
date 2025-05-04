@@ -1,5 +1,8 @@
 package serendustry.recipe;
 
+import serendustry.blocks.BlockSerendustryMultiCasing;
+import serendustry.blocks.SerendustryMetaBlocks;
+
 import static gregtech.api.GTValues.IV;
 import static gregtech.api.GTValues.LuV;
 import static gregtech.api.GTValues.UEV;
@@ -14,6 +17,8 @@ import static gregtech.api.unification.material.Materials.Aluminium;
 import static gregtech.api.unification.material.Materials.Americium;
 import static gregtech.api.unification.material.Materials.Beryllium;
 import static gregtech.api.unification.material.Materials.Bromine;
+import static gregtech.api.unification.material.Materials.Carbon;
+import static gregtech.api.unification.material.Materials.Copper;
 import static gregtech.api.unification.material.Materials.Dysprosium;
 import static gregtech.api.unification.material.Materials.Erbium;
 import static gregtech.api.unification.material.Materials.Europium;
@@ -34,6 +39,7 @@ import static gregtech.api.unification.material.Materials.Tennessine;
 import static gregtech.api.unification.material.Materials.Thallium;
 import static gregtech.api.unification.material.Materials.TinAlloy;
 import static gregtech.api.unification.material.Materials.Uranium238;
+import static gregtech.api.unification.material.Materials.Vanadium;
 import static gregtech.api.unification.material.Materials.Water;
 import static gregtech.api.unification.ore.OrePrefix.cableGtDouble;
 import static gregtech.api.unification.ore.OrePrefix.gear;
@@ -122,7 +128,13 @@ public class LargeAlloySmelterRecipes {
                 .fluidOutputs(Infinity.getFluid(4))
                 .duration(80000).EUt(VA[UV]).EUToStart(640_000_000).buildAndRegister();
 
+        FUSION_RECIPES.recipeBuilder()
+                .fluidInputs(Vanadium.getFluid(144)).fluidInputs(Carbon.getFluid(144))
+                .fluidOutputs(Copper.getPlasma(144))
+                .duration(64).EUt(VA[UV]).EUToStart(640_000_000).buildAndRegister();
+
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .inputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL))
                 .input(FIELD_GENERATOR_UEV, 8)
                 .input(ROBOT_ARM_UEV, 8)
                 .input(gear, HalkoniteSteel, 4)
@@ -134,12 +146,12 @@ public class LargeAlloySmelterRecipes {
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 32))
                 .fluidInputs(Adamantium.getFluid(144 * 64))
                 .fluidInputs(Hihiirokane.getFluid(144 * 64))
-                .fluidInputs(Americium.getPlasma(144 * 64))
+                .fluidInputs(Copper.getPlasma(144 * 64))
                 .output(ADVANCED_FUSION_REACTOR)
                 .stationResearch(b -> b
                         .researchStack(FUSION_REACTOR[2].getStackForm())
-                        .CWUt(128)
-                        .EUt(VA[UHV]))
+                        .CWUt(144)
+                        .EUt(VA[UEV]))
                 .duration(6400).EUt(VA[UEV]).buildAndRegister();
 
         // adv fusion only

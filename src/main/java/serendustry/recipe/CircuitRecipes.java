@@ -521,7 +521,6 @@ public class CircuitRecipes {
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ENTROPIC_CIRCUIT_BOARD)
-                .input(ACTIVATED_APU_CHIP)
                 .input(foil, TengamAttuned, 4)
                 .input(plate, HalkoniteSteel)
                 .input(SUPREME_SMD_CAPACITOR, 16)

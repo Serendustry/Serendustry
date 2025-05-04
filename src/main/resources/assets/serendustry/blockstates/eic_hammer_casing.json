@@ -8,19 +8,19 @@
   },
   "variants": {
     "variant": {
-      "space_elevator": {
+      "neutronium": {
         "textures": {
-          "all": "gregtech:blocks/casing/solid/space_elevator"
+          "all": "gregtech:blocks/casing/solid/neutronium"
         }
       },
-      "adv_fusion": {
+      "halkonite": {
         "textures": {
-          "all": "gregtech:blocks/casing/solid/adv_fusion"
+          "all": "gregtech:blocks/casing/solid/halkonite"
         }
       },
-      "adv_fusion_coil": {
+      "ehk": {
         "textures": {
-          "all": "gregtech:blocks/casing/solid/adv_fusion_coil"
+          "all": "gregtech:blocks/casing/solid/ehk"
         }
       }
     }

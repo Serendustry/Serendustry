@@ -92,14 +92,21 @@ public class HalkoniteSteelRecipes {
                 .input(gemExquisite, Dilithium)
                 .fluidInputs(ExoticUnreality.getFluid(1000))
                 .output(dust, Trilithium)
-                .duration(20 * 60 * 10 * 2).EUt(VA[UXV]).buildAndRegister();
+                .duration(20 * 60 * 2).EUt(VA[UXV]).buildAndRegister();
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
-                .notConsumable(lens, Trilithium)
                 .input(gemExquisite, Trilithium)
                 .fluidInputs(Rhugnor.getPlasma(144 * 4))
                 .fluidOutputs(ExoticUnreality.getFluid(1000),
                         TrilithiumResin.getFluid(1500))
-                .duration(20 * 60 * 10 * 2).EUt(VA[UXV]).buildAndRegister();
+                .duration(20 * 60 * 4).EUt(VA[UXV]).buildAndRegister();
+
+        NEBULAIC_NEXUS_RECIPES.recipeBuilder()
+                .notConsumable(lens, Trilithium)
+                .input(gemExquisite, Dilithium)
+                .fluidInputs(ExoticUnreality.getFluid(100),
+                        TrilithiumResin.getFluid(100))
+                .output(dust, Trilithium)
+                .duration(20 * 60).EUt(VA[UXV]).buildAndRegister();
     }
 }

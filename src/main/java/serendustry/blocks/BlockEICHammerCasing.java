@@ -1,5 +1,6 @@
 package serendustry.blocks;
 
+import gregtech.api.GTValues;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
@@ -11,15 +12,16 @@ import org.jetbrains.annotations.NotNull;
 
 import gregtech.api.block.VariantBlock;
 
-public class BlockSerendustryMultiCasing extends VariantBlock<BlockSerendustryMultiCasing.SerendustryMultiCasingType> {
+public class BlockEICHammerCasing extends VariantBlock<BlockEICHammerCasing.EICHammerCasingType> {
 
-    public BlockSerendustryMultiCasing() {
+    public BlockEICHammerCasing() {
         super(net.minecraft.block.material.Material.IRON);
-        setTranslationKey("serendustry_multi_casing");
+        setTranslationKey("eic_hammer_casing");
         setHardness(5.0f);
         setResistance(10.0f);
         setHarvestLevel("wrench", 3);
         setSoundType(SoundType.METAL);
+        setDefaultState(getState(EICHammerCasingType.NEUTRONIUM));
     }
 
     @Override
@@ -28,15 +30,15 @@ public class BlockSerendustryMultiCasing extends VariantBlock<BlockSerendustryMu
         return false;
     }
 
-    public enum SerendustryMultiCasingType implements IStringSerializable {
+    public enum EICHammerCasingType implements IStringSerializable, IEICHammerBlockStats {
 
-        SPACE_ELEVATOR("space_elevator"),
-        ADV_FUSION("adv_fusion"),
-        ADV_FUSION_COIL("adv_fusion_coil");
+        NEUTRONIUM("neutronium"),
+        HALKONITE("halkonite"),
+        EHK("ehk");
 
         private final String name;
 
-        SerendustryMultiCasingType(String name) {
+        EICHammerCasingType(String name) {
             this.name = name;
         }
 
@@ -44,6 +46,11 @@ public class BlockSerendustryMultiCasing extends VariantBlock<BlockSerendustryMu
         @Override
         public String getName() {
             return this.name;
+        }
+
+        @Override
+        public int getHammerTier() {
+            return this.ordinal();
         }
     }
 }

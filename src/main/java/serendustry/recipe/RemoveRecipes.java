@@ -136,6 +136,11 @@ public class RemoveRecipes {
                 OreDictUnifier.get(foil, SiliconeRubber, 16),
                 OreDictUnifier.get(bolt, HSSE, 8) },
                 new FluidStack[] { SterileGrowthMedium.getFluid(250) });
+
+        // Gravi Star
+        GTRecipeHandler.removeRecipesByInputs(AUTOCLAVE_RECIPES, new ItemStack[] {
+                QUANTUM_STAR.getStackForm()},
+                new FluidStack[] {Neutronium.getFluid(288)});
     }
 
     public static void initLate() {

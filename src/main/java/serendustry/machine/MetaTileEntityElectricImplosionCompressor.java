@@ -3,12 +3,23 @@ package serendustry.machine;
 import static gregtech.api.util.RelativeDirection.DOWN;
 import static gregtech.api.util.RelativeDirection.FRONT;
 import static gregtech.api.util.RelativeDirection.LEFT;
+//import static serendustry.Serendustry.logger;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Supplier;
 
+import gregtech.api.capability.impl.MultiblockRecipeLogic;
+import gregtech.api.pattern.PatternStringError;
+import gregtech.api.pattern.TraceabilityPredicate;
+import gregtech.api.util.BlockInfo;
+import gregtech.core.sound.GTSoundEvents;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
+import net.minecraft.util.SoundEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -23,16 +34,22 @@ import gregtech.api.pattern.PatternMatchContext;
 import gregtech.api.unification.material.Materials;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.common.blocks.BlockGlassCasing;
-import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
+import serendustry.api.SerendustryAPI;
+import serendustry.blocks.BlockEICHammerCasing;
 import serendustry.blocks.BlockSerendustryMetalCasing;
+import serendustry.blocks.IEICHammerBlockStats;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 
 public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblockController {
 
+    private static final int[] TIER_PARALLEL = {16, 64, 256};
+    private int tier;
+
     public MetaTileEntityElectricImplosionCompressor(ResourceLocation rl) {
         super(rl, SerendustryRecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES);
+        this.recipeMapWorkable = new MetaTileEntityElectricImplosionCompressor.ElectricImplosionCompressorWorkable(this);
     }
 
     @Override
@@ -48,6 +65,12 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
     @Override
     protected void formStructure(PatternMatchContext context) {
         super.formStructure(context);
+
+        Object type = context.get("EICHammerTier");
+        if (type instanceof IEICHammerBlockStats) {
+            this.tier = ((IEICHammerBlockStats) type).getHammerTier();
+        } else
+            this.tier = -1;
 
         List<IEnergyContainer> energyInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
         List<IEnergyContainer> substationInput = new ArrayList<>(
@@ -343,20 +366,66 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
                 .where('E', selfPredicate())
                 .where('A',
                         states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
-                                .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.ADAMANTIUM))
-                                        .setMinGlobalLimited(401)
+                                .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.ADAMANTIUM)).setMinGlobalLimited(401)
                                         .or(autoAbilities(false, false, true, true, true, true, false))
-                                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0)
-                                                .setMinGlobalLimited(0).setMaxGlobalLimited(2))
-                                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(1)
-                                                .setMaxGlobalLimited(1)))
+                                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0).setMinGlobalLimited(0).setMaxGlobalLimited(2))
+                                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(1).setMaxGlobalLimited(1)))
                 .where('B', frames(Materials.NaquadahAlloy))
-                .where('C', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID))) // todo: tiered hammer blocks
+                .where('C', EICHammerCasings()) // 116
                 .where('D', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS))) // todo
                 .build();
     }
 
     public ICubeRenderer getBaseTexture(@Nullable IMultiblockPart part) {
         return SerendustryTextures.CASING_ADAMANTIUM;
+    }
+
+    @Override
+    public SoundEvent getBreakdownSound() {
+        return GTSoundEvents.BREAKDOWN_MECHANICAL;
+    }
+
+    private static final Supplier<TraceabilityPredicate> EIC_PREDICATE = () -> new TraceabilityPredicate(
+            blockWorldState -> {
+                IBlockState blockState = blockWorldState.getBlockState();
+                if (SerendustryAPI.EIC_HAMMER_CASINGS.containsKey(blockState)) {
+                    BlockEICHammerCasing.EICHammerCasingType tier = SerendustryAPI.EIC_HAMMER_CASINGS.get(blockState);
+                    Object casing = blockWorldState.getMatchContext().getOrPut("EICHammerTier", tier);
+
+                    if (!casing.equals(tier)) {
+                        blockWorldState.setError(
+                                new PatternStringError("serendustry.machine.electric_implosion_compressor.tier"));
+                        return false;
+                    }
+
+                    blockWorldState.getMatchContext().getOrPut("VBlock", new LinkedList<>())
+                            .add(blockWorldState.getPos());
+
+                    return true;
+                }
+
+                return false;
+            }, () -> SerendustryAPI.EIC_HAMMER_CASINGS.entrySet().stream()
+            .sorted(Comparator.comparingInt(entry -> entry.getValue().ordinal()))
+            .map(entry -> new BlockInfo(entry.getKey(), null))
+            .toArray(BlockInfo[]::new))
+            .addTooltips("serendustry.machine.electric_implosion_compressor.tier");
+
+    public static TraceabilityPredicate EICHammerCasings() {
+        return EIC_PREDICATE.get();
+    }
+
+    protected class ElectricImplosionCompressorWorkable extends MultiblockRecipeLogic {
+
+        public ElectricImplosionCompressorWorkable(RecipeMapMultiblockController tileEntity) {
+            super(tileEntity);
+        }
+
+        @Override
+        public int getParallelLimit() {
+            //logger.info("eic tier: " + tier);
+            //logger.info("eic parallel: " + new int[]{16, 64, 256}[tier]);
+            return TIER_PARALLEL[tier];
+        }
     }
 }

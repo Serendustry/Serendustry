@@ -605,13 +605,6 @@ public class PlasmaFoundryRecipes {
                 .duration(50 * 20 * 128 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
-                .fluidInputs(Iron.getFluid(144 * 1024),
-                        Oxygen.getPlasma(100))
-                .foundryCatalyst(CATALYST_STEELS)
-                .fluidOutputs(Steel.getFluid(144 * 1024))
-                .duration(25 * 20 * 1024 / 2 / 2 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
-
-        PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Naquadah.getFluid(144 * 64),
                         Trinium.getFluid(144 * 32),
                         Osmiridium.getFluid(144 * 32),
@@ -759,7 +752,7 @@ public class PlasmaFoundryRecipes {
                         Infinity.getFluid(144 * 64),
                         AwakenedDraconium.getFluid(144 * 16),
                         ExoticUnreality.getFluid(8000),
-                        TrilithiumResin.getFluid(12000),
+                        TrilithiumResin.getFluid(10000),
                         Dragonblood.getPlasma(144 * 32))
                 .fluidOutputs(ExoHalkoniteBase.getFluid(144 * 64))
                 .foundryCatalyst(CATALYST_EXO_HALKONITE)

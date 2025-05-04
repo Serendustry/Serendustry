@@ -7,9 +7,9 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static serendustry.item.SerendustryMetaItems.*;
 import static serendustry.item.material.SerendustryMaterials.*;
-import static serendustry.machine.SerendustryMetaTileEntities.*;
 import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 
 import gregtech.api.fluids.store.FluidStorageKeys;
@@ -95,15 +95,21 @@ public class MiscRecipes {
                     .fluidInputs(material.getFluid(1000))
                     .fluidOutputs(MolybdeniteLubricant.getFluid(1000))
                     .duration(256).EUt(VA[HV]).buildAndRegister();
-
-            CVD_RECIPES.recipeBuilder()
-                    .circuitMeta(1)
-                    .fluidInputs(Methane.getFluid(100), Hydrogen.getFluid(10000))
-                    .output(gemExquisite, Diamond)
-                    .duration(400).EUt(VA[HV]).buildAndRegister();
         }
 
-        // test recipe
+        CVD_RECIPES.recipeBuilder()
+                .circuitMeta(1)
+                .fluidInputs(Methane.getFluid(100), Hydrogen.getFluid(10000))
+                .output(gemExquisite, Diamond)
+                .duration(400).EUt(VA[HV]).buildAndRegister();
+
+        AUTOCLAVE_RECIPES.recipeBuilder()
+                .input(QUANTUM_STAR)
+                .fluidInputs(Tennessine.getFluid(144 * 8))
+                .output(GRAVI_STAR)
+                .duration(20 * 24).EUt(VA[IV]).buildAndRegister();
+
+        // test recipes
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(stickLong, Neutronium)
                 .input(gearSmall, Neutronium)
@@ -119,5 +125,11 @@ public class MiscRecipes {
                 .fluidInputs(Hydrogen.getFluid(1))
                 .output(Items.EGG)
                 .duration(20).EUt(VA[LV]).buildAndRegister();
+
+        IMPLOSION_RECIPES.recipeBuilder()
+                .input(Blocks.DIRT)
+                .output(Blocks.OBSIDIAN)
+                .explosivesAmount(1)
+                .duration(20 * 60 * 240 * 32).EUt(VA[ULV]).buildAndRegister();
     }
 }

@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import gregtech.api.capability.impl.NotifiableItemStackHandler;
 import gregtech.api.pattern.PatternStringError;
 import gregtech.api.util.BlockInfo;
 import gregtech.api.util.GTUtility;
@@ -247,7 +246,7 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
 
                     if (!casing.equals(tier)) {
                         blockWorldState.setError(
-                                new PatternStringError("serendustry.machine.advanced_assembly_line.tier"));
+                                new PatternStringError("serendustry.machine.advanced_assembly_line.tier")); // todo fix
                         return false;
                     }
 
