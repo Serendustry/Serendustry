@@ -354,9 +354,11 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
                                boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(I18n.format("serendustry.machine.plasma_foundry.flavor"));
-        tooltip.add(I18n.format("serendustry.machine.plasma_foundry.description1"));
-        tooltip.add(I18n.format("serendustry.machine.plasma_foundry.description2"));
-        tooltip.add(I18n.format("serendustry.machine.plasma_foundry.description3"));
+        tooltip.add(I18n.format(""));
+        tooltip.add(I18n.format("serendustry.machine.plasma_foundry.description.1"));
+        tooltip.add(I18n.format("serendustry.machine.plasma_foundry.description.2"));
+        tooltip.add(I18n.format(""));
+        tooltip.add(I18n.format("serendustry.machine.plasma_foundry.description.3"));
         String catalyst = I18n.format(NO_CATALYST);
         NBTTagCompound tag = stack.getTagCompound();
         if (tag != null) {
@@ -366,7 +368,7 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
             }
         }
 
-        tooltip.add(I18n.format("serendustry.machine.plasma_foundry.catalyst") + " " + "§e" + catalyst + "§7");
+        tooltip.add(I18n.format("serendustry.machine.plasma_foundry.catalyst.contained") + " " + "§e" + catalyst + "§7");
     }
 
     @Override
@@ -386,7 +388,7 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
                     // Catalyst line
                     tl.add(TextComponentUtil.translationWithColor(
                             TextFormatting.GRAY,
-                            "serendustry.machine.plasma_foundry.catalyst"));
+                            "serendustry.machine.plasma_foundry.catalyst.contained"));
 
                     tl.add(catalystText);
                 })

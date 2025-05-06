@@ -1,6 +1,7 @@
 package serendustry.machine;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.Nonnull;
@@ -31,9 +32,7 @@ public class PlasmaFoundryRecipeBuilder extends RecipeBuilder<PlasmaFoundryRecip
     }
 
     public PlasmaFoundryRecipeBuilder foundryCatalyst(ItemStack... items) {
-        for (ItemStack stack : items) {
-            validCatalysts.add(stack);
-        }
+        validCatalysts.addAll(Arrays.asList(items));
         return this;
     }
 

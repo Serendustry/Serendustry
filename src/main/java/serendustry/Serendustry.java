@@ -1,5 +1,14 @@
 package serendustry;
 
+import static serendustry.api.SerendustryAPI.AAL_CORE_CASINGS;
+import static serendustry.api.SerendustryAPI.EIC_HAMMER_CASINGS;
+import static serendustry.api.SerendustryAPI.PC_COILS_COOLING;
+import static serendustry.api.SerendustryAPI.PC_COILS_HEATING;
+import static serendustry.blocks.SerendustryMetaBlocks.AAL_CORE_CASING;
+import static serendustry.blocks.SerendustryMetaBlocks.EIC_HAMMER_CASING;
+import static serendustry.blocks.SerendustryMetaBlocks.PC_COIL_COOLING;
+import static serendustry.blocks.SerendustryMetaBlocks.PC_COIL_HEATING;
+
 import java.util.Objects;
 import java.util.function.Function;
 
@@ -35,6 +44,8 @@ import gregtech.api.unification.material.event.MaterialEvent;
 import gregtech.api.unification.material.event.MaterialRegistryEvent;
 import serendustry.blocks.BlockAALCoreCasing;
 import serendustry.blocks.BlockEICHammerCasing;
+import serendustry.blocks.BlockPCCoilCooling;
+import serendustry.blocks.BlockPCCoilHeating;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.entity.FriendlyCreeperEntity;
@@ -45,11 +56,6 @@ import serendustry.item.material.VazkiiWhatAreYouDoing;
 import serendustry.machine.SerendustryMetaTileEntities;
 import serendustry.machine.SerendustryRecipeMaps;
 import serendustry.recipe.SerendustryRecipes;
-
-import static serendustry.api.SerendustryAPI.AAL_CORE_CASINGS;
-import static serendustry.api.SerendustryAPI.EIC_HAMMER_CASINGS;
-import static serendustry.blocks.SerendustryMetaBlocks.AAL_CORE_CASING;
-import static serendustry.blocks.SerendustryMetaBlocks.EIC_HAMMER_CASING;
 
 @Mod(modid = Tags.MODID,
      name = Tags.MODNAME,
@@ -95,6 +101,15 @@ public class Serendustry {
         for (BlockEICHammerCasing.EICHammerCasingType type : BlockEICHammerCasing.EICHammerCasingType.values()) {
             EIC_HAMMER_CASINGS.put(EIC_HAMMER_CASING.getState(type), type);
         }
+
+        for (BlockPCCoilHeating.PCCoilHeatingType type : BlockPCCoilHeating.PCCoilHeatingType.values()) {
+            PC_COILS_HEATING.put(PC_COIL_HEATING.getState(type), type);
+        }
+
+        for (BlockPCCoilCooling.PCCoilCoolingType type : BlockPCCoilCooling.PCCoilCoolingType.values()) {
+            PC_COILS_COOLING.put(PC_COIL_COOLING.getState(type), type);
+        }
+
 
         IForgeRegistry<Block> registry = event.getRegistry();
         SerendustryMetaBlocks.ALL_CASINGS.forEach(registry::register);

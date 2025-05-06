@@ -34,7 +34,6 @@ import static gregtech.common.items.MetaItems.ELECTRIC_MOTOR_UV;
 import static gregtech.common.items.MetaItems.ELECTRIC_PISTON_UEV;
 import static gregtech.common.items.MetaItems.ELECTRIC_PISTON_UHV;
 import static gregtech.common.items.MetaItems.ELECTRIC_PISTON_UIV;
-import static gregtech.common.items.MetaItems.ELECTRIC_PISTON_UV;
 import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_UV;
 import static gregtech.common.items.MetaItems.EMITTER_UEV;
 import static gregtech.common.items.MetaItems.EMITTER_UHV;
@@ -132,7 +131,8 @@ public class CasingRecipes {
                 .input(screw, Adamantium, 32)
                 .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 16))
                 .fluidInputs(Europium.getFluid(144 * 16))
-                .outputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.SPACE_ELEVATOR,
+                .outputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(
+                        BlockSerendustryMultiCasing.SerendustryMultiCasingType.SPACE_ELEVATOR,
                         ConfigHolder.recipes.casingsPerCraft * 16))
                 .stationResearch(b -> b
                         .researchStack(ADVANCED_LARGE_MINER.getStackForm())
@@ -151,7 +151,8 @@ public class CasingRecipes {
                 .input(stickLong, Neutronium, 8)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 4),
                         Neutronium.getFluid(144 * 4))
-                .outputs(SerendustryMetaBlocks.EIC_HAMMER_CASING.getItemVariant(BlockEICHammerCasing.EICHammerCasingType.NEUTRONIUM, ConfigHolder.recipes.casingsPerCraft * 2))
+                .outputs(SerendustryMetaBlocks.EIC_HAMMER_CASING.getItemVariant(
+                        BlockEICHammerCasing.EICHammerCasingType.NEUTRONIUM, ConfigHolder.recipes.casingsPerCraft * 2))
                 .stationResearch(b -> b
                         .researchStack(OreDictUnifier.get(block, Neutronium))
                         .CWUt(64)
@@ -168,9 +169,11 @@ public class CasingRecipes {
                 .input(stickLong, HalkoniteSteel, 8)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 8),
                         AbyssalAlloy.getFluid(144 * 4))
-                .outputs(SerendustryMetaBlocks.EIC_HAMMER_CASING.getItemVariant(BlockEICHammerCasing.EICHammerCasingType.HALKONITE, ConfigHolder.recipes.casingsPerCraft * 2))
+                .outputs(SerendustryMetaBlocks.EIC_HAMMER_CASING.getItemVariant(
+                        BlockEICHammerCasing.EICHammerCasingType.HALKONITE, ConfigHolder.recipes.casingsPerCraft * 2))
                 .stationResearch(b -> b
-                        .researchStack(SerendustryMetaBlocks.EIC_HAMMER_CASING.getItemVariant(BlockEICHammerCasing.EICHammerCasingType.NEUTRONIUM))
+                        .researchStack(SerendustryMetaBlocks.EIC_HAMMER_CASING
+                                .getItemVariant(BlockEICHammerCasing.EICHammerCasingType.NEUTRONIUM))
                         .CWUt(128)
                         .EUt(VA[GTValues.UHV]))
                 .duration(20 * 60 * 10).EUt(VA[GTValues.UHV]).buildAndRegister();
@@ -185,13 +188,14 @@ public class CasingRecipes {
                 .input(stickLong, ExoHalkoniteSteel, 8)
                 .fluidInputs(SentientNanobots.getFluid(144 * 8),
                         DeepDarkSteel.getFluid(144 * 4))
-                .outputs(SerendustryMetaBlocks.EIC_HAMMER_CASING.getItemVariant(BlockEICHammerCasing.EICHammerCasingType.EHK, ConfigHolder.recipes.casingsPerCraft * 2))
+                .outputs(SerendustryMetaBlocks.EIC_HAMMER_CASING.getItemVariant(
+                        BlockEICHammerCasing.EICHammerCasingType.EHK, ConfigHolder.recipes.casingsPerCraft * 2))
                 .stationResearch(b -> b
-                        .researchStack(SerendustryMetaBlocks.EIC_HAMMER_CASING.getItemVariant(BlockEICHammerCasing.EICHammerCasingType.HALKONITE))
+                        .researchStack(SerendustryMetaBlocks.EIC_HAMMER_CASING
+                                .getItemVariant(BlockEICHammerCasing.EICHammerCasingType.HALKONITE))
                         .CWUt(144)
                         .EUt(VA[GTValues.UEV]))
                 .duration(20 * 60 * 10).EUt(VA[GTValues.UEV]).buildAndRegister();
-
 
         // Adv fusion casings + coils
         ASSEMBLER_RECIPES.recipeBuilder()
@@ -202,7 +206,9 @@ public class CasingRecipes {
                 .input(plate, HalkoniteSteel, 8)
                 .input(plate, AbyssalAlloy, 8)
                 .fluidInputs(RadoxPolymer.getFluid(144 * 8))
-                .outputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION, ConfigHolder.recipes.casingsPerCraft))
+                .outputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(
+                        BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION,
+                        ConfigHolder.recipes.casingsPerCraft))
                 .duration(20 * 4).EUt(VA[GTValues.UEV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -219,12 +225,37 @@ public class CasingRecipes {
                 .fluidInputs(Quantium40.getFluid(144 * 4),
                         Hihiirokane.getFluid(144 * 4),
                         Copper.getPlasma(144 * 8))
-                .outputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL))
+                .outputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING
+                        .getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL))
                 .stationResearch(b -> b
-                        .researchStack(MetaBlocks.FUSION_CASING.getItemVariant(BlockFusionCasing.CasingType.FUSION_COIL))
+                        .researchStack(
+                                MetaBlocks.FUSION_CASING.getItemVariant(BlockFusionCasing.CasingType.FUSION_COIL))
                         .CWUt(144)
                         .EUt(VA[GTValues.UHV]))
                 .duration(20 * 60).EUt(VA[GTValues.UHV]).buildAndRegister();
+
+        // Plasma Condenser coils
+        /*ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .inputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL))
+                .inputs(FIELD_GENERATOR_UV.getStackForm(2))
+                .inputs(ELECTRIC_PUMP_UV.getStackForm())
+                .inputs(NEUTRON_REFLECTOR.getStackForm(8))
+                .input(circuit, MarkerMaterials.Tier.UHV, 4)
+                .input(pipeSmallFluid, VibraniumAlloy, 4)
+                .input(plate, Neutronium, 4)
+                .input(plate, RadoxPolymer, 4)
+                .input(cableGtDouble, Hihiirokane, 2)
+                .input(wireGtSingle, RutheniumTriniumAmericiumNeutronate, 2)
+                .fluidInputs(Quantium40.getFluid(144 * 4),
+                        Hihiirokane.getFluid(144 * 4),
+                        Copper.getPlasma(144 * 8))
+                .outputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING
+                        .getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.PC_COIL_HEATING))
+                .stationResearch(b -> b
+                        .researchStack(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL))
+                        .CWUt(144)
+                        .EUt(VA[GTValues.UHV]))
+                .duration(20 * 60).EUt(VA[GTValues.UHV]).buildAndRegister();*/
 
         // AAL core casings
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -241,7 +272,8 @@ public class CasingRecipes {
                 .fluidInputs(Naquadria.getFluid(144 * 32))
                 .outputs(SerendustryMetaBlocks.AAL_CORE_CASING.getItemVariant(BlockAALCoreCasing.AALCoreCasingType.UV))
                 .stationResearch(b -> b
-                        .researchStack(MetaBlocks.MULTIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.ASSEMBLY_CONTROL))
+                        .researchStack(MetaBlocks.MULTIBLOCK_CASING
+                                .getItemVariant(BlockMultiblockCasing.MultiblockCasingType.ASSEMBLY_CONTROL))
                         .CWUt(64)
                         .EUt(VA[UV]))
                 .duration(20 * 60 * 8).EUt(VA[GTValues.UV]).buildAndRegister();
@@ -261,7 +293,8 @@ public class CasingRecipes {
                 .fluidInputs(CondensedStarMatter.getFluid(1000 * 16))
                 .outputs(SerendustryMetaBlocks.AAL_CORE_CASING.getItemVariant(BlockAALCoreCasing.AALCoreCasingType.UHV))
                 .stationResearch(b -> b
-                        .researchStack(SerendustryMetaBlocks.AAL_CORE_CASING.getItemVariant(BlockAALCoreCasing.AALCoreCasingType.UV))
+                        .researchStack(SerendustryMetaBlocks.AAL_CORE_CASING
+                                .getItemVariant(BlockAALCoreCasing.AALCoreCasingType.UV))
                         .CWUt(128)
                         .EUt(VA[GTValues.UHV]))
                 .duration(20 * 60 * 8).EUt(VA[GTValues.UHV]).buildAndRegister();
@@ -281,7 +314,8 @@ public class CasingRecipes {
                 .fluidInputs(AbyssalAlloy.getFluid(144 * 32))
                 .outputs(SerendustryMetaBlocks.AAL_CORE_CASING.getItemVariant(BlockAALCoreCasing.AALCoreCasingType.UEV))
                 .stationResearch(b -> b
-                        .researchStack(SerendustryMetaBlocks.AAL_CORE_CASING.getItemVariant(BlockAALCoreCasing.AALCoreCasingType.UHV))
+                        .researchStack(SerendustryMetaBlocks.AAL_CORE_CASING
+                                .getItemVariant(BlockAALCoreCasing.AALCoreCasingType.UHV))
                         .CWUt(144)
                         .EUt(VA[GTValues.UEV]))
                 .duration(20 * 60 * 8).EUt(VA[GTValues.UEV]).buildAndRegister();
@@ -301,7 +335,8 @@ public class CasingRecipes {
                 .fluidInputs(Infinity.getFluid(144 * 32))
                 .outputs(SerendustryMetaBlocks.AAL_CORE_CASING.getItemVariant(BlockAALCoreCasing.AALCoreCasingType.UIV))
                 .stationResearch(b -> b
-                        .researchStack(SerendustryMetaBlocks.AAL_CORE_CASING.getItemVariant(BlockAALCoreCasing.AALCoreCasingType.UEV))
+                        .researchStack(SerendustryMetaBlocks.AAL_CORE_CASING
+                                .getItemVariant(BlockAALCoreCasing.AALCoreCasingType.UEV))
                         .CWUt(144)
                         .EUt(VA[GTValues.UIV]))
                 .duration(20 * 60 * 8).EUt(VA[GTValues.UIV]).buildAndRegister();

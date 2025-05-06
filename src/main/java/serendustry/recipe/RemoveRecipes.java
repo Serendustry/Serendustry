@@ -67,7 +67,7 @@ public class RemoveRecipes {
         // HASoC Wafer
         GTRecipeHandler.removeRecipesByInputs(LASER_ENGRAVER_RECIPES,
                 new ItemStack[] { NEUTRONIUM_WAFER.getStackForm(),
-                    OreDictUnifier.get(craftingLens, Black)});
+                        OreDictUnifier.get(craftingLens, Black) });
 
         // Elite Circuit Board
         GTRecipeHandler.removeRecipesByInputs(CHEMICAL_RECIPES,
@@ -139,8 +139,8 @@ public class RemoveRecipes {
 
         // Gravi Star
         GTRecipeHandler.removeRecipesByInputs(AUTOCLAVE_RECIPES, new ItemStack[] {
-                QUANTUM_STAR.getStackForm()},
-                new FluidStack[] {Neutronium.getFluid(288)});
+                QUANTUM_STAR.getStackForm() },
+                new FluidStack[] { Neutronium.getFluid(288) });
     }
 
     public static void initLate() {

@@ -1,7 +1,6 @@
 package serendustry.client.renderer.texture;
 
 import gregtech.client.renderer.texture.cube.SimpleOverlayRenderer;
-import serendustry.Serendustry;
 
 public class SerendustryTextures {
 
@@ -14,7 +13,7 @@ public class SerendustryTextures {
     public static SimpleOverlayRenderer CASING_ADV_FUSION_ACTIVE;
 
     public static void preInit() {
-        //Serendustry.logger.info("SerendustryTextures.preInit()");
+        // Serendustry.logger.info("SerendustryTextures.preInit()");
         CASING_AMERICIUM = new SimpleOverlayRenderer("casing/solid/americium");
         CASING_CARBON = new SimpleOverlayRenderer("casing/solid/carbon");
         CASING_ADAMANTIUM = new SimpleOverlayRenderer("casing/solid/adamantium");

@@ -1,7 +1,6 @@
 package serendustry.machine;
 
 import static gregtech.api.util.RelativeDirection.*;
-//import static serendustry.Serendustry.logger;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -10,10 +9,6 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import gregtech.api.pattern.PatternStringError;
-import gregtech.api.util.BlockInfo;
-import gregtech.api.util.GTUtility;
-import gregtech.common.metatileentities.multi.multiblockpart.MetaTileEntityItemBus;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -43,16 +38,20 @@ import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.pattern.PatternMatchContext;
+import gregtech.api.pattern.PatternStringError;
 import gregtech.api.pattern.TraceabilityPredicate;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.GTRecipeInput;
 import gregtech.api.recipes.recipeproperties.ResearchProperty;
+import gregtech.api.util.BlockInfo;
+import gregtech.api.util.GTUtility;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
+import gregtech.common.metatileentities.multi.multiblockpart.MetaTileEntityItemBus;
 import gregtech.common.metatileentities.multi.multiblockpart.MetaTileEntityMultiFluidHatch;
 import gregtech.core.sound.GTSoundEvents;
 import serendustry.api.SerendustryAPI;
@@ -125,10 +124,10 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
     @Override
     public @NotNull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start(RIGHT, UP, FRONT)
-        //return FactoryBlockPattern.start(FRONT, UP, RIGHT)
-                //.aisle("FIF", "RTR", "SAG", " Y ")
-                //.aisle("FIF", "RTR", "DAG", " Y ").setRepeatable(3, 15)
-                //.aisle("FOF", "RTR", "DAG", " Y ")
+                // return FactoryBlockPattern.start(FRONT, UP, RIGHT)
+                // .aisle("FIF", "RTR", "SAG", " Y ")
+                // .aisle("FIF", "RTR", "DAG", " Y ").setRepeatable(3, 15)
+                // .aisle("FOF", "RTR", "DAG", " Y ")
                 .aisle(" G G ",
                         "G   G",
                         "G T G",
@@ -139,7 +138,7 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
                         "R T R",
                         "F   F",
                         " YIY ")
-                        .setRepeatable(3, 16)
+                .setRepeatable(3, 16)
                 .aisle(" G G ",
                         "G   G",
                         "G T G",
@@ -187,12 +186,14 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
 
     @NotNull
     protected static IBlockState getCasingState() {
-        return SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING.getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.ADAMANTIUM);
+        return SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
+                .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.ADAMANTIUM);
     }
 
     @NotNull
     protected static IBlockState getGrateState() {
-        return SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING.getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.CARBON); // todo
+        return SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
+                .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.CARBON); // todo
     }
 
     @NotNull
@@ -246,7 +247,7 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
 
                     if (!casing.equals(tier)) {
                         blockWorldState.setError(
-                                new PatternStringError("serendustry.machine.advanced_assembly_line.tier")); // todo fix
+                                new PatternStringError("serendustry.machine.advanced_assembly_line.tier")); // todo this error never appears
                         return false;
                     }
 
@@ -258,16 +259,18 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
 
                 return false;
             }, () -> SerendustryAPI.AAL_CORE_CASINGS.entrySet().stream()
-            .sorted(Comparator.comparingInt(entry -> entry.getValue().ordinal()))
-            .map(entry -> new BlockInfo(entry.getKey(), null))
-            .toArray(BlockInfo[]::new))
-            .addTooltips("serendustry.machine.advanced_assembly_line.tier");
+                    .sorted(Comparator.comparingInt(entry -> entry.getValue().ordinal()))
+                    .map(entry -> new BlockInfo(entry.getKey(), null))
+                    .toArray(BlockInfo[]::new))
+                            .addTooltips("serendustry.machine.advanced_assembly_line.tier");
 
     public static TraceabilityPredicate AALCoreCasings() {
         return AAL_PREDICATE.get();
     }
 
-    /* todo
+    /*
+     * todo
+     * 
      * @Override
      * public void update() {
      * super.update();
@@ -425,8 +428,8 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
 
         // check tier
         int recipeTier = GTUtility.getTierByVoltage(recipe.getEUt());
-        if(recipeTier > tier) {
-            //logger.info("AALD fail state: recipetier " + recipeTier + " > tier " + tier);
+        if (recipeTier > tier) {
+            // logger.info("AALD fail state: recipetier " + recipeTier + " > tier " + tier);
             return false;
         }
 
@@ -437,19 +440,25 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
 
             // slot count is not enough, so don't try to match it
             if (itemInputInventory.size() < inputs.size()) {
-                //logger.info("AALD fail state: itemInputInventory.size() " + itemInputInventory.size() + " < inputs.size " + inputs.size());
+                // logger.info("AALD fail state: itemInputInventory.size() " + itemInputInventory.size() + " <
+                // inputs.size " + inputs.size());
                 return false;
             }
 
             for (int i = 0; i < inputs.size(); i++) {
                 if (!inputs.get(i).acceptsStack(itemInputInventory.get(i).getStackInSlot(0))) {
-                    /*logger.info("-----------------------------------");
-                    logger.info("AALD fail state: !inputs.get(i).acceptsStack(itemInputInventory.get(i).getStackInSlot(0)) with i of " + i);
-                    logger.info("inputs.get(i) " + inputs.get(i));
-                    logger.info("itemInputInventory.get(i).getStackInSlot(0) " + itemInputInventory.get(i).getStackInSlot(0));
-                    logger.info("expected recipe inputs: " + inputs);
-                    logger.info("machine inputs: " + itemInputInventory);
-                    logger.info("-----------------------------------");*/
+                    /*
+                     * logger.info("-----------------------------------");
+                     * logger.
+                     * info("AALD fail state: !inputs.get(i).acceptsStack(itemInputInventory.get(i).getStackInSlot(0)) with i of "
+                     * + i);
+                     * logger.info("inputs.get(i) " + inputs.get(i));
+                     * logger.info("itemInputInventory.get(i).getStackInSlot(0) " +
+                     * itemInputInventory.get(i).getStackInSlot(0));
+                     * logger.info("expected recipe inputs: " + inputs);
+                     * logger.info("machine inputs: " + itemInputInventory);
+                     * logger.info("-----------------------------------");
+                     */
                     return false;
                 }
             }
@@ -461,13 +470,15 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
 
                 // slot count is not enough, so don't try to match it
                 if (fluidInputInventory.size() < inputs.size()) {
-                    //logger.info("AALD fail state: fluidInputInventory.size() " + fluidInputInventory.size() + " < inputs.size " + inputs.size());
+                    // logger.info("AALD fail state: fluidInputInventory.size() " + fluidInputInventory.size() + " <
+                    // inputs.size " + inputs.size());
                     return false;
                 }
 
                 for (int i = 0; i < inputs.size(); i++) {
                     if (!inputs.get(i).acceptsFluid(fluidInputInventory.get(i).getFluid())) {
-                        //logger.info("AALD fail state: !inputs.get(i).acceptsFluid(fluidInputInventory.get(i).getFluid()) with i of " + i);
+                        // logger.info("AALD fail state:
+                        // !inputs.get(i).acceptsFluid(fluidInputInventory.get(i).getFluid()) with i of " + i);
                         return false;
                     }
                 }

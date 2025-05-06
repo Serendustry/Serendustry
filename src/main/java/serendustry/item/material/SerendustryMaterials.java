@@ -2226,8 +2226,7 @@ public class SerendustryMaterials {
                 .components(Originium, 4, SemiconductorGradeSilicon, 2, Naquadria, 1, Cerium, 1)
                 .build();
 
-        RawAncientDebris = new Material.Builder(203, Serendustry.ID("raw_ancient_debris")) // todo: add planetoid and
-                                                                                           // ore vein for this
+        RawAncientDebris = new Material.Builder(203, Serendustry.ID("raw_ancient_debris")) // todo: ore vein for this
                 .dust(3).ore(1, 1)
                 .color(0x4c3e23).iconSet(METALLIC)
                 .build()
@@ -2726,10 +2725,7 @@ public class SerendustryMaterials {
                         .blastStats(VA[MAX], 1600))
                 .build();
 
-        DeepDarkIron = new Material.Builder(265, Serendustry.ID("deep_dark_iron")) // todo: add deep dark planetoid that
-                                                                                   // has every ore in the game,
-                                                                                   // including this one, and make this
-                                                                                   // an endgame material
+        DeepDarkIron = new Material.Builder(265, Serendustry.ID("deep_dark_iron"))
                 .ore().ingot(3).liquid(new FluidBuilder().temperature(19000))
                 .color(0x45374A).iconSet(METALLIC)
                 .blast(b -> b
@@ -3411,7 +3407,8 @@ public class SerendustryMaterials {
         Realitium = new Material.Builder(354, Serendustry.ID("realitium"))
                 .liquid(new FluidBuilder().temperature(2147483647))
                 .color(0x000077)
-                .build();
+                .build()
+                .setFormula("§bTime and Space bend around it as if they fear it§e");
 
         Rheniite = new Material.Builder(355, Serendustry.ID("rheniite"))
                 .dust(3).ore(1, 1)
@@ -3444,19 +3441,22 @@ public class SerendustryMaterials {
 
         TrilithiumResin = new Material.Builder(358, Serendustry.ID("trilithium_resin"))
                 .liquid(new FluidBuilder().temperature(500000))
-                .color(0x000077)
+                .color(0xc166cc)
                 .build()
                 .setFormula("Li3");
 
         UnrealGoop = new Material.Builder(359, Serendustry.ID("unreal_goop"))
                 .liquid(new FluidBuilder().temperature(100_000_000))
                 .color(0xAA00A0)
-                .build();
+                .build()
+                .setFormula("§dBleeding through a crack into the next world§e");
 
         ExoticUnreality = new Material.Builder(360, Serendustry.ID("exotic_unreality"))
                 .liquid(new FluidBuilder().temperature(1_000_000_000))
                 .color(0xFF00F0)
-                .build();
+                .build()
+                .setFormula(
+                        "§dHere, everything is shattered, twisted, distorted, melted, and merged. You know everything and yet nothing at the same time. The very concept of your reality crumbles away, and you finally realize how foolish and fragile it always was. Everything is one, and one is everything§e");
 
         ExoHalkoniteBase = new Material.Builder(361, Serendustry.ID("exo_halkonite_base"))
                 .liquid(new FluidBuilder().temperature(64000))

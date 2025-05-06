@@ -11,12 +11,10 @@ import static gregtech.api.unification.ore.OrePrefix.circuit;
 import static gregtech.api.unification.ore.OrePrefix.frameGt;
 import static gregtech.api.unification.ore.OrePrefix.gear;
 import static gregtech.api.unification.ore.OrePrefix.gemExquisite;
-import static gregtech.api.unification.ore.OrePrefix.plate;
 import static gregtech.api.unification.ore.OrePrefix.plateDense;
 import static gregtech.api.unification.ore.OrePrefix.screw;
 import static gregtech.api.unification.ore.OrePrefix.wireGtSingle;
 import static gregtech.common.items.MetaItems.CONVEYOR_MODULE_UIV;
-import static gregtech.common.items.MetaItems.ELECTRIC_MOTOR_UIV;
 import static gregtech.common.items.MetaItems.ELECTRIC_PISTON_UIV;
 import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UIV;
 import static gregtech.common.items.MetaItems.ROBOT_ARM_UIV;
@@ -26,7 +24,6 @@ import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_OVERWORLD;
 import static serendustry.item.material.SerendustryMaterials.AwakenedDraconium;
 import static serendustry.item.material.SerendustryMaterials.DeepDarkSteel;
 import static serendustry.item.material.SerendustryMaterials.Dragonblood;
-import static serendustry.item.material.SerendustryMaterials.ExoHalkoniteSteel;
 import static serendustry.item.material.SerendustryMaterials.HalkoniteSteel;
 import static serendustry.item.material.SerendustryMaterials.Hypogen;
 import static serendustry.item.material.SerendustryMaterials.Infinity;
@@ -56,12 +53,12 @@ public class StellarEngineRecipes {
                 .input(ROBOT_ARM_UIV, 16)
                 .input(ELECTRIC_PISTON_UIV, 16)
                 .input(CONVEYOR_MODULE_UIV, 16)
-                .input(plateDense, ExoHalkoniteSteel, 16)
+                .input(plateDense, HalkoniteSteel, 32)
                 .input(plateDense, AwakenedDraconium, 32)
                 .input(plateDense, DeepDarkSteel, 32)
                 .input(plateDense, Infinity, 32)
-                .input(gear, ExoHalkoniteSteel, 16)
-                .input(screw, ExoHalkoniteSteel, 64)
+                .input(gear, HalkoniteSteel, 32)
+                .input(screw, HalkoniteSteel, 64)
                 .input(cableGtDouble, Quantium40, 64)
                 .input(wireGtSingle, Hypogen, 64)
                 .fluidInputs(SentientNanobots.getFluid(144 * 64),
@@ -92,10 +89,14 @@ public class StellarEngineRecipes {
             boolean isSolid = material.hasProperty(PropertyKey.DUST) || material.hasProperty(PropertyKey.INGOT) ||
                     material.hasProperty(PropertyKey.GEM);
 
-            builder.fluidOutputs(material.getPlasma(isSolid ? 144_000 : 1_000_000)); // 1,000 ingots
+            builder.fluidOutputs(material.getPlasma(isSolid ? 36_000_000 : 250_000_000)); // 250,000 ingots
         }
-        builder.fluidOutputs(Realitium.getFluid(1000))
-                .duration(20 * 60 * 60 * 8).EUt((int) GTValues.V[MAX]).buildAndRegister();
+        builder.fluidOutputs(Realitium.getFluid(250))
+                .duration(20 * 60 * 60 * 8)
+                .EUt((int) GTValues.V[MAX])
+                // .duration(20 * 60 * 60 / 4)
+                // .EUt(GTValues.V[UIV] * 4096); // todo
+                .buildAndRegister();
 
         builder = STELLAR_ENGINE_RECIPES.recipeBuilder();
         builder.input(STELLAR_ESSENCE_NETHER);
@@ -103,10 +104,14 @@ public class StellarEngineRecipes {
             boolean isSolid = material.hasProperty(PropertyKey.DUST) || material.hasProperty(PropertyKey.INGOT) ||
                     material.hasProperty(PropertyKey.GEM);
 
-            builder.fluidOutputs(material.getPlasma(isSolid ? 144_000 : 1_000_000));
+            builder.fluidOutputs(material.getPlasma(isSolid ? 36_000_000 : 250_000_000));
         }
-        builder.fluidOutputs(Realitium.getFluid(6000))
-                .duration(20 * 60 * 60 * 32).EUt((int) GTValues.V[MAX]).buildAndRegister();
+        builder.fluidOutputs(Realitium.getFluid(1500))
+                .duration(20 * 60 * 60 * 32)
+                .EUt((int) GTValues.V[MAX])
+                // .duration(20 * 60 * 60)
+                // .EUt(GTValues.V[UIV] * 4096); // todo
+                .buildAndRegister();
 
         builder = STELLAR_ENGINE_RECIPES.recipeBuilder();
         builder.input(STELLAR_ESSENCE_END);
@@ -114,13 +119,33 @@ public class StellarEngineRecipes {
             boolean isSolid = material.hasProperty(PropertyKey.DUST) || material.hasProperty(PropertyKey.INGOT) ||
                     material.hasProperty(PropertyKey.GEM);
 
-            builder.fluidOutputs(material.getPlasma(isSolid ? 144_000 : 1_000_000));
+            builder.fluidOutputs(material.getPlasma(isSolid ? 36_000_000 : 250_000_000));
         }
-        builder.fluidOutputs(Realitium.getFluid(36000))
-                .duration(20 * 60 * 60 * 128).EUt((int) GTValues.V[MAX]).buildAndRegister();
+        builder.fluidOutputs(Realitium.getFluid(9000))
+                .duration(20 * 60 * 60 * 128)
+                .EUt((int) GTValues.V[MAX])
+                // .duration(20 * 60 * 60 * 4)
+                // .EUt(GTValues.V[UIV] * 4096); // todo
+                .buildAndRegister();
 
-        // UIV 4,096A Laser: 4 OCs
-        // Durations: 28,800s -> 1,800s; 115,200s -> 7,200s; 460,800s -> 28,800
-        // Realitium/s: 0.55; 0.83; 1.25
+        /*
+         * Realitium/run: 250; 1,500; 9,000
+         * EHK/run: 118.008; 708.048; 4,248.2875
+         * Total EU/run: 2.473e15 (2.4 Quadrillion); 9.895e15; 3.958e16 (39.5 Quadrillion)
+         * 
+         * With commented duration and EUt:
+         * UIV 4,096A Laser: 0 OCs (137,438,953,500 EU/t)
+         * Durations: 900s; 3,600s; 14,400s
+         * Realitium/s: 0.277; 0.416; 0.625
+         * s/EHK: 7.648; 5.092; 3.389
+         * Other outputs/s:
+         * Fluid: 27,777.777L/s; 69,444.44L/s; 17,361.11L/s
+         * Solid: 277.77I/s; 69.44I/s; 17.36I/s
+         * 
+         * UXV 4,096A Laser: 1 POC (549,755,813,600 EU/t)
+         * Durations: 225s; 900s; 3,600s
+         * Realitium/s: 1.108; 1.664; 2.5
+         * s/EHK: 1.912; 1.273; 0.8474
+         */
     }
 }

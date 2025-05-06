@@ -2,6 +2,9 @@ package serendustry.recipe;
 
 import static gregtech.api.unification.material.Materials.Flerovium;
 import static gregtech.api.unification.material.Materials.Neutronium;
+import static gregtech.api.unification.material.Materials.Oil;
+import static gregtech.api.unification.material.Materials.Tennessine;
+import static gregtech.api.unification.material.Materials.Water;
 import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryRecipeMaps.PLASMA_CONDENSER_RECIPES;
 
@@ -11,6 +14,7 @@ import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.properties.FluidProperty;
 import gregtech.api.unification.material.properties.PropertyKey;
+import serendustry.machine.PlasmaCondenserTypeProperty;
 
 public class PlasmaCondenserRecipes {
 
@@ -45,18 +49,27 @@ public class PlasmaCondenserRecipes {
             boolean isSolid = material.hasProperty(PropertyKey.DUST) || material.hasProperty(PropertyKey.INGOT) ||
                     material.hasProperty(PropertyKey.GEM);
 
+            Integer recipeTier = isExotic ? Integer.valueOf(1) : Integer.valueOf(0);
+
             PLASMA_CONDENSER_RECIPES.recipeBuilder()
+                    .recipeType(PlasmaCondenserTypeProperty.COOLING)
+                    .recipeTier(recipeTier)
                     .fluidInputs(BlackStarMatter.getFluid(isExotic ? 1000 : 10),
                             material.getPlasma(isSolid ? 144 : 1000))
                     .fluidOutputs(material.getFluid(isSolid ? 144 : 1000))
-                    .duration(isExotic ? 16 * 20 : 16).EUt(GTValues.VA[isExotic ? GTValues.MAX : GTValues.UHV])
+                    .duration(isExotic ? 16 * 20 : 16)
+                    .EUt(GTValues.VA[isExotic ? GTValues.MAX : GTValues.UHV])
                     .buildAndRegister();
 
             PLASMA_CONDENSER_RECIPES.recipeBuilder()
+                    .recipeType(PlasmaCondenserTypeProperty.HEATING)
+
+                    .recipeTier(recipeTier)
                     .fluidInputs(CondensedStarMatter.getFluid(isExotic ? 1000 : 10),
                             material.getFluid(isSolid ? 144 : 1000))
                     .fluidOutputs(material.getPlasma(isSolid ? 144 : 1000))
-                    .duration(isExotic ? 16 * 20 : 16).EUt(GTValues.VA[isExotic ? GTValues.MAX : GTValues.UHV])
+                    .duration(isExotic ? 16 * 20 : 16)
+                    .EUt(GTValues.VA[isExotic ? GTValues.MAX : GTValues.UHV])
                     .buildAndRegister();
         }
     }

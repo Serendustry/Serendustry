@@ -108,28 +108,5 @@ public class MiscRecipes {
                 .fluidInputs(Tennessine.getFluid(144 * 8))
                 .output(GRAVI_STAR)
                 .duration(20 * 24).EUt(VA[IV]).buildAndRegister();
-
-        // test recipes
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(stickLong, Neutronium)
-                .input(gearSmall, Neutronium)
-                .input(plate, Iron)
-                .fluidInputs(Hydrogen.getFluid(1))
-                .output(Items.EGG)
-                .duration(20*60*60).EUt(VA[UV]).buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(stickLong, Adamantium)
-                .input(gearSmall, Neutronium)
-                .input(plate, Iron)
-                .fluidInputs(Hydrogen.getFluid(1))
-                .output(Items.EGG)
-                .duration(20).EUt(VA[LV]).buildAndRegister();
-
-        IMPLOSION_RECIPES.recipeBuilder()
-                .input(Blocks.DIRT)
-                .output(Blocks.OBSIDIAN)
-                .explosivesAmount(1)
-                .duration(20 * 60 * 240 * 32).EUt(VA[ULV]).buildAndRegister();
     }
 }

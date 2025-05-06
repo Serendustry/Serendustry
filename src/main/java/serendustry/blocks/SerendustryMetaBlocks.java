@@ -27,6 +27,8 @@ public class SerendustryMetaBlocks {
     public static BlockSerendustryMultiCasing SERENDUSTRY_MULTI_CASING;
     public static BlockAALCoreCasing AAL_CORE_CASING;
     public static BlockEICHammerCasing EIC_HAMMER_CASING;
+    public static BlockPCCoilHeating PC_COIL_HEATING;
+    public static BlockPCCoilCooling PC_COIL_COOLING;
 
     public static List<VariantBlock<?>> ALL_CASINGS = new ArrayList<>();
 
@@ -43,7 +45,13 @@ public class SerendustryMetaBlocks {
         EIC_HAMMER_CASING = new BlockEICHammerCasing();
         EIC_HAMMER_CASING.setRegistryName("eic_hammer_casing");
 
-        ALL_CASINGS.addAll(Arrays.asList(SERENDUSTRY_METAL_CASING, SERENDUSTRY_MULTI_CASING, AAL_CORE_CASING, EIC_HAMMER_CASING));
+        PC_COIL_HEATING = new BlockPCCoilHeating();
+        PC_COIL_HEATING.setRegistryName("pc_coil_heating");
+
+        PC_COIL_COOLING = new BlockPCCoilCooling();
+        PC_COIL_COOLING.setRegistryName("pc_coil_cooling");
+
+        ALL_CASINGS.addAll(Arrays.asList(SERENDUSTRY_METAL_CASING, SERENDUSTRY_MULTI_CASING, AAL_CORE_CASING, EIC_HAMMER_CASING, PC_COIL_HEATING, PC_COIL_COOLING));
     }
 
     @SideOnly(Side.CLIENT)

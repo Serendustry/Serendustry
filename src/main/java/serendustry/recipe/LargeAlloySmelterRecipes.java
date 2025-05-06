@@ -1,12 +1,8 @@
 package serendustry.recipe;
 
-import serendustry.blocks.BlockSerendustryMultiCasing;
-import serendustry.blocks.SerendustryMetaBlocks;
-
 import static gregtech.api.GTValues.IV;
 import static gregtech.api.GTValues.LuV;
 import static gregtech.api.GTValues.UEV;
-import static gregtech.api.GTValues.UHV;
 import static gregtech.api.GTValues.UIV;
 import static gregtech.api.GTValues.UV;
 import static gregtech.api.GTValues.UXV;
@@ -20,7 +16,6 @@ import static gregtech.api.unification.material.Materials.Bromine;
 import static gregtech.api.unification.material.Materials.Carbon;
 import static gregtech.api.unification.material.Materials.Copper;
 import static gregtech.api.unification.material.Materials.Dysprosium;
-import static gregtech.api.unification.material.Materials.Erbium;
 import static gregtech.api.unification.material.Materials.Europium;
 import static gregtech.api.unification.material.Materials.Flerovium;
 import static gregtech.api.unification.material.Materials.Gold;
@@ -32,7 +27,6 @@ import static gregtech.api.unification.material.Materials.Niobium;
 import static gregtech.api.unification.material.Materials.Nitrogen;
 import static gregtech.api.unification.material.Materials.Oganesson;
 import static gregtech.api.unification.material.Materials.Osmium;
-import static gregtech.api.unification.material.Materials.Palladium;
 import static gregtech.api.unification.material.Materials.Rubidium;
 import static gregtech.api.unification.material.Materials.Selenium;
 import static gregtech.api.unification.material.Materials.Tennessine;
@@ -68,6 +62,9 @@ import static serendustry.item.material.SerendustryMaterials.SelfRepairingNanobo
 import static serendustry.item.material.SerendustryMaterials.TastyNeutronium;
 import static serendustry.item.material.SerendustryMaterials.Thaumium;
 import static serendustry.machine.SerendustryMetaTileEntities.ADVANCED_FUSION_REACTOR;
+
+import serendustry.blocks.BlockSerendustryMultiCasing;
+import serendustry.blocks.SerendustryMetaBlocks;
 
 public class LargeAlloySmelterRecipes {
 
@@ -134,7 +131,8 @@ public class LargeAlloySmelterRecipes {
                 .duration(64).EUt(VA[UV]).EUToStart(640_000_000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .inputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL))
+                .inputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING
+                        .getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL))
                 .input(FIELD_GENERATOR_UEV, 8)
                 .input(ROBOT_ARM_UEV, 8)
                 .input(gear, HalkoniteSteel, 4)

@@ -11,16 +11,16 @@ import org.jetbrains.annotations.NotNull;
 
 import gregtech.api.block.VariantBlock;
 
-public class BlockEICHammerCasing extends VariantBlock<BlockEICHammerCasing.EICHammerCasingType> {
+public class BlockPCCoilCooling extends VariantBlock<BlockPCCoilCooling.PCCoilCoolingType> {
 
-    public BlockEICHammerCasing() {
+    public BlockPCCoilCooling() {
         super(net.minecraft.block.material.Material.IRON);
-        setTranslationKey("eic_hammer_casing");
+        setTranslationKey("pc_coil_cooling");
         setHardness(5.0f);
         setResistance(10.0f);
         setHarvestLevel("wrench", 3);
         setSoundType(SoundType.METAL);
-        setDefaultState(getState(EICHammerCasingType.NEUTRONIUM));
+        setDefaultState(getState(PCCoilCoolingType.GLACIAL));
     }
 
     @Override
@@ -29,15 +29,14 @@ public class BlockEICHammerCasing extends VariantBlock<BlockEICHammerCasing.EICH
         return false;
     }
 
-    public enum EICHammerCasingType implements IStringSerializable, IEICHammerBlockStats {
+    public enum PCCoilCoolingType implements IStringSerializable, IPCCoilCoolingBlockStats {
 
-        NEUTRONIUM("neutronium"),
-        HALKONITE("halkonite"),
-        EHK("ehk");
+        GLACIAL("glacial"),
+        BLACK_HOLE("black_hole");
 
         private final String name;
 
-        EICHammerCasingType(String name) {
+        PCCoilCoolingType(String name) {
             this.name = name;
         }
 
@@ -48,7 +47,7 @@ public class BlockEICHammerCasing extends VariantBlock<BlockEICHammerCasing.EICH
         }
 
         @Override
-        public int getHammerTier() {
+        public int getTier() {
             return this.ordinal();
         }
     }

@@ -2,28 +2,21 @@ package serendustry.machine;
 
 import static gregtech.api.util.RelativeDirection.*;
 
-import java.util.Arrays;
-
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import org.jetbrains.annotations.NotNull;
 
-import gregtech.api.GTValues;
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
-import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
-import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.client.renderer.ICubeRenderer;
-import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.*;
-import gregtech.common.metatileentities.MetaTileEntities;
 import serendustry.blocks.BlockSerendustryMultiCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
@@ -249,14 +242,20 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
                         "                         ",
                         "          A   A          ")
                 .where('C', selfPredicate())
-                .where('A', states(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getState(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION))
-                        .setMinGlobalLimited(365).or(autoAbilities()))
-                        /*.or(metaTileEntities(Arrays
-                                .stream(MetaTileEntities.ENERGY_INPUT_HATCH)
-                                .filter(mte -> mte != null && mte.getTier() >= GTValues.UEV)
-                                .toArray(MetaTileEntity[]::new))
-                                        .setPreviewCount(2).setMinGlobalLimited(1))*/
-                .where('B', states(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getState(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL)))
+                .where('A',
+                        states(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING
+                                .getState(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION))
+                                        .setMinGlobalLimited(365).or(autoAbilities()))
+                /*
+                 * .or(metaTileEntities(Arrays
+                 * .stream(MetaTileEntities.ENERGY_INPUT_HATCH)
+                 * .filter(mte -> mte != null && mte.getTier() >= GTValues.UEV)
+                 * .toArray(MetaTileEntity[]::new))
+                 * .setPreviewCount(2).setMinGlobalLimited(1))
+                 */
+                .where('B',
+                        states(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING
+                                .getState(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL)))
                 .where('D', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.FUSION_GLASS)))
                 .where(' ', any())
                 .build();

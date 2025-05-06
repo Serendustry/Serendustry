@@ -47,7 +47,7 @@ public class LaboratoryProperty extends RecipeProperty<LaboratoryEntry> {
     @Override
     public void drawInfo(Minecraft minecraft, int x, int y, int color, Object value, int mouseX, int mouseY) {
         LaboratoryEntry entry = castValue(value);
-        if (entry.getMachineTable().size() != 0) {
+        if (!entry.getMachineTable().isEmpty()) {
             minecraft.fontRenderer.drawString(I18n.format("serendustry.machine.industrial_laboratory.jei_header"), x, y,
                     color);
             y += 10;

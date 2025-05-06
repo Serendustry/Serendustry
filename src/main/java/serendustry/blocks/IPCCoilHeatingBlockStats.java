@@ -2,10 +2,10 @@ package serendustry.blocks;
 
 import org.jetbrains.annotations.NotNull;
 
-public interface IEICHammerBlockStats {
+public interface IPCCoilHeatingBlockStats {
 
     @NotNull
     String getName();
 
-    int getHammerTier();
+    int getTier();
 }

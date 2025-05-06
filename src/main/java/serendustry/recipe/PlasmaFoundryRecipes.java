@@ -414,7 +414,8 @@ public class PlasmaFoundryRecipes {
                         Titanium.getFluid(144 * 16),
                         Copper.getFluid(144 * 112),
                         Oxygen.getPlasma(24000))
-                .foundryCatalyst(CATALYST_SUPERCONDUCTORS, CATALYST_COPPER_ALLOYS, CATALYST_TIN_ALLOYS, CATALYST_TITANIUM_ALLOYS)
+                .foundryCatalyst(CATALYST_SUPERCONDUCTORS, CATALYST_COPPER_ALLOYS, CATALYST_TIN_ALLOYS,
+                        CATALYST_TITANIUM_ALLOYS)
                 .fluidOutputs(IndiumTinBariumTitaniumCuprate.getFluid(144 * 256))
                 .duration(50 * 20 * 256 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
@@ -749,10 +750,10 @@ public class PlasmaFoundryRecipes {
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(HalkonitePreparationBase.getFluid(144 * 128),
-                        Infinity.getFluid(144 * 64),
+                        Infinity.getFluid(144 * 16),
                         AwakenedDraconium.getFluid(144 * 16),
-                        ExoticUnreality.getFluid(8000),
-                        TrilithiumResin.getFluid(10000),
+                        ExoticUnreality.getFluid(4000),
+                        TrilithiumResin.getFluid(5000),
                         Dragonblood.getPlasma(144 * 32))
                 .fluidOutputs(ExoHalkoniteBase.getFluid(144 * 64))
                 .foundryCatalyst(CATALYST_EXO_HALKONITE)

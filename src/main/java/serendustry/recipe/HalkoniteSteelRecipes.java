@@ -50,15 +50,16 @@ public class HalkoniteSteelRecipes {
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
                 .input(plate, HalkoniteSteel)
-                .fluidInputs(ChromaticGlass.getPlasma(144 * 16),
-                        Neutronium.getPlasma(144 * 32))
+                .fluidInputs(ChromaticGlass.getPlasma(144 * 64),
+                        Neutronium.getPlasma(144 * 64),
+                        Realitium.getFluid(100))
                 .output(HKSP_DD)
-                .duration(20 * 60 * 10 * 2).EUt(VA[UXV]).buildAndRegister();
+                .duration(20 * 60 * 10 * 4).EUt(VA[UXV]).buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder()
                 .input(HKSP_DD)
-                .fluidInputs(Dragonblood.getPlasma(144 * 128),
-                        Draconium.getPlasma(144 * 128))
+                .fluidInputs(Dragonblood.getPlasma(144 * 64),
+                        Draconium.getPlasma(144 * 64))
                 .output(HKSP_C)
                 .blastFurnaceTemp(10800)
                 .duration(20 * 60 * 10).EUt(VA[UXV]).buildAndRegister();
@@ -66,7 +67,7 @@ public class HalkoniteSteelRecipes {
         ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES.recipeBuilder()
                 .input(HKSP_C)
                 .output(HKSP_BC)
-                .duration(20 * 60 * 10 * 2).EUt(VA[UXV]).buildAndRegister();
+                .duration(20 * 60 * 10 * 4).EUt(VA[UXV]).buildAndRegister();
 
         FORGE_HAMMER_RECIPES.recipeBuilder()
                 .input(HKSP_BC)
@@ -78,25 +79,28 @@ public class HalkoniteSteelRecipes {
                 .fluidInputs(Infinity.getPlasma(144 * 16),
                         AwakenedDraconium.getPlasma(144 * 16))
                 .output(dust, DarkAsh)
-                .fluidOutputs(UnrealGoop.getFluid(10))
-                .duration(20 * 60 * 10 * 2).EUt(VA[UXV]).buildAndRegister();
+                .fluidOutputs(UnrealGoop.getFluid(250))
+                .duration(20 * 60 * 10).EUt(VA[UXV]).buildAndRegister();
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
                 .notConsumable(lens, Dilithium)
-                .fluidInputs(UnrealGoop.getFluid(10),
-                        Hypogen.getPlasma(144 * 16))
+                .fluidInputs(UnrealGoop.getFluid(1000),
+                        Hypogen.getPlasma(144 * 16),
+                        Realitium.getFluid(100))
                 .fluidOutputs(ExoticUnreality.getFluid(1000))
-                .duration(20 * 60 * 10 * 2).EUt(VA[UXV]).buildAndRegister();
+                .duration(20 * 60 * 10 * 4).EUt(VA[UXV]).buildAndRegister();
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
                 .input(gemExquisite, Dilithium)
-                .fluidInputs(ExoticUnreality.getFluid(1000))
+                .fluidInputs(ExoticUnreality.getFluid(1000),
+                        Realitium.getFluid(100))
                 .output(dust, Trilithium)
                 .duration(20 * 60 * 2).EUt(VA[UXV]).buildAndRegister();
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
                 .input(gemExquisite, Trilithium)
-                .fluidInputs(Rhugnor.getPlasma(144 * 4))
+                .fluidInputs(Rhugnor.getPlasma(144 * 4),
+                        Realitium.getFluid(25))
                 .fluidOutputs(ExoticUnreality.getFluid(1000),
                         TrilithiumResin.getFluid(1500))
                 .duration(20 * 60 * 4).EUt(VA[UXV]).buildAndRegister();
@@ -104,9 +108,19 @@ public class HalkoniteSteelRecipes {
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
                 .notConsumable(lens, Trilithium)
                 .input(gemExquisite, Dilithium)
-                .fluidInputs(ExoticUnreality.getFluid(100),
-                        TrilithiumResin.getFluid(100))
+                .fluidInputs(ExoticUnreality.getFluid(50),
+                        TrilithiumResin.getFluid(50))
                 .output(dust, Trilithium)
                 .duration(20 * 60).EUt(VA[UXV]).buildAndRegister();
+
+        /*
+         * 1kL ExU needs 25 Realitium + ~5.25 Trilithium
+         * 5.25 Trilithium needs 262.5 ExU
+         * 1kL ExU needs 262.5 ExU
+         * 1kL ExU is really 737.5 ExU, a >25% tax
+         * 1kL ExU (1,355.9L ExU) makes 16 EHK
+         * 1,355.9 / 16 = 84.74L ExU makes 1 EHK
+         * 84.74L ExU (1 EHK) needs 2.1185 Realitium
+         */
     }
 }
