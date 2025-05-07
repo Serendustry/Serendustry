@@ -36,7 +36,8 @@ public class BlockSerendustryMetalCasing extends VariantBlock<BlockSerendustryMe
 
         AMERICIUM("americium", Materials.Americium),
         CARBON("carbon", Materials.Carbon),
-        ADAMANTIUM("adamantium", SerendustryMaterials.Adamantium);
+        ADAMANTIUM("adamantium", SerendustryMaterials.Adamantium),
+        NEUTRONIUM("neutronium", Materials.Neutronium);
 
         private final String name;
         private final Material material;

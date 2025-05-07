@@ -56,7 +56,7 @@ public class SpaceElevatorRecipes {
                 .input(wireFine, Americium, 32)
                 .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 8))
                 .output(PLANETOID_SCANNING_DRONE, 48)
-                .duration(2400).EUt(VA[UV]).buildAndRegister();
+                .duration(24000*4).EUt(VA[UV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(MetaTileEntities.SCANNER[UV])
@@ -69,7 +69,7 @@ public class SpaceElevatorRecipes {
                 .input(wireFine, Tritanium, 64)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 12))
                 .output(PLANETOID_SCANNING_DRONE_MK_2, 48)
-                .duration(2400).EUt(VA[UHV]).buildAndRegister();
+                .duration(24000*4).EUt(VA[UHV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(MetaTileEntities.SCANNER[ZPM])
@@ -82,7 +82,7 @@ public class SpaceElevatorRecipes {
                 .input(wireFine, Americium, 64)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 8))
                 .output(STAR_SCANNING_DRONE, 48)
-                .duration(3200).EUt(VA[UV]).buildAndRegister();
+                .duration(32000*4).EUt(VA[UV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(toolHeadDrill, NaquadahAlloy, 4)
@@ -96,7 +96,7 @@ public class SpaceElevatorRecipes {
                 .input(wireFine, Americium, 64)
                 .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 16))
                 .output(PLANETOID_HARVESTING_DRONE, 4)
-                .duration(1200).EUt(VA[UV]).buildAndRegister();
+                .duration(12000*4).EUt(VA[UV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(MetaTileEntities.QUANTUM_TANK[ZPM])
@@ -109,7 +109,7 @@ public class SpaceElevatorRecipes {
                 .input(wireFine, Americium, 64)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 8))
                 .output(STAR_HARVESTING_DRONE, 4)
-                .duration(1200).EUt(VA[UHV]).buildAndRegister();
+                .duration(12000*4).EUt(VA[UHV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(MetaTileEntities.SCANNER[UEV])
@@ -121,8 +121,8 @@ public class SpaceElevatorRecipes {
                 .input(wireFine, Originium, 32)
                 .input(wireFine, AwakenedDraconium, 64)
                 .fluidInputs(SentientNanobots.getFluid(144 * 12))
-                .output(DEEP_DARK_SCANNING_DRONE, 8)
-                .duration(4800).EUt(VA[UEV]).buildAndRegister();
+                .output(DEEP_DARK_SCANNING_DRONE, 48)
+                .duration(48000*8).EUt(VA[UEV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(toolHeadDrill, AbyssalAlloy, 4)
@@ -135,7 +135,7 @@ public class SpaceElevatorRecipes {
                 .input(wireFine, AwakenedDraconium, 64)
                 .fluidInputs(SentientNanobots.getFluid(144 * 12))
                 .output(DEEP_DARK_HARVESTING_DRONE, 4)
-                .duration(2400).EUt(VA[UEV]).buildAndRegister();
+                .duration(24000*8).EUt(VA[UEV]).buildAndRegister();
 
         // todo: planetoids for more ores, fluid drones?
 
@@ -162,12 +162,14 @@ public class SpaceElevatorRecipes {
                 .chancedOutput(SALT_PLANETOID_DATA, 500, 0)
                 .chancedOutput(LAPIS_PLANETOID_DATA, 500, 0)
                 .chancedOutput(QUARTZ_PLANETOID_DATA, 500, 0)
+                .chancedOutput(NETHERITE_PLANETOID_DATA, 500, 0)
                 .chancedOutput(MONAZITE_PLANETOID_DATA, 500, 0)
                 .chancedOutput(PITCHBLENDE_PLANETOID_DATA, 300, 0)
                 .chancedOutput(COOPERITE_PLANETOID_DATA, 300, 0)
+                .chancedOutput(XENOTIME_PLANETOID_DATA, 300, 0)
+                .chancedOutput(NAQUADAH_PLANETOID_DATA, 300, 0)
                 .chancedOutput(AZBANTIUM_PLANETOID_DATA, 300, 0)
                 .chancedOutput(VIBRANITE_PLANETOID_DATA, 300, 0)
-                // .chancedOutputLogic(ChancedOutputLogic.XOR)
                 .duration(800).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
@@ -193,26 +195,26 @@ public class SpaceElevatorRecipes {
                 .chancedOutput(SALT_PLANETOID_DATA, 1250, 0)
                 .chancedOutput(LAPIS_PLANETOID_DATA, 1250, 0)
                 .chancedOutput(QUARTZ_PLANETOID_DATA, 1250, 0)
+                .chancedOutput(NETHERITE_PLANETOID_DATA, 1250, 0)
+                .chancedOutput(MONAZITE_PLANETOID_DATA, 1250, 0)
+                .chancedOutput(PITCHBLENDE_PLANETOID_DATA, 1200, 0)
                 .chancedOutput(COOPERITE_PLANETOID_DATA, 1200, 0)
                 .chancedOutput(XENOTIME_PLANETOID_DATA, 1200, 0)
                 .chancedOutput(NAQUADAH_PLANETOID_DATA, 1200, 0)
-                .chancedOutput(PITCHBLENDE_PLANETOID_DATA, 1200, 0)
-                .chancedOutput(EXOTIC_PLANETOID_DATA, 900, 0)
-                .chancedOutput(TIBERIUM_PLANETOID_DATA, 900, 0)
                 .chancedOutput(AZBANTIUM_PLANETOID_DATA, 900, 0)
                 .chancedOutput(VIBRANITE_PLANETOID_DATA, 900, 0)
-                .chancedOutput(NETHERITE_PLANETOID_DATA, 900, 0)
+                .chancedOutput(EXOTIC_PLANETOID_DATA, 900, 0)
+                .chancedOutput(TIBERIUM_PLANETOID_DATA, 900, 0)
                 .chancedOutput(TENGAM_PLANETOID_DATA, 700, 0)
                 .chancedOutput(DRACONIUM_PLANETOID_DATA, 500, 0)
-                // .chancedOutputLogic(ChancedOutputLogic.XOR)
-                .duration(800).EUt(VA[UHV]).buildAndRegister();
+                .duration(1600).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(DEEP_DARK_SCANNING_DRONE)
                 .input(TOOL_DATA_MODULE)
                 .fluidInputs(RocketFuel.getFluid(100000))
                 .output(DEEP_DARK_PLANETOID_DATA)
-                .duration(1600).EUt(VA[UEV]).buildAndRegister();
+                .duration(6000).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()
                 .input(STAR_SCANNING_DRONE)
@@ -227,7 +229,6 @@ public class SpaceElevatorRecipes {
                 .chancedOutput(BLACK_DWARF_STAR_DATA, 1150, 0)
                 .chancedOutput(NEUTRON_STAR_DATA, 2200, 0)
                 .chancedOutput(PULSAR_STAR_DATA, 300, 0)
-                // .chancedOutputLogic(ChancedOutputLogic.XOR)
                 .duration(1200).EUt(VA[UV]).buildAndRegister();
 
         SPACE_ELEVATOR_RECIPES.recipeBuilder()

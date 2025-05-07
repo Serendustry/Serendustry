@@ -65,8 +65,6 @@ public class SerendustryMetaItems {
     public static MetaItem<?>.MetaValueItem PLANETOID_SCANNING_DRONE;
     public static MetaItem<?>.MetaValueItem PLANETOID_HARVESTING_DRONE;
 
-    // todo: data should have x durability and lose 1 per craft, also dont use a separate metaitem for each one, or at
-    // least autogenerate them
     public static MetaItem<?>.MetaValueItem STONE_PLANETOID_DATA;
     public static MetaItem<?>.MetaValueItem OBSIDIAN_PLANETOID_DATA;
 
@@ -219,6 +217,7 @@ public class SerendustryMetaItems {
     public static MetaItem<?>.MetaValueItem STELLAR_ESSENCE_OVERWORLD;
     public static MetaItem<?>.MetaValueItem STELLAR_ESSENCE_NETHER;
     public static MetaItem<?>.MetaValueItem STELLAR_ESSENCE_END;
+    public static MetaItem<?>.MetaValueItem STELLAR_ESSENCE_BEYOND;
 
     public static MetaItem<?>.MetaValueItem CIRC_ENTROPIC_UV;
     public static MetaItem<?>.MetaValueItem CIRC_ENTROPIC_UHV;
@@ -481,5 +480,6 @@ public class SerendustryMetaItems {
         CATALYST_EXO_HALKONITE = ITEMS.addItem(194, "catalyst_exo_halkonite").setMaxStackSize(1);
         CATALYST_TITANIUM_ALLOYS = ITEMS.addItem(195, "catalyst_titanium_alloys").setMaxStackSize(1);
         CATALYST_VANADIUM_ALLOYS = ITEMS.addItem(196, "catalyst_vanadium_alloys").setMaxStackSize(1);
+        STELLAR_ESSENCE_BEYOND = ITEMS.addItem(197, "stellar_essence_beyond");
     }
 }

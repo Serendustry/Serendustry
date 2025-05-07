@@ -10,17 +10,17 @@
     "variant": {
       "neutronium": {
         "textures": {
-          "all": "gregtech:blocks/casing/solid/neutronium"
+          "all": "gregtech:blocks/casing/eic_hammer/neutronium"
         }
       },
       "halkonite": {
         "textures": {
-          "all": "gregtech:blocks/casing/solid/halkonite"
+          "all": "gregtech:blocks/casing/eic_hammer/halkonite"
         }
       },
       "ehk": {
         "textures": {
-          "all": "gregtech:blocks/casing/solid/ehk"
+          "all": "gregtech:blocks/casing/eic_hammer/ehk"
         }
       }
     }

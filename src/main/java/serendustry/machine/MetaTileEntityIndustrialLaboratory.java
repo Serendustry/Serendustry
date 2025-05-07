@@ -33,6 +33,11 @@ import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
 import serendustry.machine.LaboratoryProperty.LaboratoryEntry;
+import serendustry.machine.structure.StructureDefinition;
+
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
 
 public class MetaTileEntityIndustrialLaboratory extends RecipeMapMultiblockController {
 
@@ -60,17 +65,18 @@ public class MetaTileEntityIndustrialLaboratory extends RecipeMapMultiblockContr
     @Nonnull
     @Override
     protected BlockPattern createStructurePattern() {
-        return FactoryBlockPattern.start()
-                .aisle("XXXXX", "XGGGX", "XGGGX", "XXXXX")
-                .aisle("XXXXX", "G###G", "G###G", "XXXXX")
-                .aisle("XXXXX", "G###G", "G###G", "XXXXX")
-                .aisle("XXXXX", "G###G", "G###G", "XXXXX")
-                .aisle("XXSXX", "XGGGX", "XGGGX", "XXXXX")
-                .where('S', selfPredicate())
+        FactoryBlockPattern pattern = FactoryBlockPattern.start();
+
+        for(String[] aisle : StructureDefinition.INDUSTRIAL_LABORATORY) {
+            pattern.aisle(aisle);
+        }
+
+        pattern.where('S', selfPredicate())
                 .where('X', states(getCasingState()).setMinGlobalLimited(14).or(autoAbilities()))
                 .where('G', states(getGlassState()))
-                .where('#', innerPredicate())
-                .build();
+                .where('#', innerPredicate());
+
+        return pattern.build();
     }
 
     @Override
@@ -97,7 +103,6 @@ public class MetaTileEntityIndustrialLaboratory extends RecipeMapMultiblockContr
     @Nonnull
     protected TraceabilityPredicate innerPredicate() {
         return new TraceabilityPredicate(bws -> {
-            // todo might want to be more allowing on what can be inside
             if (bws.getBlockState().getBlock().isAir(bws.getBlockState(), bws.getWorld(), bws.getPos())) {
                 return true;
             }

@@ -21,7 +21,7 @@ public class WasteFluidRecipes {
                 .duration(400).EUt(30).buildAndRegister();
 
         // todo
-        
+
         // ASSEMBLY_LINE_RECIPES.recipeBuilder()
         // .input(MetaItems.BATTERY_ULV_TANTALUM).input(OrePrefix.pipeNonupleFluid,
         // Materials.Lead).inputs(MetaBlocks.WARNING_SIGN.getItemVariant(BlockWarningSign.SignType.SMALL_YELLOW_STRIPES)).input(MetaItems.BATTERY_ULV_TANTALUM)
@@ -43,5 +43,13 @@ public class WasteFluidRecipes {
         // .fluidInputs(BioDiesel.getFluid(100000))
         // .output(ERROR_INGOT)
         // .EUt(GTValues.VA[GTValues.UEV]).duration(20000).buildAndRegister();
+
+        // todo test laboratory recipe
+        LABORATORY_RECIPES.recipeBuilder()
+                .input(OrePrefix.ingot, Materials.Iron)
+                .output(OrePrefix.dust, Materials.Gold)
+                .requireInside(RecipeMaps.CHEMICAL_RECIPES, GTValues.HV, 2)
+                .requireInside(RecipeMaps.ELECTROLYZER_RECIPES, GTValues.HV)
+                .duration(50 * 60).EUt(480).buildAndRegister();
     }
 }

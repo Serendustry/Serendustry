@@ -1,37 +1,102 @@
 package serendustry.recipe;
 
-import static gregtech.api.GTValues.UEV;
-import static gregtech.api.GTValues.UIV;
-import static gregtech.api.GTValues.VA;
-import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
-import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.blocks.MetaBlocks.MACHINE_CASING;
-import static gregtech.common.items.MetaItems.CONVEYOR_MODULE_UIV;
-import static gregtech.common.items.MetaItems.ELECTRIC_MOTOR_UIV;
-import static gregtech.common.items.MetaItems.ELECTRIC_PISTON_UV;
-import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_UHV;
-import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_UIV;
-import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UHV;
-import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UIV;
-import static gregtech.common.items.MetaItems.ROBOT_ARM_UV;
-import static gregtech.common.items.MetaItems.ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT;
-import static gregtech.common.metatileentities.MetaTileEntities.*;
-import static serendustry.item.SerendustryMetaItems.*;
-import static serendustry.item.material.SerendustryMaterials.*;
-import static serendustry.machine.SerendustryMetaTileEntities.ADVANCED_ASSEMBLY_LINE;
-import static serendustry.machine.SerendustryMetaTileEntities.ADVANCED_FUSION_REACTOR;
-import static serendustry.machine.SerendustryMetaTileEntities.ELECTRIC_IMPLOSION_COMPRESSOR;
-import static serendustry.machine.SerendustryMetaTileEntities.FLAMEL_CRUCIBLE;
-import static serendustry.machine.SerendustryMetaTileEntities.PLASMA_CONDENSER;
-
 import gregtech.api.GTValues;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.blocks.BlockMachineCasing;
 import serendustry.SValues;
+
+import static gregtech.api.GTValues.UEV;
+import static gregtech.api.GTValues.UIV;
+import static gregtech.api.GTValues.VA;
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
+import static gregtech.api.unification.material.Materials.Diamond;
+import static gregtech.api.unification.material.Materials.Flerovium;
+import static gregtech.api.unification.material.Materials.NaquadahAlloy;
+import static gregtech.api.unification.material.Materials.Naquadria;
+import static gregtech.api.unification.material.Materials.Neutronium;
+import static gregtech.api.unification.material.Materials.Polybenzimidazole;
+import static gregtech.api.unification.material.Materials.SodiumPotassium;
+import static gregtech.api.unification.material.Materials.Tritanium;
+import static gregtech.api.unification.material.Materials.YttriumBariumCuprate;
+import static gregtech.api.unification.ore.OrePrefix.cableGtDouble;
+import static gregtech.api.unification.ore.OrePrefix.cableGtHex;
+import static gregtech.api.unification.ore.OrePrefix.cableGtOctal;
+import static gregtech.api.unification.ore.OrePrefix.cableGtQuadruple;
+import static gregtech.api.unification.ore.OrePrefix.cableGtSingle;
+import static gregtech.api.unification.ore.OrePrefix.circuit;
+import static gregtech.api.unification.ore.OrePrefix.frameGt;
+import static gregtech.api.unification.ore.OrePrefix.gear;
+import static gregtech.api.unification.ore.OrePrefix.gemExquisite;
+import static gregtech.api.unification.ore.OrePrefix.lens;
+import static gregtech.api.unification.ore.OrePrefix.plate;
+import static gregtech.api.unification.ore.OrePrefix.plateDense;
+import static gregtech.api.unification.ore.OrePrefix.spring;
+import static gregtech.api.unification.ore.OrePrefix.springSmall;
+import static gregtech.api.unification.ore.OrePrefix.stickLong;
+import static gregtech.api.unification.ore.OrePrefix.wireFine;
+import static gregtech.api.unification.ore.OrePrefix.wireGtDouble;
+import static gregtech.api.unification.ore.OrePrefix.wireGtHex;
+import static gregtech.api.unification.ore.OrePrefix.wireGtOctal;
+import static gregtech.api.unification.ore.OrePrefix.wireGtQuadruple;
+import static gregtech.api.unification.ore.OrePrefix.wireGtSingle;
+import static gregtech.common.blocks.MetaBlocks.MACHINE_CASING;
+import static gregtech.common.items.MetaItems.CONVEYOR_MODULE_UEV;
+import static gregtech.common.items.MetaItems.ELECTRIC_MOTOR_UEV;
+import static gregtech.common.items.MetaItems.ELECTRIC_PISTON_UV;
+import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_UEV;
+import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_UHV;
+import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UEV;
+import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UHV;
+import static gregtech.common.items.MetaItems.ROBOT_ARM_UV;
+import static gregtech.common.items.MetaItems.ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT;
+import static gregtech.common.metatileentities.MetaTileEntities.ASSEMBLY_LINE;
+import static gregtech.common.metatileentities.MetaTileEntities.ENERGY_INPUT_HATCH;
+import static gregtech.common.metatileentities.MetaTileEntities.ENERGY_OUTPUT_HATCH;
+import static gregtech.common.metatileentities.MetaTileEntities.HI_AMP_TRANSFORMER;
+import static gregtech.common.metatileentities.MetaTileEntities.HULL;
+import static gregtech.common.metatileentities.MetaTileEntities.IMPLOSION_COMPRESSOR;
+import static gregtech.common.metatileentities.MetaTileEntities.LARGE_CHEMICAL_REACTOR;
+import static gregtech.common.metatileentities.MetaTileEntities.LASER_INPUT_HATCH_1024;
+import static gregtech.common.metatileentities.MetaTileEntities.LASER_INPUT_HATCH_256;
+import static gregtech.common.metatileentities.MetaTileEntities.LASER_INPUT_HATCH_4096;
+import static gregtech.common.metatileentities.MetaTileEntities.LASER_OUTPUT_HATCH_1024;
+import static gregtech.common.metatileentities.MetaTileEntities.LASER_OUTPUT_HATCH_256;
+import static gregtech.common.metatileentities.MetaTileEntities.LASER_OUTPUT_HATCH_4096;
+import static gregtech.common.metatileentities.MetaTileEntities.POWER_TRANSFORMER;
+import static gregtech.common.metatileentities.MetaTileEntities.TRANSFORMER;
+import static serendustry.item.SerendustryMetaItems.CHIP_OPIC;
+import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_OVERWORLD;
+import static serendustry.item.material.SerendustryMaterials.AbyssalAlloy;
+import static serendustry.item.material.SerendustryMaterials.Adamantium;
+import static serendustry.item.material.SerendustryMaterials.AwakenedDraconium;
+import static serendustry.item.material.SerendustryMaterials.Azbantium;
+import static serendustry.item.material.SerendustryMaterials.ChromaticGlass;
+import static serendustry.item.material.SerendustryMaterials.DeepDarkSteel;
+import static serendustry.item.material.SerendustryMaterials.Floppa;
+import static serendustry.item.material.SerendustryMaterials.HalkoniteSteel;
+import static serendustry.item.material.SerendustryMaterials.HighGradeSolderingAlloy;
+import static serendustry.item.material.SerendustryMaterials.Hihiirokane;
+import static serendustry.item.material.SerendustryMaterials.Hypogen;
+import static serendustry.item.material.SerendustryMaterials.Infinity;
+import static serendustry.item.material.SerendustryMaterials.MutatedLivingSolder;
+import static serendustry.item.material.SerendustryMaterials.Originium;
+import static serendustry.item.material.SerendustryMaterials.Quantium40;
+import static serendustry.item.material.SerendustryMaterials.RadoxPolymer;
+import static serendustry.item.material.SerendustryMaterials.SelfRepairingNanobots;
+import static serendustry.item.material.SerendustryMaterials.SentientNanobots;
+import static serendustry.item.material.SerendustryMaterials.TiberiumAboreus;
+import static serendustry.item.material.SerendustryMaterials.TiberiumCruentus;
+import static serendustry.item.material.SerendustryMaterials.TiberiumRiparius;
+import static serendustry.item.material.SerendustryMaterials.TiberiumVinifera;
+import static serendustry.item.material.SerendustryMaterials.VibraniumAlloy;
+import static serendustry.machine.SerendustryMetaTileEntities.ADVANCED_ASSEMBLY_LINE;
+import static serendustry.machine.SerendustryMetaTileEntities.ADVANCED_FUSION_REACTOR;
+import static serendustry.machine.SerendustryMetaTileEntities.ELECTRIC_IMPLOSION_COMPRESSOR;
+import static serendustry.machine.SerendustryMetaTileEntities.FLAMEL_CRUCIBLE;
+import static serendustry.machine.SerendustryMetaTileEntities.PLASMA_CONDENSER;
 
 public class HTMachineRecipes {
 
@@ -105,31 +170,31 @@ public class HTMachineRecipes {
                 .duration(16000).EUt(VA[GTValues.UHV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, DeepDarkSteel, 32)
-                .input(FIELD_GENERATOR_UIV, 12)
-                .input(ELECTRIC_PUMP_UIV, 16)
-                .input(CONVEYOR_MODULE_UIV, 16)
-                .input(ELECTRIC_MOTOR_UIV, 16)
+                .input(frameGt, AbyssalAlloy, 32)
+                .input(FIELD_GENERATOR_UEV, 12)
+                .input(ELECTRIC_PUMP_UEV, 16)
+                .input(CONVEYOR_MODULE_UEV, 16)
+                .input(ELECTRIC_MOTOR_UEV, 16)
                 .input(circuit, MarkerMaterials.Tier.UIV, 16)
                 .input(circuit, MarkerMaterials.Tier.UEV, 32)
                 .input(circuit, MarkerMaterials.Tier.UHV, 64)
                 .input(plateDense, Neutronium, 64)
                 .input(plateDense, AwakenedDraconium, 32)
-                .input(plateDense, DeepDarkSteel, 32)
+                .input(plateDense, HalkoniteSteel, 32)
+                .input(gear, Neutronium, 64)
                 .input(gear, HalkoniteSteel, 32)
-                .input(gear, DeepDarkSteel, 32)
-                .input(gear, Infinity, 32)
+                .input(gear, AbyssalAlloy, 32)
                 .input(wireGtSingle, Hypogen, 64)
                 .input(cableGtDouble, Quantium40, 64)
                 .fluidInputs(SentientNanobots.getFluid(144 * 64),
                         Hypogen.getFluid(144 * 32),
-                        Infinity.getFluid(144 * 64),
+                        ChromaticGlass.getFluid(144 * 128),
                         Flerovium.getPlasma(144 * 256))
                 .output(PLASMA_CONDENSER)
                 .stationResearch(b -> b
                         .researchStack(ADVANCED_FUSION_REACTOR.getStackForm())
                         .CWUt(144)
-                        .EUt(VA[UEV]))
+                        .EUt(VA[UIV]))
                 .duration(25600).EUt(VA[UIV]).buildAndRegister();
 
         // Voltage Coils

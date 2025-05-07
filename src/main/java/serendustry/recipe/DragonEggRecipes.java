@@ -31,19 +31,10 @@ public class DragonEggRecipes {
                 .duration(250).EUt(VA[UHV]).buildAndRegister();
 
         LABORATORY_RECIPES.recipeBuilder()
-                .circuitMeta(0)
                 .input(Blocks.DRAGON_EGG, 4)
                 .fluidOutputs(Dragonblood.getFluid(144))
                 .requireInside(RecipeMaps.MACERATOR_RECIPES, UEV, 1)
                 .requireInside(RecipeMaps.CUTTER_RECIPES, UEV, 1)
                 .duration(250).EUt(VA[UIV]).buildAndRegister();
-
-        LABORATORY_RECIPES.recipeBuilder()
-                .notConsumable(STELLAR_ESSENCE_NETHER)
-                .input(Blocks.DRAGON_EGG, 3)
-                .fluidOutputs(Dragonblood.getFluid(144))
-                .requireInside(RecipeMaps.MACERATOR_RECIPES, UEV, 1)
-                .requireInside(RecipeMaps.CUTTER_RECIPES, UEV, 1)
-                .duration(200).EUt(VA[UIV]).buildAndRegister();
     }
 }

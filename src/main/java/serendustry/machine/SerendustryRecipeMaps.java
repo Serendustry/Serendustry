@@ -22,7 +22,7 @@ public class SerendustryRecipeMaps {
             new SimpleRecipeBuilder(), false);
     public static final RecipeMap<SimpleRecipeBuilder> SONICATOR_RECIPES = new RecipeMap<>("sonicator", 3, 1, 1, 1,
             new SimpleRecipeBuilder(), false);
-    public static final RecipeMap<SimpleRecipeBuilder> HP_LASER_ARRAY_RECIPES = new RecipeMap<>("hp_laser_array", 3, 6,
+    public static final RecipeMap<SimpleRecipeBuilder> HP_LASER_ARRAY_RECIPES = new RecipeMap<>("hp_laser_array", 4, 6,
             2, 3, new SimpleRecipeBuilder(), false);
     public static final RecipeMap<SimpleRecipeBuilder> BIOLAB_RECIPES = new RecipeMap<>("biolab", 3, 2, 2, 1,
             new SimpleRecipeBuilder(), false);
@@ -52,6 +52,7 @@ public class SerendustryRecipeMaps {
     public static void preInit() {
         RecipeMaps.BLAST_RECIPES.setMaxFluidInputs(2);
         RecipeMaps.BLAST_RECIPES.setMaxFluidOutputs(2);
+        RecipeMaps.CENTRIFUGE_RECIPES.setMaxFluidInputs(2);
         RecipeMaps.CENTRIFUGE_RECIPES.setMaxOutputs(9);
         RecipeMaps.ELECTROMAGNETIC_SEPARATOR_RECIPES.setMaxFluidInputs(1);
         RecipeMaps.ELECTROMAGNETIC_SEPARATOR_RECIPES.setMaxOutputs(6);
@@ -60,6 +61,8 @@ public class SerendustryRecipeMaps {
         RecipeMaps.LASER_ENGRAVER_RECIPES.setMaxFluidInputs(1);
         RecipeMaps.MIXER_RECIPES.setMaxInputs(9);
         RecipeMaps.MIXER_RECIPES.setMaxFluidInputs(3);
+        RecipeMaps.CHEMICAL_BATH_RECIPES.setMaxInputs(2);
+        RecipeMaps.CHEMICAL_BATH_RECIPES.setMaxFluidInputs(2);
         RecipeMaps.BREWING_RECIPES.setMaxInputs(2);
         RecipeMaps.DISTILLERY_RECIPES.setMaxInputs(1);
         RecipeMaps.MACERATOR_RECIPES.setMaxFluidOutputs(2);

@@ -10,17 +10,17 @@
     "variant": {
       "space_elevator": {
         "textures": {
-          "all": "gregtech:blocks/casing/solid/space_elevator"
+          "all": "gregtech:blocks/casing/serendustry_multi/space_elevator"
         }
       },
       "adv_fusion": {
         "textures": {
-          "all": "gregtech:blocks/casing/solid/adv_fusion"
+          "all": "gregtech:blocks/casing/serendustry_multi/adv_fusion"
         }
       },
       "adv_fusion_coil": {
         "textures": {
-          "all": "gregtech:blocks/casing/solid/adv_fusion_coil"
+          "all": "gregtech:blocks/casing/serendustry_multi/adv_fusion_coil"
         }
       }
     }

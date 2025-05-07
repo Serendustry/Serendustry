@@ -147,5 +147,7 @@ public class StellarEngineRecipes {
          * Realitium/s: 1.108; 1.664; 2.5
          * s/EHK: 1.912; 1.273; 0.8474
          */
+
+        // todo ascended SEssence
     }
 }

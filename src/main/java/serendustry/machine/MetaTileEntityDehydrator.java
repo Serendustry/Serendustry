@@ -21,6 +21,7 @@ import serendustry.blocks.BlockSerendustryMetalCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.item.material.SerendustryMaterials;
+import serendustry.machine.structure.StructureDefinition;
 
 public class MetaTileEntityDehydrator extends RecipeMapMultiblockController {
 
@@ -40,91 +41,24 @@ public class MetaTileEntityDehydrator extends RecipeMapMultiblockController {
 
     @Override
     public @NotNull BlockPattern createStructurePattern() {
-        return FactoryBlockPattern.start(LEFT, DOWN, FRONT)
-                .aisle(
-                        "BBBBBBBBBBBB",
-                        "B          B",
-                        "B          B",
-                        "B          B",
-                        "B          B",
-                        "B          B",
-                        "A          A",
-                        "AAAAAAAAAAAA")
-                .aisle(
-                        "B          B",
-                        " AAAAAAAAAA ",
-                        " ACCCCCCAAA ",
-                        " ACCCCCCAAA ",
-                        " ACCCCCCADA ",
-                        " ACCCCCCAAA ",
-                        " AAAAAAAAAA ",
-                        "AAAAAAAAAAAA")
-                .aisle(
-                        "B          B",
-                        " AAAAAAAAAA ",
-                        " C        C ",
-                        " C        C ",
-                        " C        C ",
-                        " C        C ",
-                        " AAAAAAAAAA ",
-                        "AAAAAAAAAAAA")
-                .aisle(
-                        "B          B",
-                        " AAAAAAAAAA ",
-                        " C        C ",
-                        " C        C ",
-                        " C        C ",
-                        " C        C ",
-                        " AAAAAAAAAA ",
-                        "AAAAAAAAAAAA")
-                .aisle(
-                        "B          B",
-                        " AAAAAAAAAA ",
-                        " C        C ",
-                        " C        C ",
-                        " C        C ",
-                        " C        C ",
-                        " AAAAAAAAAA ",
-                        "AAAAAAAAAAAA")
-                .aisle(
-                        "B          B",
-                        " AAAAAAAAAA ",
-                        " C        C ",
-                        " C        C ",
-                        " C        C ",
-                        " C        C ",
-                        " AAAAAAAAAA ",
-                        "AAAAAAAAAAAA")
-                .aisle(
-                        "B          B",
-                        " AAAAAAAAAA ",
-                        " AAAAAAAAAA ",
-                        " AAAAAAAAAA ",
-                        " AAAAAAAAAA ",
-                        " AAAAAAAAAA ",
-                        " AAAAAAAAAA ",
-                        "AAAAAAAAAAAA")
-                .aisle(
-                        "BBBBBBBBBBBB",
-                        "B          B",
-                        "B          B",
-                        "B          B",
-                        "B          B",
-                        "B          B",
-                        "A          A",
-                        "AAAAAAAAAAAA")
+        FactoryBlockPattern pattern = FactoryBlockPattern.start(LEFT, DOWN, FRONT);
 
-                .where('D', selfPredicate())
+        for(String[] aisle : StructureDefinition.DEHYDRATOR) {
+            pattern.aisle(aisle);
+        }
+
+        pattern.where('D', selfPredicate())
                 .where('A',
                         states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
                                 .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.CARBON))
                                         .setMinGlobalLimited(262).or(autoAbilities()))
                 .where('B', frames(SerendustryMaterials.Adamantium))
-                .where('C', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS))) // todo
-                .build();
+                .where('C', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS))); // todo
+
+        return pattern.build();
     }
 
     public ICubeRenderer getBaseTexture(@Nullable IMultiblockPart part) {
-        return SerendustryTextures.CASING_CARBON; // todo
+        return SerendustryTextures.CASING_CARBON;
     }
 }

@@ -1,0 +1,23 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:cube_all",
+    "textures": {
+      "all": "gregtech:blocks/rendering_error"
+    }
+  },
+  "variants": {
+    "variant": {
+      "glacial": {
+        "textures": {
+          "all": "gregtech:blocks/casing/pc_coil/glacial"
+        }
+      },
+      "black_hole": {
+        "textures": {
+          "all": "gregtech:blocks/casing/pc_coil/black_hole"
+        }
+      }
+    }
+  }
+}

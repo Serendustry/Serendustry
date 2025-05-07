@@ -506,20 +506,11 @@ public class AlloyRecipes {
                 .duration(737).EUt(VA[UV]).buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder()
-                .circuitMeta(0)
                 .input(dust, DeepDarkIron)
                 .fluidInputs(CondensedStarMatter.getFluid(1000), Xenon.getFluid(10))
                 .output(ingotHot, DeepDarkSteel)
                 .blastFurnaceTemp(10800)
                 .duration(20 * 90).EUt(VA[UXV]).buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder()
-                .notConsumable(STELLAR_ESSENCE_END)
-                .input(dust, DeepDarkIron)
-                .fluidInputs(CondensedStarMatter.getFluid(800), Xenon.getFluid(10))
-                .output(ingotHot, DeepDarkSteel)
-                .blastFurnaceTemp(10800)
-                .duration(20 * 60).EUt(VA[UXV]).buildAndRegister();
 
         VACUUM_RECIPES.recipeBuilder()
                 .input(ingotHot, DeepDarkSteel)

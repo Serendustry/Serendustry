@@ -20,6 +20,7 @@ import gregtech.api.metatileentity.multiblock.CleanroomType;
 import gregtech.api.recipes.chance.output.ChancedOutputLogic;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.ore.OrePrefix;
+import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.MetaBlocks;
 import serendustry.SValues;
@@ -150,7 +151,8 @@ public class CircuitRecipes {
                 .input(lens, Glass)
                 .input(dust, Glass, 64)
                 .output(dust, ChromaticGlass)
-                .fluidOutputs(Glass.getFluid(144 * 16), ChromaticGlass.getFluid(72))
+                .fluidOutputs(Glass.getFluid(144 * 16),
+                        ChromaticGlass.getFluid(72))
                 .duration(24).EUt(VA[UEV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
@@ -166,22 +168,12 @@ public class CircuitRecipes {
                 .duration(1200).EUt(VA[UHV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
-                .circuitMeta(0)
-                .input(foil, LaminatedBoPET, 16)
-                .input(foil, Polybenzimidazole, 64)
-                .input(WRAPPED_ORUNDUM_WAFER)
-                .fluidInputs(Chrome.getFluid(144 * 8))
-                .output(MASK_BLANK, 48)
-                .duration(800).EUt(VA[UHV]).buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .notConsumable(STELLAR_ESSENCE_NETHER)
                 .input(foil, LaminatedBoPET, 16)
                 .input(foil, Polybenzimidazole, 64)
                 .input(WRAPPED_ORUNDUM_WAFER)
                 .fluidInputs(Chrome.getFluid(144 * 8))
                 .output(MASK_BLANK, 64)
-                .duration(600).EUt(VA[UHV]).buildAndRegister();
+                .duration(20 * 40).EUt(VA[UHV]).buildAndRegister();
 
         MetaItem.MetaValueItem[] wafers = { INTEGRATED_LOGIC_CIRCUIT_WAFER, RANDOM_ACCESS_MEMORY_WAFER,
                 CENTRAL_PROCESSING_UNIT_WAFER, NAND_MEMORY_CHIP_WAFER,
@@ -425,6 +417,7 @@ public class CircuitRecipes {
                 .notConsumable(LENS_ARRAY_HYPERAMPLIFYING)
                 .input(lens, Orundum)
                 .input(POSITRONIC_CHIP)
+                .input(plate, Neutronium)
                 .fluidInputs(Naquadria.getFluid(144 * 2))
                 .output(ENGRAVED_POSITRONIC_CHIP)
                 .fluidOutputs(Orundum.getFluid(128))
@@ -432,6 +425,10 @@ public class CircuitRecipes {
     }
 
     private static void circuitRecipes() {
+
+        int outputAmount = ConfigHolder.recipes.harderCircuitRecipes ? 1 : 2;
+
+        // Any X Circuit
         for (int i = GTValues.ULV; i <= GTValues.MAX; i++) {
             FORMING_PRESS_RECIPES.recipeBuilder()
                     .input(circuit, SValues.Tier_MarkerMaterial[i])
@@ -446,18 +443,48 @@ public class CircuitRecipes {
                     .duration(1).EUt(1).buildAndRegister();
         }
 
+        // T7: Wetware =================================================================================================
+
+        // SoC LuV
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
+                .notConsumable(STELLAR_ESSENCE_OVERWORLD)
+                .input(NEURO_PROCESSOR)
+                .input(HIGHLY_ADVANCED_SOC)
+                .input(wireFine, YttriumBariumCuprate, 8)
+                .input(bolt, Naquadah, 8)
+                .fluidInputs(HighGradeSolderingAlloy.getFluid(144))
+                .output(WETWARE_PROCESSOR_LUV, outputAmount * 2)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .EUt(VA[UHV]).duration(30).buildAndRegister();
+
+        // T8: Positronic ==============================================================================================
+
+        // ZPM
         CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
                 .input(COSMIC_CIRCUIT_BOARD)
                 .input(ENGRAVED_POSITRONIC_CHIP)
                 .input(ACTIVATED_APU_CHIP)
-                .input(SUPREME_SMD_CAPACITOR, 8)
-                .input(SUPREME_SMD_TRANSISTOR, 8)
-                .input(wireFine, Hihiirokane, 8)
-                .fluidInputs(SelfRepairingNanobots.getFluid(72))
-                .output(CIRC_POSITRONIC_ZPM)
+                .input(SUPREME_SMD_CAPACITOR, 16)
+                .input(SUPREME_SMD_TRANSISTOR, 16)
+                .input(wireFine, Hihiirokane, 16)
+                .fluidInputs(SelfRepairingNanobots.getFluid(144))
+                .output(CIRC_POSITRONIC_ZPM, outputAmount)
                 .cleanroom(CleanroomType.CLEANROOM)
                 .duration(20 * 20).EUt(VA[UHV]).buildAndRegister();
 
+        // ZPM SoC
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
+                .notConsumable(STELLAR_ESSENCE_NETHER)
+                .input(COSMIC_CIRCUIT_BOARD)
+                .input(ENGRAVED_POSITRONIC_CHIP)
+                .input(wireFine, Hihiirokane, 16)
+                .input(bolt, NaquadriaticTaranium, 8)
+                .fluidInputs(SelfRepairingNanobots.getFluid(144))
+                .output(CIRC_POSITRONIC_ZPM, outputAmount * 2)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .duration(20 * 20).EUt(VA[UHV]).buildAndRegister();
+
+        // UV
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(COSMIC_CIRCUIT_BOARD)
                 .input(CIRC_POSITRONIC_ZPM, 2)
@@ -475,6 +502,7 @@ public class CircuitRecipes {
                         .EUt(VA[UV]))
                 .duration(20 * 20).EUt(VA[UHV]).buildAndRegister();
 
+        // UHV
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(COSMIC_CIRCUIT_BOARD)
                 .input(CIRC_POSITRONIC_UV, 2)
@@ -493,6 +521,7 @@ public class CircuitRecipes {
                         .EUt(VA[UV]))
                 .duration(20 * 20).EUt(VA[UHV]).buildAndRegister();
 
+        // UEV
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, Neutronium, 2)
                 .input(CIRC_POSITRONIC_UHV, 2)
@@ -519,6 +548,9 @@ public class CircuitRecipes {
                         .EUt(VA[UHV]))
                 .duration(100 * 20).EUt(VA[UHV]).buildAndRegister();
 
+        // T9: Entropic ================================================================================================
+
+        // UV
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ENTROPIC_CIRCUIT_BOARD)
                 .input(foil, TengamAttuned, 4)
@@ -528,13 +560,17 @@ public class CircuitRecipes {
                 .input(wireFine, Quantium40, 8)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144))
                 .fluidInputs(LCNS.getFluid(1000))
-                .output(CIRC_ENTROPIC_UV)
+                .output(CIRC_ENTROPIC_UV, outputAmount)
                 .stationResearch(b -> b
                         .researchStack(CIRC_POSITRONIC_UEV.getStackForm())
                         .CWUt(144)
                         .EUt(VA[UEV]))
                 .duration(20 * 20).EUt(VA[UEV]).buildAndRegister();
 
+        // UV SoC
+        // TODO
+
+        // UHV
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ENTROPIC_CIRCUIT_BOARD)
                 .input(CIRC_ENTROPIC_UV, 2)
@@ -553,6 +589,7 @@ public class CircuitRecipes {
                         .EUt(VA[UEV]))
                 .duration(20 * 20).EUt(VA[UEV]).buildAndRegister();
 
+        // UEV
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ENTROPIC_CIRCUIT_BOARD)
                 .input(CIRC_ENTROPIC_UHV, 2)
@@ -573,6 +610,7 @@ public class CircuitRecipes {
                         .EUt(VA[UEV]))
                 .duration(20 * 20).EUt(VA[UEV]).buildAndRegister();
 
+        // UIV
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, AwakenedDraconium, 2)
                 .input(CIRC_ENTROPIC_UEV, 2)

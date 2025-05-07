@@ -19,6 +19,7 @@ import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
+import serendustry.machine.structure.StructureDefinition;
 
 public class MetaTileEntityCVDChamber extends RecipeMapMultiblockController {
 
@@ -38,41 +39,19 @@ public class MetaTileEntityCVDChamber extends RecipeMapMultiblockController {
 
     @Override
     public @NotNull BlockPattern createStructurePattern() {
-        return FactoryBlockPattern.start(LEFT, DOWN, FRONT)
-                .aisle(
-                        "AAA",
-                        "ACA",
-                        "AAA")
-                .aisle(
-                        "AAA",
-                        "B B",
-                        "AAA")
-                .aisle(
-                        "AAA",
-                        "B B",
-                        "AAA")
-                .aisle(
-                        "AAA",
-                        "B B",
-                        "AAA")
-                .aisle(
-                        "AAA",
-                        "B B",
-                        "AAA")
-                .aisle(
-                        "AAA",
-                        "B B",
-                        "AAA")
-                .aisle(
-                        "AAA",
-                        "ABA",
-                        "AAA")
-                .where('C', selfPredicate())
+        FactoryBlockPattern pattern = FactoryBlockPattern.start(LEFT, DOWN, FRONT);
+
+        for(String[] aisle : StructureDefinition.CVD_CHAMBER) {
+            pattern.aisle(aisle);
+        }
+
+        pattern.where('C', selfPredicate())
                 .where('A',
                         states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN))
                                 .setMinGlobalLimited(38).or(autoAbilities()))
-                .where('B', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS)))
-                .build();
+                .where('B', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS)));
+
+        return pattern.build();
     }
 
     public ICubeRenderer getBaseTexture(@Nullable IMultiblockPart part) {

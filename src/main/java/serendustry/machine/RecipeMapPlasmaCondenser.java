@@ -8,5 +8,4 @@ public class RecipeMapPlasmaCondenser extends RecipeMap<PlasmaCondenserRecipeBui
                                          boolean hidden) {
         super(name, inputs, outputs, fluidInputs, fluidOutputs, new PlasmaCondenserRecipeBuilder(), hidden);
     }
-    // todo custom layout
 }

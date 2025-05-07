@@ -1,14 +1,5 @@
 package serendustry.machine;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.ResourceLocation;
-
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -20,9 +11,19 @@ import gregtech.api.pattern.PatternMatchContext;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.BlockMachineCasing;
-import gregtech.common.blocks.BlockMetalCasing;
-import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import serendustry.machine.structure.StructureDefinition;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
 
 public class MetaTileEntityYggdrasil extends RecipeMapMultiblockController {
 
@@ -69,27 +70,23 @@ public class MetaTileEntityYggdrasil extends RecipeMapMultiblockController {
 
     @Override
     public @NotNull BlockPattern createStructurePattern() {
-        return FactoryBlockPattern.start()
-                .aisle("#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#C#####C#",
-                        "#XXXXXXX#", "#C#####C#")
-                .aisle("#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#XXXXXXX#", "YXXXSXXXY", "#XXXXXXX#", "#########",
-                        "#########", "#########")
+        FactoryBlockPattern pattern = FactoryBlockPattern.start(LEFT, DOWN, FRONT);
 
-                .where('S', selfPredicate())
+        for(String[] aisle : StructureDefinition.CUBE) {
+            pattern.aisle(aisle);
+        }
+
+        pattern.where('S', selfPredicate())
                 .where('X',
-                        states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PTFE_INERT_CASING))
-                                .setMinGlobalLimited(530))
-                .where('Y',
                         states(getCasingState()).setMinGlobalLimited(1)
                                 .or(autoAbilities(false, false, true, true, true, true, false))
                                 .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0).setMinGlobalLimited(0)
                                         .setMaxGlobalLimited(2))
                                 .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(0)
                                         .setMaxGlobalLimited(1))
-                                .or(abilities(MultiblockAbility.INPUT_LASER).setPreviewCount(1).setMaxGlobalLimited(1)))
-                .where('C', states(MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.CUPRONICKEL)))
-                .where('#', air())
-                .build();
+                                .or(abilities(MultiblockAbility.INPUT_LASER).setPreviewCount(1).setMaxGlobalLimited(1)));
+
+        return pattern.build();
     }
 
     public ICubeRenderer getBaseTexture(@Nullable IMultiblockPart part) {

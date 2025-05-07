@@ -20,7 +20,8 @@ public class AALRecipeLogic extends MultiblockRecipeLogic {
     @Override
     protected void modifyOverclockPre(int @NotNull [] values, @NotNull IRecipePropertyStorage storage) {
         super.modifyOverclockPre(values, storage);
-        // core speed doubling
+
+        // Core speed doubling
         values[1] = applyAALCoreSpeed(values[0], ((IAALCore) metaTileEntity).getCurrentTier(), values[1]);
     }
 
@@ -37,10 +38,8 @@ public class AALRecipeLogic extends MultiblockRecipeLogic {
      * }
      */
 
+    // Halves recipe time for each tier that core tier exceeds recipe voltage tier
     public static int applyAALCoreSpeed(long recipeEUt, int tier, int recipeTime) {
-        int recipeTier = GTUtility.getTierByVoltage(recipeEUt);
-        int tierDiff = tier - recipeTier;
-        if (tierDiff <= 0) return recipeTime;
-        return /* (long) */ (int) (recipeTime / (Math.pow(2, tierDiff)));
+        return (int) (recipeTime / (Math.pow(2, tier - GTUtility.getTierByVoltage(recipeEUt))));
     }
 }

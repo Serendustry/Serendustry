@@ -74,34 +74,34 @@ public class StarMatterRecipes {
                         .EUt(VA[UV]))
                 .duration(6400).EUt(VA[UV]).buildAndRegister();
 
+        // Because you can't OC with only 1 energy hatch, you need 2 regular UV energy hatches at first, and then can switch to 64A UHV
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
                 .input(ingot, Darmstadtium)
                 .fluidInputs(Helium.getFluid(FluidStorageKeys.PLASMA, 1000))
                 .output(ingotHot, StellarContainmentBase)
-                .duration(400).EUt(VA[UV]).buildAndRegister();
+                .duration(200).EUt(VA[UHV]).buildAndRegister();
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
                 .fluidInputs(Naquadria.getFluid(144 * 4),
                         Oxygen.getFluid(FluidStorageKeys.LIQUID, 1000),
                         Helium.getFluid(FluidStorageKeys.LIQUID, 500))
                 .fluidOutputs(StellarBaptismSolution.getFluid(1000))
-                .duration(200).EUt(VA[UV]).buildAndRegister();
+                .duration(400).EUt(VA[UHV]).buildAndRegister();
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
-                .circuitMeta(0)
                 .input(ingot, StellarContainmentBase)
                 .fluidInputs(StellarBaptismSolution.getFluid(1000),
                         NeutronStarMatter.getFluid(500))
                 .output(ingotHot, Neutronium)
-                .duration(320).EUt(VA[UV]).buildAndRegister();
+                .duration(640).EUt(VA[UHV]).buildAndRegister();
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
                 .notConsumable(STELLAR_ESSENCE_OVERWORLD)
-                .input(ingot, StellarContainmentBase)
+                .input(ingot, Carbon)
                 .fluidInputs(StellarBaptismSolution.getFluid(800),
                         NeutronStarMatter.getFluid(400))
                 .output(ingotHot, Neutronium)
-                .duration(240).EUt(VA[UV]).buildAndRegister();
+                .duration(480).EUt(VA[UHV]).buildAndRegister();
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
                 .fluidInputs(YellowStarMatter.getFluid(500),
@@ -111,13 +111,13 @@ public class StarMatterRecipes {
                         BrownStarMatter.getFluid(500),
                         BlackStarMatter.getFluid(500))
                 .fluidOutputs(CondensedStarMatter.getFluid(1000))
-                .duration(800).EUt(VA[UV]).buildAndRegister();
+                .duration(1600).EUt(VA[UHV]).buildAndRegister();
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
                 .input(gemExquisite, Orundum, 8)
                 .fluidInputs(CondensedStarMatter.getFluid(32000),
                         Neutronium.getFluid(144 * 64))
                 .output(STELLAR_ESSENCE_BLANK)
-                .duration(40000).EUt(VA[UEV]).buildAndRegister();
+                .duration(20 * 60 * 60).EUt(VA[UHV]).buildAndRegister();
     }
 }

@@ -1,40 +1,33 @@
 package serendustry.machine;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.function.Supplier;
-
-import javax.annotation.Nonnull;
-
-import gregtech.api.metatileentity.multiblock.MultiblockDisplayText;
-import gregtech.api.pattern.PatternStringError;
-import gregtech.api.pattern.TraceabilityPredicate;
-import gregtech.api.recipes.Recipe;
-import gregtech.api.util.BlockInfo;
-import gregtech.api.util.GTUtility;
-import gregtech.api.util.TextComponentUtil;
-import gregtech.api.util.TextFormattingUtil;
-import gregtech.client.utils.TooltipHelper;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
+import gregtech.api.metatileentity.multiblock.MultiblockDisplayText;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.pattern.PatternMatchContext;
+import gregtech.api.pattern.PatternStringError;
+import gregtech.api.pattern.TraceabilityPredicate;
+import gregtech.api.recipes.Recipe;
+import gregtech.api.unification.material.Materials;
+import gregtech.api.util.BlockInfo;
+import gregtech.api.util.GTUtility;
+import gregtech.api.util.TextComponentUtil;
+import gregtech.api.util.TextFormattingUtil;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
+import gregtech.client.utils.TooltipHelper;
+import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -46,8 +39,24 @@ import serendustry.api.capability.IPCCoil;
 import serendustry.api.capability.impl.PCRecipeLogic;
 import serendustry.blocks.BlockPCCoilCooling;
 import serendustry.blocks.BlockPCCoilHeating;
+import serendustry.blocks.BlockSerendustryMetalCasing;
 import serendustry.blocks.IPCCoilCoolingBlockStats;
 import serendustry.blocks.IPCCoilHeatingBlockStats;
+import serendustry.blocks.SerendustryMetaBlocks;
+import serendustry.client.renderer.texture.SerendustryTextures;
+import serendustry.item.material.SerendustryMaterials;
+import serendustry.machine.structure.StructurePlasmaCondenser;
+
+import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.function.Supplier;
+
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
 
 public class MetaTileEntityPlasmaCondenser extends RecipeMapMultiblockController implements IPCCoil {
 
@@ -128,27 +137,34 @@ public class MetaTileEntityPlasmaCondenser extends RecipeMapMultiblockController
     @Nonnull
     @Override
     protected BlockPattern createStructurePattern() {
-        return FactoryBlockPattern.start()
-                .aisle("XXX", "XXX", "XXX")
-                .aisle("XXX", "XXX", "XXX")
-                .aisle("AAA", "XSX", "BBB")
-                .where('S', selfPredicate())
-                .where('X',
-                        states(MetaBlocks.MACHINE_CASING.getState(BlockMachineCasing.MachineCasingType.UIV)).setMinGlobalLimited(1) // todo
+        FactoryBlockPattern pattern = FactoryBlockPattern.start(LEFT, DOWN, FRONT);
+
+        for(String[] aisle : StructurePlasmaCondenser.PLASMA_CONDENSER) {
+            pattern.aisle(aisle);
+        }
+
+        pattern.where('G', selfPredicate())
+                .where('A', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.FUSION_GLASS))) // todo
+                .where('B', PCCoilsCooling())
+                .where('C',
+                        states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING.getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.NEUTRONIUM))
+                                .setMinGlobalLimited(1227)
                                 .or(autoAbilities(false, false, true, true, true, true, false))
                                 .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0).setMinGlobalLimited(0)
                                         .setMaxGlobalLimited(2))
                                 .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(0)
                                         .setMaxGlobalLimited(1))
                                 .or(abilities(MultiblockAbility.INPUT_LASER).setPreviewCount(1).setMaxGlobalLimited(1)))
-                .where('A', PCCoilsHeating())
-                .where('B', PCCoilsCooling())
-                .build();
+                .where('D', PCCoilsHeating())
+                .where('E', states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING.getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.CARBON)))
+                .where('F', frames(SerendustryMaterials.DeepDarkSteel));
+
+        return pattern.build();
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return Textures.INERT_PTFE_CASING; // todo
+        return SerendustryTextures.CASING_NEUTRONIUM;
     }
 
     private static final Supplier<TraceabilityPredicate> PC_COIL_HEATING_PREDICATE = () -> new TraceabilityPredicate(

@@ -31,7 +31,7 @@ public class DensePlateRecipes {
 
         // Special cased high tier materials
         Material[] highTiers = { Carbon, NaquadahAlloy, Darmstadtium, Adamantium, VibraniumAlloy };
-        Material[] higherTiers = { Oganesson, Tennessine, Neutronium, Infinity, AwakenedDraconium, DeepDarkSteel,
+        Material[] higherTiers = { RadoxPolymer, Oganesson, Tennessine, Neutronium, Infinity, AwakenedDraconium, DeepDarkSteel,
                 Floppa };
         int NORMAL = 0, HIGH = 1, HIGHER = 2;
         int[] Tiers = { GTValues.EV, GTValues.LuV };

@@ -59,17 +59,9 @@ public class FerrofluidChain {
                 .duration(480).EUt(VA[IV]).buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
-                .circuitMeta(0)
                 .input(dust, MagneticNanoparticleMixture, 10)
                 .fluidInputs(Kerosene.getFluid(1000))
                 .fluidOutputs(Ferrofluid.getFluid(1000))
                 .duration(2400).EUt(VA[ZPM]).buildAndRegister();
-
-        MIXER_RECIPES.recipeBuilder()
-                .notConsumable(STELLAR_ESSENCE_OVERWORLD)
-                .input(dust, MagneticNanoparticleMixture, 8)
-                .fluidInputs(Kerosene.getFluid(800))
-                .fluidOutputs(Ferrofluid.getFluid(1000))
-                .duration(2000).EUt(VA[ZPM]).buildAndRegister();
     }
 }

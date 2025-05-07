@@ -1,29 +1,5 @@
 package serendustry.machine;
 
-import static gregtech.api.util.RelativeDirection.DOWN;
-import static gregtech.api.util.RelativeDirection.FRONT;
-import static gregtech.api.util.RelativeDirection.LEFT;
-import static serendustry.item.SerendustryMetaItems.*;
-
-import java.io.IOException;
-import java.util.List;
-
-import net.minecraft.block.Block;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentBase;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.world.World;
-import net.minecraftforge.items.ItemStackHandler;
-
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.Widget;
 import gregtech.api.gui.widgets.SlotWidget;
@@ -41,6 +17,28 @@ import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
+import net.minecraft.block.Block;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.PacketBuffer;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentBase;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
+import net.minecraftforge.items.ItemStackHandler;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import serendustry.machine.structure.StructureDefinition;
+
+import java.io.IOException;
+import java.util.List;
+
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
 
 public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
 
@@ -88,265 +86,24 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
 
     @Override
     public @NotNull BlockPattern createStructurePattern() {
-        return FactoryBlockPattern.start(LEFT, DOWN, FRONT)
-                .aisle(
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "      A      ")
-                .aisle(
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "      A      ",
-                        "     AAA     ")
-                .aisle(
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "     AAA     ",
-                        "    AAAAA    ")
-                .aisle(
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "      B      ",
-                        "      B      ",
-                        "      D      ",
-                        "    AAAAA    ",
-                        "   AAAAAAA   ")
-                .aisle(
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "      B      ",
-                        "      B      ",
-                        "      B      ",
-                        "      B      ",
-                        "      B      ",
-                        "      A      ",
-                        "     B B     ",
-                        "     B B     ",
-                        "     B B     ",
-                        "   A AAA A   ",
-                        "  AAAAAAAAA  ")
-                .aisle(
-                        "             ",
-                        "             ",
-                        "             ",
-                        "      B      ",
-                        "      B      ",
-                        "      B      ",
-                        "      A      ",
-                        "     BAB     ",
-                        "     B B     ",
-                        "     B B     ",
-                        "     B B     ",
-                        "     B B     ",
-                        "     A A     ",
-                        "    B   B    ",
-                        "    B A B    ",
-                        "    B A B    ",
-                        "  A AAAAA A  ",
-                        " AAAAAAAAAAA ")
-                .aisle(
-                        "      B      ",
-                        "      B      ",
-                        "      A      ",
-                        "     BCB     ",
-                        "     B B     ",
-                        "     B B     ",
-                        "    CA AC    ",
-                        "    BA AB    ",
-                        "    B   B    ",
-                        "    B A B    ",
-                        "    B A B    ",
-                        "    B A B    ",
-                        "    A A A    ",
-                        "   B  A  B   ",
-                        "   B AAA B   ",
-                        "   B AAA B   ",
-                        " A AAAAAAA A ",
-                        "AAAAAAAAAAAAA")
-                .aisle(
-                        "             ",
-                        "             ",
-                        "             ",
-                        "      B      ",
-                        "      B      ",
-                        "      B      ",
-                        "      A      ",
-                        "     BAB     ",
-                        "     B B     ",
-                        "     B B     ",
-                        "     B B     ",
-                        "     B B     ",
-                        "     A A     ",
-                        "    B   B    ",
-                        "    B A B    ",
-                        "    B A B    ",
-                        "  A AAAAA A  ",
-                        " AAAAAAAAAAA ")
-                .aisle(
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "      B      ",
-                        "      B      ",
-                        "      B      ",
-                        "      B      ",
-                        "      B      ",
-                        "      A      ",
-                        "     B B     ",
-                        "     B B     ",
-                        "     B B     ",
-                        "   A AAA A   ",
-                        "  AAAAAAAAA  ")
-                .aisle(
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "      B      ",
-                        "      B      ",
-                        "      B      ",
-                        "    AAAAA    ",
-                        "   AAAAAAA   ")
-                .aisle(
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "     AAA     ",
-                        "    AAAAA    ")
-                .aisle(
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "      A      ",
-                        "     AAA     ")
-                .aisle(
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "             ",
-                        "      A      ")
-                .where('D', selfPredicate())
+        FactoryBlockPattern pattern = FactoryBlockPattern.start(LEFT, DOWN, FRONT);
+
+        for(String[] aisle : StructureDefinition.PLASMA_FOUNDRY) {
+            pattern.aisle(aisle);
+        }
+
+        pattern.where('D', selfPredicate())
                 .where('A',
                         states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PALLADIUM_SUBSTATION))
                                 .setMinGlobalLimited(158).or(autoAbilities()))
                 .where('B', frames(Materials.NaquadahAlloy))
-                .where('C', states(Blocks.LAVA.getBlockState().getBaseState()))
-                .build();
+                .where('C', states(Blocks.LAVA.getBlockState().getBaseState()));
+
+        return pattern.build();
     }
 
     public ICubeRenderer getBaseTexture(@Nullable IMultiblockPart part) {
-        return Textures.PALLADIUM_SUBSTATION_CASING; // todo
+        return Textures.PALLADIUM_SUBSTATION_CASING;
     }
 
     @Override

@@ -88,21 +88,11 @@ public class RadoxChain {
                 .duration(3200).EUt(VA[ZPM]).buildAndRegister();
 
         LABORATORY_RECIPES.recipeBuilder()
-                .circuitMeta(0)
                 .input(dust, Neutronium).input(dust, Tritanium, 4)
                 .fluidInputs(PurifiedRadox.getFluid(1500), Argon.getPlasma(500))
                 .fluidOutputs(RadoxPolymer.getFluid(1440))
                 .requireInside(CHEMICAL_RECIPES, UV, 1)
                 .requireInside(CHEMICAL_BATH_RECIPES, UV, 1)
                 .duration(1600).EUt(VA[ZPM]).buildAndRegister();
-
-        LABORATORY_RECIPES.recipeBuilder()
-                .notConsumable(STELLAR_ESSENCE_OVERWORLD)
-                .input(dust, Neutronium).input(dust, Tritanium, 2)
-                .fluidInputs(PurifiedRadox.getFluid(1250), Argon.getPlasma(500))
-                .fluidOutputs(RadoxPolymer.getFluid(1440))
-                .requireInside(CHEMICAL_RECIPES, UV, 1)
-                .requireInside(CHEMICAL_BATH_RECIPES, UV, 1)
-                .duration(1200).EUt(VA[ZPM]).buildAndRegister();
     }
 }

@@ -125,18 +125,10 @@ public class Quantium40Chain {
                 .duration(200 * 8).EUt(VA[UV]).buildAndRegister();
 
         HP_LASER_ARRAY_RECIPES.recipeBuilder()
-                .circuitMeta(0)
                 .notConsumable(LENS_ARRAY_HYPERAMPLIFYING)
                 .input(dust, Potassium, 64 * 8)
                 .output(dust, Potassium40)
                 .duration(24).EUt(VA[UEV]).buildAndRegister();
-
-        HP_LASER_ARRAY_RECIPES.recipeBuilder()
-                .notConsumable(STELLAR_ESSENCE_NETHER)
-                .notConsumable(LENS_ARRAY_HYPERAMPLIFYING)
-                .input(dust, Potassium, 64 * 6)
-                .output(dust, Potassium40)
-                .duration(16).EUt(VA[UEV]).buildAndRegister();
 
         ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES.recipeBuilder()
                 .input(dust, Potassium40)

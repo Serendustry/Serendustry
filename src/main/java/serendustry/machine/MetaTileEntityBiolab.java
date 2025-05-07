@@ -19,6 +19,7 @@ import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
+import serendustry.machine.structure.StructureDefinition;
 
 public class MetaTileEntityBiolab extends RecipeMapMultiblockController {
 
@@ -38,52 +39,21 @@ public class MetaTileEntityBiolab extends RecipeMapMultiblockController {
 
     @Override
     public @NotNull BlockPattern createStructurePattern() {
-        return FactoryBlockPattern.start(LEFT, DOWN, FRONT)
-                .aisle(
-                        "AAAAAAAAAA",
-                        "       AAA",
-                        "       ACA",
-                        "       AAA",
-                        "AAAAAAAAAA")
-                .aisle(
-                        "AAAAAAAAAA",
-                        " AAAAAA  A",
-                        " BBBBBA  B",
-                        " AAAAAA  A",
-                        "AAAAAAAAAA")
-                .aisle(
-                        "AAAAAAAAAA",
-                        " A       A",
-                        " B       B",
-                        " A       A",
-                        "AAAAAAAAAA")
-                .aisle(
-                        "AAAAAAAAAA",
-                        " A      A ",
-                        " B      B ",
-                        " A      A ",
-                        "AAAAAAAAAA")
-                .aisle(
-                        "AAAAAAAAAA",
-                        " AAAAAAAA ",
-                        " BBBBBBBB ",
-                        " AAAAAAAA ",
-                        "AAAAAAAAAA")
-                .aisle(
-                        "AAAAAAAAAA",
-                        "          ",
-                        "          ",
-                        "          ",
-                        "AAAAAAAAAA")
+        FactoryBlockPattern pattern = FactoryBlockPattern.start(LEFT, DOWN, FRONT);
 
-                .where('C', selfPredicate())
+        for(String[] aisle : StructureDefinition.BIOLAB) {
+            pattern.aisle(aisle);
+        }
+
+        pattern.where('C', selfPredicate())
                 .where('A', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PTFE_INERT_CASING))
                         .setMinGlobalLimited(157).or(autoAbilities()))
-                .where('B', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS)))
-                .build();
+                .where('B', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS)));
+
+        return pattern.build();
     }
 
     public ICubeRenderer getBaseTexture(@Nullable IMultiblockPart part) {
-        return Textures.INERT_PTFE_CASING; // todo
+        return Textures.INERT_PTFE_CASING;
     }
 }

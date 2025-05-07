@@ -29,7 +29,8 @@ public class PCRecipeLogic extends MultiblockRecipeLogic {
     @Override
     protected void modifyOverclockPre(int @NotNull [] values, @NotNull IRecipePropertyStorage storage) {
         super.modifyOverclockPre(values, storage);
-        // coil speed doubling
+
+        // Coil speed quadrupling
         values[1] = applyPCCoilSpeed(((IPCCoil) metaTileEntity).getCurrentHeatingTier(), ((IPCCoil) metaTileEntity).getCurrentCoolingTier(), values[1], storage.getRecipePropertyValue(PlasmaCondenserTierProperty.getInstance(), -1), storage.getRecipePropertyValue(PlasmaCondenserTypeProperty.getInstance(), -1));
     }
 
@@ -46,8 +47,8 @@ public class PCRecipeLogic extends MultiblockRecipeLogic {
      * }
      */
 
+    // Quarters recipe time for each tier that coil tier exceeds recipe tier
     public static int applyPCCoilSpeed(int tierHeating, int tierCooling, int recipeTime, int recipeTier, int recipeType) {
-        // Halves recipe time for each tier that coils exceed recipe tier
-        return recipeTime / ((recipeType == PlasmaCondenserTypeProperty.HEATING ? tierHeating : tierCooling) - recipeTier + 1);
+        return (int) (recipeTime / (Math.pow(2, ((recipeType == PlasmaCondenserTypeProperty.HEATING ? tierHeating : tierCooling) - recipeTier) * 2)));
     }
 }

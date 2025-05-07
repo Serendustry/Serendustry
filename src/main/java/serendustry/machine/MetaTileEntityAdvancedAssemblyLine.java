@@ -3,6 +3,7 @@ package serendustry.machine;
 import static gregtech.api.util.RelativeDirection.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
@@ -54,6 +55,7 @@ import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.common.metatileentities.multi.multiblockpart.MetaTileEntityItemBus;
 import gregtech.common.metatileentities.multi.multiblockpart.MetaTileEntityMultiFluidHatch;
 import gregtech.core.sound.GTSoundEvents;
+import serendustry.Serendustry;
 import serendustry.api.SerendustryAPI;
 import serendustry.api.capability.IAALCore;
 import serendustry.api.capability.impl.AALRecipeLogic;
@@ -62,6 +64,7 @@ import serendustry.blocks.BlockSerendustryMetalCasing;
 import serendustry.blocks.IAALCoreBlockStats;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
+import serendustry.machine.structure.StructureDefinition;
 
 public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockController implements IAALCore {
 
@@ -96,8 +99,31 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
         List<IEnergyContainer> substationInput = new ArrayList<>(
                 getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
 
-        if (!energyInput.isEmpty() && !substationInput.isEmpty()) {
-            invalidateStructure();
+        if (!energyInput.isEmpty()) {
+            // Disallow mixing hatch types
+            if(!substationInput.isEmpty()) {
+                invalidateStructure();
+            }
+
+            // Limit hatch tier
+            for(IEnergyContainer input : energyInput) {
+                if(input.getInputVoltage() > GTValues.V[tier]) {
+                    // todo error
+                    invalidateStructure();
+                }
+            }
+        }
+
+        if(!substationInput.isEmpty()) {
+            // Disallow mixing hatch types
+            if(!energyInput.isEmpty()) {
+                invalidateStructure();
+            }
+
+            // Limit hatch tier
+            if (substationInput.get(0).getInputVoltage() > GTValues.V[tier]) {
+                invalidateStructure();
+            }
         }
 
         // todo: give error message to multiblock builder and make JEI not show mixed hatches
@@ -124,43 +150,25 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
     @Override
     public @NotNull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start(RIGHT, UP, FRONT)
-                // return FactoryBlockPattern.start(FRONT, UP, RIGHT)
-                // .aisle("FIF", "RTR", "SAG", " Y ")
-                // .aisle("FIF", "RTR", "DAG", " Y ").setRepeatable(3, 15)
-                // .aisle("FOF", "RTR", "DAG", " Y ")
-                .aisle(" G G ",
-                        "G   G",
-                        "G T G",
-                        "G   G",
-                        " DSG ")
-                .aisle(" G G ",
-                        "G   G",
-                        "R T R",
-                        "F   F",
-                        " YIY ")
-                .setRepeatable(3, 16)
-                .aisle(" G G ",
-                        "G   G",
-                        "G T G",
-                        "G   G",
-                        " GOG ")
+
+                .aisle(StructureDefinition.ADVANCED_ASSEMBLY_LINE_FRONT)
+                .aisle(StructureDefinition.ADVANCED_ASSEMBLY_LINE_MIDDLE).setRepeatable(3, 16)
+                .aisle(StructureDefinition.ADVANCED_ASSEMBLY_LINE_BACK)
+
                 .where('S', selfPredicate())
                 .where('F', states(getCasingState()).or(fluidInputPredicate().setPreviewCount(4)))
                 .where('O',
                         abilities(MultiblockAbility.EXPORT_ITEMS)
                                 .addTooltips("gregtech.multiblock.pattern.location_end"))
                 .where('Y', states(getCasingState())
-                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0).setMinGlobalLimited(0)
-                                .setMaxGlobalLimited(2))
-                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(1)
-                                .setMaxGlobalLimited(1)))
+                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0).setMinGlobalLimited(0).setMaxGlobalLimited(2))
+                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(1).setMaxGlobalLimited(1)))
                 .where('I', metaTileEntities(MetaTileEntities.ITEM_IMPORT_BUS[GTValues.ULV]))
                 .where('G', states(getGrateState()))
                 .where('A', states(getCasingState()))
                 .where('R', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.FUSION_GLASS)))
                 .where('T', AALCoreCasings())
                 .where('D', dataHatchPredicate())
-                .where(' ', any())
                 .build();
     }
 
@@ -426,12 +434,12 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
     public boolean checkRecipe(@NotNull Recipe recipe, boolean consumeIfSuccess) {
         if (consumeIfSuccess) return true; // don't check twice
 
-        // check tier
+        /* check tier
         int recipeTier = GTUtility.getTierByVoltage(recipe.getEUt());
         if (recipeTier > tier) {
             // logger.info("AALD fail state: recipetier " + recipeTier + " > tier " + tier);
             return false;
-        }
+        }*/
 
         // check ordered items
         if (ConfigHolder.machines.orderedAssembly) {

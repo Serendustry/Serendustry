@@ -1205,7 +1205,7 @@ public class SerendustryMaterials {
         RadoxPolymer = new Material.Builder(66, Serendustry.ID("radox_polymer"))
                 .polymer(3).fluid()
                 .color(0xBB2BE0)
-                .flags(GENERATE_FOIL, GENERATE_RING)
+                .flags(GENERATE_FOIL, GENERATE_RING, GENERATE_DENSE)
                 .fluidPipeProperties(1200, 5500, true, true, true, false)
                 .build();
 

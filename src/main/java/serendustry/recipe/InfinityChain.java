@@ -39,9 +39,10 @@ public class InfinityChain {
         OrePrefix[] Tier3P = { frameGt, stickLong, stick, plate, ingotHot };
         int[] Tier3Q = { 2, 2, 4, 2, 1 };
 
+        // ~2.048 Infinity per InfCat
         CENTRIFUGE_RECIPES.recipeBuilder()
-                .circuitMeta(0)
-                .fluidInputs(InfinityCatalyst.getFluid(144)) // ~2.048 Infinity per InfCat
+                .fluidInputs(InfinityCatalyst.getFluid(144),
+                        Neutronium.getFluid(144 * 2))
                 .chancedOutput(dust, InfinityPale, 8000, 0)
                 .chancedOutput(dust, InfinityFleeting, 8000, 0)
                 .chancedOutput(dust, InfinityShattered, 8000, 0)
@@ -49,15 +50,16 @@ public class InfinityChain {
                 .chancedOutput(dust, InfinityFractured, 8000, 0)
                 .duration(600).EUt(VA[GTValues.UIV]).buildAndRegister();
 
+        // ~2.56 Infinity per InfCat
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .notConsumable(STELLAR_ESSENCE_END)
-                .fluidInputs(InfinityCatalyst.getFluid(144)) // ~2.56 Infinity per InfCat
+                .fluidInputs(InfinityCatalyst.getFluid(144))
                 .output(dust, InfinityPale)
                 .output(dust, InfinityFleeting)
                 .output(dust, InfinityShattered)
                 .output(dust, InfinityInordinate)
                 .output(dust, InfinityFractured)
-                .duration(400).EUt(VA[GTValues.UIV]).buildAndRegister();
+                .duration(200).EUt(VA[GTValues.UXV]).buildAndRegister();
 
         for (int i = 0; i < Tier1.length; i++) {
             Tier1R[i].recipeBuilder()

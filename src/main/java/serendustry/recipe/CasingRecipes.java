@@ -10,7 +10,10 @@ import static gregtech.api.unification.material.Materials.Carbon;
 import static gregtech.api.unification.material.Materials.Copper;
 import static gregtech.api.unification.material.Materials.Darmstadtium;
 import static gregtech.api.unification.material.Materials.Europium;
+import static gregtech.api.unification.material.Materials.Flerovium;
 import static gregtech.api.unification.material.Materials.HSSS;
+import static gregtech.api.unification.material.Materials.Helium;
+import static gregtech.api.unification.material.Materials.Lava;
 import static gregtech.api.unification.material.Materials.NaquadahAlloy;
 import static gregtech.api.unification.material.Materials.Naquadria;
 import static gregtech.api.unification.material.Materials.Neutronium;
@@ -34,11 +37,13 @@ import static gregtech.common.items.MetaItems.ELECTRIC_MOTOR_UV;
 import static gregtech.common.items.MetaItems.ELECTRIC_PISTON_UEV;
 import static gregtech.common.items.MetaItems.ELECTRIC_PISTON_UHV;
 import static gregtech.common.items.MetaItems.ELECTRIC_PISTON_UIV;
+import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_UHV;
 import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_UV;
 import static gregtech.common.items.MetaItems.EMITTER_UEV;
 import static gregtech.common.items.MetaItems.EMITTER_UHV;
 import static gregtech.common.items.MetaItems.EMITTER_UIV;
 import static gregtech.common.items.MetaItems.EMITTER_UV;
+import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UEV;
 import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UHV;
 import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UV;
 import static gregtech.common.items.MetaItems.NEUTRON_REFLECTOR;
@@ -58,6 +63,8 @@ import static serendustry.item.material.SerendustryMaterials.Adamantium;
 import static serendustry.item.material.SerendustryMaterials.AwakenedDraconium;
 import static serendustry.item.material.SerendustryMaterials.CondensedStarMatter;
 import static serendustry.item.material.SerendustryMaterials.DeepDarkSteel;
+import static serendustry.item.material.SerendustryMaterials.Draconium;
+import static serendustry.item.material.SerendustryMaterials.Dragonblood;
 import static serendustry.item.material.SerendustryMaterials.ExoHalkoniteSteel;
 import static serendustry.item.material.SerendustryMaterials.Ferrofluid;
 import static serendustry.item.material.SerendustryMaterials.HalkoniteSteel;
@@ -67,11 +74,13 @@ import static serendustry.item.material.SerendustryMaterials.Hypogen;
 import static serendustry.item.material.SerendustryMaterials.Infinity;
 import static serendustry.item.material.SerendustryMaterials.Quantium40;
 import static serendustry.item.material.SerendustryMaterials.RadoxPolymer;
+import static serendustry.item.material.SerendustryMaterials.ScUevSane;
 import static serendustry.item.material.SerendustryMaterials.SelfRepairingNanobots;
 import static serendustry.item.material.SerendustryMaterials.SentientNanobots;
 import static serendustry.item.material.SerendustryMaterials.VibraniumAlloy;
 
 import gregtech.api.GTValues;
+import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.common.ConfigHolder;
@@ -79,8 +88,12 @@ import gregtech.common.blocks.BlockFusionCasing;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.MetaBlocks;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import serendustry.blocks.BlockAALCoreCasing;
 import serendustry.blocks.BlockEICHammerCasing;
+import serendustry.blocks.BlockPCCoilCooling;
+import serendustry.blocks.BlockPCCoilHeating;
 import serendustry.blocks.BlockSerendustryMetalCasing;
 import serendustry.blocks.BlockSerendustryMultiCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
@@ -122,6 +135,15 @@ public class CasingRecipes {
                         ConfigHolder.recipes.casingsPerCraft))
                 .duration(20).EUt(VA[GTValues.UV]).buildAndRegister();
 
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(plate, Neutronium, 6)
+                .input(frameGt, Neutronium, 1)
+                .circuitMeta(6)
+                .outputs(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING.getItemVariant(
+                        BlockSerendustryMetalCasing.SerendustryMetalCasingType.NEUTRONIUM,
+                        ConfigHolder.recipes.casingsPerCraft))
+                .duration(20).EUt(VA[GTValues.UHV]).buildAndRegister();
+
         // Space Elevator casing
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_UV)
@@ -138,7 +160,7 @@ public class CasingRecipes {
                         .researchStack(ADVANCED_LARGE_MINER.getStackForm())
                         .CWUt(64)
                         .EUt(VA[UV]))
-                .duration(20 * 32).EUt(VA[GTValues.UV]).buildAndRegister();
+                .duration(20 * 32 * 12).EUt(VA[GTValues.UV]).buildAndRegister();
 
         // EIC hammer casings
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -157,7 +179,7 @@ public class CasingRecipes {
                         .researchStack(OreDictUnifier.get(block, Neutronium))
                         .CWUt(64)
                         .EUt(VA[GTValues.UV]))
-                .duration(20 * 60 * 10).EUt(VA[GTValues.UV]).buildAndRegister();
+                .duration(20 * 60 * 16).EUt(VA[GTValues.UV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, AbyssalAlloy)
@@ -176,7 +198,7 @@ public class CasingRecipes {
                                 .getItemVariant(BlockEICHammerCasing.EICHammerCasingType.NEUTRONIUM))
                         .CWUt(128)
                         .EUt(VA[GTValues.UHV]))
-                .duration(20 * 60 * 10).EUt(VA[GTValues.UHV]).buildAndRegister();
+                .duration(20 * 60 * 16).EUt(VA[GTValues.UHV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, DeepDarkSteel)
@@ -195,7 +217,7 @@ public class CasingRecipes {
                                 .getItemVariant(BlockEICHammerCasing.EICHammerCasingType.HALKONITE))
                         .CWUt(144)
                         .EUt(VA[GTValues.UEV]))
-                .duration(20 * 60 * 10).EUt(VA[GTValues.UEV]).buildAndRegister();
+                .duration(20 * 60 * 16).EUt(VA[GTValues.UEV]).buildAndRegister();
 
         // Adv fusion casings + coils
         ASSEMBLER_RECIPES.recipeBuilder()
@@ -209,17 +231,17 @@ public class CasingRecipes {
                 .outputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(
                         BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION,
                         ConfigHolder.recipes.casingsPerCraft))
-                .duration(20 * 4).EUt(VA[GTValues.UEV]).buildAndRegister();
+                .duration(20 * 10).EUt(VA[GTValues.UEV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .inputs(MetaBlocks.FUSION_CASING.getItemVariant(BlockFusionCasing.CasingType.FUSION_COIL))
-                .inputs(FIELD_GENERATOR_UV.getStackForm(2))
-                .inputs(ELECTRIC_PUMP_UV.getStackForm())
-                .inputs(NEUTRON_REFLECTOR.getStackForm(8))
+                .input(FIELD_GENERATOR_UV, 2)
+                .input(ELECTRIC_PUMP_UV)
+                .input(NEUTRON_REFLECTOR,8)
                 .input(circuit, MarkerMaterials.Tier.UHV, 4)
                 .input(pipeSmallFluid, VibraniumAlloy, 4)
                 .input(plate, Neutronium, 4)
-                .input(plate, RadoxPolymer, 4)
+                .input(plateDense, RadoxPolymer)
                 .input(cableGtDouble, Hihiirokane, 2)
                 .input(wireGtSingle, RutheniumTriniumAmericiumNeutronate, 2)
                 .fluidInputs(Quantium40.getFluid(144 * 4),
@@ -232,32 +254,94 @@ public class CasingRecipes {
                                 MetaBlocks.FUSION_CASING.getItemVariant(BlockFusionCasing.CasingType.FUSION_COIL))
                         .CWUt(144)
                         .EUt(VA[GTValues.UHV]))
-                .duration(20 * 60).EUt(VA[GTValues.UHV]).buildAndRegister();
+                .duration(20 * 60 * 6).EUt(VA[GTValues.UHV]).buildAndRegister();
 
         // Plasma Condenser coils
-        /*ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .inputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL))
-                .inputs(FIELD_GENERATOR_UV.getStackForm(2))
-                .inputs(ELECTRIC_PUMP_UV.getStackForm())
-                .inputs(NEUTRON_REFLECTOR.getStackForm(8))
-                .input(circuit, MarkerMaterials.Tier.UHV, 4)
-                .input(pipeSmallFluid, VibraniumAlloy, 4)
-                .input(plate, Neutronium, 4)
-                .input(plate, RadoxPolymer, 4)
-                .input(cableGtDouble, Hihiirokane, 2)
-                .input(wireGtSingle, RutheniumTriniumAmericiumNeutronate, 2)
-                .fluidInputs(Quantium40.getFluid(144 * 4),
-                        Hihiirokane.getFluid(144 * 4),
-                        Copper.getPlasma(144 * 8))
-                .outputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING
-                        .getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.PC_COIL_HEATING))
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .inputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 2))
+                .input(FIELD_GENERATOR_UHV)
+                .input(ELECTRIC_PUMP_UV)
+                .input(circuit, MarkerMaterials.Tier.UEV, 2)
+                .input(pipeSmallFluid, AbyssalAlloy, 4)
+                .input(plate, HalkoniteSteel, 4)
+                .input(plateDense, RadoxPolymer)
+                .input(cableGtDouble, Quantium40, 2)
+                .input(wireGtSingle, ScUevSane, 2)
+                .fluidInputs(Lava.getFluid(1000),
+                        Dragonblood.getFluid(144 * 4),
+                        Draconium.getFluid(144 * 4),
+                        Flerovium.getPlasma(144 * 2))
+                .outputs(SerendustryMetaBlocks.PC_COIL_HEATING.getItemVariant(BlockPCCoilHeating.PCCoilHeatingType.INFERNAL, 2))
                 .stationResearch(b -> b
                         .researchStack(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL))
                         .CWUt(144)
-                        .EUt(VA[GTValues.UHV]))
-                .duration(20 * 60).EUt(VA[GTValues.UHV]).buildAndRegister();*/
+                        .EUt(VA[GTValues.UEV]))
+                .duration(20 * 60 * 4).EUt(VA[GTValues.UEV]).buildAndRegister();
 
-        // AAL core casings
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .inputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 2))
+                .input(FIELD_GENERATOR_UHV)
+                .input(ELECTRIC_PUMP_UV)
+                .input(circuit, MarkerMaterials.Tier.UEV, 2)
+                .input(pipeSmallFluid, AbyssalAlloy, 4)
+                .input(plate, HalkoniteSteel, 4)
+                .input(plateDense, RadoxPolymer)
+                .input(cableGtDouble, Quantium40, 2)
+                .input(wireGtSingle, ScUevSane, 2)
+                .fluidInputs(Helium.getFluid(FluidStorageKeys.LIQUID, 1000),
+                        Dragonblood.getFluid(144 * 4),
+                        Draconium.getFluid(144 * 4),
+                        Flerovium.getPlasma(144 * 2))
+                .outputs(SerendustryMetaBlocks.PC_COIL_COOLING.getItemVariant(BlockPCCoilCooling.PCCoilCoolingType.GLACIAL, 2))
+                .stationResearch(b -> b
+                        .researchStack(new ItemStack(Blocks.PACKED_ICE))
+                        .CWUt(144)
+                        .EUt(VA[GTValues.UEV]))
+                .duration(20 * 60 * 4).EUt(VA[GTValues.UEV]).buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .inputs(SerendustryMetaBlocks.PC_COIL_HEATING.getItemVariant(BlockPCCoilHeating.PCCoilHeatingType.INFERNAL, 2))
+                .input(FIELD_GENERATOR_UEV)
+                .input(ELECTRIC_PUMP_UHV)
+                .input(circuit, MarkerMaterials.Tier.UIV, 2)
+                .input(pipeSmallFluid, DeepDarkSteel, 4)
+                .input(plate, Infinity, 4)
+                .input(plateDense, Neutronium, 2)
+                .input(plateDense, RadoxPolymer, 2)
+                .input(wireGtSingle, Hypogen, 4)
+                .fluidInputs(Lava.getFluid(1000),
+                        Dragonblood.getFluid(144 * 4),
+                        Draconium.getFluid(144 * 4),
+                        Flerovium.getPlasma(144 * 2))
+                .outputs(SerendustryMetaBlocks.PC_COIL_HEATING.getItemVariant(BlockPCCoilHeating.PCCoilHeatingType.SUPERNOVA, 2))
+                .stationResearch(b -> b
+                        .researchStack(SerendustryMetaBlocks.PC_COIL_HEATING.getItemVariant(BlockPCCoilHeating.PCCoilHeatingType.INFERNAL))
+                        .CWUt(144)
+                        .EUt(VA[GTValues.UEV]))
+                .duration(20 * 60 * 4).EUt(VA[GTValues.UEV]).buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .inputs(SerendustryMetaBlocks.PC_COIL_COOLING.getItemVariant(BlockPCCoilCooling.PCCoilCoolingType.GLACIAL, 2))
+                .input(FIELD_GENERATOR_UEV)
+                .input(ELECTRIC_PUMP_UHV)
+                .input(circuit, MarkerMaterials.Tier.UIV, 2)
+                .input(pipeSmallFluid, DeepDarkSteel, 4)
+                .input(plate, Infinity, 4)
+                .input(plateDense, Neutronium, 2)
+                .input(plateDense, RadoxPolymer, 2)
+                .input(wireGtSingle, Hypogen, 4)
+                .fluidInputs(Lava.getFluid(1000),
+                        Dragonblood.getFluid(144 * 4),
+                        Draconium.getFluid(144 * 4),
+                        Flerovium.getPlasma(144 * 2))
+                .outputs(SerendustryMetaBlocks.PC_COIL_COOLING.getItemVariant(BlockPCCoilCooling.PCCoilCoolingType.BLACK_HOLE, 2))
+                .stationResearch(b -> b
+                        .researchStack(SerendustryMetaBlocks.PC_COIL_COOLING.getItemVariant(BlockPCCoilCooling.PCCoilCoolingType.GLACIAL))
+                        .CWUt(144)
+                        .EUt(VA[GTValues.UEV]))
+                .duration(20 * 60 * 4).EUt(VA[GTValues.UEV]).buildAndRegister();
+
+        // AAL cores
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, Adamantium)
                 .input(circuit, MarkerMaterials.Tier.UHV)

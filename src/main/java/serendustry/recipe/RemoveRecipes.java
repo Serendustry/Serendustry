@@ -137,6 +137,14 @@ public class RemoveRecipes {
                 OreDictUnifier.get(bolt, HSSE, 8) },
                 new FluidStack[] { SterileGrowthMedium.getFluid(250) });
 
+        // Wetware LuV Circuit
+        GTRecipeHandler.removeRecipesByInputs(CIRCUIT_ASSEMBLER_RECIPES, new ItemStack[] {
+                NEURO_PROCESSOR.getStackForm(),
+                HIGHLY_ADVANCED_SOC.getStackForm(),
+                OreDictUnifier.get(wireFine, YttriumBariumCuprate, 8),
+                OreDictUnifier.get(bolt, Naquadah, 8)
+        });
+
         // Gravi Star
         GTRecipeHandler.removeRecipesByInputs(AUTOCLAVE_RECIPES, new ItemStack[] {
                 QUANTUM_STAR.getStackForm() },

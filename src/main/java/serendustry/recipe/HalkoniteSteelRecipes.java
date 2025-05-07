@@ -8,6 +8,8 @@ import static serendustry.item.SerendustryMetaItems.HKSP_BC;
 import static serendustry.item.SerendustryMetaItems.HKSP_C;
 import static serendustry.item.SerendustryMetaItems.HKSP_DD;
 import static serendustry.item.SerendustryMetaItems.HKSP_F;
+import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_BEYOND;
+import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_NETHER;
 import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryRecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.NEBULAIC_NEXUS_RECIPES;
@@ -24,6 +26,14 @@ public class HalkoniteSteelRecipes {
         for (int i = 0; i < parts.length; i++) {
             CHEMICAL_BATH_RECIPES.recipeBuilder()
                     .input(parts[i], Neutronium)
+                    .fluidInputs(HalkonitePreparationBase.getFluid((int) (144 * cost[i])),
+                            Tritanium.getFluid((int) (144 * cost[i] * 2)))
+                    .output(parts[i], HotHalkoniteSteel)
+                    .duration((int) (800 * cost[i])).EUt(VA[UV]).buildAndRegister();
+
+            CHEMICAL_BATH_RECIPES.recipeBuilder()
+                    .notConsumable(STELLAR_ESSENCE_NETHER)
+                    .input(parts[i], Neutronium)
                     .fluidInputs(HalkonitePreparationBase.getFluid((int) (144 * cost[i])))
                     .output(parts[i], HotHalkoniteSteel)
                     .duration((int) (600 * cost[i])).EUt(VA[UV]).buildAndRegister();
@@ -36,6 +46,14 @@ public class HalkoniteSteelRecipes {
                     .duration((int) (600 * cost[i])).EUt(VA[UV]).buildAndRegister();
 
             CHEMICAL_BATH_RECIPES.recipeBuilder()
+                    .input(parts[i], DeepDarkSteel)
+                    .fluidInputs(ExoHalkoniteBase.getFluid((int) (144 * cost[i])),
+                            Taranium.getFluid((int) (144 * cost[i] * 2)))
+                    .output(parts[i], HotExoHalkoniteSteel)
+                    .duration((int) (1200 * cost[i])).EUt(VA[UXV]).buildAndRegister();
+
+            CHEMICAL_BATH_RECIPES.recipeBuilder()
+                    .notConsumable(STELLAR_ESSENCE_BEYOND)
                     .input(parts[i], DeepDarkSteel)
                     .fluidInputs(ExoHalkoniteBase.getFluid((int) (144 * cost[i])))
                     .output(parts[i], HotExoHalkoniteSteel)

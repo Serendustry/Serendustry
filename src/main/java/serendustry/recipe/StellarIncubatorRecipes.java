@@ -92,5 +92,7 @@ public class StellarIncubatorRecipes {
                         Realitium.getFluid(800))
                 .output(STELLAR_ESSENCE_END)
                 .duration(67500).EUt(VA[MAX]).buildAndRegister();
+
+        // todo ascended SEssence
     }
 }

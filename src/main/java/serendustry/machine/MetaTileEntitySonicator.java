@@ -21,6 +21,7 @@ import gregtech.common.blocks.MetaBlocks;
 import serendustry.blocks.BlockSerendustryMetalCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
+import serendustry.machine.structure.StructureDefinition;
 
 public class MetaTileEntitySonicator extends RecipeMapMultiblockController {
 
@@ -40,182 +41,27 @@ public class MetaTileEntitySonicator extends RecipeMapMultiblockController {
 
     @Override
     public @NotNull BlockPattern createStructurePattern() {
-        return FactoryBlockPattern.start(LEFT, DOWN, FRONT)
-                .aisle(
-                        "                  ",
-                        "                  ",
-                        "                  ",
-                        "                  ",
-                        "                  ",
-                        "                  ",
-                        " AAAAAAAAA        ",
-                        " AADDDDDAA        ",
-                        " AADDDDDAA        ",
-                        " AADDDDDAA        ",
-                        " AADDDDDAA        ",
-                        " AADDDDDAA        ",
-                        " AADDDDDAA        ",
-                        " AAAAAAAAA        ",
-                        " AAAAAAAAA        ")
-                .aisle(
-                        "                  ",
-                        "                  ",
-                        "                  ",
-                        "                  ",
-                        "                  ",
-                        " AAAAAAAAA        ",
-                        "A         A       ",
-                        "A         A       ",
-                        "A         A       ",
-                        "A         A       ",
-                        "A         A       ",
-                        "A         A       ",
-                        "A         A       ",
-                        "A         A       ",
-                        " AAAAAAAAA        ")
-                .aisle(
-                        "                  ",
-                        "                  ",
-                        "                  ",
-                        "                  ",
-                        "                  ",
-                        " AAAAAAAAA        ",
-                        "A         A       ",
-                        "A         A       ",
-                        "A         A       ",
-                        "A         A       ",
-                        "A         A  AAAAA",
-                        "A         A  AAAAA",
-                        "A         A  ADEDA",
-                        "A         A  AAAAA",
-                        " AAAAAAAAA   AAAAA")
-                .aisle(
-                        "                  ",
-                        "                  ",
-                        "                  ",
-                        "                  ",
-                        "                  ",
-                        " AAAAAAAAA        ",
-                        "A         A       ",
-                        "A         A       ",
-                        "A         A       ",
-                        "A         A  AAAAA",
-                        "A         A  A   A",
-                        "A         A  A   A",
-                        "A         A  A   A",
-                        "A         A  A   A",
-                        " AAAAAAAAA   AAAAA")
-                .aisle(
-                        "                  ",
-                        "     CCCCCCCCCCC  ",
-                        "     C         C  ",
-                        "     C         C  ",
-                        "     C         C  ",
-                        " AAAACAAAA     C  ",
-                        "A    C    A    C  ",
-                        "A    C    A    C  ",
-                        "A    C    A    C  ",
-                        "A    C    A  AAAAA",
-                        "A    C    A  A C A",
-                        "A    C    A  A C A",
-                        "A    C    A  A C A",
-                        "A    C    A  A C A",
-                        " AAAABAAAA   AABAA")
-                .aisle(
-                        "     CCCCCCCCCCC  ",
-                        "    CBBBBBBBBBBBC ",
-                        "    CBCCCCCCCCCBC ",
-                        "    CBC       CBC ",
-                        "    CBC       CBC ",
-                        " AAACBCAAA    CBC ",
-                        "A   CBC   A   CBC ",
-                        "A   CBC   A   CBC ",
-                        "A   CBC   A   CBC ",
-                        "A   CBC   A  AABAA",
-                        "A   CBC   A  ACBCA",
-                        "A   CBC   A  ACBCA",
-                        "A   CBC   A  ACBCA",
-                        "A   CBC   A  ACBCA",
-                        " AAABBBAAA   ABBBA")
-                .aisle(
-                        "                  ",
-                        "     CCCCCCCCCCC  ",
-                        "     C         C  ",
-                        "     C         C  ",
-                        "     C         C  ",
-                        " AAAACAAAA     C  ",
-                        "A    C    A    C  ",
-                        "A    C    A    C  ",
-                        "A    C    A    C  ",
-                        "A    C    A  AAAAA",
-                        "A    C    A  A C A",
-                        "A    C    A  A C A",
-                        "A    C    A  A C A",
-                        "A    C    A  A C A",
-                        " AAAABAAAA   AABAA")
-                .aisle(
-                        "                  ",
-                        "                  ",
-                        "                  ",
-                        "                  ",
-                        "                  ",
-                        " AAAAAAAAA        ",
-                        "A         A       ",
-                        "A         A       ",
-                        "A         A       ",
-                        "A         A  AAAAA",
-                        "A         A  A   A",
-                        "A         A  A   A",
-                        "A         A  A   A",
-                        "A         A  A   A",
-                        " AAAAAAAAA   AAAAA")
-                .aisle(
-                        "                  ",
-                        "                  ",
-                        "                  ",
-                        "                  ",
-                        "                  ",
-                        " AAAAAAAAA        ",
-                        "A         A       ",
-                        "A         A       ",
-                        "A         A       ",
-                        "A         A  AAAAA",
-                        "A         A  AAAAA",
-                        "A         A  AAAAA",
-                        "A         A  AAAAA",
-                        "A         A  AAAAA",
-                        " AAAAAAAAA   AAAAA")
-                .aisle(
-                        "                  ",
-                        "                  ",
-                        "                  ",
-                        "                  ",
-                        "                  ",
-                        " AAAAAAAAA        ",
-                        " AAAAAAAAA        ",
-                        " AAAAAAAAA        ",
-                        " AAAAAAAAA        ",
-                        " AAAAAAAAA        ",
-                        " AAAAAAAAA        ",
-                        " AAAAAAAAA        ",
-                        " AAAAAAAAA        ",
-                        " AAAAAAAAA        ",
-                        " AAAAAAAAA        ")
+        FactoryBlockPattern pattern = FactoryBlockPattern.start(LEFT, DOWN, FRONT);
 
-                .where('E', selfPredicate())
+        for(String[] aisle : StructureDefinition.SONICATOR) {
+            pattern.aisle(aisle);
+        }
+
+        pattern.where('E', selfPredicate())
                 .where('A',
                         states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
                                 .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.CARBON))
                                         .setMinGlobalLimited(526).or(autoAbilities()))
                 .where('B',
                         states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
-                                .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.ADAMANTIUM)))
+                                .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.NEUTRONIUM)))
                 .where('C', frames(Materials.NaquadahAlloy))
-                .where('D', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS))) // todo
-                .build();
+                .where('D', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS))); // todo
+
+        return pattern.build();
     }
 
     public ICubeRenderer getBaseTexture(@Nullable IMultiblockPart part) {
-        return SerendustryTextures.CASING_ADAMANTIUM;
+        return SerendustryTextures.CASING_CARBON;
     }
 }

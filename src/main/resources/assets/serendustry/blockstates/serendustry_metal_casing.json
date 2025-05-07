@@ -10,18 +10,23 @@
     "variant": {
       "americium": {
         "textures": {
-          "all": "gregtech:blocks/casing/solid/americium"
+          "all": "gregtech:blocks/casing/serendustry_metal/americium"
         }
       },
       "carbon": {
         "textures": {
-          "all": "gregtech:blocks/casing/solid/carbon"
+          "all": "gregtech:blocks/casing/serendustry_metal/carbon"
         }
       },
       "adamantium": {
         "textures" : {
-          "all" : "gregtech:blocks/casing/solid/adamantium"
+          "all" : "gregtech:blocks/casing/serendustry_metal/adamantium"
         }
+      },
+        "neutronium": {
+          "textures" : {
+            "all" : "gregtech:blocks/casing/serendustry_metal/neutronium"
+          }
       }
     }
   }
