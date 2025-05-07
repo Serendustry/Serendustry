@@ -3,7 +3,6 @@ package serendustry.recipe;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
-import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_NETHER;
 import static serendustry.item.material.SerendustryMaterials.Dragonblood;
 import static serendustry.machine.SerendustryRecipeMaps.LABORATORY_RECIPES;
 

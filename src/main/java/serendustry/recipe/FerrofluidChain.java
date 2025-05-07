@@ -4,7 +4,6 @@ import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
-import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_OVERWORLD;
 import static serendustry.item.material.SerendustryMaterials.*;
 
 public class FerrofluidChain {

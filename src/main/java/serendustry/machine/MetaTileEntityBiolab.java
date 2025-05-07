@@ -41,7 +41,7 @@ public class MetaTileEntityBiolab extends RecipeMapMultiblockController {
     public @NotNull BlockPattern createStructurePattern() {
         FactoryBlockPattern pattern = FactoryBlockPattern.start(LEFT, DOWN, FRONT);
 
-        for(String[] aisle : StructureDefinition.BIOLAB) {
+        for (String[] aisle : StructureDefinition.BIOLAB) {
             pattern.aisle(aisle);
         }
 

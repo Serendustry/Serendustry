@@ -5,6 +5,7 @@ import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.EXTRUDER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.FLUID_SOLIDFICATION_RECIPES;
 import static gregtech.api.unification.material.Materials.Americium;
 import static gregtech.api.unification.material.Materials.Carbon;
 import static gregtech.api.unification.material.Materials.Copper;
@@ -57,6 +58,7 @@ import static gregtech.common.items.MetaItems.SENSOR_UIV;
 import static gregtech.common.items.MetaItems.SENSOR_UV;
 import static gregtech.common.items.MetaItems.SHAPE_EXTRUDER_ROD;
 import static gregtech.common.metatileentities.MetaTileEntities.ADVANCED_LARGE_MINER;
+import static gregtech.common.metatileentities.MetaTileEntities.FLUID_SOLIDIFIER;
 import static serendustry.item.SerendustryMetaItems.COIL_UEV;
 import static serendustry.item.material.SerendustryMaterials.AbyssalAlloy;
 import static serendustry.item.material.SerendustryMaterials.Adamantium;
@@ -79,6 +81,9 @@ import static serendustry.item.material.SerendustryMaterials.SelfRepairingNanobo
 import static serendustry.item.material.SerendustryMaterials.SentientNanobots;
 import static serendustry.item.material.SerendustryMaterials.VibraniumAlloy;
 
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
+
 import gregtech.api.GTValues;
 import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.unification.OreDictUnifier;
@@ -88,8 +93,6 @@ import gregtech.common.blocks.BlockFusionCasing;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.MetaBlocks;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
 import serendustry.blocks.BlockAALCoreCasing;
 import serendustry.blocks.BlockEICHammerCasing;
 import serendustry.blocks.BlockPCCoilCooling;
@@ -109,13 +112,20 @@ public class CasingRecipes {
                 .outputs(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING.getItemVariant(
                         BlockSerendustryMetalCasing.SerendustryMetalCasingType.AMERICIUM,
                         ConfigHolder.recipes.casingsPerCraft))
-                .duration(20).EUt(VA[GTValues.ZPM]).buildAndRegister();
+                .duration(20 * 32).EUt(VA[GTValues.ZPM]).buildAndRegister();
 
         EXTRUDER_RECIPES.recipeBuilder()
                 .input(dust, Carbon)
                 .notConsumable(SHAPE_EXTRUDER_ROD)
                 .output(stick, Carbon, 2)
                 .duration(20 + 12).EUt(42).buildAndRegister();
+
+        /* todo ceu update + change time and eu
+        FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
+                .fluidInputs(Carbon.getFluid(72))
+                .notConsumable(SHAPE_MOLD_ROD)
+                .output(stick, Carbon)
+                .duration(20 + 12).EUt(42).buildAndRegister();*/
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(plateDense, Carbon, 6)
@@ -124,7 +134,7 @@ public class CasingRecipes {
                 .outputs(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING.getItemVariant(
                         BlockSerendustryMetalCasing.SerendustryMetalCasingType.CARBON,
                         ConfigHolder.recipes.casingsPerCraft))
-                .duration(20).EUt(VA[GTValues.UV]).buildAndRegister();
+                .duration(20 * 32).EUt(VA[GTValues.ZPM]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(plate, Adamantium, 6)
@@ -133,7 +143,7 @@ public class CasingRecipes {
                 .outputs(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING.getItemVariant(
                         BlockSerendustryMetalCasing.SerendustryMetalCasingType.ADAMANTIUM,
                         ConfigHolder.recipes.casingsPerCraft))
-                .duration(20).EUt(VA[GTValues.UV]).buildAndRegister();
+                .duration(20 * 32).EUt(VA[GTValues.UV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(plate, Neutronium, 6)
@@ -142,7 +152,7 @@ public class CasingRecipes {
                 .outputs(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING.getItemVariant(
                         BlockSerendustryMetalCasing.SerendustryMetalCasingType.NEUTRONIUM,
                         ConfigHolder.recipes.casingsPerCraft))
-                .duration(20).EUt(VA[GTValues.UHV]).buildAndRegister();
+                .duration(20 * 32).EUt(VA[GTValues.UHV]).buildAndRegister();
 
         // Space Elevator casing
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -237,7 +247,7 @@ public class CasingRecipes {
                 .inputs(MetaBlocks.FUSION_CASING.getItemVariant(BlockFusionCasing.CasingType.FUSION_COIL))
                 .input(FIELD_GENERATOR_UV, 2)
                 .input(ELECTRIC_PUMP_UV)
-                .input(NEUTRON_REFLECTOR,8)
+                .input(NEUTRON_REFLECTOR, 8)
                 .input(circuit, MarkerMaterials.Tier.UHV, 4)
                 .input(pipeSmallFluid, VibraniumAlloy, 4)
                 .input(plate, Neutronium, 4)
@@ -258,7 +268,8 @@ public class CasingRecipes {
 
         // Plasma Condenser coils
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .inputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 2))
+                .inputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING
+                        .getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 2))
                 .input(FIELD_GENERATOR_UHV)
                 .input(ELECTRIC_PUMP_UV)
                 .input(circuit, MarkerMaterials.Tier.UEV, 2)
@@ -271,15 +282,18 @@ public class CasingRecipes {
                         Dragonblood.getFluid(144 * 4),
                         Draconium.getFluid(144 * 4),
                         Flerovium.getPlasma(144 * 2))
-                .outputs(SerendustryMetaBlocks.PC_COIL_HEATING.getItemVariant(BlockPCCoilHeating.PCCoilHeatingType.INFERNAL, 2))
+                .outputs(SerendustryMetaBlocks.PC_COIL_HEATING
+                        .getItemVariant(BlockPCCoilHeating.PCCoilHeatingType.INFERNAL, 2))
                 .stationResearch(b -> b
-                        .researchStack(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL))
+                        .researchStack(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING
+                                .getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL))
                         .CWUt(144)
                         .EUt(VA[GTValues.UEV]))
                 .duration(20 * 60 * 4).EUt(VA[GTValues.UEV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .inputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 2))
+                .inputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING
+                        .getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 2))
                 .input(FIELD_GENERATOR_UHV)
                 .input(ELECTRIC_PUMP_UV)
                 .input(circuit, MarkerMaterials.Tier.UEV, 2)
@@ -292,7 +306,8 @@ public class CasingRecipes {
                         Dragonblood.getFluid(144 * 4),
                         Draconium.getFluid(144 * 4),
                         Flerovium.getPlasma(144 * 2))
-                .outputs(SerendustryMetaBlocks.PC_COIL_COOLING.getItemVariant(BlockPCCoilCooling.PCCoilCoolingType.GLACIAL, 2))
+                .outputs(SerendustryMetaBlocks.PC_COIL_COOLING
+                        .getItemVariant(BlockPCCoilCooling.PCCoilCoolingType.GLACIAL, 2))
                 .stationResearch(b -> b
                         .researchStack(new ItemStack(Blocks.PACKED_ICE))
                         .CWUt(144)
@@ -300,7 +315,8 @@ public class CasingRecipes {
                 .duration(20 * 60 * 4).EUt(VA[GTValues.UEV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .inputs(SerendustryMetaBlocks.PC_COIL_HEATING.getItemVariant(BlockPCCoilHeating.PCCoilHeatingType.INFERNAL, 2))
+                .inputs(SerendustryMetaBlocks.PC_COIL_HEATING
+                        .getItemVariant(BlockPCCoilHeating.PCCoilHeatingType.INFERNAL, 2))
                 .input(FIELD_GENERATOR_UEV)
                 .input(ELECTRIC_PUMP_UHV)
                 .input(circuit, MarkerMaterials.Tier.UIV, 2)
@@ -313,15 +329,18 @@ public class CasingRecipes {
                         Dragonblood.getFluid(144 * 4),
                         Draconium.getFluid(144 * 4),
                         Flerovium.getPlasma(144 * 2))
-                .outputs(SerendustryMetaBlocks.PC_COIL_HEATING.getItemVariant(BlockPCCoilHeating.PCCoilHeatingType.SUPERNOVA, 2))
+                .outputs(SerendustryMetaBlocks.PC_COIL_HEATING
+                        .getItemVariant(BlockPCCoilHeating.PCCoilHeatingType.SUPERNOVA, 2))
                 .stationResearch(b -> b
-                        .researchStack(SerendustryMetaBlocks.PC_COIL_HEATING.getItemVariant(BlockPCCoilHeating.PCCoilHeatingType.INFERNAL))
+                        .researchStack(SerendustryMetaBlocks.PC_COIL_HEATING
+                                .getItemVariant(BlockPCCoilHeating.PCCoilHeatingType.INFERNAL))
                         .CWUt(144)
                         .EUt(VA[GTValues.UEV]))
                 .duration(20 * 60 * 4).EUt(VA[GTValues.UEV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .inputs(SerendustryMetaBlocks.PC_COIL_COOLING.getItemVariant(BlockPCCoilCooling.PCCoilCoolingType.GLACIAL, 2))
+                .inputs(SerendustryMetaBlocks.PC_COIL_COOLING
+                        .getItemVariant(BlockPCCoilCooling.PCCoilCoolingType.GLACIAL, 2))
                 .input(FIELD_GENERATOR_UEV)
                 .input(ELECTRIC_PUMP_UHV)
                 .input(circuit, MarkerMaterials.Tier.UIV, 2)
@@ -334,9 +353,11 @@ public class CasingRecipes {
                         Dragonblood.getFluid(144 * 4),
                         Draconium.getFluid(144 * 4),
                         Flerovium.getPlasma(144 * 2))
-                .outputs(SerendustryMetaBlocks.PC_COIL_COOLING.getItemVariant(BlockPCCoilCooling.PCCoilCoolingType.BLACK_HOLE, 2))
+                .outputs(SerendustryMetaBlocks.PC_COIL_COOLING
+                        .getItemVariant(BlockPCCoilCooling.PCCoilCoolingType.BLACK_HOLE, 2))
                 .stationResearch(b -> b
-                        .researchStack(SerendustryMetaBlocks.PC_COIL_COOLING.getItemVariant(BlockPCCoilCooling.PCCoilCoolingType.GLACIAL))
+                        .researchStack(SerendustryMetaBlocks.PC_COIL_COOLING
+                                .getItemVariant(BlockPCCoilCooling.PCCoilCoolingType.GLACIAL))
                         .CWUt(144)
                         .EUt(VA[GTValues.UEV]))
                 .duration(20 * 60 * 4).EUt(VA[GTValues.UEV]).buildAndRegister();

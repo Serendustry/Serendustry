@@ -31,6 +31,9 @@ public class SerendustryMetaTileEntities {
     public static MetaTileEntityPlasmaCondenser PLASMA_CONDENSER;
     public static MetaTileEntityElectricImplosionCompressor ELECTRIC_IMPLOSION_COMPRESSOR;
     public static MetaTileEntityAdvancedAssemblyLine ADVANCED_ASSEMBLY_LINE;
+    public static MetaTileEntityCrystallizer CRYSTALLIZER;
+    public static MetaTileEntityMegaFusionReactor MEGA_FUSION_REACTOR;
+    public static MetaTileEntityAdvancedChemicalReactor ADVANCED_CHEMICAL_REACTOR;
 
     public static void preInit() {
         // todo claim an id range
@@ -66,5 +69,11 @@ public class SerendustryMetaTileEntities {
                 new MetaTileEntityElectricImplosionCompressor(Serendustry.ID("electric_implosion_compressor")));
         ADVANCED_ASSEMBLY_LINE = registerMetaTileEntity(4018,
                 new MetaTileEntityAdvancedAssemblyLine(Serendustry.ID("advanced_assembly_line")));
+        CRYSTALLIZER = registerMetaTileEntity(4019,
+                new MetaTileEntityCrystallizer(Serendustry.ID("crystallizer")));
+        MEGA_FUSION_REACTOR = registerMetaTileEntity(4020,
+                new MetaTileEntityMegaFusionReactor(Serendustry.ID("mega_fusion_reactor")));
+        ADVANCED_CHEMICAL_REACTOR = registerMetaTileEntity(4021,
+                new MetaTileEntityAdvancedChemicalReactor(Serendustry.ID("advanced_chemical_reactor")));
     }
 }

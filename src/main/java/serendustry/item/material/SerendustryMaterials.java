@@ -2289,7 +2289,7 @@ public class SerendustryMaterials {
         NaquadriaticTaranium = new Material.Builder(52, Serendustry.ID("naquadriatic_taranium"))
                 .ingot(3).liquid(new FluidBuilder().temperature(55000))
                 .color(0x000000).iconSet(DULL)
-                .flags(STD_METAL, DECOMPOSITION_BY_CENTRIFUGING)
+                .flags(STD_METAL, DECOMPOSITION_BY_CENTRIFUGING, GENERATE_BOLT_SCREW)
                 .components(Naquadria, 3, Taranium, 1)
                 .blast(b -> b
                         .temp(10800, GasTier.HIGHEST)

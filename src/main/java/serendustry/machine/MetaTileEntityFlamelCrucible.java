@@ -87,7 +87,7 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
     protected BlockPattern createStructurePattern() {
         FactoryBlockPattern pattern = FactoryBlockPattern.start(LEFT, DOWN, FRONT);
 
-        for(String[] aisle : StructureFlamelCrucible.FLAMEL_CRUCIBLE) {
+        for (String[] aisle : StructureFlamelCrucible.FLAMEL_CRUCIBLE) {
             pattern.aisle(aisle);
         }
 

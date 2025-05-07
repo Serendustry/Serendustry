@@ -1,5 +1,28 @@
 package serendustry.machine;
 
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.function.Supplier;
+
+import javax.annotation.Nonnull;
+
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
@@ -13,26 +36,14 @@ import gregtech.api.pattern.PatternMatchContext;
 import gregtech.api.pattern.PatternStringError;
 import gregtech.api.pattern.TraceabilityPredicate;
 import gregtech.api.recipes.Recipe;
-import gregtech.api.unification.material.Materials;
 import gregtech.api.util.BlockInfo;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.TextComponentUtil;
 import gregtech.api.util.TextFormattingUtil;
 import gregtech.client.renderer.ICubeRenderer;
-import gregtech.client.renderer.texture.Textures;
 import gregtech.client.utils.TooltipHelper;
 import gregtech.common.blocks.BlockGlassCasing;
-import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.world.World;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import serendustry.Serendustry;
 import serendustry.api.SerendustryAPI;
 import serendustry.api.capability.IPCCoil;
@@ -46,17 +57,6 @@ import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.item.material.SerendustryMaterials;
 import serendustry.machine.structure.StructurePlasmaCondenser;
-
-import javax.annotation.Nonnull;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.function.Supplier;
-
-import static gregtech.api.util.RelativeDirection.DOWN;
-import static gregtech.api.util.RelativeDirection.FRONT;
-import static gregtech.api.util.RelativeDirection.LEFT;
 
 public class MetaTileEntityPlasmaCondenser extends RecipeMapMultiblockController implements IPCCoil {
 
@@ -139,7 +139,7 @@ public class MetaTileEntityPlasmaCondenser extends RecipeMapMultiblockController
     protected BlockPattern createStructurePattern() {
         FactoryBlockPattern pattern = FactoryBlockPattern.start(LEFT, DOWN, FRONT);
 
-        for(String[] aisle : StructurePlasmaCondenser.PLASMA_CONDENSER) {
+        for (String[] aisle : StructurePlasmaCondenser.PLASMA_CONDENSER) {
             pattern.aisle(aisle);
         }
 
@@ -147,16 +147,21 @@ public class MetaTileEntityPlasmaCondenser extends RecipeMapMultiblockController
                 .where('A', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.FUSION_GLASS))) // todo
                 .where('B', PCCoilsCooling())
                 .where('C',
-                        states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING.getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.NEUTRONIUM))
-                                .setMinGlobalLimited(1227)
-                                .or(autoAbilities(false, false, true, true, true, true, false))
-                                .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0).setMinGlobalLimited(0)
-                                        .setMaxGlobalLimited(2))
-                                .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(0)
-                                        .setMaxGlobalLimited(1))
-                                .or(abilities(MultiblockAbility.INPUT_LASER).setPreviewCount(1).setMaxGlobalLimited(1)))
+                        states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
+                                .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.NEUTRONIUM))
+                                        .setMinGlobalLimited(1227)
+                                        .or(autoAbilities(false, false, true, true, true, true, false))
+                                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0)
+                                                .setMinGlobalLimited(0)
+                                                .setMaxGlobalLimited(2))
+                                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(0)
+                                                .setMaxGlobalLimited(1))
+                                        .or(abilities(MultiblockAbility.INPUT_LASER).setPreviewCount(1)
+                                                .setMaxGlobalLimited(1)))
                 .where('D', PCCoilsHeating())
-                .where('E', states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING.getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.CARBON)))
+                .where('E',
+                        states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
+                                .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.CARBON)))
                 .where('F', frames(SerendustryMaterials.DeepDarkSteel));
 
         return pattern.build();
@@ -188,10 +193,10 @@ public class MetaTileEntityPlasmaCondenser extends RecipeMapMultiblockController
 
                 return false;
             }, () -> SerendustryAPI.PC_COILS_HEATING.entrySet().stream()
-            .sorted(Comparator.comparingInt(entry -> entry.getValue().ordinal()))
-            .map(entry -> new BlockInfo(entry.getKey(), null))
-            .toArray(BlockInfo[]::new))
-            .addTooltips("serendustry.machine.plasma_condenser.error.tier_coil.heating");
+                    .sorted(Comparator.comparingInt(entry -> entry.getValue().ordinal()))
+                    .map(entry -> new BlockInfo(entry.getKey(), null))
+                    .toArray(BlockInfo[]::new))
+                            .addTooltips("serendustry.machine.plasma_condenser.error.tier_coil.heating");
 
     public static TraceabilityPredicate PCCoilsHeating() {
         return PC_COIL_HEATING_PREDICATE.get();
@@ -218,10 +223,10 @@ public class MetaTileEntityPlasmaCondenser extends RecipeMapMultiblockController
 
                 return false;
             }, () -> SerendustryAPI.PC_COILS_COOLING.entrySet().stream()
-            .sorted(Comparator.comparingInt(entry -> entry.getValue().ordinal()))
-            .map(entry -> new BlockInfo(entry.getKey(), null))
-            .toArray(BlockInfo[]::new))
-            .addTooltips("serendustry.machine.plasma_condenser.error.tier_coil.cooling");
+                    .sorted(Comparator.comparingInt(entry -> entry.getValue().ordinal()))
+                    .map(entry -> new BlockInfo(entry.getKey(), null))
+                    .toArray(BlockInfo[]::new))
+                            .addTooltips("serendustry.machine.plasma_condenser.error.tier_coil.cooling");
 
     public static TraceabilityPredicate PCCoilsCooling() {
         return PC_COIL_COOLING_PREDICATE.get();
@@ -232,13 +237,12 @@ public class MetaTileEntityPlasmaCondenser extends RecipeMapMultiblockController
         int recipeTier = recipe.getProperty(PlasmaCondenserTierProperty.getInstance(), 0);
         int recipeType = recipe.getProperty(PlasmaCondenserTypeProperty.getInstance(), -1);
 
-        Serendustry.logger.info("recipeTier: " + recipeTier + "; recipeType: " + recipeType);
-        return recipeType == PlasmaCondenserTypeProperty.HEATING ? tierHeating >= recipeTier : tierCooling >= recipeTier;
+        return recipeType == PlasmaCondenserTypeProperty.HEATING ? tierHeating >= recipeTier :
+                tierCooling >= recipeTier;
     }
 
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
-
         MultiblockDisplayText.builder(textList, isStructureFormed())
                 .setWorkingStatus(recipeMapWorkable.isWorkingEnabled(), recipeMapWorkable.isActive())
                 .addEnergyUsageLine(getEnergyContainer())
@@ -247,23 +251,28 @@ public class MetaTileEntityPlasmaCondenser extends RecipeMapMultiblockController
                 // Heating coil tier line
                 .addCustom(tl -> {
                     if (isStructureFormed()) {
-                        ITextComponent heatingCoilText = TextComponentUtil.stringWithColor(TextFormatting.YELLOW, TextFormattingUtil.formatNumbers(tierHeating + 1));
+                        ITextComponent heatingCoilText = TextComponentUtil.stringWithColor(TextFormatting.RED,
+                                TextFormattingUtil.formatNumbers(tierHeating + 1));
 
-                        tl.add(TextComponentUtil.translationWithColor(TextFormatting.GRAY, "serendustry.machine.plasma_condenser.tier_coil.heating", heatingCoilText));
+                        tl.add(TextComponentUtil.translationWithColor(TextFormatting.GRAY,
+                                "serendustry.machine.plasma_condenser.tier_coil.heating", heatingCoilText));
                     }
                 })
 
                 // Cooling coil tier line
                 .addCustom(tl -> {
                     if (isStructureFormed()) {
-                        ITextComponent coolingCoilText = TextComponentUtil.stringWithColor(TextFormatting.YELLOW, TextFormattingUtil.formatNumbers(tierCooling + 1));
+                        ITextComponent coolingCoilText = TextComponentUtil.stringWithColor(TextFormatting.BLUE,
+                                TextFormattingUtil.formatNumbers(tierCooling + 1));
 
-                        tl.add(TextComponentUtil.translationWithColor(TextFormatting.GRAY, "serendustry.machine.plasma_condenser.tier_coil.cooling", coolingCoilText));
+                        tl.add(TextComponentUtil.translationWithColor(TextFormatting.GRAY,
+                                "serendustry.machine.plasma_condenser.tier_coil.cooling", coolingCoilText));
                     }
                 })
                 .addWorkingStatusLine()
                 .addProgressLine(recipeMapWorkable.getProgressPercent());
     }
+
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);

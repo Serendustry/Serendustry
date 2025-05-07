@@ -57,10 +57,11 @@ public class SerendustryRecipes {
     }
 
     public static void registerRecipesLate() {
-        PlasmaArcRecipes.init();
+        CrystallizerRecipes.init();
+        DeepDarkPlanetoid.init();
         DensePlateRecipes.init();
         ElectricImplosionCompressorRecipes.buildElectricImplosionRecipes();
-        DeepDarkPlanetoid.init();
+        PlasmaArcRecipes.init();
         PlasmaCondenserRecipes.init();
     }
 }

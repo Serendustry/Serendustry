@@ -83,17 +83,17 @@ public class MetaTileEntityStellarEngine extends RecipeMapMultiblockController {
     protected BlockPattern createStructurePattern() {
         FactoryBlockPattern pattern = FactoryBlockPattern.start(LEFT, DOWN, FRONT);
 
-                for(String[] aisle : StructureStellarEngine.STELLAR_ENGINE) {
-                    pattern.aisle(aisle);
-                }
+        for (String[] aisle : StructureStellarEngine.STELLAR_ENGINE) {
+            pattern.aisle(aisle);
+        }
 
-                pattern.where('D', selfPredicate())
+        pattern.where('D', selfPredicate())
                 .where('A',
                         states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
                                 .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.CARBON))) // todo
                 .where('B',
                         states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
-                                .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.ADAMANTIUM)) // todo
+                                .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.NEUTRONIUM)) // todo
                                         .setMinGlobalLimited(4333)
                                         .or(autoAbilities(false, false, true, true, true, true, false))
                                         .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0)
@@ -109,7 +109,7 @@ public class MetaTileEntityStellarEngine extends RecipeMapMultiblockController {
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return SerendustryTextures.CASING_ADAMANTIUM; // todo
+        return SerendustryTextures.CASING_NEUTRONIUM; // todo
     }
 
     @Override

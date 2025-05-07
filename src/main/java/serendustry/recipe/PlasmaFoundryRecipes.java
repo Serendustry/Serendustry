@@ -258,7 +258,7 @@ public class PlasmaFoundryRecipes {
                 .input(plateDense, AwakenedDraconium, 64)
                 .fluidInputs(SentientNanobots.getFluid(144 * 32))
                 .output(CATALYST_EXO_HALKONITE)
-                .duration(3200).EUt(VA[UIV]).buildAndRegister();
+                .duration(20 * 60 * 4).EUt(VA[UIV]).buildAndRegister();
     }
 
     private static void alloyRecipes() {
@@ -550,7 +550,7 @@ public class PlasmaFoundryRecipes {
                         Lead.getFluid(144 * 312),
                         Antimony.getFluid(144 * 104),
                         Helium.getPlasma(100))
-                .foundryCatalyst(CATALYST_SOLDERING_ALLOYS)
+                .foundryCatalyst(CATALYST_SOLDERING_ALLOYS, CATALYST_TIN_ALLOYS)
                 .fluidOutputs(SolderingAlloy.getFluid(144 * 1040))
                 .duration(15 * 20 * 1040 / 2 / 2 / 2 / 2 / 2 / 2 / 2 / 4).EUt(VA[UV]).buildAndRegister();
 
@@ -665,6 +665,14 @@ public class PlasmaFoundryRecipes {
                 .foundryCatalyst(CATALYST_VIBRANIUM_ALLOY)
                 .fluidOutputs(VibraniumAlloy.getFluid(144 * 64))
                 .duration(100 * 20 * 64 / 2 / 4).EUt(VA[UV]).buildAndRegister();
+
+        PLASMA_FOUNDRY_RECIPES.recipeBuilder()
+                .fluidInputs(Naquadah.getFluid(144 * 48),
+                        Taranium.getFluid(144 * 16),
+                        Copper.getPlasma(144 * 8))
+                .foundryCatalyst(CATALYST_NAQUADAH_ALLOYS)
+                .fluidOutputs(NaquadriaticTaranium.getFluid(144 * 64))
+                .duration(400 * 20 * 64 / 4).EUt(VA[UEV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Oganesson.getFluid(144 * 16),

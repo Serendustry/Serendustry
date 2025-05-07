@@ -1,16 +1,15 @@
 package serendustry.api.capability.impl;
 
+import static gregtech.api.recipes.logic.OverclockingLogic.PERFECT_OVERCLOCK_DURATION_DIVISOR;
+
 import org.jetbrains.annotations.NotNull;
 
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.recipes.recipeproperties.IRecipePropertyStorage;
-import serendustry.Serendustry;
 import serendustry.api.capability.IPCCoil;
 import serendustry.machine.PlasmaCondenserTierProperty;
 import serendustry.machine.PlasmaCondenserTypeProperty;
-
-import static gregtech.api.recipes.logic.OverclockingLogic.PERFECT_OVERCLOCK_DURATION_DIVISOR;
 
 public class PCRecipeLogic extends MultiblockRecipeLogic {
 
@@ -31,7 +30,10 @@ public class PCRecipeLogic extends MultiblockRecipeLogic {
         super.modifyOverclockPre(values, storage);
 
         // Coil speed quadrupling
-        values[1] = applyPCCoilSpeed(((IPCCoil) metaTileEntity).getCurrentHeatingTier(), ((IPCCoil) metaTileEntity).getCurrentCoolingTier(), values[1], storage.getRecipePropertyValue(PlasmaCondenserTierProperty.getInstance(), -1), storage.getRecipePropertyValue(PlasmaCondenserTypeProperty.getInstance(), -1));
+        values[1] = applyPCCoilSpeed(((IPCCoil) metaTileEntity).getCurrentHeatingTier(),
+                ((IPCCoil) metaTileEntity).getCurrentCoolingTier(), values[1],
+                storage.getRecipePropertyValue(PlasmaCondenserTierProperty.getInstance(), -1),
+                storage.getRecipePropertyValue(PlasmaCondenserTypeProperty.getInstance(), -1));
     }
 
     /*
@@ -48,7 +50,9 @@ public class PCRecipeLogic extends MultiblockRecipeLogic {
      */
 
     // Quarters recipe time for each tier that coil tier exceeds recipe tier
-    public static int applyPCCoilSpeed(int tierHeating, int tierCooling, int recipeTime, int recipeTier, int recipeType) {
-        return (int) (recipeTime / (Math.pow(2, ((recipeType == PlasmaCondenserTypeProperty.HEATING ? tierHeating : tierCooling) - recipeTier) * 2)));
+    public static int applyPCCoilSpeed(int tierHeating, int tierCooling, int recipeTime, int recipeTier,
+                                       int recipeType) {
+        return (int) (recipeTime / (Math.pow(2,
+                ((recipeType == PlasmaCondenserTypeProperty.HEATING ? tierHeating : tierCooling) - recipeTier) * 2)));
     }
 }

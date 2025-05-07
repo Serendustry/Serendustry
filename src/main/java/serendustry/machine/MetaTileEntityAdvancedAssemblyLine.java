@@ -3,19 +3,25 @@ package serendustry.machine;
 import static gregtech.api.util.RelativeDirection.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+import gregtech.api.metatileentity.multiblock.MultiblockDisplayText;
+import gregtech.api.util.GTUtility;
+import gregtech.api.util.TextComponentUtil;
+import gregtech.api.util.TextFormattingUtil;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.IFluidTank;
 import net.minecraftforge.fml.relauncher.Side;
@@ -46,7 +52,6 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.GTRecipeInput;
 import gregtech.api.recipes.recipeproperties.ResearchProperty;
 import gregtech.api.util.BlockInfo;
-import gregtech.api.util.GTUtility;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.BlockGlassCasing;
@@ -55,7 +60,6 @@ import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.common.metatileentities.multi.multiblockpart.MetaTileEntityItemBus;
 import gregtech.common.metatileentities.multi.multiblockpart.MetaTileEntityMultiFluidHatch;
 import gregtech.core.sound.GTSoundEvents;
-import serendustry.Serendustry;
 import serendustry.api.SerendustryAPI;
 import serendustry.api.capability.IAALCore;
 import serendustry.api.capability.impl.AALRecipeLogic;
@@ -101,22 +105,22 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
 
         if (!energyInput.isEmpty()) {
             // Disallow mixing hatch types
-            if(!substationInput.isEmpty()) {
+            if (!substationInput.isEmpty()) {
                 invalidateStructure();
             }
 
             // Limit hatch tier
-            for(IEnergyContainer input : energyInput) {
-                if(input.getInputVoltage() > GTValues.V[tier]) {
+            for (IEnergyContainer input : energyInput) {
+                if (input.getInputVoltage() > GTValues.V[tier]) {
                     // todo error
                     invalidateStructure();
                 }
             }
         }
 
-        if(!substationInput.isEmpty()) {
+        if (!substationInput.isEmpty()) {
             // Disallow mixing hatch types
-            if(!energyInput.isEmpty()) {
+            if (!energyInput.isEmpty()) {
                 invalidateStructure();
             }
 
@@ -161,8 +165,10 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
                         abilities(MultiblockAbility.EXPORT_ITEMS)
                                 .addTooltips("gregtech.multiblock.pattern.location_end"))
                 .where('Y', states(getCasingState())
-                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0).setMinGlobalLimited(0).setMaxGlobalLimited(2))
-                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(1).setMaxGlobalLimited(1)))
+                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0).setMinGlobalLimited(0)
+                                .setMaxGlobalLimited(2))
+                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(1)
+                                .setMaxGlobalLimited(1)))
                 .where('I', metaTileEntities(MetaTileEntities.ITEM_IMPORT_BUS[GTValues.ULV]))
                 .where('G', states(getGrateState()))
                 .where('A', states(getCasingState()))
@@ -255,7 +261,10 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
 
                     if (!casing.equals(tier)) {
                         blockWorldState.setError(
-                                new PatternStringError("serendustry.machine.advanced_assembly_line.tier")); // todo this error never appears
+                                new PatternStringError("serendustry.machine.advanced_assembly_line.tier")); // todo this
+                                                                                                            // error
+                                                                                                            // never
+                                                                                                            // appears
                         return false;
                     }
 
@@ -434,12 +443,14 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
     public boolean checkRecipe(@NotNull Recipe recipe, boolean consumeIfSuccess) {
         if (consumeIfSuccess) return true; // don't check twice
 
-        /* check tier
-        int recipeTier = GTUtility.getTierByVoltage(recipe.getEUt());
-        if (recipeTier > tier) {
-            // logger.info("AALD fail state: recipetier " + recipeTier + " > tier " + tier);
-            return false;
-        }*/
+        /*
+         * check tier
+         * int recipeTier = GTUtility.getTierByVoltage(recipe.getEUt());
+         * if (recipeTier > tier) {
+         * // logger.info("AALD fail state: recipetier " + recipeTier + " > tier " + tier);
+         * return false;
+         * }
+         */
 
         // check ordered items
         if (ConfigHolder.machines.orderedAssembly) {
@@ -512,6 +523,27 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
             if (hatch.isRecipeAvailable(recipe)) return true;
         }
         return false;
+    }
+
+    @Override
+    protected void addDisplayText(List<ITextComponent> textList) {
+        MultiblockDisplayText.builder(textList, isStructureFormed())
+                .setWorkingStatus(recipeMapWorkable.isWorkingEnabled(), recipeMapWorkable.isActive())
+                .addEnergyUsageLine(getEnergyContainer())
+                .addEnergyTierLine(GTUtility.getTierByVoltage(recipeMapWorkable.getMaxVoltage()))
+
+                // Core tier line
+                .addCustom(tl -> {
+                    if (isStructureFormed()) {
+                        ITextComponent voltageName = new TextComponentString(GTValues.VNF[tier]);
+
+                        tl.add(TextComponentUtil.translationWithColor(TextFormatting.GRAY,
+                                "serendustry.machine.advanced_assembly_line.tier.core", voltageName));
+                    }
+                })
+
+                .addWorkingStatusLine()
+                .addProgressLine(recipeMapWorkable.getProgressPercent());
     }
 
     @Override

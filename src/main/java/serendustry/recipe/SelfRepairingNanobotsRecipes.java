@@ -32,9 +32,9 @@ public class SelfRepairingNanobotsRecipes {
                 .duration(400).EUt(400000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(NEURO_PROCESSOR)
                 .input(circuit, MarkerMaterials.Tier.UEV, 2)
                 .input(ROBOT_ARM_UEV)
-                .input(CULTURE_STEM_CELL_WIRED, 16)
                 .input(bolt, HalkoniteSteel, 64)
                 .input(foil, TengamAttuned, 64)
                 .input(foil, RadoxPolymer, 64)

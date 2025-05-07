@@ -31,7 +31,8 @@ public class DensePlateRecipes {
 
         // Special cased high tier materials
         Material[] highTiers = { Carbon, NaquadahAlloy, Darmstadtium, Adamantium, VibraniumAlloy };
-        Material[] higherTiers = { RadoxPolymer, Oganesson, Tennessine, Neutronium, Infinity, AwakenedDraconium, DeepDarkSteel,
+        Material[] higherTiers = { RadoxPolymer, Oganesson, Tennessine, Neutronium, Infinity, AwakenedDraconium,
+                DeepDarkSteel,
                 Floppa };
         int NORMAL = 0, HIGH = 1, HIGHER = 2;
         int[] Tiers = { GTValues.EV, GTValues.LuV };
@@ -80,8 +81,8 @@ public class DensePlateRecipes {
                     ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES.recipeBuilder()
                             .input(plate, material, 9)
                             .output(plateDense, material)
-                            .duration(64)
-                            .EUt(GTValues.VA[GTValues.OpV])
+                            .duration(20 * 60)
+                            .EUt(GTValues.VA[GTValues.UHV])
                             .buildAndRegister();
                 }
 

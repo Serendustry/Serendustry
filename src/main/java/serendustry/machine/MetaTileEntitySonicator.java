@@ -43,7 +43,7 @@ public class MetaTileEntitySonicator extends RecipeMapMultiblockController {
     public @NotNull BlockPattern createStructurePattern() {
         FactoryBlockPattern pattern = FactoryBlockPattern.start(LEFT, DOWN, FRONT);
 
-        for(String[] aisle : StructureDefinition.SONICATOR) {
+        for (String[] aisle : StructureDefinition.SONICATOR) {
             pattern.aisle(aisle);
         }
 

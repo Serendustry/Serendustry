@@ -200,8 +200,8 @@ public class CircuitRecipes {
                     .notConsumable(LENS_ARRAY_HYPERPRECISE)
                     .input(masks[i])
                     .input(WRAPPED_ORUNDUM_WAFER)
-                    .output(wafers[i], amount[i] * 8)
-                    .duration(8).EUt(VA[UEV]).buildAndRegister();
+                    .output(wafers[i], amount[i] * 16)
+                    .duration(20).EUt(VA[UHV]).buildAndRegister();
         }
 
         LASER_ENGRAVER_RECIPES.recipeBuilder()
@@ -231,7 +231,7 @@ public class CircuitRecipes {
                 .input(WRAPPED_ORUNDUM_WAFER)
                 .fluidInputs(Originium.getFluid(36))
                 .output(INACTIVE_APU_WAFER)
-                .duration(24).EUt(VA[UEV]).buildAndRegister();
+                .duration(20 * 8).EUt(VA[UHV]).buildAndRegister();
 
         HP_LASER_ARRAY_RECIPES.recipeBuilder()
                 .notConsumable(LENS_ARRAY_HYPERAMPLIFYING)
@@ -239,7 +239,7 @@ public class CircuitRecipes {
                 .input(plate, Gold, 64)
                 .fluidInputs(Hydrogen.getFluid(200000))
                 .fluidOutputs(Gold.getFluid(144 * 16), ChromaticGlass.getFluid(112), PositroniumHydride.getFluid(250))
-                .duration(8).EUt(VA[UEV]).buildAndRegister();
+                .duration(20).EUt(VA[UHV]).buildAndRegister();
 
         CHEMICAL_BATH_RECIPES.recipeBuilder()
                 .input(INACTIVE_APU_WAFER)
@@ -392,9 +392,8 @@ public class CircuitRecipes {
                 .chancedOutput(gem, IrradiatedDiamond, 1500, 0)
                 .chancedOutput(gemFlawless, IrradiatedDiamond, 1000, 0)
                 .chancedOutput(gemExquisite, IrradiatedDiamond, 500, 0)
-                .chancedOutputLogic(ChancedOutputLogic.XOR)
                 .fluidOutputs(Diamond.getFluid(72))
-                .duration(24).EUt(VA[UEV]).buildAndRegister();
+                .duration(20 * 4).EUt(VA[UHV]).buildAndRegister();
 
         OrePrefix[] gems = { gem, gemFlawless, gemExquisite };
         int[] chance = { 2500, 5000, 10000 };
@@ -418,14 +417,14 @@ public class CircuitRecipes {
                 .input(lens, Orundum)
                 .input(POSITRONIC_CHIP)
                 .input(plate, Neutronium)
-                .fluidInputs(Naquadria.getFluid(144 * 2))
+                .fluidInputs(Naquadria.getFluid(144 * 2),
+                        Tritanium.getFluid(144 * 2))
                 .output(ENGRAVED_POSITRONIC_CHIP)
                 .fluidOutputs(Orundum.getFluid(128))
-                .duration(24).EUt(VA[UEV]).buildAndRegister();
+                .duration(20 * 100).EUt(VA[UHV]).buildAndRegister();
     }
 
     private static void circuitRecipes() {
-
         int outputAmount = ConfigHolder.recipes.harderCircuitRecipes ? 1 : 2;
 
         // Any X Circuit
@@ -472,7 +471,8 @@ public class CircuitRecipes {
                 .cleanroom(CleanroomType.CLEANROOM)
                 .duration(20 * 20).EUt(VA[UHV]).buildAndRegister();
 
-        // ZPM SoC
+        // SoC ZPM
+        // todo: actually add an SOC to this recipe
         CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
                 .notConsumable(STELLAR_ESSENCE_NETHER)
                 .input(COSMIC_CIRCUIT_BOARD)
@@ -488,8 +488,11 @@ public class CircuitRecipes {
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(COSMIC_CIRCUIT_BOARD)
                 .input(CIRC_POSITRONIC_ZPM, 2)
-                .input(SUPREME_SMD_INDUCTOR, 6)
-                .input(SUPREME_SMD_CAPACITOR, 12)
+                .input(SUPREME_SMD_RESISTOR, 8)
+                .input(SUPREME_SMD_TRANSISTOR, 8)
+                .input(SUPREME_SMD_CAPACITOR, 8)
+                .input(SUPREME_SMD_DIODE, 8)
+                .input(SUPREME_SMD_INDUCTOR, 8)
                 .input(RANDOM_ACCESS_MEMORY, 32)
                 .input(wireFine, Hihiirokane, 16)
                 .input(foil, Adamantium, 16)
@@ -506,8 +509,11 @@ public class CircuitRecipes {
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(COSMIC_CIRCUIT_BOARD)
                 .input(CIRC_POSITRONIC_UV, 2)
-                .input(SUPREME_SMD_DIODE, 8)
-                .input(SUPREME_SMD_RESISTOR, 8)
+                .input(SUPREME_SMD_RESISTOR, 16)
+                .input(SUPREME_SMD_TRANSISTOR, 16)
+                .input(SUPREME_SMD_CAPACITOR, 16)
+                .input(SUPREME_SMD_DIODE, 16)
+                .input(SUPREME_SMD_INDUCTOR, 16)
                 .input(NOR_MEMORY_CHIP, 32)
                 .input(RANDOM_ACCESS_MEMORY, 64)
                 .input(wireFine, Hihiirokane, 24)
@@ -555,8 +561,11 @@ public class CircuitRecipes {
                 .input(ENTROPIC_CIRCUIT_BOARD)
                 .input(foil, TengamAttuned, 4)
                 .input(plate, HalkoniteSteel)
-                .input(SUPREME_SMD_CAPACITOR, 16)
-                .input(SUPREME_SMD_TRANSISTOR, 16)
+                .input(SUPREME_SMD_RESISTOR, 8)
+                .input(SUPREME_SMD_TRANSISTOR, 8)
+                .input(SUPREME_SMD_CAPACITOR, 8)
+                .input(SUPREME_SMD_DIODE, 8)
+                .input(SUPREME_SMD_INDUCTOR, 8)
                 .input(wireFine, Quantium40, 8)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144))
                 .fluidInputs(LCNS.getFluid(1000))
@@ -574,8 +583,11 @@ public class CircuitRecipes {
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ENTROPIC_CIRCUIT_BOARD)
                 .input(CIRC_ENTROPIC_UV, 2)
-                .input(SUPREME_SMD_INDUCTOR, 12)
-                .input(SUPREME_SMD_CAPACITOR, 24)
+                .input(SUPREME_SMD_RESISTOR, 16)
+                .input(SUPREME_SMD_TRANSISTOR, 16)
+                .input(SUPREME_SMD_CAPACITOR, 16)
+                .input(SUPREME_SMD_DIODE, 16)
+                .input(SUPREME_SMD_INDUCTOR, 16)
                 .input(RANDOM_ACCESS_MEMORY, 64)
                 .input(wireFine, Quantium40, 16)
                 .input(foil, Quantium40, 16)
@@ -593,8 +605,11 @@ public class CircuitRecipes {
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ENTROPIC_CIRCUIT_BOARD)
                 .input(CIRC_ENTROPIC_UHV, 2)
-                .input(SUPREME_SMD_DIODE, 16)
-                .input(SUPREME_SMD_RESISTOR, 16)
+                .input(SUPREME_SMD_RESISTOR, 32)
+                .input(SUPREME_SMD_TRANSISTOR, 32)
+                .input(SUPREME_SMD_CAPACITOR, 32)
+                .input(SUPREME_SMD_DIODE, 32)
+                .input(SUPREME_SMD_INDUCTOR, 32)
                 .input(NOR_MEMORY_CHIP, 64)
                 .input(RANDOM_ACCESS_MEMORY, 64)
                 .input(RANDOM_ACCESS_MEMORY, 64)
@@ -629,7 +644,7 @@ public class CircuitRecipes {
                 .fluidInputs(SentientNanobots.getFluid(144 * 16))
                 .fluidInputs(LCNS.getFluid(8000))
                 .fluidInputs(Originium.getFluid(144 * 2))
-                .fluidInputs(Rhugnor.getFluid(144 * 4))
+                .fluidInputs(Rhugnor.getFluid(144 * 16))
                 .output(CIRC_ENTROPIC_UIV)
                 .stationResearch(b -> b
                         .researchStack(CIRC_ENTROPIC_UEV.getStackForm())

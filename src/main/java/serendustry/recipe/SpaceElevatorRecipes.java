@@ -56,7 +56,7 @@ public class SpaceElevatorRecipes {
                 .input(wireFine, Americium, 32)
                 .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 8))
                 .output(PLANETOID_SCANNING_DRONE, 48)
-                .duration(24000*4).EUt(VA[UV]).buildAndRegister();
+                .duration(24000 * 4).EUt(VA[UV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(MetaTileEntities.SCANNER[UV])
@@ -69,7 +69,7 @@ public class SpaceElevatorRecipes {
                 .input(wireFine, Tritanium, 64)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 12))
                 .output(PLANETOID_SCANNING_DRONE_MK_2, 48)
-                .duration(24000*4).EUt(VA[UHV]).buildAndRegister();
+                .duration(24000 * 4).EUt(VA[UHV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(MetaTileEntities.SCANNER[ZPM])
@@ -82,7 +82,7 @@ public class SpaceElevatorRecipes {
                 .input(wireFine, Americium, 64)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 8))
                 .output(STAR_SCANNING_DRONE, 48)
-                .duration(32000*4).EUt(VA[UV]).buildAndRegister();
+                .duration(32000 * 4).EUt(VA[UV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(toolHeadDrill, NaquadahAlloy, 4)
@@ -96,7 +96,7 @@ public class SpaceElevatorRecipes {
                 .input(wireFine, Americium, 64)
                 .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 16))
                 .output(PLANETOID_HARVESTING_DRONE, 4)
-                .duration(12000*4).EUt(VA[UV]).buildAndRegister();
+                .duration(12000 * 4).EUt(VA[UV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(MetaTileEntities.QUANTUM_TANK[ZPM])
@@ -109,7 +109,7 @@ public class SpaceElevatorRecipes {
                 .input(wireFine, Americium, 64)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 8))
                 .output(STAR_HARVESTING_DRONE, 4)
-                .duration(12000*4).EUt(VA[UHV]).buildAndRegister();
+                .duration(12000 * 4).EUt(VA[UHV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(MetaTileEntities.SCANNER[UEV])
@@ -122,7 +122,7 @@ public class SpaceElevatorRecipes {
                 .input(wireFine, AwakenedDraconium, 64)
                 .fluidInputs(SentientNanobots.getFluid(144 * 12))
                 .output(DEEP_DARK_SCANNING_DRONE, 48)
-                .duration(48000*8).EUt(VA[UEV]).buildAndRegister();
+                .duration(48000 * 8).EUt(VA[UEV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(toolHeadDrill, AbyssalAlloy, 4)
@@ -135,7 +135,7 @@ public class SpaceElevatorRecipes {
                 .input(wireFine, AwakenedDraconium, 64)
                 .fluidInputs(SentientNanobots.getFluid(144 * 12))
                 .output(DEEP_DARK_HARVESTING_DRONE, 4)
-                .duration(24000*8).EUt(VA[UEV]).buildAndRegister();
+                .duration(24000 * 8).EUt(VA[UEV]).buildAndRegister();
 
         // todo: planetoids for more ores, fluid drones?
 

@@ -35,10 +35,6 @@ import gregtech.common.blocks.MetaBlocks;
 import serendustry.machine.LaboratoryProperty.LaboratoryEntry;
 import serendustry.machine.structure.StructureDefinition;
 
-import static gregtech.api.util.RelativeDirection.DOWN;
-import static gregtech.api.util.RelativeDirection.FRONT;
-import static gregtech.api.util.RelativeDirection.LEFT;
-
 public class MetaTileEntityIndustrialLaboratory extends RecipeMapMultiblockController {
 
     private Mode mode = Mode.NORMAL;
@@ -67,7 +63,7 @@ public class MetaTileEntityIndustrialLaboratory extends RecipeMapMultiblockContr
     protected BlockPattern createStructurePattern() {
         FactoryBlockPattern pattern = FactoryBlockPattern.start();
 
-        for(String[] aisle : StructureDefinition.INDUSTRIAL_LABORATORY) {
+        for (String[] aisle : StructureDefinition.INDUSTRIAL_LABORATORY) {
             pattern.aisle(aisle);
         }
 

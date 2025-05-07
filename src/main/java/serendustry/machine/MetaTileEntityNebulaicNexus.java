@@ -70,7 +70,7 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
     public @NotNull BlockPattern createStructurePattern() {
         FactoryBlockPattern pattern = FactoryBlockPattern.start(LEFT, DOWN, FRONT);
 
-        for(String[] aisle : StructureDefinition.NEBULAIC_NEXUS) {
+        for (String[] aisle : StructureDefinition.NEBULAIC_NEXUS) {
             pattern.aisle(aisle);
         }
 

@@ -41,7 +41,7 @@ public class MetaTileEntityCVDChamber extends RecipeMapMultiblockController {
     public @NotNull BlockPattern createStructurePattern() {
         FactoryBlockPattern pattern = FactoryBlockPattern.start(LEFT, DOWN, FRONT);
 
-        for(String[] aisle : StructureDefinition.CVD_CHAMBER) {
+        for (String[] aisle : StructureDefinition.CVD_CHAMBER) {
             pattern.aisle(aisle);
         }
 

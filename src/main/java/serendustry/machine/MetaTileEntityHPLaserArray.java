@@ -72,7 +72,7 @@ public class MetaTileEntityHPLaserArray extends RecipeMapMultiblockController {
     public @NotNull BlockPattern createStructurePattern() {
         FactoryBlockPattern pattern = FactoryBlockPattern.start(LEFT, DOWN, FRONT);
 
-        for(String[] aisle : StructureDefinition.HP_LASER_ARRAY) {
+        for (String[] aisle : StructureDefinition.HP_LASER_ARRAY) {
             pattern.aisle(aisle);
         }
 
@@ -89,8 +89,9 @@ public class MetaTileEntityHPLaserArray extends RecipeMapMultiblockController {
                 .where('B', frames(Materials.Neutronium))
                 .where('C', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS))) // todo
                 .where('D', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.FUSION_GLASS)))
-                .where('E', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST)));
-                // todo: use laser sources (tiered)
+                .where('E', states(
+                        MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST)));
+        // todo: use laser sources (tiered)
 
         return pattern.build();
     }

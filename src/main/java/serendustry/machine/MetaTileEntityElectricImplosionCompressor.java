@@ -95,7 +95,7 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
     public @NotNull BlockPattern createStructurePattern() {
         FactoryBlockPattern pattern = FactoryBlockPattern.start(LEFT, DOWN, FRONT);
 
-        for(String[] aisle : StructureDefinition.ELECTRIC_IMPLOSION_COMPRESSOR) {
+        for (String[] aisle : StructureDefinition.ELECTRIC_IMPLOSION_COMPRESSOR) {
             pattern.aisle(aisle);
         }
 

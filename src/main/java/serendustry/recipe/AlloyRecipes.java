@@ -7,7 +7,6 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static gregtech.common.metatileentities.MetaTileEntities.*;
 import static serendustry.item.SerendustryMetaItems.CULTURE_STEM_CELL_WIRED;
-import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_END;
 import static serendustry.item.material.SerendustryMaterials.*;
 import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES;

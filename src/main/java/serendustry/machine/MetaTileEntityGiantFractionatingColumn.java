@@ -69,7 +69,7 @@ public class MetaTileEntityGiantFractionatingColumn extends RecipeMapMultiblockC
     public @NotNull BlockPattern createStructurePattern() {
         FactoryBlockPattern pattern = FactoryBlockPattern.start(LEFT, DOWN, FRONT);
 
-        for(String[] aisle : StructureDefinition.GIANT_FRACTIONATING_COLUMN) {
+        for (String[] aisle : StructureDefinition.GIANT_FRACTIONATING_COLUMN) {
             pattern.aisle(aisle);
         }
 

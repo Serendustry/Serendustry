@@ -1,5 +1,9 @@
 package serendustry.machine;
 
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,10 +26,6 @@ import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
 import serendustry.machine.structure.StructureDefinition;
-
-import static gregtech.api.util.RelativeDirection.DOWN;
-import static gregtech.api.util.RelativeDirection.FRONT;
-import static gregtech.api.util.RelativeDirection.LEFT;
 
 public class MetaTileEntityStellarIncubator extends RecipeMapMultiblockController {
 
@@ -75,7 +75,7 @@ public class MetaTileEntityStellarIncubator extends RecipeMapMultiblockControlle
     protected BlockPattern createStructurePattern() {
         FactoryBlockPattern pattern = FactoryBlockPattern.start(LEFT, DOWN, FRONT);
 
-        for(String[] aisle : StructureDefinition.CUBE) {
+        for (String[] aisle : StructureDefinition.CUBE) {
             pattern.aisle(aisle);
         }
 
@@ -87,7 +87,8 @@ public class MetaTileEntityStellarIncubator extends RecipeMapMultiblockControlle
                                         .setMaxGlobalLimited(2))
                                 .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(0)
                                         .setMaxGlobalLimited(1))
-                                .or(abilities(MultiblockAbility.INPUT_LASER).setPreviewCount(1).setMaxGlobalLimited(1)));
+                                .or(abilities(MultiblockAbility.INPUT_LASER).setPreviewCount(1)
+                                        .setMaxGlobalLimited(1)));
 
         return pattern.build();
     }

@@ -40,6 +40,6 @@ public class AALRecipeLogic extends MultiblockRecipeLogic {
 
     // Halves recipe time for each tier that core tier exceeds recipe voltage tier
     public static int applyAALCoreSpeed(long recipeEUt, int tier, int recipeTime) {
-        return (int) (recipeTime / (Math.pow(2, tier - GTUtility.getTierByVoltage(recipeEUt))));
+        return (int) (recipeTime / (Math.pow(2, Math.max(tier - GTUtility.getTierByVoltage(recipeEUt), 0))));
     }
 }

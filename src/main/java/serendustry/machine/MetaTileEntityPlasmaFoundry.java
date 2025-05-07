@@ -1,5 +1,28 @@
 package serendustry.machine;
 
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
+
+import java.io.IOException;
+import java.util.List;
+
+import net.minecraft.block.Block;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.PacketBuffer;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentBase;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
+import net.minecraftforge.items.ItemStackHandler;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.Widget;
 import gregtech.api.gui.widgets.SlotWidget;
@@ -17,28 +40,10 @@ import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
-import net.minecraft.block.Block;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentBase;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.world.World;
-import net.minecraftforge.items.ItemStackHandler;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import serendustry.blocks.BlockSerendustryMetalCasing;
+import serendustry.blocks.SerendustryMetaBlocks;
+import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.machine.structure.StructureDefinition;
-
-import java.io.IOException;
-import java.util.List;
-
-import static gregtech.api.util.RelativeDirection.DOWN;
-import static gregtech.api.util.RelativeDirection.FRONT;
-import static gregtech.api.util.RelativeDirection.LEFT;
 
 public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
 
@@ -46,6 +51,7 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
     private final int CATALYST = 32842846;
 
     private ItemStackHandler controllerSlot;
+
     @NotNull
     private ItemStack catalyst = ItemStack.EMPTY;
 
@@ -88,13 +94,14 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
     public @NotNull BlockPattern createStructurePattern() {
         FactoryBlockPattern pattern = FactoryBlockPattern.start(LEFT, DOWN, FRONT);
 
-        for(String[] aisle : StructureDefinition.PLASMA_FOUNDRY) {
+        for (String[] aisle : StructureDefinition.PLASMA_FOUNDRY) {
             pattern.aisle(aisle);
         }
 
         pattern.where('D', selfPredicate())
                 .where('A',
-                        states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PALLADIUM_SUBSTATION))
+                        states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
+                                .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.CARBON))
                                 .setMinGlobalLimited(158).or(autoAbilities()))
                 .where('B', frames(Materials.NaquadahAlloy))
                 .where('C', states(Blocks.LAVA.getBlockState().getBaseState()));
@@ -102,8 +109,9 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
         return pattern.build();
     }
 
-    public ICubeRenderer getBaseTexture(@Nullable IMultiblockPart part) {
-        return Textures.PALLADIUM_SUBSTATION_CASING;
+    @Override
+    public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
+        return SerendustryTextures.CASING_CARBON;
     }
 
     @Override
@@ -116,6 +124,8 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
         tooltip.add(I18n.format("serendustry.machine.plasma_foundry.description.2"));
         tooltip.add(I18n.format(""));
         tooltip.add(I18n.format("serendustry.machine.plasma_foundry.description.3"));
+        tooltip.add(I18n.format(""));
+        tooltip.add(I18n.format("serendustry.machine.plasma_foundry.description.4"));
         String catalyst = I18n.format(NO_CATALYST);
         NBTTagCompound tag = stack.getTagCompound();
         if (tag != null) {
@@ -125,7 +135,8 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
             }
         }
 
-        tooltip.add(I18n.format("serendustry.machine.plasma_foundry.catalyst.contained") + " " + "§e" + catalyst + "§7");
+        tooltip.add(
+                I18n.format("serendustry.machine.plasma_foundry.catalyst.contained") + " " + "§e" + catalyst + "§7");
     }
 
     @Override

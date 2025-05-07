@@ -43,7 +43,7 @@ public class MetaTileEntityDehydrator extends RecipeMapMultiblockController {
     public @NotNull BlockPattern createStructurePattern() {
         FactoryBlockPattern pattern = FactoryBlockPattern.start(LEFT, DOWN, FRONT);
 
-        for(String[] aisle : StructureDefinition.DEHYDRATOR) {
+        for (String[] aisle : StructureDefinition.DEHYDRATOR) {
             pattern.aisle(aisle);
         }
 

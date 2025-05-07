@@ -74,7 +74,7 @@ public class MetaTileEntitySpaceElevator extends RecipeMapMultiblockController {
     public @NotNull BlockPattern createStructurePattern() {
         FactoryBlockPattern pattern = FactoryBlockPattern.start(LEFT, DOWN, FRONT);
 
-        for(String[] aisle : StructureSpaceElevator.SPACE_ELEVATOR) {
+        for (String[] aisle : StructureSpaceElevator.SPACE_ELEVATOR) {
             pattern.aisle(aisle);
         }
 

@@ -43,7 +43,7 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
     public @NotNull BlockPattern createStructurePattern() {
         FactoryBlockPattern pattern = FactoryBlockPattern.start(LEFT, DOWN, FRONT);
 
-        for(String[] aisle : StructureDefinition.ADVANCED_FUSION_REACTOR) {
+        for (String[] aisle : StructureDefinition.ADVANCED_FUSION_REACTOR) {
             pattern.aisle(aisle);
         }
 

@@ -36,40 +36,54 @@ import static gregtech.api.unification.material.Materials.Uranium238;
 import static gregtech.api.unification.material.Materials.Vanadium;
 import static gregtech.api.unification.material.Materials.Water;
 import static gregtech.api.unification.ore.OrePrefix.cableGtDouble;
+import static gregtech.api.unification.ore.OrePrefix.circuit;
 import static gregtech.api.unification.ore.OrePrefix.gear;
 import static gregtech.api.unification.ore.OrePrefix.plate;
+import static gregtech.api.unification.ore.OrePrefix.plateDense;
 import static gregtech.api.unification.ore.OrePrefix.screw;
 import static gregtech.api.unification.ore.OrePrefix.stickLong;
 import static gregtech.api.unification.ore.OrePrefix.wireGtDouble;
 import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UEV;
+import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UIV;
 import static gregtech.common.items.MetaItems.ROBOT_ARM_UEV;
+import static gregtech.common.items.MetaItems.ROBOT_ARM_UIV;
 import static gregtech.common.metatileentities.MetaTileEntities.FUSION_REACTOR;
+import static serendustry.item.SerendustryMetaItems.CHIP_OPIC;
+import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_END;
 import static serendustry.item.material.SerendustryMaterials.AbyssalAlloy;
 import static serendustry.item.material.SerendustryMaterials.Adamantium;
 import static serendustry.item.material.SerendustryMaterials.Aluminum;
+import static serendustry.item.material.SerendustryMaterials.AwakenedDraconium;
 import static serendustry.item.material.SerendustryMaterials.DeepDarkIron;
+import static serendustry.item.material.SerendustryMaterials.DeepDarkSteel;
 import static serendustry.item.material.SerendustryMaterials.Dragonblood;
+import static serendustry.item.material.SerendustryMaterials.ExoHalkoniteSteel;
 import static serendustry.item.material.SerendustryMaterials.HalkoniteSteel;
 import static serendustry.item.material.SerendustryMaterials.Hihiirokane;
 import static serendustry.item.material.SerendustryMaterials.Hypogen;
 import static serendustry.item.material.SerendustryMaterials.Infinity;
 import static serendustry.item.material.SerendustryMaterials.InfinityCatalyst;
 import static serendustry.item.material.SerendustryMaterials.InfusedGold;
+import static serendustry.item.material.SerendustryMaterials.NaquadriaticTaranium;
 import static serendustry.item.material.SerendustryMaterials.Quantium40;
 import static serendustry.item.material.SerendustryMaterials.Rhugnor;
 import static serendustry.item.material.SerendustryMaterials.ScUevSane;
 import static serendustry.item.material.SerendustryMaterials.SelfRepairingNanobots;
+import static serendustry.item.material.SerendustryMaterials.SentientNanobots;
 import static serendustry.item.material.SerendustryMaterials.TastyNeutronium;
 import static serendustry.item.material.SerendustryMaterials.Thaumium;
 import static serendustry.machine.SerendustryMetaTileEntities.ADVANCED_FUSION_REACTOR;
+import static serendustry.machine.SerendustryMetaTileEntities.MEGA_FUSION_REACTOR;
 
+import gregtech.api.GTValues;
+import gregtech.api.unification.material.MarkerMaterials;
 import serendustry.blocks.BlockSerendustryMultiCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 
 public class LargeAlloySmelterRecipes {
 
     public static void init() {
-        // . Todo: remove and replace ALL fusion recipes
+        // Todo: remove and replace ALL fusion recipes
         FUSION_RECIPES.recipeBuilder()
                 .fluidInputs(Beryllium.getFluid(16)).fluidInputs(Lithium.getFluid(16))
                 .fluidOutputs(Nitrogen.getPlasma(100))
@@ -153,20 +167,52 @@ public class LargeAlloySmelterRecipes {
                 .duration(6400).EUt(VA[UEV]).buildAndRegister();
 
         // adv fusion only
-
         FUSION_RECIPES.recipeBuilder()
                 .fluidInputs(Bromine.getFluid(1000)).fluidInputs(Gold.getFluid(144 * 4))
                 .fluidOutputs(Flerovium.getPlasma(144))
                 .duration(4000).EUt(VA[UIV]).EUToStart(640_000_000).buildAndRegister();
 
         FUSION_RECIPES.recipeBuilder()
-                .fluidInputs(Infinity.getFluid(144)).fluidInputs(DeepDarkIron.getFluid(288))
+                .fluidInputs(AwakenedDraconium.getFluid(144 * 4)).fluidInputs(Flerovium.getPlasma(144 * 4))
                 .fluidOutputs(Rhugnor.getFluid(144))
-                .duration(250).EUt(VA[UXV]).EUToStart(640_000_000).buildAndRegister();
+                .duration(20 * 50).EUt(VA[UXV]).EUToStart(640_000_000).buildAndRegister();
 
         FUSION_RECIPES.recipeBuilder()
-                .fluidInputs(Dragonblood.getFluid(144), Rhugnor.getFluid(288))
-                .fluidOutputs(Hypogen.getFluid(36))
-                .duration(500).EUt(VA[UXV]).EUToStart(640_000_000).buildAndRegister();
+                .fluidInputs(Infinity.getFluid(144)).fluidInputs(DeepDarkIron.getFluid(288))
+                .fluidOutputs(Rhugnor.getFluid(144))
+                .duration(20 * 10).EUt(VA[UXV]).EUToStart(640_000_000).buildAndRegister();
+
+        FUSION_RECIPES.recipeBuilder()
+                .fluidInputs(Dragonblood.getFluid(144 * 4), Rhugnor.getFluid(144 * 8))
+                .fluidOutputs(Hypogen.getFluid(144))
+                .duration(20 * 180).EUt(VA[UXV]).EUToStart(640_000_000).buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(STELLAR_ESSENCE_END)
+                .input(ADVANCED_FUSION_REACTOR, 8)
+                .input(FIELD_GENERATOR_UIV, 8)
+                .input(ROBOT_ARM_UIV, 16)
+                .inputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 64),
+                        SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 64),
+                        SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 64),
+                        SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 64))
+                .input(circuit, MarkerMaterials.Tier.UIV, 32)
+                .input(plateDense, ExoHalkoniteSteel, 16)
+                .input(gear, ExoHalkoniteSteel, 32)
+                .input(gear, Infinity, 32)
+                .input(plate, DeepDarkSteel, 32)
+                .input(stickLong, ExoHalkoniteSteel, 32)
+                .input(stickLong, Infinity, 64)
+                .input(CHIP_OPIC, 64)
+                .fluidInputs(SentientNanobots.getFluid(144 * 16),
+                        Hypogen.getFluid(144 * 16),
+                        Rhugnor.getFluid(144 * 32),
+                        NaquadriaticTaranium.getFluid(144 * 64))
+                .output(MEGA_FUSION_REACTOR)
+                .stationResearch(b -> b
+                        .researchStack(ADVANCED_FUSION_REACTOR.getStackForm())
+                        .CWUt(144)
+                        .EUt(VA[GTValues.UEV]))
+                .duration(16000).EUt(VA[GTValues.UEV]).buildAndRegister();
     }
 }

@@ -95,8 +95,8 @@ public class ElectricImplosionCompressorRecipes {
         ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES.recipeBuilder()
                 .inputStacks(inputs)
                 .outputs(recipe.getOutputs())
-                .duration(max(1, recipe.getDuration() / 32))
-                .EUt(recipe.getEUt() * 1024)
+                .duration(max(1, recipe.getDuration() / 8))
+                .EUt(recipe.getEUt() * 64)
                 .buildAndRegister();
 
         usedRecipes.add(inputs);

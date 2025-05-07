@@ -8,6 +8,7 @@ import gregtech.api.unification.OreDictUnifier;
 
 public class VazkiiWhatAreYouDoing {
 
+    // todo fix
     public static void init() {
         OreDictUnifier
                 .registerOre(new ItemStack(Item.REGISTRY.getObject(new ResourceLocation("botania", "manaresource")),

@@ -74,7 +74,8 @@ public class StarMatterRecipes {
                         .EUt(VA[UV]))
                 .duration(6400).EUt(VA[UV]).buildAndRegister();
 
-        // Because you can't OC with only 1 energy hatch, you need 2 regular UV energy hatches at first, and then can switch to 64A UHV
+        // Because you can't OC with only 1 energy hatch, you need 2 regular UV energy hatches at first, and then can
+        // switch to 64A UHV
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
                 .input(ingot, Darmstadtium)
                 .fluidInputs(Helium.getFluid(FluidStorageKeys.PLASMA, 1000))
