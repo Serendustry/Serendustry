@@ -192,10 +192,14 @@ public class LargeAlloySmelterRecipes {
                 .input(ADVANCED_FUSION_REACTOR, 8)
                 .input(FIELD_GENERATOR_UIV, 8)
                 .input(ROBOT_ARM_UIV, 16)
-                .inputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 64),
-                        SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 64),
-                        SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 64),
-                        SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 64))
+                .inputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING
+                        .getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 64),
+                        SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(
+                                BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 64),
+                        SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(
+                                BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 64),
+                        SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(
+                                BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 64))
                 .input(circuit, MarkerMaterials.Tier.UIV, 32)
                 .input(plateDense, ExoHalkoniteSteel, 16)
                 .input(gear, ExoHalkoniteSteel, 32)

@@ -37,9 +37,6 @@ import gregtech.api.unification.material.Materials;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.TextComponentUtil;
 import gregtech.client.renderer.ICubeRenderer;
-import gregtech.client.renderer.texture.Textures;
-import gregtech.common.blocks.BlockMetalCasing;
-import gregtech.common.blocks.MetaBlocks;
 import serendustry.blocks.BlockSerendustryMetalCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
@@ -102,8 +99,8 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
                 .where('A',
                         states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
                                 .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.CARBON))
-                                .setMinGlobalLimited(158).or(autoAbilities()))
-                .where('B', frames(Materials.NaquadahAlloy))
+                                        .setMinGlobalLimited(158).or(autoAbilities()))
+                .where('B', frames(Materials.Osmiridium))
                 .where('C', states(Blocks.LAVA.getBlockState().getBaseState()));
 
         return pattern.build();
@@ -123,9 +120,8 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
         tooltip.add(I18n.format("serendustry.machine.plasma_foundry.description.1"));
         tooltip.add(I18n.format("serendustry.machine.plasma_foundry.description.2"));
         tooltip.add(I18n.format(""));
-        tooltip.add(I18n.format("serendustry.machine.plasma_foundry.description.3"));
+        tooltip.add(I18n.format("serendustry.machine.energy.regular"));
         tooltip.add(I18n.format(""));
-        tooltip.add(I18n.format("serendustry.machine.plasma_foundry.description.4"));
         String catalyst = I18n.format(NO_CATALYST);
         NBTTagCompound tag = stack.getTagCompound();
         if (tag != null) {
@@ -135,8 +131,9 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
             }
         }
 
-        tooltip.add(
-                I18n.format("serendustry.machine.plasma_foundry.catalyst.contained") + " " + "§e" + catalyst + "§7");
+        tooltip.add(I18n.format("serendustry.machine.plasma_foundry.catalyst.contained") + " " + "§e" + catalyst + "§7");
+        tooltip.add(I18n.format(""));
+        tooltip.add(I18n.format("serendustry.machine.authors.envoidia_twilight"));
     }
 
     @Override

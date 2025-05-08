@@ -5,7 +5,6 @@ import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.EXTRUDER_RECIPES;
-import static gregtech.api.recipes.RecipeMaps.FLUID_SOLIDFICATION_RECIPES;
 import static gregtech.api.unification.material.Materials.Americium;
 import static gregtech.api.unification.material.Materials.Carbon;
 import static gregtech.api.unification.material.Materials.Copper;
@@ -58,7 +57,6 @@ import static gregtech.common.items.MetaItems.SENSOR_UIV;
 import static gregtech.common.items.MetaItems.SENSOR_UV;
 import static gregtech.common.items.MetaItems.SHAPE_EXTRUDER_ROD;
 import static gregtech.common.metatileentities.MetaTileEntities.ADVANCED_LARGE_MINER;
-import static gregtech.common.metatileentities.MetaTileEntities.FLUID_SOLIDIFIER;
 import static serendustry.item.SerendustryMetaItems.COIL_UEV;
 import static serendustry.item.material.SerendustryMaterials.AbyssalAlloy;
 import static serendustry.item.material.SerendustryMaterials.Adamantium;
@@ -120,12 +118,14 @@ public class CasingRecipes {
                 .output(stick, Carbon, 2)
                 .duration(20 + 12).EUt(42).buildAndRegister();
 
-        /* todo ceu update + change time and eu
-        FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
-                .fluidInputs(Carbon.getFluid(72))
-                .notConsumable(SHAPE_MOLD_ROD)
-                .output(stick, Carbon)
-                .duration(20 + 12).EUt(42).buildAndRegister();*/
+        /*
+         * todo ceu update + change time and eu
+         * FLUID_SOLIDFICATION_RECIPES.recipeBuilder()
+         * .fluidInputs(Carbon.getFluid(72))
+         * .notConsumable(SHAPE_MOLD_ROD)
+         * .output(stick, Carbon)
+         * .duration(20 + 12).EUt(42).buildAndRegister();
+         */
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(plateDense, Carbon, 6)

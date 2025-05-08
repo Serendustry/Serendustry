@@ -2,21 +2,24 @@ package serendustry.machine;
 
 import static gregtech.api.util.RelativeDirection.*;
 
-import gregtech.api.capability.IEnergyContainer;
-import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import gregtech.api.pattern.PatternMatchContext;
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import org.jetbrains.annotations.NotNull;
 
+import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
+import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
+import gregtech.api.pattern.PatternMatchContext;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.common.blocks.*;
@@ -24,9 +27,6 @@ import serendustry.blocks.BlockSerendustryMultiCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.machine.structure.StructureDefinition;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MetaTileEntityMegaFusionReactor extends RecipeMapMultiblockController {
 
@@ -84,14 +84,14 @@ public class MetaTileEntityMegaFusionReactor extends RecipeMapMultiblockControll
                 .where('X',
                         states(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING
                                 .getState(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION))
-                                .setMinGlobalLimited(365)
-                                .or(autoAbilities(false, false, false, false, true, true, false))
-                                .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0)
-                                        .setMinGlobalLimited(0).setMaxGlobalLimited(2))
-                                .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(0)
-                                        .setMaxGlobalLimited(1))
-                                .or(abilities(MultiblockAbility.INPUT_LASER).setPreviewCount(1)
-                                        .setMaxGlobalLimited(1)))
+                                        .setMinGlobalLimited(365)
+                                        .or(autoAbilities(false, false, false, false, true, true, false))
+                                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0)
+                                                .setMinGlobalLimited(0).setMaxGlobalLimited(2))
+                                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(0)
+                                                .setMaxGlobalLimited(1))
+                                        .or(abilities(MultiblockAbility.INPUT_LASER).setPreviewCount(1)
+                                                .setMaxGlobalLimited(1)))
                 .where('B',
                         states(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING
                                 .getState(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL)))

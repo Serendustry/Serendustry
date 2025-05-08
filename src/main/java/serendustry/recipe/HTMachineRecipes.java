@@ -93,7 +93,6 @@ import static serendustry.machine.SerendustryMetaTileEntities.ELECTRIC_IMPLOSION
 import static serendustry.machine.SerendustryMetaTileEntities.FLAMEL_CRUCIBLE;
 import static serendustry.machine.SerendustryMetaTileEntities.PLASMA_CONDENSER;
 
-import com.cleanroommc.groovyscript.compat.vanilla.OreDict;
 import gregtech.api.GTValues;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;

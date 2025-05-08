@@ -1,5 +1,6 @@
 package serendustry.blocks;
 
+import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.NotNull;
 
 public interface IACRComponentBlockStats {
@@ -7,7 +8,11 @@ public interface IACRComponentBlockStats {
     @NotNull
     String getName();
 
-    int getTemperatureMod();
+    double getTemperatureMod();
 
-    int getPressureMod();
+    double getPressureMod();
+
+    double getEUtMod();
+
+    FluidStack getAddedFluidInput();
 }

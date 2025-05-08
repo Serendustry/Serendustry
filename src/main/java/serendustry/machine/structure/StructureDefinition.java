@@ -3012,19 +3012,19 @@ public class StructureDefinition {
             "XGGGX",
             "XXSXX" },
             {
-                    "XXXXX",
+                    "XGGGX",
                     "GAAAG",
                     "GAAAG",
                     "GAAAG",
                     "XXXXX" },
             {
-                    "XXXXX",
+                    "XGGGX",
                     "GAAAG",
                     "GAAAG",
                     "GAAAG",
                     "XXXXX" },
             {
-                    "XXXXX",
+                    "XGGGX",
                     "GAAAG",
                     "GAAAG",
                     "GAAAG",
@@ -3034,6 +3034,6 @@ public class StructureDefinition {
                     "XGGGX",
                     "XGGGX",
                     "XGGGX",
-                    "XXXXX" }};
+                    "XXXXX" } };
     // todo TPM, Yggdrasil, mega fusion, acr
 }

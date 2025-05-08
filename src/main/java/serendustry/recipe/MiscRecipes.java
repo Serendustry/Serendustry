@@ -7,6 +7,7 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static serendustry.item.SerendustryMetaItems.*;
 import static serendustry.item.material.SerendustryMaterials.*;
+import static serendustry.machine.SerendustryRecipeMaps.ACR_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
 
 import net.minecraft.init.Blocks;
@@ -131,5 +132,41 @@ public class MiscRecipes {
                 .output(Blocks.OBSIDIAN)
                 .explosivesAmount(1)
                 .duration(20 * 60 * 240 * 32).EUt(VA[ULV]).buildAndRegister();
+
+        // 7 Recip Compressor 6 Liq Cooler
+        ACR_RECIPES.recipeBuilder()
+                .temperature(200, 250)
+                .pressure(300, 350)
+                .input(dust, Iron)
+                .output(dust, Gold)
+                .duration(20).EUt(VA[UV]).buildAndRegister();
+
+        ACR_RECIPES.recipeBuilder()
+                .temperature(20, 30)
+                .pressure(80, 120)
+                .input(dust, BlueSteel)
+                .output(dust, Emerald)
+                .duration(20).EUt(VA[UV]).buildAndRegister();
+
+        ACR_RECIPES.recipeBuilder()
+                .temperature(3100, 3200)
+                .pressure(120, 140)
+                .input(dust, RedSteel)
+                .output(dust, Sapphire)
+                .duration(20).EUt(VA[UV]).buildAndRegister();
+
+        ACR_RECIPES.recipeBuilder()
+                .temperature(100, 150)
+                .pressure(20, 30)
+                .input(dust, Steel)
+                .output(dust, Ruby)
+                .duration(20).EUt(VA[UV]).buildAndRegister();
+
+        ACR_RECIPES.recipeBuilder()
+                .temperature(600, 650)
+                .pressure(2000, 2100)
+                .input(dust, BlackSteel)
+                .output(dust, Silver)
+                .duration(20).EUt(VA[UV]).buildAndRegister();
     }
 }

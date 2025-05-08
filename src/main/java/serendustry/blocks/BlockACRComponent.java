@@ -1,15 +1,23 @@
 package serendustry.blocks;
 
+import gregtech.api.block.VariantBlock;
+import gregtech.api.unification.material.Material;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-
+import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.NotNull;
 
-import gregtech.api.block.VariantBlock;
+import static gregtech.api.unification.material.Materials.Air;
+import static gregtech.api.unification.material.Materials.Mercury;
+import static gregtech.api.unification.material.Materials.PCBCoolant;
+import static gregtech.api.unification.material.Materials.Propane;
+import static gregtech.api.unification.material.Materials.Salt;
+import static gregtech.api.unification.material.Materials.Water;
+import static serendustry.item.material.SerendustryMaterials.MolybdeniteLubricant;
 
 public class BlockACRComponent extends VariantBlock<BlockACRComponent.ACRComponentType> {
 
@@ -20,7 +28,7 @@ public class BlockACRComponent extends VariantBlock<BlockACRComponent.ACRCompone
         setResistance(10.0f);
         setHarvestLevel("wrench", 3);
         setSoundType(SoundType.METAL);
-        setDefaultState(getState(ACRComponentType.ACR_EMPTY));
+        setDefaultState(getState(ACRComponentType.EMPTY));
     }
 
     @Override
@@ -31,20 +39,28 @@ public class BlockACRComponent extends VariantBlock<BlockACRComponent.ACRCompone
 
     public enum ACRComponentType implements IStringSerializable, IACRComponentBlockStats {
 
-        ACR_EMPTY("acr_empty", 0, 0),
-        ACR_HEATER("acr_heater", 50, 2),
-        ACR_COOLER("acr_cooler", -50, -2),
-        ACR_VACUUM_PUMP("acr_vacuum_pump", -10, -10),
-        ACR_COMPRESSOR("acr_compressor", 10, 10);
+        EMPTY("empty", 1, 1, 1, new FluidStack(Water.getFluid(), 0)),
+        HEATER_RESISTIVE("heater_resistive", 1.1, 1.05, 0.05, new FluidStack(Water.getFluid(), 0)),
+        HEATER_GAS("heater_gas", 1.075, 1.025, 0, new FluidStack(Propane.getFluid(), 1)),
+        COOLER_LIQUID("cooler_liquid", 0.9, 0.95, 0, new FluidStack(PCBCoolant.getFluid(), 1)),
+        COOLER_THERMOELECTRIC("cooler_thermoelectric", 0.925, 0.975, 0.05, new FluidStack(Water.getFluid(), 0)),
+        PUMP_DIFFUSION("pump_diffusion", 0.95, 0.9, 0, new FluidStack(Mercury.getFluid(), 1)),
+        PUMP_PISTON("pump_piston", 0.975, 0.925, 0, new FluidStack(MolybdeniteLubricant.getFluid(), 1)),
+        COMPRESSOR_RECIPROCATING("compressor_reciprocating", 1.05, 1.25, 0, new FluidStack(Air.getFluid(), 4)),
+        COMPRESSOR_CENTRIFUGAL("compressor_centrifugal", 1.025, 1.2, 0, new FluidStack(MolybdeniteLubricant.getFluid(), 1));
 
         private final String name;
-        private final int temperatureMod;
-        private final int pressureMod;
+        private final double temperatureMod;
+        private final double pressureMod;
+        private final double EUtMod;
+        private final FluidStack addedFluidInput;
 
-        ACRComponentType(String name, int temperatureMod, int pressureMod) {
+        ACRComponentType(String name, double temperatureMod, double pressureMod, double EUtMod, FluidStack addedFluidInput) {
             this.name = name;
             this.temperatureMod = temperatureMod;
             this.pressureMod = pressureMod;
+            this.EUtMod = EUtMod;
+            this.addedFluidInput = addedFluidInput;
         }
 
         @NotNull
@@ -54,13 +70,23 @@ public class BlockACRComponent extends VariantBlock<BlockACRComponent.ACRCompone
         }
 
         @Override
-        public int getTemperatureMod() {
+        public double getTemperatureMod() {
             return this.temperatureMod;
         }
 
         @Override
-        public int getPressureMod() {
+        public double getPressureMod() {
             return this.pressureMod;
+        }
+
+        @Override
+        public double getEUtMod() {
+            return this.EUtMod;
+        }
+
+        @Override
+        public FluidStack getAddedFluidInput() {
+            return this.addedFluidInput;
         }
     }
 }

@@ -28,6 +28,7 @@ dependencies {
     implementation("gregtech:gregtech:2.8.10-beta:dev") { transitive = false } // GTCEu 2.8.10
     //implementation("gregtech:gregtech:2.8.10-beta:dev") { transitive = false } // GTCEu 2.8.10
     implementation "codechicken:codechickenlib:3.2.3.358:dev" // CCL 3.2.3.358
+    //implementation("gregicality:GregicalityMultiblocks:1.2.11")
 
     // Soft Dependencies
     compileOnlyApi rfg.deobf("curse.maven:ctm-267602:2915363") // CTM 1.0.2.31

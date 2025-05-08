@@ -1,0 +1,58 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:cube_all",
+    "textures": {
+      "all": "gregtech:blocks/rendering_error"
+    }
+  },
+  "variants": {
+    "variant": {
+      "empty": {
+        "textures": {
+          "all": "gregtech:blocks/casing/acr_component/empty"
+        }
+      },
+      "heater_resistive": {
+        "textures": {
+          "all": "gregtech:blocks/casing/acr_component/heater_resistive"
+        }
+      },
+      "heater_gas": {
+        "textures": {
+          "all": "gregtech:blocks/casing/acr_component/heater_gas"
+        }
+      },
+      "cooler_liquid": {
+        "textures": {
+          "all": "gregtech:blocks/casing/acr_component/cooler_liquid"
+        }
+      },
+      "cooler_thermoelectric": {
+        "textures": {
+          "all": "gregtech:blocks/casing/acr_component/cooler_thermoelectric"
+        }
+      },
+      "pump_diffusion": {
+        "textures": {
+          "all": "gregtech:blocks/casing/acr_component/pump_diffusion"
+        }
+      },
+      "pump_piston": {
+        "textures": {
+          "all": "gregtech:blocks/casing/acr_component/pump_piston"
+        }
+      },
+      "compressor_reciprocating": {
+        "textures": {
+          "all": "gregtech:blocks/casing/acr_component/compressor_reciprocating"
+        }
+      },
+      "compressor_centrifugal": {
+        "textures": {
+          "all": "gregtech:blocks/casing/acr_component/compressor_centrifugal"
+        }
+      }
+    }
+  }
+}

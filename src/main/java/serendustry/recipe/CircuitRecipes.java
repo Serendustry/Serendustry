@@ -17,7 +17,6 @@ import static serendustry.machine.SerendustryRecipeMaps.HP_LASER_ARRAY_RECIPES;
 import gregtech.api.GTValues;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.metatileentity.multiblock.CleanroomType;
-import gregtech.api.recipes.chance.output.ChancedOutputLogic;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.ConfigHolder;

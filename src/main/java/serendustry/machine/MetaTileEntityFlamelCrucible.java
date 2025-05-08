@@ -127,5 +127,8 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         tooltip.add(TooltipHelper.RAINBOW_SLOW + I18n.format("gregtech.machine.perfect_oc"));
+        tooltip.add("");
+        tooltip.add("");
+        tooltip.add(I18n.format("serendustry.machine.author.envoidia"));
     }
 }

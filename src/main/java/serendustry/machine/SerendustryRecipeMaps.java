@@ -3,6 +3,7 @@ package serendustry.machine;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
+import scala.sys.process.ProcessBuilderImpl;
 
 public class SerendustryRecipeMaps {
 
@@ -42,6 +43,8 @@ public class SerendustryRecipeMaps {
             "electric_implosion_compressor", 6, 2, 0, 0, new SimpleRecipeBuilder(), false);
     public static final RecipeMap<SimpleRecipeBuilder> CRYSTALLIZER_RECIPES = new RecipeMap<>(
             "crystallizer", 2, 2, 0, 0, new SimpleRecipeBuilder(), false);
+    public static final RecipeMapACR ACR_RECIPES = new RecipeMapACR(
+            "advanced_chemical_reactor", 3, 3, 3, 3, false);
     /*
      * public static final RecipeMap<SimpleRecipeBuilder> ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES = new
      * RecipeMapBuilder<>("electric_implosion_compressor",

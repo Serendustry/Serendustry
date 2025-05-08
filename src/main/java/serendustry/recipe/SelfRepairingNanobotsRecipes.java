@@ -5,7 +5,6 @@ import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 import static java.lang.Math.max;
-import static serendustry.item.SerendustryMetaItems.CULTURE_STEM_CELL_WIRED;
 import static serendustry.item.material.SerendustryMaterials.*;
 
 import gregtech.api.unification.OreDictUnifier;

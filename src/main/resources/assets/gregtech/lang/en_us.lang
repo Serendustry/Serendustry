@@ -603,8 +603,8 @@ tile.serendustry_metal_casing.neutronium.name=Stellar Neutronium Casing
 
 tile.serendustry_multi_casing.space_elevator.name=Space Elevator Casing
 
-tile.serendustry_multi_casing.adv_fusion.name=Advanced Fusion Casing
-tile.serendustry_multi_casing.adv_fusion_coil.name=Advanced Fusion Coil
+tile.serendustry_multi_casing.adv_fusion.name=Prismatic Fusion Casing
+tile.serendustry_multi_casing.adv_fusion_coil.name=Prismatic Fusion Coil
 
 tile.eic_hammer_casing.neutronium.name=Neutronium Hammer Casing
 tile.eic_hammer_casing.neutronium.tooltip=Grants the §eElectric Implosion Compressor §f16§7 parallel
@@ -635,7 +635,26 @@ tile.aal_core_casing.uxv.tooltip=Allows the §eAdvanced Assembly Line§7 to acce
 tile.aal_core_casing.opv.name=Assembly Core (OpV)
 tile.aal_core_casing.opv.tooltip=Allows the §eAdvanced Assembly Line§7 to accept §fEnergy§7 Hatches up to §3OpV§7-Tier/nFor each tier that cores exceed recipe tier, recipe duration is §fhalved
 tile.aal_core_casing.max.name=Assembly Core (MAX)
-tile.aal_core_casing.max.tooltip=Allows the §eAdvanced Assembly Line§7 to perform all recipes/nFor each tier that cores exceed recipe tier, recipe duration is §fhalved§7
+tile.aal_core_casing.max.tooltip=Allows the §eAdvanced Assembly Line§7 to perform all recipes/nFor each tier that cores exceed recipe tier, recipe duration is §fhalved
+
+tile.acr_component.empty.name=Empty Advanced Chemical Reactor Component
+tile.acr_component.empty.tooltip=Can be placed inside the §eAdvanced Chemical Reactor/n/nNo effect
+tile.acr_component.heater_resistive.name=Resistive Heater Component
+tile.acr_component.heater_resistive.tooltip=Can be placed inside the §eAdvanced Chemical Reactor/nMultiplies §eTemperature§7 by §f1.1§7 and §ePressure§7 by §f1.05/nIncreases energy usage by §f5%§7 (additive)
+tile.acr_component.heater_gas.name=Gas Heater Component
+tile.acr_component.heater_gas.tooltip=Can be placed inside the §eAdvanced Chemical Reactor/nMultiplies §eTemperature§7 by §f1.075§7 and §ePressure§7 by §f1.025/nRequires §f1L§e Propane Gas§7 per tick while the machine is running
+tile.acr_component.cooler_liquid.name=Liquid Cooler Component
+tile.acr_component.cooler_liquid.tooltip=Can be placed inside the §eAdvanced Chemical Reactor/nMultiplies §eTemperature§7 by §f0.9§7 and §ePressure§7 by §f0.95/nRequires §f1L§e Dielectric PCB Coolant§7 per tick while the machine is running
+tile.acr_component.cooler_thermoelectric.name=Thermoelectric Cooler Component
+tile.acr_component.cooler_thermoelectric.tooltip=Can be placed inside the §eAdvanced Chemical Reactor/nMultiplies §eTemperature§7 by §f0.925§7 and §ePressure§7 by §f0.975/nIncreases energy usage by §f5%§7 (additive)
+tile.acr_component.pump_diffusion.name=Diffusion Pump Component
+tile.acr_component.pump_diffusion.tooltip=Can be placed inside the §eAdvanced Chemical Reactor/nMultiplies §eTemperature§7 by §f0.95§7 and §ePressure§7 by §f0.9/nRequires §f1L§e Mercury§7 per tick while the machine is running
+tile.acr_component.pump_piston.name=Piston Pump Component
+tile.acr_component.pump_piston.tooltip=Can be placed inside the §eAdvanced Chemical Reactor/nMultiplies §eTemperature§7 by §f0.95§7 and §ePressure§7 by §f0.9/nRequires §f1L§e Molybdenite Lubricant§7 per tick while the machine is running
+tile.acr_component.compressor_reciprocating.name=Reciprocating Compressor Component
+tile.acr_component.compressor_reciprocating.tooltip=Can be placed inside the §eAdvanced Chemical Reactor/nMultiplies §eTemperature§7 by §f1.05§7 and §ePressure§7 by §f1.25/nRequires §f4L§e Air Gas§7 per tick while the machine is running
+tile.acr_component.compressor_centrifugal.name=Centrifugal Compressor Component
+tile.acr_component.compressor_centrifugal.tooltip=Can be placed inside the §eAdvanced Chemical Reactor/nMultiplies §eTemperature§7 by §f1.025§7 and §ePressure§7 by §f1.2/nRequires §f1L§e Molybdenite Lubricant§7 per tick while the machine is running
 
 serendustry.machine.industrial_laboratory.name=Industrial Laboratory
 serendustry.machine.industrial_laboratory.tooltip=§bOne Science only will one Genius fit; So vast is Art, so narrow Human Wit/n/nEach recipe requires certain singleblock machines of at least a certain tier to be placed in the space inside the Laboratory/n/nAccepts §f1-2§7 regular §fEnergy§7 Hatches/n/nAuthor: §d§lSerenibyss
@@ -648,10 +667,8 @@ serendustry.machine.nebulaic_nexus.name=Nebulaic Nexus
 serendustry.machine.nebulaic_nexus.tooltip=§bSet ablaze, I'll shine brighter than the stars/n/nAccepts §f1-2§7 regular §fEnergy§7 Hatches or §f1§7 §dSubstation§7 Hatch/n/nAuthor: §b§lEnvoidia
 serendustry.machine.plasma_foundry.name=Plasma Foundry
 serendustry.machine.plasma_foundry.flavor=§bFor a minute the sky pours into the hole like plasma
-serendustry.machine.plasma_foundry.description.1=Creates alloys in liquid form at far faster speeds than previously thought possible in bulk. Recipes require §eCatalysts§7 to run. When a catalyst is placed inside the §fcontroller slot§7, it will be §cconsumed§7, and that controller will be bound to that catalyst, and §conly§7 that catalysts, until it breaks. catalysts break after §f50§7 recipes
+serendustry.machine.plasma_foundry.description.1=Creates alloys in liquid form at far faster speeds than previously thought possible in bulk. Recipes require §eCatalysts§7 to run. When a catalyst is placed inside the §fcontroller slot§7, it will be §cconsumed§7, and that controller will be bound to that catalyst, and §conly§7 that catalyst, until it breaks. catalysts break after §f50§7 recipes
 serendustry.machine.plasma_foundry.description.2=Requires §f3§7 Lava source blocks to form
-serendustry.machine.plasma_foundry.description.3=Accepts §f1-2§7 regular §fEnergy§7 Hatches
-serendustry.machine.plasma_foundry.description.4=Authors: §b§lEnvoidia§r and §5§lTwilight
 serendustry.machine.plasma_foundry.catalyst.contained=Contained Catalyst:
 serendustry.machine.plasma_foundry.catalyst.accepted=Accepted Catalysts:
 serendustry.machine.plasma_foundry.no_catalyst=None
@@ -667,18 +684,18 @@ serendustry.machine.biolab.name=Biolab
 serendustry.machine.biolab.tooltip=§bUpon the ladder of life that mounts through Time, From plants to beasts, and up, through man, to God/n/nAccepts §f1-2§7 regular §fEnergy§7 Hatches/n/nAuthor: §b§lEnvoidia
 serendustry.machine.yggdrasil.name=Yggdrasil
 serendustry.machine.yggdrasil.tooltip=§cWIP! Does not function as intended!/n§bThat tree of which no man knows from where its roots run/n/nPerforms the tasks of different machines based on the §aProgrammed Circuit§7 present in a given Input Bus. 1 = Assembler, 2 = Circuit Assembler, 3 = Assembly Line (input order doesn't matter), 4 = Yggdrasil (todo: change to custom item, not circuits)/n/nAccepts §f1-2§7 regular §fEnergy§7 Hatches, §f1§7 §dSubstation§7 Hatch, or §f1§7 §dLaser§7 Hatch/nBy default, has no parallels. Placing a §eReality Distortion Amplifier§7 in the controller slot will consume it and permanently increase maximum parallels by  §f4§7, with no practical limit/nConsumes §exL/s§7 of §e???§7 some fluid idk per parallel while operating/n/nAuthor: §b§lEnvoidia
-serendustry.machine.advanced_fusion_reactor.name=Advanced Fusion Reactor
+serendustry.machine.advanced_fusion_reactor.name=Prismatic Fusion Reactor
 serendustry.machine.advanced_fusion_reactor.tooltip=§bA SUPERNOVA AT YOUR BECK AND CALL, RIVALING THE FIST OF GOD/n/nPerforms all §eFusion Reactor§7 recipes/nIgnores recipe EU to start/nHas §f32§7 parallel/n/nAccepts §f1-2§7 regular §fEnergy§7 Hatches/n/nAuthor: §b§lEnvoidia
 serendustry.machine.stellar_incubator.name=Stellar Incubator
 serendustry.machine.stellar_incubator.tooltip=§bGod uttering life, and God receiving death/n/nAccepts §f1-2§7 regular §fEnergy§7 Hatches, §f1§7 §dSubstation§7 Hatch, or §f1§7 §dLaser§7 Hatch/n/nAuthor: §b§lEnvoidia
 serendustry.machine.flamel_crucible.name=Flamel's Crucible
-serendustry.machine.flamel_crucible.tooltip=§bHope not ever to see Heaven. I have come to lead you to the other shore; into eternal darkness; into fire and into ice/n/nPerforms all §eLarge Chemical Reactor§7 recipes/nRequires §f1§7 Lava source block to form/n/nAccepts §f1-2§7 regular §fEnergy§7 Hatches, §f1§7 §dSubstation§7 Hatch, or §f1§7 §dLaser§7 Hatch/n/nAuthor: §b§lEnvoidia
+serendustry.machine.flamel_crucible.tooltip=§bHope not ever to see Heaven. I have come to lead you to the other shore; into eternal darkness; into fire and into ice/n/nPerforms all §eLarge Chemical Reactor§7 recipes/nRequires §f1§7 Lava source block to form/n/nAccepts §f1-2§7 regular §fEnergy§7 Hatches, §f1§7 §dSubstation§7 Hatch, or §f1§7 §dLaser§7 Hatch
 serendustry.machine.dehydrator.name=Dehydrator
 serendustry.machine.dehydrator.tooltip=§bThis dryness in which the monument is cracking/n/nAccepts §f1-2§7 regular §fEnergy§7 Hatches/n/nAuthor: §b§lEnvoidia
 serendustry.machine.stellar_engine.name=Stellar Engine
-serendustry.machine.stellar_engine.tooltip=§bIt is not too late to seek a newer world/n/nAccepts §f1-2§7 regular §fEnergy§7 Hatches, §f1§7 §dSubstation§7 Hatch, or §f1§7 §dLaser§7 Hatch/n/nAuthor: §b§lEnvoidia
+serendustry.machine.stellar_engine.tooltip=§bIt is not too late to seek a newer world/n/nAccepts §f1-2§7 regular §fEnergy§7 Hatches, §f1§7 §dSubstation§7 Hatch, or §f1§7 §dLaser§7 Hatch
 serendustry.machine.plasma_condenser.name=Plasma Condenser
-serendustry.machine.plasma_condenser.tooltip=§bTo follow knowledge like a sinking star, Beyond the utmost bound of human thought/n/nEach recipe has a type -- §cHeating§7 or §9Cooling§7 -- and a tier -- §f1§7 or §f2§7/nTier §f2§7 recipes require tier §f2§7 coils of the same type/nTier §f2§7 coils also §fquarter§7 the duration of tier §f1§7 recipes/n/nTier §f1§7 coils: §cInfernal§7 and §9Glacial/nTier §f2§7 coils: §cSupernova§7 and §9Black Hole/n/nAccepts §f1-2§7 regular §fEnergy§7 Hatches, §f1§7 §dSubstation§7 Hatch, or §f1§7 §dLaser§7 Hatch/n/nAuthor: §b§lEnvoidia
+serendustry.machine.plasma_condenser.tooltip=§bTo follow knowledge like a sinking star, Beyond the utmost bound of human thought/n/nEach recipe has a type -- §cHeating§7 or §9Cooling§7 -- and a tier -- §f1§7 or §f2§7/nTier §f2§7 recipes require tier §f2§7 coils of the same type/nTier §f2§7 coils also §fquarter§7 the duration of tier §f1§7 recipes/n/nTier §f1§7 coils: §cInfernal§7 and §9Glacial/nTier §f2§7 coils: §cSupernova§7 and §9Black Hole/n/nAccepts §f1-2§7 regular §fEnergy§7 Hatches, §f1§7 §dSubstation§7 Hatch, or §f1§7 §dLaser§7 Hatch
 serendustry.machine.plasma_condenser.tier_coil.heating=Heating Coil Tier: %s
 serendustry.machine.plasma_condenser.tier_coil.cooling=Cooling Coil Tier: %s
 serendustry.machine.plasma_condenser.error.tier_coil.heating=§cAll Heating Coils must be the same tier§r
@@ -696,12 +713,19 @@ serendustry.machine.advanced_assembly_line.tier=§cAll Cores must be the same ti
 serendustry.machine.advanced_assembly_line.tier.core=Assembly Core Tier: %s
 serendustry.machine.crystallizer.name=Crystallizer
 serendustry.machine.crystallizer.tooltip=§bTodo/n/nAccepts §f1-2§7 regular §fEnergy§7 Hatches/n/nAuthor: §b§lEnvoidia
-serendustry.machine.mega_fusion_reactor.name=Mega Fusion Reactor (todo name)
-serendustry.machine.mega_fusion_reactor.tooltip=§bTodo/n/nAccepts §f1-2§7 regular §fEnergy§7 Hatches/n/nAuthor: §b§lEnvoidia
-serendustry.machine.advanced_chemical_reactor.name=Advanced Chemical Reactor (todo name)
-serendustry.machine.advanced_chemical_reactor.tooltip=§bTodo/n/ntodo WIP/n/nAccepts §f1-2§7 regular §fEnergy§7 Hatches/n/nAuthor: §b§lEnvoidia
+serendustry.machine.mega_fusion_reactor.name=Senryoyakusha
+serendustry.machine.mega_fusion_reactor.tooltip=§bThe Star That Blanks Out the Darkness/n/nPerforms all §eFusion Reactor§7 recipes/nIgnores recipe EU to start/nHas §f4,096§7 parallel/n/nAccepts §f1-2§7 regular §fEnergy§7 Hatches, §f1§7 §dSubstation§7 Hatch, or §f1§7 §dLaser§7 Hatch/n/nAuthor: §b§lEnvoidia
+serendustry.machine.advanced_chemical_reactor.name=Advanced Chemical Reactor (todo change name)
+serendustry.machine.advanced_chemical_reactor.tooltip=§bTodo/n/nThe §f36§7 spaces in the center of the structure can be any §eAdvanced Chemical Reactor Components§7/nEach component has a different effect on §eTemperature§7 and §ePressure§7, both of which must be within a certain range for each recipe/nEach component also consumes a specific fluid each tick while the machine is running, or increases EU usage/nThe default temperature is §f295K§7 and the default pressure is §f101kPa/nComponents: §eEmpty§7, §eResistive Heater§7, §eGas Heater§7, §eLiquid Cooler§7, §eThermoelectric Cooler§7, §eDiffusion Pump§7, §ePiston Pump§7, §eReciprocating Compressor§7, and §eCentrifugal Compressor§7/n/nAccepts §f1-2§7 regular §fEnergy§7 Hatches/n/nAuthor: §b§lEnvoidia
 serendustry.machine.advanced_chemical_reactor.property.temperature=Temperature: %s
 serendustry.machine.advanced_chemical_reactor.property.pressure=Pressure: %s
+
+serendustry.machine.energy.regular=Accepts §f1-2§7 regular §fEnergy§7 Hatches
+serendustry.machine.energy.substation=Accepts §f1-2§7 regular §fEnergy§7 Hatches or §f1§7 §dSubstation§7 Hatch
+serendustry.machine.energy.laser=Accepts §f1-2§7 regular §fEnergy§7 Hatches, §f1§7 §dSubstation§7 Hatch, or §f1§7 §dLaser§7 Hatch
+
+serendustry.machine.author.envoidia=Author: §b§lEnvoidia
+serendustry.machine.author.envoidia_twilight=Authors: §b§lEnvoidia§r and §5§lTwilight
 
 recipemap.giant_fractionating_column.name=Giant Fractionating Column
 recipemap.industrial_laboratory.name=Industrial Laboratory
@@ -720,7 +744,7 @@ recipemap.stellar_engine.name=Stellar Engine
 recipemap.plasma_condenser.name=Plasma Condenser
 recipemap.electric_implosion_compressor.name=Electric Implosion Compressor
 recipemap.crystallizer.name=Crystallizer
-recipemap.advanced_chemical_reactor.name=Advanced Chemical Reactor (todo name)
+recipemap.advanced_chemical_reactor.name=Advanced Chemical Reactor
 
 entity.serendustry.friendly_creeper.name=Friendly Creeper
 

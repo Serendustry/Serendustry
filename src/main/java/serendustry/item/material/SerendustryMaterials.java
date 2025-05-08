@@ -1,26 +1,266 @@
 package serendustry.item.material;
 
-import static gregtech.api.GTValues.*;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.material.info.MaterialFlags.*;
+import static gregtech.api.GTValues.EV;
+import static gregtech.api.GTValues.HV;
+import static gregtech.api.GTValues.IV;
+import static gregtech.api.GTValues.LuV;
+import static gregtech.api.GTValues.MAX;
+import static gregtech.api.GTValues.MV;
+import static gregtech.api.GTValues.OpV;
+import static gregtech.api.GTValues.UEV;
+import static gregtech.api.GTValues.UHV;
+import static gregtech.api.GTValues.UIV;
+import static gregtech.api.GTValues.ULV;
+import static gregtech.api.GTValues.UV;
+import static gregtech.api.GTValues.UXV;
+import static gregtech.api.GTValues.V;
+import static gregtech.api.GTValues.VA;
+import static gregtech.api.GTValues.ZPM;
+import static gregtech.api.unification.material.Materials.Actinium;
+import static gregtech.api.unification.material.Materials.Aluminium;
+import static gregtech.api.unification.material.Materials.AluminiumSulfite;
+import static gregtech.api.unification.material.Materials.Americium;
+import static gregtech.api.unification.material.Materials.Ammonia;
+import static gregtech.api.unification.material.Materials.Antimony;
+import static gregtech.api.unification.material.Materials.Argon;
+import static gregtech.api.unification.material.Materials.Arsenic;
+import static gregtech.api.unification.material.Materials.Astatine;
+import static gregtech.api.unification.material.Materials.Barium;
+import static gregtech.api.unification.material.Materials.BasalticMineralSand;
+import static gregtech.api.unification.material.Materials.Bastnasite;
+import static gregtech.api.unification.material.Materials.Berkelium;
+import static gregtech.api.unification.material.Materials.Beryllium;
+import static gregtech.api.unification.material.Materials.Bismuth;
+import static gregtech.api.unification.material.Materials.BlackSteel;
+import static gregtech.api.unification.material.Materials.BlueSteel;
+import static gregtech.api.unification.material.Materials.Bohrium;
+import static gregtech.api.unification.material.Materials.Bone;
+import static gregtech.api.unification.material.Materials.Boron;
+import static gregtech.api.unification.material.Materials.Bromine;
+import static gregtech.api.unification.material.Materials.Cadmium;
+import static gregtech.api.unification.material.Materials.Caesium;
+import static gregtech.api.unification.material.Materials.Calcium;
+import static gregtech.api.unification.material.Materials.Californium;
+import static gregtech.api.unification.material.Materials.Carbon;
+import static gregtech.api.unification.material.Materials.Cerium;
+import static gregtech.api.unification.material.Materials.Chlorine;
+import static gregtech.api.unification.material.Materials.Chrome;
+import static gregtech.api.unification.material.Materials.Coal;
+import static gregtech.api.unification.material.Materials.Cobalt;
+import static gregtech.api.unification.material.Materials.Copernicium;
+import static gregtech.api.unification.material.Materials.Copper;
+import static gregtech.api.unification.material.Materials.Curium;
+import static gregtech.api.unification.material.Materials.DamascusSteel;
+import static gregtech.api.unification.material.Materials.Darmstadtium;
+import static gregtech.api.unification.material.Materials.Diamond;
+import static gregtech.api.unification.material.Materials.Dubnium;
+import static gregtech.api.unification.material.Materials.Duranium;
+import static gregtech.api.unification.material.Materials.Dysprosium;
+import static gregtech.api.unification.material.Materials.EXT2_METAL;
+import static gregtech.api.unification.material.Materials.Einsteinium;
+import static gregtech.api.unification.material.Materials.Electrotine;
+import static gregtech.api.unification.material.Materials.Electrum;
+import static gregtech.api.unification.material.Materials.EnderPearl;
+import static gregtech.api.unification.material.Materials.Erbium;
+import static gregtech.api.unification.material.Materials.Ethylene;
+import static gregtech.api.unification.material.Materials.Europium;
+import static gregtech.api.unification.material.Materials.Fermium;
+import static gregtech.api.unification.material.Materials.Flerovium;
+import static gregtech.api.unification.material.Materials.Fluorine;
+import static gregtech.api.unification.material.Materials.FluoroantimonicAcid;
+import static gregtech.api.unification.material.Materials.Francium;
+import static gregtech.api.unification.material.Materials.Gadolinium;
+import static gregtech.api.unification.material.Materials.Gallium;
+import static gregtech.api.unification.material.Materials.GarnetSand;
+import static gregtech.api.unification.material.Materials.Germanium;
+import static gregtech.api.unification.material.Materials.Glass;
+import static gregtech.api.unification.material.Materials.Gold;
+import static gregtech.api.unification.material.Materials.GraniticMineralSand;
+import static gregtech.api.unification.material.Materials.HSSG;
+import static gregtech.api.unification.material.Materials.HSSS;
+import static gregtech.api.unification.material.Materials.Hafnium;
+import static gregtech.api.unification.material.Materials.Hassium;
+import static gregtech.api.unification.material.Materials.Helium;
+import static gregtech.api.unification.material.Materials.Holmium;
+import static gregtech.api.unification.material.Materials.HydrochloricAcid;
+import static gregtech.api.unification.material.Materials.HydrofluoricAcid;
+import static gregtech.api.unification.material.Materials.Hydrogen;
+import static gregtech.api.unification.material.Materials.Indium;
+import static gregtech.api.unification.material.Materials.Invar;
+import static gregtech.api.unification.material.Materials.Iodine;
+import static gregtech.api.unification.material.Materials.Iridium;
+import static gregtech.api.unification.material.Materials.Iron;
+import static gregtech.api.unification.material.Materials.IronMagnetic;
+import static gregtech.api.unification.material.Materials.Kanthal;
+import static gregtech.api.unification.material.Materials.Krypton;
+import static gregtech.api.unification.material.Materials.Lanthanum;
+import static gregtech.api.unification.material.Materials.Lava;
+import static gregtech.api.unification.material.Materials.Lawrencium;
+import static gregtech.api.unification.material.Materials.Lead;
+import static gregtech.api.unification.material.Materials.Lithium;
+import static gregtech.api.unification.material.Materials.Livermorium;
+import static gregtech.api.unification.material.Materials.Lutetium;
+import static gregtech.api.unification.material.Materials.Magnesium;
+import static gregtech.api.unification.material.Materials.Manganese;
+import static gregtech.api.unification.material.Materials.Meitnerium;
+import static gregtech.api.unification.material.Materials.Mendelevium;
+import static gregtech.api.unification.material.Materials.Mercury;
+import static gregtech.api.unification.material.Materials.Molybdenite;
+import static gregtech.api.unification.material.Materials.Molybdenum;
+import static gregtech.api.unification.material.Materials.Monazite;
+import static gregtech.api.unification.material.Materials.Moscovium;
+import static gregtech.api.unification.material.Materials.Naquadah;
+import static gregtech.api.unification.material.Materials.NaquadahAlloy;
+import static gregtech.api.unification.material.Materials.NaquadahEnriched;
+import static gregtech.api.unification.material.Materials.Naquadria;
+import static gregtech.api.unification.material.Materials.Neodymium;
+import static gregtech.api.unification.material.Materials.NeodymiumMagnetic;
+import static gregtech.api.unification.material.Materials.Neon;
+import static gregtech.api.unification.material.Materials.Neptunium;
+import static gregtech.api.unification.material.Materials.NetherStar;
+import static gregtech.api.unification.material.Materials.Netherrack;
+import static gregtech.api.unification.material.Materials.Neutronium;
+import static gregtech.api.unification.material.Materials.Nichrome;
+import static gregtech.api.unification.material.Materials.Nickel;
+import static gregtech.api.unification.material.Materials.Nihonium;
+import static gregtech.api.unification.material.Materials.Niobium;
+import static gregtech.api.unification.material.Materials.NiobiumNitride;
+import static gregtech.api.unification.material.Materials.Nitrogen;
+import static gregtech.api.unification.material.Materials.Nobelium;
+import static gregtech.api.unification.material.Materials.Oganesson;
+import static gregtech.api.unification.material.Materials.Osmiridium;
+import static gregtech.api.unification.material.Materials.Osmium;
+import static gregtech.api.unification.material.Materials.Oxygen;
+import static gregtech.api.unification.material.Materials.Palladium;
+import static gregtech.api.unification.material.Materials.Phosphate;
+import static gregtech.api.unification.material.Materials.Phosphorus;
+import static gregtech.api.unification.material.Materials.Platinum;
+import static gregtech.api.unification.material.Materials.Plutonium239;
+import static gregtech.api.unification.material.Materials.Plutonium241;
+import static gregtech.api.unification.material.Materials.Polonium;
+import static gregtech.api.unification.material.Materials.Polyethylene;
+import static gregtech.api.unification.material.Materials.Polytetrafluoroethylene;
+import static gregtech.api.unification.material.Materials.PolyvinylChloride;
+import static gregtech.api.unification.material.Materials.Potassium;
+import static gregtech.api.unification.material.Materials.Praseodymium;
+import static gregtech.api.unification.material.Materials.Promethium;
+import static gregtech.api.unification.material.Materials.Protactinium;
+import static gregtech.api.unification.material.Materials.Radium;
+import static gregtech.api.unification.material.Materials.Radon;
+import static gregtech.api.unification.material.Materials.RedSteel;
+import static gregtech.api.unification.material.Materials.Redstone;
+import static gregtech.api.unification.material.Materials.Rhenium;
+import static gregtech.api.unification.material.Materials.Rhodium;
+import static gregtech.api.unification.material.Materials.Roentgenium;
+import static gregtech.api.unification.material.Materials.RoseGold;
+import static gregtech.api.unification.material.Materials.Rubidium;
+import static gregtech.api.unification.material.Materials.Ruridit;
+import static gregtech.api.unification.material.Materials.Ruthenium;
+import static gregtech.api.unification.material.Materials.RutheniumTriniumAmericiumNeutronate;
+import static gregtech.api.unification.material.Materials.Rutherfordium;
+import static gregtech.api.unification.material.Materials.Rutile;
+import static gregtech.api.unification.material.Materials.STD_METAL;
+import static gregtech.api.unification.material.Materials.Samarium;
+import static gregtech.api.unification.material.Materials.SamariumMagnetic;
+import static gregtech.api.unification.material.Materials.Scandium;
+import static gregtech.api.unification.material.Materials.Seaborgium;
+import static gregtech.api.unification.material.Materials.Selenium;
+import static gregtech.api.unification.material.Materials.Silicon;
+import static gregtech.api.unification.material.Materials.SiliconDioxide;
+import static gregtech.api.unification.material.Materials.Silver;
+import static gregtech.api.unification.material.Materials.Sodium;
+import static gregtech.api.unification.material.Materials.SodiumHydroxide;
+import static gregtech.api.unification.material.Materials.SolderingAlloy;
+import static gregtech.api.unification.material.Materials.Steel;
+import static gregtech.api.unification.material.Materials.SteelMagnetic;
+import static gregtech.api.unification.material.Materials.SterlingSilver;
+import static gregtech.api.unification.material.Materials.Strontium;
+import static gregtech.api.unification.material.Materials.Sulfur;
+import static gregtech.api.unification.material.Materials.SulfuricAcid;
+import static gregtech.api.unification.material.Materials.Tantalum;
+import static gregtech.api.unification.material.Materials.Technetium;
+import static gregtech.api.unification.material.Materials.Tellurium;
+import static gregtech.api.unification.material.Materials.Tennessine;
+import static gregtech.api.unification.material.Materials.Terbium;
+import static gregtech.api.unification.material.Materials.Thallium;
+import static gregtech.api.unification.material.Materials.Thorium;
+import static gregtech.api.unification.material.Materials.Thulium;
+import static gregtech.api.unification.material.Materials.Tin;
+import static gregtech.api.unification.material.Materials.TinAlloy;
+import static gregtech.api.unification.material.Materials.Titanium;
+import static gregtech.api.unification.material.Materials.Trinium;
+import static gregtech.api.unification.material.Materials.Tritanium;
+import static gregtech.api.unification.material.Materials.Tungsten;
+import static gregtech.api.unification.material.Materials.TungstenCarbide;
+import static gregtech.api.unification.material.Materials.TungstenSteel;
+import static gregtech.api.unification.material.Materials.Uraninite;
+import static gregtech.api.unification.material.Materials.Uranium235;
+import static gregtech.api.unification.material.Materials.Uranium238;
+import static gregtech.api.unification.material.Materials.Vanadium;
+import static gregtech.api.unification.material.Materials.Water;
+import static gregtech.api.unification.material.Materials.Xenon;
+import static gregtech.api.unification.material.Materials.Ytterbium;
+import static gregtech.api.unification.material.Materials.Yttrium;
+import static gregtech.api.unification.material.Materials.Zeolite;
+import static gregtech.api.unification.material.Materials.Zinc;
+import static gregtech.api.unification.material.Materials.Zirconium;
+import static gregtech.api.unification.material.info.MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING;
+import static gregtech.api.unification.material.info.MaterialFlags.DECOMPOSITION_BY_ELECTROLYZING;
 import static gregtech.api.unification.material.info.MaterialFlags.DISABLE_DECOMPOSITION;
 import static gregtech.api.unification.material.info.MaterialFlags.EXCLUDE_BLOCK_CRAFTING_BY_HAND_RECIPES;
 import static gregtech.api.unification.material.info.MaterialFlags.FLAMMABLE;
+import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_BOLT_SCREW;
+import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_DENSE;
+import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_DOUBLE_PLATE;
+import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_FINE_WIRE;
+import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_FOIL;
+import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_FRAME;
+import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_GEAR;
+import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_LENS;
+import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_LONG_ROD;
+import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_PLATE;
+import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_RING;
+import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_ROD;
+import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_ROTOR;
+import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_ROUND;
+import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_SMALL_GEAR;
+import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_SPRING;
+import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_SPRING_SMALL;
+import static gregtech.api.unification.material.info.MaterialFlags.IS_MAGNETIC;
 import static gregtech.api.unification.material.info.MaterialFlags.MORTAR_GRINDABLE;
 import static gregtech.api.unification.material.info.MaterialFlags.NO_SMASHING;
 import static gregtech.api.unification.material.info.MaterialFlags.NO_SMELTING;
-import static gregtech.api.unification.material.info.MaterialIconSet.*;
+import static gregtech.api.unification.material.info.MaterialFlags.NO_UNIFICATION;
+import static gregtech.api.unification.material.info.MaterialFlags.NO_WORKING;
+import static gregtech.api.unification.material.info.MaterialIconSet.BRIGHT;
+import static gregtech.api.unification.material.info.MaterialIconSet.DIAMOND;
+import static gregtech.api.unification.material.info.MaterialIconSet.DULL;
+import static gregtech.api.unification.material.info.MaterialIconSet.GEM_HORIZONTAL;
+import static gregtech.api.unification.material.info.MaterialIconSet.GLASS;
 import static gregtech.api.unification.material.info.MaterialIconSet.LIGNITE;
+import static gregtech.api.unification.material.info.MaterialIconSet.MAGNETIC;
+import static gregtech.api.unification.material.info.MaterialIconSet.METALLIC;
+import static gregtech.api.unification.material.info.MaterialIconSet.NETHERSTAR;
+import static gregtech.api.unification.material.info.MaterialIconSet.SHINY;
 
 import gregtech.api.fluids.FluidBuilder;
 import gregtech.api.fluids.store.FluidStorageKey;
 import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialIconSet;
-import gregtech.api.unification.material.properties.*;
+import gregtech.api.unification.material.properties.BlastProperty;
 import gregtech.api.unification.material.properties.BlastProperty.GasTier;
+import gregtech.api.unification.material.properties.DustProperty;
+import gregtech.api.unification.material.properties.FluidProperty;
+import gregtech.api.unification.material.properties.IngotProperty;
+import gregtech.api.unification.material.properties.OreProperty;
+import gregtech.api.unification.material.properties.PropertyKey;
+import gregtech.api.unification.material.properties.ToolProperty;
 import gregtech.api.unification.ore.OrePrefix;
 import serendustry.Serendustry;
+
+// todo
+// import static gregicality.multiblocks.api.unification.GCYMFirstDegreeMaterials.Zeron100;
 
 public class SerendustryMaterials {
 
@@ -581,6 +821,7 @@ public class SerendustryMaterials {
         Naquadria.addFlags(GENERATE_LONG_ROD);
         Carbon.addFlags(GENERATE_PLATE, GENERATE_DENSE, GENERATE_FRAME);
         Scandium.addFlags(GENERATE_FRAME);
+        Osmiridium.addFlags(GENERATE_FRAME);
 
         // To make Skookum Choochers generate
         Diamond.addFlags(GENERATE_LONG_ROD);
@@ -1209,18 +1450,18 @@ public class SerendustryMaterials {
                 .fluidPipeProperties(1200, 5500, true, true, true, false)
                 .build();
 
-        // Todo: stop GCYM from autogenerating a recipe for this that's very cheap
         Floppa = new Material.Builder(67, Serendustry.ID("floppa"))
                 .ingot(3).liquid(new FluidBuilder().temperature(800000))
                 .color(0x9E5625).iconSet(SHINY)
                 .flags(STD_METAL, GENERATE_DENSE, GENERATE_LONG_ROD, GENERATE_FINE_WIRE, GENERATE_SMALL_GEAR,
                         GENERATE_FOIL, GENERATE_SPRING)
-                .components(Flerovium, 1, Oxygen, 1, Phosphorus, 1, Protactinium, 1)
+                //.components(Flerovium, 1, Oxygen, 1, Phosphorus, 1, Protactinium, 1)
                 .blast(b -> b
                         .temp(10800, GasTier.HIGHEST)
                         .blastStats(VA[OpV], 50000))
                 .cableProperties(V[MAX], 1024, 0, true)
-                .build();
+                .build()
+                .setFormula("FlOPPa");
 
         KerrBlackHole = new Material.Builder(68, Serendustry.ID("kerr_black_hole"))
                 .ingot(3).liquid(new FluidBuilder().temperature(1))

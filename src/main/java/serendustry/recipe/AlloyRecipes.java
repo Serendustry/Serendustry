@@ -48,11 +48,13 @@ public class AlloyRecipes {
                 .output(dust, HastelloyK243, 20)
                 .duration(2500).EUt(VA[UV]).buildAndRegister();
 
-        MIXER_RECIPES.recipeBuilder()
-                .input(dust, Steel, 20).input(dust, Chrome, 13).input(dust, Copper, 10).input(dust, Nickel, 3)
-                .input(dust, Molybdenum, 2).input(dust, Tungsten, 2)
-                .output(dust, Zeron100, 50)
-                .duration(3500).EUt(VA[IV]).buildAndRegister();
+        /*
+         * MIXER_RECIPES.recipeBuilder()
+         * .input(dust, Steel, 20).input(dust, Chrome, 13).input(dust, Copper, 10).input(dust, Nickel, 3)
+         * .input(dust, Molybdenum, 2).input(dust, Tungsten, 2)
+         * .output(dust, Zeron100, 50)
+         * .duration(3500).EUt(VA[IV]).buildAndRegister();
+         */
 
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, Zeron100, 8).input(dust, Titanium, 6).input(dust, Naquadria, 4).input(dust, Gadolinium, 3)
