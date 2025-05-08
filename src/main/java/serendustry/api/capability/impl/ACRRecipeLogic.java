@@ -1,13 +1,11 @@
 package serendustry.api.capability.impl;
 
+import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
-import gregtech.api.unification.material.Material;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.IFluidHandler;
-import net.minecraftforge.fluids.capability.IFluidTankProperties;
-import serendustry.Serendustry;
 import serendustry.api.capability.IACRComponent;
+import serendustry.machine.MetaTileEntityAdvancedChemicalReactor;
 
 import java.util.List;
 
@@ -20,36 +18,26 @@ public class ACRRecipeLogic extends MultiblockRecipeLogic {
         }
     }
 
-    // Drain needed fluids each tick
+    // Drain needed fluids each second (todo: fix drains even when machine isnt running) (also fix it just saying needs more energy)
     @Override
     protected boolean canProgressRecipe() {
-        IACRComponent mte = ((IACRComponent) metaTileEntity);
-        List<FluidStack> addedFluids = mte.getCurrentAddedFluids();
+        MetaTileEntityAdvancedChemicalReactor mte = ((MetaTileEntityAdvancedChemicalReactor) metaTileEntity);
 
-        // No needed fluids
-        if(addedFluids.isEmpty()) return super.canProgressRecipe();
+        if(mte.isActive()) {
+            List<FluidStack> addedFluids = mte.getCurrentAddedFluids();
 
-        IFluidHandler handler = metaTileEntity.getImportFluids();
-        if(handler.getTankProperties().length > 0) {
-            for(IFluidTankProperties props : handler.getTankProperties()) {
-                Serendustry.logger.info(props.getContents().getFluid().getName());
+            // No needed fluids
+            if (addedFluids.isEmpty()) return super.canProgressRecipe();
+
+            IMultipleTankHandler handler = mte.getInputFluidInventory();
+            if (!(handler.getTankProperties().length > 0)) return false;
+
+            for (FluidStack fluidStack : addedFluids) {
+                // Make sure the desired amount can be drained before actually trying to drain it
+                FluidStack stack = handler.drain(fluidStack, false);
+                if (stack == null || stack.amount < fluidStack.amount) return false;
+                handler.drain(fluidStack, true);
             }
-        } else {
-            Serendustry.logger.info("handler.getTankProperties is empty!");
-            return false;
-        }
-
-        for(int i = 0; i <= addedFluids.size(); i++) {
-            FluidStack fluidStack = addedFluids.get(i);
-
-            // Make sure the desired amount can be drained before actually trying to drain it
-            Serendustry.logger.info("Attempting to drain " + fluidStack.amount + "L of " + fluidStack.getFluid().getName());
-            FluidStack stack = handler.drain(fluidStack, false);
-            if(stack == null || stack.amount < fluidStack.amount) {
-                Serendustry.logger.info("Failed to drain fluid!");
-                return false;
-            }
-            handler.drain(fluidStack, true);
         }
 
         return super.canProgressRecipe();

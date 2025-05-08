@@ -1,7 +1,6 @@
 package serendustry.blocks;
 
 import gregtech.api.block.VariantBlock;
-import gregtech.api.unification.material.Material;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
@@ -15,7 +14,6 @@ import static gregtech.api.unification.material.Materials.Air;
 import static gregtech.api.unification.material.Materials.Mercury;
 import static gregtech.api.unification.material.Materials.PCBCoolant;
 import static gregtech.api.unification.material.Materials.Propane;
-import static gregtech.api.unification.material.Materials.Salt;
 import static gregtech.api.unification.material.Materials.Water;
 import static serendustry.item.material.SerendustryMaterials.MolybdeniteLubricant;
 
@@ -39,15 +37,15 @@ public class BlockACRComponent extends VariantBlock<BlockACRComponent.ACRCompone
 
     public enum ACRComponentType implements IStringSerializable, IACRComponentBlockStats {
 
-        EMPTY("empty", 1, 1, 1, new FluidStack(Water.getFluid(), 0)),
+        EMPTY("empty", 1, 1, 0, new FluidStack(Water.getFluid(), 0)),
         HEATER_RESISTIVE("heater_resistive", 1.1, 1.05, 0.05, new FluidStack(Water.getFluid(), 0)),
-        HEATER_GAS("heater_gas", 1.075, 1.025, 0, new FluidStack(Propane.getFluid(), 1)),
-        COOLER_LIQUID("cooler_liquid", 0.9, 0.95, 0, new FluidStack(PCBCoolant.getFluid(), 1)),
+        HEATER_GAS("heater_gas", 1.075, 1.025, 0, new FluidStack(Propane.getFluid(), 10)),
+        COOLER_LIQUID("cooler_liquid", 0.9, 0.95, 0, new FluidStack(PCBCoolant.getFluid(), 10)),
         COOLER_THERMOELECTRIC("cooler_thermoelectric", 0.925, 0.975, 0.05, new FluidStack(Water.getFluid(), 0)),
-        PUMP_DIFFUSION("pump_diffusion", 0.95, 0.9, 0, new FluidStack(Mercury.getFluid(), 1)),
-        PUMP_PISTON("pump_piston", 0.975, 0.925, 0, new FluidStack(MolybdeniteLubricant.getFluid(), 1)),
-        COMPRESSOR_RECIPROCATING("compressor_reciprocating", 1.05, 1.25, 0, new FluidStack(Air.getFluid(), 4)),
-        COMPRESSOR_CENTRIFUGAL("compressor_centrifugal", 1.025, 1.2, 0, new FluidStack(MolybdeniteLubricant.getFluid(), 1));
+        PUMP_DIFFUSION("pump_diffusion", 0.95, 0.9, 0, new FluidStack(Mercury.getFluid(), 10)),
+        PUMP_PISTON("pump_piston", 0.975, 0.925, 0, new FluidStack(MolybdeniteLubricant.getFluid(), 10)),
+        COMPRESSOR_RECIPROCATING("compressor_reciprocating", 1.05, 1.25, 0, new FluidStack(Air.getFluid(), 40)),
+        COMPRESSOR_CENTRIFUGAL("compressor_centrifugal", 1.025, 1.2, 0, new FluidStack(MolybdeniteLubricant.getFluid(), 10));
 
         private final String name;
         private final double temperatureMod;

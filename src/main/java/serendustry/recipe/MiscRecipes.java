@@ -133,7 +133,15 @@ public class MiscRecipes {
                 .explosivesAmount(1)
                 .duration(20 * 60 * 240 * 32).EUt(VA[ULV]).buildAndRegister();
 
-        // 7 Recip Compressor 6 Liq Cooler
+        // pre rounding fix
+        // 7 Recip Compr 6 Liq Cooler
+        // or 7 Centri Compr 4 TE Cooler
+        // or 6 Recip Compr 6 TE Cooler
+        // or 8 Centri Compr 6 TE Cooler
+        // or 7 Centri Compr 3 Liq Cooler
+        // or 8 Recipe Compr 10 Diff Pump 2 TE Cooler
+        // or 13 TE Cooler 6 Centri Compr 8 Res Heater
+        // or many more solutions
         ACR_RECIPES.recipeBuilder()
                 .temperature(200, 250)
                 .pressure(300, 350)
@@ -141,20 +149,28 @@ public class MiscRecipes {
                 .output(dust, Gold)
                 .duration(20).EUt(VA[UV]).buildAndRegister();
 
+        // 19 Lq Cooler 4 TE Cooler 3 Recip Compr 1 Centri Compr
+        // 19 Lq Cooler 4 TE Cooler 4 Recip Compr
+        // 22 Lq Cooler 2 Centri Compr 3 Recip Compr
         ACR_RECIPES.recipeBuilder()
-                .temperature(20, 30)
+                .temperature(20, 35)
                 .pressure(80, 120)
                 .input(dust, BlueSteel)
                 .output(dust, Emerald)
                 .duration(20).EUt(VA[UV]).buildAndRegister();
 
+        // pre rounding fix
+        // 5 Piston Pump 22 Res Heater (210% EU usage lol) (2070 181)
+        // 26 gas heater 1 res heater (2096 181)
         ACR_RECIPES.recipeBuilder()
-                .temperature(3100, 3200)
-                .pressure(120, 140)
+                .temperature(2050, 2400)
+                .pressure(120, 190)
                 .input(dust, RedSteel)
                 .output(dust, Sapphire)
                 .duration(20).EUt(VA[UV]).buildAndRegister();
 
+        // 5 Lq Cooler 2 TE Cooler 5 Piston Pump 4 Diff Pump
+        // there are probably more solutions, but this one is tricky
         ACR_RECIPES.recipeBuilder()
                 .temperature(100, 150)
                 .pressure(20, 30)

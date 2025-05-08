@@ -26,6 +26,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.eclipse.xtext.xbase.lib.IntegerRange;
 import org.jetbrains.annotations.NotNull;
+import serendustry.Serendustry;
 import serendustry.api.SerendustryAPI;
 import serendustry.api.capability.IACRComponent;
 import serendustry.api.capability.impl.ACRRecipeLogic;
@@ -44,11 +45,10 @@ import static gregtech.api.util.RelativeDirection.LEFT;
 
 public class MetaTileEntityAdvancedChemicalReactor extends RecipeMapMultiblockController implements IACRComponent {
 
-    private int temperature;
-    private int pressure;
+    private double temperature;
+    private double pressure;
 
-    private double EUtMod;
-
+    private double EUtMod = 0;
     private List<FluidStack> addedFluids = new ArrayList<>();
 
     public MetaTileEntityAdvancedChemicalReactor(ResourceLocation rl) {
@@ -103,8 +103,12 @@ public class MetaTileEntityAdvancedChemicalReactor extends RecipeMapMultiblockCo
     @Override
     public void invalidateStructure() {
         super.invalidateStructure();
+
         this.temperature = -1;
         this.pressure = -1;
+
+        this.EUtMod = 0;
+        this.addedFluids = new ArrayList<>();
     }
 
     @Override
@@ -163,13 +167,13 @@ public class MetaTileEntityAdvancedChemicalReactor extends RecipeMapMultiblockCo
         IntegerRange recipeTemperature = recipe.getProperty(ACRTemperatureProperty.getInstance(), new IntegerRange(0, 0));
         IntegerRange recipePressure = recipe.getProperty(ACRPressureProperty.getInstance(), new IntegerRange(0, 0));
 
-        return !(temperature < recipeTemperature.getStart() || temperature > recipeTemperature.getEnd()
-                || pressure < recipePressure.getStart() || pressure > recipePressure.getEnd());
+        return !((int) temperature < recipeTemperature.getStart() || (int) temperature > recipeTemperature.getEnd()
+                || (int) pressure < recipePressure.getStart() || (int) pressure > recipePressure.getEnd());
     }
 
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
-        MultiblockDisplayText.builder(textList, isStructureFormed())
+        MultiblockDisplayText.Builder builder = MultiblockDisplayText.builder(textList, isStructureFormed())
                 .setWorkingStatus(recipeMapWorkable.isWorkingEnabled(), recipeMapWorkable.isActive())
                 .addEnergyUsageLine(getEnergyContainer())
                 .addEnergyTierLine(GTUtility.getTierByVoltage(recipeMapWorkable.getMaxVoltage()))
@@ -178,7 +182,7 @@ public class MetaTileEntityAdvancedChemicalReactor extends RecipeMapMultiblockCo
                 .addCustom(tl -> {
                     if (isStructureFormed()) {
                         ITextComponent temperatureText = TextComponentUtil.stringWithColor(TextFormatting.YELLOW,
-                                TextFormattingUtil.formatNumbers(temperature) + "K");
+                                TextFormattingUtil.formatNumbers((int) temperature) + "K");
 
                         tl.add(TextComponentUtil.translationWithColor(TextFormatting.GRAY,
                                 "serendustry.machine.advanced_chemical_reactor.property.temperature", temperatureText));
@@ -189,13 +193,43 @@ public class MetaTileEntityAdvancedChemicalReactor extends RecipeMapMultiblockCo
                 .addCustom(tl -> {
                     if (isStructureFormed()) {
                         ITextComponent pressureText = TextComponentUtil.stringWithColor(TextFormatting.YELLOW,
-                                TextFormattingUtil.formatNumbers(pressure) + "kPa");
+                                TextFormattingUtil.formatNumbers((int) pressure) + "kPa");
 
                         tl.add(TextComponentUtil.translationWithColor(TextFormatting.GRAY,
                                 "serendustry.machine.advanced_chemical_reactor.property.pressure", pressureText));
                     }
                 })
-                .addWorkingStatusLine()
+
+                // EU "discount" line todo fix
+                .addCustom(tl -> {
+                    if (isStructureFormed()) {
+                        ITextComponent EUDiscountText = TextComponentUtil.stringWithColor(TextFormatting.YELLOW,
+                                TextFormattingUtil.formatNumbers((1 + EUtMod) * 100) + "%");
+
+                        tl.add(TextComponentUtil.translationWithColor(TextFormatting.GRAY,
+                                "serendustry.machine.advanced_chemical_reactor.eu_modifier", EUDiscountText));
+                    }
+                });
+
+                // Fluid usage lines
+                // todo condense lines
+                if(!addedFluids.isEmpty()) {
+                    builder.addCustom(tl -> {
+                        tl.add(TextComponentUtil.translationWithColor(
+                                TextFormatting.GRAY,
+                                "serendustry.machine.advanced_chemical_reactor.needed_fluids"));
+                    });
+                    for (FluidStack stack : addedFluids) {
+                        builder.addCustom(tl -> {
+                            if (isStructureFormed()) {
+                                tl.add(TextComponentUtil.stringWithColor(TextFormatting.WHITE,
+                                        TextFormattingUtil.formatNumbers(stack.amount) + "L " + stack.getLocalizedName()));
+                            }
+                        });
+                    }
+                }
+
+                builder.addWorkingStatusLine()
                 .addProgressLine(recipeMapWorkable.getProgressPercent());
     }
 }
