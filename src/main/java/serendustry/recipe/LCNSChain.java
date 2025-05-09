@@ -4,15 +4,36 @@ import static gregtech.api.GTValues.UEV;
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.CHEMICAL_BATH_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.CHEMICAL_RECIPES;
-import static gregtech.api.recipes.RecipeMaps.FLUID_HEATER_RECIPES;
-import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.material.Materials.CarbonMonoxide;
+import static gregtech.api.unification.material.Materials.Chloromethane;
+import static gregtech.api.unification.material.Materials.Hydrogen;
+import static gregtech.api.unification.material.Materials.Methanol;
+import static gregtech.api.unification.material.Materials.Nitrobenzene;
+import static gregtech.api.unification.material.Materials.Phenol;
+import static gregtech.api.unification.material.Materials.Salt;
+import static gregtech.api.unification.material.Materials.SodiumHydroxide;
+import static gregtech.api.unification.material.Materials.Water;
 import static gregtech.api.unification.ore.OrePrefix.dust;
-import static serendustry.item.material.SerendustryMaterials.*;
+import static serendustry.item.material.SerendustryMaterials.Aniline;
+import static serendustry.item.material.SerendustryMaterials.Anisole;
+import static serendustry.item.material.SerendustryMaterials.Butanol;
+import static serendustry.item.material.SerendustryMaterials.FormicAcid;
+import static serendustry.item.material.SerendustryMaterials.Gadonanotubes;
+import static serendustry.item.material.SerendustryMaterials.LCNS;
+import static serendustry.item.material.SerendustryMaterials.MBBA;
+import static serendustry.item.material.SerendustryMaterials.Methoxybenzaldehyde;
+import static serendustry.item.material.SerendustryMaterials.MethylFormate;
+import static serendustry.item.material.SerendustryMaterials.SodiumPhenoxide;
+import static serendustry.item.material.SerendustryMaterials.nButylaniline;
+import static serendustry.machine.SerendustryRecipeMaps.ACR_RECIPES;
 
 public class LCNSChain {
 
     public static void init() {
-        FLUID_HEATER_RECIPES.recipeBuilder()
+        // 6 Res Heater + 2 Diff Pump
+        ACR_RECIPES.recipeBuilder()
+                .temperature(470, 570)
+                .pressure(70, 120)
                 .fluidInputs(Nitrobenzene.getFluid(1000),
                         Hydrogen.getFluid(5000))
                 .fluidOutputs(Aniline.getFluid(1000),
@@ -53,14 +74,21 @@ public class LCNSChain {
                         Methanol.getFluid(1000))
                 .duration(200).EUt(VA[UEV]).buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder()
+        // 1 TE Cooler
+        ACR_RECIPES.recipeBuilder()
+                .temperature(160, 280)
+                .pressure(75, 160)
                 .fluidInputs(Anisole.getFluid(1000),
                         FormicAcid.getFluid(1000))
                 .fluidOutputs(Methoxybenzaldehyde.getFluid(1000),
                         Water.getFluid(1000))
                 .duration(200).EUt(VA[UEV]).buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder()
+        // 4 TE Cooler + 2 Diff Pump (194, 73)
+        // 4 TE Cooler + 1 Diff Pump + 1 Piston Pump (200, 75) (Also does MXBH)
+        ACR_RECIPES.recipeBuilder()
+                .temperature(120, 200)
+                .pressure(20, 80)
                 .fluidInputs(nButylaniline.getFluid(1000),
                         Methoxybenzaldehyde.getFluid(1000))
                 .fluidOutputs(MBBA.getFluid(1000),

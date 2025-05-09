@@ -1,22 +1,5 @@
 package serendustry.recipe;
 
-import static gregtech.api.GTValues.UHV;
-import static gregtech.api.unification.material.Materials.Neutronium;
-import static gregtech.api.unification.material.info.MaterialFlags.*;
-import static gregtech.api.unification.material.properties.PropertyKey.GEM;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.ELECTRIC_MOTOR_UHV;
-import static gregtech.common.items.MetaItems.ULTIMATE_BATTERY;
-import static gregtech.loaders.recipe.handlers.ToolRecipeHandler.*;
-import static serendustry.item.SerendustryMetaItems.POWER_UNIT_UHV;
-import static serendustry.item.material.SerendustryMaterials.PolyethyleneTerephtalate;
-import static serendustry.item.material.SerendustryMaterials.RadoxPolymer;
-
-import java.util.Objects;
-
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
-
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.IElectricItem;
 import gregtech.api.items.toolitem.IGTTool;
@@ -30,7 +13,26 @@ import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.items.ToolItems;
 import gregtech.loaders.recipe.handlers.ToolRecipeHandler;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 import serendustry.item.SerendustryToolItems;
+
+import java.util.Objects;
+
+import static gregtech.api.GTValues.UHV;
+import static gregtech.api.unification.material.Materials.Neutronium;
+import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_BOLT_SCREW;
+import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_LONG_ROD;
+import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_PLATE;
+import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_ROD;
+import static gregtech.api.unification.material.properties.PropertyKey.GEM;
+import static gregtech.api.unification.ore.OrePrefix.gem;
+import static gregtech.api.unification.ore.OrePrefix.plate;
+import static gregtech.common.items.MetaItems.ELECTRIC_MOTOR_UHV;
+import static gregtech.common.items.MetaItems.ULTIMATE_BATTERY;
+import static serendustry.item.SerendustryMetaItems.POWER_UNIT_UHV;
+import static serendustry.item.material.SerendustryMaterials.PolyethyleneTerephtalate;
+import static serendustry.item.material.SerendustryMaterials.RadoxPolymer;
 
 public class ToolPrefixHandlers {
 

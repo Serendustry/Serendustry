@@ -1,10 +1,9 @@
 package serendustry.item.material;
 
+import gregtech.api.unification.OreDictUnifier;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-
-import gregtech.api.unification.OreDictUnifier;
 
 public class VazkiiWhatAreYouDoing {
 

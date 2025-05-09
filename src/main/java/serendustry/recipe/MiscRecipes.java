@@ -1,22 +1,72 @@
 package serendustry.recipe;
 
-import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
-import static serendustry.item.SerendustryMetaItems.*;
-import static serendustry.item.material.SerendustryMaterials.*;
-import static serendustry.machine.SerendustryRecipeMaps.ACR_RECIPES;
-import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
-
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-
 import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Material;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+
+import static gregtech.api.GTValues.HV;
+import static gregtech.api.GTValues.IV;
+import static gregtech.api.GTValues.LV;
+import static gregtech.api.GTValues.UHV;
+import static gregtech.api.GTValues.ULV;
+import static gregtech.api.GTValues.UV;
+import static gregtech.api.GTValues.VA;
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.AUTOCLAVE_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.BLAST_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.BREWING_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.CHEMICAL_BATH_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.EXTRACTOR_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.IMPLOSION_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.LASER_ENGRAVER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.WIREMILL_RECIPES;
+import static gregtech.api.unification.material.Materials.Chrome;
+import static gregtech.api.unification.material.Materials.Creosote;
+import static gregtech.api.unification.material.Materials.Diamond;
+import static gregtech.api.unification.material.Materials.DistilledWater;
+import static gregtech.api.unification.material.Materials.Glass;
+import static gregtech.api.unification.material.Materials.Graphite;
+import static gregtech.api.unification.material.Materials.Helium;
+import static gregtech.api.unification.material.Materials.Hydrogen;
+import static gregtech.api.unification.material.Materials.Iron;
+import static gregtech.api.unification.material.Materials.Methane;
+import static gregtech.api.unification.material.Materials.Molybdenite;
+import static gregtech.api.unification.material.Materials.Neutronium;
+import static gregtech.api.unification.material.Materials.Oil;
+import static gregtech.api.unification.material.Materials.Oxygen;
+import static gregtech.api.unification.material.Materials.Polyethylene;
+import static gregtech.api.unification.material.Materials.Redstone;
+import static gregtech.api.unification.material.Materials.SeedOil;
+import static gregtech.api.unification.material.Materials.Tennessine;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.foil;
+import static gregtech.api.unification.ore.OrePrefix.gearSmall;
+import static gregtech.api.unification.ore.OrePrefix.gem;
+import static gregtech.api.unification.ore.OrePrefix.gemExquisite;
+import static gregtech.api.unification.ore.OrePrefix.nugget;
+import static gregtech.api.unification.ore.OrePrefix.plate;
+import static gregtech.api.unification.ore.OrePrefix.stickLong;
+import static gregtech.common.items.MetaItems.GRAVI_STAR;
+import static gregtech.common.items.MetaItems.QUANTUM_STAR;
+import static serendustry.item.SerendustryMetaItems.QUANTIUM_STAR;
+import static serendustry.item.SerendustryMetaItems.QUANTUM_ANOMALY;
+import static serendustry.item.material.SerendustryMaterials.Adamantium;
+import static serendustry.item.material.SerendustryMaterials.BoneSteel;
+import static serendustry.item.material.SerendustryMaterials.CheeseAmerican;
+import static serendustry.item.material.SerendustryMaterials.CheeseMozzarella;
+import static serendustry.item.material.SerendustryMaterials.ChromaticGlass;
+import static serendustry.item.material.SerendustryMaterials.ChromiumDopedMolybdenite;
+import static serendustry.item.material.SerendustryMaterials.MagnetoResonatic;
+import static serendustry.item.material.SerendustryMaterials.MolybdeniteLubricant;
+import static serendustry.item.material.SerendustryMaterials.OmniversalLubricant;
+import static serendustry.item.material.SerendustryMaterials.OmniversalRedstone;
+import static serendustry.item.material.SerendustryMaterials.Quantium40;
+import static serendustry.item.material.SerendustryMaterials.WroughtNeutronium;
+import static serendustry.item.material.SerendustryMaterials.Xenoxene;
+import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
 
 public class MiscRecipes {
 
@@ -132,57 +182,5 @@ public class MiscRecipes {
                 .output(Blocks.OBSIDIAN)
                 .explosivesAmount(1)
                 .duration(20 * 60 * 240 * 32).EUt(VA[ULV]).buildAndRegister();
-
-        // pre rounding fix
-        // 7 Recip Compr 6 Liq Cooler
-        // or 7 Centri Compr 4 TE Cooler
-        // or 6 Recip Compr 6 TE Cooler
-        // or 8 Centri Compr 6 TE Cooler
-        // or 7 Centri Compr 3 Liq Cooler
-        // or 8 Recipe Compr 10 Diff Pump 2 TE Cooler
-        // or 13 TE Cooler 6 Centri Compr 8 Res Heater
-        // or many more solutions
-        ACR_RECIPES.recipeBuilder()
-                .temperature(200, 250)
-                .pressure(300, 350)
-                .input(dust, Iron)
-                .output(dust, Gold)
-                .duration(20).EUt(VA[UV]).buildAndRegister();
-
-        // 19 Lq Cooler 4 TE Cooler 3 Recip Compr 1 Centri Compr
-        // 19 Lq Cooler 4 TE Cooler 4 Recip Compr
-        // 22 Lq Cooler 2 Centri Compr 3 Recip Compr
-        ACR_RECIPES.recipeBuilder()
-                .temperature(20, 35)
-                .pressure(80, 120)
-                .input(dust, BlueSteel)
-                .output(dust, Emerald)
-                .duration(20).EUt(VA[UV]).buildAndRegister();
-
-        // pre rounding fix
-        // 5 Piston Pump 22 Res Heater (210% EU usage lol) (2070 181)
-        // 26 gas heater 1 res heater (2096 181)
-        ACR_RECIPES.recipeBuilder()
-                .temperature(2050, 2400)
-                .pressure(120, 190)
-                .input(dust, RedSteel)
-                .output(dust, Sapphire)
-                .duration(20).EUt(VA[UV]).buildAndRegister();
-
-        // 5 Lq Cooler 2 TE Cooler 5 Piston Pump 4 Diff Pump
-        // there are probably more solutions, but this one is tricky
-        ACR_RECIPES.recipeBuilder()
-                .temperature(100, 150)
-                .pressure(20, 30)
-                .input(dust, Steel)
-                .output(dust, Ruby)
-                .duration(20).EUt(VA[UV]).buildAndRegister();
-
-        ACR_RECIPES.recipeBuilder()
-                .temperature(600, 650)
-                .pressure(2000, 2100)
-                .input(dust, BlackSteel)
-                .output(dust, Silver)
-                .duration(20).EUt(VA[UV]).buildAndRegister();
     }
 }

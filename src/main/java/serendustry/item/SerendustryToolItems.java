@@ -1,20 +1,27 @@
 package serendustry.item;
 
-import static gregtech.common.items.ToolItems.register;
-import static serendustry.item.SerendustryMetaItems.POWER_UNIT_UHV;
-
-import java.util.function.Supplier;
-
+import gregtech.api.GTValues;
+import gregtech.api.items.toolitem.IGTTool;
+import gregtech.api.items.toolitem.ItemGTTool;
+import gregtech.api.items.toolitem.ToolClasses;
+import gregtech.api.items.toolitem.ToolOreDict;
+import gregtech.common.items.tool.BlockRotatingBehavior;
+import gregtech.common.items.tool.DisableShieldBehavior;
+import gregtech.common.items.tool.EntityDamageBehavior;
+import gregtech.common.items.tool.HarvestIceBehavior;
+import gregtech.common.items.tool.TorchPlaceBehavior;
+import gregtech.common.items.tool.TreeFellingBehavior;
+import gregtech.core.sound.GTSoundEvents;
 import net.minecraft.entity.monster.EntityGolem;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
-
-import gregtech.api.GTValues;
-import gregtech.api.items.toolitem.*;
-import gregtech.common.items.tool.*;
-import gregtech.core.sound.GTSoundEvents;
 import serendustry.Serendustry;
+
+import java.util.function.Supplier;
+
+import static gregtech.common.items.ToolItems.register;
+import static serendustry.item.SerendustryMetaItems.POWER_UNIT_UHV;
 
 public class SerendustryToolItems {
 

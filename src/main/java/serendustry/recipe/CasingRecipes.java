@@ -1,5 +1,25 @@
 package serendustry.recipe;
 
+import gregtech.api.GTValues;
+import gregtech.api.fluids.store.FluidStorageKeys;
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.common.ConfigHolder;
+import gregtech.common.blocks.BlockFusionCasing;
+import gregtech.common.blocks.BlockMachineCasing;
+import gregtech.common.blocks.BlockMultiblockCasing;
+import gregtech.common.blocks.MetaBlocks;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
+import serendustry.blocks.BlockAALCoreCasing;
+import serendustry.blocks.BlockACRComponent;
+import serendustry.blocks.BlockEICHammerCasing;
+import serendustry.blocks.BlockPCCoilCooling;
+import serendustry.blocks.BlockPCCoilHeating;
+import serendustry.blocks.BlockSerendustryMetalCasing;
+import serendustry.blocks.BlockSerendustryMultiCasing;
+import serendustry.blocks.SerendustryMetaBlocks;
+
 import static gregtech.api.GTValues.UV;
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
@@ -28,17 +48,23 @@ import static gregtech.api.unification.ore.OrePrefix.frameGt;
 import static gregtech.api.unification.ore.OrePrefix.pipeSmallFluid;
 import static gregtech.api.unification.ore.OrePrefix.plate;
 import static gregtech.api.unification.ore.OrePrefix.plateDense;
+import static gregtech.api.unification.ore.OrePrefix.rotor;
 import static gregtech.api.unification.ore.OrePrefix.screw;
 import static gregtech.api.unification.ore.OrePrefix.stick;
 import static gregtech.api.unification.ore.OrePrefix.stickLong;
 import static gregtech.api.unification.ore.OrePrefix.wireGtDouble;
+import static gregtech.api.unification.ore.OrePrefix.wireGtQuadruple;
 import static gregtech.api.unification.ore.OrePrefix.wireGtSingle;
 import static gregtech.common.items.MetaItems.ELECTRIC_MOTOR_UV;
+import static gregtech.common.items.MetaItems.ELECTRIC_PISTON_LUV;
 import static gregtech.common.items.MetaItems.ELECTRIC_PISTON_UEV;
 import static gregtech.common.items.MetaItems.ELECTRIC_PISTON_UHV;
 import static gregtech.common.items.MetaItems.ELECTRIC_PISTON_UIV;
+import static gregtech.common.items.MetaItems.ELECTRIC_PISTON_ZPM;
+import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_LuV;
 import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_UHV;
 import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_UV;
+import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_ZPM;
 import static gregtech.common.items.MetaItems.EMITTER_UEV;
 import static gregtech.common.items.MetaItems.EMITTER_UHV;
 import static gregtech.common.items.MetaItems.EMITTER_UIV;
@@ -78,26 +104,6 @@ import static serendustry.item.material.SerendustryMaterials.ScUevSane;
 import static serendustry.item.material.SerendustryMaterials.SelfRepairingNanobots;
 import static serendustry.item.material.SerendustryMaterials.SentientNanobots;
 import static serendustry.item.material.SerendustryMaterials.VibraniumAlloy;
-
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
-
-import gregtech.api.GTValues;
-import gregtech.api.fluids.store.FluidStorageKeys;
-import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.common.ConfigHolder;
-import gregtech.common.blocks.BlockFusionCasing;
-import gregtech.common.blocks.BlockMachineCasing;
-import gregtech.common.blocks.BlockMultiblockCasing;
-import gregtech.common.blocks.MetaBlocks;
-import serendustry.blocks.BlockAALCoreCasing;
-import serendustry.blocks.BlockEICHammerCasing;
-import serendustry.blocks.BlockPCCoilCooling;
-import serendustry.blocks.BlockPCCoilHeating;
-import serendustry.blocks.BlockSerendustryMetalCasing;
-import serendustry.blocks.BlockSerendustryMultiCasing;
-import serendustry.blocks.SerendustryMetaBlocks;
 
 public class CasingRecipes {
 
@@ -447,5 +453,81 @@ public class CasingRecipes {
                 .duration(20 * 60 * 8).EUt(VA[GTValues.UIV]).buildAndRegister();
 
         // todo: UXV, OpV, MAX AAL Core recipes
+
+        // ACR Components
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Adamantium)
+                .input(circuit, MarkerMaterials.Tier.UV)
+                .input(plate, Neutronium, 6)
+                .input(cableGtDouble, Hihiirokane, 4)
+                .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 4))
+                .outputs(SerendustryMetaBlocks.ACR_COMPONENT.getItemVariant(BlockACRComponent.ACRComponentType.EMPTY))
+                .duration(20 * 20).EUt(VA[GTValues.UHV]).buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(SerendustryMetaBlocks.ACR_COMPONENT.getItemVariant(BlockACRComponent.ACRComponentType.EMPTY))
+                .input(wireGtQuadruple, Tritanium, 8)
+                .fluidInputs(HighGradeSolderingAlloy.getFluid(144))
+                .outputs(SerendustryMetaBlocks.ACR_COMPONENT
+                        .getItemVariant(BlockACRComponent.ACRComponentType.HEATER_RESISTIVE))
+                .duration(20 * 20).EUt(VA[GTValues.UHV]).buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(SerendustryMetaBlocks.ACR_COMPONENT.getItemVariant(BlockACRComponent.ACRComponentType.EMPTY))
+                .input(plate, Adamantium, 8)
+                .fluidInputs(HighGradeSolderingAlloy.getFluid(144))
+                .outputs(SerendustryMetaBlocks.ACR_COMPONENT
+                        .getItemVariant(BlockACRComponent.ACRComponentType.HEATER_GAS))
+                .duration(20 * 20).EUt(VA[GTValues.UHV]).buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(SerendustryMetaBlocks.ACR_COMPONENT.getItemVariant(BlockACRComponent.ACRComponentType.EMPTY))
+                .input(ELECTRIC_PUMP_ZPM)
+                .fluidInputs(HighGradeSolderingAlloy.getFluid(144))
+                .outputs(SerendustryMetaBlocks.ACR_COMPONENT
+                        .getItemVariant(BlockACRComponent.ACRComponentType.COOLER_LIQUID))
+                .duration(20 * 20).EUt(VA[GTValues.UHV]).buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(SerendustryMetaBlocks.ACR_COMPONENT.getItemVariant(BlockACRComponent.ACRComponentType.EMPTY))
+                .input(plate, VibraniumAlloy, 8)
+                .fluidInputs(HighGradeSolderingAlloy.getFluid(144))
+                .outputs(SerendustryMetaBlocks.ACR_COMPONENT
+                        .getItemVariant(BlockACRComponent.ACRComponentType.COOLER_THERMOELECTRIC))
+                .duration(20 * 20).EUt(VA[GTValues.UHV]).buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(SerendustryMetaBlocks.ACR_COMPONENT.getItemVariant(BlockACRComponent.ACRComponentType.EMPTY))
+                .input(ELECTRIC_PUMP_LuV)
+                .input(wireGtQuadruple, Tritanium, 4)
+                .fluidInputs(HighGradeSolderingAlloy.getFluid(144))
+                .outputs(SerendustryMetaBlocks.ACR_COMPONENT
+                        .getItemVariant(BlockACRComponent.ACRComponentType.PUMP_DIFFUSION))
+                .duration(20 * 20).EUt(VA[GTValues.UHV]).buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(SerendustryMetaBlocks.ACR_COMPONENT.getItemVariant(BlockACRComponent.ACRComponentType.EMPTY))
+                .input(ELECTRIC_PUMP_LuV)
+                .input(ELECTRIC_PISTON_LUV)
+                .fluidInputs(HighGradeSolderingAlloy.getFluid(144))
+                .outputs(SerendustryMetaBlocks.ACR_COMPONENT
+                        .getItemVariant(BlockACRComponent.ACRComponentType.PUMP_PISTON))
+                .duration(20 * 20).EUt(VA[GTValues.ZPM]).buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(SerendustryMetaBlocks.ACR_COMPONENT.getItemVariant(BlockACRComponent.ACRComponentType.EMPTY))
+                .input(ELECTRIC_PISTON_ZPM)
+                .fluidInputs(HighGradeSolderingAlloy.getFluid(144))
+                .outputs(SerendustryMetaBlocks.ACR_COMPONENT
+                        .getItemVariant(BlockACRComponent.ACRComponentType.COMPRESSOR_RECIPROCATING))
+                .duration(20 * 20).EUt(VA[GTValues.ZPM]).buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .inputs(SerendustryMetaBlocks.ACR_COMPONENT.getItemVariant(BlockACRComponent.ACRComponentType.EMPTY))
+                .input(rotor, Neutronium)
+                .fluidInputs(HighGradeSolderingAlloy.getFluid(144))
+                .outputs(SerendustryMetaBlocks.ACR_COMPONENT
+                        .getItemVariant(BlockACRComponent.ACRComponentType.COMPRESSOR_CENTRIFUGAL))
+                .duration(20 * 20).EUt(VA[GTValues.UHV]).buildAndRegister();
     }
 }

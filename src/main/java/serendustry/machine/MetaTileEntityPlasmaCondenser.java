@@ -18,11 +18,9 @@ import gregtech.api.util.GTUtility;
 import gregtech.api.util.TextComponentUtil;
 import gregtech.api.util.TextFormattingUtil;
 import gregtech.client.renderer.ICubeRenderer;
-import gregtech.client.utils.TooltipHelper;
 import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
@@ -30,6 +28,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import serendustry.SValues;
 import serendustry.api.SerendustryAPI;
 import serendustry.api.capability.IPCCoil;
 import serendustry.api.capability.impl.PCRecipeLogic;
@@ -40,6 +39,7 @@ import serendustry.blocks.IPCCoilCoolingBlockStats;
 import serendustry.blocks.IPCCoilHeatingBlockStats;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
+import serendustry.client.utils.STooltipHelper;
 import serendustry.item.material.SerendustryMaterials;
 import serendustry.machine.structure.StructurePlasmaCondenser;
 
@@ -272,9 +272,6 @@ public class MetaTileEntityPlasmaCondenser extends RecipeMapMultiblockController
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
-        tooltip.add(TooltipHelper.RAINBOW_SLOW + I18n.format("gregtech.machine.perfect_oc"));
-        tooltip.add("");
-        tooltip.add("");
-        tooltip.add(I18n.format("serendustry.machine.author.envoidia"));
+        STooltipHelper.addSerendustryInformation(tooltip, SValues.ENERGY_LASER, true);
     }
 }

@@ -9,6 +9,8 @@ import serendustry.machine.MetaTileEntityAdvancedChemicalReactor;
 
 import java.util.List;
 
+import static gregtech.api.recipes.logic.OverclockingLogic.PERFECT_OVERCLOCK_DURATION_DIVISOR;
+
 public class ACRRecipeLogic extends MultiblockRecipeLogic {
 
     public ACRRecipeLogic(RecipeMapMultiblockController metaTileEntity) {
@@ -18,26 +20,34 @@ public class ACRRecipeLogic extends MultiblockRecipeLogic {
         }
     }
 
-    // Drain needed fluids each second (todo: fix drains even when machine isnt running) (also fix it just saying needs more energy)
+    @Override
+    protected double getOverclockingDurationDivisor() {
+        return PERFECT_OVERCLOCK_DURATION_DIVISOR;
+    }
+
+    // Drain needed fluids each second (todo: fix it just saying needs more energy)
     @Override
     protected boolean canProgressRecipe() {
         MetaTileEntityAdvancedChemicalReactor mte = ((MetaTileEntityAdvancedChemicalReactor) metaTileEntity);
 
-        if(mte.isActive()) {
+        if (mte.isActive()) {
             List<FluidStack> addedFluids = mte.getCurrentAddedFluids();
 
             // No needed fluids
             if (addedFluids.isEmpty()) return super.canProgressRecipe();
 
+            // Get fluid input contents
             IMultipleTankHandler handler = mte.getInputFluidInventory();
             if (!(handler.getTankProperties().length > 0)) return false;
 
+            // Make sure the desired amount can be drained before actually trying to drain it
             for (FluidStack fluidStack : addedFluids) {
-                // Make sure the desired amount can be drained before actually trying to drain it
                 FluidStack stack = handler.drain(fluidStack, false);
                 if (stack == null || stack.amount < fluidStack.amount) return false;
-                handler.drain(fluidStack, true);
             }
+
+            // Actually drain fluids
+            for (FluidStack fluidStack : addedFluids) handler.drain(fluidStack, true);
         }
 
         return super.canProgressRecipe();

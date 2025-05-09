@@ -1,11 +1,39 @@
 package serendustry.recipe;
 
+import gregtech.api.GTValues;
+import gregtech.api.unification.material.MarkerMaterials;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.CENTRIFUGE_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.CHEMICAL_BATH_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.ELECTROMAGNETIC_SEPARATOR_RECIPES;
-import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.material.Materials.Aluminium;
+import static gregtech.api.unification.material.Materials.Antimony;
+import static gregtech.api.unification.material.Materials.AquaRegia;
+import static gregtech.api.unification.material.Materials.Arsenic;
+import static gregtech.api.unification.material.Materials.Carbon;
+import static gregtech.api.unification.material.Materials.Copper;
+import static gregtech.api.unification.material.Materials.Darmstadtium;
+import static gregtech.api.unification.material.Materials.FluoroantimonicAcid;
+import static gregtech.api.unification.material.Materials.Gallium;
+import static gregtech.api.unification.material.Materials.Germanium;
+import static gregtech.api.unification.material.Materials.Gold;
+import static gregtech.api.unification.material.Materials.Iron;
+import static gregtech.api.unification.material.Materials.Lead;
+import static gregtech.api.unification.material.Materials.Naquadah;
+import static gregtech.api.unification.material.Materials.Naquadria;
+import static gregtech.api.unification.material.Materials.Neodymium;
+import static gregtech.api.unification.material.Materials.Neutronium;
+import static gregtech.api.unification.material.Materials.Platinum;
+import static gregtech.api.unification.material.Materials.Silicon;
+import static gregtech.api.unification.material.Materials.Stone;
+import static gregtech.api.unification.material.Materials.Tin;
+import static gregtech.api.unification.material.Materials.Tungsten;
+import static gregtech.api.unification.material.Materials.Zinc;
 import static gregtech.api.unification.ore.OrePrefix.cableGtDouble;
 import static gregtech.api.unification.ore.OrePrefix.circuit;
 import static gregtech.api.unification.ore.OrePrefix.dust;
@@ -15,16 +43,22 @@ import static gregtech.api.unification.ore.OrePrefix.plateDense;
 import static gregtech.api.unification.ore.OrePrefix.stickLong;
 import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_UHV;
 import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_UV;
-import static serendustry.item.material.SerendustryMaterials.*;
+import static serendustry.item.material.SerendustryMaterials.Adamantium;
+import static serendustry.item.material.SerendustryMaterials.Azbantium;
+import static serendustry.item.material.SerendustryMaterials.Hihiirokane;
+import static serendustry.item.material.SerendustryMaterials.SelfRepairingNanobots;
+import static serendustry.item.material.SerendustryMaterials.SeparatedTaraniumAlloy;
+import static serendustry.item.material.SerendustryMaterials.Taranium;
+import static serendustry.item.material.SerendustryMaterials.TaraniumContainingAlloy;
+import static serendustry.item.material.SerendustryMaterials.TaraniumMagnetic;
+import static serendustry.item.material.SerendustryMaterials.TaraniumPoorSediment;
+import static serendustry.item.material.SerendustryMaterials.TaraniumPoorSludge;
+import static serendustry.item.material.SerendustryMaterials.TaraniumRichSediment;
+import static serendustry.item.material.SerendustryMaterials.TaraniumRichSludge;
+import static serendustry.item.material.SerendustryMaterials.Vibranium;
+import static serendustry.item.material.SerendustryMaterials.VibraniumAlloy;
 import static serendustry.machine.SerendustryMetaTileEntities.DEHYDRATOR;
 import static serendustry.machine.SerendustryRecipeMaps.DEHYDRATOR_RECIPES;
-
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-
-import gregtech.api.GTValues;
-import gregtech.api.unification.material.MarkerMaterials;
 
 public class TaraniumChain {
 

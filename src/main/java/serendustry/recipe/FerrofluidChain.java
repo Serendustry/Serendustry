@@ -1,10 +1,32 @@
 package serendustry.recipe;
 
-import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.GTValues.IV;
+import static gregtech.api.GTValues.LV;
+import static gregtech.api.GTValues.MV;
+import static gregtech.api.GTValues.VA;
+import static gregtech.api.GTValues.ZPM;
+import static gregtech.api.recipes.RecipeMaps.CHEMICAL_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.DISTILLATION_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.MIXER_RECIPES;
+import static gregtech.api.unification.material.Materials.Ammonia;
+import static gregtech.api.unification.material.Materials.CalciumChloride;
+import static gregtech.api.unification.material.Materials.DistilledWater;
+import static gregtech.api.unification.material.Materials.HydrochloricAcid;
+import static gregtech.api.unification.material.Materials.Hydrogen;
+import static gregtech.api.unification.material.Materials.Iron;
+import static gregtech.api.unification.material.Materials.Iron3Chloride;
+import static gregtech.api.unification.material.Materials.Lubricant;
+import static gregtech.api.unification.material.Materials.Methanol;
+import static gregtech.api.unification.material.Materials.SeedOil;
+import static gregtech.api.unification.material.Materials.Water;
 import static gregtech.api.unification.ore.OrePrefix.dust;
-import static serendustry.item.material.SerendustryMaterials.*;
+import static serendustry.item.material.SerendustryMaterials.AmmoniumOleate;
+import static serendustry.item.material.SerendustryMaterials.Ferrofluid;
+import static serendustry.item.material.SerendustryMaterials.Iron2Chloride;
+import static serendustry.item.material.SerendustryMaterials.Kerosene;
+import static serendustry.item.material.SerendustryMaterials.MagneticNanoparticleMixture;
+import static serendustry.item.material.SerendustryMaterials.OleicAcid;
+import static serendustry.item.material.SerendustryMaterials.StearicAcid;
 
 public class FerrofluidChain {
 

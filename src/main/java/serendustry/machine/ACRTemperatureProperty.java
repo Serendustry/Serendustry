@@ -1,11 +1,10 @@
 package serendustry.machine;
 
+import gregtech.api.recipes.recipeproperties.RecipeProperty;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import gregtech.api.recipes.recipeproperties.RecipeProperty;
 import org.eclipse.xtext.xbase.lib.IntegerRange;
 
 public class ACRTemperatureProperty extends RecipeProperty<IntegerRange> {
@@ -31,6 +30,7 @@ public class ACRTemperatureProperty extends RecipeProperty<IntegerRange> {
         IntegerRange temperature = castValue(value);
         minecraft.fontRenderer.drawString(
                 I18n.format("serendustry.machine.advanced_chemical_reactor.property.temperature",
-                        temperature.getStart() + "K-" + temperature.getEnd() + "K"), x, y, color);
+                        temperature.getStart() + "K-" + temperature.getEnd() + "K"),
+                x, y, color);
     }
 }

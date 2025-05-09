@@ -1,16 +1,39 @@
 package serendustry.recipe;
 
-import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
-import static java.lang.Math.max;
-import static serendustry.item.material.SerendustryMaterials.*;
-
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.ore.OrePrefix;
+
+import static gregtech.api.GTValues.UEV;
+import static gregtech.api.GTValues.UV;
+import static gregtech.api.GTValues.VA;
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
+import static gregtech.api.unification.ore.OrePrefix.bolt;
+import static gregtech.api.unification.ore.OrePrefix.cableGtSingle;
+import static gregtech.api.unification.ore.OrePrefix.circuit;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.foil;
+import static gregtech.api.unification.ore.OrePrefix.plate;
+import static gregtech.api.unification.ore.OrePrefix.wireGtSingle;
+import static gregtech.common.items.MetaItems.NEURO_PROCESSOR;
+import static gregtech.common.items.MetaItems.ROBOT_ARM_UEV;
+import static gregtech.common.items.MetaItems.ROBOT_ARM_UV;
+import static java.lang.Math.max;
+import static serendustry.item.material.SerendustryMaterials.ALMST;
+import static serendustry.item.material.SerendustryMaterials.Ferrofluid;
+import static serendustry.item.material.SerendustryMaterials.HalkoniteSteel;
+import static serendustry.item.material.SerendustryMaterials.HighGradeSolderingAlloy;
+import static serendustry.item.material.SerendustryMaterials.Hihiirokane;
+import static serendustry.item.material.SerendustryMaterials.Hypogen;
+import static serendustry.item.material.SerendustryMaterials.MolybdeniteLubricant;
+import static serendustry.item.material.SerendustryMaterials.Quantium40;
+import static serendustry.item.material.SerendustryMaterials.RadoxPolymer;
+import static serendustry.item.material.SerendustryMaterials.SelfRepairingNanobots;
+import static serendustry.item.material.SerendustryMaterials.SentientNanobots;
+import static serendustry.item.material.SerendustryMaterials.TengamAttuned;
+import static serendustry.item.material.SerendustryMaterials.VibraniumAlloy;
 
 public class SelfRepairingNanobotsRecipes {
 

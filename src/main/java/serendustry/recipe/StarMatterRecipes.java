@@ -1,23 +1,68 @@
 package serendustry.recipe;
 
-import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
-import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_BLANK;
-import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_OVERWORLD;
-import static serendustry.item.material.SerendustryMaterials.*;
-import static serendustry.machine.SerendustryMetaTileEntities.NEBULAIC_NEXUS;
-import static serendustry.machine.SerendustryRecipeMaps.NEBULAIC_NEXUS_RECIPES;
-
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-
 import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.Material;
 import gregtech.common.items.MetaItems;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+
+import static gregtech.api.GTValues.UEV;
+import static gregtech.api.GTValues.UHV;
+import static gregtech.api.GTValues.UV;
+import static gregtech.api.GTValues.VA;
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.CENTRIFUGE_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.ELECTROLYZER_RECIPES;
+import static gregtech.api.unification.material.Materials.Carbon;
+import static gregtech.api.unification.material.Materials.CarbonDioxide;
+import static gregtech.api.unification.material.Materials.CarbonMonoxide;
+import static gregtech.api.unification.material.Materials.Darmstadtium;
+import static gregtech.api.unification.material.Materials.EnrichedNaquadahTriniumEuropiumDuranide;
+import static gregtech.api.unification.material.Materials.Helium;
+import static gregtech.api.unification.material.Materials.Hydrogen;
+import static gregtech.api.unification.material.Materials.Methane;
+import static gregtech.api.unification.material.Materials.NaquadahAlloy;
+import static gregtech.api.unification.material.Materials.Naquadria;
+import static gregtech.api.unification.material.Materials.Neutronium;
+import static gregtech.api.unification.material.Materials.Osmium;
+import static gregtech.api.unification.material.Materials.Oxygen;
+import static gregtech.api.unification.material.Materials.Tritanium;
+import static gregtech.api.unification.ore.OrePrefix.cableGtDouble;
+import static gregtech.api.unification.ore.OrePrefix.circuit;
+import static gregtech.api.unification.ore.OrePrefix.foil;
+import static gregtech.api.unification.ore.OrePrefix.frameGt;
+import static gregtech.api.unification.ore.OrePrefix.gemExquisite;
+import static gregtech.api.unification.ore.OrePrefix.ingot;
+import static gregtech.api.unification.ore.OrePrefix.ingotHot;
+import static gregtech.api.unification.ore.OrePrefix.plate;
+import static gregtech.api.unification.ore.OrePrefix.plateDense;
+import static gregtech.api.unification.ore.OrePrefix.screw;
+import static gregtech.api.unification.ore.OrePrefix.stickLong;
+import static gregtech.api.unification.ore.OrePrefix.wireGtDouble;
+import static gregtech.common.items.MetaItems.EMITTER_ZPM;
+import static gregtech.common.items.MetaItems.ROBOT_ARM_ZPM;
+import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_BLANK;
+import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_OVERWORLD;
+import static serendustry.item.material.SerendustryMaterials.Adamantium;
+import static serendustry.item.material.SerendustryMaterials.BlackStarMatter;
+import static serendustry.item.material.SerendustryMaterials.BlueStarMatter;
+import static serendustry.item.material.SerendustryMaterials.BrownStarMatter;
+import static serendustry.item.material.SerendustryMaterials.CondensedStarMatter;
+import static serendustry.item.material.SerendustryMaterials.Hihiirokane;
+import static serendustry.item.material.SerendustryMaterials.NeutronStarMatter;
+import static serendustry.item.material.SerendustryMaterials.Orundum;
+import static serendustry.item.material.SerendustryMaterials.PulsarStarMatter;
+import static serendustry.item.material.SerendustryMaterials.RedStarMatter;
+import static serendustry.item.material.SerendustryMaterials.SelfRepairingNanobots;
+import static serendustry.item.material.SerendustryMaterials.StellarBaptismSolution;
+import static serendustry.item.material.SerendustryMaterials.StellarContainmentBase;
+import static serendustry.item.material.SerendustryMaterials.TengamRaw;
+import static serendustry.item.material.SerendustryMaterials.VibraniumAlloy;
+import static serendustry.item.material.SerendustryMaterials.WhiteStarMatter;
+import static serendustry.item.material.SerendustryMaterials.YellowStarMatter;
+import static serendustry.machine.SerendustryMetaTileEntities.NEBULAIC_NEXUS;
+import static serendustry.machine.SerendustryRecipeMaps.NEBULAIC_NEXUS_RECIPES;
 
 public class StarMatterRecipes {
 

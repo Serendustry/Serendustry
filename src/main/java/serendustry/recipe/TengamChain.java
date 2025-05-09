@@ -1,15 +1,62 @@
 package serendustry.recipe;
 
-import static gregtech.api.GTValues.VA;
-import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static serendustry.item.material.SerendustryMaterials.*;
-
 import gregtech.api.GTValues;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.ore.OrePrefix;
+
+import static gregtech.api.GTValues.VA;
+import static gregtech.api.recipes.RecipeMaps.ARC_FURNACE_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.CENTRIFUGE_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.CHEMICAL_BATH_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.CHEMICAL_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.ELECTROLYZER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.ELECTROMAGNETIC_SEPARATOR_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.EXTRACTOR_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.MACERATOR_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.MIXER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.POLARIZER_RECIPES;
+import static gregtech.api.unification.material.Materials.Actinium;
+import static gregtech.api.unification.material.Materials.Antimony;
+import static gregtech.api.unification.material.Materials.Chlorine;
+import static gregtech.api.unification.material.Materials.FluoroantimonicAcid;
+import static gregtech.api.unification.material.Materials.Hydrogen;
+import static gregtech.api.unification.material.Materials.IronMagnetic;
+import static gregtech.api.unification.material.Materials.NeodymiumMagnetic;
+import static gregtech.api.unification.material.Materials.Oxygen;
+import static gregtech.api.unification.material.Materials.Phosphorus;
+import static gregtech.api.unification.material.Materials.Plutonium241;
+import static gregtech.api.unification.material.Materials.Potassium;
+import static gregtech.api.unification.material.Materials.Samarium;
+import static gregtech.api.unification.material.Materials.SamariumMagnetic;
+import static gregtech.api.unification.material.Materials.SodiumHydroxide;
+import static gregtech.api.unification.material.Materials.SteelMagnetic;
+import static gregtech.api.unification.material.Materials.Water;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.foil;
+import static gregtech.api.unification.ore.OrePrefix.ingot;
+import static gregtech.api.unification.ore.OrePrefix.plate;
+import static gregtech.api.unification.ore.OrePrefix.stick;
+import static gregtech.api.unification.ore.OrePrefix.stickLong;
+import static serendustry.item.material.SerendustryMaterials.AntimonyTengamide;
+import static serendustry.item.material.SerendustryMaterials.MagneticHolmium;
+import static serendustry.item.material.SerendustryMaterials.MagnetoResonatic;
+import static serendustry.item.material.SerendustryMaterials.Phosphine;
+import static serendustry.item.material.SerendustryMaterials.Plutonium3Phosphide;
+import static serendustry.item.material.SerendustryMaterials.PlutoniumHydride;
+import static serendustry.item.material.SerendustryMaterials.PotassiumChloride;
+import static serendustry.item.material.SerendustryMaterials.PotassiumHydroxide;
+import static serendustry.item.material.SerendustryMaterials.PotassiumHypophosphite;
+import static serendustry.item.material.SerendustryMaterials.RadoxPolymer;
+import static serendustry.item.material.SerendustryMaterials.SodiumHypophosphite;
+import static serendustry.item.material.SerendustryMaterials.TengamAttuned;
+import static serendustry.item.material.SerendustryMaterials.TengamPurified;
+import static serendustry.item.material.SerendustryMaterials.TengamRaw;
+import static serendustry.item.material.SerendustryMaterials.TengamResidue;
+import static serendustry.item.material.SerendustryMaterials.TengamSludge;
+import static serendustry.item.material.SerendustryMaterials.XenomagneticAttunementCatalyst;
+import static serendustry.item.material.SerendustryMaterials.XenomagneticSeparationCatalyst;
+import static serendustry.machine.SerendustryRecipeMaps.ACR_RECIPES;
 
 public class TengamChain {
 
@@ -88,13 +135,22 @@ public class TengamChain {
                 .fluidOutputs(Phosphine.getFluid(1000))
                 .duration(180).EUt(VA[GTValues.UEV]).buildAndRegister();
 
-        BLAST_RECIPES.recipeBuilder()
+        // 5 Res Heater
+        ACR_RECIPES.recipeBuilder()
+                .temperature(470, 1650)
+                .pressure(80, 230)
                 .input(dust, Plutonium241)
                 .fluidInputs(Hydrogen.getFluid(2000))
                 .output(dust, PlutoniumHydride, 3)
                 .duration(180).EUt(VA[GTValues.UEV]).buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder()
+        // 19 Res Heater
+        // 19 Res Heater + 1 Piston Pump + 1 Gas Heater (also does PuH!)
+        // Nether: 16 Res Heater
+        // Nether: 20 Res Heater + 7 Diff Pump (also does PuH!)
+        ACR_RECIPES.recipeBuilder()
+                .temperature(1600, 1800)
+                .pressure(80, 400)
                 .input(dust, PlutoniumHydride)
                 .fluidInputs(Phosphine.getFluid(1000))
                 .output(dust, Plutonium3Phosphide)

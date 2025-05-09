@@ -1,15 +1,13 @@
 package serendustry.entity;
 
-import java.util.Random;
-
+import com.google.common.collect.ImmutableList;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
-
 import org.jetbrains.annotations.NotNull;
 
-import com.google.common.collect.ImmutableList;
+import java.util.Random;
 
 public class FriendlyCreeperEntity extends EntityCreeper {
 

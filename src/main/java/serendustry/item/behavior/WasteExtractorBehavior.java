@@ -1,16 +1,14 @@
 package serendustry.item.behavior;
 
-import static serendustry.item.SerendustryMetaItems.WASTE_FLUID_EXTRACTOR_FILLED;
-
+import gregtech.api.items.metaitem.stats.IItemBehaviour;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
-
 import org.jetbrains.annotations.Nullable;
 
-import gregtech.api.items.metaitem.stats.IItemBehaviour;
+import static serendustry.item.SerendustryMetaItems.WASTE_FLUID_EXTRACTOR_FILLED;
 
 public class WasteExtractorBehavior implements IItemBehaviour {
 

@@ -3,7 +3,6 @@ package serendustry.machine;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
-import scala.sys.process.ProcessBuilderImpl;
 
 public class SerendustryRecipeMaps {
 
@@ -42,9 +41,9 @@ public class SerendustryRecipeMaps {
     public static final RecipeMap<SimpleRecipeBuilder> ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES = new RecipeMap<>(
             "electric_implosion_compressor", 6, 2, 0, 0, new SimpleRecipeBuilder(), false);
     public static final RecipeMap<SimpleRecipeBuilder> CRYSTALLIZER_RECIPES = new RecipeMap<>(
-            "crystallizer", 2, 2, 0, 0, new SimpleRecipeBuilder(), false);
+            "crystallizer", 3, 1, 2, 0, new SimpleRecipeBuilder(), false);
     public static final RecipeMapACR ACR_RECIPES = new RecipeMapACR(
-            "advanced_chemical_reactor", 3, 3, 3, 3, false);
+            "advanced_chemical_reactor", 6, 3, 4, 3, false);
     /*
      * public static final RecipeMap<SimpleRecipeBuilder> ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES = new
      * RecipeMapBuilder<>("electric_implosion_compressor",
@@ -75,9 +74,7 @@ public class SerendustryRecipeMaps {
         RecipeMaps.MIXER_RECIPES.setMaxFluidInputs(4);
         RecipeMaps.IMPLOSION_RECIPES.setMaxInputs(6);
         RecipeMaps.ASSEMBLER_RECIPES.setMaxFluidOutputs(1);
-        RecipeMaps.FLUID_HEATER_RECIPES.setMaxInputs(2);
-        RecipeMaps.FLUID_HEATER_RECIPES.setMaxFluidInputs(2);
+        RecipeMaps.FLUID_HEATER_RECIPES.setMaxInputs(1);
         RecipeMaps.FLUID_HEATER_RECIPES.setMaxOutputs(1);
-        RecipeMaps.FLUID_HEATER_RECIPES.setMaxFluidOutputs(2);
     }
 }

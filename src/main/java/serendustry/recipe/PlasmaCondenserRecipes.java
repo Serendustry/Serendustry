@@ -1,9 +1,5 @@
 package serendustry.recipe;
 
-import static gregtech.api.unification.material.Materials.*;
-import static serendustry.item.material.SerendustryMaterials.*;
-import static serendustry.machine.SerendustryRecipeMaps.PLASMA_CONDENSER_RECIPES;
-
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
 import gregtech.api.fluids.store.FluidStorageKeys;
@@ -11,6 +7,41 @@ import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.properties.FluidProperty;
 import gregtech.api.unification.material.properties.PropertyKey;
 import serendustry.machine.PlasmaCondenserTypeProperty;
+
+import static gregtech.api.GTValues.EV;
+import static gregtech.api.GTValues.V;
+import static gregtech.api.recipes.RecipeMaps.PLASMA_GENERATOR_FUELS;
+import static gregtech.api.unification.material.Materials.Americium;
+import static gregtech.api.unification.material.Materials.Argon;
+import static gregtech.api.unification.material.Materials.Bromine;
+import static gregtech.api.unification.material.Materials.Flerovium;
+import static gregtech.api.unification.material.Materials.Germanium;
+import static gregtech.api.unification.material.Materials.Helium;
+import static gregtech.api.unification.material.Materials.Iron;
+import static gregtech.api.unification.material.Materials.Moscovium;
+import static gregtech.api.unification.material.Materials.Neutronium;
+import static gregtech.api.unification.material.Materials.Nickel;
+import static gregtech.api.unification.material.Materials.Nitrogen;
+import static gregtech.api.unification.material.Materials.Oganesson;
+import static gregtech.api.unification.material.Materials.Oxygen;
+import static gregtech.api.unification.material.Materials.Rhenium;
+import static gregtech.api.unification.material.Materials.Rubidium;
+import static gregtech.api.unification.material.Materials.Selenium;
+import static gregtech.api.unification.material.Materials.Tennessine;
+import static gregtech.api.unification.material.Materials.Thallium;
+import static gregtech.api.unification.material.Materials.Tin;
+import static serendustry.item.material.SerendustryMaterials.AwakenedDraconium;
+import static serendustry.item.material.SerendustryMaterials.BlackStarMatter;
+import static serendustry.item.material.SerendustryMaterials.ChromaticGlass;
+import static serendustry.item.material.SerendustryMaterials.CondensedStarMatter;
+import static serendustry.item.material.SerendustryMaterials.Draconium;
+import static serendustry.item.material.SerendustryMaterials.Dragonblood;
+import static serendustry.item.material.SerendustryMaterials.Hypogen;
+import static serendustry.item.material.SerendustryMaterials.Infinity;
+import static serendustry.item.material.SerendustryMaterials.Periodicium;
+import static serendustry.item.material.SerendustryMaterials.Rhugnor;
+import static serendustry.item.material.SerendustryMaterials.Shirabon;
+import static serendustry.machine.SerendustryRecipeMaps.PLASMA_CONDENSER_RECIPES;
 
 public class PlasmaCondenserRecipes {
 
@@ -20,6 +51,8 @@ public class PlasmaCondenserRecipes {
         Material[] exoticMaterials = { Germanium, Selenium, Bromine, Rubidium, Rhenium, Thallium, Flerovium, Moscovium,
                 Tennessine, Oganesson, Neutronium, Draconium, AwakenedDraconium, Infinity, Dragonblood, Rhugnor,
                 Hypogen, ChromaticGlass, Shirabon, Periodicium };
+
+        Material[] plasmaFuels = { Helium, Oxygen, Nitrogen, Argon, Iron, Tin, Nickel, Americium };
 
         for (Material material : materials) {
             FluidProperty prop = material.getProperty(PropertyKey.FLUID);
@@ -66,6 +99,18 @@ public class PlasmaCondenserRecipes {
                     .fluidOutputs(material.getPlasma(isSolid ? 1440 : 10000))
                     .duration(isExotic ? 64 : 1)
                     .EUt((int) GTValues.V[GTValues.MAX])
+                    .buildAndRegister();
+
+            // Also doing plasma generator fuels here since I've already done all the checking + they're unimportant
+
+            // Make sure the recipe doesn't already exist
+            for (Material fuel : plasmaFuels) if (material == fuel) return;
+
+            PLASMA_GENERATOR_FUELS.recipeBuilder()
+                    .fluidInputs(material.getPlasma(1))
+                    .fluidOutputs(material.getFluid(1))
+                    .duration(isExotic ? 3600 : 192) // todo balance numbers
+                    .EUt((int) V[EV])
                     .buildAndRegister();
         }
 

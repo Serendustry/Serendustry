@@ -1,19 +1,10 @@
 package serendustry;
 
-import static serendustry.api.SerendustryAPI.AAL_CORE_CASINGS;
-import static serendustry.api.SerendustryAPI.ACR_COMPONENTS;
-import static serendustry.api.SerendustryAPI.EIC_HAMMER_CASINGS;
-import static serendustry.api.SerendustryAPI.PC_COILS_COOLING;
-import static serendustry.api.SerendustryAPI.PC_COILS_HEATING;
-import static serendustry.blocks.SerendustryMetaBlocks.AAL_CORE_CASING;
-import static serendustry.blocks.SerendustryMetaBlocks.ACR_COMPONENT;
-import static serendustry.blocks.SerendustryMetaBlocks.EIC_HAMMER_CASING;
-import static serendustry.blocks.SerendustryMetaBlocks.PC_COIL_COOLING;
-import static serendustry.blocks.SerendustryMetaBlocks.PC_COIL_HEATING;
-
-import java.util.Objects;
-import java.util.function.Function;
-
+import gregtech.GTInternalTags;
+import gregtech.api.GregTechAPI;
+import gregtech.api.block.VariantItemBlock;
+import gregtech.api.unification.material.event.MaterialEvent;
+import gregtech.api.unification.material.event.MaterialRegistryEvent;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.entity.RenderCreeper;
 import net.minecraft.entity.Entity;
@@ -35,15 +26,8 @@ import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.registries.IForgeRegistry;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import gregtech.GTInternalTags;
-import gregtech.api.GregTechAPI;
-import gregtech.api.block.VariantItemBlock;
-import gregtech.api.unification.material.event.MaterialEvent;
-import gregtech.api.unification.material.event.MaterialRegistryEvent;
 import serendustry.blocks.BlockAALCoreCasing;
 import serendustry.blocks.BlockACRComponent;
 import serendustry.blocks.BlockEICHammerCasing;
@@ -59,6 +43,20 @@ import serendustry.item.material.VazkiiWhatAreYouDoing;
 import serendustry.machine.SerendustryMetaTileEntities;
 import serendustry.machine.SerendustryRecipeMaps;
 import serendustry.recipe.SerendustryRecipes;
+
+import java.util.Objects;
+import java.util.function.Function;
+
+import static serendustry.api.SerendustryAPI.AAL_CORE_CASINGS;
+import static serendustry.api.SerendustryAPI.ACR_COMPONENTS;
+import static serendustry.api.SerendustryAPI.EIC_HAMMER_CASINGS;
+import static serendustry.api.SerendustryAPI.PC_COILS_COOLING;
+import static serendustry.api.SerendustryAPI.PC_COILS_HEATING;
+import static serendustry.blocks.SerendustryMetaBlocks.AAL_CORE_CASING;
+import static serendustry.blocks.SerendustryMetaBlocks.ACR_COMPONENT;
+import static serendustry.blocks.SerendustryMetaBlocks.EIC_HAMMER_CASING;
+import static serendustry.blocks.SerendustryMetaBlocks.PC_COIL_COOLING;
+import static serendustry.blocks.SerendustryMetaBlocks.PC_COIL_HEATING;
 
 @Mod(modid = Tags.MODID,
      name = Tags.MODNAME,

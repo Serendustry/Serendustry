@@ -19,12 +19,14 @@ public class ACRRecipeBuilder extends RecipeBuilder<ACRRecipeBuilder> {
         super(recipeBuilder);
     }
 
-    /* Default: 295K, 101kPa
-        With 36 components:
-            All Res Heaters: 3,825K, 353kPa
-            All Coolers: 18K, 18kPa
-            All Diff Pumps: 68K, 1kPa
-            All Recip Compressors: 1,075K, 41,272kPa */
+    /*
+     * Default: 295K, 101kPa
+     * With 36 components:
+     * All Res Heaters: 3,825K, 353kPa
+     * All Coolers: 18K, 18kPa
+     * All Diff Pumps: 68K, 1kPa
+     * All Recip Compressors: 1,075K, 41,272kPa
+     */
     public ACRRecipeBuilder temperature(int lower, int upper) {
         temperature = new IntegerRange(lower, upper);
         return this;

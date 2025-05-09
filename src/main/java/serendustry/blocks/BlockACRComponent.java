@@ -44,8 +44,9 @@ public class BlockACRComponent extends VariantBlock<BlockACRComponent.ACRCompone
         COOLER_THERMOELECTRIC("cooler_thermoelectric", 0.925, 0.975, 0.05, new FluidStack(Water.getFluid(), 0)),
         PUMP_DIFFUSION("pump_diffusion", 0.95, 0.9, 0, new FluidStack(Mercury.getFluid(), 10)),
         PUMP_PISTON("pump_piston", 0.975, 0.925, 0, new FluidStack(MolybdeniteLubricant.getFluid(), 10)),
-        COMPRESSOR_RECIPROCATING("compressor_reciprocating", 1.05, 1.25, 0, new FluidStack(Air.getFluid(), 40)),
-        COMPRESSOR_CENTRIFUGAL("compressor_centrifugal", 1.025, 1.2, 0, new FluidStack(MolybdeniteLubricant.getFluid(), 10));
+        COMPRESSOR_RECIPROCATING("compressor_reciprocating", 1.05, 1.25, 0, new FluidStack(Air.getFluid(), 20000)),
+        COMPRESSOR_CENTRIFUGAL("compressor_centrifugal", 1.025, 1.2, 0,
+                new FluidStack(MolybdeniteLubricant.getFluid(), 10));
 
         private final String name;
         private final double temperatureMod;
@@ -53,7 +54,8 @@ public class BlockACRComponent extends VariantBlock<BlockACRComponent.ACRCompone
         private final double EUtMod;
         private final FluidStack addedFluidInput;
 
-        ACRComponentType(String name, double temperatureMod, double pressureMod, double EUtMod, FluidStack addedFluidInput) {
+        ACRComponentType(String name, double temperatureMod, double pressureMod, double EUtMod,
+                         FluidStack addedFluidInput) {
             this.name = name;
             this.temperatureMod = temperatureMod;
             this.pressureMod = pressureMod;

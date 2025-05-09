@@ -5,13 +5,49 @@ import static gregtech.api.GTValues.UV;
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.BLAST_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.CHEMICAL_RECIPES;
-import static gregtech.api.recipes.RecipeMaps.LARGE_CHEMICAL_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.MIXER_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.VACUUM_RECIPES;
-import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.material.Materials.AceticAcid;
+import static gregtech.api.unification.material.Materials.Ammonia;
+import static gregtech.api.unification.material.Materials.Borax;
+import static gregtech.api.unification.material.Materials.Carbon;
+import static gregtech.api.unification.material.Materials.CarbonDioxide;
+import static gregtech.api.unification.material.Materials.CarbonMonoxide;
+import static gregtech.api.unification.material.Materials.Chlorine;
+import static gregtech.api.unification.material.Materials.Ethenone;
+import static gregtech.api.unification.material.Materials.Ethylbenzene;
+import static gregtech.api.unification.material.Materials.Ethylene;
+import static gregtech.api.unification.material.Materials.HydrochloricAcid;
+import static gregtech.api.unification.material.Materials.HydrofluoricAcid;
+import static gregtech.api.unification.material.Materials.NitricAcid;
+import static gregtech.api.unification.material.Materials.NitricOxide;
+import static gregtech.api.unification.material.Materials.NitrogenDioxide;
+import static gregtech.api.unification.material.Materials.Oxygen;
+import static gregtech.api.unification.material.Materials.Palladium;
+import static gregtech.api.unification.material.Materials.Potassium;
+import static gregtech.api.unification.material.Materials.SulfuricAcid;
+import static gregtech.api.unification.material.Materials.Toluene;
+import static gregtech.api.unification.material.Materials.Water;
 import static gregtech.api.unification.ore.OrePrefix.dust;
 import static serendustry.item.SerendustryMetaItems.LENS_ARRAY_HYPERAMPLIFYING;
-import static serendustry.item.material.SerendustryMaterials.*;
+import static serendustry.item.material.SerendustryMaterials.Acetaldehyde;
+import static serendustry.item.material.SerendustryMaterials.AceticAnhydride;
+import static serendustry.item.material.SerendustryMaterials.BenzylChloride;
+import static serendustry.item.material.SerendustryMaterials.Benzylamine;
+import static serendustry.item.material.SerendustryMaterials.BoronTrifluoride;
+import static serendustry.item.material.SerendustryMaterials.BoronTrioxide;
+import static serendustry.item.material.SerendustryMaterials.DinitrogenTrioxide;
+import static serendustry.item.material.SerendustryMaterials.Glyoxal;
+import static serendustry.item.material.SerendustryMaterials.HNIW;
+import static serendustry.item.material.SerendustryMaterials.HexabenzylHexaazaisowurtzitane;
+import static serendustry.item.material.SerendustryMaterials.NitroniumTetrafluoroborate;
+import static serendustry.item.material.SerendustryMaterials.NitrosylTetrafluoroborate;
+import static serendustry.item.material.SerendustryMaterials.NitrousAcid;
+import static serendustry.item.material.SerendustryMaterials.Potassium40;
+import static serendustry.item.material.SerendustryMaterials.Quantium40;
+import static serendustry.item.material.SerendustryMaterials.SodiumSulfate;
+import static serendustry.item.material.SerendustryMaterials.TetraacetylHexaazaisowurtzitane;
+import static serendustry.machine.SerendustryRecipeMaps.ACR_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.HP_LASER_ARRAY_RECIPES;
 
@@ -38,7 +74,10 @@ public class Quantium40Chain {
                 .fluidOutputs(Acetaldehyde.getFluid(1000))
                 .duration(200).EUt(VA[UV]).buildAndRegister();
 
-        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+        // 1 Res Heater
+        ACR_RECIPES.recipeBuilder()
+                .temperature(310, 335)
+                .pressure(80, 120)
                 .fluidInputs(Acetaldehyde.getFluid(1000),
                         NitricAcid.getFluid(1000))
                 .fluidOutputs(Glyoxal.getFluid(1000),
@@ -112,10 +151,16 @@ public class Quantium40Chain {
                 .fluidOutputs(Water.getFluid(1000))
                 .duration(200 * 2).EUt(VA[UV]).buildAndRegister();
 
-        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+        // 1 Res Heater + 1 Gas Heater
+        // 2 Res Heater + 2 Gas Heater + 1 TE Cooler + 2 Diff Pump + 1 Piston Pump (335 85) (Also does Glyoxal!)
+        // todo: can it coexist with BETS?
+        ACR_RECIPES.recipeBuilder()
+                .temperature(335, 350)
+                .pressure(85, 140)
                 .input(dust, TetraacetylHexaazaisowurtzitane)
                 .input(dust, NitroniumTetrafluoroborate, 32)
                 .input(dust, NitrosylTetrafluoroborate, 14)
+                .fluidInputs(SulfuricAcid.getFluid(1000))
                 .output(dust, HNIW, 32)
                 .output(dust, Carbon, 4)
                 .fluidOutputs(BoronTrifluoride.getFluid(24000),

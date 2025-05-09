@@ -1,19 +1,36 @@
 package serendustry.recipe;
 
-import static gregtech.api.GTValues.*;
+import gregtech.api.unification.material.MarkerMaterials;
+
+import static gregtech.api.GTValues.MAX;
+import static gregtech.api.GTValues.UHV;
+import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
+import static gregtech.api.unification.material.Materials.Americium;
+import static gregtech.api.unification.material.Materials.Flerovium;
+import static gregtech.api.unification.material.Materials.Neutronium;
+import static gregtech.api.unification.ore.OrePrefix.circuit;
+import static gregtech.api.unification.ore.OrePrefix.frameGt;
+import static gregtech.api.unification.ore.OrePrefix.gemExquisite;
+import static gregtech.api.unification.ore.OrePrefix.plateDense;
+import static gregtech.common.items.MetaItems.CONVEYOR_MODULE_UHV;
+import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UHV;
+import static gregtech.common.items.MetaItems.SENSOR_UHV;
 import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_BLANK;
 import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_END;
 import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_NETHER;
 import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_OVERWORLD;
-import static serendustry.item.material.SerendustryMaterials.*;
+import static serendustry.item.material.SerendustryMaterials.Adamantium;
+import static serendustry.item.material.SerendustryMaterials.Azbantium;
+import static serendustry.item.material.SerendustryMaterials.CondensedStarMatter;
+import static serendustry.item.material.SerendustryMaterials.Orundum;
+import static serendustry.item.material.SerendustryMaterials.RadoxPolymer;
+import static serendustry.item.material.SerendustryMaterials.Realitium;
+import static serendustry.item.material.SerendustryMaterials.SelfRepairingNanobots;
+import static serendustry.item.material.SerendustryMaterials.TiberiumAboreus;
+import static serendustry.item.material.SerendustryMaterials.VibraniumAlloy;
 import static serendustry.machine.SerendustryMetaTileEntities.STELLAR_INCUBATOR;
 import static serendustry.machine.SerendustryRecipeMaps.STELLAR_INCUBATOR_RECIPES;
-
-import gregtech.api.unification.material.MarkerMaterials;
 
 public class StellarIncubatorRecipes {
 

@@ -1,5 +1,21 @@
 package serendustry.item.material;
 
+import gregtech.api.fluids.FluidBuilder;
+import gregtech.api.fluids.store.FluidStorageKey;
+import gregtech.api.fluids.store.FluidStorageKeys;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.info.MaterialIconSet;
+import gregtech.api.unification.material.properties.BlastProperty;
+import gregtech.api.unification.material.properties.BlastProperty.GasTier;
+import gregtech.api.unification.material.properties.DustProperty;
+import gregtech.api.unification.material.properties.FluidProperty;
+import gregtech.api.unification.material.properties.IngotProperty;
+import gregtech.api.unification.material.properties.OreProperty;
+import gregtech.api.unification.material.properties.PropertyKey;
+import gregtech.api.unification.material.properties.ToolProperty;
+import gregtech.api.unification.ore.OrePrefix;
+import serendustry.Serendustry;
+
 import static gregtech.api.GTValues.EV;
 import static gregtech.api.GTValues.HV;
 import static gregtech.api.GTValues.IV;
@@ -81,6 +97,7 @@ import static gregtech.api.unification.material.Materials.HSSS;
 import static gregtech.api.unification.material.Materials.Hafnium;
 import static gregtech.api.unification.material.Materials.Hassium;
 import static gregtech.api.unification.material.Materials.Helium;
+import static gregtech.api.unification.material.Materials.Helium3;
 import static gregtech.api.unification.material.Materials.Holmium;
 import static gregtech.api.unification.material.Materials.HydrochloricAcid;
 import static gregtech.api.unification.material.Materials.HydrofluoricAcid;
@@ -242,22 +259,6 @@ import static gregtech.api.unification.material.info.MaterialIconSet.MAGNETIC;
 import static gregtech.api.unification.material.info.MaterialIconSet.METALLIC;
 import static gregtech.api.unification.material.info.MaterialIconSet.NETHERSTAR;
 import static gregtech.api.unification.material.info.MaterialIconSet.SHINY;
-
-import gregtech.api.fluids.FluidBuilder;
-import gregtech.api.fluids.store.FluidStorageKey;
-import gregtech.api.fluids.store.FluidStorageKeys;
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.info.MaterialIconSet;
-import gregtech.api.unification.material.properties.BlastProperty;
-import gregtech.api.unification.material.properties.BlastProperty.GasTier;
-import gregtech.api.unification.material.properties.DustProperty;
-import gregtech.api.unification.material.properties.FluidProperty;
-import gregtech.api.unification.material.properties.IngotProperty;
-import gregtech.api.unification.material.properties.OreProperty;
-import gregtech.api.unification.material.properties.PropertyKey;
-import gregtech.api.unification.material.properties.ToolProperty;
-import gregtech.api.unification.ore.OrePrefix;
-import serendustry.Serendustry;
 
 // todo
 // import static gregicality.multiblocks.api.unification.GCYMFirstDegreeMaterials.Zeron100;
@@ -734,7 +735,7 @@ public class SerendustryMaterials {
 
         Material[] addLiquid = { Holmium, Thulium, Dysprosium, Scandium, Promethium, Electrotine, Cadmium, Boron,
                 Barium, Calcium, Sodium, Bromine, Erbium, Moscovium, Diamond, Germanium, Selenium, Rubidium, Thallium,
-                Tennessine, Oganesson };
+                Tennessine, Oganesson, Helium3, Nitrogen };
         for (Material material : addLiquid) {
             FluidProperty prop = material.getProperty(PropertyKey.FLUID);
             boolean newProp = false;
@@ -752,6 +753,9 @@ public class SerendustryMaterials {
             if (newProp)
                 material.setProperty(PropertyKey.FLUID, prop);
         }
+
+        Helium3.getProperty(PropertyKey.FLUID).setPrimaryKey(FluidStorageKeys.GAS);
+        Nitrogen.getProperty(PropertyKey.FLUID).setPrimaryKey(FluidStorageKeys.GAS);
 
         Material[] addPlasma = { Water, Redstone, Glass, Lead,
                 Hydrogen, Lithium, Beryllium, Boron, Carbon, Fluorine, Sodium, Magnesium, Aluminium, Silicon,
@@ -1455,7 +1459,7 @@ public class SerendustryMaterials {
                 .color(0x9E5625).iconSet(SHINY)
                 .flags(STD_METAL, GENERATE_DENSE, GENERATE_LONG_ROD, GENERATE_FINE_WIRE, GENERATE_SMALL_GEAR,
                         GENERATE_FOIL, GENERATE_SPRING)
-                //.components(Flerovium, 1, Oxygen, 1, Phosphorus, 1, Protactinium, 1)
+                // .components(Flerovium, 1, Oxygen, 1, Phosphorus, 1, Protactinium, 1)
                 .blast(b -> b
                         .temp(10800, GasTier.HIGHEST)
                         .blastStats(VA[OpV], 50000))

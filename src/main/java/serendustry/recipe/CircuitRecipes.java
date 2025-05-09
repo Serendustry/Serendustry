@@ -1,20 +1,7 @@
 package serendustry.recipe;
 
-import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.api.unification.ore.OrePrefix.dust;
-import static gregtech.common.items.MetaItems.*;
-import static gregtech.common.metatileentities.MetaTileEntities.LASER_ENGRAVER;
-import static serendustry.item.SerendustryMetaItems.*;
-import static serendustry.item.material.SerendustryMaterials.*;
-import static serendustry.machine.SerendustryMetaTileEntities.HP_LASER_ARRAY;
-import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
-import static serendustry.machine.SerendustryRecipeMaps.HP_LASER_ARRAY_RECIPES;
-
 import gregtech.api.GTValues;
+import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.metatileentity.multiblock.CleanroomType;
 import gregtech.api.unification.material.MarkerMaterials;
@@ -23,6 +10,219 @@ import gregtech.common.ConfigHolder;
 import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.MetaBlocks;
 import serendustry.SValues;
+
+import static gregtech.api.GTValues.EV;
+import static gregtech.api.GTValues.HV;
+import static gregtech.api.GTValues.IV;
+import static gregtech.api.GTValues.L;
+import static gregtech.api.GTValues.LuV;
+import static gregtech.api.GTValues.MV;
+import static gregtech.api.GTValues.UEV;
+import static gregtech.api.GTValues.UHV;
+import static gregtech.api.GTValues.UIV;
+import static gregtech.api.GTValues.UV;
+import static gregtech.api.GTValues.VA;
+import static gregtech.api.GTValues.ZPM;
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.AUTOCLAVE_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.BLAST_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.CHEMICAL_BATH_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.CHEMICAL_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.CIRCUIT_ASSEMBLER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.CUTTER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.FORMING_PRESS_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.LASER_ENGRAVER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.MIXER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.VACUUM_RECIPES;
+import static gregtech.api.unification.material.Materials.Agar;
+import static gregtech.api.unification.material.Materials.Americium;
+import static gregtech.api.unification.material.Materials.Argon;
+import static gregtech.api.unification.material.Materials.Beryllium;
+import static gregtech.api.unification.material.Materials.Calcium;
+import static gregtech.api.unification.material.Materials.Cerium;
+import static gregtech.api.unification.material.Materials.Chrome;
+import static gregtech.api.unification.material.Materials.Diamond;
+import static gregtech.api.unification.material.Materials.Electrum;
+import static gregtech.api.unification.material.Materials.GalliumArsenide;
+import static gregtech.api.unification.material.Materials.Glass;
+import static gregtech.api.unification.material.Materials.Gold;
+import static gregtech.api.unification.material.Materials.HSSE;
+import static gregtech.api.unification.material.Materials.Helium;
+import static gregtech.api.unification.material.Materials.Helium3;
+import static gregtech.api.unification.material.Materials.Hydrogen;
+import static gregtech.api.unification.material.Materials.Iron3Chloride;
+import static gregtech.api.unification.material.Materials.Krypton;
+import static gregtech.api.unification.material.Materials.Meat;
+import static gregtech.api.unification.material.Materials.Mutagen;
+import static gregtech.api.unification.material.Materials.Naquadah;
+import static gregtech.api.unification.material.Materials.Naquadria;
+import static gregtech.api.unification.material.Materials.Neutronium;
+import static gregtech.api.unification.material.Materials.NiobiumTitanium;
+import static gregtech.api.unification.material.Materials.Nitrogen;
+import static gregtech.api.unification.material.Materials.Osmiridium;
+import static gregtech.api.unification.material.Materials.Phosphorus;
+import static gregtech.api.unification.material.Materials.Polybenzimidazole;
+import static gregtech.api.unification.material.Materials.Radon;
+import static gregtech.api.unification.material.Materials.RawGrowthMedium;
+import static gregtech.api.unification.material.Materials.Salt;
+import static gregtech.api.unification.material.Materials.SiliconeRubber;
+import static gregtech.api.unification.material.Materials.SodiumPersulfate;
+import static gregtech.api.unification.material.Materials.SterileGrowthMedium;
+import static gregtech.api.unification.material.Materials.Tritanium;
+import static gregtech.api.unification.material.Materials.Xenon;
+import static gregtech.api.unification.material.Materials.Ytterbium;
+import static gregtech.api.unification.material.Materials.YttriumBariumCuprate;
+import static gregtech.api.unification.ore.OrePrefix.block;
+import static gregtech.api.unification.ore.OrePrefix.bolt;
+import static gregtech.api.unification.ore.OrePrefix.cableGtSingle;
+import static gregtech.api.unification.ore.OrePrefix.circuit;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.dustSmall;
+import static gregtech.api.unification.ore.OrePrefix.dustTiny;
+import static gregtech.api.unification.ore.OrePrefix.foil;
+import static gregtech.api.unification.ore.OrePrefix.frameGt;
+import static gregtech.api.unification.ore.OrePrefix.gem;
+import static gregtech.api.unification.ore.OrePrefix.gemExquisite;
+import static gregtech.api.unification.ore.OrePrefix.gemFlawless;
+import static gregtech.api.unification.ore.OrePrefix.ingot;
+import static gregtech.api.unification.ore.OrePrefix.lens;
+import static gregtech.api.unification.ore.OrePrefix.pipeSmallFluid;
+import static gregtech.api.unification.ore.OrePrefix.plate;
+import static gregtech.api.unification.ore.OrePrefix.plateDense;
+import static gregtech.api.unification.ore.OrePrefix.ring;
+import static gregtech.api.unification.ore.OrePrefix.screw;
+import static gregtech.api.unification.ore.OrePrefix.stickLong;
+import static gregtech.api.unification.ore.OrePrefix.wireFine;
+import static gregtech.api.unification.ore.OrePrefix.wireGtDouble;
+import static gregtech.common.items.MetaItems.ADVANCED_SYSTEM_ON_CHIP_WAFER;
+import static gregtech.common.items.MetaItems.CENTRAL_PROCESSING_UNIT_WAFER;
+import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_LuV;
+import static gregtech.common.items.MetaItems.ELITE_CIRCUIT_BOARD;
+import static gregtech.common.items.MetaItems.EMITTER_UHV;
+import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UHV;
+import static gregtech.common.items.MetaItems.HIGHLY_ADVANCED_SOC;
+import static gregtech.common.items.MetaItems.HIGHLY_ADVANCED_SOC_WAFER;
+import static gregtech.common.items.MetaItems.HIGH_POWER_INTEGRATED_CIRCUIT_WAFER;
+import static gregtech.common.items.MetaItems.INTEGRATED_LOGIC_CIRCUIT_WAFER;
+import static gregtech.common.items.MetaItems.LOW_POWER_INTEGRATED_CIRCUIT_WAFER;
+import static gregtech.common.items.MetaItems.MULTILAYER_FIBER_BOARD;
+import static gregtech.common.items.MetaItems.NAND_MEMORY_CHIP_WAFER;
+import static gregtech.common.items.MetaItems.NANO_CENTRAL_PROCESSING_UNIT_WAFER;
+import static gregtech.common.items.MetaItems.NAQUADAH_BOULE;
+import static gregtech.common.items.MetaItems.NEURO_PROCESSOR;
+import static gregtech.common.items.MetaItems.NOR_MEMORY_CHIP;
+import static gregtech.common.items.MetaItems.NOR_MEMORY_CHIP_WAFER;
+import static gregtech.common.items.MetaItems.PHOSPHORUS_BOULE;
+import static gregtech.common.items.MetaItems.POWER_INTEGRATED_CIRCUIT_WAFER;
+import static gregtech.common.items.MetaItems.QUBIT_CENTRAL_PROCESSING_UNIT_WAFER;
+import static gregtech.common.items.MetaItems.RANDOM_ACCESS_MEMORY;
+import static gregtech.common.items.MetaItems.RANDOM_ACCESS_MEMORY_WAFER;
+import static gregtech.common.items.MetaItems.ROBOT_ARM_UHV;
+import static gregtech.common.items.MetaItems.SENSOR_IV;
+import static gregtech.common.items.MetaItems.SILICON_BOULE;
+import static gregtech.common.items.MetaItems.SIMPLE_SYSTEM_ON_CHIP_WAFER;
+import static gregtech.common.items.MetaItems.SYSTEM_ON_CHIP_WAFER;
+import static gregtech.common.items.MetaItems.ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT_WAFER;
+import static gregtech.common.items.MetaItems.ULTRA_LOW_POWER_INTEGRATED_CIRCUIT_WAFER;
+import static gregtech.common.items.MetaItems.WETWARE_BOARD;
+import static gregtech.common.items.MetaItems.WETWARE_CIRCUIT_BOARD;
+import static gregtech.common.items.MetaItems.WETWARE_PROCESSOR_LUV;
+import static gregtech.common.metatileentities.MetaTileEntities.LASER_ENGRAVER;
+import static serendustry.item.SerendustryMetaItems.ACTIVATED_APU_CHIP;
+import static serendustry.item.SerendustryMetaItems.ACTIVATED_APU_WAFER;
+import static serendustry.item.SerendustryMetaItems.CHIP_OPIC;
+import static serendustry.item.SerendustryMetaItems.CIRC_ENTROPIC_UEV;
+import static serendustry.item.SerendustryMetaItems.CIRC_ENTROPIC_UHV;
+import static serendustry.item.SerendustryMetaItems.CIRC_ENTROPIC_UIV;
+import static serendustry.item.SerendustryMetaItems.CIRC_ENTROPIC_UV;
+import static serendustry.item.SerendustryMetaItems.CIRC_POSITRONIC_UEV;
+import static serendustry.item.SerendustryMetaItems.CIRC_POSITRONIC_UHV;
+import static serendustry.item.SerendustryMetaItems.CIRC_POSITRONIC_UV;
+import static serendustry.item.SerendustryMetaItems.CIRC_POSITRONIC_ZPM;
+import static serendustry.item.SerendustryMetaItems.COSMIC_CIRCUIT_BOARD;
+import static serendustry.item.SerendustryMetaItems.CULTURE_STEM_CELL;
+import static serendustry.item.SerendustryMetaItems.CULTURE_STEM_CELL_WIRED;
+import static serendustry.item.SerendustryMetaItems.ENGRAVED_POSITRONIC_CHIP;
+import static serendustry.item.SerendustryMetaItems.ENTROPIC_CIRCUIT_BOARD;
+import static serendustry.item.SerendustryMetaItems.INACTIVE_APU_WAFER;
+import static serendustry.item.SerendustryMetaItems.LENS_ARRAY_HYPERAMPLIFYING;
+import static serendustry.item.SerendustryMetaItems.LENS_ARRAY_HYPERPRECISE;
+import static serendustry.item.SerendustryMetaItems.MASK_APU;
+import static serendustry.item.SerendustryMetaItems.MASK_ASOC;
+import static serendustry.item.SerendustryMetaItems.MASK_BLANK;
+import static serendustry.item.SerendustryMetaItems.MASK_CPU;
+import static serendustry.item.SerendustryMetaItems.MASK_HASOC;
+import static serendustry.item.SerendustryMetaItems.MASK_HPIC;
+import static serendustry.item.SerendustryMetaItems.MASK_ILC;
+import static serendustry.item.SerendustryMetaItems.MASK_LPIC;
+import static serendustry.item.SerendustryMetaItems.MASK_NAND;
+import static serendustry.item.SerendustryMetaItems.MASK_NCPU;
+import static serendustry.item.SerendustryMetaItems.MASK_NOR;
+import static serendustry.item.SerendustryMetaItems.MASK_PIC;
+import static serendustry.item.SerendustryMetaItems.MASK_QCPU;
+import static serendustry.item.SerendustryMetaItems.MASK_RAM;
+import static serendustry.item.SerendustryMetaItems.MASK_SOC;
+import static serendustry.item.SerendustryMetaItems.MASK_SSOC;
+import static serendustry.item.SerendustryMetaItems.MASK_UHPIC;
+import static serendustry.item.SerendustryMetaItems.MASK_ULPIC;
+import static serendustry.item.SerendustryMetaItems.ORUNDUM_BOULE;
+import static serendustry.item.SerendustryMetaItems.ORUNDUM_SEED_CRYSTAL;
+import static serendustry.item.SerendustryMetaItems.PETRI_DISH_STERILIZED;
+import static serendustry.item.SerendustryMetaItems.POSITRONIC_CHIP;
+import static serendustry.item.SerendustryMetaItems.RAW_ORUNDUM_WAFER;
+import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_NETHER;
+import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_OVERWORLD;
+import static serendustry.item.SerendustryMetaItems.SUPREME_SMD_CAPACITOR;
+import static serendustry.item.SerendustryMetaItems.SUPREME_SMD_DIODE;
+import static serendustry.item.SerendustryMetaItems.SUPREME_SMD_INDUCTOR;
+import static serendustry.item.SerendustryMetaItems.SUPREME_SMD_RESISTOR;
+import static serendustry.item.SerendustryMetaItems.SUPREME_SMD_TRANSISTOR;
+import static serendustry.item.SerendustryMetaItems.TIME_CRYSTAL;
+import static serendustry.item.SerendustryMetaItems.WAFER_OPIC;
+import static serendustry.item.SerendustryMetaItems.WRAPPED_ORUNDUM_WAFER;
+import static serendustry.item.material.SerendustryMaterials.AbyssalAlloy;
+import static serendustry.item.material.SerendustryMaterials.Adamantium;
+import static serendustry.item.material.SerendustryMaterials.AwakenedDraconium;
+import static serendustry.item.material.SerendustryMaterials.Azbantium;
+import static serendustry.item.material.SerendustryMaterials.BlackStarMatter;
+import static serendustry.item.material.SerendustryMaterials.CarbonNanotubes;
+import static serendustry.item.material.SerendustryMaterials.ChromaticGlass;
+import static serendustry.item.material.SerendustryMaterials.CondensedStarMatter;
+import static serendustry.item.material.SerendustryMaterials.Gadonanotubes;
+import static serendustry.item.material.SerendustryMaterials.HalkoniteSteel;
+import static serendustry.item.material.SerendustryMaterials.HighGradeSolderingAlloy;
+import static serendustry.item.material.SerendustryMaterials.Hihiirokane;
+import static serendustry.item.material.SerendustryMaterials.Hypogen;
+import static serendustry.item.material.SerendustryMaterials.IrradiatedDiamond;
+import static serendustry.item.material.SerendustryMaterials.LCNS;
+import static serendustry.item.material.SerendustryMaterials.LaminatedBoPET;
+import static serendustry.item.material.SerendustryMaterials.MolybdeniteLubricant;
+import static serendustry.item.material.SerendustryMaterials.NVCDiamond;
+import static serendustry.item.material.SerendustryMaterials.NaquadriaticTaranium;
+import static serendustry.item.material.SerendustryMaterials.Originium;
+import static serendustry.item.material.SerendustryMaterials.Orundum;
+import static serendustry.item.material.SerendustryMaterials.PositroniumHydride;
+import static serendustry.item.material.SerendustryMaterials.Quantium40;
+import static serendustry.item.material.SerendustryMaterials.RadoxPolymer;
+import static serendustry.item.material.SerendustryMaterials.Rhugnor;
+import static serendustry.item.material.SerendustryMaterials.ScUevSane;
+import static serendustry.item.material.SerendustryMaterials.SelfRepairingNanobots;
+import static serendustry.item.material.SerendustryMaterials.SemiconductorGradeSilicon;
+import static serendustry.item.material.SerendustryMaterials.SentientNanobots;
+import static serendustry.item.material.SerendustryMaterials.Taranium;
+import static serendustry.item.material.SerendustryMaterials.TengamAttuned;
+import static serendustry.item.material.SerendustryMaterials.TiberiumAboreus;
+import static serendustry.item.material.SerendustryMaterials.TiberiumCruentus;
+import static serendustry.item.material.SerendustryMaterials.TiberiumRiparius;
+import static serendustry.item.material.SerendustryMaterials.TiberiumVinifera;
+import static serendustry.item.material.SerendustryMaterials.Vibranium;
+import static serendustry.item.material.SerendustryMaterials.VibraniumAlloy;
+import static serendustry.item.material.SerendustryMaterials.YeastExtract;
+import static serendustry.machine.SerendustryMetaTileEntities.HP_LASER_ARRAY;
+import static serendustry.machine.SerendustryRecipeMaps.CRYSTALLIZER_RECIPES;
+import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
+import static serendustry.machine.SerendustryRecipeMaps.HP_LASER_ARRAY_RECIPES;
 
 public class CircuitRecipes {
 
@@ -60,6 +260,29 @@ public class CircuitRecipes {
                 .blastFurnaceTemp(5400)
                 .duration(750 * 20).EUt(VA[EV]).buildAndRegister();
 
+        CRYSTALLIZER_RECIPES.recipeBuilder()
+                .input(dust, SemiconductorGradeSilicon, 16 * 3)
+                .input(dustSmall, GalliumArsenide, 3)
+                .fluidInputs(Nitrogen.getFluid(FluidStorageKeys.LIQUID, 2000))
+                .output(SILICON_BOULE, 4)
+                .duration(400 * 20 * 4 / 32).EUt(VA[ZPM]).buildAndRegister();
+
+        CRYSTALLIZER_RECIPES.recipeBuilder()
+                .input(dust, SemiconductorGradeSilicon, 64 * 3)
+                .input(dust, Phosphorus, 8 * 3)
+                .input(dustSmall, GalliumArsenide, 2 * 3)
+                .fluidInputs(Helium.getFluid(FluidStorageKeys.LIQUID, 8000))
+                .output(PHOSPHORUS_BOULE, 4)
+                .duration(600 * 20 * 4 / 16).EUt(VA[ZPM]).buildAndRegister();
+
+        CRYSTALLIZER_RECIPES.recipeBuilder()
+                .input(block, SemiconductorGradeSilicon, 16 * 3)
+                .input(ingot, Naquadah, 3)
+                .input(dust, GalliumArsenide, 3)
+                .fluidInputs(Helium.getFluid(FluidStorageKeys.LIQUID, 16000))
+                .output(NAQUADAH_BOULE, 4)
+                .duration(750 * 20 * 4 / 8).EUt(VA[ZPM]).buildAndRegister();
+
         CVD_RECIPES.recipeBuilder()
                 .input(dust, Originium, 4)
                 .input(dust, SemiconductorGradeSilicon, 2)
@@ -76,13 +299,12 @@ public class CircuitRecipes {
                 .cleanroom(CleanroomType.CLEANROOM)
                 .duration(400 * 20).EUt(VA[UHV]).buildAndRegister();
 
-        BLAST_RECIPES.recipeBuilder()
+        CRYSTALLIZER_RECIPES.recipeBuilder()
                 .notConsumable(stickLong, Neutronium)
                 .input(ORUNDUM_SEED_CRYSTAL)
                 .input(gemExquisite, Orundum)
                 .fluidInputs(Xenon.getFluid(16000))
                 .output(ORUNDUM_BOULE)
-                .blastFurnaceTemp(10800)
                 .duration(200 * 20).EUt(VA[UV]).buildAndRegister();
 
         CUTTER_RECIPES.recipeBuilder()
@@ -328,6 +550,7 @@ public class CircuitRecipes {
     }
 
     private static void componentRecipes() {
+        // SMDs
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(dust, Vibranium)
                 .input(wireFine, Gadonanotubes, 4)
@@ -380,6 +603,7 @@ public class CircuitRecipes {
                 .output(foil, ChromaticGlass, 4)
                 .duration(25 * 20).EUt(VA[UHV]).buildAndRegister();
 
+        // Positronic
         HP_LASER_ARRAY_RECIPES.recipeBuilder()
                 .input(lens, Diamond)
                 .input(gemExquisite, Diamond)
@@ -421,6 +645,20 @@ public class CircuitRecipes {
                 .output(ENGRAVED_POSITRONIC_CHIP)
                 .fluidOutputs(Orundum.getFluid(128))
                 .duration(20 * 100).EUt(VA[UHV]).buildAndRegister();
+
+        // Entropic
+        VACUUM_RECIPES.recipeBuilder()
+                .fluidInputs(Helium3.getFluid(1000))
+                .fluidOutputs(Helium3.getFluid(FluidStorageKeys.LIQUID, 1000))
+                .duration(240).EUt(VA[EV]).buildAndRegister();
+
+        CRYSTALLIZER_RECIPES.recipeBuilder()
+                .input(dust, NVCDiamond, 16)
+                .input(dust, Ytterbium, 8)
+                .fluidInputs(BlackStarMatter.getFluid(2000),
+                        Helium3.getFluid(FluidStorageKeys.LIQUID, 8000))
+                .output(TIME_CRYSTAL)
+                .duration(20 * 60 * 4).EUt(VA[UEV]).buildAndRegister();
     }
 
     private static void circuitRecipes() {
@@ -429,15 +667,15 @@ public class CircuitRecipes {
         // Any X Circuit
         for (int i = GTValues.ULV; i <= GTValues.MAX; i++) {
             FORMING_PRESS_RECIPES.recipeBuilder()
-                    .input(circuit, SValues.Tier_MarkerMaterial[i])
+                    .input(circuit, SValues.TIER_MARKER_MATERIAL[i])
                     .circuitMeta(1)
-                    .output(SValues.Tier_AnyCircuit[i])
+                    .output(SValues.TIER_ANY_CIRCUIT[i])
                     .duration(1).EUt(1).buildAndRegister();
 
             FORMING_PRESS_RECIPES.recipeBuilder()
-                    .input(circuit, SValues.Tier_MarkerMaterial[i], 64)
+                    .input(circuit, SValues.TIER_MARKER_MATERIAL[i], 64)
                     .circuitMeta(2)
-                    .output(SValues.Tier_AnyCircuit[i], 64)
+                    .output(SValues.TIER_ANY_CIRCUIT[i], 64)
                     .duration(1).EUt(1).buildAndRegister();
         }
 
@@ -558,6 +796,7 @@ public class CircuitRecipes {
         // UV
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ENTROPIC_CIRCUIT_BOARD)
+                .input(TIME_CRYSTAL)
                 .input(foil, TengamAttuned, 4)
                 .input(plate, HalkoniteSteel)
                 .input(SUPREME_SMD_RESISTOR, 8)

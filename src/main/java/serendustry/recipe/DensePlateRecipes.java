@@ -1,17 +1,5 @@
 package serendustry.recipe;
 
-import static gregtech.api.recipes.RecipeMaps.BENDER_RECIPES;
-import static gregtech.api.recipes.RecipeMaps.IMPLOSION_RECIPES;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_DENSE;
-import static gregtech.api.unification.ore.OrePrefix.ingot;
-import static gregtech.api.unification.ore.OrePrefix.plate;
-import static gregtech.api.unification.ore.OrePrefix.plateDense;
-import static serendustry.item.material.SerendustryMaterials.*;
-import static serendustry.machine.SerendustryRecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES;
-
-import net.minecraft.item.ItemStack;
-
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
 import gregtech.api.recipes.GTRecipeHandler;
@@ -19,6 +7,34 @@ import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.ore.OrePrefix;
+import net.minecraft.item.ItemStack;
+
+import static gregtech.api.recipes.RecipeMaps.BENDER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.IMPLOSION_RECIPES;
+import static gregtech.api.unification.material.Materials.Carbon;
+import static gregtech.api.unification.material.Materials.Darmstadtium;
+import static gregtech.api.unification.material.Materials.NaquadahAlloy;
+import static gregtech.api.unification.material.Materials.Neutronium;
+import static gregtech.api.unification.material.Materials.Oganesson;
+import static gregtech.api.unification.material.Materials.Tennessine;
+import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_DENSE;
+import static gregtech.api.unification.ore.OrePrefix.ingot;
+import static gregtech.api.unification.ore.OrePrefix.plate;
+import static gregtech.api.unification.ore.OrePrefix.plateDense;
+import static serendustry.item.material.SerendustryMaterials.Adamantium;
+import static serendustry.item.material.SerendustryMaterials.AwakenedDraconium;
+import static serendustry.item.material.SerendustryMaterials.DeepDarkSteel;
+import static serendustry.item.material.SerendustryMaterials.ErrorEnvoidia;
+import static serendustry.item.material.SerendustryMaterials.ErrorSerenibyss;
+import static serendustry.item.material.SerendustryMaterials.ExoHalkoniteSteel;
+import static serendustry.item.material.SerendustryMaterials.Floppa;
+import static serendustry.item.material.SerendustryMaterials.HalkoniteSteel;
+import static serendustry.item.material.SerendustryMaterials.HotExoHalkoniteSteel;
+import static serendustry.item.material.SerendustryMaterials.HotHalkoniteSteel;
+import static serendustry.item.material.SerendustryMaterials.Infinity;
+import static serendustry.item.material.SerendustryMaterials.RadoxPolymer;
+import static serendustry.item.material.SerendustryMaterials.VibraniumAlloy;
+import static serendustry.machine.SerendustryRecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES;
 
 public class DensePlateRecipes {
 

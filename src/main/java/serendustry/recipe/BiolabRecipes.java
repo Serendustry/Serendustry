@@ -1,24 +1,70 @@
 package serendustry.recipe;
 
-import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
-import static serendustry.item.SerendustryMetaItems.*;
-import static serendustry.item.material.SerendustryMaterials.*;
-import static serendustry.machine.SerendustryMetaTileEntities.BIOLAB;
-import static serendustry.machine.SerendustryRecipeMaps.BIOLAB_RECIPES;
-
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.chance.output.ChancedOutputLogic;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.common.blocks.BlockCleanroomCasing;
 import gregtech.common.blocks.MetaBlocks;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+
+import static gregtech.api.GTValues.HV;
+import static gregtech.api.GTValues.IV;
+import static gregtech.api.GTValues.LV;
+import static gregtech.api.GTValues.LuV;
+import static gregtech.api.GTValues.VA;
+import static gregtech.api.GTValues.ZPM;
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.AUTOCLAVE_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.CENTRIFUGE_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.CHEMICAL_BATH_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.CHEMICAL_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.FERMENTING_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.FLUID_HEATER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.MIXER_RECIPES;
+import static gregtech.api.unification.material.Materials.Agar;
+import static gregtech.api.unification.material.Materials.Bacteria;
+import static gregtech.api.unification.material.Materials.BacterialSludge;
+import static gregtech.api.unification.material.Materials.DistilledWater;
+import static gregtech.api.unification.material.Materials.Ethanol;
+import static gregtech.api.unification.material.Materials.Europium;
+import static gregtech.api.unification.material.Materials.Meat;
+import static gregtech.api.unification.material.Materials.Methane;
+import static gregtech.api.unification.material.Materials.Methanol;
+import static gregtech.api.unification.material.Materials.NaquadahAlloy;
+import static gregtech.api.unification.material.Materials.Osmiridium;
+import static gregtech.api.unification.material.Materials.Oxygen;
+import static gregtech.api.unification.material.Materials.Silver;
+import static gregtech.api.unification.material.Materials.SterileGrowthMedium;
+import static gregtech.api.unification.material.Materials.Sugar;
+import static gregtech.api.unification.material.Materials.SulfuricAcid;
+import static gregtech.api.unification.material.Materials.Water;
+import static gregtech.api.unification.ore.OrePrefix.cableGtDouble;
+import static gregtech.api.unification.ore.OrePrefix.circuit;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.frameGt;
+import static gregtech.api.unification.ore.OrePrefix.plateDense;
+import static gregtech.common.items.MetaItems.PETRI_DISH;
+import static gregtech.common.items.MetaItems.ROBOT_ARM_ZPM;
+import static gregtech.common.items.MetaItems.SENSOR_ZPM;
+import static serendustry.item.SerendustryMetaItems.CULTURE_E_COLI;
+import static serendustry.item.SerendustryMetaItems.CULTURE_RED_ALGAE;
+import static serendustry.item.SerendustryMetaItems.CULTURE_RED_ALGAE_BOILED;
+import static serendustry.item.SerendustryMetaItems.CULTURE_STEM_CELL;
+import static serendustry.item.SerendustryMetaItems.CULTURE_XENOXENE;
+import static serendustry.item.SerendustryMetaItems.CULTURE_YEAST;
+import static serendustry.item.SerendustryMetaItems.CULTURE_YEAST_RUPTURED;
+import static serendustry.item.SerendustryMetaItems.PETRI_DISH_STERILIZED;
+import static serendustry.item.material.SerendustryMaterials.BiologicalWaste;
+import static serendustry.item.material.SerendustryMaterials.Formaldehyde;
+import static serendustry.item.material.SerendustryMaterials.Glucose;
+import static serendustry.item.material.SerendustryMaterials.HighGradeSolderingAlloy;
+import static serendustry.item.material.SerendustryMaterials.PotatoDextroseBroth;
+import static serendustry.item.material.SerendustryMaterials.YeastExtract;
+import static serendustry.item.material.SerendustryMaterials.YeastRichMixture;
+import static serendustry.machine.SerendustryMetaTileEntities.BIOLAB;
+import static serendustry.machine.SerendustryRecipeMaps.BIOLAB_RECIPES;
 
 public class BiolabRecipes {
 
@@ -38,7 +84,8 @@ public class BiolabRecipes {
                         BlockCleanroomCasing.CasingType.FILTER_CASING_STERILE, 32))
                 .input(plateDense, NaquadahAlloy, 4)
                 .input(cableGtDouble, Europium, 8)
-                .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 16), Europium.getFluid(144 * 8))
+                .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 16),
+                        Europium.getFluid(144 * 8))
                 .output(BIOLAB)
                 .stationResearch(b -> b
                         .researchStack(PETRI_DISH_STERILIZED.getStackForm())

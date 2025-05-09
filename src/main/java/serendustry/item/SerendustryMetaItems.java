@@ -1,13 +1,12 @@
 package serendustry.item;
 
-import net.minecraft.item.Item;
-
 import gregtech.api.GTValues;
 import gregtech.api.items.metaitem.ElectricStats;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.items.metaitem.StandardMetaItem;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.ore.OrePrefix;
+import net.minecraft.item.Item;
 import serendustry.item.behavior.WasteExtractorBehavior;
 
 public class SerendustryMetaItems {
@@ -233,6 +232,8 @@ public class SerendustryMetaItems {
     public static MetaItem<?>.MetaValueItem HKSP_C;
     public static MetaItem<?>.MetaValueItem HKSP_BC;
     public static MetaItem<?>.MetaValueItem HKSP_F;
+
+    public static MetaItem<?>.MetaValueItem TIME_CRYSTAL;
 
     public static void preInit() {
         ITEMS = new StandardMetaItem();
@@ -481,5 +482,6 @@ public class SerendustryMetaItems {
         CATALYST_TITANIUM_ALLOYS = ITEMS.addItem(195, "catalyst_titanium_alloys").setMaxStackSize(1);
         CATALYST_VANADIUM_ALLOYS = ITEMS.addItem(196, "catalyst_vanadium_alloys").setMaxStackSize(1);
         STELLAR_ESSENCE_BEYOND = ITEMS.addItem(197, "stellar_essence_beyond");
+        TIME_CRYSTAL = ITEMS.addItem(198, "time_crystal");
     }
 }

@@ -1,12 +1,34 @@
 package serendustry.recipe;
 
-import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static serendustry.item.material.SerendustryMaterials.*;
-
 import gregtech.api.unification.ore.OrePrefix;
+
+import static gregtech.api.GTValues.HV;
+import static gregtech.api.GTValues.MV;
+import static gregtech.api.GTValues.VA;
+import static gregtech.api.recipes.RecipeMaps.BLAST_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.CENTRIFUGE_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.CHEMICAL_BATH_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.VACUUM_RECIPES;
+import static gregtech.api.unification.material.Materials.Bone;
+import static gregtech.api.unification.material.Materials.DarkAsh;
+import static gregtech.api.unification.material.Materials.Diamond;
+import static gregtech.api.unification.material.Materials.Gold;
+import static gregtech.api.unification.material.Materials.Lava;
+import static gregtech.api.unification.material.Materials.Meat;
+import static gregtech.api.unification.material.Materials.Netherrack;
+import static gregtech.api.unification.ore.OrePrefix.block;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.gem;
+import static gregtech.api.unification.ore.OrePrefix.gemExquisite;
+import static gregtech.api.unification.ore.OrePrefix.gemFlawless;
+import static gregtech.api.unification.ore.OrePrefix.ingot;
+import static gregtech.api.unification.ore.OrePrefix.ingotHot;
+import static gregtech.api.unification.ore.OrePrefix.nugget;
+import static serendustry.item.material.SerendustryMaterials.Netherite;
+import static serendustry.item.material.SerendustryMaterials.NetheritePoorAncientDebris;
+import static serendustry.item.material.SerendustryMaterials.NetheriteRichAncientDebris;
+import static serendustry.item.material.SerendustryMaterials.NetherizedDiamond;
+import static serendustry.item.material.SerendustryMaterials.RawAncientDebris;
 
 public class NetheriteChain {
 

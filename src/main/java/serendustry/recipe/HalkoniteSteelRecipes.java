@@ -1,21 +1,63 @@
 package serendustry.recipe;
 
-import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
+import gregtech.api.fluids.store.FluidStorageKeys;
+import gregtech.api.unification.ore.OrePrefix;
+
+import static gregtech.api.GTValues.UV;
+import static gregtech.api.GTValues.UXV;
+import static gregtech.api.GTValues.VA;
+import static gregtech.api.recipes.RecipeMaps.BLAST_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.CHEMICAL_BATH_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.FORGE_HAMMER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.VACUUM_RECIPES;
+import static gregtech.api.unification.material.Materials.DarkAsh;
+import static gregtech.api.unification.material.Materials.Helium;
+import static gregtech.api.unification.material.Materials.Neutronium;
+import static gregtech.api.unification.material.Materials.Tritanium;
+import static gregtech.api.unification.ore.OrePrefix.bolt;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.gear;
+import static gregtech.api.unification.ore.OrePrefix.gearSmall;
+import static gregtech.api.unification.ore.OrePrefix.gemExquisite;
+import static gregtech.api.unification.ore.OrePrefix.lens;
+import static gregtech.api.unification.ore.OrePrefix.plate;
+import static gregtech.api.unification.ore.OrePrefix.plateDense;
+import static gregtech.api.unification.ore.OrePrefix.ring;
+import static gregtech.api.unification.ore.OrePrefix.rotor;
+import static gregtech.api.unification.ore.OrePrefix.round;
+import static gregtech.api.unification.ore.OrePrefix.screw;
+import static gregtech.api.unification.ore.OrePrefix.stick;
+import static gregtech.api.unification.ore.OrePrefix.stickLong;
 import static serendustry.item.SerendustryMetaItems.HKSP_BC;
 import static serendustry.item.SerendustryMetaItems.HKSP_C;
 import static serendustry.item.SerendustryMetaItems.HKSP_DD;
 import static serendustry.item.SerendustryMetaItems.HKSP_F;
 import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_BEYOND;
 import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_NETHER;
-import static serendustry.item.material.SerendustryMaterials.*;
+import static serendustry.item.material.SerendustryMaterials.AwakenedDraconium;
+import static serendustry.item.material.SerendustryMaterials.BlackStarMatter;
+import static serendustry.item.material.SerendustryMaterials.ChromaticGlass;
+import static serendustry.item.material.SerendustryMaterials.DeepDarkSteel;
+import static serendustry.item.material.SerendustryMaterials.Dilithium;
+import static serendustry.item.material.SerendustryMaterials.Draconium;
+import static serendustry.item.material.SerendustryMaterials.Dragonblood;
+import static serendustry.item.material.SerendustryMaterials.ExoHalkoniteBase;
+import static serendustry.item.material.SerendustryMaterials.ExoHalkoniteSteel;
+import static serendustry.item.material.SerendustryMaterials.ExoticUnreality;
+import static serendustry.item.material.SerendustryMaterials.HalkonitePreparationBase;
+import static serendustry.item.material.SerendustryMaterials.HalkoniteSteel;
+import static serendustry.item.material.SerendustryMaterials.HotExoHalkoniteSteel;
+import static serendustry.item.material.SerendustryMaterials.HotHalkoniteSteel;
+import static serendustry.item.material.SerendustryMaterials.Hypogen;
+import static serendustry.item.material.SerendustryMaterials.Infinity;
+import static serendustry.item.material.SerendustryMaterials.Realitium;
+import static serendustry.item.material.SerendustryMaterials.Rhugnor;
+import static serendustry.item.material.SerendustryMaterials.Taranium;
+import static serendustry.item.material.SerendustryMaterials.Trilithium;
+import static serendustry.item.material.SerendustryMaterials.TrilithiumResin;
+import static serendustry.item.material.SerendustryMaterials.UnrealGoop;
 import static serendustry.machine.SerendustryRecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.NEBULAIC_NEXUS_RECIPES;
-
-import gregtech.api.fluids.store.FluidStorageKeys;
-import gregtech.api.unification.ore.OrePrefix;
 
 public class HalkoniteSteelRecipes {
 

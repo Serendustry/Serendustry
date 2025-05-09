@@ -1,11 +1,10 @@
 package serendustry.api.capability.impl;
 
-import org.jetbrains.annotations.NotNull;
-
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.recipes.recipeproperties.IRecipePropertyStorage;
 import gregtech.api.util.GTUtility;
+import org.jetbrains.annotations.NotNull;
 import serendustry.api.capability.IAALCore;
 
 public class AALRecipeLogic extends MultiblockRecipeLogic {

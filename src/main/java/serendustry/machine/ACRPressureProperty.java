@@ -1,11 +1,10 @@
 package serendustry.machine;
 
+import gregtech.api.recipes.recipeproperties.RecipeProperty;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import gregtech.api.recipes.recipeproperties.RecipeProperty;
 import org.eclipse.xtext.xbase.lib.IntegerRange;
 
 public class ACRPressureProperty extends RecipeProperty<IntegerRange> {
@@ -31,6 +30,7 @@ public class ACRPressureProperty extends RecipeProperty<IntegerRange> {
         IntegerRange pressure = castValue(value);
         minecraft.fontRenderer.drawString(
                 I18n.format("serendustry.machine.advanced_chemical_reactor.property.pressure",
-                        pressure.getStart() + "kPa-" + pressure.getEnd() + "kPa"), x, y, color);
+                        pressure.getStart() + "kPa-" + pressure.getEnd() + "kPa"),
+                x, y, color);
     }
 }

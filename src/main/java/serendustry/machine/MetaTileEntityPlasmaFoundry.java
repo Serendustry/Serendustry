@@ -1,28 +1,5 @@
 package serendustry.machine;
 
-import static gregtech.api.util.RelativeDirection.DOWN;
-import static gregtech.api.util.RelativeDirection.FRONT;
-import static gregtech.api.util.RelativeDirection.LEFT;
-
-import java.io.IOException;
-import java.util.List;
-
-import net.minecraft.block.Block;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentBase;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.world.World;
-import net.minecraftforge.items.ItemStackHandler;
-
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.Widget;
 import gregtech.api.gui.widgets.SlotWidget;
@@ -37,10 +14,32 @@ import gregtech.api.unification.material.Materials;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.TextComponentUtil;
 import gregtech.client.renderer.ICubeRenderer;
+import net.minecraft.block.Block;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.PacketBuffer;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentBase;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
+import net.minecraftforge.items.ItemStackHandler;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import serendustry.SValues;
 import serendustry.blocks.BlockSerendustryMetalCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.machine.structure.StructureDefinition;
+
+import java.io.IOException;
+import java.util.List;
+
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
 
 public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
 
@@ -115,13 +114,7 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
     public void addInformation(ItemStack stack, @Nullable World player, @NotNull List<String> tooltip,
                                boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
-        tooltip.add(I18n.format("serendustry.machine.plasma_foundry.flavor"));
-        tooltip.add(I18n.format(""));
-        tooltip.add(I18n.format("serendustry.machine.plasma_foundry.description.1"));
-        tooltip.add(I18n.format("serendustry.machine.plasma_foundry.description.2"));
-        tooltip.add(I18n.format(""));
-        tooltip.add(I18n.format("serendustry.machine.energy.regular"));
-        tooltip.add(I18n.format(""));
+        tooltip.add("");
         String catalyst = I18n.format(NO_CATALYST);
         NBTTagCompound tag = stack.getTagCompound();
         if (tag != null) {
@@ -131,9 +124,14 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
             }
         }
 
-        tooltip.add(I18n.format("serendustry.machine.plasma_foundry.catalyst.contained") + " " + "§e" + catalyst + "§7");
-        tooltip.add(I18n.format(""));
-        tooltip.add(I18n.format("serendustry.machine.authors.envoidia_twilight"));
+        tooltip.add(
+                I18n.format("serendustry.machine.plasma_foundry.catalyst.contained") + " " + "§e" + catalyst + "§7");
+        tooltip.add("");
+        tooltip.add(I18n.format("serendustry.machine.plasma_foundry.lava"));
+        tooltip.add("");
+        tooltip.add(I18n.format("serendustry.machine.energy.regular"));
+        tooltip.add("");
+        tooltip.add(I18n.format("serendustry.machine.authors") + " " + SValues.FORMAT_ENVOIDIA + I18n.format("serendustry.machine.author.envoidia") + "§r " + I18n.format("serendustry.text.and") + " " + I18n.format("serendustry.machine.author.twilight"));
     }
 
     @Override

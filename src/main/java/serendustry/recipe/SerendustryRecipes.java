@@ -34,7 +34,6 @@ public class SerendustryRecipes {
         NetheriteChain.init();
         PeriodiciumChain.init();
         PlasmaFoundryRecipes.init();
-        PlasmaFuels.init();
         PlasmaMixerRecipes.init();
         Quantium40Chain.init();
         RadoxChain.init();

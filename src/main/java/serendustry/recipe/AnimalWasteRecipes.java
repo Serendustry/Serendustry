@@ -1,13 +1,38 @@
 package serendustry.recipe;
 
-import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
+import net.minecraft.init.Blocks;
+
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.AUTOCLAVE_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.CANNER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.CENTRIFUGE_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.COMPRESSOR_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.DISTILLATION_RECIPES;
+import static gregtech.api.unification.material.Materials.Brass;
+import static gregtech.api.unification.material.Materials.Bronze;
+import static gregtech.api.unification.material.Materials.Calcium;
+import static gregtech.api.unification.material.Materials.Carbon;
+import static gregtech.api.unification.material.Materials.Copper;
+import static gregtech.api.unification.material.Materials.DistilledWater;
+import static gregtech.api.unification.material.Materials.Phosphorus;
+import static gregtech.api.unification.material.Materials.Polyethylene;
+import static gregtech.api.unification.material.Materials.SulfuricAcid;
+import static gregtech.api.unification.material.Materials.TinAlloy;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.dustTiny;
+import static gregtech.api.unification.ore.OrePrefix.foil;
+import static gregtech.api.unification.ore.OrePrefix.gem;
+import static gregtech.api.unification.ore.OrePrefix.plate;
+import static gregtech.api.unification.ore.OrePrefix.stickLong;
 import static serendustry.item.SerendustryMetaItems.WASTE_FLUID_EXTRACTOR;
 import static serendustry.item.SerendustryMetaItems.WASTE_FLUID_EXTRACTOR_FILLED;
-import static serendustry.item.material.SerendustryMaterials.*;
-
-import net.minecraft.init.Blocks;
+import static serendustry.item.material.SerendustryMaterials.AmmoniumNitrate;
+import static serendustry.item.material.SerendustryMaterials.AnimalWaste;
+import static serendustry.item.material.SerendustryMaterials.DriedEarth;
+import static serendustry.item.material.SerendustryMaterials.ISHydrochloricAcid;
+import static serendustry.item.material.SerendustryMaterials.ISHydrofluoricAcid;
+import static serendustry.item.material.SerendustryMaterials.SulfuricApatiteMix;
+import static serendustry.item.material.SerendustryMaterials.SulfurousAcid;
 
 public class AnimalWasteRecipes {
 

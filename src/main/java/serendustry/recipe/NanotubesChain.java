@@ -1,17 +1,50 @@
 package serendustry.recipe;
 
-import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
-import static serendustry.item.material.SerendustryMaterials.*;
-import static serendustry.machine.SerendustryMetaTileEntities.SONICATOR;
-import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
-import static serendustry.machine.SerendustryRecipeMaps.SONICATOR_RECIPES;
-
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
+
+import static gregtech.api.GTValues.EV;
+import static gregtech.api.GTValues.IV;
+import static gregtech.api.GTValues.UHV;
+import static gregtech.api.GTValues.UV;
+import static gregtech.api.GTValues.VA;
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.ELECTROMAGNETIC_SEPARATOR_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.FLUID_HEATER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.LASER_ENGRAVER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.WIREMILL_RECIPES;
+import static gregtech.api.unification.material.Materials.Argon;
+import static gregtech.api.unification.material.Materials.Chlorine;
+import static gregtech.api.unification.material.Materials.Duranium;
+import static gregtech.api.unification.material.Materials.Gadolinium;
+import static gregtech.api.unification.material.Materials.HydrochloricAcid;
+import static gregtech.api.unification.material.Materials.Hydrogen;
+import static gregtech.api.unification.material.Materials.Iron;
+import static gregtech.api.unification.material.Materials.Methane;
+import static gregtech.api.unification.material.Materials.Naquadria;
+import static gregtech.api.unification.material.Materials.Neutronium;
+import static gregtech.api.unification.ore.OrePrefix.cableGtDouble;
+import static gregtech.api.unification.ore.OrePrefix.craftingLens;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.foil;
+import static gregtech.api.unification.ore.OrePrefix.plate;
+import static gregtech.api.unification.ore.OrePrefix.stick;
+import static gregtech.api.unification.ore.OrePrefix.wireFine;
+import static gregtech.common.items.MetaItems.EMITTER_UHV;
+import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UHV;
+import static serendustry.item.material.SerendustryMaterials.Acetylene;
+import static serendustry.item.material.SerendustryMaterials.CarbonNanotubes;
+import static serendustry.item.material.SerendustryMaterials.GadoliniumTrichloride;
+import static serendustry.item.material.SerendustryMaterials.Gadonanotubes;
+import static serendustry.item.material.SerendustryMaterials.Hihiirokane;
+import static serendustry.item.material.SerendustryMaterials.MolybdeniteLubricant;
+import static serendustry.item.material.SerendustryMaterials.RawCarbonNanotubesMixture;
+import static serendustry.item.material.SerendustryMaterials.SelfRepairingNanobots;
+import static serendustry.item.material.SerendustryMaterials.VibraniumAlloy;
+import static serendustry.machine.SerendustryMetaTileEntities.SONICATOR;
+import static serendustry.machine.SerendustryRecipeMaps.ACR_RECIPES;
+import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
+import static serendustry.machine.SerendustryRecipeMaps.SONICATOR_RECIPES;
 
 public class NanotubesChain {
 
@@ -45,7 +78,11 @@ public class NanotubesChain {
                 .output(wireFine, CarbonNanotubes, 2)
                 .duration(25).EUt(VA[IV]).buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder()
+        // 7 Res Heater + 2 Piston Pump
+        // Desert: 5 Res Heater
+        ACR_RECIPES.recipeBuilder()
+                .temperature(500, 550)
+                .pressure(80, 130)
                 .input(dust, Gadolinium)
                 .fluidInputs(HydrochloricAcid.getFluid(3000))
                 .output(dust, GadoliniumTrichloride, 4)
