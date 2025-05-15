@@ -21,7 +21,6 @@ import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
@@ -270,8 +269,10 @@ public class MetaTileEntityIndustrialLaboratory extends RecipeMapMultiblockContr
     }
 
     @Override
-    public void addInformation(ItemStack stack, @org.jetbrains.annotations.Nullable World player, List<String> tooltip, boolean advanced) {
+    public void addInformation(ItemStack stack, @org.jetbrains.annotations.Nullable World player, List<String> tooltip,
+                               boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
-        STooltipHelper.addSerendustryInformation(tooltip, SValues.ENERGY_SUBSTATION, false, "serendustry.machine.author.serenibyss");
+        STooltipHelper.addSerendustryInformation(tooltip, SValues.ENERGY_SUBSTATION, false,
+                "serendustry.machine.author.serenibyss");
     }
 }

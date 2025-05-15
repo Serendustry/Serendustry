@@ -3035,5 +3035,383 @@ public class StructureDefinition {
                     "XGGGX",
                     "XGGGX",
                     "XXXXX" } };
-    // todo TPM, Yggdrasil, mega fusion, acr
+
+    public static final String[][] MEGA_FUSION_REACTOR = { {
+            "                                               ",
+            "                                               ",
+            "                    CDDDDDC                    ",
+            "                    CDAEADC                    ",
+            "                    CDDDDDC                    ",
+            "                                               ",
+            "                                               "
+    }, {
+            "                                               ",
+            "                    CDAAADC                    ",
+            "                   DD     DD                   ",
+            "                   DD     DD                   ",
+            "                   DD     DD                   ",
+            "                    CDAAADC                    ",
+            "                                               "
+    }, {
+            "                    CDDDDDC                    ",
+            "                   DD     DD                   ",
+            "                DDDDD     DDDDD                ",
+            "                DDDBBBBBBBBBDDD                ",
+            "                DDDDD     DDDDD                ",
+            "                   DD     DD                   ",
+            "                    CDDDDDC                    "
+    }, {
+            "                    CDAAADC                    ",
+            "                DDDDD     DDDDD                ",
+            "              DDDDDBBBBBBBBBDDDDD              ",
+            "              DDBBBBBBBBBBBBBBBDD              ",
+            "              DDDDDBBBBBBBBBDDDDD              ",
+            "                DDDDD     DDDDD                ",
+            "                    CDAAADC                    "
+    }, {
+            "                    CDDDDDC                    ",
+            "              DDDDDDD     DDDDDDD              ",
+            "            DDDDBBBDD     DDBBBDDDD            ",
+            "            DDBBBBBBBBBBBBBBBBBBBDD            ",
+            "            DDDDBBBDD     DDBBBDDDD            ",
+            "              DDDDDDD     DDDDDDD              ",
+            "                    CDDDDDC                    "
+    }, {
+            "                                               ",
+            "            DDDDDDD CDAAADC DDDDDDD            ",
+            "           DDDBBDDDDD     DDDDDBBDDD           ",
+            "           DBBBBBBBDD     DDBBBBBBBD           ",
+            "           DDDBBDDDDD     DDDDDBBDDD           ",
+            "            DDDDDDD CDAAADC DDDDDDD            ",
+            "                                               "
+    }, {
+            "                                               ",
+            "           DDDDD               DDDDD           ",
+            "          DDBBDDDDD CDDDDDC DDDDDBBDD          ",
+            "          DBBBBBDDD CDAAADC DDDBBBBBD          ",
+            "          DDBBDDDDD CDDDDDC DDDDDBBDD          ",
+            "           DDDDD               DDDDD           ",
+            "                                               "
+    }, {
+            "                                               ",
+            "          DDDD                   DDDD          ",
+            "         DDBDDDD               DDDDBDD         ",
+            "         DBBBBDD               DDBBBBD         ",
+            "         DDBDDDD               DDDDBDD         ",
+            "          DDDD                   DDDD          ",
+            "                                               "
+    }, {
+            "                                               ",
+            "         DDD                       DDD         ",
+            "        DDBDDD                   DDDBDD        ",
+            "        DBBBDD                   DDBBBD        ",
+            "        DDBDDD                   DDDBDD        ",
+            "         DDD                       DDD         ",
+            "                                               "
+    }, {
+            "                                               ",
+            "        DDD                         DDD        ",
+            "       DDBDD                       DDBDD       ",
+            "       DBBBD                       DBBBD       ",
+            "       DDBDD                       DDBDD       ",
+            "        DDD                         DDD        ",
+            "                                               "
+    }, {
+            "                                               ",
+            "       DDD                           DDD       ",
+            "      DDBDD                         DDBDD      ",
+            "      DBBBD                         DBBBD      ",
+            "      DDBDD                         DDBDD      ",
+            "       DDD                           DDD       ",
+            "                                               "
+    }, {
+            "                                               ",
+            "      DDD                             DDD      ",
+            "     DDBDD                           DDBDD     ",
+            "     DBBBD                           DBBBD     ",
+            "     DDBDD                           DDBDD     ",
+            "      DDD                             DDD      ",
+            "                                               "
+    }, {
+            "                                               ",
+            "     DDD                               DDD     ",
+            "    DDBDD                             DDBDD    ",
+            "    DBBBD                             DBBBD    ",
+            "    DDBDD                             DDBDD    ",
+            "     DDD                               DDD     ",
+            "                                               "
+    }, {
+            "                                               ",
+            "     DDD                               DDD     ",
+            "    DDBDD                             DDBDD    ",
+            "    DBBBD                             DBBBD    ",
+            "    DDBDD                             DDBDD    ",
+            "     DDD                               DDD     ",
+            "                                               "
+    }, {
+            "                                               ",
+            "    DDD                                 DDD    ",
+            "   DDBDD                               DDBDD   ",
+            "   DBBBD                               DBBBD   ",
+            "   DDBDD                               DDBDD   ",
+            "    DDD                                 DDD    ",
+            "                                               "
+    }, {
+            "                                               ",
+            "    DDD                                 DDD    ",
+            "   DDBDD                               DDBDD   ",
+            "   DBBBD                               DBBBD   ",
+            "   DDBDD                               DDBDD   ",
+            "    DDD                                 DDD    ",
+            "                                               "
+    }, {
+            "                                               ",
+            "   DDD                                   DDD   ",
+            "  DDBDD                                 DDBDD  ",
+            "  DBBBD                                 DBBBD  ",
+            "  DDBDD                                 DDBDD  ",
+            "   DDD                                   DDD   ",
+            "                                               "
+    }, {
+            "                                               ",
+            "   DDD                                   DDD   ",
+            "  DDBDD                                 DDBDD  ",
+            "  DBBBD                                 DBBBD  ",
+            "  DDBDD                                 DDBDD  ",
+            "   DDD                                   DDD   ",
+            "                                               "
+    }, {
+            "                                               ",
+            "   DDD                                   DDD   ",
+            "  DDBDD                                 DDBDD  ",
+            "  DBBBD                                 DBBBD  ",
+            "  DDBDD                                 DDBDD  ",
+            "   DDD                                   DDD   ",
+            "                                               "
+    }, {
+            "                                               ",
+            "  DDD                                     DDD  ",
+            " DDBDD                                   DDBDD ",
+            " DBBBD                                   DBBBD ",
+            " DDBDD                                   DDBDD ",
+            "  DDD                                     DDD  ",
+            "                                               "
+    }, {
+            "  CCC                                     CCC  ",
+            " CDDDC                                   CDDDC ",
+            "CDDBDDC                                 CDDBDDC",
+            "CDBBBDC                                 CDBBBDC",
+            "CDDBDDC                                 CDDBDDC",
+            " CDDDC                                   CDDDC ",
+            "  CCC                                     CCC  "
+    }, {
+            "  DDD                                     DDD  ",
+            " D   D                                   D   D ",
+            "D  B  D                                 D  B  D",
+            "D BBB D                                 D BBB D",
+            "D  B  D                                 D  B  D",
+            " D   D                                   D   D ",
+            "  DDD                                     DDD  "
+    }, {
+            "  DAD                                     DAD  ",
+            " A   A                                   A   A ",
+            "D  B  D                                 D  B  D",
+            "A BBB A                                 A BBB A",
+            "D  B  D                                 D  B  D",
+            " A   A                                   A   A ",
+            "  DAD                                     DAD  "
+    }, {
+            "  DAD                                     DAD  ",
+            " A   A                                   A   A ",
+            "D  B  D                                 D  B  D",
+            "A BBB A                                 A BBB A",
+            "D  B  D                                 D  B  D",
+            " A   A                                   A   A ",
+            "  DAD                                     DAD  "
+    }, {
+            "  DAD                                     DAD  ",
+            " A   A                                   A   A ",
+            "D  B  D                                 D  B  D",
+            "A BBB A                                 A BBB A",
+            "D  B  D                                 D  B  D",
+            " A   A                                   A   A ",
+            "  DAD                                     DAD  "
+    }, {
+            "  DDD                                     DDD  ",
+            " D   D                                   D   D ",
+            "D  B  D                                 D  B  D",
+            "D BBB D                                 D BBB D",
+            "D  B  D                                 D  B  D",
+            " D   D                                   D   D ",
+            "  DDD                                     DDD  "
+    }, {
+            "  CCC                                     CCC  ",
+            " CDDDC                                   CDDDC ",
+            "CDDBDDC                                 CDDBDDC",
+            "CDBBBDC                                 CDBBBDC",
+            "CDDBDDC                                 CDDBDDC",
+            " CDDDC                                   CDDDC ",
+            "  CCC                                     CCC  "
+    }, {
+            "                                               ",
+            "  DDD                                     DDD  ",
+            " DDBDD                                   DDBDD ",
+            " DBBBD                                   DBBBD ",
+            " DDBDD                                   DDBDD ",
+            "  DDD                                     DDD  ",
+            "                                               "
+    }, {
+            "                                               ",
+            "   DDD                                   DDD   ",
+            "  DDBDD                                 DDBDD  ",
+            "  DBBBD                                 DBBBD  ",
+            "  DDBDD                                 DDBDD  ",
+            "   DDD                                   DDD   ",
+            "                                               "
+    }, {
+            "                                               ",
+            "   DDD                                   DDD   ",
+            "  DDBDD                                 DDBDD  ",
+            "  DBBBD                                 DBBBD  ",
+            "  DDBDD                                 DDBDD  ",
+            "   DDD                                   DDD   ",
+            "                                               "
+    }, {
+            "                                               ",
+            "   DDD                                   DDD   ",
+            "  DDBDD                                 DDBDD  ",
+            "  DBBBD                                 DBBBD  ",
+            "  DDBDD                                 DDBDD  ",
+            "   DDD                                   DDD   ",
+            "                                               "
+    }, {
+            "                                               ",
+            "    DDD                                 DDD    ",
+            "   DDBDD                               DDBDD   ",
+            "   DBBBD                               DBBBD   ",
+            "   DDBDD                               DDBDD   ",
+            "    DDD                                 DDD    ",
+            "                                               "
+    }, {
+            "                                               ",
+            "    DDD                                 DDD    ",
+            "   DDBDD                               DDBDD   ",
+            "   DBBBD                               DBBBD   ",
+            "   DDBDD                               DDBDD   ",
+            "    DDD                                 DDD    ",
+            "                                               "
+    }, {
+            "                                               ",
+            "     DDD                               DDD     ",
+            "    DDBDD                             DDBDD    ",
+            "    DBBBD                             DBBBD    ",
+            "    DDBDD                             DDBDD    ",
+            "     DDD                               DDD     ",
+            "                                               "
+    }, {
+            "                                               ",
+            "     DDD                               DDD     ",
+            "    DDBDD                             DDBDD    ",
+            "    DBBBD                             DBBBD    ",
+            "    DDBDD                             DDBDD    ",
+            "     DDD                               DDD     ",
+            "                                               "
+    }, {
+            "                                               ",
+            "      DDD                             DDD      ",
+            "     DDBDD                           DDBDD     ",
+            "     DBBBD                           DBBBD     ",
+            "     DDBDD                           DDBDD     ",
+            "      DDD                             DDD      ",
+            "                                               "
+    }, {
+            "                                               ",
+            "       DDD                           DDD       ",
+            "      DDBDD                         DDBDD      ",
+            "      DBBBD                         DBBBD      ",
+            "      DDBDD                         DDBDD      ",
+            "       DDD                           DDD       ",
+            "                                               "
+    }, {
+            "                                               ",
+            "        DDD                         DDD        ",
+            "       DDBDD                       DDBDD       ",
+            "       DBBBD                       DBBBD       ",
+            "       DDBDD                       DDBDD       ",
+            "        DDD                         DDD        ",
+            "                                               "
+    }, {
+            "                                               ",
+            "         DDD                       DDD         ",
+            "        DDBDDD                   DDDBDD        ",
+            "        DBBBDD                   DDBBBD        ",
+            "        DDBDDD                   DDDBDD        ",
+            "         DDD                       DDD         ",
+            "                                               "
+    }, {
+            "                                               ",
+            "          DDDD                   DDDD          ",
+            "         DDBDDDD               DDDDBDD         ",
+            "         DBBBBDD               DDBBBBD         ",
+            "         DDBDDDD               DDDDBDD         ",
+            "          DDDD                   DDDD          ",
+            "                                               "
+    }, {
+            "                                               ",
+            "           DDDDD               DDDDD           ",
+            "          DDBBDDDDD CDDDDDC DDDDDBBDD          ",
+            "          DBBBBBDDD CDAAADC DDDBBBBBD          ",
+            "          DDBBDDDDD CDDDDDC DDDDDBBDD          ",
+            "           DDDDD               DDDDD           ",
+            "                                               "
+    }, {
+            "                                               ",
+            "            DDDDDDD CDAAADC DDDDDDD            ",
+            "           DDDBBDDDDD     DDDDDBBDDD           ",
+            "           DBBBBBBBDD     DDBBBBBBBD           ",
+            "           DDDBBDDDDD     DDDDDBBDDD           ",
+            "            DDDDDDD CDAAADC DDDDDDD            ",
+            "                                               "
+    }, {
+            "                    CDDDDDC                    ",
+            "              DDDDDDD     DDDDDDD              ",
+            "            DDDDBBBDD     DDBBBDDDD            ",
+            "            DDBBBBBBBBBBBBBBBBBBBDD            ",
+            "            DDDDBBBDD     DDBBBDDDD            ",
+            "              DDDDDDD     DDDDDDD              ",
+            "                    CDDDDDC                    "
+    }, {
+            "                    CDAAADC                    ",
+            "                DDDDD     DDDDD                ",
+            "              DDDDDBBBBBBBBBDDDDD              ",
+            "              DDBBBBBBBBBBBBBBBDD              ",
+            "              DDDDDBBBBBBBBBDDDDD              ",
+            "                DDDDD     DDDDD                ",
+            "                    CDAAADC                    "
+    }, {
+            "                    CDDDDDC                    ",
+            "                   DD     DD                   ",
+            "                DDDDD     DDDDD                ",
+            "                DDDBBBBBBBBBDDD                ",
+            "                DDDDD     DDDDD                ",
+            "                   DD     DD                   ",
+            "                    CDDDDDC                    "
+    }, {
+            "                                               ",
+            "                    CDAAADC                    ",
+            "                   DD     DD                   ",
+            "                   DD     DD                   ",
+            "                   DD     DD                   ",
+            "                    CDAAADC                    ",
+            "                                               "
+    }, {
+            "                                               ",
+            "                                               ",
+            "                    CDDDDDC                    ",
+            "                    CDAAADC                    ",
+            "                    CDDDDDC                    ",
+            "                                               ",
+            "                                               "
+    } };
 }
+// todo TPM, Yggdrasil, acr

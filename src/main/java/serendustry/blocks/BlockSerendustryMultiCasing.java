@@ -29,6 +29,7 @@ public class BlockSerendustryMultiCasing extends VariantBlock<BlockSerendustryMu
     public enum SerendustryMultiCasingType implements IStringSerializable {
 
         SPACE_ELEVATOR("space_elevator"),
+        ACR("acr"),
         ADV_FUSION("adv_fusion"),
         ADV_FUSION_COIL("adv_fusion_coil");
 

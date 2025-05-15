@@ -14,7 +14,6 @@ import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -85,7 +84,7 @@ public class MetaTileEntityTranscendentPlasmaMixer extends RecipeMapMultiblockCo
 
         pattern.where('S', selfPredicate())
                 .where('X',
-                        states(getCasingState()).setMinGlobalLimited(60)
+                        states(getCasingState()).setMinGlobalLimited(1)
                                 .or(autoAbilities(false, false, true, true, true, true, false))
                                 .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0).setMinGlobalLimited(0)
                                         .setMaxGlobalLimited(2))

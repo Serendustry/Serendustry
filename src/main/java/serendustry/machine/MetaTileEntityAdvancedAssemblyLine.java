@@ -57,7 +57,6 @@ import serendustry.blocks.BlockSerendustryMetalCasing;
 import serendustry.blocks.IAALCoreBlockStats;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
-import serendustry.client.utils.STooltipHelper;
 import serendustry.machine.structure.StructureDefinition;
 
 import java.util.ArrayList;
@@ -104,30 +103,36 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
         List<IEnergyContainer> energyInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
         List<IEnergyContainer> substationInput = new ArrayList<>(
                 getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
+        List<IEnergyContainer> laserInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_LASER));
 
         if (!energyInput.isEmpty()) {
             // Disallow mixing hatch types
-            if (!substationInput.isEmpty()) {
+            if (!substationInput.isEmpty() || !laserInput.isEmpty()) {
                 invalidateStructure();
             }
 
             // Limit hatch tier
-            for (IEnergyContainer input : energyInput) {
-                if (input.getInputVoltage() > GTValues.V[tier]) {
-                    // todo error
-                    invalidateStructure();
-                }
+            if (energyInput.get(0).getInputVoltage() > GTValues.V[tier]) {
+                // todo error
+                invalidateStructure();
             }
         }
 
         if (!substationInput.isEmpty()) {
             // Disallow mixing hatch types
-            if (!energyInput.isEmpty()) {
+            if (!energyInput.isEmpty() || !laserInput.isEmpty()) {
                 invalidateStructure();
             }
 
             // Limit hatch tier
             if (substationInput.get(0).getInputVoltage() > GTValues.V[tier]) {
+                invalidateStructure();
+            }
+        }
+
+        if (!laserInput.isEmpty()) {
+            // Disallow mixing hatch types and require MAX cores
+            if (tier < GTValues.MAX || !energyInput.isEmpty() || !substationInput.isEmpty()) {
                 invalidateStructure();
             }
         }
@@ -168,8 +173,10 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
                                 .addTooltips("gregtech.multiblock.pattern.location_end"))
                 .where('Y', states(getCasingState())
                         .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0).setMinGlobalLimited(0)
-                                .setMaxGlobalLimited(2))
+                                .setMaxGlobalLimited(1))
                         .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(1)
+                                .setMaxGlobalLimited(1))
+                        .or(abilities(MultiblockAbility.INPUT_LASER).setPreviewCount(0)
                                 .setMaxGlobalLimited(1)))
                 .where('I', metaTileEntities(MetaTileEntities.ITEM_IMPORT_BUS[GTValues.ULV]))
                 .where('G', states(getGrateState()))
@@ -559,6 +566,11 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
         } else if (ConfigHolder.machines.orderedFluidAssembly) {
             tooltip.add(I18n.format("gregtech.machine.assembly_line.tooltip_ordered_fluids"));
         }
-        STooltipHelper.addSerendustryInformation(tooltip, SValues.ENERGY_SUBSTATION, false);
+        tooltip.add("");
+        tooltip.add(SValues.ENERGY_SUBSTATION_1);
+        tooltip.add(I18n.format("serendustry.machine.advanced_assembly_line.laser"));
+        tooltip.add("");
+        tooltip.add(I18n.format("serendustry.machine.author") + " " + SValues.FORMAT_ENVOIDIA +
+                I18n.format("serendustry.machine.author.envoidia"));
     }
 }

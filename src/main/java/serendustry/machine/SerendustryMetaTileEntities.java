@@ -25,7 +25,7 @@ public class SerendustryMetaTileEntities {
     public static MetaTileEntityAdvancedFusionReactor ADVANCED_FUSION_REACTOR;
     public static MetaTileEntityYggdrasil YGGDRASIL;
     public static MetaTileEntityStellarIncubator STELLAR_INCUBATOR;
-    public static MetaTileEntityFlamelCrucible FLAMEL_CRUCIBLE;
+    public static MetaTileEntityMegaChemicalReactor MEGA_CHEMICAL_REACTOR;
     public static MetaTileEntityDehydrator DEHYDRATOR;
     public static MetaTileEntityStellarEngine STELLAR_ENGINE;
     public static MetaTileEntityPlasmaCondenser PLASMA_CONDENSER;
@@ -34,6 +34,8 @@ public class SerendustryMetaTileEntities {
     public static MetaTileEntityCrystallizer CRYSTALLIZER;
     public static MetaTileEntityMegaFusionReactor MEGA_FUSION_REACTOR;
     public static MetaTileEntityAdvancedChemicalReactor ADVANCED_CHEMICAL_REACTOR;
+    public static MetaTileEntityEmpyrean EMPYREAN;
+    public static MetaTileEntityDistortionEngine DISTORTION_ENGINE;
 
     public static void preInit() {
         // todo claim an id range
@@ -58,8 +60,8 @@ public class SerendustryMetaTileEntities {
         YGGDRASIL = registerMetaTileEntity(4011, new MetaTileEntityYggdrasil(Serendustry.ID("yggdrasil")));
         STELLAR_INCUBATOR = registerMetaTileEntity(4012,
                 new MetaTileEntityStellarIncubator(Serendustry.ID("stellar_incubator")));
-        FLAMEL_CRUCIBLE = registerMetaTileEntity(4013,
-                new MetaTileEntityFlamelCrucible(Serendustry.ID("flamel_crucible")));
+        MEGA_CHEMICAL_REACTOR = registerMetaTileEntity(4013,
+                new MetaTileEntityMegaChemicalReactor(Serendustry.ID("mega_chemical_reactor")));
         DEHYDRATOR = registerMetaTileEntity(4014, new MetaTileEntityDehydrator(Serendustry.ID("dehydrator")));
         STELLAR_ENGINE = registerMetaTileEntity(4015,
                 new MetaTileEntityStellarEngine(Serendustry.ID("stellar_engine")));
@@ -75,5 +77,9 @@ public class SerendustryMetaTileEntities {
                 new MetaTileEntityMegaFusionReactor(Serendustry.ID("mega_fusion_reactor")));
         ADVANCED_CHEMICAL_REACTOR = registerMetaTileEntity(4021,
                 new MetaTileEntityAdvancedChemicalReactor(Serendustry.ID("advanced_chemical_reactor")));
+        EMPYREAN = registerMetaTileEntity(4022,
+                new MetaTileEntityEmpyrean(Serendustry.ID("empyrean")));
+        DISTORTION_ENGINE = registerMetaTileEntity(4023,
+                new MetaTileEntityDistortionEngine(Serendustry.ID("distortion_engine")));
     }
 }

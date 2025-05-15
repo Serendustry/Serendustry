@@ -1,7 +1,9 @@
 package serendustry.recipe;
 
+import gregicality.multiblocks.common.metatileentities.GCYMMetaTileEntities;
 import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.recipes.GTRecipeHandler;
+import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
@@ -227,6 +229,10 @@ public class RemoveRecipes {
         GTRecipeHandler.removeRecipesByInputs(AUTOCLAVE_RECIPES, new ItemStack[] {
                 QUANTUM_STAR.getStackForm() },
                 new FluidStack[] { Neutronium.getFluid(288) });
+
+        // GCYM
+        // todo: fix (doesnt work)
+
     }
 
     public static void initLate() {
@@ -234,5 +240,10 @@ public class RemoveRecipes {
         GTRecipeHandler.removeRecipesByInputs(VACUUM_RECIPES, new ItemStack[] {
                 OreDictUnifier.get(ingotHot, DeepDarkSteel) },
                 new FluidStack[] { Helium.getFluid(FluidStorageKeys.LIQUID, 500) });
+
+        // GCYM
+        ModHandler.removeRecipeByOutput(GCYMMetaTileEntities.ELECTRIC_IMPLOSION_COMPRESSOR.getStackForm());
+        ModHandler.removeRecipeByOutput(GCYMMetaTileEntities.MEGA_BLAST_FURNACE.getStackForm());
+        ModHandler.removeRecipeByOutput(GCYMMetaTileEntities.MEGA_VACUUM_FREEZER.getStackForm());
     }
 }

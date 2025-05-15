@@ -131,7 +131,9 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
         tooltip.add("");
         tooltip.add(I18n.format("serendustry.machine.energy.regular"));
         tooltip.add("");
-        tooltip.add(I18n.format("serendustry.machine.authors") + " " + SValues.FORMAT_ENVOIDIA + I18n.format("serendustry.machine.author.envoidia") + "§r " + I18n.format("serendustry.text.and") + " " + I18n.format("serendustry.machine.author.twilight"));
+        tooltip.add(I18n.format("serendustry.machine.authors") + " " + SValues.FORMAT_ENVOIDIA +
+                I18n.format("serendustry.machine.author.envoidia") + "§r§7 " + I18n.format("serendustry.text.and") +
+                " " + I18n.format("serendustry.machine.author.twilight"));
     }
 
     @Override
@@ -150,7 +152,7 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
                 .addCustom(tl -> {
                     // Catalyst line
                     tl.add(TextComponentUtil.translationWithColor(
-                            TextFormatting.GRAY,
+                            TextFormatting.YELLOW,
                             "serendustry.machine.plasma_foundry.catalyst.contained"));
 
                     tl.add(catalystText);

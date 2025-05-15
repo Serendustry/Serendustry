@@ -11,9 +11,9 @@ import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.pattern.PatternMatchContext;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.client.renderer.ICubeRenderer;
+import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.MetaBlocks;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -26,6 +26,7 @@ import serendustry.blocks.BlockSerendustryMultiCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.client.utils.STooltipHelper;
+import serendustry.item.material.SerendustryMaterials;
 import serendustry.machine.structure.StructureDefinition;
 
 import java.util.ArrayList;
@@ -83,15 +84,15 @@ public class MetaTileEntityMegaFusionReactor extends RecipeMapMultiblockControll
     public @NotNull BlockPattern createStructurePattern() {
         FactoryBlockPattern pattern = FactoryBlockPattern.start(LEFT, DOWN, FRONT);
 
-        for (String[] aisle : StructureDefinition.CUBE) {
+        for (String[] aisle : StructureDefinition.MEGA_FUSION_REACTOR) {
             pattern.aisle(aisle);
         }
 
-        pattern.where('S', selfPredicate())
-                .where('X',
+        pattern.where('E', selfPredicate())
+                .where('D',
                         states(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING
                                 .getState(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION))
-                                        .setMinGlobalLimited(365)
+                                        .setMinGlobalLimited(1681)
                                         .or(autoAbilities(false, false, false, false, true, true, false))
                                         .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0)
                                                 .setMinGlobalLimited(0).setMaxGlobalLimited(2))
@@ -102,22 +103,28 @@ public class MetaTileEntityMegaFusionReactor extends RecipeMapMultiblockControll
                 .where('B',
                         states(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING
                                 .getState(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL)))
-                .where('D', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.FUSION_GLASS)));
+                .where('A', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.FUSION_GLASS)))
+                .where('C', frames(SerendustryMaterials.DeepDarkSteel));
 
         return pattern.build();
     }
 
-    // todo: adv fusion texture (turns partially transparent when active)
     @SideOnly(Side.CLIENT)
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
         if (this.recipeMapWorkable.isActive()) {
-            return SerendustryTextures.CASING_ADV_FUSION_ACTIVE;
+            return SerendustryTextures.TEXTURE_ADV_FUSION_ACTIVE;
         } else {
-            return SerendustryTextures.CASING_ADV_FUSION;
+            return SerendustryTextures.TEXTURE_ADV_FUSION;
         }
     }
 
+    @SideOnly(Side.CLIENT)
+    @NotNull
+    @Override
+    protected ICubeRenderer getFrontOverlay() {
+        return Textures.FUSION_REACTOR_OVERLAY;// SerendustryTextures.OVERLAY_ADVANCED_FUSION_REACTOR;
+    }
     // todo: big laser rendering
 
     protected class MegaFusionReactorWorkable extends MultiblockRecipeLogic {

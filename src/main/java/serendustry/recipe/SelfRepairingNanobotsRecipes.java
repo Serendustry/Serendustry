@@ -85,7 +85,7 @@ public class SelfRepairingNanobotsRecipes {
                             .input(parts[i], material, (int) (max(cost[j] / cost[i], 1)))
                             .circuitMeta(j + 1)
                             .output(parts[j], material, (int) (max(cost[i] / cost[j], 1)))
-                            .duration((int) (80 * cost[j])).EUt(VA[UV]).buildAndRegister();
+                            .duration(80).EUt(VA[UV]).buildAndRegister();
                 }
 
                 ASSEMBLER_RECIPES.recipeBuilder()

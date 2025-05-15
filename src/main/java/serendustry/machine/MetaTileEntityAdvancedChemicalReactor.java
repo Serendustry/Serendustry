@@ -14,10 +14,6 @@ import gregtech.api.util.GTUtility;
 import gregtech.api.util.TextComponentUtil;
 import gregtech.api.util.TextFormattingUtil;
 import gregtech.client.renderer.ICubeRenderer;
-import gregtech.client.renderer.texture.Textures;
-import gregtech.client.utils.TooltipHelper;
-import gregtech.common.blocks.BlockMetalCasing;
-import gregtech.common.blocks.MetaBlocks;
 import it.unimi.dsi.fastutil.objects.Reference2IntMap;
 import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
 import net.minecraft.block.state.IBlockState;
@@ -34,7 +30,6 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.eclipse.xtext.xbase.lib.IntegerRange;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import serendustry.SValues;
@@ -42,7 +37,11 @@ import serendustry.api.SerendustryAPI;
 import serendustry.api.capability.IACRComponent;
 import serendustry.api.capability.impl.ACRRecipeLogic;
 import serendustry.blocks.BlockACRComponent;
+import serendustry.blocks.BlockSerendustryMultiCasing;
 import serendustry.blocks.IACRComponentBlockStats;
+import serendustry.blocks.SerendustryMetaBlocks;
+import serendustry.client.renderer.texture.SerendustryTextures;
+import serendustry.client.utils.IntegerRange;
 import serendustry.client.utils.STooltipHelper;
 import serendustry.machine.structure.StructureDefinition;
 
@@ -178,8 +177,8 @@ public class MetaTileEntityAdvancedChemicalReactor extends RecipeMapMultiblockCo
 
         pattern.where('S', selfPredicate())
                 .where('X',
-                        states(MetaBlocks.METAL_CASING
-                                .getState(BlockMetalCasing.MetalCasingType.PTFE_INERT_CASING))
+                        states(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING
+                                .getState(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ACR))
                                         .setMinGlobalLimited(1)
                                         .or(autoAbilities(true, false, true, true, true, true, false)))
                 .where('A', ACRComponents())
@@ -191,7 +190,7 @@ public class MetaTileEntityAdvancedChemicalReactor extends RecipeMapMultiblockCo
     @SideOnly(Side.CLIENT)
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return Textures.INERT_PTFE_CASING;
+        return SerendustryTextures.CASING_ACR;
     }
 
     private static final Supplier<TraceabilityPredicate> ACR_COMPONENT_PREDICATE = () -> new TraceabilityPredicate(
@@ -335,5 +334,16 @@ public class MetaTileEntityAdvancedChemicalReactor extends RecipeMapMultiblockCo
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         STooltipHelper.addSerendustryInformation(tooltip, SValues.ENERGY_REGULAR, true);
+        tooltip.add(I18n.format("serendustry.machine.textures") + " " +
+                SValues.FORMAT_IRIS_1 + I18n.format("serendustry.machine.author.iris.1") +
+                SValues.FORMAT_IRIS_2 + I18n.format("serendustry.machine.author.iris.2") +
+                SValues.FORMAT_IRIS_3 + I18n.format("serendustry.machine.author.iris.3"));
+    }
+
+    @SideOnly(Side.CLIENT)
+    @NotNull
+    @Override
+    protected ICubeRenderer getFrontOverlay() {
+        return SerendustryTextures.OVERLAY_ADVANCED_CHEMICAL_REACTOR;
     }
 }

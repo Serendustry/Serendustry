@@ -7,6 +7,7 @@ import gregtech.api.unification.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 
+import static gregtech.api.GTValues.EV;
 import static gregtech.api.GTValues.HV;
 import static gregtech.api.GTValues.IV;
 import static gregtech.api.GTValues.LV;
@@ -22,6 +23,7 @@ import static gregtech.api.recipes.RecipeMaps.CHEMICAL_BATH_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.EXTRACTOR_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.IMPLOSION_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.LASER_ENGRAVER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.VACUUM_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.WIREMILL_RECIPES;
 import static gregtech.api.unification.material.Materials.Chrome;
 import static gregtech.api.unification.material.Materials.Creosote;
@@ -35,6 +37,7 @@ import static gregtech.api.unification.material.Materials.Iron;
 import static gregtech.api.unification.material.Materials.Methane;
 import static gregtech.api.unification.material.Materials.Molybdenite;
 import static gregtech.api.unification.material.Materials.Neutronium;
+import static gregtech.api.unification.material.Materials.Nitrogen;
 import static gregtech.api.unification.material.Materials.Oil;
 import static gregtech.api.unification.material.Materials.Oxygen;
 import static gregtech.api.unification.material.Materials.Polyethylene;
@@ -159,6 +162,12 @@ public class MiscRecipes {
                 .fluidInputs(Tennessine.getFluid(144 * 8))
                 .output(GRAVI_STAR)
                 .duration(20 * 24).EUt(VA[IV]).buildAndRegister();
+
+        // Liquid Nitrogen
+        VACUUM_RECIPES.recipeBuilder()
+                .fluidInputs(Nitrogen.getFluid(1000))
+                .fluidOutputs(Nitrogen.getFluid(FluidStorageKeys.LIQUID, 1000))
+                .duration(240).EUt(VA[EV]).buildAndRegister();
 
         // test recipes
         ASSEMBLY_LINE_RECIPES.recipeBuilder()

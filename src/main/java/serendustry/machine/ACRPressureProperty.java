@@ -5,7 +5,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.eclipse.xtext.xbase.lib.IntegerRange;
+import serendustry.client.utils.IntegerRange;
 
 public class ACRPressureProperty extends RecipeProperty<IntegerRange> {
 

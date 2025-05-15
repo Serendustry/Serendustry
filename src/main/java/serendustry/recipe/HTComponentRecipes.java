@@ -94,21 +94,18 @@ import static serendustry.item.SerendustryMetaItems.ROBOT_ARM_MAX;
 import static serendustry.item.SerendustryMetaItems.SENSOR_MAX;
 import static serendustry.item.material.SerendustryMaterials.AbyssalAlloy;
 import static serendustry.item.material.SerendustryMaterials.AwakenedDraconium;
-import static serendustry.item.material.SerendustryMaterials.Bedrockium;
 import static serendustry.item.material.SerendustryMaterials.CallistoIce;
-import static serendustry.item.material.SerendustryMaterials.ChargedDraconium;
 import static serendustry.item.material.SerendustryMaterials.CondensedStarMatter;
-import static serendustry.item.material.SerendustryMaterials.CrystalMatrix;
 import static serendustry.item.material.SerendustryMaterials.DeepDarkSteel;
-import static serendustry.item.material.SerendustryMaterials.Draconium;
+import static serendustry.item.material.SerendustryMaterials.ExoHalkoniteSteel;
 import static serendustry.item.material.SerendustryMaterials.Ferrofluid;
 import static serendustry.item.material.SerendustryMaterials.Floppa;
+import static serendustry.item.material.SerendustryMaterials.FullerenePolymerMatrix;
 import static serendustry.item.material.SerendustryMaterials.HalkoniteSteel;
 import static serendustry.item.material.SerendustryMaterials.HighGradeSolderingAlloy;
 import static serendustry.item.material.SerendustryMaterials.Hihiirokane;
 import static serendustry.item.material.SerendustryMaterials.Hypogen;
 import static serendustry.item.material.SerendustryMaterials.Infinity;
-import static serendustry.item.material.SerendustryMaterials.InfinityCatalyst;
 import static serendustry.item.material.SerendustryMaterials.KerrBlackHole;
 import static serendustry.item.material.SerendustryMaterials.Ledox;
 import static serendustry.item.material.SerendustryMaterials.MagneticHolmium;
@@ -120,9 +117,9 @@ import static serendustry.item.material.SerendustryMaterials.Quantium;
 import static serendustry.item.material.SerendustryMaterials.Quantium40;
 import static serendustry.item.material.SerendustryMaterials.Quantum;
 import static serendustry.item.material.SerendustryMaterials.RadoxPolymer;
+import static serendustry.item.material.SerendustryMaterials.ReissnerNordstromium;
 import static serendustry.item.material.SerendustryMaterials.ScOpv;
 import static serendustry.item.material.SerendustryMaterials.ScUevSane;
-import static serendustry.item.material.SerendustryMaterials.ScUxv;
 import static serendustry.item.material.SerendustryMaterials.SelfRepairingNanobots;
 import static serendustry.item.material.SerendustryMaterials.SentientNanobots;
 import static serendustry.item.material.SerendustryMaterials.Shirabon;
@@ -219,18 +216,22 @@ public class HTComponentRecipes {
                 .duration(30 * 45).EUt(VA[UEV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(stickLong, KerrBlackHole)
-                .input(stickLong, AwakenedDraconium, 4)
-                .input(ring, ChargedDraconium, 4)
-                .input(round, ChargedDraconium, 8)
-                .input(wireFine, CrystalMatrix, 64)
-                .input(wireFine, CrystalMatrix, 64)
-                .input(wireFine, ChargedDraconium, 64)
-                .input(wireFine, ChargedDraconium, 64)
-                .input(cableGtSingle, Bedrockium, 2)
-                .fluidInputs(MutatedLivingSolder.getFluid(1152))
-                .fluidInputs(OmniversalLubricant.getPlasma(4000))
-                .fluidInputs(Bedrockium.getFluid(576))
+                .input(stickLong, TengamAttuned, 8)
+                .input(stickLong, ExoHalkoniteSteel, 12)
+                .input(stickLong, ReissnerNordstromium, 12)
+                .input(ring, ExoHalkoniteSteel, 12)
+                .input(round, ExoHalkoniteSteel, 24)
+                .input(wireFine, Periodicium, 64)
+                .input(wireFine, Periodicium, 64)
+                .input(wireFine, Periodicium, 64)
+                .input(wireFine, Periodicium, 64)
+                .input(wireFine, Periodicium, 64)
+                .input(wireFine, Periodicium, 64)
+                .input(wireFine, Periodicium, 64)
+                .input(wireGtSingle, Periodicium, 10)
+                .fluidInputs(SentientNanobots.getFluid(144 * 8))
+                .fluidInputs(Ferrofluid.getFluid(6000))
+                .fluidInputs(Periodicium.getPlasma(144 * 6))
                 .output(ELECTRIC_MOTOR_UXV)
                 .stationResearch(b -> b
                         .researchStack(ELECTRIC_MOTOR_UIV.getStackForm())
@@ -250,14 +251,14 @@ public class HTComponentRecipes {
                 .input(cableGtSingle, Quantium, 2)
                 .fluidInputs(MutatedLivingSolder.getFluid(2304))
                 .fluidInputs(OmniversalLubricant.getPlasma(8000))
-                .fluidInputs(Periodicium.getFluid(576))
+                .fluidInputs(Periodicium.getPlasma(576))
                 .fluidInputs(Shirabon.getFluid(144))
                 .output(ELECTRIC_MOTOR_OpV)
                 .stationResearch(b -> b
                         .researchStack(ELECTRIC_MOTOR_UXV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UXV]))
-                .duration(30 * 65).EUt(VA[UIV]).buildAndRegister();
+                .duration(30 * 100).EUt(VA[UXV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(stickLong, KerrBlackHole, 8)
@@ -341,15 +342,16 @@ public class HTComponentRecipes {
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_UXV, 2)
-                .input(plate, AwakenedDraconium, 2)
-                .input(ring, AwakenedDraconium, 4)
-                .input(round, ChargedDraconium, 16)
-                .input(screw, ChargedDraconium, 4)
-                .input(cableGtSingle, Bedrockium, 2)
-                .fluidInputs(MutatedLivingSolder.getFluid(1152))
-                .fluidInputs(OmniversalLubricant.getPlasma(4000))
-                .fluidInputs(RadoxPolymer.getFluid(1152))
-                .fluidInputs(Bedrockium.getFluid(576))
+                .input(plate, ExoHalkoniteSteel, 10)
+                .input(plate, ReissnerNordstromium, 10)
+                .input(ring, ExoHalkoniteSteel, 12)
+                .input(round, ReissnerNordstromium, 32)
+                .input(screw, ReissnerNordstromium, 12)
+                .input(wireGtSingle, Periodicium, 10)
+                .fluidInputs(SentientNanobots.getFluid(144 * 8))
+                .fluidInputs(Ferrofluid.getFluid(6000))
+                .fluidInputs(FullerenePolymerMatrix.getFluid(144 * 6))
+                .fluidInputs(Periodicium.getPlasma(144 * 6))
                 .output(CONVEYOR_MODULE_UXV)
                 .stationResearch(b -> b
                         .researchStack(CONVEYOR_MODULE_UIV.getStackForm())
@@ -366,7 +368,7 @@ public class HTComponentRecipes {
                 .input(cableGtSingle, Quantium, 2)
                 .fluidInputs(MutatedLivingSolder.getFluid(2304))
                 .fluidInputs(RadoxPolymer.getFluid(2304))
-                .fluidInputs(Periodicium.getFluid(576))
+                .fluidInputs(Periodicium.getPlasma(576))
                 .fluidInputs(Shirabon.getFluid(144))
                 .output(CONVEYOR_MODULE_OpV)
                 .stationResearch(b -> b
@@ -454,15 +456,16 @@ public class HTComponentRecipes {
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_UXV)
-                .input(pipeLargeFluid, ChargedDraconium)
-                .input(plate, AwakenedDraconium, 2)
-                .input(screw, AwakenedDraconium, 8)
-                .input(ring, RadoxPolymer, 32)
-                .input(rotor, InfinityCatalyst, 1)
-                .input(cableGtSingle, Bedrockium, 2)
-                .fluidInputs(MutatedLivingSolder.getFluid(1152))
-                .fluidInputs(OmniversalLubricant.getPlasma(4000))
-                .fluidInputs(Bedrockium.getFluid(576))
+                .input(pipeLargeFluid, Periodicium)
+                .input(plate, ExoHalkoniteSteel, 10)
+                .input(plate, ReissnerNordstromium, 10)
+                .input(screw, ReissnerNordstromium, 16)
+                .input(ring, FullerenePolymerMatrix, 36)
+                .input(rotor, ExoHalkoniteSteel)
+                .input(wireGtSingle, Periodicium, 10)
+                .fluidInputs(SentientNanobots.getFluid(144 * 8))
+                .fluidInputs(Ferrofluid.getFluid(6000))
+                .fluidInputs(Periodicium.getPlasma(144 * 6))
                 .output(ELECTRIC_PUMP_UXV)
                 .stationResearch(b -> b
                         .researchStack(ELECTRIC_PUMP_UIV.getStackForm())
@@ -480,7 +483,7 @@ public class HTComponentRecipes {
                 .input(cableGtSingle, Quantium, 2)
                 .fluidInputs(MutatedLivingSolder.getFluid(2304))
                 .fluidInputs(OmniversalLubricant.getPlasma(8000))
-                .fluidInputs(Periodicium.getFluid(576))
+                .fluidInputs(Periodicium.getPlasma(576))
                 .fluidInputs(Shirabon.getFluid(144))
                 .output(ELECTRIC_PUMP_OpV)
                 .stationResearch(b -> b
@@ -575,16 +578,17 @@ public class HTComponentRecipes {
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_UXV)
-                .input(plate, AwakenedDraconium, 4)
-                .input(ring, AwakenedDraconium, 4)
-                .input(round, ChargedDraconium, 16)
-                .input(stick, AwakenedDraconium, 4)
-                .input(gear, CrystalMatrix)
-                .input(gearSmall, Draconium, 2)
-                .input(cableGtSingle, Bedrockium, 2)
-                .fluidInputs(MutatedLivingSolder.getFluid(1152))
-                .fluidInputs(OmniversalLubricant.getPlasma(4000))
-                .fluidInputs(Bedrockium.getFluid(576))
+                .input(plate, ExoHalkoniteSteel, 12)
+                .input(plate, ReissnerNordstromium, 12)
+                .input(ring, ExoHalkoniteSteel, 12)
+                .input(round, ReissnerNordstromium, 32)
+                .input(stick, ExoHalkoniteSteel, 12)
+                .input(gear, ExoHalkoniteSteel, 5)
+                .input(gearSmall, ReissnerNordstromium, 10)
+                .input(wireGtSingle, Periodicium, 10)
+                .fluidInputs(SentientNanobots.getFluid(144 * 8))
+                .fluidInputs(Ferrofluid.getFluid(6000))
+                .fluidInputs(Periodicium.getPlasma(144 * 6))
                 .output(ELECTRIC_PISTON_UXV)
                 .stationResearch(b -> b
                         .researchStack(ELECTRIC_PISTON_UIV.getStackForm())
@@ -603,7 +607,7 @@ public class HTComponentRecipes {
                 .input(cableGtSingle, Quantium, 2)
                 .fluidInputs(MutatedLivingSolder.getFluid(2304))
                 .fluidInputs(OmniversalLubricant.getPlasma(8000))
-                .fluidInputs(Periodicium.getFluid(576))
+                .fluidInputs(Periodicium.getPlasma(576))
                 .fluidInputs(Shirabon.getFluid(144))
                 .output(ELECTRIC_PISTON_OpV)
                 .stationResearch(b -> b
@@ -687,7 +691,7 @@ public class HTComponentRecipes {
                 .input(circuit, Tier.UEV, 2)
                 .input(circuit, Tier.UHV, 4)
                 .input(wireGtSingle, Hypogen, 10)
-                .fluidInputs(SentientNanobots.getFluid(144 * 24))
+                .fluidInputs(SentientNanobots.getFluid(144 * 12))
                 .fluidInputs(Ferrofluid.getFluid(4000))
                 .fluidInputs(Infinity.getFluid(576))
                 .output(ROBOT_ARM_UIV)
@@ -698,18 +702,19 @@ public class HTComponentRecipes {
                 .duration(30 * 45).EUt(VA[UEV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(stickLong, AwakenedDraconium, 4)
-                .input(gear, CrystalMatrix, 1)
-                .input(gearSmall, Draconium, 3)
+                .input(stickLong, ExoHalkoniteSteel, 12)
+                .input(stickLong, ReissnerNordstromium, 12)
+                .input(gear, ReissnerNordstromium, 6)
+                .input(gearSmall, ExoHalkoniteSteel, 14)
                 .input(ELECTRIC_MOTOR_UXV, 2)
                 .input(ELECTRIC_PISTON_UXV, 1)
                 .input(circuit, Tier.UXV, 1)
                 .input(circuit, Tier.UIV, 2)
                 .input(circuit, Tier.UEV, 4)
-                .input(cableGtSingle, Bedrockium, 4)
-                .fluidInputs(MutatedLivingSolder.getFluid(1152))
-                .fluidInputs(OmniversalLubricant.getPlasma(4000))
-                .fluidInputs(Bedrockium.getFluid(576))
+                .input(wireGtSingle, Periodicium, 12)
+                .fluidInputs(SentientNanobots.getFluid(144 * 24))
+                .fluidInputs(Ferrofluid.getFluid(6000))
+                .fluidInputs(Periodicium.getPlasma(144 * 6))
                 .output(ROBOT_ARM_UXV)
                 .stationResearch(b -> b
                         .researchStack(ROBOT_ARM_UIV.getStackForm())
@@ -729,7 +734,7 @@ public class HTComponentRecipes {
                 .input(cableGtSingle, Quantium, 4)
                 .fluidInputs(MutatedLivingSolder.getFluid(2304))
                 .fluidInputs(OmniversalLubricant.getPlasma(8000))
-                .fluidInputs(Periodicium.getFluid(576))
+                .fluidInputs(Periodicium.getPlasma(576))
                 .fluidInputs(Shirabon.getFluid(144))
                 .output(ROBOT_ARM_OpV)
                 .stationResearch(b -> b
@@ -825,18 +830,21 @@ public class HTComponentRecipes {
                 .duration(30 * 45).EUt(VA[UEV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, InfinityCatalyst)
-                .input(plate, Bedrockium, 6)
-                .input(GRAVI_STAR, 8)
+                .input(frameGt, Periodicium)
+                .input(plate, ExoHalkoniteSteel, 14)
+                .input(plate, ReissnerNordstromium, 14)
+                .input(QUANTIUM_STAR, 6)
                 .input(EMITTER_UXV, 2)
                 .input(circuit, Tier.UXV, 2)
-                .input(wireFine, ScUxv, 64)
-                .input(wireFine, ScUxv, 64)
-                .input(wireFine, Bedrockium, 64)
-                .input(wireFine, Bedrockium, 64)
-                .input(cableGtSingle, Bedrockium, 4)
-                .fluidInputs(MutatedLivingSolder.getFluid(1152))
-                .fluidInputs(Bedrockium.getFluid(576))
+                .input(wireFine, Periodicium, 64)
+                .input(wireFine, Periodicium, 64)
+                .input(wireFine, Periodicium, 64)
+                .input(wireFine, Periodicium, 64)
+                .input(wireFine, Periodicium, 64)
+                .input(wireFine, Periodicium, 64)
+                .input(wireGtSingle, Periodicium, 12)
+                .fluidInputs(SentientNanobots.getFluid(144 * 24))
+                .fluidInputs(Periodicium.getPlasma(144 * 6))
                 .output(FIELD_GENERATOR_UXV)
                 .stationResearch(b -> b
                         .researchStack(FIELD_GENERATOR_UIV.getStackForm())
@@ -856,7 +864,7 @@ public class HTComponentRecipes {
                 .input(wireFine, Infinity, 64)
                 .input(cableGtSingle, Quantium, 4)
                 .fluidInputs(MutatedLivingSolder.getFluid(2304))
-                .fluidInputs(Periodicium.getFluid(576))
+                .fluidInputs(Periodicium.getPlasma(576))
                 .fluidInputs(Shirabon.getFluid(144))
                 .output(FIELD_GENERATOR_OpV)
                 .stationResearch(b -> b
@@ -952,16 +960,20 @@ public class HTComponentRecipes {
                 .duration(30 * 45).EUt(VA[UEV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, InfinityCatalyst)
+                .input(frameGt, Periodicium)
                 .input(ELECTRIC_MOTOR_UXV)
-                .input(plate, CrystalMatrix, 4)
-                .input(GRAVI_STAR, 8)
+                .input(plate, ExoHalkoniteSteel, 12)
+                .input(plate, ReissnerNordstromium, 12)
+                .input(QUANTIUM_STAR, 6)
                 .input(circuit, Tier.UXV, 2)
-                .input(foil, Bedrockium, 64)
-                .input(foil, Bedrockium, 32)
-                .input(cableGtSingle, Bedrockium, 4)
-                .fluidInputs(MutatedLivingSolder.getFluid(1152))
-                .fluidInputs(Bedrockium.getFluid(576))
+                .input(foil, Periodicium, 64)
+                .input(foil, Periodicium, 64)
+                .input(foil, Periodicium, 64)
+                .input(foil, Periodicium, 64)
+                .input(foil, Periodicium, 64)
+                .input(wireGtSingle, Periodicium, 12)
+                .fluidInputs(SentientNanobots.getFluid(144 * 16))
+                .fluidInputs(Periodicium.getPlasma(144 * 6))
                 .output(SENSOR_UXV)
                 .stationResearch(b -> b
                         .researchStack(SENSOR_UIV.getStackForm())
@@ -979,7 +991,7 @@ public class HTComponentRecipes {
                 .input(foil, Infinity, 32)
                 .input(cableGtSingle, Quantium, 4)
                 .fluidInputs(MutatedLivingSolder.getFluid(2304))
-                .fluidInputs(Periodicium.getFluid(576))
+                .fluidInputs(Periodicium.getPlasma(576))
                 .fluidInputs(Shirabon.getFluid(144))
                 .output(SENSOR_OpV)
                 .stationResearch(b -> b
@@ -1073,16 +1085,20 @@ public class HTComponentRecipes {
                 .duration(30 * 45).EUt(VA[UEV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, InfinityCatalyst)
+                .input(frameGt, Periodicium)
                 .input(ELECTRIC_MOTOR_UXV)
-                .input(stickLong, CrystalMatrix, 4)
-                .input(GRAVI_STAR, 8)
+                .input(stickLong, ExoHalkoniteSteel, 12)
+                .input(stickLong, ReissnerNordstromium, 12)
+                .input(QUANTIUM_STAR, 6)
                 .input(circuit, Tier.UXV, 2)
-                .input(foil, Bedrockium, 64)
-                .input(foil, Bedrockium, 32)
-                .input(cableGtSingle, Bedrockium, 4)
-                .fluidInputs(MutatedLivingSolder.getFluid(1152))
-                .fluidInputs(Bedrockium.getFluid(576))
+                .input(foil, Periodicium, 64)
+                .input(foil, Periodicium, 64)
+                .input(foil, Periodicium, 64)
+                .input(foil, Periodicium, 64)
+                .input(foil, Periodicium, 64)
+                .input(wireGtSingle, Periodicium, 12)
+                .fluidInputs(SentientNanobots.getFluid(144 * 16))
+                .fluidInputs(Periodicium.getPlasma(144 * 6))
                 .output(EMITTER_UXV)
                 .stationResearch(b -> b
                         .researchStack(EMITTER_UIV.getStackForm())
@@ -1100,7 +1116,7 @@ public class HTComponentRecipes {
                 .input(foil, Infinity, 32)
                 .input(cableGtSingle, Quantium, 4)
                 .fluidInputs(MutatedLivingSolder.getFluid(2304))
-                .fluidInputs(Periodicium.getFluid(576))
+                .fluidInputs(Periodicium.getPlasma(576))
                 .fluidInputs(Shirabon.getFluid(144))
                 .output(EMITTER_OpV)
                 .stationResearch(b -> b

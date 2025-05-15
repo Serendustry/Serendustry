@@ -58,7 +58,7 @@ public class StellarIncubatorRecipes {
                 .fluidInputs(CondensedStarMatter.getFluid(4000),
                         Neutronium.getFluid(144 * 8))
                 .output(STELLAR_ESSENCE_BLANK)
-                .duration(2500).EUt(VA[MAX]).buildAndRegister();
+                .duration(2500 * 32).EUt(VA[UHV]).buildAndRegister();
 
         STELLAR_INCUBATOR_RECIPES.recipeBuilder()
                 .input(STELLAR_ESSENCE_BLANK)
@@ -68,7 +68,7 @@ public class StellarIncubatorRecipes {
                         Neutronium.getFluid(144 * 32),
                         Americium.getPlasma(144 * 32))
                 .output(STELLAR_ESSENCE_OVERWORLD)
-                .duration(10000).EUt(VA[MAX]).buildAndRegister();
+                .duration(10000 * 32).EUt(VA[UHV]).buildAndRegister();
 
         STELLAR_INCUBATOR_RECIPES.recipeBuilder()
                 .input(STELLAR_ESSENCE_BLANK, 4)
@@ -78,7 +78,7 @@ public class StellarIncubatorRecipes {
                         Neutronium.getFluid(144 * 64),
                         Flerovium.getPlasma(144 * 64))
                 .output(STELLAR_ESSENCE_NETHER)
-                .duration(25000).EUt(VA[MAX]).buildAndRegister();
+                .duration(25000 * 32).EUt(VA[UHV]).buildAndRegister();
 
         STELLAR_INCUBATOR_RECIPES.recipeBuilder()
                 .input(STELLAR_ESSENCE_BLANK)
@@ -88,7 +88,7 @@ public class StellarIncubatorRecipes {
                         Neutronium.getFluid(144 * 16),
                         Realitium.getFluid(50))
                 .output(STELLAR_ESSENCE_OVERWORLD)
-                .duration(5000).EUt(VA[MAX]).buildAndRegister();
+                .duration(5000 * 32).EUt(VA[UHV]).buildAndRegister();
 
         STELLAR_INCUBATOR_RECIPES.recipeBuilder()
                 .input(STELLAR_ESSENCE_BLANK, 4)
@@ -98,7 +98,7 @@ public class StellarIncubatorRecipes {
                         Neutronium.getFluid(144 * 32),
                         Realitium.getFluid(200))
                 .output(STELLAR_ESSENCE_NETHER)
-                .duration(12500).EUt(VA[MAX]).buildAndRegister();
+                .duration(12500 * 32).EUt(VA[UHV]).buildAndRegister();
 
         STELLAR_INCUBATOR_RECIPES.recipeBuilder()
                 .input(STELLAR_ESSENCE_BLANK, 16)
@@ -108,7 +108,7 @@ public class StellarIncubatorRecipes {
                         Neutronium.getFluid(144 * 128),
                         Realitium.getFluid(800))
                 .output(STELLAR_ESSENCE_END)
-                .duration(67500).EUt(VA[MAX]).buildAndRegister();
+                .duration(67500 * 32).EUt(VA[UHV]).buildAndRegister();
 
         // todo ascended SEssence
     }

@@ -13,9 +13,14 @@
           "all": "gregtech:blocks/casing/serendustry_multi/space_elevator"
         }
       },
+      "acr": {
+        "textures": {
+          "all": "gregtech:blocks/casing/serendustry_multi/acr"
+        }
+      },
       "adv_fusion": {
         "textures": {
-          "all": "gregtech:blocks/casing/serendustry_multi/adv_fusion"
+          "all": "gregtech:blocks/casing/serendustry_multi/adv_fusion_casing"
         }
       },
       "adv_fusion_coil": {

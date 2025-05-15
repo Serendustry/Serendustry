@@ -26,6 +26,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import serendustry.SValues;
@@ -141,6 +143,8 @@ public class MetaTileEntityPlasmaCondenser extends RecipeMapMultiblockController
 
         pattern.where('G', selfPredicate())
                 .where('A', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.FUSION_GLASS))) // todo
+                                                                                                                      // chromatic
+                                                                                                                      // glass
                 .where('B', PCCoilsCooling())
                 .where('C',
                         states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
@@ -273,5 +277,12 @@ public class MetaTileEntityPlasmaCondenser extends RecipeMapMultiblockController
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         STooltipHelper.addSerendustryInformation(tooltip, SValues.ENERGY_LASER, true);
+    }
+
+    @SideOnly(Side.CLIENT)
+    @NotNull
+    @Override
+    protected ICubeRenderer getFrontOverlay() {
+        return SerendustryTextures.OVERLAY_PLASMA_CONDENSER;
     }
 }

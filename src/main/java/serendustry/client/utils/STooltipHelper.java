@@ -10,6 +10,7 @@ import serendustry.SValues;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static gregtech.api.GTValues.CLIENT_TIME;
 
@@ -49,26 +50,26 @@ public class STooltipHelper extends TooltipHelper {
 
         @Override
         public String toString() {
-            return Arrays.toString(codes[index]);
+            return Arrays.stream(codes[index]).map(TextFormatting::toString).collect(Collectors.joining());
         }
     }
 
     // Generic multiblock tooltips
-    public static void addSerendustryInformation (List<String> tooltip, String hatchType, boolean hasPerfectOC) {
+    public static void addSerendustryInformation(List<String> tooltip, String hatchType, boolean hasPerfectOC) {
         tooltip.add("");
         tooltip.add(hatchType);
-        if(hasPerfectOC) tooltip.add(TooltipHelper.RAINBOW_SLOW + I18n.format("gregtech.machine.perfect_oc"));
+        if (hasPerfectOC) tooltip.add(TooltipHelper.RAINBOW_SLOW + I18n.format("gregtech.machine.perfect_oc"));
         tooltip.add("");
-        tooltip.add(I18n.format("serendustry.machine.author") + " " + SValues.FORMAT_ENVOIDIA + I18n.format("serendustry.machine.author.envoidia"));
-
+        tooltip.add(I18n.format("serendustry.machine.author") + " " + SValues.FORMAT_ENVOIDIA +
+                I18n.format("serendustry.machine.author.envoidia"));
     }
 
-    public static void addSerendustryInformation (List<String> tooltip, String hatchType, boolean hasPerfectOC, String author) {
+    public static void addSerendustryInformation(List<String> tooltip, String hatchType, boolean hasPerfectOC,
+                                                 String author) {
         tooltip.add("");
         tooltip.add(hatchType);
-        if(hasPerfectOC) tooltip.add(TooltipHelper.RAINBOW_SLOW + I18n.format("gregtech.machine.perfect_oc"));
+        if (hasPerfectOC) tooltip.add(TooltipHelper.RAINBOW_SLOW + I18n.format("gregtech.machine.perfect_oc"));
         tooltip.add("");
         tooltip.add(I18n.format("serendustry.machine.author") + " " + I18n.format(author));
-
     }
 }

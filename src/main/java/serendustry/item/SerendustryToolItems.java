@@ -15,7 +15,10 @@ import gregtech.core.sound.GTSoundEvents;
 import net.minecraft.entity.monster.EntityGolem;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.registries.IForgeRegistry;
 import serendustry.Serendustry;
 
 import java.util.function.Supplier;
@@ -31,9 +34,17 @@ public class SerendustryToolItems {
     public static IGTTool WRENCH_UHV;
     public static IGTTool SCREWDRIVER_UHV;
     public static IGTTool WIRECUTTER_UHV;
+
+    public static final Item.ToolMaterial genesisMaterial = EnumHelper.addToolMaterial("GENESIS", 10, 2147483647, 65536, 10, 33);
+    public static ItemGenesisHoe GENESIS_HOE = new ItemGenesisHoe(genesisMaterial, "genesis_hoe");
     // public static IGTTool TRISHULA;
 
     public static final Supplier<ItemStack> SUPPLY_POWER_UNIT_UHV = () -> POWER_UNIT_UHV.getStackForm();
+
+    public static void registerGenesisHoe(IForgeRegistry<Item> registry) {
+        registry.register(GENESIS_HOE);
+        GENESIS_HOE.registerItemModel(GENESIS_HOE);
+    }
 
     public static void init() {
         SKOOKUM_CHOOCHER = register(ItemGTTool.Builder.of(Serendustry.MODID, "skookum_choocher")
@@ -123,4 +134,5 @@ public class SerendustryToolItems {
          * .electric(GTValues.LuV));
          */
     }
+
 }

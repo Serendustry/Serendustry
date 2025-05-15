@@ -6,7 +6,6 @@ import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.properties.PropertyKey;
 
-import static gregtech.api.GTValues.MAX;
 import static gregtech.api.GTValues.UEV;
 import static gregtech.api.GTValues.UIV;
 import static gregtech.api.GTValues.VA;
@@ -160,10 +159,8 @@ public class StellarEngineRecipes {
             builder.fluidOutputs(material.getPlasma(isSolid ? 36_000_000 : 250_000_000)); // 250,000 ingots
         }
         builder.fluidOutputs(Realitium.getFluid(250))
-                .duration(20 * 60 * 60 * 8)
-                .EUt((int) GTValues.V[MAX])
-                // .duration(20 * 60 * 60 / 4)
-                // .EUt(GTValues.V[UIV] * 4096); // todo
+                .duration(20 * 60 * 60 / 4 * 4096)
+                .EUt(GTValues.VA[UIV])
                 .buildAndRegister();
 
         builder = STELLAR_ENGINE_RECIPES.recipeBuilder();
@@ -175,10 +172,8 @@ public class StellarEngineRecipes {
             builder.fluidOutputs(material.getPlasma(isSolid ? 36_000_000 : 250_000_000));
         }
         builder.fluidOutputs(Realitium.getFluid(1500))
-                .duration(20 * 60 * 60 * 32)
-                .EUt((int) GTValues.V[MAX])
-                // .duration(20 * 60 * 60)
-                // .EUt(GTValues.V[UIV] * 4096); // todo
+                .duration(20 * 60 * 60 * 4096)
+                .EUt(GTValues.VA[UIV])
                 .buildAndRegister();
 
         builder = STELLAR_ENGINE_RECIPES.recipeBuilder();
@@ -190,19 +185,16 @@ public class StellarEngineRecipes {
             builder.fluidOutputs(material.getPlasma(isSolid ? 36_000_000 : 250_000_000));
         }
         builder.fluidOutputs(Realitium.getFluid(9000))
-                .duration(20 * 60 * 60 * 128)
-                .EUt((int) GTValues.V[MAX])
-                // .duration(20 * 60 * 60 * 4)
-                // .EUt(GTValues.V[UIV] * 4096); // todo
+                .duration(20 * 60 * 60 * 4 * 4096)
+                .EUt(GTValues.VA[UIV])
                 .buildAndRegister();
 
         /*
          * Realitium/run: 250; 1,500; 9,000
          * EHK/run: 118.008; 708.048; 4,248.2875
          * Total EU/run: 2.473e15 (2.4 Quadrillion); 9.895e15; 3.958e16 (39.5 Quadrillion)
-         * 
-         * With commented duration and EUt:
-         * UIV 4,096A Laser: 0 OCs (137,438,953,500 EU/t)
+         *
+         * UIV 4,096A Laser: 6 POCs (137,438,953,500 EU/t)
          * Durations: 900s; 3,600s; 14,400s
          * Realitium/s: 0.277; 0.416; 0.625
          * s/EHK: 7.648; 5.092; 3.389
@@ -210,7 +202,7 @@ public class StellarEngineRecipes {
          * Fluid: 27,777.777L/s; 69,444.44L/s; 17,361.11L/s
          * Solid: 277.77I/s; 69.44I/s; 17.36I/s
          * 
-         * UXV 4,096A Laser: 1 POC (549,755,813,600 EU/t)
+         * UXV 4,096A Laser: 7 POCs (549,755,813,600 EU/t)
          * Durations: 225s; 900s; 3,600s
          * Realitium/s: 1.108; 1.664; 2.5
          * s/EHK: 1.912; 1.273; 0.8474

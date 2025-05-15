@@ -3,6 +3,7 @@ package serendustry.recipe;
 import gregtech.api.fluids.store.FluidStorageKeys;
 import net.minecraft.init.Items;
 
+import static gregicality.multiblocks.api.unification.GCYMMaterials.Zeron100;
 import static gregtech.api.GTValues.EV;
 import static gregtech.api.GTValues.HV;
 import static gregtech.api.GTValues.IV;
@@ -243,7 +244,6 @@ import static serendustry.item.material.SerendustryMaterials.TiberiumRiparius;
 import static serendustry.item.material.SerendustryMaterials.TiberiumVinifera;
 import static serendustry.item.material.SerendustryMaterials.TungstenHexachloride;
 import static serendustry.item.material.SerendustryMaterials.VibrantAlloy;
-import static serendustry.item.material.SerendustryMaterials.Zeron100;
 import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.LABORATORY_RECIPES;

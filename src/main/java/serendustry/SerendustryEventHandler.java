@@ -28,8 +28,6 @@ import static gregtech.api.unification.ore.OrePrefix.cableGtSingle;
 import static gregtech.api.unification.ore.OrePrefix.pipeHugeFluid;
 import static gregtech.api.unification.ore.OrePrefix.pipeLargeFluid;
 import static gregtech.api.unification.ore.OrePrefix.pipeNormalFluid;
-import static gregtech.api.unification.ore.OrePrefix.pipeSmallFluid;
-import static gregtech.api.unification.ore.OrePrefix.pipeTinyFluid;
 import static gregtech.api.unification.ore.OrePrefix.plate;
 import static gregtech.api.unification.ore.OrePrefix.plateDouble;
 import static gregtech.api.unification.ore.OrePrefix.rotor;
@@ -79,17 +77,16 @@ import static serendustry.item.SerendustryMetaItems.COIL_UIV;
 import static serendustry.item.SerendustryMetaItems.COIL_UXV;
 import static serendustry.item.material.SerendustryMaterials.AbyssalAlloy;
 import static serendustry.item.material.SerendustryMaterials.Actinoids;
-import static serendustry.item.material.SerendustryMaterials.AwakenedDraconium;
-import static serendustry.item.material.SerendustryMaterials.Bedrockium;
 import static serendustry.item.material.SerendustryMaterials.CallistoIce;
-import static serendustry.item.material.SerendustryMaterials.ChargedDraconium;
 import static serendustry.item.material.SerendustryMaterials.ChromaticGlass;
 import static serendustry.item.material.SerendustryMaterials.DeepDarkSteel;
 import static serendustry.item.material.SerendustryMaterials.EnrichedNaquadahAlloy;
+import static serendustry.item.material.SerendustryMaterials.ExoHalkoniteSteel;
+import static serendustry.item.material.SerendustryMaterials.FullerenePolymerMatrix;
 import static serendustry.item.material.SerendustryMaterials.HalkoniteSteel;
 import static serendustry.item.material.SerendustryMaterials.Hihiirokane;
+import static serendustry.item.material.SerendustryMaterials.Hypogen;
 import static serendustry.item.material.SerendustryMaterials.Infinity;
-import static serendustry.item.material.SerendustryMaterials.InfinityCatalyst;
 import static serendustry.item.material.SerendustryMaterials.KerrBlackHole;
 import static serendustry.item.material.SerendustryMaterials.MagneticHolmium;
 import static serendustry.item.material.SerendustryMaterials.PartialSuperheavies;
@@ -115,66 +112,65 @@ public class SerendustryEventHandler {
     @SubscribeEvent
     public void appendCraftingComponent(GregTechAPI.RegisterEvent<CraftingComponent> event) {
         // Wires / Cables
-        appendToComponent(WIRE_ELECTRIC, wireGtSingle, Hihiirokane, Quantium40, Signalium, Bedrockium, Quantium);
-        appendToComponent(WIRE_QUAD, wireGtQuadruple, Hihiirokane, Quantium40, Signalium, Bedrockium, Quantium);
-        appendToComponent(WIRE_OCT, wireGtOctal, Hihiirokane, Quantium40, Signalium, Bedrockium, Quantium);
-        appendToComponent(WIRE_HEX, wireGtHex, Hihiirokane, Quantium40, Signalium, Bedrockium, Quantium);
-        appendToComponent(GTValues.UEV, CABLE, cableGtSingle, Quantium40, Signalium, Bedrockium, Quantium);
-        appendToComponent(GTValues.UEV, CABLE_QUAD, cableGtQuadruple, Quantium40, Signalium, Bedrockium, Quantium);
-        appendToComponent(GTValues.UEV, CABLE_OCT, cableGtOctal, Quantium40, Signalium, Bedrockium, Quantium);
-        appendToComponent(GTValues.UEV, CABLE_HEX, cableGtHex, Quantium40, Signalium, Bedrockium, Quantium);
-        appendToComponent(CABLE_TIER_UP, wireGtSingle, Hihiirokane, Quantium40, Signalium, Bedrockium, Quantium);
+        appendToComponent(WIRE_ELECTRIC, wireGtSingle, Hihiirokane, Quantium40, Hypogen, Periodicium, Quantium);
+        appendToComponent(WIRE_QUAD, wireGtQuadruple, Hihiirokane, Quantium40, Hypogen, Periodicium, Quantium);
+        appendToComponent(WIRE_OCT, wireGtOctal, Hihiirokane, Quantium40, Hypogen, Periodicium, Quantium);
+        appendToComponent(WIRE_HEX, wireGtHex, Hihiirokane, Quantium40, Hypogen, Periodicium, Quantium);
+        appendToComponent(GTValues.UEV, CABLE, cableGtSingle, Quantium40, Quantium40, Quantium40, Quantium);
+        appendToComponent(GTValues.UEV, CABLE_QUAD, cableGtQuadruple, Quantium40, Quantium40, Quantium40, Quantium);
+        appendToComponent(GTValues.UEV, CABLE_OCT, cableGtOctal, Quantium40, Signalium, Quantium40, Quantium);
+        appendToComponent(GTValues.UEV, CABLE_HEX, cableGtHex, Quantium40, Quantium40, Quantium40, Quantium);
+        appendToComponent(CABLE_TIER_UP, wireGtSingle, Hihiirokane, Quantium40, Hypogen, Periodicium, Periodicium);
 
         // Pipes
-        appendToComponent(PIPE_NORMAL, pipeNormalFluid, VibraniumAlloy, AbyssalAlloy, DeepDarkSteel, ChargedDraconium,
+        appendToComponent(PIPE_NORMAL, pipeNormalFluid, VibraniumAlloy, AbyssalAlloy, DeepDarkSteel, Periodicium,
                 CallistoIce);
-        appendToComponent(PIPE_LARGE, pipeLargeFluid, VibraniumAlloy, AbyssalAlloy, DeepDarkSteel, ChargedDraconium,
+        appendToComponent(PIPE_LARGE, pipeLargeFluid, VibraniumAlloy, AbyssalAlloy, DeepDarkSteel, Periodicium,
                 CallistoIce);
 
         // Glass
         appendToComponent(GLASS, block, ChromaticGlass, ChromaticGlass, ChromaticGlass, ChromaticGlass, ChromaticGlass);
 
         // Plates
-        appendToComponent(GTValues.UEV, PLATE, plate, HalkoniteSteel, Infinity, AwakenedDraconium, Quantum);
-        appendToComponent(GTValues.UEV, DOUBLE_PLATE, plateDouble, HalkoniteSteel, Infinity, AwakenedDraconium,
+        appendToComponent(GTValues.UEV, PLATE, plate, HalkoniteSteel, Infinity, ExoHalkoniteSteel, Quantum);
+        appendToComponent(GTValues.UEV, DOUBLE_PLATE, plateDouble, AbyssalAlloy, DeepDarkSteel, Periodicium,
                 Quantum);
-        appendToComponent(HULL_PLATE, plate, RadoxPolymer, RadoxPolymer, RadoxPolymer, RadoxPolymer, RadoxPolymer);
+        appendToComponent(HULL_PLATE, plate, RadoxPolymer, RadoxPolymer, RadoxPolymer, FullerenePolymerMatrix, FullerenePolymerMatrix);
 
         // Rotor
-        appendToComponent(ROTOR, rotor, VibraniumAlloy, HalkoniteSteel, Infinity, InfinityCatalyst,
+        appendToComponent(ROTOR, rotor, VibraniumAlloy, HalkoniteSteel, Infinity, ExoHalkoniteSteel,
                 Quantium);
 
         // Grinder
         // TODO: More Grinding Head tiers?
 
         // Sawblade
-        appendToComponent(SAWBLADE, toolHeadBuzzSaw, Neutronium, AbyssalAlloy, Infinity, AwakenedDraconium,
-                Quantum);
+        appendToComponent(SAWBLADE, toolHeadBuzzSaw, Neutronium, AbyssalAlloy, Infinity, Periodicium, Quantum);
 
         // Coils
-        appendToComponent(COIL_HEATING, wireGtDouble, Hihiirokane, Quantium40, Signalium, Bedrockium, Quantium);
-        appendToComponent(COIL_HEATING_DOUBLE, wireGtQuadruple, Hihiirokane, Quantium40, Signalium, Bedrockium,
+        appendToComponent(COIL_HEATING, wireGtDouble, Hihiirokane, Quantium40, Hypogen, Periodicium, Quantium);
+        appendToComponent(COIL_HEATING_DOUBLE, wireGtQuadruple, Hihiirokane, Quantium40, Hypogen, Periodicium,
                 Quantium);
-        appendToComponent(COIL_ELECTRIC, wireGtOctal, Hihiirokane, Quantium40, Signalium, Bedrockium, Quantium);
+        appendToComponent(COIL_ELECTRIC, wireGtOctal, Hihiirokane, Quantium40, Hypogen, Periodicium, Quantium);
 
         // Sticks
-        appendToComponent(STICK_MAGNETIC, stickLong, MagneticHolmium, TengamAttuned, TengamAttuned, KerrBlackHole,
+        appendToComponent(STICK_MAGNETIC, stickLong, MagneticHolmium, TengamAttuned, TengamAttuned, TengamAttuned,
                 KerrBlackHole);
         appendToComponent(GTValues.IV, STICK_ELECTROMAGNETIC, stickLong, VanadiumGallium, VanadiumGallium,
-                VanadiumGallium, MagneticHolmium, MagneticHolmium, TengamAttuned, TengamAttuned, KerrBlackHole,
+                VanadiumGallium, MagneticHolmium, MagneticHolmium, TengamAttuned, TengamAttuned, TengamAttuned,
                 KerrBlackHole);
-        appendToComponent(GTValues.UEV, STICK_DISTILLATION, spring, Quantium40, Infinity, Bedrockium, Quantium);
+        appendToComponent(GTValues.UEV, STICK_DISTILLATION, spring, Quantium40, Infinity, Periodicium, Quantium);
 
         // Not used by base CEu
         appendToComponent(GTValues.UV, STICK_RADIOACTIVE, stickLong, Tritanium, EnrichedNaquadahAlloy, Actinoids,
                 PartialSuperheavies, Superheavies, Periodicium);
 
         // Reactor Pipe
-        appendToComponent(GTValues.UHV, PIPE_REACTOR, pipeTinyFluid, RadoxPolymer);
-        appendToComponent(GTValues.UEV, PIPE_REACTOR, pipeSmallFluid, RadoxPolymer);
-        appendToComponent(GTValues.UIV, PIPE_REACTOR, pipeNormalFluid, RadoxPolymer);
-        appendToComponent(GTValues.UXV, PIPE_REACTOR, pipeLargeFluid, RadoxPolymer);
-        appendToComponent(GTValues.OpV, PIPE_REACTOR, pipeHugeFluid, RadoxPolymer);
+        appendToComponent(GTValues.UHV, PIPE_REACTOR, pipeNormalFluid, RadoxPolymer);
+        appendToComponent(GTValues.UEV, PIPE_REACTOR, pipeLargeFluid, RadoxPolymer);
+        appendToComponent(GTValues.UIV, PIPE_REACTOR, pipeHugeFluid, RadoxPolymer);
+        appendToComponent(GTValues.UXV, PIPE_REACTOR, pipeLargeFluid, FullerenePolymerMatrix);
+        appendToComponent(GTValues.OpV, PIPE_REACTOR, pipeHugeFluid, FullerenePolymerMatrix);
 
         // Power Component
         Map<Integer, Object> map = new HashMap<>();
@@ -192,7 +188,7 @@ public class SerendustryEventHandler {
         VOLTAGE_COIL.appendIngredients(map2);
 
         // Spring
-        appendToComponent(GTValues.UEV, SPRING, spring, Hihiirokane, Quantium40, Infinity, Bedrockium, Quantium);
+        appendToComponent(GTValues.UEV, SPRING, spring, Hihiirokane, Quantium40, Infinity, Periodicium, Quantium);
     }
 
     private void appendToComponent(Component component, OrePrefix prefix, Material... materials) {

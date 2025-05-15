@@ -1,7 +1,10 @@
 package serendustry.recipe;
 
+import static gregtech.api.GTValues.UXV;
+import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.MIXER_RECIPES;
 import static gregtech.api.unification.material.Materials.Actinium;
+import static gregtech.api.unification.material.Materials.Aluminium;
 import static gregtech.api.unification.material.Materials.Americium;
 import static gregtech.api.unification.material.Materials.Antimony;
 import static gregtech.api.unification.material.Materials.Argon;
@@ -77,6 +80,7 @@ import static gregtech.api.unification.material.Materials.Oxygen;
 import static gregtech.api.unification.material.Materials.Palladium;
 import static gregtech.api.unification.material.Materials.Phosphorus;
 import static gregtech.api.unification.material.Materials.Platinum;
+import static gregtech.api.unification.material.Materials.Plutonium239;
 import static gregtech.api.unification.material.Materials.Plutonium241;
 import static gregtech.api.unification.material.Materials.Polonium;
 import static gregtech.api.unification.material.Materials.Potassium;
@@ -101,6 +105,7 @@ import static gregtech.api.unification.material.Materials.Sodium;
 import static gregtech.api.unification.material.Materials.Strontium;
 import static gregtech.api.unification.material.Materials.Sulfur;
 import static gregtech.api.unification.material.Materials.Tantalum;
+import static gregtech.api.unification.material.Materials.Technetium;
 import static gregtech.api.unification.material.Materials.Tellurium;
 import static gregtech.api.unification.material.Materials.Tennessine;
 import static gregtech.api.unification.material.Materials.Terbium;
@@ -111,6 +116,7 @@ import static gregtech.api.unification.material.Materials.Tin;
 import static gregtech.api.unification.material.Materials.Titanium;
 import static gregtech.api.unification.material.Materials.Tungsten;
 import static gregtech.api.unification.material.Materials.Uranium235;
+import static gregtech.api.unification.material.Materials.Uranium238;
 import static gregtech.api.unification.material.Materials.Vanadium;
 import static gregtech.api.unification.material.Materials.Xenon;
 import static gregtech.api.unification.material.Materials.Ytterbium;
@@ -138,7 +144,7 @@ import static serendustry.item.material.SerendustryMaterials.PreciousMetals;
 import static serendustry.item.material.SerendustryMaterials.RefractoryMetals;
 import static serendustry.item.material.SerendustryMaterials.Superheavies;
 import static serendustry.item.material.SerendustryMaterials.Technetium22;
-import static serendustry.item.material.SerendustryMaterials.TransCataCrude;
+import static serendustry.machine.SerendustryRecipeMaps.DISTORTION_ENGINE_RECIPES;
 
 public class PeriodiciumChain {
 
@@ -335,7 +341,7 @@ public class PeriodiciumChain {
                 .output(dust, Superheavies)
                 .buildAndRegister();
 
-        MIXER_RECIPES.recipeBuilder().duration(360).EUt(5400000)
+        /*MIXER_RECIPES.recipeBuilder().duration(360).EUt(5400000)
                 .input(dust, Alkalis)
                 .input(dust, RefractoryMetals)
                 .input(dust, LightTransitionMetals)
@@ -347,6 +353,129 @@ public class PeriodiciumChain {
                 .input(dust, Gases)
                 .fluidInputs(NonMetals.getFluid(144), NobleGases.getFluid(144), TransCataCrude.getFluid(500))
                 .output(dust, Periodicium)
-                .buildAndRegister();
+                .buildAndRegister();*/
+
+        // You have to use 2x UIV ehatches at first and then can use UXV lasers
+        DISTORTION_ENGINE_RECIPES.recipeBuilder()
+                .fluidInputs(Hydrogen.getFluid(1000),
+                        Helium.getFluid(1000),
+                        Lithium.getFluid(144),
+                        Beryllium.getFluid(144),
+                        Boron.getFluid(144),
+                        Carbon.getFluid(144),
+                        Nitrogen.getFluid(1000),
+                        Oxygen.getFluid(1000),
+                        Fluorine.getFluid(1000),
+                        Neon.getFluid(1000),
+                        Sodium.getFluid(144),
+                        Magnesium.getFluid(144),
+                        Aluminium.getFluid(144),
+                        Silicon.getFluid(144),
+                        Phosphorus.getFluid(144),
+                        Sulfur.getFluid(144),
+                        Chlorine.getFluid(1000),
+                        Argon.getFluid(1000),
+                        Potassium.getFluid(144),
+                        Calcium.getFluid(144),
+                        Scandium.getFluid(144),
+                        Titanium.getFluid(144),
+                        Vanadium.getFluid(144),
+                        Chrome.getFluid(144),
+                        Manganese.getFluid(144),
+                        Iron.getFluid(144),
+                        Cobalt.getFluid(144),
+                        Nickel.getFluid(144),
+                        Copper.getFluid(144),
+                        Zinc.getFluid(144),
+                        Gallium.getFluid(144),
+                        Germanium.getFluid(144),
+                        Arsenic.getFluid(144),
+                        Selenium.getFluid(144),
+                        Bromine.getFluid(1000),
+                        Krypton.getFluid(1000),
+                        Rubidium.getFluid(144),
+                        Strontium.getFluid(144),
+                        Yttrium.getFluid(144),
+                        Zirconium.getFluid(144),
+                        Niobium.getFluid(144),
+                        Molybdenum.getFluid(144),
+                        Technetium.getFluid(144),
+                        Ruthenium.getFluid(144),
+                        Rhodium.getFluid(144),
+                        Palladium.getFluid(144),
+                        Silver.getFluid(144),
+                        Cadmium.getFluid(144),
+                        Indium.getFluid(144),
+                        Tin.getFluid(144),
+                        Antimony.getFluid(144),
+                        Tellurium.getFluid(144),
+                        Iodine.getFluid(144),
+                        Xenon.getFluid(1000),
+                        Caesium.getFluid(144),
+                        Barium.getFluid(144),
+                        Lanthanum.getFluid(144),
+                        Cerium.getFluid(144),
+                        Praseodymium.getFluid(144),
+                        Neodymium.getFluid(144),
+                        Promethium.getFluid(144),
+                        Samarium.getFluid(144),
+                        Europium.getFluid(144),
+                        Gadolinium.getFluid(144),
+                        Terbium.getFluid(144),
+                        Dysprosium.getFluid(144),
+                        Holmium.getFluid(144),
+                        Erbium.getFluid(144),
+                        Thulium.getFluid(144),
+                        Ytterbium.getFluid(144),
+                        Lutetium.getFluid(144),
+                        Hafnium.getFluid(144),
+                        Tantalum.getFluid(144),
+                        Tungsten.getFluid(144),
+                        Rhenium.getFluid(144),
+                        Osmium.getFluid(144),
+                        Iridium.getFluid(144),
+                        Platinum.getFluid(144),
+                        Gold.getFluid(144),
+                        Mercury.getFluid(144),
+                        Thallium.getFluid(144),
+                        Lead.getFluid(144),
+                        Bismuth.getFluid(144),
+                        Polonium.getFluid(144),
+                        Astatine.getFluid(144),
+                        Radon.getFluid(144),
+                        Francium.getFluid(144),
+                        Radium.getFluid(144),
+                        Actinium.getFluid(144),
+                        Thorium.getFluid(144),
+                        Protactinium.getFluid(144),
+                        Uranium238.getFluid(144),
+                        Neptunium.getFluid(144),
+                        Plutonium239.getFluid(144),
+                        Americium.getFluid(144),
+                        Curium.getFluid(144),
+                        Berkelium.getFluid(144),
+                        Californium.getFluid(144),
+                        Einsteinium.getFluid(144),
+                        Fermium.getFluid(144),
+                        Mendelevium.getFluid(144),
+                        Nobelium.getFluid(144),
+                        Lawrencium.getFluid(144),
+                        Rutherfordium.getFluid(144),
+                        Dubnium.getFluid(144),
+                        Seaborgium.getFluid(144),
+                        Bohrium.getFluid(144),
+                        Hassium.getFluid(144),
+                        Meitnerium.getFluid(144),
+                        Darmstadtium.getFluid(144),
+                        Roentgenium.getFluid(144),
+                        Copernicium.getFluid(144),
+                        Nihonium.getFluid(144),
+                        Flerovium.getFluid(144),
+                        Moscovium.getFluid(144),
+                        Livermorium.getFluid(144),
+                        Tennessine.getFluid(144),
+                        Oganesson.getFluid(144))
+                .output(dust, Periodicium)
+                .duration(1000).EUt(VA[UXV]).buildAndRegister();
     }
 }

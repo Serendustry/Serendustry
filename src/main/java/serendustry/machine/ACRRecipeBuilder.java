@@ -3,7 +3,7 @@ package serendustry.machine;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.recipeproperties.CleanroomProperty;
 import gregtech.api.recipes.recipeproperties.RecipeProperty;
-import org.eclipse.xtext.xbase.lib.IntegerRange;
+import serendustry.client.utils.IntegerRange;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;

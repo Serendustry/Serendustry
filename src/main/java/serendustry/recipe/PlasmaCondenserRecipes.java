@@ -87,8 +87,8 @@ public class PlasmaCondenserRecipes {
                     .fluidInputs(BlackStarMatter.getFluid(isExotic ? 10000 : 1),
                             material.getPlasma(isSolid ? 1440 : 10000))
                     .fluidOutputs(material.getFluid(isSolid ? 1440 : 10000))
-                    .duration(isExotic ? 64 : 1)
-                    .EUt((int) GTValues.V[GTValues.MAX])
+                    .duration(isExotic ? 64 * 64 : 64)
+                    .EUt(GTValues.VA[GTValues.UIV])
                     .buildAndRegister();
 
             PLASMA_CONDENSER_RECIPES.recipeBuilder()
@@ -97,14 +97,22 @@ public class PlasmaCondenserRecipes {
                     .fluidInputs(CondensedStarMatter.getFluid(isExotic ? 10000 : 1),
                             material.getFluid(isSolid ? 1440 : 10000))
                     .fluidOutputs(material.getPlasma(isSolid ? 1440 : 10000))
-                    .duration(isExotic ? 64 : 1)
-                    .EUt((int) GTValues.V[GTValues.MAX])
+                    .duration(isExotic ? 64 * 64 : 64)
+                    .EUt(GTValues.VA[GTValues.UIV])
                     .buildAndRegister();
 
             // Also doing plasma generator fuels here since I've already done all the checking + they're unimportant
 
             // Make sure the recipe doesn't already exist
-            for (Material fuel : plasmaFuels) if (material == fuel) return;
+            boolean isFuel = false;
+            for (Material fuel : plasmaFuels) {
+                if (material == fuel) {
+                    isFuel = true;
+                    break;
+                }
+            }
+
+            if (isFuel) continue;
 
             PLASMA_GENERATOR_FUELS.recipeBuilder()
                     .fluidInputs(material.getPlasma(1))

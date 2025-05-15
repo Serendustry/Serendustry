@@ -18,11 +18,12 @@ import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.core.sound.GTSoundEvents;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import serendustry.SValues;
@@ -166,8 +167,6 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
 
         @Override
         public int getParallelLimit() {
-            // logger.info("eic tier: " + tier);
-            // logger.info("eic parallel: " + new int[]{16, 64, 256}[tier]);
             return TIER_PARALLEL[tier];
         }
     }
@@ -176,5 +175,12 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         STooltipHelper.addSerendustryInformation(tooltip, SValues.ENERGY_SUBSTATION, false);
+    }
+
+    @SideOnly(Side.CLIENT)
+    @NotNull
+    @Override
+    protected ICubeRenderer getFrontOverlay() {
+        return SerendustryTextures.OVERLAY_ELECTRIC_IMPLOSION_COMPRESSOR;
     }
 }

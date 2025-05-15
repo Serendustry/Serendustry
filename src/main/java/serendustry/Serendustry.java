@@ -18,6 +18,7 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
@@ -42,6 +43,7 @@ import serendustry.item.material.SerendustryMaterials;
 import serendustry.item.material.VazkiiWhatAreYouDoing;
 import serendustry.machine.SerendustryMetaTileEntities;
 import serendustry.machine.SerendustryRecipeMaps;
+import serendustry.proxy.CommonProxy;
 import serendustry.recipe.SerendustryRecipes;
 
 import java.util.Objects;
@@ -122,6 +124,7 @@ public class Serendustry {
     @SubscribeEvent
     public void registerItems(RegistryEvent.Register<Item> event) {
         SerendustryMetaItems.registerItems();
+        SerendustryToolItems.registerGenesisHoe(event.getRegistry());
 
         IForgeRegistry<Item> registry = event.getRegistry();
         SerendustryMetaBlocks.ALL_CASINGS
@@ -156,6 +159,9 @@ public class Serendustry {
             VazkiiWhatAreYouDoing.init();
         }
     }
+
+    @SidedProxy(serverSide = "serendustry.proxy.CommonProxy", clientSide = "serendustry.proxy.ClientProxy")
+    public static CommonProxy proxy;
 
     private static <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {
         ItemBlock itemBlock = producer.apply(block);

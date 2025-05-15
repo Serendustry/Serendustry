@@ -57,6 +57,7 @@ import static gregtech.api.unification.material.Materials.Meat;
 import static gregtech.api.unification.material.Materials.Mutagen;
 import static gregtech.api.unification.material.Materials.Naquadah;
 import static gregtech.api.unification.material.Materials.Naquadria;
+import static gregtech.api.unification.material.Materials.Neptunium;
 import static gregtech.api.unification.material.Materials.Neutronium;
 import static gregtech.api.unification.material.Materials.NiobiumTitanium;
 import static gregtech.api.unification.material.Materials.Nitrogen;
@@ -145,6 +146,8 @@ import static serendustry.item.SerendustryMetaItems.CULTURE_STEM_CELL;
 import static serendustry.item.SerendustryMetaItems.CULTURE_STEM_CELL_WIRED;
 import static serendustry.item.SerendustryMetaItems.ENGRAVED_POSITRONIC_CHIP;
 import static serendustry.item.SerendustryMetaItems.ENTROPIC_CIRCUIT_BOARD;
+import static serendustry.item.SerendustryMetaItems.ENTROPIC_SOC_CHIP;
+import static serendustry.item.SerendustryMetaItems.ENTROPIC_SOC_WAFER;
 import static serendustry.item.SerendustryMetaItems.INACTIVE_APU_WAFER;
 import static serendustry.item.SerendustryMetaItems.LENS_ARRAY_HYPERAMPLIFYING;
 import static serendustry.item.SerendustryMetaItems.LENS_ARRAY_HYPERPRECISE;
@@ -170,7 +173,10 @@ import static serendustry.item.SerendustryMetaItems.ORUNDUM_BOULE;
 import static serendustry.item.SerendustryMetaItems.ORUNDUM_SEED_CRYSTAL;
 import static serendustry.item.SerendustryMetaItems.PETRI_DISH_STERILIZED;
 import static serendustry.item.SerendustryMetaItems.POSITRONIC_CHIP;
+import static serendustry.item.SerendustryMetaItems.POSITRONIC_SOC_CHIP;
+import static serendustry.item.SerendustryMetaItems.POSITRONIC_SOC_WAFER;
 import static serendustry.item.SerendustryMetaItems.RAW_ORUNDUM_WAFER;
+import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_END;
 import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_NETHER;
 import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_OVERWORLD;
 import static serendustry.item.SerendustryMetaItems.SUPREME_SMD_CAPACITOR;
@@ -194,6 +200,7 @@ import static serendustry.item.material.SerendustryMaterials.HalkoniteSteel;
 import static serendustry.item.material.SerendustryMaterials.HighGradeSolderingAlloy;
 import static serendustry.item.material.SerendustryMaterials.Hihiirokane;
 import static serendustry.item.material.SerendustryMaterials.Hypogen;
+import static serendustry.item.material.SerendustryMaterials.Infinity;
 import static serendustry.item.material.SerendustryMaterials.IrradiatedDiamond;
 import static serendustry.item.material.SerendustryMaterials.LCNS;
 import static serendustry.item.material.SerendustryMaterials.LaminatedBoPET;
@@ -203,6 +210,7 @@ import static serendustry.item.material.SerendustryMaterials.NaquadriaticTaraniu
 import static serendustry.item.material.SerendustryMaterials.Originium;
 import static serendustry.item.material.SerendustryMaterials.Orundum;
 import static serendustry.item.material.SerendustryMaterials.PositroniumHydride;
+import static serendustry.item.material.SerendustryMaterials.QCDM;
 import static serendustry.item.material.SerendustryMaterials.Quantium40;
 import static serendustry.item.material.SerendustryMaterials.RadoxPolymer;
 import static serendustry.item.material.SerendustryMaterials.Rhugnor;
@@ -261,27 +269,30 @@ public class CircuitRecipes {
                 .duration(750 * 20).EUt(VA[EV]).buildAndRegister();
 
         CRYSTALLIZER_RECIPES.recipeBuilder()
+                .notConsumable(stickLong, Osmiridium)
                 .input(dust, SemiconductorGradeSilicon, 16 * 3)
                 .input(dustSmall, GalliumArsenide, 3)
                 .fluidInputs(Nitrogen.getFluid(FluidStorageKeys.LIQUID, 2000))
                 .output(SILICON_BOULE, 4)
-                .duration(400 * 20 * 4 / 32).EUt(VA[ZPM]).buildAndRegister();
+                .duration(400 * 20 * 4 / 32 / 8).EUt(VA[ZPM]).buildAndRegister();
 
         CRYSTALLIZER_RECIPES.recipeBuilder()
+                .notConsumable(stickLong, Adamantium)
                 .input(dust, SemiconductorGradeSilicon, 64 * 3)
                 .input(dust, Phosphorus, 8 * 3)
                 .input(dustSmall, GalliumArsenide, 2 * 3)
                 .fluidInputs(Helium.getFluid(FluidStorageKeys.LIQUID, 8000))
                 .output(PHOSPHORUS_BOULE, 4)
-                .duration(600 * 20 * 4 / 16).EUt(VA[ZPM]).buildAndRegister();
+                .duration(600 * 20 * 4 / 16 / 8).EUt(VA[ZPM]).buildAndRegister();
 
         CRYSTALLIZER_RECIPES.recipeBuilder()
+                .notConsumable(stickLong, VibraniumAlloy)
                 .input(block, SemiconductorGradeSilicon, 16 * 3)
                 .input(ingot, Naquadah, 3)
                 .input(dust, GalliumArsenide, 3)
                 .fluidInputs(Helium.getFluid(FluidStorageKeys.LIQUID, 16000))
                 .output(NAQUADAH_BOULE, 4)
-                .duration(750 * 20 * 4 / 8).EUt(VA[ZPM]).buildAndRegister();
+                .duration(750 * 20 * 4 / 8 / 8).EUt(VA[ZPM]).buildAndRegister();
 
         CVD_RECIPES.recipeBuilder()
                 .input(dust, Originium, 4)
@@ -471,6 +482,32 @@ public class CircuitRecipes {
         CUTTER_RECIPES.recipeBuilder().duration(20 * 40).EUt(VA[UV]).input(ACTIVATED_APU_WAFER)
                 .fluidInputs(MolybdeniteLubricant.getFluid(250))
                 .output(ACTIVATED_APU_CHIP, 6).cleanroom(CleanroomType.CLEANROOM).buildAndRegister();
+
+        // Posi SoC
+        HP_LASER_ARRAY_RECIPES.recipeBuilder()
+                .input(HIGHLY_ADVANCED_SOC_WAFER)
+                .input(ENGRAVED_POSITRONIC_CHIP)
+                .input(foil, QCDM)
+                .fluidInputs(Nitrogen.getPlasma(100))
+                .output(POSITRONIC_SOC_WAFER)
+                .duration(20 * 20).EUt(VA[UEV]).buildAndRegister();
+
+        CUTTER_RECIPES.recipeBuilder().duration(20 * 10).EUt(VA[UHV]).input(POSITRONIC_SOC_WAFER)
+                .fluidInputs(MolybdeniteLubricant.getFluid(250))
+                .output(POSITRONIC_SOC_CHIP, 6).cleanroom(CleanroomType.CLEANROOM).buildAndRegister();
+
+        // Entrop SoC
+        HP_LASER_ARRAY_RECIPES.recipeBuilder()
+                .input(HIGHLY_ADVANCED_SOC_WAFER)
+                .input(TIME_CRYSTAL)
+                .input(foil, Infinity)
+                .fluidInputs(Neptunium.getFluid(36))
+                .output(ENTROPIC_SOC_WAFER)
+                .duration(20 * 20).EUt(VA[UIV]).buildAndRegister();
+
+        CUTTER_RECIPES.recipeBuilder().duration(20 * 10).EUt(VA[UEV]).input(ENTROPIC_SOC_WAFER)
+                .fluidInputs(MolybdeniteLubricant.getFluid(250))
+                .output(ENTROPIC_SOC_CHIP, 6).cleanroom(CleanroomType.CLEANROOM).buildAndRegister();
     }
 
     private static void boardRecipes() {
@@ -691,7 +728,7 @@ public class CircuitRecipes {
                 .fluidInputs(HighGradeSolderingAlloy.getFluid(144))
                 .output(WETWARE_PROCESSOR_LUV, outputAmount * 2)
                 .cleanroom(CleanroomType.CLEANROOM)
-                .EUt(VA[UHV]).duration(30).buildAndRegister();
+                .EUt(VA[UV]).duration(20 * 5).buildAndRegister();
 
         // T8: Positronic ==============================================================================================
 
@@ -706,20 +743,19 @@ public class CircuitRecipes {
                 .fluidInputs(SelfRepairingNanobots.getFluid(144))
                 .output(CIRC_POSITRONIC_ZPM, outputAmount)
                 .cleanroom(CleanroomType.CLEANROOM)
-                .duration(20 * 20).EUt(VA[UHV]).buildAndRegister();
+                .duration(20 * 10).EUt(VA[UHV]).buildAndRegister();
 
         // SoC ZPM
-        // todo: actually add an SOC to this recipe
         CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
                 .notConsumable(STELLAR_ESSENCE_NETHER)
                 .input(COSMIC_CIRCUIT_BOARD)
-                .input(ENGRAVED_POSITRONIC_CHIP)
+                .input(POSITRONIC_SOC_CHIP)
                 .input(wireFine, Hihiirokane, 16)
-                .input(bolt, NaquadriaticTaranium, 8)
+                .input(bolt, NaquadriaticTaranium, 4)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144))
                 .output(CIRC_POSITRONIC_ZPM, outputAmount * 2)
                 .cleanroom(CleanroomType.CLEANROOM)
-                .duration(20 * 20).EUt(VA[UHV]).buildAndRegister();
+                .duration(20 * 5).EUt(VA[UEV]).buildAndRegister();
 
         // UV
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -789,7 +825,7 @@ public class CircuitRecipes {
                         .researchStack(CIRC_POSITRONIC_UHV.getStackForm())
                         .CWUt(128)
                         .EUt(VA[UHV]))
-                .duration(100 * 20).EUt(VA[UHV]).buildAndRegister();
+                .duration(150 * 20).EUt(VA[UHV]).buildAndRegister();
 
         // T9: Entropic ================================================================================================
 
@@ -797,14 +833,15 @@ public class CircuitRecipes {
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ENTROPIC_CIRCUIT_BOARD)
                 .input(TIME_CRYSTAL)
-                .input(foil, TengamAttuned, 4)
-                .input(plate, HalkoniteSteel)
                 .input(SUPREME_SMD_RESISTOR, 8)
                 .input(SUPREME_SMD_TRANSISTOR, 8)
                 .input(SUPREME_SMD_CAPACITOR, 8)
                 .input(SUPREME_SMD_DIODE, 8)
                 .input(SUPREME_SMD_INDUCTOR, 8)
                 .input(wireFine, Quantium40, 8)
+                .input(foil, TengamAttuned, 4)
+                .input(foil, QCDM)
+                .input(plate, HalkoniteSteel)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144))
                 .fluidInputs(LCNS.getFluid(1000))
                 .output(CIRC_ENTROPIC_UV, outputAmount)
@@ -812,10 +849,19 @@ public class CircuitRecipes {
                         .researchStack(CIRC_POSITRONIC_UEV.getStackForm())
                         .CWUt(144)
                         .EUt(VA[UEV]))
-                .duration(20 * 20).EUt(VA[UEV]).buildAndRegister();
+                .duration(20 * 10).EUt(VA[UEV]).buildAndRegister();
 
-        // UV SoC
-        // TODO
+        // SoC UV
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
+                .notConsumable(STELLAR_ESSENCE_END)
+                .input(ENTROPIC_CIRCUIT_BOARD)
+                .input(ENTROPIC_SOC_CHIP)
+                .input(wireFine, Quantium40, 8)
+                .input(bolt, Rhugnor, 4)
+                .fluidInputs(SelfRepairingNanobots.getFluid(144))
+                .output(CIRC_ENTROPIC_UV, outputAmount * 2)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .duration(20 * 5).EUt(VA[UIV]).buildAndRegister();
 
         // UHV
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -829,6 +875,7 @@ public class CircuitRecipes {
                 .input(RANDOM_ACCESS_MEMORY, 64)
                 .input(wireFine, Quantium40, 16)
                 .input(foil, Quantium40, 16)
+                .input(foil, QCDM, 2)
                 .input(plate, TengamAttuned, 4)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 2))
                 .fluidInputs(LCNS.getFluid(2000))
@@ -853,6 +900,7 @@ public class CircuitRecipes {
                 .input(RANDOM_ACCESS_MEMORY, 64)
                 .input(wireFine, Quantium40, 24)
                 .input(foil, RadoxPolymer, 16)
+                .input(foil, QCDM, 2)
                 .input(plate, HalkoniteSteel, 4)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 8))
                 .fluidInputs(LCNS.getFluid(4000))
@@ -879,6 +927,7 @@ public class CircuitRecipes {
                 .input(wireGtDouble, Hypogen, 16)
                 .input(plateDense, HalkoniteSteel)
                 .input(plate, AwakenedDraconium, 8)
+                .input(plate, QCDM)
                 .fluidInputs(SentientNanobots.getFluid(144 * 16))
                 .fluidInputs(LCNS.getFluid(8000))
                 .fluidInputs(Originium.getFluid(144 * 2))
@@ -888,6 +937,6 @@ public class CircuitRecipes {
                         .researchStack(CIRC_ENTROPIC_UEV.getStackForm())
                         .CWUt(144)
                         .EUt(VA[UIV]))
-                .duration(100 * 20).EUt(VA[UEV]).buildAndRegister();
+                .duration(200 * 20).EUt(VA[UEV]).buildAndRegister();
     }
 }

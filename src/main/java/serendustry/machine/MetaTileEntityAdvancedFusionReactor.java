@@ -8,9 +8,9 @@ import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.client.renderer.ICubeRenderer;
+import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.MetaBlocks;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -69,15 +69,21 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
         return pattern.build();
     }
 
-    // todo: adv fusion texture (turns partially transparent when active)
     @SideOnly(Side.CLIENT)
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
         if (this.recipeMapWorkable.isActive()) {
-            return SerendustryTextures.CASING_ADV_FUSION_ACTIVE;
+            return SerendustryTextures.TEXTURE_ADV_FUSION_ACTIVE;
         } else {
-            return SerendustryTextures.CASING_ADV_FUSION;
+            return SerendustryTextures.TEXTURE_ADV_FUSION;
         }
+    }
+
+    @SideOnly(Side.CLIENT)
+    @NotNull
+    @Override
+    protected ICubeRenderer getFrontOverlay() {
+        return Textures.FUSION_REACTOR_OVERLAY;// SerendustryTextures.OVERLAY_ADVANCED_FUSION_REACTOR;
     }
     // todo: big laser rendering
 

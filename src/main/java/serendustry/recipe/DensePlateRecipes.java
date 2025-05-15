@@ -11,8 +11,8 @@ import net.minecraft.item.ItemStack;
 
 import static gregtech.api.recipes.RecipeMaps.BENDER_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.IMPLOSION_RECIPES;
-import static gregtech.api.unification.material.Materials.Carbon;
 import static gregtech.api.unification.material.Materials.Darmstadtium;
+import static gregtech.api.unification.material.Materials.Moscovium;
 import static gregtech.api.unification.material.Materials.NaquadahAlloy;
 import static gregtech.api.unification.material.Materials.Neutronium;
 import static gregtech.api.unification.material.Materials.Oganesson;
@@ -28,6 +28,7 @@ import static serendustry.item.material.SerendustryMaterials.ErrorEnvoidia;
 import static serendustry.item.material.SerendustryMaterials.ErrorSerenibyss;
 import static serendustry.item.material.SerendustryMaterials.ExoHalkoniteSteel;
 import static serendustry.item.material.SerendustryMaterials.Floppa;
+import static serendustry.item.material.SerendustryMaterials.FullerenePolymerMatrix;
 import static serendustry.item.material.SerendustryMaterials.HalkoniteSteel;
 import static serendustry.item.material.SerendustryMaterials.HotExoHalkoniteSteel;
 import static serendustry.item.material.SerendustryMaterials.HotHalkoniteSteel;
@@ -46,10 +47,8 @@ public class DensePlateRecipes {
                 ErrorSerenibyss };
 
         // Special cased high tier materials
-        Material[] highTiers = { Carbon, NaquadahAlloy, Darmstadtium, Adamantium, VibraniumAlloy };
-        Material[] higherTiers = { RadoxPolymer, Oganesson, Tennessine, Neutronium, Infinity, AwakenedDraconium,
-                DeepDarkSteel,
-                Floppa };
+        Material[] highTiers = { NaquadahAlloy, Darmstadtium, Adamantium, Moscovium, VibraniumAlloy };
+        Material[] higherTiers = { RadoxPolymer, Oganesson, Tennessine, Neutronium, Infinity, AwakenedDraconium, DeepDarkSteel, FullerenePolymerMatrix, Floppa };
         int NORMAL = 0, HIGH = 1, HIGHER = 2;
         int[] Tiers = { GTValues.EV, GTValues.LuV };
 

@@ -21,6 +21,7 @@ public class SerendustryRecipes {
         GermaniumChain.init();
         GiantFractionatingColumnRecipes.init();
         HalkoniteSteelRecipes.init();
+        HoeRecipes.init();
         HTComponentRecipes.init();
         HTMachineRecipes.init();
         InfinityChain.init();
@@ -35,6 +36,7 @@ public class SerendustryRecipes {
         PeriodiciumChain.init();
         PlasmaFoundryRecipes.init();
         PlasmaMixerRecipes.init();
+        QCDMRecipes.init();
         Quantium40Chain.init();
         RadoxChain.init();
         SeleniumChain.init();

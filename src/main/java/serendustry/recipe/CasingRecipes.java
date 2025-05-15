@@ -36,7 +36,9 @@ import static gregtech.api.unification.material.Materials.Helium;
 import static gregtech.api.unification.material.Materials.Lava;
 import static gregtech.api.unification.material.Materials.NaquadahAlloy;
 import static gregtech.api.unification.material.Materials.Naquadria;
+import static gregtech.api.unification.material.Materials.Neptunium;
 import static gregtech.api.unification.material.Materials.Neutronium;
+import static gregtech.api.unification.material.Materials.Polybenzimidazole;
 import static gregtech.api.unification.material.Materials.RutheniumTriniumAmericiumNeutronate;
 import static gregtech.api.unification.material.Materials.Tritanium;
 import static gregtech.api.unification.material.Materials.YttriumBariumCuprate;
@@ -69,6 +71,7 @@ import static gregtech.common.items.MetaItems.EMITTER_UEV;
 import static gregtech.common.items.MetaItems.EMITTER_UHV;
 import static gregtech.common.items.MetaItems.EMITTER_UIV;
 import static gregtech.common.items.MetaItems.EMITTER_UV;
+import static gregtech.common.items.MetaItems.EMITTER_UXV;
 import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UEV;
 import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UHV;
 import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UV;
@@ -77,10 +80,12 @@ import static gregtech.common.items.MetaItems.ROBOT_ARM_UEV;
 import static gregtech.common.items.MetaItems.ROBOT_ARM_UHV;
 import static gregtech.common.items.MetaItems.ROBOT_ARM_UIV;
 import static gregtech.common.items.MetaItems.ROBOT_ARM_UV;
+import static gregtech.common.items.MetaItems.ROBOT_ARM_UXV;
 import static gregtech.common.items.MetaItems.SENSOR_UEV;
 import static gregtech.common.items.MetaItems.SENSOR_UHV;
 import static gregtech.common.items.MetaItems.SENSOR_UIV;
 import static gregtech.common.items.MetaItems.SENSOR_UV;
+import static gregtech.common.items.MetaItems.SENSOR_UXV;
 import static gregtech.common.items.MetaItems.SHAPE_EXTRUDER_ROD;
 import static gregtech.common.metatileentities.MetaTileEntities.ADVANCED_LARGE_MINER;
 import static serendustry.item.SerendustryMetaItems.COIL_UEV;
@@ -93,13 +98,16 @@ import static serendustry.item.material.SerendustryMaterials.Draconium;
 import static serendustry.item.material.SerendustryMaterials.Dragonblood;
 import static serendustry.item.material.SerendustryMaterials.ExoHalkoniteSteel;
 import static serendustry.item.material.SerendustryMaterials.Ferrofluid;
+import static serendustry.item.material.SerendustryMaterials.FullerenePolymerMatrix;
 import static serendustry.item.material.SerendustryMaterials.HalkoniteSteel;
 import static serendustry.item.material.SerendustryMaterials.HighGradeSolderingAlloy;
 import static serendustry.item.material.SerendustryMaterials.Hihiirokane;
 import static serendustry.item.material.SerendustryMaterials.Hypogen;
 import static serendustry.item.material.SerendustryMaterials.Infinity;
+import static serendustry.item.material.SerendustryMaterials.Periodicium;
 import static serendustry.item.material.SerendustryMaterials.Quantium40;
 import static serendustry.item.material.SerendustryMaterials.RadoxPolymer;
+import static serendustry.item.material.SerendustryMaterials.ReissnerNordstromium;
 import static serendustry.item.material.SerendustryMaterials.ScUevSane;
 import static serendustry.item.material.SerendustryMaterials.SelfRepairingNanobots;
 import static serendustry.item.material.SerendustryMaterials.SentientNanobots;
@@ -177,6 +185,17 @@ public class CasingRecipes {
                         .CWUt(64)
                         .EUt(VA[UV]))
                 .duration(20 * 32 * 12).EUt(VA[GTValues.UV]).buildAndRegister();
+
+        // ACR casing
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, Neutronium, 1)
+                .input(plateDense, NaquadahAlloy)
+                .input(plate, Polybenzimidazole, 16)
+                .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 4))
+                .outputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(
+                        BlockSerendustryMultiCasing.SerendustryMultiCasingType.ACR,
+                        ConfigHolder.recipes.casingsPerCraft))
+                .duration(20 * 32).EUt(VA[GTValues.UV]).buildAndRegister();
 
         // EIC hammer casings
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -287,7 +306,7 @@ public class CasingRecipes {
                 .fluidInputs(Lava.getFluid(1000),
                         Dragonblood.getFluid(144 * 4),
                         Draconium.getFluid(144 * 4),
-                        Flerovium.getPlasma(144 * 2))
+                        Flerovium.getPlasma(144))
                 .outputs(SerendustryMetaBlocks.PC_COIL_HEATING
                         .getItemVariant(BlockPCCoilHeating.PCCoilHeatingType.INFERNAL, 2))
                 .stationResearch(b -> b
@@ -311,7 +330,7 @@ public class CasingRecipes {
                 .fluidInputs(Helium.getFluid(FluidStorageKeys.LIQUID, 1000),
                         Dragonblood.getFluid(144 * 4),
                         Draconium.getFluid(144 * 4),
-                        Flerovium.getPlasma(144 * 2))
+                        Neptunium.getPlasma(144))
                 .outputs(SerendustryMetaBlocks.PC_COIL_COOLING
                         .getItemVariant(BlockPCCoilCooling.PCCoilCoolingType.GLACIAL, 2))
                 .stationResearch(b -> b
@@ -358,7 +377,7 @@ public class CasingRecipes {
                 .fluidInputs(Lava.getFluid(1000),
                         Dragonblood.getFluid(144 * 4),
                         Draconium.getFluid(144 * 4),
-                        Flerovium.getPlasma(144 * 2))
+                        Neptunium.getPlasma(144 * 2))
                 .outputs(SerendustryMetaBlocks.PC_COIL_COOLING
                         .getItemVariant(BlockPCCoilCooling.PCCoilCoolingType.BLACK_HOLE, 2))
                 .stationResearch(b -> b
@@ -381,6 +400,7 @@ public class CasingRecipes {
                 .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 64))
                 .fluidInputs(Ferrofluid.getFluid(1000 * 8))
                 .fluidInputs(Naquadria.getFluid(144 * 32))
+                .fluidInputs(Polybenzimidazole.getFluid(144 * 16))
                 .outputs(SerendustryMetaBlocks.AAL_CORE_CASING.getItemVariant(BlockAALCoreCasing.AALCoreCasingType.UV))
                 .stationResearch(b -> b
                         .researchStack(MetaBlocks.MULTIBLOCK_CASING
@@ -402,6 +422,7 @@ public class CasingRecipes {
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 32))
                 .fluidInputs(Ferrofluid.getFluid(1000 * 16))
                 .fluidInputs(CondensedStarMatter.getFluid(1000 * 16))
+                .fluidInputs(RadoxPolymer.getFluid(144 * 8))
                 .outputs(SerendustryMetaBlocks.AAL_CORE_CASING.getItemVariant(BlockAALCoreCasing.AALCoreCasingType.UHV))
                 .stationResearch(b -> b
                         .researchStack(SerendustryMetaBlocks.AAL_CORE_CASING
@@ -423,6 +444,7 @@ public class CasingRecipes {
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 64))
                 .fluidInputs(Ferrofluid.getFluid(1000 * 16 * 2))
                 .fluidInputs(AbyssalAlloy.getFluid(144 * 32))
+                .fluidInputs(RadoxPolymer.getFluid(144 * 16))
                 .outputs(SerendustryMetaBlocks.AAL_CORE_CASING.getItemVariant(BlockAALCoreCasing.AALCoreCasingType.UEV))
                 .stationResearch(b -> b
                         .researchStack(SerendustryMetaBlocks.AAL_CORE_CASING
@@ -444,6 +466,7 @@ public class CasingRecipes {
                 .fluidInputs(SentientNanobots.getFluid(144 * 64))
                 .fluidInputs(Ferrofluid.getFluid(1000 * 16 * 4))
                 .fluidInputs(Infinity.getFluid(144 * 32))
+                .fluidInputs(RadoxPolymer.getFluid(144 * 32))
                 .outputs(SerendustryMetaBlocks.AAL_CORE_CASING.getItemVariant(BlockAALCoreCasing.AALCoreCasingType.UIV))
                 .stationResearch(b -> b
                         .researchStack(SerendustryMetaBlocks.AAL_CORE_CASING
@@ -452,11 +475,34 @@ public class CasingRecipes {
                         .EUt(VA[GTValues.UIV]))
                 .duration(20 * 60 * 8).EUt(VA[GTValues.UIV]).buildAndRegister();
 
-        // todo: UXV, OpV, MAX AAL Core recipes
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(frameGt, Periodicium)
+                .input(circuit, MarkerMaterials.Tier.UXV, 4) // todo
+                .input(ROBOT_ARM_UXV, 4)
+                .input(SENSOR_UXV)
+                .input(EMITTER_UXV)
+                .input(plate, ExoHalkoniteSteel, 16)
+                .input(plate, ReissnerNordstromium, 16)
+                .input(screw, ReissnerNordstromium, 32)
+                .input(wireGtDouble, Periodicium, 32)
+                .fluidInputs(SentientNanobots.getFluid(144 * 128))
+                .fluidInputs(Ferrofluid.getFluid(1000 * 16 * 8))
+                .fluidInputs(Periodicium.getPlasma(144 * 32))
+                .fluidInputs(FullerenePolymerMatrix.getFluid(144 * 32))
+                .outputs(SerendustryMetaBlocks.AAL_CORE_CASING.getItemVariant(BlockAALCoreCasing.AALCoreCasingType.UXV))
+                .stationResearch(b -> b
+                        .researchStack(SerendustryMetaBlocks.AAL_CORE_CASING
+                                .getItemVariant(BlockAALCoreCasing.AALCoreCasingType.UIV))
+                        .CWUt(144)
+                        .EUt(VA[GTValues.UXV]))
+                .duration(20 * 60 * 8).EUt(VA[GTValues.UXV]).buildAndRegister();
+
+        // todo: OpV, MAX AAL Core recipes
 
         // ACR Components
         ASSEMBLER_RECIPES.recipeBuilder()
-                .input(frameGt, Adamantium)
+                .inputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING
+                        .getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ACR))
                 .input(circuit, MarkerMaterials.Tier.UV)
                 .input(plate, Neutronium, 6)
                 .input(cableGtDouble, Hihiirokane, 4)

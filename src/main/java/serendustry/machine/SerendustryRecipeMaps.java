@@ -1,5 +1,6 @@
 package serendustry.machine;
 
+import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
@@ -39,11 +40,15 @@ public class SerendustryRecipeMaps {
     public static final RecipeMapPlasmaCondenser PLASMA_CONDENSER_RECIPES = new RecipeMapPlasmaCondenser(
             "plasma_condenser", 0, 0, 2, 1, false);
     public static final RecipeMap<SimpleRecipeBuilder> ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES = new RecipeMap<>(
-            "electric_implosion_compressor", 6, 2, 0, 0, new SimpleRecipeBuilder(), false);
+            "electric_implosion_compressor", 6, 2, 1, 2, new SimpleRecipeBuilder(), false);
     public static final RecipeMap<SimpleRecipeBuilder> CRYSTALLIZER_RECIPES = new RecipeMap<>(
-            "crystallizer", 3, 1, 2, 0, new SimpleRecipeBuilder(), false);
+            "crystallizer", 4, 1, 2, 0, new SimpleRecipeBuilder(), false);
     public static final RecipeMapACR ACR_RECIPES = new RecipeMapACR(
             "advanced_chemical_reactor", 6, 3, 4, 3, false);
+    public static final RecipeMap<SimpleRecipeBuilder> EMPYREAN_RECIPES = new RecipeMap<>(
+            "empyrean", 6, 1, 0, 0, new SimpleRecipeBuilder(), false);
+    public static final RecipeMap<SimpleRecipeBuilder> DISTORTION_ENGINE_RECIPES = new RecipeMap<>(
+            "distortion_engine", 0, 1, 118, 0, new SimpleRecipeBuilder(), true); // todo fix crash and make not hidden
     /*
      * public static final RecipeMap<SimpleRecipeBuilder> ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES = new
      * RecipeMapBuilder<>("electric_implosion_compressor",
@@ -76,5 +81,7 @@ public class SerendustryRecipeMaps {
         RecipeMaps.ASSEMBLER_RECIPES.setMaxFluidOutputs(1);
         RecipeMaps.FLUID_HEATER_RECIPES.setMaxInputs(1);
         RecipeMaps.FLUID_HEATER_RECIPES.setMaxOutputs(1);
+
+        GCYMRecipeMaps.ALLOY_BLAST_RECIPES.setMaxInputs(12);
     }
 }

@@ -11,12 +11,13 @@ import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.pattern.PatternMatchContext;
 import gregtech.client.renderer.ICubeRenderer;
-import gregtech.client.utils.TooltipHelper;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import serendustry.SValues;
 import serendustry.blocks.BlockSerendustryMetalCasing;
@@ -101,7 +102,7 @@ public class MetaTileEntityStellarEngine extends RecipeMapMultiblockController {
                                                 .setMaxGlobalLimited(1))
                                         .or(abilities(MultiblockAbility.INPUT_LASER).setPreviewCount(1)
                                                 .setMaxGlobalLimited(1)))
-                .where('C', states(Blocks.STAINED_GLASS.getStateFromMeta(14))); // todo
+                .where('C', states(Blocks.STAINED_GLASS.getStateFromMeta(11)));
 
         return pattern.build();
     }
@@ -120,5 +121,12 @@ public class MetaTileEntityStellarEngine extends RecipeMapMultiblockController {
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         STooltipHelper.addSerendustryInformation(tooltip, SValues.ENERGY_LASER, true);
+    }
+
+    @SideOnly(Side.CLIENT)
+    @NotNull
+    @Override
+    protected ICubeRenderer getFrontOverlay() {
+        return SerendustryTextures.OVERLAY_STELLAR_ENGINE;
     }
 }

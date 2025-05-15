@@ -12,14 +12,15 @@ import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.pattern.PatternMatchContext;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.client.renderer.ICubeRenderer;
-import gregtech.client.utils.TooltipHelper;
 import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.MetaBlocks;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import serendustry.SValues;
 import serendustry.blocks.BlockSerendustryMetalCasing;
@@ -37,16 +38,16 @@ import static gregtech.api.util.RelativeDirection.DOWN;
 import static gregtech.api.util.RelativeDirection.FRONT;
 import static gregtech.api.util.RelativeDirection.LEFT;
 
-public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController {
+public class MetaTileEntityMegaChemicalReactor extends RecipeMapMultiblockController {
 
-    public MetaTileEntityFlamelCrucible(ResourceLocation metaTileEntityId) {
+    public MetaTileEntityMegaChemicalReactor(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, RecipeMaps.LARGE_CHEMICAL_RECIPES);
         this.recipeMapWorkable = new MultiblockRecipeLogic(this, true);
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(IGregTechTileEntity iGregTechTileEntity) {
-        return new MetaTileEntityFlamelCrucible(metaTileEntityId);
+        return new MetaTileEntityMegaChemicalReactor(metaTileEntityId);
     }
 
     @Override
@@ -126,5 +127,12 @@ public class MetaTileEntityFlamelCrucible extends RecipeMapMultiblockController 
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         STooltipHelper.addSerendustryInformation(tooltip, SValues.ENERGY_LASER, true);
+    }
+
+    @SideOnly(Side.CLIENT)
+    @NotNull
+    @Override
+    protected ICubeRenderer getFrontOverlay() {
+        return SerendustryTextures.OVERLAY_FLAMEL_CRUCIBLE;
     }
 }

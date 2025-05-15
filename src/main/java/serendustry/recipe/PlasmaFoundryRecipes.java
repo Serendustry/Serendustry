@@ -137,12 +137,13 @@ import static gregtech.api.unification.ore.OrePrefix.stick;
 import static gregtech.api.unification.ore.OrePrefix.stickLong;
 import static gregtech.api.unification.ore.OrePrefix.wireFine;
 import static gregtech.api.unification.ore.OrePrefix.wireGtDouble;
-import static gregtech.api.unification.ore.OrePrefix.wireGtHex;
+import static gregtech.api.unification.ore.OrePrefix.wireGtOctal;
 import static gregtech.common.items.MetaItems.ELECTRIC_PISTON_ZPM;
 import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_ZPM;
 import static gregtech.common.items.MetaItems.ROBOT_ARM_ZPM;
 import static gregtech.common.metatileentities.MetaTileEntities.ALLOY_SMELTER;
 import static serendustry.item.SerendustryMetaItems.CATALYST_ABYSSAL_ALLOY;
+import static serendustry.item.SerendustryMetaItems.CATALYST_ADAMANTIUM;
 import static serendustry.item.SerendustryMetaItems.CATALYST_ARCANITE;
 import static serendustry.item.SerendustryMetaItems.CATALYST_AWAKENED_DRACONIUM;
 import static serendustry.item.SerendustryMetaItems.CATALYST_BATTERY_ALLOY;
@@ -227,7 +228,7 @@ public class PlasmaFoundryRecipes {
                 .input(plate, Osmiridium, 64)
                 .input(stick, Americium, 64)
                 .input(wireGtDouble, EnrichedNaquadahTriniumEuropiumDuranide, 64)
-                .input(wireGtHex, HSSG, 64)
+                .input(wireGtOctal, HSSG, 32)
                 .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 16),
                         Europium.getFluid(144 * 16))
                 .output(PLASMA_FOUNDRY)
@@ -247,7 +248,7 @@ public class PlasmaFoundryRecipes {
                 CATALYST_ABYSSAL_ALLOY, CATALYST_VIBRANIUM_ALLOY, CATALYST_HALKONITE,
                 CATALYST_OGANESSON_TETRATENNESSIDE, CATALYST_AWAKENED_DRACONIUM,
                 CATALYST_EXO_HALKONITE,
-                CATALYST_TITANIUM_ALLOYS, CATALYST_VANADIUM_ALLOYS
+                CATALYST_TITANIUM_ALLOYS, CATALYST_VANADIUM_ALLOYS, CATALYST_ADAMANTIUM
         };
         for (MetaItem<?>.MetaValueItem item : metaItemCatalysts) {
             PLASMA_FOUNDRY_RECIPES.registerCatalyst(item.getStackForm(), 50);
@@ -356,6 +357,17 @@ public class PlasmaFoundryRecipes {
                 .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 8))
                 .output(CATALYST_SUPERCONDUCTORS)
                 .duration(1200).EUt(VA[ZPM]).buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(frameGt, NaquadahAlloy)
+                .input(circuit, MarkerMaterials.Tier.UHV)
+                .input(plate, Tritanium, 32)
+                .input(plateDense, Darmstadtium, 4)
+                .input(stick, ALMST, 64)
+                .input(wireGtDouble, HSSS, 32)
+                .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 16))
+                .output(CATALYST_ADAMANTIUM)
+                .duration(1200).EUt(VA[UV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(frameGt, Adamantium)
@@ -939,7 +951,7 @@ public class PlasmaFoundryRecipes {
                         Dragonblood.getFluid(144 * 64),
                         Redstone.getFluid(144 * 128),
                         CondensedStarMatter.getFluid(10000),
-                        Flerovium.getPlasma(144 * 32))
+                        Flerovium.getPlasma(144 * 16))
                 .foundryCatalyst(CATALYST_AWAKENED_DRACONIUM)
                 .fluidOutputs(AwakenedDraconium.getFluid(144 * 64))
                 .duration(100 * 20 * 64 / 2 / 4 / 2).EUt(VA[UIV]).buildAndRegister();
