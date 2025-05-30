@@ -1,14 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.GTValues;
-import gregtech.api.GregTechAPI;
-import gregtech.api.recipes.GTRecipeHandler;
-import gregtech.api.recipes.ingredients.IntCircuitIngredient;
-import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.ore.OrePrefix;
-import net.minecraft.item.ItemStack;
-
 import static gregtech.api.recipes.RecipeMaps.BENDER_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.IMPLOSION_RECIPES;
 import static gregtech.api.unification.material.Materials.Darmstadtium;
@@ -24,6 +15,7 @@ import static gregtech.api.unification.ore.OrePrefix.plateDense;
 import static serendustry.item.material.SerendustryMaterials.Adamantium;
 import static serendustry.item.material.SerendustryMaterials.AwakenedDraconium;
 import static serendustry.item.material.SerendustryMaterials.DeepDarkSteel;
+import static serendustry.item.material.SerendustryMaterials.Envoite;
 import static serendustry.item.material.SerendustryMaterials.ErrorEnvoidia;
 import static serendustry.item.material.SerendustryMaterials.ErrorSerenibyss;
 import static serendustry.item.material.SerendustryMaterials.ExoHalkoniteSteel;
@@ -33,9 +25,20 @@ import static serendustry.item.material.SerendustryMaterials.HalkoniteSteel;
 import static serendustry.item.material.SerendustryMaterials.HotExoHalkoniteSteel;
 import static serendustry.item.material.SerendustryMaterials.HotHalkoniteSteel;
 import static serendustry.item.material.SerendustryMaterials.Infinity;
+import static serendustry.item.material.SerendustryMaterials.Periodicium;
 import static serendustry.item.material.SerendustryMaterials.RadoxPolymer;
 import static serendustry.item.material.SerendustryMaterials.VibraniumAlloy;
 import static serendustry.machine.SerendustryRecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES;
+
+import net.minecraft.item.ItemStack;
+
+import gregtech.api.GTValues;
+import gregtech.api.GregTechAPI;
+import gregtech.api.recipes.GTRecipeHandler;
+import gregtech.api.recipes.ingredients.IntCircuitIngredient;
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.ore.OrePrefix;
 
 public class DensePlateRecipes {
 
@@ -48,7 +51,8 @@ public class DensePlateRecipes {
 
         // Special cased high tier materials
         Material[] highTiers = { NaquadahAlloy, Darmstadtium, Adamantium, Moscovium, VibraniumAlloy };
-        Material[] higherTiers = { RadoxPolymer, Oganesson, Tennessine, Neutronium, Infinity, AwakenedDraconium, DeepDarkSteel, FullerenePolymerMatrix, Floppa };
+        Material[] higherTiers = { RadoxPolymer, Oganesson, Tennessine, Neutronium, Infinity, AwakenedDraconium,
+                DeepDarkSteel, FullerenePolymerMatrix, Floppa, Envoite, Periodicium };
         int NORMAL = 0, HIGH = 1, HIGHER = 2;
         int[] Tiers = { GTValues.EV, GTValues.LuV };
 

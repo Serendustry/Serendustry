@@ -1,16 +1,5 @@
 package serendustry.recipe;
 
-import gregicality.multiblocks.common.metatileentities.GCYMMetaTileEntities;
-import gregtech.api.fluids.store.FluidStorageKeys;
-import gregtech.api.recipes.GTRecipeHandler;
-import gregtech.api.recipes.ModHandler;
-import gregtech.api.recipes.ingredients.IntCircuitIngredient;
-import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.MarkerMaterials;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.FluidStack;
-
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.AUTOCLAVE_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.BLAST_RECIPES;
@@ -89,6 +78,18 @@ import static gregtech.common.items.MetaItems.SENSOR_IV;
 import static gregtech.common.items.MetaItems.STEM_CELLS;
 import static gregtech.common.items.MetaItems.WETWARE_CIRCUIT_BOARD;
 import static serendustry.item.material.SerendustryMaterials.DeepDarkSteel;
+
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
+
+import gregicality.multiblocks.common.metatileentities.GCYMMetaTileEntities;
+import gregtech.api.fluids.store.FluidStorageKeys;
+import gregtech.api.recipes.GTRecipeHandler;
+import gregtech.api.recipes.ModHandler;
+import gregtech.api.recipes.ingredients.IntCircuitIngredient;
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.MarkerMaterials;
 
 public class RemoveRecipes {
 
@@ -232,7 +233,6 @@ public class RemoveRecipes {
 
         // GCYM
         // todo: fix (doesnt work)
-
     }
 
     public static void initLate() {

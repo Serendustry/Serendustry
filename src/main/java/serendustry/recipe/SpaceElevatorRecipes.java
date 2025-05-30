@@ -1,11 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.common.metatileentities.MetaTileEntities;
-import net.minecraft.init.Blocks;
-import serendustry.blocks.BlockSerendustryMultiCasing;
-import serendustry.blocks.SerendustryMetaBlocks;
-
 import static gregtech.api.GTValues.UEV;
 import static gregtech.api.GTValues.UHV;
 import static gregtech.api.GTValues.UV;
@@ -204,6 +198,13 @@ import static serendustry.item.material.SerendustryMaterials.Xenotime;
 import static serendustry.item.material.SerendustryMaterials.YellowStarMatter;
 import static serendustry.machine.SerendustryMetaTileEntities.SPACE_ELEVATOR;
 import static serendustry.machine.SerendustryRecipeMaps.SPACE_ELEVATOR_RECIPES;
+
+import net.minecraft.init.Blocks;
+
+import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.common.metatileentities.MetaTileEntities;
+import serendustry.blocks.BlockSerendustryMultiCasing;
+import serendustry.blocks.SerendustryMetaBlocks;
 
 public class SpaceElevatorRecipes {
 

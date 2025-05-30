@@ -1,8 +1,8 @@
 package serendustry.machine;
 
-import serendustry.Serendustry;
-
 import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntity;
+
+import serendustry.Serendustry;
 
 // lateinit var DISSOLUTION_TANK: MetaTileEntityDissolutionTank
 // lateinit var INDUSTRIAL_DECANTER: MetaTileEntityIndustrialDecanter

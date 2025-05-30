@@ -1,13 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.fluids.store.FluidStorageKeys;
-import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.ore.OrePrefix;
-import gregtech.common.items.MetaItems;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-
 import static gregtech.api.GTValues.UEV;
 import static gregtech.api.GTValues.UHV;
 import static gregtech.api.GTValues.UIV;
@@ -49,6 +41,7 @@ import static gregtech.api.unification.ore.OrePrefix.stick;
 import static gregtech.api.unification.ore.OrePrefix.stickLong;
 import static gregtech.api.unification.ore.OrePrefix.wireGtDouble;
 import static gregtech.common.items.MetaItems.EMITTER_ZPM;
+import static gregtech.common.items.MetaItems.GRAVI_STAR;
 import static gregtech.common.items.MetaItems.ROBOT_ARM_ZPM;
 import static serendustry.item.SerendustryMetaItems.FEMTOSCALE_SINGULARITY;
 import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_BLANK;
@@ -78,6 +71,11 @@ import static serendustry.machine.SerendustryMetaTileEntities.NEBULAIC_NEXUS;
 import static serendustry.machine.SerendustryRecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.NEBULAIC_NEXUS_RECIPES;
 
+import gregtech.api.fluids.store.FluidStorageKeys;
+import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.ore.OrePrefix;
+
 public class StarMatterRecipes {
 
     public static void init() {
@@ -104,11 +102,6 @@ public class StarMatterRecipes {
                 .fluidOutputs(Helium.getFluid(100_000))
                 .duration(12000).EUt(VA[UEV]).buildAndRegister();
 
-        ItemStack itemStack = MetaItems.FLUID_CELL.getStackForm();
-        NBTTagCompound fluidTag = new NBTTagCompound();
-        fluidTag.setTag("Fluid", YellowStarMatter.getFluid(1000).writeToNBT(new NBTTagCompound()));
-        itemStack.setTagCompound(fluidTag); // todo: fix (this is just an empty cell)
-
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, Adamantium, 8)
                 .input(circuit, MarkerMaterials.Tier.UHV, 4)
@@ -128,32 +121,30 @@ public class StarMatterRecipes {
                 .fluidInputs(Hihiirokane.getFluid(144 * 16))
                 .output(NEBULAIC_NEXUS)
                 .stationResearch(b -> b
-                        .researchStack(itemStack)
+                        .researchStack(GRAVI_STAR.getStackForm())
                         .CWUt(64)
                         .EUt(VA[UV]))
                 .duration(6400).EUt(VA[UV]).buildAndRegister();
 
-        // Because you can't OC with only 1 energy hatch, you need 2 regular UV energy hatches at first, and then can
-        // switch to 64A UHV
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
                 .input(ingot, Darmstadtium)
                 .fluidInputs(Helium.getFluid(FluidStorageKeys.PLASMA, 1000))
                 .output(ingotHot, StellarContainmentBase)
-                .duration(200).EUt(VA[UHV]).buildAndRegister();
+                .duration(400).EUt(VA[UV]).buildAndRegister();
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
                 .fluidInputs(Naquadria.getFluid(144 * 4),
                         Oxygen.getFluid(FluidStorageKeys.LIQUID, 1000),
                         Helium.getFluid(FluidStorageKeys.LIQUID, 500))
                 .fluidOutputs(StellarBaptismSolution.getFluid(1000))
-                .duration(400).EUt(VA[UHV]).buildAndRegister();
+                .duration(800).EUt(VA[UV]).buildAndRegister();
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
                 .input(ingot, StellarContainmentBase)
                 .fluidInputs(StellarBaptismSolution.getFluid(1000),
                         NeutronStarMatter.getFluid(500))
                 .output(ingotHot, Neutronium)
-                .duration(640).EUt(VA[UHV]).buildAndRegister();
+                .duration(1280).EUt(VA[UV]).buildAndRegister();
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
                 .notConsumable(STELLAR_ESSENCE_OVERWORLD)
@@ -161,7 +152,7 @@ public class StarMatterRecipes {
                 .fluidInputs(StellarBaptismSolution.getFluid(800),
                         NeutronStarMatter.getFluid(400))
                 .output(ingotHot, Neutronium)
-                .duration(480).EUt(VA[UHV]).buildAndRegister();
+                .duration(960).EUt(VA[UV]).buildAndRegister();
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
                 .fluidInputs(YellowStarMatter.getFluid(500),
@@ -171,7 +162,7 @@ public class StarMatterRecipes {
                         BrownStarMatter.getFluid(500),
                         BlackStarMatter.getFluid(500))
                 .fluidOutputs(CondensedStarMatter.getFluid(1000))
-                .duration(1600).EUt(VA[UHV]).buildAndRegister();
+                .duration(1600).EUt(VA[UV]).buildAndRegister();
 
         NEBULAIC_NEXUS_RECIPES.recipeBuilder()
                 .input(gemExquisite, Orundum, 8)

@@ -1,7 +1,9 @@
 package serendustry.blocks;
 
-import gregtech.api.block.VariantBlock;
-import gregtech.common.blocks.MetaBlocks;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
@@ -11,11 +13,11 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import gregtech.api.block.VariantBlock;
+import gregtech.common.blocks.MetaBlocks;
 
 public class SerendustryMetaBlocks {
 

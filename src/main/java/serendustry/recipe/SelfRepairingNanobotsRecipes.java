@@ -1,11 +1,7 @@
 package serendustry.recipe;
 
-import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.ore.OrePrefix;
-
 import static gregtech.api.GTValues.UEV;
+import static gregtech.api.GTValues.UHV;
 import static gregtech.api.GTValues.UV;
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
@@ -35,6 +31,11 @@ import static serendustry.item.material.SerendustryMaterials.SentientNanobots;
 import static serendustry.item.material.SerendustryMaterials.TengamAttuned;
 import static serendustry.item.material.SerendustryMaterials.VibraniumAlloy;
 
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.ore.OrePrefix;
+
 public class SelfRepairingNanobotsRecipes {
 
     public static void init() {
@@ -51,7 +52,7 @@ public class SelfRepairingNanobotsRecipes {
                         .researchStack(OreDictUnifier.get(plate, HighGradeSolderingAlloy))
                         .CWUt(64)
                         .EUt(VA[UV]))
-                .duration(400).EUt(400000).buildAndRegister();
+                .duration(20 * 40).EUt(VA[UHV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(NEURO_PROCESSOR)
@@ -69,7 +70,7 @@ public class SelfRepairingNanobotsRecipes {
                         .researchStack(OreDictUnifier.get(dust, SelfRepairingNanobots))
                         .CWUt(144)
                         .EUt(VA[UEV]))
-                .duration(800).EUt(800000).buildAndRegister();
+                .duration(20 * 120).EUt(VA[UEV]).buildAndRegister();
 
         Material[] materials = { SelfRepairingNanobots, SentientNanobots };
         OrePrefix[] parts = { dust, plate, foil };

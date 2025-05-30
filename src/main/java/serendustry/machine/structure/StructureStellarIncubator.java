@@ -35,7 +35,7 @@ public class StructureStellarIncubator {
             "                                         ",
             "                                         ",
             "                DDDDDDDDD                "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -68,7 +68,7 @@ public class StructureStellarIncubator {
             "                  EEEEE                  ",
             "                  EEEEE                  ",
             "            DDDDDDDDDDDDDDDDD            "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -101,7 +101,7 @@ public class StructureStellarIncubator {
             "                  EEEEE                  ",
             "                EEEEEEEEE                ",
             "          DDDDDDDDDDDDDDDDDDDDD          "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -134,7 +134,7 @@ public class StructureStellarIncubator {
             "                  EEEEE                  ",
             "             EEEEEEEEEEEEEEE             ",
             "         DDDDDDDDDDDDDDDDDDDDDDD         "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -167,7 +167,7 @@ public class StructureStellarIncubator {
             "                  EEEEE                  ",
             "           EEEEE  EEEEE  EEEEE           ",
             "       DDDDDDDDDDDDDDDDDDDDDDDDDDD       "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -200,7 +200,7 @@ public class StructureStellarIncubator {
             "                                         ",
             "         EEEE               EEEE         ",
             "      DDDDDDDDDDDDDDDDDDDDDDDDDDDDD      "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -233,7 +233,7 @@ public class StructureStellarIncubator {
             "                                         ",
             "        EEE                   EEE        ",
             "     DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD     "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -266,7 +266,7 @@ public class StructureStellarIncubator {
             "                                         ",
             "       EEE                     EEE       ",
             "    DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD    "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -299,7 +299,7 @@ public class StructureStellarIncubator {
             "                                         ",
             "      EEE                       EEE      ",
             "    DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD    "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -332,7 +332,7 @@ public class StructureStellarIncubator {
             "                                         ",
             "     EEE         EEEEEEE         EEE     ",
             "   DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD   "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -365,7 +365,7 @@ public class StructureStellarIncubator {
             "                                         ",
             "     EE        EEEEEEEEEEE        EE     ",
             "  DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD  "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -398,7 +398,7 @@ public class StructureStellarIncubator {
             "                                         ",
             "    EE       EEEEEEEEEEEEEEE       EE    ",
             "  DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD  "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -431,7 +431,7 @@ public class StructureStellarIncubator {
             "                                         ",
             "    EE      EEEEEEEEEEEEEEEEE      EE    ",
             " DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -464,7 +464,7 @@ public class StructureStellarIncubator {
             "               EE       EE               ",
             "   EE      EEEEEEEEEEEEEEEEEEE      EE   ",
             " DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -497,7 +497,7 @@ public class StructureStellarIncubator {
             "               EE       EE               ",
             "   EE      EEEEEEEEEEEEEEEEEEE      EE   ",
             " DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -530,7 +530,7 @@ public class StructureStellarIncubator {
             "               EE       EE               ",
             "   EE     EEEEEEEEEEEEEEEEEEEEE     EE   ",
             " DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -563,7 +563,7 @@ public class StructureStellarIncubator {
             "               EE       EE               ",
             "  EE      EEEEEEEEEEEEEEEEEEEEE      EE  ",
             "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -596,7 +596,7 @@ public class StructureStellarIncubator {
             "             EEEE       EEEE             ",
             "  EE     EEEEEEEEEEEEEEEEEEEEEEE     EE  ",
             "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -629,7 +629,7 @@ public class StructureStellarIncubator {
             " EEEE        EEEE       EEEE        EEEE ",
             " EEEE    EEEEEEEEEEEEEEEEEEEEEEE    EEEE ",
             "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
-    },{
+    }, {
             "                   E E                   ",
             "                   E E                   ",
             "                   E E                   ",
@@ -662,7 +662,7 @@ public class StructureStellarIncubator {
             " EEEE     EEAEEEEEEE EEEEEEEAEE     EEEE ",
             " EEEE    EEEEEEEEEEEEEEEEEEEEEEE    EEEE ",
             "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
-    },{
+    }, {
             "                   E E                   ",
             "                   E E                   ",
             "                   E E                   ",
@@ -695,7 +695,7 @@ public class StructureStellarIncubator {
             " EEEE     EECEEEEEEE EEEEEEECEE     EEEE ",
             " EEEE    EEEEEEEEEEEEEEEEEEEEEEE    EEEE ",
             "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
-    },{
+    }, {
             "                   E E                   ",
             "                   E E                   ",
             "                   E E                   ",
@@ -728,7 +728,7 @@ public class StructureStellarIncubator {
             " EEEE     EEAEEEEEEE EEEEEEEAEE     EEEE ",
             " EEEE    EEEEEEEEEEEEEEEEEEEEEEE    EEEE ",
             "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -761,7 +761,7 @@ public class StructureStellarIncubator {
             " EEEE        EEEE       EEEE        EEEE ",
             " EEEE    EEEEEEEEEEEEEEEEEEEEEEE    EEEE ",
             "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -794,7 +794,7 @@ public class StructureStellarIncubator {
             "             EEEE       EEEE             ",
             "  EE     EEEEEEEEEEEEEEEEEEEEEEE     EE  ",
             "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -827,7 +827,7 @@ public class StructureStellarIncubator {
             "               EE       EE               ",
             "  EE      EEEEEEEEEEEEEEEEEEEEE      EE  ",
             "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -860,7 +860,7 @@ public class StructureStellarIncubator {
             "               EE       EE               ",
             "   EE     EEEEEEEEEEEEEEEEEEEEE     EE   ",
             " DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -893,7 +893,7 @@ public class StructureStellarIncubator {
             "               EE       EE               ",
             "   EE      EEEEEEEEEEEEEEEEEEE      EE   ",
             " DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -926,7 +926,7 @@ public class StructureStellarIncubator {
             "               EE       EE               ",
             "   EE       EEEEEEEEEEEEEEEEEE      EE   ",
             " DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -959,7 +959,7 @@ public class StructureStellarIncubator {
             "                                         ",
             "    EE      EEEEEEEEEEEEEEEEE      EE    ",
             " DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -992,7 +992,7 @@ public class StructureStellarIncubator {
             "                                         ",
             "    EE       EEEEEEEEEEEEEEE       EE    ",
             "  DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD  "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -1025,7 +1025,7 @@ public class StructureStellarIncubator {
             "                                         ",
             "     EE        EEEEEEEEEEE        EE     ",
             "  DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD  "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -1058,7 +1058,7 @@ public class StructureStellarIncubator {
             "                                         ",
             "     EEE         EEEEEEE         EEE     ",
             "   DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD   "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -1091,7 +1091,7 @@ public class StructureStellarIncubator {
             "                                         ",
             "      EEE                       EEE      ",
             "    DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD    "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -1124,7 +1124,7 @@ public class StructureStellarIncubator {
             "                                         ",
             "       EEE                     EEE       ",
             "    DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD    "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -1157,7 +1157,7 @@ public class StructureStellarIncubator {
             "                                         ",
             "        EEE                   EEE        ",
             "     DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD     "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -1190,7 +1190,7 @@ public class StructureStellarIncubator {
             "                                         ",
             "         EEEE               EEEE         ",
             "      DDDDDDDDDDDDDDDDDDDDDDDDDDDDD      "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -1223,7 +1223,7 @@ public class StructureStellarIncubator {
             "                  EEEEE                  ",
             "           EEEEE  EEEEE  EEEEE           ",
             "       DDDDDDDDDDDDDDDDDDDDDDDDDDD       "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -1256,7 +1256,7 @@ public class StructureStellarIncubator {
             "                  EEEEE                  ",
             "             EEEEEEEEEEEEEEE             ",
             "         DDDDDDDDDDDDDDDDDDDDDDD         "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -1289,7 +1289,7 @@ public class StructureStellarIncubator {
             "                  EEEEE                  ",
             "                EEEEEEEEE                ",
             "          DDDDDDDDDDDDDDDDDDDDD          "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -1322,7 +1322,7 @@ public class StructureStellarIncubator {
             "                  EEEEE                  ",
             "                  EEEEE                  ",
             "            DDDDDDDDDDDDDDDDD            "
-    },{
+    }, {
             "                                         ",
             "                                         ",
             "                                         ",
@@ -1355,5 +1355,5 @@ public class StructureStellarIncubator {
             "                                         ",
             "                                         ",
             "                DDDDDDDDD                "
-    }};
+    } };
 }

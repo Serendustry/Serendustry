@@ -1,13 +1,15 @@
 package serendustry.blocks;
 
-import gregtech.api.block.VariantBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+
 import org.jetbrains.annotations.NotNull;
+
+import gregtech.api.block.VariantBlock;
 
 public class BlockEICHammerCasing extends VariantBlock<BlockEICHammerCasing.EICHammerCasingType> {
 

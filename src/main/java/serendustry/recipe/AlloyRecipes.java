@@ -1,8 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.fluids.store.FluidStorageKeys;
-import net.minecraft.init.Items;
-
 import static gregicality.multiblocks.api.unification.GCYMMaterials.Zeron100;
 import static gregtech.api.GTValues.EV;
 import static gregtech.api.GTValues.HV;
@@ -247,6 +244,10 @@ import static serendustry.item.material.SerendustryMaterials.VibrantAlloy;
 import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.LABORATORY_RECIPES;
+
+import net.minecraft.init.Items;
+
+import gregtech.api.fluids.store.FluidStorageKeys;
 
 public class AlloyRecipes {
 
@@ -503,12 +504,6 @@ public class AlloyRecipes {
                 .fluidInputs(Quantum.getFluid(288))
                 .output(dust, Quantium)
                 .duration(200).EUt(VA[UIV]).buildAndRegister();
-
-        MIXER_RECIPES.recipeBuilder()
-                .input(dust, Naquadria, 3)
-                .input(dust, Taranium, 1)
-                .output(dust, NaquadriaticTaranium, 4)
-                .duration(20 * 45).EUt(VA[UEV]).buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, Quantum, 5).input(dust, Ledox, 4).input(dust, AwakenedDraconium, 3)

@@ -1,11 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.GregTechAPI;
-import gregtech.api.recipes.builders.SimpleRecipeBuilder;
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.properties.PropertyKey;
-import net.minecraft.init.Blocks;
-
 import static gregtech.api.GTValues.UV;
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.unification.material.Materials.RocketFuel;
@@ -14,6 +8,13 @@ import static serendustry.item.SerendustryMetaItems.DEEP_DARK_HARVESTING_DRONE;
 import static serendustry.item.SerendustryMetaItems.DEEP_DARK_PLANETOID_DATA;
 import static serendustry.item.SerendustryMetaItems.SPACEWEED;
 import static serendustry.machine.SerendustryRecipeMaps.SPACE_ELEVATOR_RECIPES;
+
+import net.minecraft.init.Blocks;
+
+import gregtech.api.GregTechAPI;
+import gregtech.api.recipes.builders.SimpleRecipeBuilder;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.properties.PropertyKey;
 
 public class DeepDarkPlanetoid {
 

@@ -1,11 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.GTValues;
-import gregtech.api.recipes.builders.SimpleRecipeBuilder;
-import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.properties.PropertyKey;
-
 import static gregtech.api.GTValues.UEV;
 import static gregtech.api.GTValues.UIV;
 import static gregtech.api.GTValues.VA;
@@ -25,7 +19,6 @@ import static gregtech.api.unification.material.Materials.Chlorine;
 import static gregtech.api.unification.material.Materials.Chrome;
 import static gregtech.api.unification.material.Materials.Cobalt;
 import static gregtech.api.unification.material.Materials.Copper;
-import static gregtech.api.unification.material.Materials.Flerovium;
 import static gregtech.api.unification.material.Materials.Fluorine;
 import static gregtech.api.unification.material.Materials.Gallium;
 import static gregtech.api.unification.material.Materials.Germanium;
@@ -108,6 +101,12 @@ import static serendustry.machine.SerendustryMetaTileEntities.STELLAR_ENGINE;
 import static serendustry.machine.SerendustryMetaTileEntities.STELLAR_INCUBATOR;
 import static serendustry.machine.SerendustryRecipeMaps.STELLAR_ENGINE_RECIPES;
 
+import gregtech.api.GTValues;
+import gregtech.api.recipes.builders.SimpleRecipeBuilder;
+import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.properties.PropertyKey;
+
 public class StellarEngineRecipes {
 
     public static void init() {
@@ -146,7 +145,7 @@ public class StellarEngineRecipes {
                 Niobium, Molybdenum, Ruthenium, Rhodium, Palladium, Cadmium, Indium, Antimony, Xenon, Hafnium,
                 Tantalum, Tungsten, Osmium, Iridium, Platinum, Gold, Bismuth, Radon, Thorium, Uranium238, Plutonium239,
                 Plutonium241 };
-        Material[] materials3 = { Germanium, Selenium, Bromine, Rubidium, Rhenium, Thallium, Flerovium, Moscovium,
+        Material[] materials3 = { Germanium, Selenium, Bromine, Rubidium, Rhenium, Thallium, Moscovium,
                 Tennessine, Oganesson };
 
         SimpleRecipeBuilder builder = STELLAR_ENGINE_RECIPES.recipeBuilder();

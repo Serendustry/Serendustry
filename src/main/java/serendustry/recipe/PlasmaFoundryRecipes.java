@@ -1,15 +1,9 @@
 package serendustry.recipe;
 
-import gregtech.api.items.metaitem.MetaItem;
-import gregtech.api.unification.material.MarkerMaterials;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-
 import static gregtech.api.GTValues.UEV;
 import static gregtech.api.GTValues.UHV;
 import static gregtech.api.GTValues.UIV;
 import static gregtech.api.GTValues.UV;
-import static gregtech.api.GTValues.UXV;
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.GTValues.ZPM;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
@@ -71,6 +65,7 @@ import static gregtech.api.unification.material.Materials.Naquadah;
 import static gregtech.api.unification.material.Materials.NaquadahAlloy;
 import static gregtech.api.unification.material.Materials.NaquadahEnriched;
 import static gregtech.api.unification.material.Materials.Naquadria;
+import static gregtech.api.unification.material.Materials.Neptunium;
 import static gregtech.api.unification.material.Materials.Neutronium;
 import static gregtech.api.unification.material.Materials.Nickel;
 import static gregtech.api.unification.material.Materials.Niobium;
@@ -88,6 +83,7 @@ import static gregtech.api.unification.material.Materials.RTMAlloy;
 import static gregtech.api.unification.material.Materials.RedAlloy;
 import static gregtech.api.unification.material.Materials.RedSteel;
 import static gregtech.api.unification.material.Materials.Redstone;
+import static gregtech.api.unification.material.Materials.Rhenium;
 import static gregtech.api.unification.material.Materials.Rhodium;
 import static gregtech.api.unification.material.Materials.RoseGold;
 import static gregtech.api.unification.material.Materials.Ruridit;
@@ -96,6 +92,7 @@ import static gregtech.api.unification.material.Materials.RutheniumTriniumAmeric
 import static gregtech.api.unification.material.Materials.Samarium;
 import static gregtech.api.unification.material.Materials.SamariumIronArsenicOxide;
 import static gregtech.api.unification.material.Materials.Scandium;
+import static gregtech.api.unification.material.Materials.Selenium;
 import static gregtech.api.unification.material.Materials.Silicon;
 import static gregtech.api.unification.material.Materials.Silver;
 import static gregtech.api.unification.material.Materials.SolderingAlloy;
@@ -177,6 +174,7 @@ import static serendustry.item.material.SerendustryMaterials.DeepDarkSteel;
 import static serendustry.item.material.SerendustryMaterials.Draconium;
 import static serendustry.item.material.SerendustryMaterials.Dragonblood;
 import static serendustry.item.material.SerendustryMaterials.EnergyCrystal;
+import static serendustry.item.material.SerendustryMaterials.Envoite;
 import static serendustry.item.material.SerendustryMaterials.ExoHalkoniteBase;
 import static serendustry.item.material.SerendustryMaterials.ExoticUnreality;
 import static serendustry.item.material.SerendustryMaterials.HAMAlloy;
@@ -185,6 +183,7 @@ import static serendustry.item.material.SerendustryMaterials.HalkoniteSteel;
 import static serendustry.item.material.SerendustryMaterials.HastelloyK243;
 import static serendustry.item.material.SerendustryMaterials.HighGradeSolderingAlloy;
 import static serendustry.item.material.SerendustryMaterials.Hihiirokane;
+import static serendustry.item.material.SerendustryMaterials.Hypogen;
 import static serendustry.item.material.SerendustryMaterials.IgnisCrystal;
 import static serendustry.item.material.SerendustryMaterials.Infinity;
 import static serendustry.item.material.SerendustryMaterials.MagneticHolmium;
@@ -195,7 +194,9 @@ import static serendustry.item.material.SerendustryMaterials.OrdoCrystal;
 import static serendustry.item.material.SerendustryMaterials.Orundum;
 import static serendustry.item.material.SerendustryMaterials.PerditioCrystal;
 import static serendustry.item.material.SerendustryMaterials.RawAdamantium;
+import static serendustry.item.material.SerendustryMaterials.Realitium;
 import static serendustry.item.material.SerendustryMaterials.ScUevSane;
+import static serendustry.item.material.SerendustryMaterials.ScUxvSane;
 import static serendustry.item.material.SerendustryMaterials.SelfRepairingNanobots;
 import static serendustry.item.material.SerendustryMaterials.SentientNanobots;
 import static serendustry.item.material.SerendustryMaterials.SuperheavySolderingAlloy;
@@ -206,6 +207,12 @@ import static serendustry.item.material.SerendustryMaterials.Vibranium;
 import static serendustry.item.material.SerendustryMaterials.VibraniumAlloy;
 import static serendustry.machine.SerendustryMetaTileEntities.PLASMA_FOUNDRY;
 import static serendustry.machine.SerendustryRecipeMaps.PLASMA_FOUNDRY_RECIPES;
+
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+
+import gregtech.api.items.metaitem.MetaItem;
+import gregtech.api.unification.material.MarkerMaterials;
 
 public class PlasmaFoundryRecipes {
 
@@ -872,7 +879,7 @@ public class PlasmaFoundryRecipes {
                         Copper.getPlasma(144 * 8))
                 .foundryCatalyst(CATALYST_NAQUADAH_ALLOYS)
                 .fluidOutputs(NaquadriaticTaranium.getFluid(144 * 64))
-                .duration(400 * 20 * 64 / 4).EUt(VA[UEV]).buildAndRegister();
+                .duration(400 * 20 * 64 / 4).EUt(VA[UHV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Oganesson.getFluid(144 * 16),
@@ -933,7 +940,7 @@ public class PlasmaFoundryRecipes {
                         Iron.getPlasma(144 * 128))
                 .foundryCatalyst(CATALYST_ABYSSAL_ALLOY)
                 .fluidOutputs(AbyssalAlloy.getFluid(144 * 64))
-                .duration(100 * 20 * 64 / 2 / 4 / 2).EUt(VA[UEV]).buildAndRegister();
+                .duration(100 * 20 * 64 / 2 / 4 / 2).EUt(VA[UHV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Taranium.getFluid(144 * 13),
@@ -944,7 +951,7 @@ public class PlasmaFoundryRecipes {
                         Americium.getPlasma(144 * 64))
                 .foundryCatalyst(CATALYST_SUPERCONDUCTORS)
                 .fluidOutputs(ScUevSane.getFluid(144 * 65))
-                .duration(100 * 20 * 64 / 2 / 4 / 2).EUt(VA[UEV]).buildAndRegister();
+                .duration(100 * 20 * 65 / 2 / 4 / 2).EUt(VA[UHV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(Draconium.getFluid(144 * 64),
@@ -954,7 +961,7 @@ public class PlasmaFoundryRecipes {
                         Flerovium.getPlasma(144 * 16))
                 .foundryCatalyst(CATALYST_AWAKENED_DRACONIUM)
                 .fluidOutputs(AwakenedDraconium.getFluid(144 * 64))
-                .duration(100 * 20 * 64 / 2 / 4 / 2).EUt(VA[UIV]).buildAndRegister();
+                .duration(100 * 20 * 64 / 2 / 4 / 2).EUt(VA[UEV]).buildAndRegister();
 
         PLASMA_FOUNDRY_RECIPES.recipeBuilder()
                 .fluidInputs(HalkonitePreparationBase.getFluid(144 * 128),
@@ -965,6 +972,28 @@ public class PlasmaFoundryRecipes {
                         Dragonblood.getPlasma(144 * 32))
                 .fluidOutputs(ExoHalkoniteBase.getFluid(144 * 64))
                 .foundryCatalyst(CATALYST_EXO_HALKONITE)
-                .duration(100 * 20 * 64 / 2 / 4 / 2).EUt(VA[UXV]).buildAndRegister();
+                .duration(100 * 20 * 64 / 2 / 4 / 2).EUt(VA[UIV]).buildAndRegister();
+
+        PLASMA_FOUNDRY_RECIPES.recipeBuilder()
+                .fluidInputs(DeepDarkSteel.getFluid(144 * 16),
+                        Infinity.getFluid(144 * 16),
+                        Flerovium.getFluid(144 * 16),
+                        Realitium.getFluid(500),
+                        Hypogen.getPlasma(144 * 8),
+                        Selenium.getPlasma(144 * 64))
+                .foundryCatalyst(CATALYST_SUPERCONDUCTORS)
+                .fluidOutputs(ScUxvSane.getFluid(144 * 48))
+                .duration(100 * 20 * 96 / 2 / 4 / 2).EUt(VA[UIV]).buildAndRegister();
+
+        PLASMA_FOUNDRY_RECIPES.recipeBuilder()
+                .fluidInputs(AbyssalAlloy.getFluid(144 * 12),
+                        AwakenedDraconium.getFluid(144 * 12),
+                        Neptunium.getFluid(144 * 12),
+                        NaquadriaticTaranium.getFluid(144 * 12),
+                        Hypogen.getFluid(144 * 12),
+                        Rhenium.getPlasma(144 * 64))
+                .foundryCatalyst(CATALYST_NAQUADAH_ALLOYS)
+                .fluidOutputs(Envoite.getFluid(144 * 60))
+                .duration(100 * 20 * 120 / 2 / 4 / 2).EUt(VA[UIV]).buildAndRegister();
     }
 }

@@ -1,11 +1,11 @@
 package serendustry.machine;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.recipeproperties.CleanroomProperty;
 import gregtech.api.recipes.recipeproperties.RecipeProperty;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 public class PlasmaCondenserRecipeBuilder extends RecipeBuilder<PlasmaCondenserRecipeBuilder> {
 

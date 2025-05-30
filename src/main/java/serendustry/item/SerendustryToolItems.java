@@ -1,5 +1,18 @@
 package serendustry.item;
 
+import static gregtech.common.items.ToolItems.register;
+import static serendustry.item.SerendustryMetaItems.POWER_UNIT_UHV;
+
+import java.util.function.Supplier;
+
+import net.minecraft.entity.monster.EntityGolem;
+import net.minecraft.entity.monster.EntitySpider;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.registries.IForgeRegistry;
+
 import gregtech.api.GTValues;
 import gregtech.api.items.toolitem.IGTTool;
 import gregtech.api.items.toolitem.ItemGTTool;
@@ -12,19 +25,7 @@ import gregtech.common.items.tool.HarvestIceBehavior;
 import gregtech.common.items.tool.TorchPlaceBehavior;
 import gregtech.common.items.tool.TreeFellingBehavior;
 import gregtech.core.sound.GTSoundEvents;
-import net.minecraft.entity.monster.EntityGolem;
-import net.minecraft.entity.monster.EntitySpider;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.registries.IForgeRegistry;
 import serendustry.Serendustry;
-
-import java.util.function.Supplier;
-
-import static gregtech.common.items.ToolItems.register;
-import static serendustry.item.SerendustryMetaItems.POWER_UNIT_UHV;
 
 public class SerendustryToolItems {
 
@@ -35,7 +36,8 @@ public class SerendustryToolItems {
     public static IGTTool SCREWDRIVER_UHV;
     public static IGTTool WIRECUTTER_UHV;
 
-    public static final Item.ToolMaterial genesisMaterial = EnumHelper.addToolMaterial("GENESIS", 10, 2147483647, 65536, 10, 33);
+    public static final Item.ToolMaterial genesisMaterial = EnumHelper.addToolMaterial("GENESIS", 10, 2147483647, 65536,
+            10, 33);
     public static ItemGenesisHoe GENESIS_HOE = new ItemGenesisHoe(genesisMaterial, "genesis_hoe");
     // public static IGTTool TRISHULA;
 
@@ -134,5 +136,4 @@ public class SerendustryToolItems {
          * .electric(GTValues.LuV));
          */
     }
-
 }

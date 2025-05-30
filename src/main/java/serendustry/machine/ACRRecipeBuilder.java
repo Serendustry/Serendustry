@@ -1,12 +1,12 @@
 package serendustry.machine;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.recipeproperties.CleanroomProperty;
 import gregtech.api.recipes.recipeproperties.RecipeProperty;
 import serendustry.client.utils.IntegerRange;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 public class ACRRecipeBuilder extends RecipeBuilder<ACRRecipeBuilder> {
 
@@ -23,7 +23,7 @@ public class ACRRecipeBuilder extends RecipeBuilder<ACRRecipeBuilder> {
      * Default: 295K, 101kPa
      * With 36 components:
      * All Res Heaters: 3,825K, 353kPa
-     * All Coolers: 18K, 18kPa
+     * All Lq Coolers: 18K, 18kPa
      * All Diff Pumps: 68K, 1kPa
      * All Recip Compressors: 1,075K, 41,272kPa
      */

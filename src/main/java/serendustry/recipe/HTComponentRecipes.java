@@ -1,18 +1,15 @@
 package serendustry.recipe;
 
-import gregtech.api.unification.material.MarkerMaterials.Tier;
-
-import static gregtech.api.GTValues.OpV;
 import static gregtech.api.GTValues.UEV;
 import static gregtech.api.GTValues.UHV;
 import static gregtech.api.GTValues.UIV;
 import static gregtech.api.GTValues.UV;
-import static gregtech.api.GTValues.UXV;
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.GTValues.ZPM;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregtech.api.unification.material.Materials.Americium;
 import static gregtech.api.unification.material.Materials.Naquadria;
+import static gregtech.api.unification.material.Materials.Neptunium;
 import static gregtech.api.unification.material.Materials.Neutronium;
 import static gregtech.api.unification.material.Materials.RutheniumTriniumAmericiumNeutronate;
 import static gregtech.api.unification.material.Materials.Tritanium;
@@ -33,99 +30,75 @@ import static gregtech.api.unification.ore.OrePrefix.stick;
 import static gregtech.api.unification.ore.OrePrefix.stickLong;
 import static gregtech.api.unification.ore.OrePrefix.wireFine;
 import static gregtech.api.unification.ore.OrePrefix.wireGtSingle;
-import static gregtech.common.items.MetaItems.CONVEYOR_MODULE_OpV;
 import static gregtech.common.items.MetaItems.CONVEYOR_MODULE_UEV;
 import static gregtech.common.items.MetaItems.CONVEYOR_MODULE_UHV;
 import static gregtech.common.items.MetaItems.CONVEYOR_MODULE_UIV;
 import static gregtech.common.items.MetaItems.CONVEYOR_MODULE_UV;
 import static gregtech.common.items.MetaItems.CONVEYOR_MODULE_UXV;
-import static gregtech.common.items.MetaItems.ELECTRIC_MOTOR_OpV;
 import static gregtech.common.items.MetaItems.ELECTRIC_MOTOR_UEV;
 import static gregtech.common.items.MetaItems.ELECTRIC_MOTOR_UHV;
 import static gregtech.common.items.MetaItems.ELECTRIC_MOTOR_UIV;
 import static gregtech.common.items.MetaItems.ELECTRIC_MOTOR_UV;
 import static gregtech.common.items.MetaItems.ELECTRIC_MOTOR_UXV;
 import static gregtech.common.items.MetaItems.ELECTRIC_MOTOR_ZPM;
-import static gregtech.common.items.MetaItems.ELECTRIC_PISTON_OpV;
 import static gregtech.common.items.MetaItems.ELECTRIC_PISTON_UEV;
 import static gregtech.common.items.MetaItems.ELECTRIC_PISTON_UHV;
 import static gregtech.common.items.MetaItems.ELECTRIC_PISTON_UIV;
 import static gregtech.common.items.MetaItems.ELECTRIC_PISTON_UV;
 import static gregtech.common.items.MetaItems.ELECTRIC_PISTON_UXV;
-import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_OpV;
 import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_UEV;
 import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_UHV;
 import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_UIV;
 import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_UV;
 import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_UXV;
-import static gregtech.common.items.MetaItems.EMITTER_OpV;
 import static gregtech.common.items.MetaItems.EMITTER_UEV;
 import static gregtech.common.items.MetaItems.EMITTER_UHV;
 import static gregtech.common.items.MetaItems.EMITTER_UIV;
 import static gregtech.common.items.MetaItems.EMITTER_UV;
 import static gregtech.common.items.MetaItems.EMITTER_UXV;
-import static gregtech.common.items.MetaItems.FIELD_GENERATOR_OpV;
 import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UEV;
 import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UHV;
 import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UIV;
 import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UV;
 import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UXV;
 import static gregtech.common.items.MetaItems.GRAVI_STAR;
-import static gregtech.common.items.MetaItems.ROBOT_ARM_OpV;
 import static gregtech.common.items.MetaItems.ROBOT_ARM_UEV;
 import static gregtech.common.items.MetaItems.ROBOT_ARM_UHV;
 import static gregtech.common.items.MetaItems.ROBOT_ARM_UIV;
 import static gregtech.common.items.MetaItems.ROBOT_ARM_UV;
 import static gregtech.common.items.MetaItems.ROBOT_ARM_UXV;
-import static gregtech.common.items.MetaItems.SENSOR_OpV;
 import static gregtech.common.items.MetaItems.SENSOR_UEV;
 import static gregtech.common.items.MetaItems.SENSOR_UHV;
 import static gregtech.common.items.MetaItems.SENSOR_UIV;
 import static gregtech.common.items.MetaItems.SENSOR_UV;
 import static gregtech.common.items.MetaItems.SENSOR_UXV;
-import static serendustry.item.SerendustryMetaItems.CONVEYOR_MODULE_MAX;
-import static serendustry.item.SerendustryMetaItems.ELECTRIC_MOTOR_MAX;
-import static serendustry.item.SerendustryMetaItems.ELECTRIC_PISTON_MAX;
-import static serendustry.item.SerendustryMetaItems.ELECTRIC_PUMP_MAX;
-import static serendustry.item.SerendustryMetaItems.EMITTER_MAX;
-import static serendustry.item.SerendustryMetaItems.FIELD_GENERATOR_MAX;
 import static serendustry.item.SerendustryMetaItems.QUANTIUM_STAR;
-import static serendustry.item.SerendustryMetaItems.ROBOT_ARM_MAX;
-import static serendustry.item.SerendustryMetaItems.SENSOR_MAX;
 import static serendustry.item.material.SerendustryMaterials.AbyssalAlloy;
 import static serendustry.item.material.SerendustryMaterials.AwakenedDraconium;
-import static serendustry.item.material.SerendustryMaterials.CallistoIce;
 import static serendustry.item.material.SerendustryMaterials.CondensedStarMatter;
 import static serendustry.item.material.SerendustryMaterials.DeepDarkSteel;
+import static serendustry.item.material.SerendustryMaterials.Envoite;
 import static serendustry.item.material.SerendustryMaterials.ExoHalkoniteSteel;
 import static serendustry.item.material.SerendustryMaterials.Ferrofluid;
-import static serendustry.item.material.SerendustryMaterials.Floppa;
 import static serendustry.item.material.SerendustryMaterials.FullerenePolymerMatrix;
 import static serendustry.item.material.SerendustryMaterials.HalkoniteSteel;
 import static serendustry.item.material.SerendustryMaterials.HighGradeSolderingAlloy;
 import static serendustry.item.material.SerendustryMaterials.Hihiirokane;
 import static serendustry.item.material.SerendustryMaterials.Hypogen;
 import static serendustry.item.material.SerendustryMaterials.Infinity;
-import static serendustry.item.material.SerendustryMaterials.KerrBlackHole;
-import static serendustry.item.material.SerendustryMaterials.Ledox;
 import static serendustry.item.material.SerendustryMaterials.MagneticHolmium;
-import static serendustry.item.material.SerendustryMaterials.MultiversalAlloy;
-import static serendustry.item.material.SerendustryMaterials.MutatedLivingSolder;
-import static serendustry.item.material.SerendustryMaterials.OmniversalLubricant;
-import static serendustry.item.material.SerendustryMaterials.Periodicium;
-import static serendustry.item.material.SerendustryMaterials.Quantium;
 import static serendustry.item.material.SerendustryMaterials.Quantium40;
-import static serendustry.item.material.SerendustryMaterials.Quantum;
 import static serendustry.item.material.SerendustryMaterials.RadoxPolymer;
+import static serendustry.item.material.SerendustryMaterials.Realitium;
 import static serendustry.item.material.SerendustryMaterials.ReissnerNordstromium;
-import static serendustry.item.material.SerendustryMaterials.ScOpv;
 import static serendustry.item.material.SerendustryMaterials.ScUevSane;
+import static serendustry.item.material.SerendustryMaterials.ScUxvSane;
 import static serendustry.item.material.SerendustryMaterials.SelfRepairingNanobots;
 import static serendustry.item.material.SerendustryMaterials.SentientNanobots;
-import static serendustry.item.material.SerendustryMaterials.Shirabon;
 import static serendustry.item.material.SerendustryMaterials.TengamAttuned;
-import static serendustry.item.material.SerendustryMaterials.TransResidue;
 import static serendustry.item.material.SerendustryMaterials.VibraniumAlloy;
+
+import gregtech.api.unification.material.MarkerMaterials.Tier;
 
 public class HTComponentRecipes {
 
@@ -221,17 +194,18 @@ public class HTComponentRecipes {
                 .input(stickLong, ReissnerNordstromium, 12)
                 .input(ring, ExoHalkoniteSteel, 12)
                 .input(round, ExoHalkoniteSteel, 24)
-                .input(wireFine, Periodicium, 64)
-                .input(wireFine, Periodicium, 64)
-                .input(wireFine, Periodicium, 64)
-                .input(wireFine, Periodicium, 64)
-                .input(wireFine, Periodicium, 64)
-                .input(wireFine, Periodicium, 64)
-                .input(wireFine, Periodicium, 64)
-                .input(wireGtSingle, Periodicium, 10)
+                .input(wireFine, Envoite, 64)
+                .input(wireFine, Envoite, 64)
+                .input(wireFine, Envoite, 64)
+                .input(wireFine, Envoite, 64)
+                .input(wireFine, Envoite, 64)
+                .input(wireFine, Envoite, 64)
+                .input(wireFine, Envoite, 64)
+                .input(wireGtSingle, ScUxvSane, 10)
                 .fluidInputs(SentientNanobots.getFluid(144 * 8))
                 .fluidInputs(Ferrofluid.getFluid(6000))
-                .fluidInputs(Periodicium.getPlasma(144 * 6))
+                .fluidInputs(Neptunium.getFluid(144 * 16),
+                        Realitium.getFluid(100))
                 .output(ELECTRIC_MOTOR_UXV)
                 .stationResearch(b -> b
                         .researchStack(ELECTRIC_MOTOR_UIV.getStackForm())
@@ -239,47 +213,47 @@ public class HTComponentRecipes {
                         .EUt(VA[UIV]))
                 .duration(30 * 65).EUt(VA[UIV]).buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(stickLong, KerrBlackHole, 2)
-                .input(stickLong, Quantum, 4)
-                .input(ring, CallistoIce, 4)
-                .input(round, CallistoIce, 8)
-                .input(wireFine, Quantium, 64)
-                .input(wireFine, Quantium, 64)
-                .input(wireFine, Ledox, 64)
-                .input(wireFine, Ledox, 64)
-                .input(cableGtSingle, Quantium, 2)
-                .fluidInputs(MutatedLivingSolder.getFluid(2304))
-                .fluidInputs(OmniversalLubricant.getPlasma(8000))
-                .fluidInputs(Periodicium.getPlasma(576))
-                .fluidInputs(Shirabon.getFluid(144))
-                .output(ELECTRIC_MOTOR_OpV)
-                .stationResearch(b -> b
-                        .researchStack(ELECTRIC_MOTOR_UXV.getStackForm())
-                        .CWUt(128)
-                        .EUt(VA[UXV]))
-                .duration(30 * 100).EUt(VA[UXV]).buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(stickLong, KerrBlackHole, 8)
-                .input(stickLong, Floppa, 4)
-                .input(ring, Shirabon, 4)
-                .input(round, Shirabon, 8)
-                .input(wireFine, Floppa, 64)
-                .input(wireFine, Floppa, 64)
-                .input(wireFine, Shirabon, 64)
-                .input(wireFine, Shirabon, 64)
-                .input(wireGtSingle, Floppa, 2)
-                .fluidInputs(MutatedLivingSolder.getFluid(9216))
-                .fluidInputs(OmniversalLubricant.getPlasma(32000))
-                .fluidInputs(MultiversalAlloy.getFluid(2304))
-                .fluidInputs(TransResidue.getFluid(64000))
-                .output(ELECTRIC_MOTOR_MAX)
-                .stationResearch(b -> b
-                        .researchStack(ELECTRIC_MOTOR_OpV.getStackForm())
-                        .CWUt(128)
-                        .EUt(VA[OpV]))
-                .duration(30 * 300).EUt(VA[OpV]).buildAndRegister();
+        // ASSEMBLY_LINE_RECIPES.recipeBuilder()
+        // .input(stickLong, KerrBlackHole, 2)
+        // .input(stickLong, Quantum, 4)
+        // .input(ring, CallistoIce, 4)
+        // .input(round, CallistoIce, 8)
+        // .input(wireFine, Quantium, 64)
+        // .input(wireFine, Quantium, 64)
+        // .input(wireFine, Ledox, 64)
+        // .input(wireFine, Ledox, 64)
+        // .input(cableGtSingle, Quantium, 2)
+        // .fluidInputs(MutatedLivingSolder.getFluid(2304))
+        // .fluidInputs(OmniversalLubricant.getPlasma(8000))
+        // .fluidInputs(Periodicium.getPlasma(576))
+        // .fluidInputs(Shirabon.getFluid(144))
+        // .output(ELECTRIC_MOTOR_OpV)
+        // .stationResearch(b -> b
+        // .researchStack(ELECTRIC_MOTOR_UXV.getStackForm())
+        // .CWUt(128)
+        // .EUt(VA[UXV]))
+        // .duration(30 * 100).EUt(VA[UXV]).buildAndRegister();
+        //
+        // ASSEMBLY_LINE_RECIPES.recipeBuilder()
+        // .input(stickLong, KerrBlackHole, 8)
+        // .input(stickLong, Floppa, 4)
+        // .input(ring, Shirabon, 4)
+        // .input(round, Shirabon, 8)
+        // .input(wireFine, Floppa, 64)
+        // .input(wireFine, Floppa, 64)
+        // .input(wireFine, Shirabon, 64)
+        // .input(wireFine, Shirabon, 64)
+        // .input(wireGtSingle, Floppa, 2)
+        // .fluidInputs(MutatedLivingSolder.getFluid(9216))
+        // .fluidInputs(OmniversalLubricant.getPlasma(32000))
+        // .fluidInputs(MultiversalAlloy.getFluid(2304))
+        // .fluidInputs(TransResidue.getFluid(64000))
+        // .output(ELECTRIC_MOTOR_MAX)
+        // .stationResearch(b -> b
+        // .researchStack(ELECTRIC_MOTOR_OpV.getStackForm())
+        // .CWUt(128)
+        // .EUt(VA[OpV]))
+        // .duration(30 * 300).EUt(VA[OpV]).buildAndRegister();
 
         // Conveyors
 
@@ -347,11 +321,11 @@ public class HTComponentRecipes {
                 .input(ring, ExoHalkoniteSteel, 12)
                 .input(round, ReissnerNordstromium, 32)
                 .input(screw, ReissnerNordstromium, 12)
-                .input(wireGtSingle, Periodicium, 10)
+                .input(wireGtSingle, ScUxvSane, 10)
                 .fluidInputs(SentientNanobots.getFluid(144 * 8))
-                .fluidInputs(Ferrofluid.getFluid(6000))
                 .fluidInputs(FullerenePolymerMatrix.getFluid(144 * 6))
-                .fluidInputs(Periodicium.getPlasma(144 * 6))
+                .fluidInputs(Neptunium.getFluid(144 * 16),
+                        Realitium.getFluid(100))
                 .output(CONVEYOR_MODULE_UXV)
                 .stationResearch(b -> b
                         .researchStack(CONVEYOR_MODULE_UIV.getStackForm())
@@ -359,41 +333,41 @@ public class HTComponentRecipes {
                         .EUt(VA[UIV]))
                 .duration(30 * 65).EUt(VA[UIV]).buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(ELECTRIC_MOTOR_OpV, 2)
-                .input(plate, Quantum, 2)
-                .input(ring, Quantum, 4)
-                .input(round, CallistoIce, 16)
-                .input(screw, CallistoIce, 4)
-                .input(cableGtSingle, Quantium, 2)
-                .fluidInputs(MutatedLivingSolder.getFluid(2304))
-                .fluidInputs(RadoxPolymer.getFluid(2304))
-                .fluidInputs(Periodicium.getPlasma(576))
-                .fluidInputs(Shirabon.getFluid(144))
-                .output(CONVEYOR_MODULE_OpV)
-                .stationResearch(b -> b
-                        .researchStack(CONVEYOR_MODULE_UXV.getStackForm())
-                        .CWUt(128)
-                        .EUt(VA[UXV]))
-                .duration(30 * 100).EUt(VA[UXV]).buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(ELECTRIC_MOTOR_MAX, 2)
-                .input(plate, Floppa, 2)
-                .input(ring, Shirabon, 4)
-                .input(round, Shirabon, 16)
-                .input(screw, Shirabon, 4)
-                .input(wireGtSingle, Floppa, 2)
-                .fluidInputs(MutatedLivingSolder.getFluid(9216))
-                .fluidInputs(RadoxPolymer.getFluid(9216))
-                .fluidInputs(MultiversalAlloy.getFluid(2304))
-                .fluidInputs(TransResidue.getFluid(64000))
-                .output(CONVEYOR_MODULE_MAX)
-                .stationResearch(b -> b
-                        .researchStack(CONVEYOR_MODULE_OpV.getStackForm())
-                        .CWUt(128)
-                        .EUt(VA[OpV]))
-                .duration(30 * 300).EUt(VA[OpV]).buildAndRegister();
+        // ASSEMBLY_LINE_RECIPES.recipeBuilder()
+        // .input(ELECTRIC_MOTOR_OpV, 2)
+        // .input(plate, Quantum, 2)
+        // .input(ring, Quantum, 4)
+        // .input(round, CallistoIce, 16)
+        // .input(screw, CallistoIce, 4)
+        // .input(cableGtSingle, Quantium, 2)
+        // .fluidInputs(MutatedLivingSolder.getFluid(2304))
+        // .fluidInputs(RadoxPolymer.getFluid(2304))
+        // .fluidInputs(Periodicium.getPlasma(576))
+        // .fluidInputs(Shirabon.getFluid(144))
+        // .output(CONVEYOR_MODULE_OpV)
+        // .stationResearch(b -> b
+        // .researchStack(CONVEYOR_MODULE_UXV.getStackForm())
+        // .CWUt(128)
+        // .EUt(VA[UXV]))
+        // .duration(30 * 100).EUt(VA[UXV]).buildAndRegister();
+        //
+        // ASSEMBLY_LINE_RECIPES.recipeBuilder()
+        // .input(ELECTRIC_MOTOR_MAX, 2)
+        // .input(plate, Floppa, 2)
+        // .input(ring, Shirabon, 4)
+        // .input(round, Shirabon, 16)
+        // .input(screw, Shirabon, 4)
+        // .input(wireGtSingle, Floppa, 2)
+        // .fluidInputs(MutatedLivingSolder.getFluid(9216))
+        // .fluidInputs(RadoxPolymer.getFluid(9216))
+        // .fluidInputs(MultiversalAlloy.getFluid(2304))
+        // .fluidInputs(TransResidue.getFluid(64000))
+        // .output(CONVEYOR_MODULE_MAX)
+        // .stationResearch(b -> b
+        // .researchStack(CONVEYOR_MODULE_OpV.getStackForm())
+        // .CWUt(128)
+        // .EUt(VA[OpV]))
+        // .duration(30 * 300).EUt(VA[OpV]).buildAndRegister();
 
         // Pumps
 
@@ -456,16 +430,17 @@ public class HTComponentRecipes {
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(ELECTRIC_MOTOR_UXV)
-                .input(pipeLargeFluid, Periodicium)
+                .input(pipeLargeFluid, Envoite)
                 .input(plate, ExoHalkoniteSteel, 10)
                 .input(plate, ReissnerNordstromium, 10)
                 .input(screw, ReissnerNordstromium, 16)
                 .input(ring, FullerenePolymerMatrix, 36)
                 .input(rotor, ExoHalkoniteSteel)
-                .input(wireGtSingle, Periodicium, 10)
+                .input(wireGtSingle, ScUxvSane, 10)
                 .fluidInputs(SentientNanobots.getFluid(144 * 8))
                 .fluidInputs(Ferrofluid.getFluid(6000))
-                .fluidInputs(Periodicium.getPlasma(144 * 6))
+                .fluidInputs(Neptunium.getFluid(144 * 16),
+                        Realitium.getFluid(100))
                 .output(ELECTRIC_PUMP_UXV)
                 .stationResearch(b -> b
                         .researchStack(ELECTRIC_PUMP_UIV.getStackForm())
@@ -473,46 +448,46 @@ public class HTComponentRecipes {
                         .EUt(VA[UIV]))
                 .duration(30 * 65).EUt(VA[UIV]).buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(ELECTRIC_MOTOR_OpV)
-                .input(pipeLargeFluid, CallistoIce)
-                .input(plate, Quantum, 2)
-                .input(screw, Quantum, 8)
-                .input(ring, RadoxPolymer, 64)
-                .input(rotor, Quantium, 1)
-                .input(cableGtSingle, Quantium, 2)
-                .fluidInputs(MutatedLivingSolder.getFluid(2304))
-                .fluidInputs(OmniversalLubricant.getPlasma(8000))
-                .fluidInputs(Periodicium.getPlasma(576))
-                .fluidInputs(Shirabon.getFluid(144))
-                .output(ELECTRIC_PUMP_OpV)
-                .stationResearch(b -> b
-                        .researchStack(ELECTRIC_PUMP_UXV.getStackForm())
-                        .CWUt(128)
-                        .EUt(VA[UXV]))
-                .duration(30 * 100).EUt(VA[UXV]).buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(ELECTRIC_MOTOR_MAX)
-                .input(pipeLargeFluid, Shirabon)
-                .input(plate, Floppa, 2)
-                .input(screw, Shirabon, 8)
-                .input(ring, RadoxPolymer, 64)
-                .input(ring, RadoxPolymer, 64)
-                .input(ring, RadoxPolymer, 64)
-                .input(ring, RadoxPolymer, 64)
-                .input(rotor, Shirabon, 1)
-                .input(wireGtSingle, Floppa, 2)
-                .fluidInputs(MutatedLivingSolder.getFluid(9216))
-                .fluidInputs(OmniversalLubricant.getPlasma(32000))
-                .fluidInputs(MultiversalAlloy.getFluid(2304))
-                .fluidInputs(TransResidue.getFluid(64000))
-                .output(ELECTRIC_PUMP_MAX)
-                .stationResearch(b -> b
-                        .researchStack(ELECTRIC_PUMP_OpV.getStackForm())
-                        .CWUt(128)
-                        .EUt(VA[OpV]))
-                .duration(30 * 300).EUt(VA[OpV]).buildAndRegister();
+        // ASSEMBLY_LINE_RECIPES.recipeBuilder()
+        // .input(ELECTRIC_MOTOR_OpV)
+        // .input(pipeLargeFluid, CallistoIce)
+        // .input(plate, Quantum, 2)
+        // .input(screw, Quantum, 8)
+        // .input(ring, RadoxPolymer, 64)
+        // .input(rotor, Quantium, 1)
+        // .input(cableGtSingle, Quantium, 2)
+        // .fluidInputs(MutatedLivingSolder.getFluid(2304))
+        // .fluidInputs(OmniversalLubricant.getPlasma(8000))
+        // .fluidInputs(Periodicium.getPlasma(576))
+        // .fluidInputs(Shirabon.getFluid(144))
+        // .output(ELECTRIC_PUMP_OpV)
+        // .stationResearch(b -> b
+        // .researchStack(ELECTRIC_PUMP_UXV.getStackForm())
+        // .CWUt(128)
+        // .EUt(VA[UXV]))
+        // .duration(30 * 100).EUt(VA[UXV]).buildAndRegister();
+        //
+        // ASSEMBLY_LINE_RECIPES.recipeBuilder()
+        // .input(ELECTRIC_MOTOR_MAX)
+        // .input(pipeLargeFluid, Shirabon)
+        // .input(plate, Floppa, 2)
+        // .input(screw, Shirabon, 8)
+        // .input(ring, RadoxPolymer, 64)
+        // .input(ring, RadoxPolymer, 64)
+        // .input(ring, RadoxPolymer, 64)
+        // .input(ring, RadoxPolymer, 64)
+        // .input(rotor, Shirabon, 1)
+        // .input(wireGtSingle, Floppa, 2)
+        // .fluidInputs(MutatedLivingSolder.getFluid(9216))
+        // .fluidInputs(OmniversalLubricant.getPlasma(32000))
+        // .fluidInputs(MultiversalAlloy.getFluid(2304))
+        // .fluidInputs(TransResidue.getFluid(64000))
+        // .output(ELECTRIC_PUMP_MAX)
+        // .stationResearch(b -> b
+        // .researchStack(ELECTRIC_PUMP_OpV.getStackForm())
+        // .CWUt(128)
+        // .EUt(VA[OpV]))
+        // .duration(30 * 300).EUt(VA[OpV]).buildAndRegister();
 
         // Pistons
 
@@ -585,10 +560,11 @@ public class HTComponentRecipes {
                 .input(stick, ExoHalkoniteSteel, 12)
                 .input(gear, ExoHalkoniteSteel, 5)
                 .input(gearSmall, ReissnerNordstromium, 10)
-                .input(wireGtSingle, Periodicium, 10)
+                .input(wireGtSingle, ScUxvSane, 10)
                 .fluidInputs(SentientNanobots.getFluid(144 * 8))
                 .fluidInputs(Ferrofluid.getFluid(6000))
-                .fluidInputs(Periodicium.getPlasma(144 * 6))
+                .fluidInputs(Neptunium.getFluid(144 * 16),
+                        Realitium.getFluid(100))
                 .output(ELECTRIC_PISTON_UXV)
                 .stationResearch(b -> b
                         .researchStack(ELECTRIC_PISTON_UIV.getStackForm())
@@ -596,45 +572,45 @@ public class HTComponentRecipes {
                         .EUt(VA[UIV]))
                 .duration(30 * 65).EUt(VA[UIV]).buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(ELECTRIC_MOTOR_OpV)
-                .input(plate, Quantum, 4)
-                .input(ring, Quantum, 4)
-                .input(round, CallistoIce, 16)
-                .input(stick, Quantum, 4)
-                .input(gear, Quantium)
-                .input(gearSmall, Ledox, 2)
-                .input(cableGtSingle, Quantium, 2)
-                .fluidInputs(MutatedLivingSolder.getFluid(2304))
-                .fluidInputs(OmniversalLubricant.getPlasma(8000))
-                .fluidInputs(Periodicium.getPlasma(576))
-                .fluidInputs(Shirabon.getFluid(144))
-                .output(ELECTRIC_PISTON_OpV)
-                .stationResearch(b -> b
-                        .researchStack(ELECTRIC_PISTON_UXV.getStackForm())
-                        .CWUt(128)
-                        .EUt(VA[UXV]))
-                .duration(3600).EUt(6000000).buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(ELECTRIC_MOTOR_MAX)
-                .input(plate, Floppa, 4)
-                .input(ring, Shirabon, 4)
-                .input(round, Shirabon, 16)
-                .input(stick, Floppa, 4)
-                .input(gear, Shirabon)
-                .input(gearSmall, Floppa, 2)
-                .input(wireGtSingle, Floppa, 2)
-                .fluidInputs(MutatedLivingSolder.getFluid(9216))
-                .fluidInputs(OmniversalLubricant.getPlasma(32000))
-                .fluidInputs(MultiversalAlloy.getFluid(2304))
-                .fluidInputs(TransResidue.getFluid(64000))
-                .output(ELECTRIC_PISTON_MAX)
-                .stationResearch(b -> b
-                        .researchStack(ELECTRIC_PISTON_OpV.getStackForm())
-                        .CWUt(128)
-                        .EUt(VA[OpV]))
-                .duration(6400).EUt(6000000).buildAndRegister();
+        // ASSEMBLY_LINE_RECIPES.recipeBuilder()
+        // .input(ELECTRIC_MOTOR_OpV)
+        // .input(plate, Quantum, 4)
+        // .input(ring, Quantum, 4)
+        // .input(round, CallistoIce, 16)
+        // .input(stick, Quantum, 4)
+        // .input(gear, Quantium)
+        // .input(gearSmall, Ledox, 2)
+        // .input(cableGtSingle, Quantium, 2)
+        // .fluidInputs(MutatedLivingSolder.getFluid(2304))
+        // .fluidInputs(OmniversalLubricant.getPlasma(8000))
+        // .fluidInputs(Periodicium.getPlasma(576))
+        // .fluidInputs(Shirabon.getFluid(144))
+        // .output(ELECTRIC_PISTON_OpV)
+        // .stationResearch(b -> b
+        // .researchStack(ELECTRIC_PISTON_UXV.getStackForm())
+        // .CWUt(128)
+        // .EUt(VA[UXV]))
+        // .duration(3600).EUt(6000000).buildAndRegister();
+        //
+        // ASSEMBLY_LINE_RECIPES.recipeBuilder()
+        // .input(ELECTRIC_MOTOR_MAX)
+        // .input(plate, Floppa, 4)
+        // .input(ring, Shirabon, 4)
+        // .input(round, Shirabon, 16)
+        // .input(stick, Floppa, 4)
+        // .input(gear, Shirabon)
+        // .input(gearSmall, Floppa, 2)
+        // .input(wireGtSingle, Floppa, 2)
+        // .fluidInputs(MutatedLivingSolder.getFluid(9216))
+        // .fluidInputs(OmniversalLubricant.getPlasma(32000))
+        // .fluidInputs(MultiversalAlloy.getFluid(2304))
+        // .fluidInputs(TransResidue.getFluid(64000))
+        // .output(ELECTRIC_PISTON_MAX)
+        // .stationResearch(b -> b
+        // .researchStack(ELECTRIC_PISTON_OpV.getStackForm())
+        // .CWUt(128)
+        // .EUt(VA[OpV]))
+        // .duration(6400).EUt(6000000).buildAndRegister();
 
         // Robot Arms
 
@@ -711,10 +687,11 @@ public class HTComponentRecipes {
                 .input(circuit, Tier.UXV, 1)
                 .input(circuit, Tier.UIV, 2)
                 .input(circuit, Tier.UEV, 4)
-                .input(wireGtSingle, Periodicium, 12)
+                .input(wireGtSingle, ScUxvSane, 12)
                 .fluidInputs(SentientNanobots.getFluid(144 * 24))
                 .fluidInputs(Ferrofluid.getFluid(6000))
-                .fluidInputs(Periodicium.getPlasma(144 * 6))
+                .fluidInputs(Neptunium.getFluid(144 * 16),
+                        Realitium.getFluid(100))
                 .output(ROBOT_ARM_UXV)
                 .stationResearch(b -> b
                         .researchStack(ROBOT_ARM_UIV.getStackForm())
@@ -722,47 +699,47 @@ public class HTComponentRecipes {
                         .EUt(VA[UIV]))
                 .duration(30 * 65).EUt(VA[UIV]).buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(stickLong, Quantum, 4)
-                .input(gear, Quantium, 1)
-                .input(gearSmall, Ledox, 3)
-                .input(ELECTRIC_MOTOR_OpV, 2)
-                .input(ELECTRIC_PISTON_OpV, 1)
-                .input(circuit, Tier.OpV, 1)
-                .input(circuit, Tier.UXV, 2)
-                .input(circuit, Tier.UIV, 4)
-                .input(cableGtSingle, Quantium, 4)
-                .fluidInputs(MutatedLivingSolder.getFluid(2304))
-                .fluidInputs(OmniversalLubricant.getPlasma(8000))
-                .fluidInputs(Periodicium.getPlasma(576))
-                .fluidInputs(Shirabon.getFluid(144))
-                .output(ROBOT_ARM_OpV)
-                .stationResearch(b -> b
-                        .researchStack(ROBOT_ARM_UXV.getStackForm())
-                        .CWUt(128)
-                        .EUt(VA[UXV]))
-                .duration(30 * 100).EUt(VA[UXV]).buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(stickLong, Floppa, 4)
-                .input(gear, Shirabon, 1)
-                .input(gearSmall, Floppa, 3)
-                .input(ELECTRIC_MOTOR_MAX, 2)
-                .input(ELECTRIC_PISTON_MAX, 1)
-                .input(circuit, Tier.MAX, 1)
-                .input(circuit, Tier.OpV, 2)
-                .input(circuit, Tier.UXV, 4)
-                .input(wireGtSingle, Floppa, 4)
-                .fluidInputs(MutatedLivingSolder.getFluid(9216))
-                .fluidInputs(OmniversalLubricant.getPlasma(32000))
-                .fluidInputs(MultiversalAlloy.getFluid(2304))
-                .fluidInputs(TransResidue.getFluid(64000))
-                .output(ROBOT_ARM_MAX)
-                .stationResearch(b -> b
-                        .researchStack(ROBOT_ARM_OpV.getStackForm())
-                        .CWUt(128)
-                        .EUt(VA[OpV]))
-                .duration(30 * 300).EUt(VA[OpV]).buildAndRegister();
+        // ASSEMBLY_LINE_RECIPES.recipeBuilder()
+        // .input(stickLong, Quantum, 4)
+        // .input(gear, Quantium, 1)
+        // .input(gearSmall, Ledox, 3)
+        // .input(ELECTRIC_MOTOR_OpV, 2)
+        // .input(ELECTRIC_PISTON_OpV, 1)
+        // .input(circuit, Tier.OpV, 1)
+        // .input(circuit, Tier.UXV, 2)
+        // .input(circuit, Tier.UIV, 4)
+        // .input(cableGtSingle, Quantium, 4)
+        // .fluidInputs(MutatedLivingSolder.getFluid(2304))
+        // .fluidInputs(OmniversalLubricant.getPlasma(8000))
+        // .fluidInputs(Periodicium.getPlasma(576))
+        // .fluidInputs(Shirabon.getFluid(144))
+        // .output(ROBOT_ARM_OpV)
+        // .stationResearch(b -> b
+        // .researchStack(ROBOT_ARM_UXV.getStackForm())
+        // .CWUt(128)
+        // .EUt(VA[UXV]))
+        // .duration(30 * 100).EUt(VA[UXV]).buildAndRegister();
+        //
+        // ASSEMBLY_LINE_RECIPES.recipeBuilder()
+        // .input(stickLong, Floppa, 4)
+        // .input(gear, Shirabon, 1)
+        // .input(gearSmall, Floppa, 3)
+        // .input(ELECTRIC_MOTOR_MAX, 2)
+        // .input(ELECTRIC_PISTON_MAX, 1)
+        // .input(circuit, Tier.MAX, 1)
+        // .input(circuit, Tier.OpV, 2)
+        // .input(circuit, Tier.UXV, 4)
+        // .input(wireGtSingle, Floppa, 4)
+        // .fluidInputs(MutatedLivingSolder.getFluid(9216))
+        // .fluidInputs(OmniversalLubricant.getPlasma(32000))
+        // .fluidInputs(MultiversalAlloy.getFluid(2304))
+        // .fluidInputs(TransResidue.getFluid(64000))
+        // .output(ROBOT_ARM_MAX)
+        // .stationResearch(b -> b
+        // .researchStack(ROBOT_ARM_OpV.getStackForm())
+        // .CWUt(128)
+        // .EUt(VA[OpV]))
+        // .duration(30 * 300).EUt(VA[OpV]).buildAndRegister();
 
         // Field Generators
 
@@ -830,21 +807,22 @@ public class HTComponentRecipes {
                 .duration(30 * 45).EUt(VA[UEV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, Periodicium)
+                .input(frameGt, Envoite)
                 .input(plate, ExoHalkoniteSteel, 14)
                 .input(plate, ReissnerNordstromium, 14)
                 .input(QUANTIUM_STAR, 6)
                 .input(EMITTER_UXV, 2)
                 .input(circuit, Tier.UXV, 2)
-                .input(wireFine, Periodicium, 64)
-                .input(wireFine, Periodicium, 64)
-                .input(wireFine, Periodicium, 64)
-                .input(wireFine, Periodicium, 64)
-                .input(wireFine, Periodicium, 64)
-                .input(wireFine, Periodicium, 64)
-                .input(wireGtSingle, Periodicium, 12)
+                .input(wireFine, ScUxvSane, 64)
+                .input(wireFine, ScUxvSane, 64)
+                .input(wireFine, ScUxvSane, 64)
+                .input(wireFine, ScUxvSane, 64)
+                .input(wireFine, ScUxvSane, 64)
+                .input(wireFine, ScUxvSane, 64)
+                .input(wireGtSingle, ScUxvSane, 12)
                 .fluidInputs(SentientNanobots.getFluid(144 * 24))
-                .fluidInputs(Periodicium.getPlasma(144 * 6))
+                .fluidInputs(Neptunium.getFluid(144 * 16),
+                        Realitium.getFluid(100))
                 .output(FIELD_GENERATOR_UXV)
                 .stationResearch(b -> b
                         .researchStack(FIELD_GENERATOR_UIV.getStackForm())
@@ -852,47 +830,47 @@ public class HTComponentRecipes {
                         .EUt(VA[UIV]))
                 .duration(30 * 65).EUt(VA[UIV]).buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, Quantum)
-                .input(plate, Quantium, 6)
-                .input(QUANTIUM_STAR, 1)
-                .input(EMITTER_OpV, 2)
-                .input(circuit, Tier.OpV, 2)
-                .input(wireFine, ScOpv, 64)
-                .input(wireFine, ScOpv, 64)
-                .input(wireFine, Quantium, 64)
-                .input(wireFine, Infinity, 64)
-                .input(cableGtSingle, Quantium, 4)
-                .fluidInputs(MutatedLivingSolder.getFluid(2304))
-                .fluidInputs(Periodicium.getPlasma(576))
-                .fluidInputs(Shirabon.getFluid(144))
-                .output(FIELD_GENERATOR_OpV)
-                .stationResearch(b -> b
-                        .researchStack(FIELD_GENERATOR_UXV.getStackForm())
-                        .CWUt(128)
-                        .EUt(VA[UXV]))
-                .duration(30 * 100).EUt(VA[UXV]).buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, Shirabon)
-                .input(plate, Floppa, 6)
-                .input(QUANTIUM_STAR, 4)
-                .input(EMITTER_MAX, 2)
-                .input(circuit, Tier.MAX, 2)
-                .input(wireFine, Floppa, 64)
-                .input(wireFine, Floppa, 64)
-                .input(wireFine, Shirabon, 64)
-                .input(wireFine, Shirabon, 64)
-                .input(wireGtSingle, Floppa, 4)
-                .fluidInputs(MutatedLivingSolder.getFluid(9216))
-                .fluidInputs(MultiversalAlloy.getFluid(2304))
-                .fluidInputs(TransResidue.getFluid(64000))
-                .output(FIELD_GENERATOR_MAX)
-                .stationResearch(b -> b
-                        .researchStack(FIELD_GENERATOR_OpV.getStackForm())
-                        .CWUt(128)
-                        .EUt(VA[OpV]))
-                .duration(30 * 300).EUt(VA[OpV]).buildAndRegister();
+        // ASSEMBLY_LINE_RECIPES.recipeBuilder()
+        // .input(frameGt, Quantum)
+        // .input(plate, Quantium, 6)
+        // .input(QUANTIUM_STAR, 1)
+        // .input(EMITTER_OpV, 2)
+        // .input(circuit, Tier.OpV, 2)
+        // .input(wireFine, ScOpv, 64)
+        // .input(wireFine, ScOpv, 64)
+        // .input(wireFine, Quantium, 64)
+        // .input(wireFine, Infinity, 64)
+        // .input(cableGtSingle, Quantium, 4)
+        // .fluidInputs(MutatedLivingSolder.getFluid(2304))
+        // .fluidInputs(Periodicium.getPlasma(576))
+        // .fluidInputs(Shirabon.getFluid(144))
+        // .output(FIELD_GENERATOR_OpV)
+        // .stationResearch(b -> b
+        // .researchStack(FIELD_GENERATOR_UXV.getStackForm())
+        // .CWUt(128)
+        // .EUt(VA[UXV]))
+        // .duration(30 * 100).EUt(VA[UXV]).buildAndRegister();
+        //
+        // ASSEMBLY_LINE_RECIPES.recipeBuilder()
+        // .input(frameGt, Shirabon)
+        // .input(plate, Floppa, 6)
+        // .input(QUANTIUM_STAR, 4)
+        // .input(EMITTER_MAX, 2)
+        // .input(circuit, Tier.MAX, 2)
+        // .input(wireFine, Floppa, 64)
+        // .input(wireFine, Floppa, 64)
+        // .input(wireFine, Shirabon, 64)
+        // .input(wireFine, Shirabon, 64)
+        // .input(wireGtSingle, Floppa, 4)
+        // .fluidInputs(MutatedLivingSolder.getFluid(9216))
+        // .fluidInputs(MultiversalAlloy.getFluid(2304))
+        // .fluidInputs(TransResidue.getFluid(64000))
+        // .output(FIELD_GENERATOR_MAX)
+        // .stationResearch(b -> b
+        // .researchStack(FIELD_GENERATOR_OpV.getStackForm())
+        // .CWUt(128)
+        // .EUt(VA[OpV]))
+        // .duration(30 * 300).EUt(VA[OpV]).buildAndRegister();
 
         // Sensors
 
@@ -960,20 +938,21 @@ public class HTComponentRecipes {
                 .duration(30 * 45).EUt(VA[UEV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, Periodicium)
+                .input(frameGt, Envoite)
                 .input(ELECTRIC_MOTOR_UXV)
                 .input(plate, ExoHalkoniteSteel, 12)
                 .input(plate, ReissnerNordstromium, 12)
                 .input(QUANTIUM_STAR, 6)
                 .input(circuit, Tier.UXV, 2)
-                .input(foil, Periodicium, 64)
-                .input(foil, Periodicium, 64)
-                .input(foil, Periodicium, 64)
-                .input(foil, Periodicium, 64)
-                .input(foil, Periodicium, 64)
-                .input(wireGtSingle, Periodicium, 12)
+                .input(foil, Envoite, 64)
+                .input(foil, Envoite, 64)
+                .input(foil, Envoite, 64)
+                .input(foil, Envoite, 64)
+                .input(foil, Envoite, 64)
+                .input(wireGtSingle, ScUxvSane, 12)
                 .fluidInputs(SentientNanobots.getFluid(144 * 16))
-                .fluidInputs(Periodicium.getPlasma(144 * 6))
+                .fluidInputs(Neptunium.getFluid(144 * 16),
+                        Realitium.getFluid(100))
                 .output(SENSOR_UXV)
                 .stationResearch(b -> b
                         .researchStack(SENSOR_UIV.getStackForm())
@@ -981,43 +960,43 @@ public class HTComponentRecipes {
                         .EUt(VA[UIV]))
                 .duration(30 * 65).EUt(VA[UIV]).buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, Quantum)
-                .input(ELECTRIC_MOTOR_OpV)
-                .input(plate, Ledox, 4)
-                .input(QUANTIUM_STAR)
-                .input(circuit, Tier.OpV, 2)
-                .input(foil, Quantium, 64)
-                .input(foil, Infinity, 32)
-                .input(cableGtSingle, Quantium, 4)
-                .fluidInputs(MutatedLivingSolder.getFluid(2304))
-                .fluidInputs(Periodicium.getPlasma(576))
-                .fluidInputs(Shirabon.getFluid(144))
-                .output(SENSOR_OpV)
-                .stationResearch(b -> b
-                        .researchStack(SENSOR_UXV.getStackForm())
-                        .CWUt(128)
-                        .EUt(VA[UXV]))
-                .duration(30 * 100).EUt(VA[UXV]).buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, Shirabon)
-                .input(ELECTRIC_MOTOR_MAX)
-                .input(plate, Shirabon, 4)
-                .input(QUANTIUM_STAR, 4)
-                .input(circuit, Tier.MAX, 2)
-                .input(foil, Shirabon, 64)
-                .input(foil, Floppa, 32)
-                .input(wireGtSingle, Floppa, 4)
-                .fluidInputs(MutatedLivingSolder.getFluid(9216))
-                .fluidInputs(MultiversalAlloy.getFluid(2304))
-                .fluidInputs(TransResidue.getFluid(64000))
-                .output(SENSOR_MAX)
-                .stationResearch(b -> b
-                        .researchStack(SENSOR_OpV.getStackForm())
-                        .CWUt(128)
-                        .EUt(VA[OpV]))
-                .duration(30 * 300).EUt(VA[OpV]).buildAndRegister();
+        // ASSEMBLY_LINE_RECIPES.recipeBuilder()
+        // .input(frameGt, Quantum)
+        // .input(ELECTRIC_MOTOR_OpV)
+        // .input(plate, Ledox, 4)
+        // .input(QUANTIUM_STAR)
+        // .input(circuit, Tier.OpV, 2)
+        // .input(foil, Quantium, 64)
+        // .input(foil, Infinity, 32)
+        // .input(cableGtSingle, Quantium, 4)
+        // .fluidInputs(MutatedLivingSolder.getFluid(2304))
+        // .fluidInputs(Periodicium.getPlasma(576))
+        // .fluidInputs(Shirabon.getFluid(144))
+        // .output(SENSOR_OpV)
+        // .stationResearch(b -> b
+        // .researchStack(SENSOR_UXV.getStackForm())
+        // .CWUt(128)
+        // .EUt(VA[UXV]))
+        // .duration(30 * 100).EUt(VA[UXV]).buildAndRegister();
+        //
+        // ASSEMBLY_LINE_RECIPES.recipeBuilder()
+        // .input(frameGt, Shirabon)
+        // .input(ELECTRIC_MOTOR_MAX)
+        // .input(plate, Shirabon, 4)
+        // .input(QUANTIUM_STAR, 4)
+        // .input(circuit, Tier.MAX, 2)
+        // .input(foil, Shirabon, 64)
+        // .input(foil, Floppa, 32)
+        // .input(wireGtSingle, Floppa, 4)
+        // .fluidInputs(MutatedLivingSolder.getFluid(9216))
+        // .fluidInputs(MultiversalAlloy.getFluid(2304))
+        // .fluidInputs(TransResidue.getFluid(64000))
+        // .output(SENSOR_MAX)
+        // .stationResearch(b -> b
+        // .researchStack(SENSOR_OpV.getStackForm())
+        // .CWUt(128)
+        // .EUt(VA[OpV]))
+        // .duration(30 * 300).EUt(VA[OpV]).buildAndRegister();
 
         // Emitters
 
@@ -1085,20 +1064,21 @@ public class HTComponentRecipes {
                 .duration(30 * 45).EUt(VA[UEV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, Periodicium)
+                .input(frameGt, Envoite)
                 .input(ELECTRIC_MOTOR_UXV)
                 .input(stickLong, ExoHalkoniteSteel, 12)
                 .input(stickLong, ReissnerNordstromium, 12)
                 .input(QUANTIUM_STAR, 6)
                 .input(circuit, Tier.UXV, 2)
-                .input(foil, Periodicium, 64)
-                .input(foil, Periodicium, 64)
-                .input(foil, Periodicium, 64)
-                .input(foil, Periodicium, 64)
-                .input(foil, Periodicium, 64)
-                .input(wireGtSingle, Periodicium, 12)
+                .input(foil, Envoite, 64)
+                .input(foil, Envoite, 64)
+                .input(foil, Envoite, 64)
+                .input(foil, Envoite, 64)
+                .input(foil, Envoite, 64)
+                .input(wireGtSingle, ScUxvSane, 12)
                 .fluidInputs(SentientNanobots.getFluid(144 * 16))
-                .fluidInputs(Periodicium.getPlasma(144 * 6))
+                .fluidInputs(Neptunium.getFluid(144 * 16),
+                        Realitium.getFluid(100))
                 .output(EMITTER_UXV)
                 .stationResearch(b -> b
                         .researchStack(EMITTER_UIV.getStackForm())
@@ -1106,42 +1086,42 @@ public class HTComponentRecipes {
                         .EUt(VA[UIV]))
                 .duration(30 * 65).EUt(VA[UIV]).buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, Quantum)
-                .input(ELECTRIC_MOTOR_OpV)
-                .input(stickLong, Ledox, 4)
-                .input(QUANTIUM_STAR)
-                .input(circuit, Tier.OpV, 2)
-                .input(foil, Quantium, 64)
-                .input(foil, Infinity, 32)
-                .input(cableGtSingle, Quantium, 4)
-                .fluidInputs(MutatedLivingSolder.getFluid(2304))
-                .fluidInputs(Periodicium.getPlasma(576))
-                .fluidInputs(Shirabon.getFluid(144))
-                .output(EMITTER_OpV)
-                .stationResearch(b -> b
-                        .researchStack(EMITTER_UXV.getStackForm())
-                        .CWUt(128)
-                        .EUt(VA[UXV]))
-                .duration(30 * 100).EUt(VA[UXV]).buildAndRegister();
-
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(frameGt, Shirabon)
-                .input(ELECTRIC_MOTOR_MAX)
-                .input(stickLong, Shirabon, 4)
-                .input(QUANTIUM_STAR, 4)
-                .input(circuit, Tier.MAX, 2)
-                .input(foil, Shirabon, 64)
-                .input(foil, Floppa, 32)
-                .input(wireGtSingle, Floppa, 4)
-                .fluidInputs(MutatedLivingSolder.getFluid(9216))
-                .fluidInputs(MultiversalAlloy.getFluid(2304))
-                .fluidInputs(TransResidue.getFluid(64000))
-                .output(EMITTER_MAX)
-                .stationResearch(b -> b
-                        .researchStack(EMITTER_OpV.getStackForm())
-                        .CWUt(128)
-                        .EUt(VA[OpV]))
-                .duration(30 * 300).EUt(VA[OpV]).buildAndRegister();
+        // ASSEMBLY_LINE_RECIPES.recipeBuilder()
+        // .input(frameGt, Quantum)
+        // .input(ELECTRIC_MOTOR_OpV)
+        // .input(stickLong, Ledox, 4)
+        // .input(QUANTIUM_STAR)
+        // .input(circuit, Tier.OpV, 2)
+        // .input(foil, Quantium, 64)
+        // .input(foil, Infinity, 32)
+        // .input(cableGtSingle, Quantium, 4)
+        // .fluidInputs(MutatedLivingSolder.getFluid(2304))
+        // .fluidInputs(Periodicium.getPlasma(576))
+        // .fluidInputs(Shirabon.getFluid(144))
+        // .output(EMITTER_OpV)
+        // .stationResearch(b -> b
+        // .researchStack(EMITTER_UXV.getStackForm())
+        // .CWUt(128)
+        // .EUt(VA[UXV]))
+        // .duration(30 * 100).EUt(VA[UXV]).buildAndRegister();
+        //
+        // ASSEMBLY_LINE_RECIPES.recipeBuilder()
+        // .input(frameGt, Shirabon)
+        // .input(ELECTRIC_MOTOR_MAX)
+        // .input(stickLong, Shirabon, 4)
+        // .input(QUANTIUM_STAR, 4)
+        // .input(circuit, Tier.MAX, 2)
+        // .input(foil, Shirabon, 64)
+        // .input(foil, Floppa, 32)
+        // .input(wireGtSingle, Floppa, 4)
+        // .fluidInputs(MutatedLivingSolder.getFluid(9216))
+        // .fluidInputs(MultiversalAlloy.getFluid(2304))
+        // .fluidInputs(TransResidue.getFluid(64000))
+        // .output(EMITTER_MAX)
+        // .stationResearch(b -> b
+        // .researchStack(EMITTER_OpV.getStackForm())
+        // .CWUt(128)
+        // .EUt(VA[OpV]))
+        // .duration(30 * 300).EUt(VA[OpV]).buildAndRegister();
     }
 }

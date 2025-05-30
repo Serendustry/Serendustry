@@ -1,18 +1,18 @@
 package serendustry.recipe;
 
-import gregtech.api.GTValues;
-import gregtech.api.GregTechAPI;
-import gregtech.api.fluids.store.FluidStorageKeys;
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.info.MaterialFlags;
-import gregtech.api.unification.material.properties.PropertyKey;
-
 import static gregtech.api.unification.material.Materials.Nitrogen;
 import static gregtech.api.unification.ore.OrePrefix.dust;
 import static gregtech.api.unification.ore.OrePrefix.gem;
 import static gregtech.api.unification.ore.OrePrefix.gemExquisite;
 import static gregtech.api.unification.ore.OrePrefix.gemFlawless;
 import static serendustry.machine.SerendustryRecipeMaps.CRYSTALLIZER_RECIPES;
+
+import gregtech.api.GTValues;
+import gregtech.api.GregTechAPI;
+import gregtech.api.fluids.store.FluidStorageKeys;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.info.MaterialFlags;
+import gregtech.api.unification.material.properties.PropertyKey;
 
 public class CrystallizerRecipes {
 

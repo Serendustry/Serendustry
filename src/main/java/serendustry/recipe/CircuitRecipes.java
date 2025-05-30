@@ -1,16 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.GTValues;
-import gregtech.api.fluids.store.FluidStorageKeys;
-import gregtech.api.items.metaitem.MetaItem;
-import gregtech.api.metatileentity.multiblock.CleanroomType;
-import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.ore.OrePrefix;
-import gregtech.common.ConfigHolder;
-import gregtech.common.blocks.BlockGlassCasing;
-import gregtech.common.blocks.MetaBlocks;
-import serendustry.SValues;
-
 import static gregtech.api.GTValues.EV;
 import static gregtech.api.GTValues.HV;
 import static gregtech.api.GTValues.IV;
@@ -21,6 +10,7 @@ import static gregtech.api.GTValues.UEV;
 import static gregtech.api.GTValues.UHV;
 import static gregtech.api.GTValues.UIV;
 import static gregtech.api.GTValues.UV;
+import static gregtech.api.GTValues.UXV;
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.GTValues.ZPM;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
@@ -44,7 +34,9 @@ import static gregtech.api.unification.material.Materials.Cerium;
 import static gregtech.api.unification.material.Materials.Chrome;
 import static gregtech.api.unification.material.Materials.Diamond;
 import static gregtech.api.unification.material.Materials.Electrum;
+import static gregtech.api.unification.material.Materials.Flerovium;
 import static gregtech.api.unification.material.Materials.GalliumArsenide;
+import static gregtech.api.unification.material.Materials.Germanium;
 import static gregtech.api.unification.material.Materials.Glass;
 import static gregtech.api.unification.material.Materials.Gold;
 import static gregtech.api.unification.material.Materials.HSSE;
@@ -66,10 +58,14 @@ import static gregtech.api.unification.material.Materials.Phosphorus;
 import static gregtech.api.unification.material.Materials.Polybenzimidazole;
 import static gregtech.api.unification.material.Materials.Radon;
 import static gregtech.api.unification.material.Materials.RawGrowthMedium;
+import static gregtech.api.unification.material.Materials.Rhenium;
+import static gregtech.api.unification.material.Materials.Rubidium;
 import static gregtech.api.unification.material.Materials.Salt;
+import static gregtech.api.unification.material.Materials.Selenium;
 import static gregtech.api.unification.material.Materials.SiliconeRubber;
 import static gregtech.api.unification.material.Materials.SodiumPersulfate;
 import static gregtech.api.unification.material.Materials.SterileGrowthMedium;
+import static gregtech.api.unification.material.Materials.Thallium;
 import static gregtech.api.unification.material.Materials.Tritanium;
 import static gregtech.api.unification.material.Materials.Xenon;
 import static gregtech.api.unification.material.Materials.Ytterbium;
@@ -96,7 +92,10 @@ import static gregtech.api.unification.ore.OrePrefix.screw;
 import static gregtech.api.unification.ore.OrePrefix.stickLong;
 import static gregtech.api.unification.ore.OrePrefix.wireFine;
 import static gregtech.api.unification.ore.OrePrefix.wireGtDouble;
+import static gregtech.api.unification.ore.OrePrefix.wireGtQuadruple;
+import static gregtech.api.unification.ore.OrePrefix.wireGtSingle;
 import static gregtech.common.items.MetaItems.ADVANCED_SYSTEM_ON_CHIP_WAFER;
+import static gregtech.common.items.MetaItems.CENTRAL_PROCESSING_UNIT;
 import static gregtech.common.items.MetaItems.CENTRAL_PROCESSING_UNIT_WAFER;
 import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_LuV;
 import static gregtech.common.items.MetaItems.ELITE_CIRCUIT_BOARD;
@@ -137,6 +136,11 @@ import static serendustry.item.SerendustryMetaItems.CIRC_ENTROPIC_UEV;
 import static serendustry.item.SerendustryMetaItems.CIRC_ENTROPIC_UHV;
 import static serendustry.item.SerendustryMetaItems.CIRC_ENTROPIC_UIV;
 import static serendustry.item.SerendustryMetaItems.CIRC_ENTROPIC_UV;
+import static serendustry.item.SerendustryMetaItems.CIRC_OMNITEMPORAL_OpV;
+import static serendustry.item.SerendustryMetaItems.CIRC_OMNITEMPORAL_UEV;
+import static serendustry.item.SerendustryMetaItems.CIRC_OMNITEMPORAL_UHV;
+import static serendustry.item.SerendustryMetaItems.CIRC_OMNITEMPORAL_UIV;
+import static serendustry.item.SerendustryMetaItems.CIRC_OMNITEMPORAL_UXV;
 import static serendustry.item.SerendustryMetaItems.CIRC_POSITRONIC_UEV;
 import static serendustry.item.SerendustryMetaItems.CIRC_POSITRONIC_UHV;
 import static serendustry.item.SerendustryMetaItems.CIRC_POSITRONIC_UV;
@@ -148,6 +152,7 @@ import static serendustry.item.SerendustryMetaItems.ENGRAVED_POSITRONIC_CHIP;
 import static serendustry.item.SerendustryMetaItems.ENTROPIC_CIRCUIT_BOARD;
 import static serendustry.item.SerendustryMetaItems.ENTROPIC_SOC_CHIP;
 import static serendustry.item.SerendustryMetaItems.ENTROPIC_SOC_WAFER;
+import static serendustry.item.SerendustryMetaItems.FEMTOSCALE_SINGULARITY;
 import static serendustry.item.SerendustryMetaItems.INACTIVE_APU_WAFER;
 import static serendustry.item.SerendustryMetaItems.LENS_ARRAY_HYPERAMPLIFYING;
 import static serendustry.item.SerendustryMetaItems.LENS_ARRAY_HYPERPRECISE;
@@ -169,6 +174,14 @@ import static serendustry.item.SerendustryMetaItems.MASK_SOC;
 import static serendustry.item.SerendustryMetaItems.MASK_SSOC;
 import static serendustry.item.SerendustryMetaItems.MASK_UHPIC;
 import static serendustry.item.SerendustryMetaItems.MASK_ULPIC;
+import static serendustry.item.SerendustryMetaItems.NEISC;
+import static serendustry.item.SerendustryMetaItems.OMNITEMPORAL_CIRCUIT_BOARD;
+import static serendustry.item.SerendustryMetaItems.OMNITEMPORAL_SMD_CAPACITOR;
+import static serendustry.item.SerendustryMetaItems.OMNITEMPORAL_SMD_DIODE;
+import static serendustry.item.SerendustryMetaItems.OMNITEMPORAL_SMD_INDUCTOR;
+import static serendustry.item.SerendustryMetaItems.OMNITEMPORAL_SMD_RESISTOR;
+import static serendustry.item.SerendustryMetaItems.OMNITEMPORAL_SMD_TRANSISTOR;
+import static serendustry.item.SerendustryMetaItems.OMNITEMPORAL_SOC;
 import static serendustry.item.SerendustryMetaItems.ORUNDUM_BOULE;
 import static serendustry.item.SerendustryMetaItems.ORUNDUM_SEED_CRYSTAL;
 import static serendustry.item.SerendustryMetaItems.PETRI_DISH_STERILIZED;
@@ -176,6 +189,8 @@ import static serendustry.item.SerendustryMetaItems.POSITRONIC_CHIP;
 import static serendustry.item.SerendustryMetaItems.POSITRONIC_SOC_CHIP;
 import static serendustry.item.SerendustryMetaItems.POSITRONIC_SOC_WAFER;
 import static serendustry.item.SerendustryMetaItems.RAW_ORUNDUM_WAFER;
+import static serendustry.item.SerendustryMetaItems.RF4M;
+import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_BEYOND;
 import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_END;
 import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_NETHER;
 import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_OVERWORLD;
@@ -185,6 +200,7 @@ import static serendustry.item.SerendustryMetaItems.SUPREME_SMD_INDUCTOR;
 import static serendustry.item.SerendustryMetaItems.SUPREME_SMD_RESISTOR;
 import static serendustry.item.SerendustryMetaItems.SUPREME_SMD_TRANSISTOR;
 import static serendustry.item.SerendustryMetaItems.TIME_CRYSTAL;
+import static serendustry.item.SerendustryMetaItems.TRPC;
 import static serendustry.item.SerendustryMetaItems.WAFER_OPIC;
 import static serendustry.item.SerendustryMetaItems.WRAPPED_ORUNDUM_WAFER;
 import static serendustry.item.material.SerendustryMaterials.AbyssalAlloy;
@@ -195,6 +211,11 @@ import static serendustry.item.material.SerendustryMaterials.BlackStarMatter;
 import static serendustry.item.material.SerendustryMaterials.CarbonNanotubes;
 import static serendustry.item.material.SerendustryMaterials.ChromaticGlass;
 import static serendustry.item.material.SerendustryMaterials.CondensedStarMatter;
+import static serendustry.item.material.SerendustryMaterials.DeepDarkSteel;
+import static serendustry.item.material.SerendustryMaterials.Draconium;
+import static serendustry.item.material.SerendustryMaterials.Envoite;
+import static serendustry.item.material.SerendustryMaterials.ExoHalkoniteSteel;
+import static serendustry.item.material.SerendustryMaterials.FullerenePolymerMatrix;
 import static serendustry.item.material.SerendustryMaterials.Gadonanotubes;
 import static serendustry.item.material.SerendustryMaterials.HalkoniteSteel;
 import static serendustry.item.material.SerendustryMaterials.HighGradeSolderingAlloy;
@@ -209,12 +230,16 @@ import static serendustry.item.material.SerendustryMaterials.NVCDiamond;
 import static serendustry.item.material.SerendustryMaterials.NaquadriaticTaranium;
 import static serendustry.item.material.SerendustryMaterials.Originium;
 import static serendustry.item.material.SerendustryMaterials.Orundum;
+import static serendustry.item.material.SerendustryMaterials.Periodicium;
 import static serendustry.item.material.SerendustryMaterials.PositroniumHydride;
 import static serendustry.item.material.SerendustryMaterials.QCDM;
 import static serendustry.item.material.SerendustryMaterials.Quantium40;
 import static serendustry.item.material.SerendustryMaterials.RadoxPolymer;
+import static serendustry.item.material.SerendustryMaterials.Realitium;
+import static serendustry.item.material.SerendustryMaterials.ReissnerNordstromium;
 import static serendustry.item.material.SerendustryMaterials.Rhugnor;
 import static serendustry.item.material.SerendustryMaterials.ScUevSane;
+import static serendustry.item.material.SerendustryMaterials.ScUxvSane;
 import static serendustry.item.material.SerendustryMaterials.SelfRepairingNanobots;
 import static serendustry.item.material.SerendustryMaterials.SemiconductorGradeSilicon;
 import static serendustry.item.material.SerendustryMaterials.SentientNanobots;
@@ -224,6 +249,7 @@ import static serendustry.item.material.SerendustryMaterials.TiberiumAboreus;
 import static serendustry.item.material.SerendustryMaterials.TiberiumCruentus;
 import static serendustry.item.material.SerendustryMaterials.TiberiumRiparius;
 import static serendustry.item.material.SerendustryMaterials.TiberiumVinifera;
+import static serendustry.item.material.SerendustryMaterials.Trilithium;
 import static serendustry.item.material.SerendustryMaterials.Vibranium;
 import static serendustry.item.material.SerendustryMaterials.VibraniumAlloy;
 import static serendustry.item.material.SerendustryMaterials.YeastExtract;
@@ -231,6 +257,18 @@ import static serendustry.machine.SerendustryMetaTileEntities.HP_LASER_ARRAY;
 import static serendustry.machine.SerendustryRecipeMaps.CRYSTALLIZER_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.HP_LASER_ARRAY_RECIPES;
+import static serendustry.machine.SerendustryRecipeMaps.NEBULAIC_NEXUS_RECIPES;
+
+import gregtech.api.GTValues;
+import gregtech.api.fluids.store.FluidStorageKeys;
+import gregtech.api.items.metaitem.MetaItem;
+import gregtech.api.metatileentity.multiblock.CleanroomType;
+import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.ore.OrePrefix;
+import gregtech.common.ConfigHolder;
+import gregtech.common.blocks.BlockGlassCasing;
+import gregtech.common.blocks.MetaBlocks;
+import serendustry.SValues;
 
 public class CircuitRecipes {
 
@@ -578,12 +616,21 @@ public class CircuitRecipes {
                 .EUt(VA[UHV]).duration(1000).buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder()
-                .input(COSMIC_CIRCUIT_BOARD)
+                .input(plate, RadoxPolymer)
                 .input(foil, Taranium, 2)
                 .fluidInputs(LCNS.getFluid(1000), RadoxPolymer.getFluid(144 * 2), ChromaticGlass.getFluid(288 * 2))
                 .output(ENTROPIC_CIRCUIT_BOARD)
                 .cleanroom(CleanroomType.CLEANROOM)
-                .EUt(VA[UEV]).duration(1000).buildAndRegister();
+                .EUt(VA[UEV]).duration(1000 * 4).buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(plate, FullerenePolymerMatrix)
+                .input(foil, Infinity, 2)
+                .fluidInputs(Hypogen.getPlasma(18), ChromaticGlass.getPlasma(144 * 8),
+                        FullerenePolymerMatrix.getFluid(144))
+                .output(OMNITEMPORAL_CIRCUIT_BOARD)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .EUt(VA[UIV]).duration(1000 * 4 * 4).buildAndRegister();
     }
 
     private static void componentRecipes() {
@@ -627,6 +674,81 @@ public class CircuitRecipes {
                 .output(SUPREME_SMD_INDUCTOR, 8)
                 .cleanroom(CleanroomType.CLEANROOM)
                 .EUt(VA[UHV]).duration(320).buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(dust, Envoite, 8)
+                .input(dust, QCDM, 8)
+                .input(wireFine, Taranium, 32)
+                .input(wireFine, Hypogen, 32)
+                .fluidInputs(FullerenePolymerMatrix.getFluid(144 * 4),
+                        Envoite.getFluid(144 * 8),
+                        Germanium.getFluid(144 * 128))
+                .output(OMNITEMPORAL_SMD_RESISTOR, 64)
+                .stationResearch(b -> b
+                        .researchStack(SUPREME_SMD_RESISTOR.getStackForm())
+                        .CWUt(144)
+                        .EUt(VA[UIV]))
+                .EUt(VA[UEV]).duration(20 * 400).buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(foil, Envoite, 8)
+                .input(foil, DeepDarkSteel, 8)
+                .input(wireFine, Hihiirokane, 64)
+                .input(wireFine, Quantium40, 64)
+                .fluidInputs(FullerenePolymerMatrix.getFluid(144 * 4),
+                        Envoite.getFluid(144 * 8),
+                        Thallium.getFluid(144 * 128))
+                .output(OMNITEMPORAL_SMD_TRANSISTOR, 64)
+                .stationResearch(b -> b
+                        .researchStack(SUPREME_SMD_TRANSISTOR.getStackForm())
+                        .CWUt(144)
+                        .EUt(VA[UIV]))
+                .EUt(VA[UEV]).duration(20 * 400).buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(foil, AwakenedDraconium, 32)
+                .input(foil, AbyssalAlloy, 32)
+                .input(foil, SentientNanobots, 16)
+                .input(foil, QCDM, 16)
+                .fluidInputs(FullerenePolymerMatrix.getFluid(144 * 4),
+                        Envoite.getFluid(144 * 8),
+                        Rubidium.getFluid(144 * 128))
+                .output(OMNITEMPORAL_SMD_CAPACITOR, 64)
+                .stationResearch(b -> b
+                        .researchStack(SUPREME_SMD_CAPACITOR.getStackForm())
+                        .CWUt(144)
+                        .EUt(VA[UIV]))
+                .EUt(VA[UEV]).duration(20 * 400).buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(dust, Rhugnor, 8)
+                .input(dust, Trilithium, 8)
+                .input(wireFine, Envoite, 32)
+                .input(wireFine, Infinity, 32)
+                .fluidInputs(FullerenePolymerMatrix.getFluid(144 * 4),
+                        Envoite.getFluid(144 * 8),
+                        Selenium.getFluid(144 * 128))
+                .output(OMNITEMPORAL_SMD_DIODE, 64)
+                .stationResearch(b -> b
+                        .researchStack(SUPREME_SMD_DIODE.getStackForm())
+                        .CWUt(144)
+                        .EUt(VA[UIV]))
+                .EUt(VA[UEV]).duration(20 * 400).buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(ring, FullerenePolymerMatrix, 8)
+                .input(ring, ExoHalkoniteSteel, 8)
+                .input(wireFine, Envoite, 32)
+                .input(wireFine, AwakenedDraconium, 32)
+                .fluidInputs(FullerenePolymerMatrix.getFluid(144 * 4),
+                        Envoite.getFluid(144 * 8),
+                        Rhenium.getFluid(144 * 128))
+                .output(OMNITEMPORAL_SMD_INDUCTOR, 64)
+                .stationResearch(b -> b
+                        .researchStack(SUPREME_SMD_INDUCTOR.getStackForm())
+                        .CWUt(144)
+                        .EUt(VA[UIV]))
+                .EUt(VA[UEV]).duration(20 * 400).buildAndRegister();
 
         CVD_RECIPES.recipeBuilder()
                 .input(dust, Orundum)
@@ -696,6 +818,78 @@ public class CircuitRecipes {
                         Helium3.getFluid(FluidStorageKeys.LIQUID, 8000))
                 .output(TIME_CRYSTAL)
                 .duration(20 * 60 * 4).EUt(VA[UEV]).buildAndRegister();
+
+        // Omnitemporal
+
+        NEBULAIC_NEXUS_RECIPES.recipeBuilder()
+                .input(plate, ReissnerNordstromium)
+                .input(foil, Hypogen, 8)
+                .fluidInputs(Envoite.getFluid(144),
+                        Draconium.getPlasma(144),
+                        Realitium.getFluid(25))
+                .output(RF4M, 16)
+                .duration(20 * 60 * 4 * 2).EUt(VA[UIV]).buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(RF4M)
+                .input(CENTRAL_PROCESSING_UNIT, 64)
+                .input(gem, Trilithium)
+                .input(plate, DeepDarkSteel)
+                .input(plate, Draconium, 2)
+                .input(plate, Neutronium, 8)
+                .input(bolt, ExoHalkoniteSteel, 2)
+                .input(bolt, NaquadriaticTaranium, 8)
+                .input(wireFine, Envoite, 32)
+                .fluidInputs(SentientNanobots.getFluid(72),
+                        Neptunium.getFluid(72),
+                        Infinity.getPlasma(72),
+                        Realitium.getFluid(5))
+                .output(TRPC)
+                .stationResearch(b -> b
+                        .researchStack(RF4M.getStackForm())
+                        .CWUt(144)
+                        .EUt(VA[UIV]))
+                .duration(20 * 40).EUt(VA[UIV]).buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(FEMTOSCALE_SINGULARITY)
+                .input(RANDOM_ACCESS_MEMORY, 64)
+                .input(plate, ExoHalkoniteSteel)
+                .input(plate, Infinity)
+                .input(bolt, Envoite, 64)
+                .input(bolt, Envoite, 64)
+                .input(bolt, Infinity, 16)
+                .input(screw, ReissnerNordstromium, 4)
+                .input(wireFine, Envoite, 64)
+                .input(wireFine, Envoite, 64)
+                .input(wireGtSingle, ScUxvSane, 8)
+                .fluidInputs(SentientNanobots.getFluid(144 * 2),
+                        Neptunium.getFluid(144 * 4),
+                        Flerovium.getFluid(144 * 4),
+                        CondensedStarMatter.getFluid(2000))
+                .output(NEISC)
+                .stationResearch(b -> b
+                        .researchStack(TRPC.getStackForm())
+                        .CWUt(144)
+                        .EUt(VA[UIV]))
+                .duration(20 * 400).EUt(VA[UIV]).buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(TRPC)
+                .input(HIGHLY_ADVANCED_SOC, 4)
+                .input(gem, Orundum)
+                .input(plate, Infinity)
+                .input(foil, Envoite, 32)
+                .input(foil, Hypogen, 4)
+                .fluidInputs(Realitium.getFluid(1),
+                        SentientNanobots.getFluid(144),
+                        Draconium.getPlasma(144))
+                .output(OMNITEMPORAL_SOC)
+                .stationResearch(b -> b
+                        .researchStack(NEISC.getStackForm())
+                        .CWUt(144)
+                        .EUt(VA[UIV]))
+                .duration(20 * 40).EUt(VA[UIV]).buildAndRegister();
     }
 
     private static void circuitRecipes() {
@@ -771,6 +965,7 @@ public class CircuitRecipes {
                 .input(foil, Adamantium, 16)
                 .input(plate, VibraniumAlloy, 4)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144))
+                .fluidInputs(PositroniumHydride.getFluid(1000))
                 .output(CIRC_POSITRONIC_UV)
                 .stationResearch(b -> b
                         .researchStack(CIRC_POSITRONIC_ZPM.getStackForm())
@@ -793,12 +988,13 @@ public class CircuitRecipes {
                 .input(foil, LaminatedBoPET, 16)
                 .input(plate, Neutronium, 4)
                 .fluidInputs(SelfRepairingNanobots.getFluid(144 * 4))
+                .fluidInputs(PositroniumHydride.getFluid(2500))
                 .output(CIRC_POSITRONIC_UHV)
                 .stationResearch(b -> b
                         .researchStack(CIRC_POSITRONIC_UV.getStackForm())
                         .CWUt(64)
                         .EUt(VA[UV]))
-                .duration(20 * 20).EUt(VA[UHV]).buildAndRegister();
+                .duration(20 * 40).EUt(VA[UHV]).buildAndRegister();
 
         // UEV
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -809,10 +1005,10 @@ public class CircuitRecipes {
                 .input(SUPREME_SMD_CAPACITOR, 32)
                 .input(SUPREME_SMD_DIODE, 32)
                 .input(SUPREME_SMD_INDUCTOR, 32)
+                .input(RANDOM_ACCESS_MEMORY, 64)
                 .input(foil, AbyssalAlloy, 16)
                 .input(foil, RadoxPolymer, 8)
                 .input(foil, SelfRepairingNanobots, 8)
-                .input(RANDOM_ACCESS_MEMORY, 64)
                 .input(wireGtDouble, ScUevSane, 16)
                 .input(plateDense, VibraniumAlloy)
                 .input(plate, AbyssalAlloy, 8)
@@ -909,7 +1105,7 @@ public class CircuitRecipes {
                         .researchStack(CIRC_ENTROPIC_UHV.getStackForm())
                         .CWUt(144)
                         .EUt(VA[UEV]))
-                .duration(20 * 20).EUt(VA[UEV]).buildAndRegister();
+                .duration(20 * 40).EUt(VA[UEV]).buildAndRegister();
 
         // UIV
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
@@ -920,10 +1116,10 @@ public class CircuitRecipes {
                 .input(SUPREME_SMD_CAPACITOR, 64)
                 .input(SUPREME_SMD_DIODE, 64)
                 .input(SUPREME_SMD_INDUCTOR, 64)
+                .input(RANDOM_ACCESS_MEMORY, 64)
                 .input(foil, AwakenedDraconium, 16)
                 .input(foil, Hypogen, 8)
                 .input(foil, SentientNanobots, 8)
-                .input(RANDOM_ACCESS_MEMORY, 64)
                 .input(wireGtDouble, Hypogen, 16)
                 .input(plateDense, HalkoniteSteel)
                 .input(plate, AwakenedDraconium, 8)
@@ -936,7 +1132,155 @@ public class CircuitRecipes {
                 .stationResearch(b -> b
                         .researchStack(CIRC_ENTROPIC_UEV.getStackForm())
                         .CWUt(144)
-                        .EUt(VA[UIV]))
+                        .EUt(VA[UEV]))
                 .duration(200 * 20).EUt(VA[UEV]).buildAndRegister();
+
+        // T10: Omnitemporal ===========================================================================================
+
+        // UHV
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(OMNITEMPORAL_CIRCUIT_BOARD)
+                .input(TRPC)
+                .input(OMNITEMPORAL_SMD_RESISTOR, 8)
+                .input(OMNITEMPORAL_SMD_TRANSISTOR, 8)
+                .input(OMNITEMPORAL_SMD_CAPACITOR, 8)
+                .input(OMNITEMPORAL_SMD_DIODE, 8)
+                .input(OMNITEMPORAL_SMD_INDUCTOR, 8)
+                .input(wireFine, Infinity, 4)
+                .input(foil, FullerenePolymerMatrix, 2)
+                .input(foil, DeepDarkSteel, 2)
+                .input(plate, Envoite)
+                .fluidInputs(SentientNanobots.getFluid(144),
+                        Infinity.getPlasma(144))
+                .output(CIRC_OMNITEMPORAL_UHV, outputAmount)
+                .stationResearch(b -> b
+                        .researchStack(CIRC_ENTROPIC_UIV.getStackForm())
+                        .CWUt(144)
+                        .EUt(VA[UIV]))
+                .duration(20 * 20).EUt(VA[UIV]).buildAndRegister();
+
+        // SoC UHV
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
+                .notConsumable(STELLAR_ESSENCE_BEYOND)
+                .input(OMNITEMPORAL_CIRCUIT_BOARD)
+                .input(OMNITEMPORAL_SOC)
+                .input(wireFine, Hypogen, 8)
+                .input(bolt, Periodicium, 4)
+                .fluidInputs(SentientNanobots.getFluid(144))
+                .output(CIRC_OMNITEMPORAL_UHV, outputAmount * 2)
+                .cleanroom(CleanroomType.CLEANROOM)
+                .duration(20 * 5).EUt(VA[UXV]).buildAndRegister();
+
+        // UEV
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(OMNITEMPORAL_CIRCUIT_BOARD)
+                .input(CIRC_OMNITEMPORAL_UHV, 2)
+                .input(OMNITEMPORAL_SMD_RESISTOR, 16)
+                .input(OMNITEMPORAL_SMD_TRANSISTOR, 16)
+                .input(OMNITEMPORAL_SMD_CAPACITOR, 16)
+                .input(OMNITEMPORAL_SMD_DIODE, 16)
+                .input(OMNITEMPORAL_SMD_INDUCTOR, 16)
+                .input(RANDOM_ACCESS_MEMORY, 64)
+                .input(RANDOM_ACCESS_MEMORY, 64)
+                .input(wireFine, Hypogen, 4)
+                .input(foil, FullerenePolymerMatrix, 4)
+                .input(foil, DeepDarkSteel, 4)
+                .input(plate, Envoite, 2)
+                .fluidInputs(SentientNanobots.getFluid(144 * 2),
+                        Infinity.getPlasma(144),
+                        Rhugnor.getPlasma(144))
+                .output(CIRC_OMNITEMPORAL_UEV)
+                .stationResearch(b -> b
+                        .researchStack(CIRC_OMNITEMPORAL_UHV.getStackForm())
+                        .CWUt(144)
+                        .EUt(VA[UIV]))
+                .duration(20 * 40).EUt(VA[UIV]).buildAndRegister();
+
+        // UIV
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(OMNITEMPORAL_CIRCUIT_BOARD)
+                .input(CIRC_OMNITEMPORAL_UEV, 2)
+                .input(OMNITEMPORAL_SMD_RESISTOR, 32)
+                .input(OMNITEMPORAL_SMD_TRANSISTOR, 32)
+                .input(OMNITEMPORAL_SMD_CAPACITOR, 32)
+                .input(OMNITEMPORAL_SMD_DIODE, 32)
+                .input(OMNITEMPORAL_SMD_INDUCTOR, 32)
+                .input(NOR_MEMORY_CHIP, 64)
+                .input(RANDOM_ACCESS_MEMORY, 64)
+                .input(RANDOM_ACCESS_MEMORY, 64)
+                .input(RANDOM_ACCESS_MEMORY, 64)
+                .input(RANDOM_ACCESS_MEMORY, 64)
+                .input(wireFine, Hypogen, 4)
+                .input(foil, FullerenePolymerMatrix, 8)
+                .input(foil, DeepDarkSteel, 8)
+                .input(plate, Envoite, 4)
+                .fluidInputs(SentientNanobots.getFluid(144 * 4),
+                        Infinity.getPlasma(144),
+                        Rhugnor.getPlasma(144),
+                        Hypogen.getPlasma(72))
+                .output(CIRC_OMNITEMPORAL_UIV)
+                .stationResearch(b -> b
+                        .researchStack(CIRC_OMNITEMPORAL_UEV.getStackForm())
+                        .CWUt(144)
+                        .EUt(VA[UIV]))
+                .duration(20 * 80).EUt(VA[UIV]).buildAndRegister();
+
+        // UXV
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(frameGt, Envoite, 2)
+                .input(CIRC_OMNITEMPORAL_UIV, 2)
+                .input(NEISC)
+                .input(OMNITEMPORAL_SMD_RESISTOR, 64)
+                .input(OMNITEMPORAL_SMD_TRANSISTOR, 64)
+                .input(OMNITEMPORAL_SMD_CAPACITOR, 64)
+                .input(OMNITEMPORAL_SMD_DIODE, 64)
+                .input(OMNITEMPORAL_SMD_INDUCTOR, 64)
+                .input(RANDOM_ACCESS_MEMORY, 64)
+                .input(foil, FullerenePolymerMatrix, 16)
+                .input(foil, DeepDarkSteel, 16)
+                .input(foil, ReissnerNordstromium, 4)
+                .input(wireGtDouble, ScUxvSane, 12)
+                .input(plateDense, Envoite, 1)
+                .input(plate, ExoHalkoniteSteel, 4)
+                .input(plate, Infinity, 4)
+                .fluidInputs(SentientNanobots.getFluid(144 * 8),
+                        Infinity.getPlasma(144 * 2),
+                        Rhugnor.getPlasma(144 * 2),
+                        Hypogen.getPlasma(144))
+                .output(CIRC_OMNITEMPORAL_UXV)
+                .stationResearch(b -> b
+                        .researchStack(CIRC_OMNITEMPORAL_UIV.getStackForm())
+                        .CWUt(144)
+                        .EUt(VA[UIV]))
+                .duration(20 * 400).EUt(VA[UIV]).buildAndRegister();
+
+        // OpV
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(frameGt, Periodicium, 4)
+                .input(CIRC_OMNITEMPORAL_UXV, 2)
+                .input(OMNITEMPORAL_SMD_RESISTOR, 64)
+                .input(OMNITEMPORAL_SMD_TRANSISTOR, 64)
+                .input(OMNITEMPORAL_SMD_CAPACITOR, 64)
+                .input(OMNITEMPORAL_SMD_DIODE, 64)
+                .input(OMNITEMPORAL_SMD_INDUCTOR, 64)
+                .input(RANDOM_ACCESS_MEMORY, 64)
+                .input(foil, FullerenePolymerMatrix, 64)
+                .input(foil, DeepDarkSteel, 64)
+                .input(foil, QCDM, 8)
+                .input(wireGtQuadruple, ScUxvSane, 8)
+                .input(plateDense, Periodicium)
+                .input(plateDense, ExoHalkoniteSteel)
+                .input(plateDense, Infinity, 4)
+                .input(plate, ReissnerNordstromium, 4)
+                .fluidInputs(SentientNanobots.getFluid(144 * 16),
+                        Periodicium.getPlasma(144 * 16),
+                        Rhugnor.getPlasma(144 * 8),
+                        Hypogen.getPlasma(144 * 4))
+                .output(CIRC_OMNITEMPORAL_OpV)
+                .stationResearch(b -> b
+                        .researchStack(CIRC_OMNITEMPORAL_UXV.getStackForm())
+                        .CWUt(144)
+                        .EUt(VA[UXV]))
+                .duration(20 * 1600).EUt(VA[UXV]).buildAndRegister();
     }
 }

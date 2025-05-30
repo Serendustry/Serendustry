@@ -1,13 +1,7 @@
 package serendustry.recipe;
 
-import gregtech.api.recipes.Recipe;
-import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.recipes.ingredients.GTRecipeInput;
-import gregtech.api.recipes.recipeproperties.ImplosionExplosiveProperty;
-import gregtech.api.util.ItemStackHashStrategy;
-import it.unimi.dsi.fastutil.Hash;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import net.minecraft.item.ItemStack;
+import static java.lang.Math.max;
+import static serendustry.machine.SerendustryRecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +9,15 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
-import static java.lang.Math.max;
-import static serendustry.machine.SerendustryRecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES;
+import net.minecraft.item.ItemStack;
+
+import gregtech.api.recipes.Recipe;
+import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.recipes.ingredients.GTRecipeInput;
+import gregtech.api.recipes.recipeproperties.ImplosionExplosiveProperty;
+import gregtech.api.util.ItemStackHashStrategy;
+import it.unimi.dsi.fastutil.Hash;
+import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
 
 public class ElectricImplosionCompressorRecipes {
 

@@ -1,8 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.ore.OrePrefix;
-
 import static gregtech.api.GTValues.UEV;
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.AUTOCLAVE_RECIPES;
@@ -44,7 +41,11 @@ import static serendustry.item.material.SerendustryMaterials.TiberiumVinifera;
 import static serendustry.machine.SerendustryRecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.HP_LASER_ARRAY_RECIPES;
 
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.ore.OrePrefix;
+
 public class QCDMRecipes {
+
     public static void init() {
         ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES.recipeBuilder()
                 .input(dust, HNIW, 4)
@@ -76,10 +77,11 @@ public class QCDMRecipes {
                 .output(dust, GluonatedNeutronium)
                 .duration(20).EUt(VA[UEV]).buildAndRegister();
 
-        Material[] quarks = {QuarksRed, QuarksGreen, QuarksBlue, QuarksAntired, QuarksAntigreen, QuarksAntiblue};
-        Material[] quarkMatter = {QuarkMatterRed, QuarkMatterGreen, QuarkMatterBlue, QuarkMatterAntired, QuarkMatterAntigreen, QuarkMatterAntiblue};
+        Material[] quarks = { QuarksRed, QuarksGreen, QuarksBlue, QuarksAntired, QuarksAntigreen, QuarksAntiblue };
+        Material[] quarkMatter = { QuarkMatterRed, QuarkMatterGreen, QuarkMatterBlue, QuarkMatterAntired,
+                QuarkMatterAntigreen, QuarkMatterAntiblue };
 
-        for(int i = 0; i < quarks.length; i++) {
+        for (int i = 0; i < quarks.length; i++) {
             AUTOCLAVE_RECIPES.recipeBuilder()
                     .input(dust, GluonatedNeutronium)
                     .fluidInputs(quarks[i].getFluid(1000))
@@ -98,7 +100,8 @@ public class QCDMRecipes {
                 .output(dust, QCDM)
                 .duration(20 * 8).EUt(VA[UEV]).buildAndRegister();
 
-        Material[] lenses = {ChromaticGlass, Orundum, TiberiumRiparius, TiberiumVinifera, TiberiumCruentus, TiberiumAboreus};
+        Material[] lenses = { ChromaticGlass, Orundum, TiberiumRiparius, TiberiumVinifera, TiberiumCruentus,
+                TiberiumAboreus };
         OrePrefix[] parts = { dust, plate, foil };
         float[] cost = { 1.0F, 1.0f, 0.25F };
 

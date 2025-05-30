@@ -1,5 +1,35 @@
 package serendustry.machine;
 
+import static gregtech.api.util.RelativeDirection.BACK;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.RIGHT;
+import static gregtech.api.util.RelativeDirection.UP;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Supplier;
+
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
+import net.minecraftforge.fluids.IFluidTank;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.items.IItemHandlerModifiable;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
@@ -32,22 +62,6 @@ import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.common.metatileentities.multi.multiblockpart.MetaTileEntityItemBus;
 import gregtech.common.metatileentities.multi.multiblockpart.MetaTileEntityMultiFluidHatch;
 import gregtech.core.sound.GTSoundEvents;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.world.World;
-import net.minecraftforge.fluids.IFluidTank;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.items.IItemHandlerModifiable;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import serendustry.SValues;
 import serendustry.api.SerendustryAPI;
 import serendustry.api.capability.IAALCore;
@@ -58,18 +72,6 @@ import serendustry.blocks.IAALCoreBlockStats;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.machine.structure.StructureDefinition;
-
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.Supplier;
-
-import static gregtech.api.util.RelativeDirection.BACK;
-import static gregtech.api.util.RelativeDirection.FRONT;
-import static gregtech.api.util.RelativeDirection.RIGHT;
-import static gregtech.api.util.RelativeDirection.UP;
 
 public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockController implements IAALCore {
 
@@ -131,8 +133,8 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
         }
 
         if (!laserInput.isEmpty()) {
-            // Disallow mixing hatch types and require MAX cores
-            if (tier < GTValues.MAX || !energyInput.isEmpty() || !substationInput.isEmpty()) {
+            // Disallow mixing hatch types and require UXV+ cores
+            if (tier < GTValues.UXV || !energyInput.isEmpty() || !substationInput.isEmpty()) {
                 invalidateStructure();
             }
         }
@@ -567,8 +569,9 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
             tooltip.add(I18n.format("gregtech.machine.assembly_line.tooltip_ordered_fluids"));
         }
         tooltip.add("");
-        tooltip.add(SValues.ENERGY_SUBSTATION_1);
+        tooltip.add(SValues.ENERGY_SUBSTATION);
         tooltip.add(I18n.format("serendustry.machine.advanced_assembly_line.laser"));
+        tooltip.add(I18n.format("serendustry.machine.tierskip.none"));
         tooltip.add("");
         tooltip.add(I18n.format("serendustry.machine.author") + " " + SValues.FORMAT_ENVOIDIA +
                 I18n.format("serendustry.machine.author.envoidia"));

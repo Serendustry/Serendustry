@@ -1,13 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.GTValues;
-import gregtech.api.GregTechAPI;
-import gregtech.api.fluids.store.FluidStorageKeys;
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.properties.FluidProperty;
-import gregtech.api.unification.material.properties.PropertyKey;
-import serendustry.machine.PlasmaCondenserTypeProperty;
-
 import static gregtech.api.GTValues.EV;
 import static gregtech.api.GTValues.V;
 import static gregtech.api.recipes.RecipeMaps.PLASMA_GENERATOR_FUELS;
@@ -42,6 +34,14 @@ import static serendustry.item.material.SerendustryMaterials.Periodicium;
 import static serendustry.item.material.SerendustryMaterials.Rhugnor;
 import static serendustry.item.material.SerendustryMaterials.Shirabon;
 import static serendustry.machine.SerendustryRecipeMaps.PLASMA_CONDENSER_RECIPES;
+
+import gregtech.api.GTValues;
+import gregtech.api.GregTechAPI;
+import gregtech.api.fluids.store.FluidStorageKeys;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.properties.FluidProperty;
+import gregtech.api.unification.material.properties.PropertyKey;
+import serendustry.machine.PlasmaCondenserTypeProperty;
 
 public class PlasmaCondenserRecipes {
 
@@ -87,7 +87,7 @@ public class PlasmaCondenserRecipes {
                     .fluidInputs(BlackStarMatter.getFluid(isExotic ? 10000 : 1),
                             material.getPlasma(isSolid ? 1440 : 10000))
                     .fluidOutputs(material.getFluid(isSolid ? 1440 : 10000))
-                    .duration(isExotic ? 64 * 64 : 64)
+                    .duration(isExotic ? 64 * 16 : 16)
                     .EUt(GTValues.VA[GTValues.UIV])
                     .buildAndRegister();
 
@@ -97,7 +97,7 @@ public class PlasmaCondenserRecipes {
                     .fluidInputs(CondensedStarMatter.getFluid(isExotic ? 10000 : 1),
                             material.getFluid(isSolid ? 1440 : 10000))
                     .fluidOutputs(material.getPlasma(isSolid ? 1440 : 10000))
-                    .duration(isExotic ? 64 * 64 : 64)
+                    .duration(isExotic ? 64 * 16 : 16)
                     .EUt(GTValues.VA[GTValues.UIV])
                     .buildAndRegister();
 
@@ -124,10 +124,9 @@ public class PlasmaCondenserRecipes {
 
         /*
          * Stellar Engine OW output: 29 different plasmas, 25,000 recipes each
-         * To process all of that would take 36,250s without overclocking (2GEUt == 4,096A UV == 1,024A UHV == 256A UEV
-         * == 64A UIV)
-         * Using a 4,096A UIV laser grants 3 POCs (64x speed) and takes 566.4s
-         * With upgraded cooling coils this takes 141.6s
+         * To process all of that would take 500ks without overclocking
+         * Using a 4,096A UIV laser grants 6 POCs (4096x speed) and takes 2265.625s
+         * With upgraded cooling coils this takes 566.375s
          * 
          * This also uses 725k Black Star Matter, which takes 72.5 of the Space Elevator recipe, which will take ~630.4
          * scans to get data for
@@ -136,9 +135,9 @@ public class PlasmaCondenserRecipes {
          * All 630.4 Star Scanning Drones would take ~164s in a single 1A UIV Assembler Multi (since 256 parallel); all
          * 72.5 Star Harvesting Drones would take ~170s
          * 
-         * Stellar Engine End output: 10 different exotic plasmas, 25,000 recipes each
-         * To process all of that would take 800,000s (222.2h) without overclocking
-         * Using a 4,096A UIV laser grants 3 POCs (64x speed) and takes 12,500s (208.3m)
+         * Stellar Engine End output: 9 different exotic plasmas, 25,000 recipes each
+         * To process all of that would take 11.52Ms without overclocking
+         * Using a 4,096A UIV laser grants 6 POCs (4096x speed) and takes 2812.5s
          * 
          * Realistically no one will process anywhere near all of the Stellar Engine outputs. It's just not necessary.
          * Unless, of course, it is made necessary...

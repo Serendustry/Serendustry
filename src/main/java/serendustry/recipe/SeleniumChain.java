@@ -57,8 +57,10 @@ public class SeleniumChain {
                 .duration(20 * 20).EUt(VA[ZPM]).buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder()
-                .fluidInputs(SelenousAcid.getFluid(1000), SulfurDioxide.getFluid(1000))
-                .output(ingot, Selenium) // todo: change to ingotHot
+                .fluidInputs(SelenousAcid.getFluid(1000),
+                        SulfurDioxide.getFluid(1000))
+                // todo: change to ingotHot
+                .output(ingot, Selenium)
                 .blastFurnaceTemp(10800)
                 .duration(20 * 20).EUt(VA[ZPM]).buildAndRegister();
     }

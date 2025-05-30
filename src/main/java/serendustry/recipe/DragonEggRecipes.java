@@ -1,8 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.recipes.RecipeMaps;
-import net.minecraft.init.Blocks;
-
 import static gregtech.api.GTValues.UEV;
 import static gregtech.api.GTValues.UHV;
 import static gregtech.api.GTValues.UIV;
@@ -16,6 +13,10 @@ import static gregtech.api.unification.ore.OrePrefix.dust;
 import static serendustry.item.material.SerendustryMaterials.Dragonblood;
 import static serendustry.machine.SerendustryRecipeMaps.ACR_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.LABORATORY_RECIPES;
+
+import net.minecraft.init.Blocks;
+
+import gregtech.api.recipes.RecipeMaps;
 
 public class DragonEggRecipes {
 

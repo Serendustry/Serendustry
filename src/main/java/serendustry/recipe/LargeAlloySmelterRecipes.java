@@ -1,15 +1,10 @@
 package serendustry.recipe;
 
-import gregtech.api.GTValues;
-import serendustry.blocks.BlockSerendustryMultiCasing;
-import serendustry.blocks.SerendustryMetaBlocks;
-
 import static gregtech.api.GTValues.IV;
 import static gregtech.api.GTValues.LuV;
 import static gregtech.api.GTValues.UEV;
 import static gregtech.api.GTValues.UIV;
 import static gregtech.api.GTValues.UV;
-import static gregtech.api.GTValues.UXV;
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.FUSION_RECIPES;
@@ -130,6 +125,10 @@ import static serendustry.item.material.SerendustryMaterials.Technetium22;
 import static serendustry.item.material.SerendustryMaterials.Thaumium;
 import static serendustry.machine.SerendustryMetaTileEntities.ADVANCED_FUSION_REACTOR;
 import static serendustry.machine.SerendustryMetaTileEntities.MEGA_FUSION_REACTOR;
+
+import gregtech.api.GTValues;
+import serendustry.blocks.BlockSerendustryMultiCasing;
+import serendustry.blocks.SerendustryMetaBlocks;
 
 public class LargeAlloySmelterRecipes {
 
@@ -386,8 +385,8 @@ public class LargeAlloySmelterRecipes {
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(STELLAR_ESSENCE_END)
                 .input(ADVANCED_FUSION_REACTOR, 64)
-                .input(FIELD_GENERATOR_UIV, 64)
-                .input(ROBOT_ARM_UIV, 64)
+                .input(FIELD_GENERATOR_UIV, 32)
+                .input(ROBOT_ARM_UIV, 32)
                 .inputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING
                         .getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 64),
                         SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(
@@ -396,16 +395,16 @@ public class LargeAlloySmelterRecipes {
                                 BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 64),
                         SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(
                                 BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 64))
-                .input(plateDense, ExoHalkoniteSteel, 16)
-                .input(plateDense, HalkoniteSteel, 64)
+                .input(plateDense, ExoHalkoniteSteel, 4)
+                .input(plateDense, HalkoniteSteel, 8)
                 .input(plate, DeepDarkSteel, 32)
                 .input(plate, Infinity, 32)
-                .input(gear, ExoHalkoniteSteel, 32)
-                .input(gear, Infinity, 32)
+                .input(gear, ExoHalkoniteSteel, 16)
+                .input(gear, Infinity, 16)
                 .input(stickLong, ExoHalkoniteSteel, 32)
                 .input(CHIP_OPIC, 64)
-                .fluidInputs(SentientNanobots.getFluid(144 * 64),
-                        Hypogen.getFluid(144 * 32),
+                .fluidInputs(SentientNanobots.getFluid(144 * 32),
+                        Hypogen.getFluid(144 * 16),
                         Flerovium.getFluid(144 * 64),
                         Neptunium.getFluid(144 * 64))
                 .output(MEGA_FUSION_REACTOR)

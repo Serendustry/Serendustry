@@ -1,7 +1,8 @@
 package serendustry.recipe;
 
-import static gregtech.api.GTValues.UXV;
+import static gregtech.api.GTValues.UIV;
 import static gregtech.api.GTValues.VA;
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.MIXER_RECIPES;
 import static gregtech.api.unification.material.Materials.Actinium;
 import static gregtech.api.unification.material.Materials.Aluminium;
@@ -123,11 +124,21 @@ import static gregtech.api.unification.material.Materials.Ytterbium;
 import static gregtech.api.unification.material.Materials.Yttrium;
 import static gregtech.api.unification.material.Materials.Zinc;
 import static gregtech.api.unification.material.Materials.Zirconium;
+import static gregtech.api.unification.ore.OrePrefix.circuit;
 import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.frameGt;
+import static gregtech.api.unification.ore.OrePrefix.plateDense;
+import static gregtech.api.unification.ore.OrePrefix.wireGtDouble;
+import static gregtech.common.items.MetaItems.ELECTRIC_PISTON_UXV;
+import static gregtech.common.items.MetaItems.SENSOR_UIV;
 import static serendustry.item.material.SerendustryMaterials.Actinoids;
 import static serendustry.item.material.SerendustryMaterials.Alkalis;
 import static serendustry.item.material.SerendustryMaterials.Aluminum;
+import static serendustry.item.material.SerendustryMaterials.Envoite;
+import static serendustry.item.material.SerendustryMaterials.ExoHalkoniteSteel;
+import static serendustry.item.material.SerendustryMaterials.FullerenePolymerMatrix;
 import static serendustry.item.material.SerendustryMaterials.Gases;
+import static serendustry.item.material.SerendustryMaterials.Hypogen;
 import static serendustry.item.material.SerendustryMaterials.Lanthanoids;
 import static serendustry.item.material.SerendustryMaterials.LightTransitionMetals;
 import static serendustry.item.material.SerendustryMaterials.NobleGases;
@@ -142,9 +153,15 @@ import static serendustry.item.material.SerendustryMaterials.Periodicium;
 import static serendustry.item.material.SerendustryMaterials.PostTransitionMetals;
 import static serendustry.item.material.SerendustryMaterials.PreciousMetals;
 import static serendustry.item.material.SerendustryMaterials.RefractoryMetals;
+import static serendustry.item.material.SerendustryMaterials.ScUxvSane;
+import static serendustry.item.material.SerendustryMaterials.SentientNanobots;
 import static serendustry.item.material.SerendustryMaterials.Superheavies;
 import static serendustry.item.material.SerendustryMaterials.Technetium22;
+import static serendustry.machine.SerendustryMetaTileEntities.DISTORTION_ENGINE;
 import static serendustry.machine.SerendustryRecipeMaps.DISTORTION_ENGINE_RECIPES;
+
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.MarkerMaterials;
 
 public class PeriodiciumChain {
 
@@ -341,21 +358,44 @@ public class PeriodiciumChain {
                 .output(dust, Superheavies)
                 .buildAndRegister();
 
-        /*MIXER_RECIPES.recipeBuilder().duration(360).EUt(5400000)
-                .input(dust, Alkalis)
-                .input(dust, RefractoryMetals)
-                .input(dust, LightTransitionMetals)
-                .input(dust, PreciousMetals)
-                .input(dust, PostTransitionMetals)
-                .input(dust, Lanthanoids)
-                .input(dust, Actinoids)
-                .input(dust, Superheavies)
-                .input(dust, Gases)
-                .fluidInputs(NonMetals.getFluid(144), NobleGases.getFluid(144), TransCataCrude.getFluid(500))
-                .output(dust, Periodicium)
-                .buildAndRegister();*/
+        /*
+         * MIXER_RECIPES.recipeBuilder().duration(360).EUt(5400000)
+         * .input(dust, Alkalis)
+         * .input(dust, RefractoryMetals)
+         * .input(dust, LightTransitionMetals)
+         * .input(dust, PreciousMetals)
+         * .input(dust, PostTransitionMetals)
+         * .input(dust, Lanthanoids)
+         * .input(dust, Actinoids)
+         * .input(dust, Superheavies)
+         * .input(dust, Gases)
+         * .fluidInputs(NonMetals.getFluid(144), NobleGases.getFluid(144), TransCataCrude.getFluid(500))
+         * .output(dust, Periodicium)
+         * .buildAndRegister();
+         */
 
-        // You have to use 2x UIV ehatches at first and then can use UXV lasers
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(frameGt, Envoite, 32)
+                .input(SENSOR_UIV, 16)
+                .input(ELECTRIC_PISTON_UXV, 16)
+                .input(circuit, MarkerMaterials.Tier.UXV, 16)
+                .input(circuit, MarkerMaterials.Tier.UIV, 32)
+                .input(plateDense, ExoHalkoniteSteel, 16)
+                .input(plateDense, FullerenePolymerMatrix, 16)
+                .input(plateDense, Tennessine, 32)
+                .input(plateDense, Oganesson, 32)
+                .input(wireGtDouble, ScUxvSane, 32)
+                .fluidInputs(SentientNanobots.getFluid(144 * 128),
+                        Hypogen.getPlasma(144 * 64),
+                        Flerovium.getFluid(144 * 128),
+                        Neptunium.getFluid(144 * 128))
+                .output(DISTORTION_ENGINE)
+                .stationResearch(b -> b
+                        .researchStack(OreDictUnifier.get(plateDense, Oganesson))
+                        .CWUt(144)
+                        .EUt(VA[UIV]))
+                .duration(20 * 60 * 60).EUt(VA[UIV]).buildAndRegister();
+
         DISTORTION_ENGINE_RECIPES.recipeBuilder()
                 .fluidInputs(Hydrogen.getFluid(1000),
                         Helium.getFluid(1000),
@@ -476,6 +516,6 @@ public class PeriodiciumChain {
                         Tennessine.getFluid(144),
                         Oganesson.getFluid(144))
                 .output(dust, Periodicium)
-                .duration(1000).EUt(VA[UXV]).buildAndRegister();
+                .duration(2000).EUt(VA[UIV]).buildAndRegister();
     }
 }

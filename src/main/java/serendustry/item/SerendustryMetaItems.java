@@ -1,12 +1,13 @@
 package serendustry.item;
 
+import net.minecraft.item.Item;
+
 import gregtech.api.GTValues;
 import gregtech.api.items.metaitem.ElectricStats;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.items.metaitem.StandardMetaItem;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.ore.OrePrefix;
-import net.minecraft.item.Item;
 import serendustry.item.behavior.WasteExtractorBehavior;
 
 public class SerendustryMetaItems {
@@ -243,6 +244,24 @@ public class SerendustryMetaItems {
 
     public static MetaItem<?>.MetaValueItem FEMTOSCALE_SINGULARITY;
 
+    public static MetaItem<?>.MetaValueItem CIRC_OMNITEMPORAL_UHV;
+    public static MetaItem<?>.MetaValueItem CIRC_OMNITEMPORAL_UEV;
+    public static MetaItem<?>.MetaValueItem CIRC_OMNITEMPORAL_UIV;
+    public static MetaItem<?>.MetaValueItem CIRC_OMNITEMPORAL_UXV;
+    public static MetaItem<?>.MetaValueItem CIRC_OMNITEMPORAL_OpV;
+
+    public static MetaItem<?>.MetaValueItem OMNITEMPORAL_SMD_RESISTOR;
+    public static MetaItem<?>.MetaValueItem OMNITEMPORAL_SMD_TRANSISTOR;
+    public static MetaItem<?>.MetaValueItem OMNITEMPORAL_SMD_CAPACITOR;
+    public static MetaItem<?>.MetaValueItem OMNITEMPORAL_SMD_DIODE;
+    public static MetaItem<?>.MetaValueItem OMNITEMPORAL_SMD_INDUCTOR;
+
+    public static MetaItem<?>.MetaValueItem OMNITEMPORAL_CIRCUIT_BOARD;
+    public static MetaItem<?>.MetaValueItem RF4M;
+    public static MetaItem<?>.MetaValueItem TRPC;
+    public static MetaItem<?>.MetaValueItem NEISC;
+    public static MetaItem<?>.MetaValueItem OMNITEMPORAL_SOC;
+
     public static MetaItem<?>.MetaValueItem HOE_HEAD;
     public static MetaItem<?>.MetaValueItem HOE_BINDING;
     public static MetaItem<?>.MetaValueItem HOE_CRYSTAL;
@@ -257,7 +276,6 @@ public class SerendustryMetaItems {
     }
 
     public static void registerItems() {
-
         final int MASK = 10;
         final int CIRC_PART = MASK + 20;
         final int CIRC = CIRC_PART + 50;
@@ -304,28 +322,36 @@ public class SerendustryMetaItems {
         ORUNDUM_BOULE = ITEMS.addItem(CIRC_PART + 5, "orundum_boule");
         RAW_ORUNDUM_WAFER = ITEMS.addItem(CIRC_PART + 6, "raw_orundum_wafer");
         WRAPPED_ORUNDUM_WAFER = ITEMS.addItem(CIRC_PART + 7, "wrapped_orundum_wafer");
-        INACTIVE_APU_WAFER = ITEMS.addItem(CIRC_PART + 8, "inactive_apu_wafer");
-        ACTIVATED_APU_WAFER = ITEMS.addItem(CIRC_PART + 9, "activated_apu_wafer");
-        ACTIVATED_APU_CHIP = ITEMS.addItem(CIRC_PART + 10, "activated_apu_chip");
-        WAFER_OPIC = ITEMS.addItem(CIRC_PART + 11, "wafer_opic");
-        CHIP_OPIC = ITEMS.addItem(CIRC_PART + 12, "chip_opic");
-        POSITRONIC_SOC_WAFER = ITEMS.addItem(CIRC_PART + 13, "positronic_soc_wafer");
-        POSITRONIC_SOC_CHIP = ITEMS.addItem(CIRC_PART + 14, "positronic_soc_chip");
-        ENTROPIC_SOC_WAFER = ITEMS.addItem(CIRC_PART + 15, "entropic_soc_wafer");
-        ENTROPIC_SOC_CHIP = ITEMS.addItem(CIRC_PART + 16, "entropic_soc_chip");
-        POSITRONIC_CHIP = ITEMS.addItem(CIRC_PART + 17, "positronic_chip");
-        ENGRAVED_POSITRONIC_CHIP = ITEMS.addItem(CIRC_PART + 18, "engraved_positronic_chip");
-        TIME_CRYSTAL = ITEMS.addItem(CIRC_PART + 19, "time_crystal");
-        SUPREME_SMD_RESISTOR = ITEMS.addItem(CIRC_PART + 20, "supreme_smd_resistor");
-        SUPREME_SMD_TRANSISTOR = ITEMS.addItem(CIRC_PART + 21, "supreme_smd_transistor");
-        SUPREME_SMD_CAPACITOR = ITEMS.addItem(CIRC_PART + 22, "supreme_smd_capacitor");
-        SUPREME_SMD_DIODE = ITEMS.addItem(CIRC_PART + 23, "supreme_smd_diode");
-        SUPREME_SMD_INDUCTOR = ITEMS.addItem(CIRC_PART + 24, "supreme_smd_inductor");
-        // todo new sets of smds
-        COSMIC_CIRCUIT_BOARD = ITEMS.addItem(CIRC_PART + 30, "cosmic_circuit_board");
-        ENTROPIC_CIRCUIT_BOARD = ITEMS.addItem(CIRC_PART + 31, "entropic_circuit_board");
-        // todo new cb
-        
+        WAFER_OPIC = ITEMS.addItem(CIRC_PART + 8, "wafer_opic");
+        CHIP_OPIC = ITEMS.addItem(CIRC_PART + 9, "chip_opic");
+        INACTIVE_APU_WAFER = ITEMS.addItem(CIRC_PART + 10, "inactive_apu_wafer");
+        ACTIVATED_APU_WAFER = ITEMS.addItem(CIRC_PART + 11, "activated_apu_wafer");
+        ACTIVATED_APU_CHIP = ITEMS.addItem(CIRC_PART + 12, "activated_apu_chip");
+        POSITRONIC_CHIP = ITEMS.addItem(CIRC_PART + 18, "positronic_chip");
+        ENGRAVED_POSITRONIC_CHIP = ITEMS.addItem(CIRC_PART + 19, "engraved_positronic_chip");
+        TIME_CRYSTAL = ITEMS.addItem(CIRC_PART + 20, "time_crystal");
+        RF4M = ITEMS.addItem(CIRC_PART + 21, "rf4m");
+        TRPC = ITEMS.addItem(CIRC_PART + 22, "trpc");
+        NEISC = ITEMS.addItem(CIRC_PART + 23, "neisc");
+        SUPREME_SMD_RESISTOR = ITEMS.addItem(CIRC_PART + 30, "supreme_smd_resistor");
+        SUPREME_SMD_TRANSISTOR = ITEMS.addItem(CIRC_PART + 31, "supreme_smd_transistor");
+        SUPREME_SMD_CAPACITOR = ITEMS.addItem(CIRC_PART + 32, "supreme_smd_capacitor");
+        SUPREME_SMD_DIODE = ITEMS.addItem(CIRC_PART + 33, "supreme_smd_diode");
+        SUPREME_SMD_INDUCTOR = ITEMS.addItem(CIRC_PART + 34, "supreme_smd_inductor");
+        OMNITEMPORAL_SMD_RESISTOR = ITEMS.addItem(CIRC_PART + 35, "omnitemporal_smd_resistor");
+        OMNITEMPORAL_SMD_TRANSISTOR = ITEMS.addItem(CIRC_PART + 36, "omnitemporal_smd_transistor");
+        OMNITEMPORAL_SMD_CAPACITOR = ITEMS.addItem(CIRC_PART + 37, "omnitemporal_smd_capacitor");
+        OMNITEMPORAL_SMD_DIODE = ITEMS.addItem(CIRC_PART + 38, "omnitemporal_smd_diode");
+        OMNITEMPORAL_SMD_INDUCTOR = ITEMS.addItem(CIRC_PART + 39, "omnitemporal_smd_inductor");
+        COSMIC_CIRCUIT_BOARD = ITEMS.addItem(CIRC_PART + 40, "cosmic_circuit_board");
+        ENTROPIC_CIRCUIT_BOARD = ITEMS.addItem(CIRC_PART + 41, "entropic_circuit_board");
+        OMNITEMPORAL_CIRCUIT_BOARD = ITEMS.addItem(CIRC_PART + 42, "omnitemporal_circuit_board");
+        POSITRONIC_SOC_WAFER = ITEMS.addItem(CIRC_PART + 43, "positronic_soc_wafer");
+        POSITRONIC_SOC_CHIP = ITEMS.addItem(CIRC_PART + 44, "positronic_soc_chip");
+        ENTROPIC_SOC_WAFER = ITEMS.addItem(CIRC_PART + 45, "entropic_soc_wafer");
+        ENTROPIC_SOC_CHIP = ITEMS.addItem(CIRC_PART + 46, "entropic_soc_chip");
+        OMNITEMPORAL_SOC = ITEMS.addItem(CIRC_PART + 47, "omnitemporal_soc");
+
         MAGNETO_RESONATIC_ULV = ITEMS.addItem(CIRC + 0, "magneto_resonatic_ulv").setUnificationData(OrePrefix.circuit,
                 MarkerMaterials.Tier.ULV);
         MAGNETO_RESONATIC_LV = ITEMS.addItem(CIRC + 1, "magneto_resonatic_lv").setUnificationData(OrePrefix.circuit,
@@ -402,7 +428,16 @@ public class SerendustryMetaItems {
                 MarkerMaterials.Tier.UEV);
         CIRC_ENTROPIC_UIV = ITEMS.addItem(CIRC + 37, "circ_entropic_uiv").setUnificationData(OrePrefix.circuit,
                 MarkerMaterials.Tier.UIV);
-        // todo new circuit themes
+        CIRC_OMNITEMPORAL_UHV = ITEMS.addItem(CIRC + 38, "circ_omnitemporal_uhv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.UHV);
+        CIRC_OMNITEMPORAL_UEV = ITEMS.addItem(CIRC + 39, "circ_omnitemporal_uev").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.UEV);
+        CIRC_OMNITEMPORAL_UIV = ITEMS.addItem(CIRC + 40, "circ_omnitemporal_uiv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.UIV);
+        CIRC_OMNITEMPORAL_UXV = ITEMS.addItem(CIRC + 41, "circ_omnitemporal_uxv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.UXV);
+        CIRC_OMNITEMPORAL_OpV = ITEMS.addItem(CIRC + 42, "circ_omnitemporal_opv").setUnificationData(OrePrefix.circuit,
+                MarkerMaterials.Tier.OpV);
 
         CATALYST_STEELS = ITEMS.addItem(CATALYST + 0, "catalyst_steels").setMaxStackSize(1);
         CATALYST_COPPER_ALLOYS = ITEMS.addItem(CATALYST + 1, "catalyst_copper_alloys").setMaxStackSize(1);
@@ -412,13 +447,15 @@ public class SerendustryMetaItems {
         CATALYST_SOLDERING_ALLOYS = ITEMS.addItem(CATALYST + 5, "catalyst_soldering_alloys").setMaxStackSize(1);
         CATALYST_VANADIUM_ALLOYS = ITEMS.addItem(CATALYST + 6, "catalyst_vanadium_alloys").setMaxStackSize(1);
         CATALYST_TITANIUM_ALLOYS = ITEMS.addItem(CATALYST + 7, "catalyst_titanium_alloys").setMaxStackSize(1);
-        CATALYST_PLATINUM_GROUP_ALLOYS = ITEMS.addItem(CATALYST + 8, "catalyst_platinum_group_alloys").setMaxStackSize(1);
+        CATALYST_PLATINUM_GROUP_ALLOYS = ITEMS.addItem(CATALYST + 8, "catalyst_platinum_group_alloys")
+                .setMaxStackSize(1);
         CATALYST_NAQUADAH_ALLOYS = ITEMS.addItem(CATALYST + 9, "catalyst_naquadah_alloys").setMaxStackSize(1);
         CATALYST_SUPERCONDUCTORS = ITEMS.addItem(CATALYST + 10, "catalyst_superconductors").setMaxStackSize(1);
         CATALYST_ADAMANTIUM = ITEMS.addItem(CATALYST + 11, "catalyst_adamantium").setMaxStackSize(1);
         CATALYST_VIBRANIUM_ALLOY = ITEMS.addItem(CATALYST + 12, "catalyst_vibranium_alloy").setMaxStackSize(1);
         CATALYST_ABYSSAL_ALLOY = ITEMS.addItem(CATALYST + 13, "catalyst_abyssal_alloy").setMaxStackSize(1);
-        CATALYST_OGANESSON_TETRATENNESSIDE = ITEMS.addItem(CATALYST + 14, "catalyst_oganesson_tetratennesside").setMaxStackSize(1);
+        CATALYST_OGANESSON_TETRATENNESSIDE = ITEMS.addItem(CATALYST + 14, "catalyst_oganesson_tetratennesside")
+                .setMaxStackSize(1);
         CATALYST_HALKONITE = ITEMS.addItem(CATALYST + 15, "catalyst_halkonite").setMaxStackSize(1);
         CATALYST_AWAKENED_DRACONIUM = ITEMS.addItem(CATALYST + 16, "catalyst_awakened_draconium").setMaxStackSize(1);
         CATALYST_EXO_HALKONITE = ITEMS.addItem(CATALYST + 17, "catalyst_exo_halkonite").setMaxStackSize(1);

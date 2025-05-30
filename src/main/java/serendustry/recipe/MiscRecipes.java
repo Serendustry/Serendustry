@@ -1,12 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.fluids.store.FluidStorageKeys;
-import gregtech.api.recipes.ModHandler;
-import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.Material;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-
 import static gregtech.api.GTValues.EV;
 import static gregtech.api.GTValues.HV;
 import static gregtech.api.GTValues.IV;
@@ -17,7 +10,6 @@ import static gregtech.api.GTValues.UV;
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.AUTOCLAVE_RECIPES;
-import static gregtech.api.recipes.RecipeMaps.BLAST_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.BREWING_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.CHEMICAL_BATH_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.EXTRACTOR_RECIPES;
@@ -31,7 +23,6 @@ import static gregtech.api.unification.material.Materials.Diamond;
 import static gregtech.api.unification.material.Materials.DistilledWater;
 import static gregtech.api.unification.material.Materials.Glass;
 import static gregtech.api.unification.material.Materials.Graphite;
-import static gregtech.api.unification.material.Materials.Helium;
 import static gregtech.api.unification.material.Materials.Hydrogen;
 import static gregtech.api.unification.material.Materials.Iron;
 import static gregtech.api.unification.material.Materials.Methane;
@@ -71,6 +62,14 @@ import static serendustry.item.material.SerendustryMaterials.WroughtNeutronium;
 import static serendustry.item.material.SerendustryMaterials.Xenoxene;
 import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
 
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+
+import gregtech.api.fluids.store.FluidStorageKeys;
+import gregtech.api.recipes.ModHandler;
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.Material;
+
 public class MiscRecipes {
 
     public static void init() {
@@ -97,12 +96,6 @@ public class MiscRecipes {
                 .fluidInputs(Xenoxene.getFluid(1000))
                 .fluidOutputs(OmniversalLubricant.getFluid(1000))
                 .duration(400).EUt(VA[UHV]).buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder()
-                .fluidInputs(OmniversalLubricant.getFluid(100), Helium.getFluid(FluidStorageKeys.LIQUID, 100))
-                .fluidOutputs(OmniversalLubricant.getPlasma(100), Helium.getPlasma(100))
-                .blastFurnaceTemp(10800)
-                .duration(100).EUt(VA[UHV]).buildAndRegister();
 
         AUTOCLAVE_RECIPES.recipeBuilder()
                 .input(GRAVI_STAR)

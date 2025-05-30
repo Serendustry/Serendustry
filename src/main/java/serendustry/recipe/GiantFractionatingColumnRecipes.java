@@ -1,7 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.unification.material.MarkerMaterials;
-
 import static gregtech.api.GTValues.LuV;
 import static gregtech.api.GTValues.UEV;
 import static gregtech.api.GTValues.VA;
@@ -37,6 +35,8 @@ import static serendustry.item.material.SerendustryMaterials.MolybdeniteLubrican
 import static serendustry.item.material.SerendustryMaterials.Propylene;
 import static serendustry.machine.SerendustryMetaTileEntities.GIANT_FRACTIONATING_COLUMN;
 import static serendustry.machine.SerendustryRecipeMaps.GIANT_FRACTIONATING_COLUMN_RECIPES;
+
+import gregtech.api.unification.material.MarkerMaterials;
 
 public class GiantFractionatingColumnRecipes {
 

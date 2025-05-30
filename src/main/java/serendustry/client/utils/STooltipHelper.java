@@ -1,18 +1,19 @@
 package serendustry.client.utils;
 
-import gregtech.client.utils.TooltipHelper;
-import gregtech.common.ConfigHolder;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
-import serendustry.SValues;
+import static gregtech.api.GTValues.CLIENT_TIME;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static gregtech.api.GTValues.CLIENT_TIME;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
+
+import gregtech.client.utils.TooltipHelper;
+import gregtech.common.ConfigHolder;
+import serendustry.SValues;
 
 public class STooltipHelper extends TooltipHelper {
 
@@ -59,6 +60,7 @@ public class STooltipHelper extends TooltipHelper {
         tooltip.add("");
         tooltip.add(hatchType);
         if (hasPerfectOC) tooltip.add(TooltipHelper.RAINBOW_SLOW + I18n.format("gregtech.machine.perfect_oc"));
+        tooltip.add(I18n.format("serendustry.machine.tierskip.none"));
         tooltip.add("");
         tooltip.add(I18n.format("serendustry.machine.author") + " " + SValues.FORMAT_ENVOIDIA +
                 I18n.format("serendustry.machine.author.envoidia"));
@@ -69,6 +71,7 @@ public class STooltipHelper extends TooltipHelper {
         tooltip.add("");
         tooltip.add(hatchType);
         if (hasPerfectOC) tooltip.add(TooltipHelper.RAINBOW_SLOW + I18n.format("gregtech.machine.perfect_oc"));
+        tooltip.add(I18n.format("serendustry.machine.tierskip.none"));
         tooltip.add("");
         tooltip.add(I18n.format("serendustry.machine.author") + " " + I18n.format(author));
     }

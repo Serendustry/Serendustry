@@ -1,11 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.GTValues;
-import gregtech.api.unification.material.MarkerMaterials;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.CENTRIFUGE_RECIPES;
@@ -59,6 +53,13 @@ import static serendustry.item.material.SerendustryMaterials.Vibranium;
 import static serendustry.item.material.SerendustryMaterials.VibraniumAlloy;
 import static serendustry.machine.SerendustryMetaTileEntities.DEHYDRATOR;
 import static serendustry.machine.SerendustryRecipeMaps.DEHYDRATOR_RECIPES;
+
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+
+import gregtech.api.GTValues;
+import gregtech.api.unification.material.MarkerMaterials;
 
 public class TaraniumChain {
 

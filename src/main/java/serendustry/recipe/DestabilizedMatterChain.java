@@ -1,13 +1,10 @@
 package serendustry.recipe;
 
-import gregtech.api.fluids.store.FluidStorageKeys;
-
 import static gregtech.api.GTValues.UEV;
 import static gregtech.api.GTValues.UIV;
 import static gregtech.api.GTValues.UV;
 import static gregtech.api.GTValues.UXV;
 import static gregtech.api.GTValues.VA;
-import static gregtech.api.recipes.RecipeMaps.BLAST_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.CHEMICAL_BATH_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.CHEMICAL_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.ELECTROLYZER_RECIPES;
@@ -15,7 +12,6 @@ import static gregtech.api.recipes.RecipeMaps.FLUID_SOLIDFICATION_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.FUSION_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.LASER_ENGRAVER_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.VACUUM_RECIPES;
-import static gregtech.api.unification.material.Materials.Helium;
 import static gregtech.api.unification.material.Materials.Neutronium;
 import static gregtech.api.unification.material.Materials.TinAlloy;
 import static gregtech.api.unification.ore.OrePrefix.dust;
@@ -48,12 +44,6 @@ public class DestabilizedMatterChain {
                 .fluidInputs(MagnetoResonatic.getFluid(128)).fluidInputs(Xenoxene.getFluid(32))
                 .fluidOutputs(AtomicResonanceCatalyst.getFluid(96))
                 .duration(50).EUt(VA[UV]).EUToStart(640_000_000).buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder()
-                .fluidInputs(DestabilizedMatter.getFluid(100), Helium.getFluid(FluidStorageKeys.LIQUID, 100))
-                .fluidOutputs(DestabilizedMatter.getPlasma(100), Helium.getPlasma(100))
-                .blastFurnaceTemp(10800)
-                .duration(250).EUt(VA[UV]).buildAndRegister();
 
         LABORATORY_RECIPES.recipeBuilder()
                 .input(dust, AtomicResonanceCatalyst)
