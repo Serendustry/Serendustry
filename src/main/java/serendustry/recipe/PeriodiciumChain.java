@@ -1,5 +1,8 @@
 package serendustry.recipe;
 
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.MarkerMaterials;
+
 import static gregtech.api.GTValues.UIV;
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
@@ -159,9 +162,6 @@ import static serendustry.item.material.SerendustryMaterials.Superheavies;
 import static serendustry.item.material.SerendustryMaterials.Technetium22;
 import static serendustry.machine.SerendustryMetaTileEntities.DISTORTION_ENGINE;
 import static serendustry.machine.SerendustryRecipeMaps.DISTORTION_ENGINE_RECIPES;
-
-import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.MarkerMaterials;
 
 public class PeriodiciumChain {
 

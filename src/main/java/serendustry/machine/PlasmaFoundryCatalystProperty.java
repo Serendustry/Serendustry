@@ -1,7 +1,6 @@
 package serendustry.machine;
 
-import java.util.List;
-
+import gregtech.api.recipes.recipeproperties.RecipeProperty;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.GlStateManager;
@@ -14,7 +13,7 @@ import net.minecraftforge.fml.client.config.GuiUtils;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import gregtech.api.recipes.recipeproperties.RecipeProperty;
+import java.util.List;
 
 public class PlasmaFoundryCatalystProperty extends RecipeProperty<ItemStack[]> {
 

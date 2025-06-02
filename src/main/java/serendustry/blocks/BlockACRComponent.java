@@ -1,12 +1,6 @@
 package serendustry.blocks;
 
-import static gregtech.api.unification.material.Materials.Air;
-import static gregtech.api.unification.material.Materials.Mercury;
-import static gregtech.api.unification.material.Materials.PCBCoolant;
-import static gregtech.api.unification.material.Materials.Propane;
-import static gregtech.api.unification.material.Materials.Water;
-import static serendustry.item.material.SerendustryMaterials.MolybdeniteLubricant;
-
+import gregtech.api.block.VariantBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
@@ -14,10 +8,14 @@ import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fluids.FluidStack;
-
 import org.jetbrains.annotations.NotNull;
 
-import gregtech.api.block.VariantBlock;
+import static gregtech.api.unification.material.Materials.Air;
+import static gregtech.api.unification.material.Materials.Mercury;
+import static gregtech.api.unification.material.Materials.PCBCoolant;
+import static gregtech.api.unification.material.Materials.Propane;
+import static gregtech.api.unification.material.Materials.Water;
+import static serendustry.item.material.SerendustryMaterials.MolybdeniteLubricant;
 
 public class BlockACRComponent extends VariantBlock<BlockACRComponent.ACRComponentType> {
 

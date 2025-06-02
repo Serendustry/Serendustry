@@ -1,5 +1,22 @@
 package serendustry.item.material;
 
+import gregicality.multiblocks.api.unification.GCYMMaterialFlags;
+import gregtech.api.fluids.FluidBuilder;
+import gregtech.api.fluids.store.FluidStorageKey;
+import gregtech.api.fluids.store.FluidStorageKeys;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.info.MaterialIconSet;
+import gregtech.api.unification.material.properties.BlastProperty;
+import gregtech.api.unification.material.properties.BlastProperty.GasTier;
+import gregtech.api.unification.material.properties.DustProperty;
+import gregtech.api.unification.material.properties.FluidProperty;
+import gregtech.api.unification.material.properties.IngotProperty;
+import gregtech.api.unification.material.properties.OreProperty;
+import gregtech.api.unification.material.properties.PropertyKey;
+import gregtech.api.unification.material.properties.ToolProperty;
+import gregtech.api.unification.ore.OrePrefix;
+import serendustry.Serendustry;
+
 import static gregicality.multiblocks.api.unification.GCYMMaterials.Zeron100;
 import static gregtech.api.GTValues.EV;
 import static gregtech.api.GTValues.HV;
@@ -77,6 +94,7 @@ import static gregtech.api.unification.material.Materials.Germanium;
 import static gregtech.api.unification.material.Materials.Glass;
 import static gregtech.api.unification.material.Materials.Gold;
 import static gregtech.api.unification.material.Materials.GraniticMineralSand;
+import static gregtech.api.unification.material.Materials.Graphite;
 import static gregtech.api.unification.material.Materials.HSSG;
 import static gregtech.api.unification.material.Materials.HSSS;
 import static gregtech.api.unification.material.Materials.Hafnium;
@@ -244,23 +262,6 @@ import static gregtech.api.unification.material.info.MaterialIconSet.MAGNETIC;
 import static gregtech.api.unification.material.info.MaterialIconSet.METALLIC;
 import static gregtech.api.unification.material.info.MaterialIconSet.NETHERSTAR;
 import static gregtech.api.unification.material.info.MaterialIconSet.SHINY;
-
-import gregicality.multiblocks.api.unification.GCYMMaterialFlags;
-import gregtech.api.fluids.FluidBuilder;
-import gregtech.api.fluids.store.FluidStorageKey;
-import gregtech.api.fluids.store.FluidStorageKeys;
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.info.MaterialIconSet;
-import gregtech.api.unification.material.properties.BlastProperty;
-import gregtech.api.unification.material.properties.BlastProperty.GasTier;
-import gregtech.api.unification.material.properties.DustProperty;
-import gregtech.api.unification.material.properties.FluidProperty;
-import gregtech.api.unification.material.properties.IngotProperty;
-import gregtech.api.unification.material.properties.OreProperty;
-import gregtech.api.unification.material.properties.PropertyKey;
-import gregtech.api.unification.material.properties.ToolProperty;
-import gregtech.api.unification.ore.OrePrefix;
-import serendustry.Serendustry;
 
 public class SerendustryMaterials {
 
@@ -728,9 +729,92 @@ public class SerendustryMaterials {
 
     public static Material ReissnerNordstromium;
 
-    public static Material FullerenePolymerMatrix;
     public static Material ScUxvSane;
     public static Material Envoite;
+
+    public static Material FullereneSoot;
+    public static Material HeatedFullereneSoot;
+    public static Material DissolvedFullereneSolution;
+    public static Material MixedFullerene;
+    public static Material Fullerene;
+
+    public static Material SilverNitrate;
+    public static Material SilverOxide;
+    public static Material SodiumNitrate;
+    public static Material SilverTetrafluoroborate;
+    public static Material ValericAcid;
+    public static Material /* 5- */ PhenylvalericAcid;
+    public static Material Methyl5phenylpentanoate;
+    public static Material Benzotrichloride;
+    public static Material BenzoylChloride;
+    public static Material SuccinicAcid;
+    public static Material Succinimide;
+    public static Material NBromosuccinimide;
+    public static Material CarbonTetrachloride;
+    public static Material AmmoniumSulfate;
+    public static Material AmmoniumPersulfate;
+    public static Material HydrogenPeroxide;
+    public static Material BenzoylPeroxide;
+    public static Material Methyl5bromo5phenylvalerate;
+
+    public static Material Dichloromethane;
+    public static Material DimethylSulfide;
+    public static Material DMOPST;
+    public static Material Acrylonitrile;
+    public static Material DBU;
+    public static Material oDichlorobenzene;
+    public static Material PCBM;
+    public static Material FluoroboricAcid;
+    public static Material Piperidine;
+    public static Material Pyrrole;
+    public static Material PCBA;
+
+    public static Material Pyridine;
+    public static Material /* 4- */ PyridylpyridiniumChloride;
+    public static Material DMAP;
+    public static Material pToluenesulfonicAcid;
+    public static Material DPTS;
+    public static Material CalciumCarbide;
+    public static Material CalciumCyanimide;
+    public static Material Thiourea;
+    public static Material Diisopropylthiourea; // 1,3?
+    public static Material DIPC;
+    public static Material BenzoicAcid;
+    public static Material Bromobenzene;
+    public static Material Methyl4Vinylbenzoate;
+    public static Material Bromoethane;
+    public static Material Diethylaniline;
+    public static Material LithiumHydride;
+    public static Material AluminiumTrichloride;
+    public static Material LithiumAluminiumHydride;
+    public static Material Diborane;
+    public static Material LithiumTetrafluoroborate;
+    public static Material /* 1,4- */ Butanediol;
+    public static Material Tetrahydrofuran;
+    public static Material Boranetetrahydrofuran;
+    public static Material Boranediethylaniline;
+    public static Material MercuricChloride;
+    public static Material Pinacol;
+    public static Material Pinacolborane;
+    public static Material /* 4- */ Vinylphenylmethanol;
+    public static Material DirtyPCBMSSludge;
+    public static Material PurifiedPCBMSSludge;
+    public static Material PCBMS;
+    public static Material PPCBMS;
+
+    public static Material VibraniumTetroxide;
+    public static Material HydrobromicAcid;
+    public static Material Vibranocene;
+    public static Material ZincBromate;
+    public static Material FleroviumFullereneMatrix;
+
+    public static Material FullerenePolymerMatrix;
+
+    public static Material AmmoniumBisulfate;
+    public static Material SilverBromide;
+// empty id 455
+    public static Material CalciumHydrosulfide;
+    public static Material AluminiumHydride;
 
     // Custom iconsets
     public static final MaterialIconSet INFINITY = new MaterialIconSet("infinity");
@@ -809,7 +893,7 @@ public class SerendustryMaterials {
 
         Material[] addLiquidPlasma = { Flerovium, Phosphorus, Protactinium, Rhenium, Hafnium, Moscovium, Germanium,
                 Selenium, Bromine, Rubidium, Thallium, Tennessine, Oganesson, Scandium, Cadmium, Boron, Calcium,
-                Sodium, Neptunium };
+                Sodium, Neptunium, Graphite };
         for (Material material : addLiquidPlasma) {
             FluidProperty prop = material.getProperty(PropertyKey.FLUID);
             boolean newProp = false;
@@ -3849,12 +3933,7 @@ public class SerendustryMaterials {
                 .build()
                 .setFormula("m", true);
 
-        FullerenePolymerMatrix = new Material.Builder(380, Serendustry.ID("fullerene_polymer_matrix"))
-                .polymer(3).fluid()
-                .color(0x5D2987)
-                .flags(GENERATE_FOIL, GENERATE_RING, GENERATE_DENSE)
-                .fluidPipeProperties(2147483647, 10000, true, true, true, false)
-                .build();
+        // EMPTY ID 380
 
         ScUxvSane = new Material.Builder(381, Serendustry.ID("sc_uxv_sane"))
                 .ingot(3).liquid(new FluidBuilder().temperature(23000))
@@ -3877,6 +3956,540 @@ public class SerendustryMaterials {
                         .temp(10800, GasTier.HIGHEST)
                         .blastStats(VA[UIV], 24000))
                 .fluidPipeProperties(2147483647, 7500, true, true, true, true)
+                .build();
+
+        FullereneSoot = new Material.Builder(383, Serendustry.ID("fullerene_soot"))
+                .liquid(new FluidBuilder())
+                .color(0x77777)
+                .flags(DECOMPOSITION_BY_CENTRIFUGING)
+                .components(Carbon, 1)
+                .build();
+
+        HeatedFullereneSoot = new Material.Builder(384, Serendustry.ID("heated_fullerene_soot"))
+                .liquid(new FluidBuilder().temperature(600))
+                .color(0x999999)
+                .flags(DECOMPOSITION_BY_CENTRIFUGING)
+                .components(Carbon, 1)
+                .build();
+
+        DissolvedFullereneSolution = new Material.Builder(385, Serendustry.ID("dissolved_fullerene_solution"))
+                .liquid(new FluidBuilder().temperature(600))
+                .color(0x77aaaa)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 1)
+                .build();
+
+        MixedFullerene = new Material.Builder(386, Serendustry.ID("mixed_fullerene"))
+                .dust(3)
+                .color(0x777777).iconSet(DULL)
+                .flags(DECOMPOSITION_BY_CENTRIFUGING)
+                .components(Carbon, 1)
+                .build();
+
+        Fullerene = new Material.Builder(387, Serendustry.ID("fullerene"))
+                .dust(3)
+                .color(0x444444).iconSet(DULL)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 60)
+                .build();
+
+        SilverNitrate = new Material.Builder(388, Serendustry.ID("silver_nitrate"))
+                .dust(3)
+                .color(0xaaaaee).iconSet(SHINY)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Silver, 1, Nitrogen, 1, Oxygen, 3)
+                .build();
+
+        SilverOxide = new Material.Builder(389, Serendustry.ID("silver_oxide"))
+                .dust(3)
+                .color(0xaa99ff).iconSet(SHINY)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Silver, 2, Oxygen, 1)
+                .build();
+
+        SodiumNitrate = new Material.Builder(390, Serendustry.ID("sodium_nitrate"))
+                .dust(3)
+                .color(0x7777ff).iconSet(SHINY)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Sodium, 1, Nitrogen, 1, Oxygen, 3)
+                .build();
+
+        SilverTetrafluoroborate = new Material.Builder(391, Serendustry.ID("silver_tetrafluoroborate"))
+                .dust(3)
+                .color(0x88ccff).iconSet(BRIGHT)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Silver, 1, Boron, 1, Fluorine, 4)
+                .build();
+
+        ValericAcid = new Material.Builder(392, Serendustry.ID("valeric_acid"))
+                .liquid(new FluidBuilder())
+                .color(0x774444)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 5, Hydrogen, 10, Oxygen, 2)
+                .build();
+
+        PhenylvalericAcid = new Material.Builder(393, Serendustry.ID("phenylvaleric_acid"))
+                .dust(3)
+                .color(0x552222).iconSet(DULL)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 11, Hydrogen, 14, Oxygen, 2)
+                .build();
+
+        Methyl5phenylpentanoate = new Material.Builder(394, Serendustry.ID("methyl_5_phenylpentanoate"))
+                .liquid(new FluidBuilder())
+                .color(0x995555)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 12, Hydrogen, 16, Oxygen, 2)
+                .build();
+
+        Benzotrichloride = new Material.Builder(395, Serendustry.ID("benzotrichloride"))
+                .liquid(new FluidBuilder())
+                .color(0x335533)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 7, Hydrogen, 5, Chlorine, 3)
+                .build();
+
+        BenzoylChloride = new Material.Builder(396, Serendustry.ID("benzoyl_chloride"))
+                .liquid(new FluidBuilder())
+                .color(0x336622)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 7, Hydrogen, 5, Oxygen, 1, Chlorine, 1)
+                .build();
+
+        BenzoylPeroxide = new Material.Builder(397, Serendustry.ID("benzoyl_peroxide"))
+                .dust(3)
+                .color(0x446633).iconSet(DULL)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 12, Hydrogen, 10, Carbon, 2, Oxygen, 4)
+                .build();
+
+        SuccinicAcid = new Material.Builder(398, Serendustry.ID("succinic_acid"))
+                .dust(3)
+                .color(0x994411).iconSet(DULL)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 4, Hydrogen, 6, Oxygen, 4)
+                .build();
+
+        Succinimide = new Material.Builder(399, Serendustry.ID("succinimide"))
+                .dust(3)
+                .color(0x778811).iconSet(DULL)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 4, Hydrogen, 6, Nitrogen, 1, Oxygen, 2)
+                .build();
+
+        NBromosuccinimide = new Material.Builder(400, Serendustry.ID("n_bromo_succinimide"))
+                .dust(3)
+                .color(0xbb5555).iconSet(DULL)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 4, Hydrogen, 4, Bromine, 1, Nitrogen, 1, Oxygen, 2)
+                .build();
+
+        CarbonTetrachloride = new Material.Builder(401, Serendustry.ID("carbon_tetrachloride"))
+                .liquid(new FluidBuilder())
+                .color(0x224422)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 1, Chlorine, 4)
+                .build();
+
+        AmmoniumSulfate = new Material.Builder(402, Serendustry.ID("ammonium_sulfate"))
+                .dust(3)
+                .color(0x384973).iconSet(DULL)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Nitrogen, 2, Hydrogen, 8, Sulfur, 1, Oxygen, 4)
+                .build();
+
+        AmmoniumPersulfate = new Material.Builder(403, Serendustry.ID("ammonium_persulfate"))
+                .dust(3)
+                .color(0x445633).iconSet(DULL)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Nitrogen, 2, Hydrogen, 8, Sulfur, 2, Oxygen, 8)
+                .build();
+
+        HydrogenPeroxide = new Material.Builder(404, Serendustry.ID("hydrogen_peroxide"))
+                .liquid(new FluidBuilder())
+                .color(0xbbbbff)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Hydrogen, 2, Oxygen, 2)
+                .build();
+
+        Methyl5bromo5phenylvalerate = new Material.Builder(405, Serendustry.ID("methyl_5_bromo_5_phenylvalerate"))
+                .liquid(new FluidBuilder())
+                .color(0x661122)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 12, Hydrogen, 15, Bromine, 1, Oxygen, 2)
+                .build();
+
+        Dichloromethane = new Material.Builder(406, Serendustry.ID("dichloromethane"))
+                .liquid(new FluidBuilder())
+                .color(0x116622)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 1, Hydrogen, 2, Chlorine, 2)
+                .build();
+
+        DimethylSulfide = new Material.Builder(407, Serendustry.ID("dimethyl_sulfide"))
+                .liquid(new FluidBuilder())
+                .color(0x555500)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 2, Hydrogen, 6, Sulfur, 1)
+                .build();
+
+        DMOPST = new Material.Builder(408, Serendustry.ID("dmopst"))
+                .dust(3)
+                .color(0xbbff22).iconSet(SHINY)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 14, Hydrogen, 21, Oxygen, 2, Sulfur, 1, Boron, 1, Fluorine, 4)
+                .build();
+
+        Acrylonitrile = new Material.Builder(409, Serendustry.ID("acrylonitrile"))
+                .liquid(new FluidBuilder())
+                .color(0x001123)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 3, Hydrogen, 3, Nitrogen, 1)
+                .build();
+
+        DBU = new Material.Builder(410, Serendustry.ID("dbu"))
+                .liquid(new FluidBuilder())
+                .color(0x44AA11)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 9, Hydrogen, 16, Nitrogen, 2)
+                .build();
+
+        oDichlorobenzene = new Material.Builder(411, Serendustry.ID("o_dichlorobenzene"))
+                .liquid(new FluidBuilder())
+                .color(0x234975)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 6, Hydrogen, 4, Chlorine, 2)
+                .build();
+
+        FluoroboricAcid = new Material.Builder(412, Serendustry.ID("fluoroboric_acid"))
+                .liquid(new FluidBuilder())
+                .color(0xDDFFDD)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Hydrogen, 1, Boron, 1, Fluorine, 4)
+                .build();
+
+        Piperidine = new Material.Builder(413, Serendustry.ID("piperidine"))
+                .liquid(new FluidBuilder())
+                .color(0x238974)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 5, Hydrogen, 11, Nitrogen, 1)
+                .build();
+
+        Pyrrole = new Material.Builder(414, Serendustry.ID("pyrrole"))
+                .liquid(new FluidBuilder())
+                .color(0x598673)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 4, Hydrogen, 5, Nitrogen, 1)
+                .build();
+
+        PCBM = new Material.Builder(415, Serendustry.ID("pcbm"))
+                .dust(3)
+                .color(0x932111).iconSet(SHINY)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 72, Hydrogen, 14, Oxygen, 2)
+                .build();
+
+        PCBA = new Material.Builder(416, Serendustry.ID("pcba"))
+                .dust(3)
+                .color(0x118593).iconSet(SHINY)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 71, Hydrogen, 12, Oxygen, 2)
+                .build();
+
+        Pyridine = new Material.Builder(417, Serendustry.ID("pyridine"))
+                .liquid(new FluidBuilder())
+                .color(0x987542)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 5, Hydrogen, 5, Nitrogen, 1)
+                .build();
+
+        PyridylpyridiniumChloride = new Material.Builder(418, Serendustry.ID("pyridylpyridinium_chloride"))
+                .dust(3)
+                .color(0x849752).iconSet(DULL)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 10, Hydrogen, 9, Chlorine, 1, Nitrogen, 2)
+                .build();
+
+        DMAP = new Material.Builder(419, Serendustry.ID("dmap"))
+                .dust(3)
+                .color(0x237843).iconSet(DULL)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 7, Hydrogen, 10, Nitrogen, 2)
+                .build();
+
+        pToluenesulfonicAcid = new Material.Builder(420, Serendustry.ID("p_toluenesulfonic_acid"))
+                .dust(3)
+                .color(0xabfede).iconSet(SHINY)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 7, Hydrogen, 8, Oxygen, 3, Sulfur, 1)
+                .build();
+
+        DPTS = new Material.Builder(421, Serendustry.ID("dpts"))
+                .dust(3)
+                .color(0xab3289).iconSet(DULL)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 14, Hydrogen, 10, Nitrogen, 2, Oxygen, 3, Sulfur, 1)
+                .build();
+
+        CalciumCarbide = new Material.Builder(422, Serendustry.ID("calcium_carbide"))
+                .ingot(3)
+                .color(0xddaa99).iconSet(SHINY)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Calcium, 1, Carbon, 2)
+                .build();
+
+        CalciumCyanimide = new Material.Builder(423, Serendustry.ID("calcium_cyanimide"))
+                .dust(3)
+                .color(0xdd99dd).iconSet(SHINY)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Calcium, 1, Carbon, 1, Nitrogen, 2)
+                .build();
+
+        Thiourea = new Material.Builder(424, Serendustry.ID("thiourea"))
+                .dust(3)
+                .color(0x892374).iconSet(DULL)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Nitrogen, 2, Hydrogen, 4, Sulfur, 1, Carbon, 1)
+                .build();
+
+        Diisopropylthiourea = new Material.Builder(459, Serendustry.ID("diisopropylthiourea"))
+                .dust(3)
+                .color(0x389745).iconSet(DULL)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 7, Hydrogen, 16, Nitrogen, 2, Sulfur, 1)
+                .build();
+
+        DIPC = new Material.Builder(425, Serendustry.ID("dipc"))
+                .dust(3)
+                .color(0x756232).iconSet(DULL)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 7, Hydrogen, 14, Nitrogen, 2)
+                .build();
+
+        BenzoicAcid = new Material.Builder(426, Serendustry.ID("benzoic_acid"))
+                .dust(3)
+                .color(0x346851).iconSet(DULL)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 7, Hydrogen, 6, Oxygen, 2)
+                .build();
+
+        Bromobenzene = new Material.Builder(427, Serendustry.ID("bromobenzene"))
+                .liquid(new FluidBuilder())
+                .color(0xaa7348)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 6, Hydrogen, 5, Bromine, 1)
+                .build();
+
+        Methyl4Vinylbenzoate = new Material.Builder(428, Serendustry.ID("methyl_4_vinylbenzoate"))
+                .liquid(new FluidBuilder())
+                .color(0x843975)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 10, Hydrogen, 10, Oxygen, 2)
+                .build();
+
+        Bromoethane = new Material.Builder(429, Serendustry.ID("bromoethane"))
+                .liquid(new FluidBuilder())
+                .color(0x843975)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 2, Hydrogen, 5, Bromine, 1)
+                .build();
+
+        Diethylaniline = new Material.Builder(430, Serendustry.ID("diethylaniline"))
+                .liquid(new FluidBuilder())
+                .color(0x69cc75)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 10, Hydrogen, 15, Nitrogen, 1)
+                .build();
+
+        LithiumHydride = new Material.Builder(431, Serendustry.ID("lithium_hydride"))
+                .dust(3)
+                .color(0x943785).iconSet(SHINY)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Lithium, 1, Hydrogen, 1)
+                .build();
+
+        AluminiumTrichloride = new Material.Builder(432, Serendustry.ID("aluminium_trichloride"))
+                .dust(3)
+                .color(0x2255AA).iconSet(BRIGHT)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Aluminium, 1, Chlorine, 3)
+                .build();
+
+        LithiumAluminiumHydride = new Material.Builder(433, Serendustry.ID("lithium_aluminium_hydride"))
+                .dust(3)
+                .color(0x6611BB).iconSet(BRIGHT)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Lithium, 1, Aluminium, 1, Hydrogen, 4)
+                .build();
+
+        Diborane = new Material.Builder(434, Serendustry.ID("diborane"))
+                .liquid(new FluidBuilder())
+                .color(0x348849)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Boron, 2, Hydrogen, 6)
+                .build();
+
+        LithiumTetrafluoroborate = new Material.Builder(435, Serendustry.ID("lithium_tetrafluoroborate"))
+                .dust(3)
+                .color(0x283974).iconSet(BRIGHT)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Lithium, 1, Boron, 1, Fluorine, 4)
+                .build();
+
+        Tetrahydrofuran = new Material.Builder(436, Serendustry.ID("tetrahydrofuran"))
+                .liquid(new FluidBuilder())
+                .color(0x283744)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 4, Hydrogen, 8, Oxygen, 1)
+                .build();
+
+        Boranetetrahydrofuran = new Material.Builder(437, Serendustry.ID("boranetetrahydrofuran"))
+                .liquid(new FluidBuilder())
+                .color(0x893475)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 4, Hydrogen, 11, Boron, 1, Oxygen, 1)
+                .build();
+
+        Boranediethylaniline = new Material.Builder(438, Serendustry.ID("boranediethylaniline"))
+                .liquid(new FluidBuilder())
+                .color(0x347346)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 10, Hydrogen, 18, Boron, 1, Nitrogen, 1)
+                .build();
+
+        MercuricChloride = new Material.Builder(439, Serendustry.ID("mercuric_chloride"))
+                .liquid(new FluidBuilder())
+                .color(0xF0F0FF)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Mercury, 1, Chlorine, 2)
+                .build();
+
+        Pinacol = new Material.Builder(440, Serendustry.ID("pinacol"))
+                .liquid(new FluidBuilder())
+                .color(0x345756)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 6, Hydrogen, 14, Oxygen, 2)
+                .build();
+
+        Pinacolborane = new Material.Builder(441, Serendustry.ID("pinacolborane"))
+                .liquid(new FluidBuilder())
+                .color(0x785749)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 6, Hydrogen, 13, Oxygen, 2, Boron, 1)
+                .build();
+
+        Vinylphenylmethanol = new Material.Builder(442, Serendustry.ID("vinylphenylmethanol"))
+                .liquid(new FluidBuilder())
+                .color(0x662222)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 9, Hydrogen, 10, Oxygen, 1)
+                .build();
+
+        DirtyPCBMSSludge = new Material.Builder(443, Serendustry.ID("dirty_pcbm_s_sludge"))
+                .liquid(new FluidBuilder())
+                .color(0x782342)
+                .flags(DISABLE_DECOMPOSITION)
+                .build()
+                .setFormula("C80H21O2+CH2Cl2?");
+
+        PurifiedPCBMSSludge = new Material.Builder(444, Serendustry.ID("purified_pcbm_s_sludge"))
+                .liquid(new FluidBuilder())
+                .color(0x842393)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .build()
+                .setFormula("C80H21O2?");
+
+        PCBMS = new Material.Builder(445, Serendustry.ID("pcbm_s"))
+                .dust(3)
+                .color(0x823497).iconSet(SHINY)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 80, Hydrogen, 21, Oxygen, 2)
+                .build();
+
+        PPCBMS = new Material.Builder(446, Serendustry.ID("p_pcbm_s"))
+                .dust(3)
+                .color(0x3366CC).iconSet(BRIGHT)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 80, Hydrogen, 21, Oxygen, 2)
+                .build();
+
+        VibraniumTetroxide = new Material.Builder(447, Serendustry.ID("vibranium_tetroxide"))
+                .dust(3)
+                .color(0xAA33EE).iconSet(SHINY)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Vibranium, 1, Oxygen, 4)
+                .build();
+
+        HydrobromicAcid = new Material.Builder(448, Serendustry.ID("hydrobromic_acid"))
+                .liquid(new FluidBuilder())
+                .color(0xAA3854)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Hydrogen, 1, Bromine, 1)
+                .build();
+
+        Vibranocene = new Material.Builder(449, Serendustry.ID("vibranocene"))
+                .dust(3)
+                .color(0xB711FF).iconSet(BRIGHT)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Vibranium, 1, Carbon, 10, Hydrogen, 10)
+                .build();
+
+        ZincBromate = new Material.Builder(450, Serendustry.ID("zinc_bromate"))
+                .dust(3)
+                .color(0x328974).iconSet(BRIGHT)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Zinc, 1, Bromine, 2, Oxygen, 6)
+                .build();
+
+        FleroviumFullereneMatrix = new Material.Builder(451, Serendustry.ID("flerovium_fullerene_matrix"))
+                .dust(3)
+                .color(0xDDDDFF).iconSet(BRIGHT)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Flerovium, 1, Vibranocene, 1, Fullerene, 1, paraXylene, 1)
+                .build();
+
+        FullerenePolymerMatrix = new Material.Builder(452, Serendustry.ID("fullerene_polymer_matrix"))
+                .polymer(3).fluid()
+                .color(0x5D2987)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(FleroviumFullereneMatrix, 2, PPCBMS, 4, Infinity, 1)
+                .flags(GENERATE_FOIL, GENERATE_RING, GENERATE_DENSE)
+                .fluidPipeProperties(2147483647, 10000, true, true, true, false)
+                .build();
+
+        AmmoniumBisulfate = new Material.Builder(453, Serendustry.ID("ammonium_bisulfate"))
+                .dust(3)
+                .color(0x829374).iconSet(DULL)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Nitrogen, 1, Hydrogen, 5, Sulfur, 1, Oxygen, 4)
+                .build();
+
+        SilverBromide = new Material.Builder(454, Serendustry.ID("silver_bromide"))
+                .dust(3)
+                .color(0x9900DD).iconSet(SHINY)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Silver, 1, Bromine, 1)
+                .build();
+
+        CalciumHydrosulfide = new Material.Builder(456, Serendustry.ID("calcium_hydrosulfide"))
+                .dust(3)
+                .color(0x293874).iconSet(SHINY)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Calcium, 1, Hydrogen, 2, Sulfur, 2)
+                .build();
+
+        AluminiumHydride = new Material.Builder(457, Serendustry.ID("aluminium_hydride"))
+                .dust(3)
+                .color(0x2135D3).iconSet(SHINY)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Aluminium, 1, Hydrogen, 3)
+                .build();
+
+        Butanediol = new Material.Builder(458, Serendustry.ID("butanediol"))
+                .liquid(new FluidBuilder())
+                .color(0x894327)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Carbon, 4, Hydrogen, 10, Oxygen, 2)
                 .build();
     }
 }

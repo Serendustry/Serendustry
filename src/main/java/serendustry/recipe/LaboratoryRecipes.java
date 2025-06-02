@@ -1,5 +1,7 @@
 package serendustry.recipe;
 
+import gregtech.api.unification.material.MarkerMaterials;
+
 import static gregtech.api.GTValues.EV;
 import static gregtech.api.GTValues.IV;
 import static gregtech.api.GTValues.L;
@@ -74,8 +76,6 @@ import static serendustry.item.material.SerendustryMaterials.SemiconductorGradeS
 import static serendustry.item.material.SerendustryMaterials.Teflon;
 import static serendustry.machine.SerendustryMetaTileEntities.INDUSTRIAL_LABORATORY;
 import static serendustry.machine.SerendustryRecipeMaps.LABORATORY_RECIPES;
-
-import gregtech.api.unification.material.MarkerMaterials;
 
 public class LaboratoryRecipes {
 

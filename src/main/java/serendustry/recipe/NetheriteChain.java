@@ -1,5 +1,7 @@
 package serendustry.recipe;
 
+import gregtech.api.unification.ore.OrePrefix;
+
 import static gregtech.api.GTValues.HV;
 import static gregtech.api.GTValues.MV;
 import static gregtech.api.GTValues.VA;
@@ -27,8 +29,6 @@ import static serendustry.item.material.SerendustryMaterials.NetheritePoorAncien
 import static serendustry.item.material.SerendustryMaterials.NetheriteRichAncientDebris;
 import static serendustry.item.material.SerendustryMaterials.NetherizedDiamond;
 import static serendustry.item.material.SerendustryMaterials.RawAncientDebris;
-
-import gregtech.api.unification.ore.OrePrefix;
 
 public class NetheriteChain {
 

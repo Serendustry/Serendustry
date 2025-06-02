@@ -1,5 +1,10 @@
 package serendustry.recipe;
 
+import gregtech.api.fluids.store.FluidStorageKeys;
+import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.ore.OrePrefix;
+
 import static gregtech.api.GTValues.UEV;
 import static gregtech.api.GTValues.UHV;
 import static gregtech.api.GTValues.UIV;
@@ -70,11 +75,6 @@ import static serendustry.item.material.SerendustryMaterials.YellowStarMatter;
 import static serendustry.machine.SerendustryMetaTileEntities.NEBULAIC_NEXUS;
 import static serendustry.machine.SerendustryRecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.NEBULAIC_NEXUS_RECIPES;
-
-import gregtech.api.fluids.store.FluidStorageKeys;
-import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.ore.OrePrefix;
 
 public class StarMatterRecipes {
 

@@ -1,5 +1,10 @@
 package serendustry.recipe;
 
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.ore.OrePrefix;
+
 import static gregtech.api.GTValues.UEV;
 import static gregtech.api.GTValues.UHV;
 import static gregtech.api.GTValues.UV;
@@ -30,11 +35,6 @@ import static serendustry.item.material.SerendustryMaterials.SelfRepairingNanobo
 import static serendustry.item.material.SerendustryMaterials.SentientNanobots;
 import static serendustry.item.material.SerendustryMaterials.TengamAttuned;
 import static serendustry.item.material.SerendustryMaterials.VibraniumAlloy;
-
-import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.ore.OrePrefix;
 
 public class SelfRepairingNanobotsRecipes {
 

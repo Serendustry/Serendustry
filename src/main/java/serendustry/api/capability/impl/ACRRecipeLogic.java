@@ -1,16 +1,15 @@
 package serendustry.api.capability.impl;
 
-import static gregtech.api.recipes.logic.OverclockingLogic.PERFECT_OVERCLOCK_DURATION_DIVISOR;
-
-import java.util.List;
-
-import net.minecraftforge.fluids.FluidStack;
-
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
+import net.minecraftforge.fluids.FluidStack;
 import serendustry.api.capability.IACRComponent;
 import serendustry.machine.MetaTileEntityAdvancedChemicalReactor;
+
+import java.util.List;
+
+import static gregtech.api.recipes.logic.OverclockingLogic.PERFECT_OVERCLOCK_DURATION_DIVISOR;
 
 public class ACRRecipeLogic extends MultiblockRecipeLogic {
 

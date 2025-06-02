@@ -1,26 +1,5 @@
 package serendustry.machine;
 
-import static gregtech.api.util.RelativeDirection.DOWN;
-import static gregtech.api.util.RelativeDirection.FRONT;
-import static gregtech.api.util.RelativeDirection.LEFT;
-
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.function.Supplier;
-
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
@@ -38,6 +17,15 @@ import gregtech.client.renderer.ICubeRenderer;
 import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.core.sound.GTSoundEvents;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import serendustry.SValues;
 import serendustry.api.SerendustryAPI;
 import serendustry.blocks.BlockEICHammerCasing;
@@ -47,6 +35,16 @@ import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.client.utils.STooltipHelper;
 import serendustry.machine.structure.StructureDefinition;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.function.Supplier;
+
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
 
 public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblockController {
 

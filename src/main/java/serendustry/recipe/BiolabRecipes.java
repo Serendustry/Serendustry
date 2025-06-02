@@ -1,5 +1,14 @@
 package serendustry.recipe;
 
+import gregtech.api.items.metaitem.MetaItem;
+import gregtech.api.recipes.ModHandler;
+import gregtech.api.recipes.chance.output.ChancedOutputLogic;
+import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.common.blocks.BlockCleanroomCasing;
+import gregtech.common.blocks.MetaBlocks;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+
 import static gregtech.api.GTValues.HV;
 import static gregtech.api.GTValues.IV;
 import static gregtech.api.GTValues.LV;
@@ -56,16 +65,6 @@ import static serendustry.item.material.SerendustryMaterials.YeastExtract;
 import static serendustry.item.material.SerendustryMaterials.YeastRichMixture;
 import static serendustry.machine.SerendustryMetaTileEntities.BIOLAB;
 import static serendustry.machine.SerendustryRecipeMaps.BIOLAB_RECIPES;
-
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-
-import gregtech.api.items.metaitem.MetaItem;
-import gregtech.api.recipes.ModHandler;
-import gregtech.api.recipes.chance.output.ChancedOutputLogic;
-import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.common.blocks.BlockCleanroomCasing;
-import gregtech.common.blocks.MetaBlocks;
 
 public class BiolabRecipes {
 

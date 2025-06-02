@@ -1,5 +1,7 @@
 package serendustry.recipe;
 
+import net.minecraft.init.Blocks;
+
 import static gregtech.api.GTValues.EV;
 import static gregtech.api.GTValues.HV;
 import static gregtech.api.GTValues.IV;
@@ -156,8 +158,6 @@ import static serendustry.item.material.SerendustryMaterials.Quantium;
 import static serendustry.item.material.SerendustryMaterials.Rhopalthenit;
 import static serendustry.item.material.SerendustryMaterials.StellarAlloy;
 import static serendustry.item.material.SerendustryMaterials.Thaumium;
-
-import net.minecraft.init.Blocks;
 
 public class MysteriousBlobRecipes {
 

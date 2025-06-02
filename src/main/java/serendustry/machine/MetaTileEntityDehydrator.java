@@ -1,18 +1,5 @@
 package serendustry.machine;
 
-import static gregtech.api.util.RelativeDirection.DOWN;
-import static gregtech.api.util.RelativeDirection.FRONT;
-import static gregtech.api.util.RelativeDirection.LEFT;
-
-import java.util.List;
-
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
-
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
@@ -21,6 +8,11 @@ import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.MetaBlocks;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import serendustry.SValues;
 import serendustry.blocks.BlockSerendustryMetalCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
@@ -28,6 +20,12 @@ import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.client.utils.STooltipHelper;
 import serendustry.item.material.SerendustryMaterials;
 import serendustry.machine.structure.StructureDefinition;
+
+import java.util.List;
+
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
 
 public class MetaTileEntityDehydrator extends RecipeMapMultiblockController {
 

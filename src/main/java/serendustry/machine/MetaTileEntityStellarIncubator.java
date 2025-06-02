@@ -1,21 +1,5 @@
 package serendustry.machine;
 
-import static gregtech.api.util.RelativeDirection.DOWN;
-import static gregtech.api.util.RelativeDirection.FRONT;
-import static gregtech.api.util.RelativeDirection.LEFT;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Nonnull;
-
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
-
-import org.jetbrains.annotations.Nullable;
-
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
@@ -30,12 +14,25 @@ import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 import serendustry.SValues;
 import serendustry.blocks.BlockSerendustryMetalCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.client.utils.STooltipHelper;
 import serendustry.machine.structure.StructureStellarIncubator;
+
+import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.List;
+
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
 
 public class MetaTileEntityStellarIncubator extends RecipeMapMultiblockController {
 

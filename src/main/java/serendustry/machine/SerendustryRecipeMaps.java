@@ -44,7 +44,7 @@ public class SerendustryRecipeMaps {
     public static final RecipeMap<SimpleRecipeBuilder> CRYSTALLIZER_RECIPES = new RecipeMap<>(
             "crystallizer", 4, 1, 2, 0, new SimpleRecipeBuilder(), false);
     public static final RecipeMapACR ACR_RECIPES = new RecipeMapACR(
-            "advanced_chemical_reactor", 6, 3, 4, 3, false);
+            "advanced_chemical_reactor", 6, 3, 4, 4, false);
     public static final RecipeMap<SimpleRecipeBuilder> EMPYREAN_RECIPES = new RecipeMap<>(
             "empyrean", 6, 1, 0, 0, new SimpleRecipeBuilder(), false);
     public static final RecipeMap<SimpleRecipeBuilder> DISTORTION_ENGINE_RECIPES = new RecipeMap<>(

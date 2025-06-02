@@ -1,11 +1,10 @@
 package serendustry.machine;
 
-import net.minecraft.item.ItemStack;
-
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.util.ItemStackHashStrategy;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenCustomHashMap;
+import net.minecraft.item.ItemStack;
 
 public class RecipeMapPlasmaFoundry extends
                                     RecipeMap<PlasmaFoundryRecipeBuilder> {

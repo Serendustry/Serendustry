@@ -1,13 +1,12 @@
 package serendustry.item;
 
-import net.minecraft.item.Item;
-
 import gregtech.api.GTValues;
 import gregtech.api.items.metaitem.ElectricStats;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.items.metaitem.StandardMetaItem;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.ore.OrePrefix;
+import net.minecraft.item.Item;
 import serendustry.item.behavior.WasteExtractorBehavior;
 
 public class SerendustryMetaItems {

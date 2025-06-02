@@ -1,5 +1,9 @@
 package serendustry.recipe;
 
+import gregtech.api.GTValues;
+import serendustry.blocks.BlockSerendustryMultiCasing;
+import serendustry.blocks.SerendustryMetaBlocks;
+
 import static gregtech.api.GTValues.IV;
 import static gregtech.api.GTValues.LuV;
 import static gregtech.api.GTValues.UEV;
@@ -125,10 +129,6 @@ import static serendustry.item.material.SerendustryMaterials.Technetium22;
 import static serendustry.item.material.SerendustryMaterials.Thaumium;
 import static serendustry.machine.SerendustryMetaTileEntities.ADVANCED_FUSION_REACTOR;
 import static serendustry.machine.SerendustryMetaTileEntities.MEGA_FUSION_REACTOR;
-
-import gregtech.api.GTValues;
-import serendustry.blocks.BlockSerendustryMultiCasing;
-import serendustry.blocks.SerendustryMetaBlocks;
 
 public class LargeAlloySmelterRecipes {
 

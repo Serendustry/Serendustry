@@ -1,5 +1,8 @@
 package serendustry.recipe;
 
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.ore.OrePrefix;
+
 import static gregtech.api.GTValues.UEV;
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.AUTOCLAVE_RECIPES;
@@ -40,9 +43,6 @@ import static serendustry.item.material.SerendustryMaterials.TiberiumRiparius;
 import static serendustry.item.material.SerendustryMaterials.TiberiumVinifera;
 import static serendustry.machine.SerendustryRecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.HP_LASER_ARRAY_RECIPES;
-
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.ore.OrePrefix;
 
 public class QCDMRecipes {
 

@@ -1,7 +1,14 @@
 package serendustry.recipe;
 
+import gregtech.api.GTValues;
+import gregtech.api.recipes.builders.SimpleRecipeBuilder;
+import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.properties.PropertyKey;
+
 import static gregtech.api.GTValues.UEV;
 import static gregtech.api.GTValues.UIV;
+import static gregtech.api.GTValues.UXV;
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregtech.api.unification.material.Materials.Aluminium;
@@ -19,6 +26,7 @@ import static gregtech.api.unification.material.Materials.Chlorine;
 import static gregtech.api.unification.material.Materials.Chrome;
 import static gregtech.api.unification.material.Materials.Cobalt;
 import static gregtech.api.unification.material.Materials.Copper;
+import static gregtech.api.unification.material.Materials.Flerovium;
 import static gregtech.api.unification.material.Materials.Fluorine;
 import static gregtech.api.unification.material.Materials.Gallium;
 import static gregtech.api.unification.material.Materials.Germanium;
@@ -37,6 +45,7 @@ import static gregtech.api.unification.material.Materials.Mercury;
 import static gregtech.api.unification.material.Materials.Molybdenum;
 import static gregtech.api.unification.material.Materials.Moscovium;
 import static gregtech.api.unification.material.Materials.Neon;
+import static gregtech.api.unification.material.Materials.Neptunium;
 import static gregtech.api.unification.material.Materials.Nickel;
 import static gregtech.api.unification.material.Materials.Niobium;
 import static gregtech.api.unification.material.Materials.Nitrogen;
@@ -84,35 +93,29 @@ import static gregtech.common.items.MetaItems.CONVEYOR_MODULE_UIV;
 import static gregtech.common.items.MetaItems.ELECTRIC_PISTON_UIV;
 import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UIV;
 import static gregtech.common.items.MetaItems.ROBOT_ARM_UIV;
+import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_BEYOND;
 import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_END;
 import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_NETHER;
 import static serendustry.item.SerendustryMetaItems.STELLAR_ESSENCE_OVERWORLD;
 import static serendustry.item.material.SerendustryMaterials.AwakenedDraconium;
 import static serendustry.item.material.SerendustryMaterials.DeepDarkSteel;
-import static serendustry.item.material.SerendustryMaterials.Dragonblood;
+import static serendustry.item.material.SerendustryMaterials.Dilithium;
 import static serendustry.item.material.SerendustryMaterials.HalkoniteSteel;
 import static serendustry.item.material.SerendustryMaterials.Hypogen;
 import static serendustry.item.material.SerendustryMaterials.Infinity;
 import static serendustry.item.material.SerendustryMaterials.Quantium40;
 import static serendustry.item.material.SerendustryMaterials.Realitium;
 import static serendustry.item.material.SerendustryMaterials.SentientNanobots;
-import static serendustry.item.material.SerendustryMaterials.Trilithium;
 import static serendustry.machine.SerendustryMetaTileEntities.STELLAR_ENGINE;
 import static serendustry.machine.SerendustryMetaTileEntities.STELLAR_INCUBATOR;
 import static serendustry.machine.SerendustryRecipeMaps.STELLAR_ENGINE_RECIPES;
-
-import gregtech.api.GTValues;
-import gregtech.api.recipes.builders.SimpleRecipeBuilder;
-import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.properties.PropertyKey;
 
 public class StellarEngineRecipes {
 
     public static void init() {
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, AwakenedDraconium, 32)
-                .input(gemExquisite, Trilithium, 64)
+                .input(gemExquisite, Dilithium, 64)
                 .input(circuit, MarkerMaterials.Tier.UIV, 32)
                 .input(circuit, MarkerMaterials.Tier.UEV, 64)
                 .input(FIELD_GENERATOR_UIV, 16)
@@ -130,7 +133,7 @@ public class StellarEngineRecipes {
                 .fluidInputs(SentientNanobots.getFluid(144 * 64),
                         Hypogen.getFluid(144 * 32),
                         Infinity.getFluid(144 * 64),
-                        Dragonblood.getFluid(144 * 64))
+                        Indium.getPlasma(144 * 512))
                 .output(STELLAR_ENGINE)
                 .stationResearch(b -> b
                         .researchStack(STELLAR_INCUBATOR.getStackForm())
@@ -155,7 +158,7 @@ public class StellarEngineRecipes {
             boolean isSolid = material.hasProperty(PropertyKey.DUST) || material.hasProperty(PropertyKey.INGOT) ||
                     material.hasProperty(PropertyKey.GEM);
 
-            builder.fluidOutputs(material.getPlasma(isSolid ? 36_000_000 : 250_000_000)); // 250,000 ingots
+            builder.fluidOutputs(material.getPlasma(isSolid ? 36_000_000 : 250_000_000)); // 250,000 ingots / buckets
         }
         builder.fluidOutputs(Realitium.getFluid(250))
                 .duration(20 * 60 * 60 / 4 * 4096)
@@ -188,10 +191,18 @@ public class StellarEngineRecipes {
                 .EUt(GTValues.VA[UIV])
                 .buildAndRegister();
 
+        STELLAR_ENGINE_RECIPES.recipeBuilder()
+                .input(STELLAR_ESSENCE_BEYOND)
+                .fluidOutputs(Neptunium.getPlasma(36_000_000),
+                        Flerovium.getPlasma(36_000_000),
+                        Realitium.getFluid(54000))
+                .duration(20 * 60 * 60 * 4 * 4096)
+                .EUt(GTValues.VA[UXV])
+                .buildAndRegister();
         /*
-         * Realitium/run: 250; 1,500; 9,000
-         * EHK/run: 118.008; 708.048; 4,248.2875
-         * Total EU/run: 2.473e15 (2.4 Quadrillion); 9.895e15; 3.958e16 (39.5 Quadrillion)
+         * Realitium/run: 250; 1,500; 9,000; 54,000
+         * EHK/run: 118.008; 708.048; 4,248.2875; 25,489.725
+         * Total EU/run: 2.473e15 (2.4 Quadrillion); 9.895e15; 3.958e16 (39.5 Quadrillion); 1.588e17 (158.8 Quadrillion)
          *
          * UIV 4,096A Laser: 6 POCs (137,438,953,500 EU/t)
          * Durations: 900s; 3,600s; 14,400s
@@ -201,12 +212,10 @@ public class StellarEngineRecipes {
          * Fluid: 27,777.777L/s; 69,444.44L/s; 17,361.11L/s
          * Solid: 277.77I/s; 69.44I/s; 17.36I/s
          * 
-         * UXV 4,096A Laser: 7 POCs (549,755,813,600 EU/t)
-         * Durations: 225s; 900s; 3,600s
-         * Realitium/s: 1.108; 1.664; 2.5
-         * s/EHK: 1.912; 1.273; 0.8474
+         * UXV 4,096A Laser: 7 POCs (6 for beyond) (549,755,813,600 EU/t)
+         * Durations: 225s; 900s; 3,600s; 14,400s
+         * Realitium/s: 1.108; 1.664; 2.5; 3.75
+         * s/EHK: 1.912; 1.273; 0.8474; 0.5649
          */
-
-        // todo ascended SEssence
     }
 }

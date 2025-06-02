@@ -1,5 +1,8 @@
 package serendustry.recipe;
 
+import gregtech.api.GTValues;
+import gregtech.api.unification.material.MarkerMaterials;
+
 import static gregtech.api.GTValues.HV;
 import static gregtech.api.GTValues.MV;
 import static gregtech.api.GTValues.VA;
@@ -26,9 +29,6 @@ import static serendustry.item.material.SerendustryMaterials.SemiconductorGradeS
 import static serendustry.item.material.SerendustryMaterials.Silane;
 import static serendustry.machine.SerendustryMetaTileEntities.CVD_CHAMBER;
 import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
-
-import gregtech.api.GTValues;
-import gregtech.api.unification.material.MarkerMaterials;
 
 public class SemiconductorGradeSiliconChain {
 

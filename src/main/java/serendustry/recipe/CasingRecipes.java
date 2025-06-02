@@ -1,5 +1,25 @@
 package serendustry.recipe;
 
+import gregtech.api.GTValues;
+import gregtech.api.fluids.store.FluidStorageKeys;
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.common.ConfigHolder;
+import gregtech.common.blocks.BlockFusionCasing;
+import gregtech.common.blocks.BlockMachineCasing;
+import gregtech.common.blocks.BlockMultiblockCasing;
+import gregtech.common.blocks.MetaBlocks;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
+import serendustry.blocks.BlockAALCoreCasing;
+import serendustry.blocks.BlockACRComponent;
+import serendustry.blocks.BlockEICHammerCasing;
+import serendustry.blocks.BlockPCCoilCooling;
+import serendustry.blocks.BlockPCCoilHeating;
+import serendustry.blocks.BlockSerendustryMetalCasing;
+import serendustry.blocks.BlockSerendustryMultiCasing;
+import serendustry.blocks.SerendustryMetaBlocks;
+
 import static gregtech.api.GTValues.UV;
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
@@ -93,27 +113,6 @@ import static serendustry.item.material.SerendustryMaterials.ScUxvSane;
 import static serendustry.item.material.SerendustryMaterials.SelfRepairingNanobots;
 import static serendustry.item.material.SerendustryMaterials.SentientNanobots;
 import static serendustry.item.material.SerendustryMaterials.VibraniumAlloy;
-
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
-
-import gregtech.api.GTValues;
-import gregtech.api.fluids.store.FluidStorageKeys;
-import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.common.ConfigHolder;
-import gregtech.common.blocks.BlockFusionCasing;
-import gregtech.common.blocks.BlockMachineCasing;
-import gregtech.common.blocks.BlockMultiblockCasing;
-import gregtech.common.blocks.MetaBlocks;
-import serendustry.blocks.BlockAALCoreCasing;
-import serendustry.blocks.BlockACRComponent;
-import serendustry.blocks.BlockEICHammerCasing;
-import serendustry.blocks.BlockPCCoilCooling;
-import serendustry.blocks.BlockPCCoilHeating;
-import serendustry.blocks.BlockSerendustryMetalCasing;
-import serendustry.blocks.BlockSerendustryMultiCasing;
-import serendustry.blocks.SerendustryMetaBlocks;
 
 public class CasingRecipes {
 
@@ -352,7 +351,7 @@ public class CasingRecipes {
                 .input(plateDense, Neutronium, 2)
                 .input(plateDense, RadoxPolymer, 2)
                 .input(wireGtSingle, Hypogen, 4)
-                .fluidInputs(Lava.getFluid(1000),
+                .fluidInputs(Lava.getFluid(4000),
                         Dragonblood.getFluid(144 * 4),
                         Draconium.getFluid(144 * 4),
                         Flerovium.getPlasma(144 * 2))
@@ -376,7 +375,7 @@ public class CasingRecipes {
                 .input(plateDense, Neutronium, 2)
                 .input(plateDense, RadoxPolymer, 2)
                 .input(wireGtSingle, Hypogen, 4)
-                .fluidInputs(Helium.getFluid(FluidStorageKeys.LIQUID, 1000),
+                .fluidInputs(Helium.getFluid(FluidStorageKeys.LIQUID, 4000),
                         Dragonblood.getFluid(144 * 4),
                         Draconium.getFluid(144 * 4),
                         Neptunium.getPlasma(144 * 2))

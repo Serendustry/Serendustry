@@ -1,9 +1,12 @@
 package serendustry.machine;
 
-import java.util.List;
-
-import javax.annotation.Nonnull;
-
+import com.google.common.collect.ImmutableTable;
+import com.google.common.collect.Table;
+import gregtech.api.metatileentity.MetaTileEntity;
+import gregtech.api.metatileentity.TieredMetaTileEntity;
+import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
+import gregtech.api.recipes.RecipeMap;
+import gregtech.api.recipes.recipeproperties.RecipeProperty;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.GlStateManager;
@@ -15,17 +18,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.client.config.GuiUtils;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.google.common.collect.ImmutableTable;
-import com.google.common.collect.Table;
-
-import gregtech.api.metatileentity.MetaTileEntity;
-import gregtech.api.metatileentity.TieredMetaTileEntity;
-import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
-import gregtech.api.recipes.RecipeMap;
-import gregtech.api.recipes.recipeproperties.RecipeProperty;
 import serendustry.SerendustryUtil;
 import serendustry.machine.LaboratoryProperty.LaboratoryEntry;
+
+import javax.annotation.Nonnull;
+import java.util.List;
 
 public class LaboratoryProperty extends RecipeProperty<LaboratoryEntry> {
 

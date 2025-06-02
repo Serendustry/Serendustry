@@ -1,5 +1,8 @@
 package serendustry.recipe;
 
+import gregtech.api.fluids.store.FluidStorageKeys;
+import net.minecraft.init.Items;
+
 import static gregicality.multiblocks.api.unification.GCYMMaterials.Zeron100;
 import static gregtech.api.GTValues.EV;
 import static gregtech.api.GTValues.HV;
@@ -244,10 +247,6 @@ import static serendustry.item.material.SerendustryMaterials.VibrantAlloy;
 import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.LABORATORY_RECIPES;
-
-import net.minecraft.init.Items;
-
-import gregtech.api.fluids.store.FluidStorageKeys;
 
 public class AlloyRecipes {
 

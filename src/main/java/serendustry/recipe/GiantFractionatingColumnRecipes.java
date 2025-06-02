@@ -1,16 +1,23 @@
 package serendustry.recipe;
 
+import gregtech.api.unification.material.MarkerMaterials;
+
 import static gregtech.api.GTValues.LuV;
-import static gregtech.api.GTValues.UEV;
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.CENTRIFUGE_RECIPES;
 import static gregtech.api.unification.material.Materials.Benzene;
 import static gregtech.api.unification.material.Materials.Butadiene;
+import static gregtech.api.unification.material.Materials.CoalTar;
+import static gregtech.api.unification.material.Materials.Creosote;
+import static gregtech.api.unification.material.Materials.Cumene;
 import static gregtech.api.unification.material.Materials.Ethylene;
+import static gregtech.api.unification.material.Materials.HydrogenSulfide;
+import static gregtech.api.unification.material.Materials.Naphthalene;
 import static gregtech.api.unification.material.Materials.NaquadahAlloy;
 import static gregtech.api.unification.material.Materials.Osmiridium;
 import static gregtech.api.unification.material.Materials.Osmium;
+import static gregtech.api.unification.material.Materials.Phenol;
 import static gregtech.api.unification.material.Materials.Propene;
 import static gregtech.api.unification.material.Materials.RhodiumPlatedPalladium;
 import static gregtech.api.unification.material.Materials.Ruridit;
@@ -33,10 +40,10 @@ import static serendustry.item.material.SerendustryMaterials.HighGradeSolderingA
 import static serendustry.item.material.SerendustryMaterials.Kerosene;
 import static serendustry.item.material.SerendustryMaterials.MolybdeniteLubricant;
 import static serendustry.item.material.SerendustryMaterials.Propylene;
+import static serendustry.item.material.SerendustryMaterials.Pyridine;
+import static serendustry.item.material.SerendustryMaterials.paraXylene;
 import static serendustry.machine.SerendustryMetaTileEntities.GIANT_FRACTIONATING_COLUMN;
 import static serendustry.machine.SerendustryRecipeMaps.GIANT_FRACTIONATING_COLUMN_RECIPES;
-
-import gregtech.api.unification.material.MarkerMaterials;
 
 public class GiantFractionatingColumnRecipes {
 
@@ -68,7 +75,20 @@ public class GiantFractionatingColumnRecipes {
                         Butadiene.getFluid(1000),
                         Toluene.getFluid(1000),
                         Benzene.getFluid(1000))
-                .duration(20 * 30).EUt(VA[UEV]).buildAndRegister();
+                .duration(20 * 60).EUt(VA[LuV]).buildAndRegister();
+
+        GIANT_FRACTIONATING_COLUMN_RECIPES.recipeBuilder()
+                .fluidInputs(CoalTar.getFluid(10000))
+                .fluidOutputs(Benzene.getFluid(1000),
+                        Toluene.getFluid(1000),
+                        paraXylene.getFluid(1000),
+                        Cumene.getFluid(1000),
+                        Phenol.getFluid(1000),
+                        Naphthalene.getFluid(1000),
+                        Creosote.getFluid(1000),
+                        HydrogenSulfide.getFluid(1000),
+                        Pyridine.getFluid(10))
+                .duration(20 * 60).EUt(VA[LuV]).buildAndRegister();
 
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .fluidInputs(ButeneMixture.getFluid(1000))

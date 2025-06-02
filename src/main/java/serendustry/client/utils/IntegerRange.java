@@ -1,9 +1,9 @@
 package serendustry.client.utils;
 
+import org.eclipse.xtext.xbase.lib.Pure;
+
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
-
-import org.eclipse.xtext.xbase.lib.Pure;
 
 // For some reason, Intellij can't find any other impl of IntegerRange
 public class IntegerRange implements Iterable<Integer> {

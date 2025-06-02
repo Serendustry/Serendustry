@@ -1,8 +1,8 @@
 package serendustry.api.capability;
 
-import java.util.List;
-
 import net.minecraftforge.fluids.FluidStack;
+
+import java.util.List;
 
 public interface IACRComponent {
 

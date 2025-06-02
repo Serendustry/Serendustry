@@ -1,5 +1,7 @@
 package serendustry.recipe;
 
+import net.minecraft.init.Blocks;
+
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.AUTOCLAVE_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.CANNER_RECIPES;
@@ -31,8 +33,6 @@ import static serendustry.item.material.SerendustryMaterials.ISHydrochloricAcid;
 import static serendustry.item.material.SerendustryMaterials.ISHydrofluoricAcid;
 import static serendustry.item.material.SerendustryMaterials.SulfuricApatiteMix;
 import static serendustry.item.material.SerendustryMaterials.SulfurousAcid;
-
-import net.minecraft.init.Blocks;
 
 public class AnimalWasteRecipes {
 

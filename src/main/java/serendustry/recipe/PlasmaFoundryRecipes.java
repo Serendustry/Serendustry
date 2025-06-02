@@ -1,5 +1,10 @@
 package serendustry.recipe;
 
+import gregtech.api.items.metaitem.MetaItem;
+import gregtech.api.unification.material.MarkerMaterials;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+
 import static gregtech.api.GTValues.UEV;
 import static gregtech.api.GTValues.UHV;
 import static gregtech.api.GTValues.UIV;
@@ -207,12 +212,6 @@ import static serendustry.item.material.SerendustryMaterials.Vibranium;
 import static serendustry.item.material.SerendustryMaterials.VibraniumAlloy;
 import static serendustry.machine.SerendustryMetaTileEntities.PLASMA_FOUNDRY;
 import static serendustry.machine.SerendustryRecipeMaps.PLASMA_FOUNDRY_RECIPES;
-
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-
-import gregtech.api.items.metaitem.MetaItem;
-import gregtech.api.unification.material.MarkerMaterials;
 
 public class PlasmaFoundryRecipes {
 

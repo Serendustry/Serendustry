@@ -1,5 +1,14 @@
 package serendustry.recipe;
 
+import gregtech.api.GTValues;
+import gregtech.api.GregTechAPI;
+import gregtech.api.recipes.GTRecipeHandler;
+import gregtech.api.recipes.ingredients.IntCircuitIngredient;
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.ore.OrePrefix;
+import net.minecraft.item.ItemStack;
+
 import static gregtech.api.recipes.RecipeMaps.BENDER_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.IMPLOSION_RECIPES;
 import static gregtech.api.unification.material.Materials.Darmstadtium;
@@ -29,16 +38,6 @@ import static serendustry.item.material.SerendustryMaterials.Periodicium;
 import static serendustry.item.material.SerendustryMaterials.RadoxPolymer;
 import static serendustry.item.material.SerendustryMaterials.VibraniumAlloy;
 import static serendustry.machine.SerendustryRecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES;
-
-import net.minecraft.item.ItemStack;
-
-import gregtech.api.GTValues;
-import gregtech.api.GregTechAPI;
-import gregtech.api.recipes.GTRecipeHandler;
-import gregtech.api.recipes.ingredients.IntCircuitIngredient;
-import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.ore.OrePrefix;
 
 public class DensePlateRecipes {
 

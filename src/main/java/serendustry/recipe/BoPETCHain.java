@@ -65,7 +65,7 @@ public class BoPETCHain {
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, Platinum)
                 .input(dust, Asbestos)
-                .fluidInputs(Hydrogen.getFluid(10000), Bromine.getFluid(10000)) // todo: bromine recipe
+                .fluidInputs(Hydrogen.getFluid(10000), Bromine.getFluid(10000))
                 .fluidOutputs(HydrogenBromide.getFluid(10000))
                 .duration(20 * 60).EUt(VA[ZPM]).buildAndRegister();
 

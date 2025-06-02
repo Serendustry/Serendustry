@@ -1,5 +1,7 @@
 package serendustry.recipe;
 
+import gregtech.api.metatileentity.multiblock.CleanroomType;
+
 import static gregtech.api.GTValues.EV;
 import static gregtech.api.GTValues.HV;
 import static gregtech.api.GTValues.IV;
@@ -128,8 +130,6 @@ import static serendustry.item.material.SerendustryMaterials.Technetium22;
 import static serendustry.item.material.SerendustryMaterials.TengamAttuned;
 import static serendustry.item.material.SerendustryMaterials.Thaumium;
 import static serendustry.item.material.SerendustryMaterials.WroughtNeutronium;
-
-import gregtech.api.metatileentity.multiblock.CleanroomType;
 
 public class MagnetoResonaticRecipes {
 

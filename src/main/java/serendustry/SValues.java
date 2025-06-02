@@ -1,5 +1,13 @@
 package serendustry;
 
+import gregtech.api.items.metaitem.MetaItem;
+import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.material.Material;
+import gregtech.client.utils.TooltipHelper;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.util.text.TextFormatting;
+import serendustry.client.utils.STooltipHelper;
+
 import static gregtech.api.unification.material.Materials.Aluminium;
 import static gregtech.api.unification.material.Materials.Copper;
 import static gregtech.api.unification.material.Materials.Darmstadtium;
@@ -134,15 +142,6 @@ import static serendustry.item.material.SerendustryMaterials.ScOpv;
 import static serendustry.item.material.SerendustryMaterials.ScUevSane;
 import static serendustry.item.material.SerendustryMaterials.ScUxvSane;
 import static serendustry.item.material.SerendustryMaterials.TengamAttuned;
-
-import net.minecraft.client.resources.I18n;
-import net.minecraft.util.text.TextFormatting;
-
-import gregtech.api.items.metaitem.MetaItem;
-import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.material.Material;
-import gregtech.client.utils.TooltipHelper;
-import serendustry.client.utils.STooltipHelper;
 
 public class SValues {
 

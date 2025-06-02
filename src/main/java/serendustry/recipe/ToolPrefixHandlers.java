@@ -1,5 +1,24 @@
 package serendustry.recipe;
 
+import gregtech.api.capability.GregtechCapabilities;
+import gregtech.api.capability.IElectricItem;
+import gregtech.api.items.toolitem.IGTTool;
+import gregtech.api.items.toolitem.ToolHelper;
+import gregtech.api.recipes.ModHandler;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.material.properties.PropertyKey;
+import gregtech.api.unification.material.properties.ToolProperty;
+import gregtech.api.unification.ore.OrePrefix;
+import gregtech.api.unification.stack.UnificationEntry;
+import gregtech.common.items.ToolItems;
+import gregtech.loaders.recipe.handlers.ToolRecipeHandler;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
+import serendustry.item.SerendustryToolItems;
+
+import java.util.Objects;
+
 import static gregtech.api.GTValues.UHV;
 import static gregtech.api.unification.material.Materials.Neutronium;
 import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_BOLT_SCREW;
@@ -14,26 +33,6 @@ import static gregtech.common.items.MetaItems.ULTIMATE_BATTERY;
 import static serendustry.item.SerendustryMetaItems.POWER_UNIT_UHV;
 import static serendustry.item.material.SerendustryMaterials.PolyethyleneTerephtalate;
 import static serendustry.item.material.SerendustryMaterials.RadoxPolymer;
-
-import java.util.Objects;
-
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
-
-import gregtech.api.capability.GregtechCapabilities;
-import gregtech.api.capability.IElectricItem;
-import gregtech.api.items.toolitem.IGTTool;
-import gregtech.api.items.toolitem.ToolHelper;
-import gregtech.api.recipes.ModHandler;
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.material.properties.PropertyKey;
-import gregtech.api.unification.material.properties.ToolProperty;
-import gregtech.api.unification.ore.OrePrefix;
-import gregtech.api.unification.stack.UnificationEntry;
-import gregtech.common.items.ToolItems;
-import gregtech.loaders.recipe.handlers.ToolRecipeHandler;
-import serendustry.item.SerendustryToolItems;
 
 public class ToolPrefixHandlers {
 

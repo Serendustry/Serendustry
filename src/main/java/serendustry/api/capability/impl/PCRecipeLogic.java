@@ -1,15 +1,14 @@
 package serendustry.api.capability.impl;
 
-import static gregtech.api.recipes.logic.OverclockingLogic.PERFECT_OVERCLOCK_DURATION_DIVISOR;
-
-import org.jetbrains.annotations.NotNull;
-
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.recipes.recipeproperties.IRecipePropertyStorage;
+import org.jetbrains.annotations.NotNull;
 import serendustry.api.capability.IPCCoil;
 import serendustry.machine.PlasmaCondenserTierProperty;
 import serendustry.machine.PlasmaCondenserTypeProperty;
+
+import static gregtech.api.recipes.logic.OverclockingLogic.PERFECT_OVERCLOCK_DURATION_DIVISOR;
 
 public class PCRecipeLogic extends MultiblockRecipeLogic {
 

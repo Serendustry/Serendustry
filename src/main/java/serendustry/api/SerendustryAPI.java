@@ -1,9 +1,8 @@
 package serendustry.api;
 
-import net.minecraft.block.state.IBlockState;
-
 import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import net.minecraft.block.state.IBlockState;
 import serendustry.blocks.BlockAALCoreCasing;
 import serendustry.blocks.BlockACRComponent;
 import serendustry.blocks.BlockEICHammerCasing;

@@ -1,5 +1,10 @@
 package serendustry.recipe;
 
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.MarkerMaterials;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+
 import static gregtech.api.GTValues.UIV;
 import static gregtech.api.GTValues.UXV;
 import static gregtech.api.GTValues.VA;
@@ -90,12 +95,6 @@ import static serendustry.item.material.SerendustryMaterials.VibraniumAlloy;
 import static serendustry.machine.SerendustryMetaTileEntities.EMPYREAN;
 import static serendustry.machine.SerendustryRecipeMaps.EMPYREAN_RECIPES;
 
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-
-import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.MarkerMaterials;
-
 public class HoeRecipes {
 
     public static void init() {
@@ -118,8 +117,8 @@ public class HoeRecipes {
                 .input(wireGtSingle, ScUxvSane, 64)
                 .fluidInputs(SentientNanobots.getFluid(144 * 1024),
                         Periodicium.getPlasma(144 * 512),
-                        Flerovium.getFluid(144 * 512),
-                        Neptunium.getFluid(144 * 512))
+                        Flerovium.getFluid(144 * 200_000),
+                        Neptunium.getFluid(144 * 200_000))
                 .output(EMPYREAN)
                 .stationResearch(b -> b
                         .researchStack(new ItemStack(Items.DIAMOND_HOE))

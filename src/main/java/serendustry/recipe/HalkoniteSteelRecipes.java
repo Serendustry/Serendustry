@@ -1,5 +1,8 @@
 package serendustry.recipe;
 
+import gregtech.api.fluids.store.FluidStorageKeys;
+import gregtech.api.unification.ore.OrePrefix;
+
 import static gregtech.api.GTValues.UV;
 import static gregtech.api.GTValues.UXV;
 import static gregtech.api.GTValues.VA;
@@ -55,9 +58,6 @@ import static serendustry.item.material.SerendustryMaterials.TrilithiumResin;
 import static serendustry.item.material.SerendustryMaterials.UnrealGoop;
 import static serendustry.machine.SerendustryRecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.NEBULAIC_NEXUS_RECIPES;
-
-import gregtech.api.fluids.store.FluidStorageKeys;
-import gregtech.api.unification.ore.OrePrefix;
 
 public class HalkoniteSteelRecipes {
 

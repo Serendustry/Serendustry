@@ -1,7 +1,9 @@
 package serendustry.recipe;
 
+import gregtech.api.recipes.chance.output.ChancedOutputLogic;
+
 import static gregtech.api.GTValues.UHV;
-import static gregtech.api.GTValues.UIV;
+import static gregtech.api.GTValues.UV;
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.GTValues.ZPM;
 import static gregtech.api.recipes.RecipeMaps.CHEMICAL_RECIPES;
@@ -44,8 +46,6 @@ import static serendustry.item.material.SerendustryMaterials.Xenoxene;
 import static serendustry.machine.SerendustryRecipeMaps.ACR_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.BIOLAB_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.GIANT_FRACTIONATING_COLUMN_RECIPES;
-
-import gregtech.api.recipes.chance.output.ChancedOutputLogic;
 
 public class RadoxChain {
 
@@ -99,7 +99,7 @@ public class RadoxChain {
                         OilHeavy.getFluid(200),
                         DistilledWater.getFluid(500),
                         Water.getFluid(1000))
-                .duration(20 * 45).EUt(VA[UIV]).buildAndRegister();
+                .duration(20 * 90).EUt(VA[UV]).buildAndRegister();
 
         CRACKING_RECIPES.recipeBuilder()
                 .fluidInputs(LightRadox.getFluid(100), Iron.getPlasma(25))

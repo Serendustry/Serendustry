@@ -1,16 +1,5 @@
 package serendustry.machine;
 
-import java.util.List;
-
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
@@ -19,10 +8,19 @@ import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import serendustry.SValues;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.client.utils.STooltipHelper;
 import serendustry.machine.structure.StructureDefinition;
+
+import java.util.List;
 
 public class MetaTileEntityCrystallizer extends RecipeMapMultiblockController {
 
