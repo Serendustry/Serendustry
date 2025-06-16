@@ -1,19 +1,38 @@
 package serendustry.recipe;
 
-import gregtech.api.unification.material.MarkerMaterials;
-
-import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.api.GTValues.HV;
+import static gregtech.api.GTValues.MV;
+import static gregtech.api.GTValues.VA;
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.CHEMICAL_RECIPES;
+import static gregtech.api.unification.material.Materials.Gold;
+import static gregtech.api.unification.material.Materials.HydrochloricAcid;
+import static gregtech.api.unification.material.Materials.Hydrogen;
+import static gregtech.api.unification.material.Materials.Magnesium;
+import static gregtech.api.unification.material.Materials.Nitrogen;
+import static gregtech.api.unification.material.Materials.Oxygen;
+import static gregtech.api.unification.material.Materials.Polyethylene;
+import static gregtech.api.unification.material.Materials.SiliconDioxide;
+import static gregtech.api.unification.material.Materials.StainlessSteel;
+import static gregtech.api.unification.ore.OrePrefix.cableGtSingle;
+import static gregtech.api.unification.ore.OrePrefix.circuit;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.plate;
 import static gregtech.common.items.MetaItems.SENSOR_HV;
-import static serendustry.item.material.SerendustryMaterials.*;
+import static gregtech.common.metatileentities.MetaTileEntities.HULL;
+import static serendustry.item.material.SerendustryMaterials.MagnesiumDichloride;
+import static serendustry.item.material.SerendustryMaterials.MagnesiumSilicide;
+import static serendustry.item.material.SerendustryMaterials.SemiconductorGradeSilicon;
+import static serendustry.item.material.SerendustryMaterials.Silane;
 import static serendustry.machine.SerendustryMetaTileEntities.CVD_CHAMBER;
 import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
 
-public class SemiconductorGradeSiliconChain {
-    public static void init() {
+import gregtech.api.GTValues;
+import gregtech.api.unification.material.MarkerMaterials;
 
+public class SemiconductorGradeSiliconChain {
+
+    public static void init() {
         CHEMICAL_RECIPES.recipeBuilder()
                 .input(dust, SiliconDioxide, 3)
                 .input(dust, Magnesium, 2)
@@ -29,6 +48,7 @@ public class SemiconductorGradeSiliconChain {
                 .duration(60).EUt(VA[MV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
+                .input(HULL[GTValues.HV])
                 .input(circuit, MarkerMaterials.Tier.HV, 4)
                 .input(SENSOR_HV, 2)
                 .input(plate, StainlessSteel, 16)

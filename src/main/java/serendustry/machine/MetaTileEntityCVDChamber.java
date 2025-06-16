@@ -1,9 +1,14 @@
 package serendustry.machine;
 
-import gregtech.common.blocks.BlockMetalCasing;
-import gregtech.common.blocks.BlockWireCoil;
-import net.minecraft.block.state.IBlockState;
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
+
+import java.util.List;
+
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -15,8 +20,12 @@ import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
-import gregtech.common.blocks.BlockMachineCasing;
+import gregtech.common.blocks.BlockGlassCasing;
+import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
+import serendustry.SValues;
+import serendustry.client.utils.STooltipHelper;
+import serendustry.machine.structure.StructureDefinition;
 
 public class MetaTileEntityCVDChamber extends RecipeMapMultiblockController {
 
@@ -30,28 +39,34 @@ public class MetaTileEntityCVDChamber extends RecipeMapMultiblockController {
     }
 
     @Override
-    public @NotNull BlockPattern createStructurePattern() {
-        return FactoryBlockPattern.start()
-                .aisle("#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#########", "#########", "#########")
-                .aisle("YXXXXXXXY", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#XXXXXXX#", "YXXXXXXXY", "#XXXXXXX#", "#########", "#########", "#########")
-                .aisle("YXXXXXXXY", "YXXXXXXXY", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#C#####C#", "#XXXXXXX#", "#XXXXXXX#", "YXXXXXXXY", "YXXXXXXXY", "#########", "#########", "#########")
-                .aisle("YXXXXXXXY", "YXXXSXXXY", "YXXXXXXXY", "#XXXXXXX#", "#XXXXXXX#", "#XXXXXXX#", "#CCCCCCC#", "#XXXXXXX#", "#CCCCCCC#", "#XXXXXXX#", "#XXXXXXX#", "YXXXXXXXY", "YXXXXXXXY", "Y#######Y", "#########", "#########")
-                .aisle("YYYY#YYYY", "YYY###YYY", "YY#####YY", "Y#######Y", "Y#######Y", "#########", "#########", "#########", "#########", "#########", "#########", "YYYY#YYYY", "YYY###YYY", "YY#####YY", "Y#######Y", "Y#######Y")
+    public boolean hasMaintenanceMechanics() {
+        return false;
+    }
 
-                .where('S', selfPredicate())
-                .where('X', states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PTFE_INERT_CASING)).setMinGlobalLimited(530))
-                .where('Y', states(getCasingState()).setMinGlobalLimited(134).or(autoAbilities()))
-                .where('C', states(MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.TRITANIUM)))
-                .where('#', air())
-                .build();
+    @Override
+    public @NotNull BlockPattern createStructurePattern() {
+        FactoryBlockPattern pattern = FactoryBlockPattern.start(LEFT, DOWN, FRONT);
+
+        for (String[] aisle : StructureDefinition.CVD_CHAMBER) {
+            pattern.aisle(aisle);
+        }
+
+        pattern.where('C', selfPredicate())
+                .where('A',
+                        states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN))
+                                .setMinGlobalLimited(38).or(autoAbilities()))
+                .where('B', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS)));
+
+        return pattern.build();
     }
 
     public ICubeRenderer getBaseTexture(@Nullable IMultiblockPart part) {
-        return Textures.INERT_PTFE_CASING; // todo
+        return Textures.CLEAN_STAINLESS_STEEL_CASING;
     }
 
-    // todo
-    private IBlockState getCasingState() {
-        return MetaBlocks.MACHINE_CASING.getState(BlockMachineCasing.MachineCasingType.IV);
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+        super.addInformation(stack, player, tooltip, advanced);
+        STooltipHelper.addSerendustryInformation(tooltip, SValues.ENERGY_REGULAR, false);
     }
 }

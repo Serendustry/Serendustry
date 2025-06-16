@@ -20,6 +20,8 @@ public class WasteFluidRecipes {
                 .fluidOutputs(AnimalWaste.getFluid(1000))
                 .duration(400).EUt(30).buildAndRegister();
 
+        // todo
+
         // ASSEMBLY_LINE_RECIPES.recipeBuilder()
         // .input(MetaItems.BATTERY_ULV_TANTALUM).input(OrePrefix.pipeNonupleFluid,
         // Materials.Lead).inputs(MetaBlocks.WARNING_SIGN.getItemVariant(BlockWarningSign.SignType.SMALL_YELLOW_STRIPES)).input(MetaItems.BATTERY_ULV_TANTALUM)
@@ -48,6 +50,6 @@ public class WasteFluidRecipes {
                 .output(OrePrefix.dust, Materials.Gold)
                 .requireInside(RecipeMaps.CHEMICAL_RECIPES, GTValues.HV, 2)
                 .requireInside(RecipeMaps.ELECTROLYZER_RECIPES, GTValues.HV)
-                .duration(50).EUt(480).buildAndRegister();
+                .duration(50 * 60).EUt(480).buildAndRegister();
     }
 }

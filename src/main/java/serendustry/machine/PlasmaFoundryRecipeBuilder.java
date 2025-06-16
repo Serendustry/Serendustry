@@ -1,22 +1,21 @@
 package serendustry.machine;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import com.google.common.collect.ImmutableTable;
+import net.minecraft.item.ItemStack;
 
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.recipes.RecipeBuilder;
-import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.recipeproperties.CleanroomProperty;
 import gregtech.api.recipes.recipeproperties.RecipeProperty;
-import net.minecraft.item.ItemStack;
-import serendustry.machine.LaboratoryProperty.LaboratoryEntry;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class PlasmaFoundryRecipeBuilder extends RecipeBuilder<PlasmaFoundryRecipeBuilder> {
+
     private final List<ItemStack> validCatalysts = new ArrayList<>();
 
     public PlasmaFoundryRecipeBuilder() {}
@@ -26,16 +25,14 @@ public class PlasmaFoundryRecipeBuilder extends RecipeBuilder<PlasmaFoundryRecip
     }
 
     public PlasmaFoundryRecipeBuilder foundryCatalyst(MetaItem<?>.MetaValueItem... items) {
-        for(MetaItem<?>.MetaValueItem item : items) {
+        for (MetaItem<?>.MetaValueItem item : items) {
             validCatalysts.add(item.getStackForm());
         }
         return this;
     }
 
     public PlasmaFoundryRecipeBuilder foundryCatalyst(ItemStack... items) {
-        for(ItemStack stack : items) {
-            validCatalysts.add(stack);
-        }
+        validCatalysts.addAll(Arrays.asList(items));
         return this;
     }
 

@@ -13,17 +13,23 @@ public class SerendustryRecipes {
         BETSPerrhenateChain.init();
         BiolabRecipes.init();
         BoPETCHain.init();
+        CasingRecipes.init();
         CircuitRecipes.init();
         DestabilizedMatterChain.init();
         DragonEggRecipes.init();
         FerrofluidChain.init();
+        FPMChain.init();
+        GeneratorFuels.init();
         GermaniumChain.init();
         GiantFractionatingColumnRecipes.init();
         HalkoniteSteelRecipes.init();
+        HoeRecipes.init();
         HTComponentRecipes.init();
         HTMachineRecipes.init();
+        InfinityChain.init();
         LaboratoryRecipes.init();
         LargeAlloySmelterRecipes.init();
+        LCNSChain.init();
         MagnetoResonaticRecipes.init();
         MiscRecipes.init();
         MysteriousBlobRecipes.init();
@@ -31,8 +37,9 @@ public class SerendustryRecipes {
         NetheriteChain.init();
         PeriodiciumChain.init();
         PlasmaFoundryRecipes.init();
-        PlasmaFuels.init();
         PlasmaMixerRecipes.init();
+        QCDMRecipes.init();
+        Quantium40Chain.init();
         RadoxChain.init();
         SeleniumChain.init();
         SelfRepairingNanobotsRecipes.init();
@@ -40,12 +47,24 @@ public class SerendustryRecipes {
         SmallFusionReactorRecipes.init();
         SpaceElevatorRecipes.init();
         StarMatterRecipes.init();
+        StellarEngineRecipes.init();
+        StellarIncubatorRecipes.init();
         TaraniumChain.init();
+        TengamChain.init();
         ToolPrefixHandlers.init();
         WasteFluidRecipes.init();
     }
 
+    public static void removeRecipesLate() {
+        RemoveRecipes.initLate();
+    }
+
     public static void registerRecipesLate() {
+        CrystallizerRecipes.init();
+        DeepDarkPlanetoid.init();
+        DensePlateRecipes.init();
+        ElectricImplosionCompressorRecipes.buildElectricImplosionRecipes();
         PlasmaArcRecipes.init();
+        PlasmaCondenserRecipes.init();
     }
 }

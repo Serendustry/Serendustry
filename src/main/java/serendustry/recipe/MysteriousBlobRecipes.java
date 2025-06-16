@@ -1,12 +1,161 @@
 package serendustry.recipe;
 
-import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.api.GTValues.EV;
+import static gregtech.api.GTValues.HV;
+import static gregtech.api.GTValues.IV;
+import static gregtech.api.GTValues.LV;
+import static gregtech.api.GTValues.LuV;
+import static gregtech.api.GTValues.MAX;
+import static gregtech.api.GTValues.MV;
+import static gregtech.api.GTValues.OpV;
+import static gregtech.api.GTValues.UEV;
+import static gregtech.api.GTValues.UHV;
+import static gregtech.api.GTValues.UIV;
+import static gregtech.api.GTValues.UV;
+import static gregtech.api.GTValues.UXV;
+import static gregtech.api.GTValues.VA;
+import static gregtech.api.GTValues.ZPM;
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.AUTOCLAVE_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.CHEMICAL_BATH_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.DISTILLATION_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.MIXER_RECIPES;
+import static gregtech.api.unification.material.Materials.Actinium;
+import static gregtech.api.unification.material.Materials.Air;
+import static gregtech.api.unification.material.Materials.Aluminium;
+import static gregtech.api.unification.material.Materials.Americium;
+import static gregtech.api.unification.material.Materials.Antimony;
+import static gregtech.api.unification.material.Materials.Argon;
+import static gregtech.api.unification.material.Materials.Arsenic;
+import static gregtech.api.unification.material.Materials.Astatine;
+import static gregtech.api.unification.material.Materials.Barium;
+import static gregtech.api.unification.material.Materials.Beryllium;
+import static gregtech.api.unification.material.Materials.Bismuth;
+import static gregtech.api.unification.material.Materials.Boron;
+import static gregtech.api.unification.material.Materials.Bromine;
+import static gregtech.api.unification.material.Materials.Cadmium;
+import static gregtech.api.unification.material.Materials.Caesium;
+import static gregtech.api.unification.material.Materials.Calcium;
+import static gregtech.api.unification.material.Materials.Carbon;
+import static gregtech.api.unification.material.Materials.Cerium;
+import static gregtech.api.unification.material.Materials.Chlorine;
+import static gregtech.api.unification.material.Materials.Chrome;
+import static gregtech.api.unification.material.Materials.Cobalt;
+import static gregtech.api.unification.material.Materials.Copper;
+import static gregtech.api.unification.material.Materials.Darmstadtium;
+import static gregtech.api.unification.material.Materials.Dysprosium;
+import static gregtech.api.unification.material.Materials.Electrum;
+import static gregtech.api.unification.material.Materials.Erbium;
+import static gregtech.api.unification.material.Materials.Europium;
+import static gregtech.api.unification.material.Materials.Fluorine;
+import static gregtech.api.unification.material.Materials.Francium;
+import static gregtech.api.unification.material.Materials.Gadolinium;
+import static gregtech.api.unification.material.Materials.Gallium;
+import static gregtech.api.unification.material.Materials.Germanium;
+import static gregtech.api.unification.material.Materials.Gold;
+import static gregtech.api.unification.material.Materials.Hafnium;
+import static gregtech.api.unification.material.Materials.Helium;
+import static gregtech.api.unification.material.Materials.Holmium;
+import static gregtech.api.unification.material.Materials.Hydrogen;
+import static gregtech.api.unification.material.Materials.Indium;
+import static gregtech.api.unification.material.Materials.Iodine;
+import static gregtech.api.unification.material.Materials.Iridium;
+import static gregtech.api.unification.material.Materials.Iron;
+import static gregtech.api.unification.material.Materials.Krypton;
+import static gregtech.api.unification.material.Materials.Lanthanum;
+import static gregtech.api.unification.material.Materials.Lead;
+import static gregtech.api.unification.material.Materials.Lithium;
+import static gregtech.api.unification.material.Materials.Lutetium;
+import static gregtech.api.unification.material.Materials.Magnesium;
+import static gregtech.api.unification.material.Materials.Manganese;
+import static gregtech.api.unification.material.Materials.Mercury;
+import static gregtech.api.unification.material.Materials.Molybdenum;
+import static gregtech.api.unification.material.Materials.Neodymium;
+import static gregtech.api.unification.material.Materials.Neon;
+import static gregtech.api.unification.material.Materials.Neutronium;
+import static gregtech.api.unification.material.Materials.Nickel;
+import static gregtech.api.unification.material.Materials.Niobium;
+import static gregtech.api.unification.material.Materials.Nitrogen;
+import static gregtech.api.unification.material.Materials.Osmium;
+import static gregtech.api.unification.material.Materials.Oxygen;
+import static gregtech.api.unification.material.Materials.Palladium;
+import static gregtech.api.unification.material.Materials.Phosphorus;
+import static gregtech.api.unification.material.Materials.Platinum;
+import static gregtech.api.unification.material.Materials.Polonium;
+import static gregtech.api.unification.material.Materials.Potassium;
+import static gregtech.api.unification.material.Materials.Praseodymium;
+import static gregtech.api.unification.material.Materials.Promethium;
+import static gregtech.api.unification.material.Materials.Protactinium;
+import static gregtech.api.unification.material.Materials.Radium;
+import static gregtech.api.unification.material.Materials.Radon;
+import static gregtech.api.unification.material.Materials.Rhenium;
+import static gregtech.api.unification.material.Materials.Rhodium;
+import static gregtech.api.unification.material.Materials.Rubidium;
+import static gregtech.api.unification.material.Materials.Ruthenium;
+import static gregtech.api.unification.material.Materials.Samarium;
+import static gregtech.api.unification.material.Materials.Scandium;
+import static gregtech.api.unification.material.Materials.Selenium;
+import static gregtech.api.unification.material.Materials.Silicon;
+import static gregtech.api.unification.material.Materials.Silver;
+import static gregtech.api.unification.material.Materials.Sodium;
+import static gregtech.api.unification.material.Materials.Strontium;
+import static gregtech.api.unification.material.Materials.Sulfur;
+import static gregtech.api.unification.material.Materials.Tantalum;
+import static gregtech.api.unification.material.Materials.Technetium;
+import static gregtech.api.unification.material.Materials.Tellurium;
+import static gregtech.api.unification.material.Materials.Terbium;
+import static gregtech.api.unification.material.Materials.Thallium;
+import static gregtech.api.unification.material.Materials.Thorium;
+import static gregtech.api.unification.material.Materials.Thulium;
+import static gregtech.api.unification.material.Materials.Tin;
+import static gregtech.api.unification.material.Materials.Titanium;
+import static gregtech.api.unification.material.Materials.Tungsten;
+import static gregtech.api.unification.material.Materials.Uranium235;
+import static gregtech.api.unification.material.Materials.Uranium238;
+import static gregtech.api.unification.material.Materials.Vanadium;
+import static gregtech.api.unification.material.Materials.Xenon;
+import static gregtech.api.unification.material.Materials.Ytterbium;
+import static gregtech.api.unification.material.Materials.Yttrium;
+import static gregtech.api.unification.material.Materials.Zinc;
+import static gregtech.api.unification.material.Materials.Zirconium;
+import static gregtech.api.unification.ore.OrePrefix.bolt;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.gear;
+import static gregtech.api.unification.ore.OrePrefix.ingot;
+import static gregtech.api.unification.ore.OrePrefix.plate;
+import static gregtech.api.unification.ore.OrePrefix.ring;
+import static gregtech.api.unification.ore.OrePrefix.round;
+import static gregtech.api.unification.ore.OrePrefix.screw;
+import static gregtech.api.unification.ore.OrePrefix.stick;
+import static gregtech.api.unification.ore.OrePrefix.stickLong;
+import static gregtech.api.unification.ore.OrePrefix.wireFine;
 import static gregtech.common.metatileentities.MetaTileEntities.HULL;
-import static serendustry.item.SerendustryMetaItems.*;
-import static serendustry.item.material.SerendustryMaterials.*;
+import static serendustry.item.SerendustryMetaItems.MYSTERIOUS_BLOB_ARGON;
+import static serendustry.item.SerendustryMetaItems.MYSTERIOUS_BLOB_HELIUM;
+import static serendustry.item.SerendustryMetaItems.MYSTERIOUS_BLOB_HYDROGEN;
+import static serendustry.item.SerendustryMetaItems.MYSTERIOUS_BLOB_KRYPTON;
+import static serendustry.item.SerendustryMetaItems.MYSTERIOUS_BLOB_NEON;
+import static serendustry.item.SerendustryMetaItems.MYSTERIOUS_BLOB_NITROGEN;
+import static serendustry.item.SerendustryMetaItems.MYSTERIOUS_BLOB_OXYGEN;
+import static serendustry.item.material.SerendustryMaterials.ArgonPrime;
+import static serendustry.item.material.SerendustryMaterials.CallistoIce;
+import static serendustry.item.material.SerendustryMaterials.CrystalMatrix;
+import static serendustry.item.material.SerendustryMaterials.EnrichedHolmium;
+import static serendustry.item.material.SerendustryMaterials.Floppa;
+import static serendustry.item.material.SerendustryMaterials.FluxedElectrum;
+import static serendustry.item.material.SerendustryMaterials.HeliumPrime;
+import static serendustry.item.material.SerendustryMaterials.HydrogenPrime;
+import static serendustry.item.material.SerendustryMaterials.InfusedGold;
+import static serendustry.item.material.SerendustryMaterials.KryptonPrime;
+import static serendustry.item.material.SerendustryMaterials.NeonPrime;
+import static serendustry.item.material.SerendustryMaterials.NitrogenPrime;
+import static serendustry.item.material.SerendustryMaterials.NobleGases;
+import static serendustry.item.material.SerendustryMaterials.OxygenPrime;
+import static serendustry.item.material.SerendustryMaterials.PrimedAir;
+import static serendustry.item.material.SerendustryMaterials.Quantium;
+import static serendustry.item.material.SerendustryMaterials.Rhopalthenit;
+import static serendustry.item.material.SerendustryMaterials.StellarAlloy;
+import static serendustry.item.material.SerendustryMaterials.Thaumium;
 
 import net.minecraft.init.Blocks;
 
@@ -20,13 +169,13 @@ public class MysteriousBlobRecipes {
 
     private static void primeRecipes() {
         CHEMICAL_BATH_RECIPES.recipeBuilder()
-                .input(Blocks.TNT, 1)
+                .input(Blocks.TNT, 16)
                 .fluidInputs(Air.getFluid(1000))
                 .fluidOutputs(PrimedAir.getFluid(100))
                 .duration(3800).EUt(VA[EV]).buildAndRegister();
 
         DISTILLATION_RECIPES.recipeBuilder()
-                .fluidInputs(PrimedAir.getFluid(1000))
+                .fluidInputs(PrimedAir.getFluid(10000))
                 .output(MYSTERIOUS_BLOB_HYDROGEN)
                 .fluidOutputs(Air.getFluid(1000))
                 .duration(4600).EUt(VA[EV]).buildAndRegister();
@@ -34,79 +183,79 @@ public class MysteriousBlobRecipes {
         AUTOCLAVE_RECIPES.recipeBuilder()
                 .input(MYSTERIOUS_BLOB_HYDROGEN)
                 .fluidInputs(Hydrogen.getFluid(10000))
-                .fluidOutputs(HydrogenPrime.getFluid(100))
+                .fluidOutputs(HydrogenPrime.getFluid(10))
                 .duration(9600).EUt(VA[EV]).buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
                 .input(MYSTERIOUS_BLOB_HYDROGEN)
-                .fluidInputs(Gold.getFluid(576))
+                .fluidInputs(Gold.getFluid(5760))
                 .output(MYSTERIOUS_BLOB_HELIUM)
                 .duration(9600).EUt(VA[IV]).buildAndRegister();
 
         AUTOCLAVE_RECIPES.recipeBuilder()
                 .input(MYSTERIOUS_BLOB_HELIUM)
                 .fluidInputs(Helium.getFluid(10000))
-                .fluidOutputs(HeliumPrime.getFluid(100))
+                .fluidOutputs(HeliumPrime.getFluid(10))
                 .duration(9600).EUt(VA[IV]).buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
                 .input(MYSTERIOUS_BLOB_HELIUM)
-                .fluidInputs(Electrum.getFluid(576))
+                .fluidInputs(Electrum.getFluid(5760))
                 .output(MYSTERIOUS_BLOB_NITROGEN)
                 .duration(9600).EUt(VA[LuV]).buildAndRegister();
 
         AUTOCLAVE_RECIPES.recipeBuilder()
                 .input(MYSTERIOUS_BLOB_NITROGEN)
                 .fluidInputs(Nitrogen.getFluid(10000))
-                .fluidOutputs(NitrogenPrime.getFluid(100))
+                .fluidOutputs(NitrogenPrime.getFluid(10))
                 .duration(9600).EUt(VA[LuV]).buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
                 .input(MYSTERIOUS_BLOB_NITROGEN)
-                .fluidInputs(Thaumium.getFluid(576))
+                .fluidInputs(Thaumium.getFluid(5760))
                 .output(MYSTERIOUS_BLOB_OXYGEN)
                 .duration(9600).EUt(VA[ZPM]).buildAndRegister();
 
         AUTOCLAVE_RECIPES.recipeBuilder()
                 .input(MYSTERIOUS_BLOB_OXYGEN)
                 .fluidInputs(Oxygen.getFluid(10000))
-                .fluidOutputs(OxygenPrime.getFluid(100))
+                .fluidOutputs(OxygenPrime.getFluid(10))
                 .duration(9600).EUt(VA[ZPM]).buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
                 .input(MYSTERIOUS_BLOB_OXYGEN)
-                .fluidInputs(InfusedGold.getFluid(576))
+                .fluidInputs(InfusedGold.getFluid(5760))
                 .output(MYSTERIOUS_BLOB_NEON)
                 .duration(9600).EUt(VA[UHV]).buildAndRegister();
 
         AUTOCLAVE_RECIPES.recipeBuilder()
                 .input(MYSTERIOUS_BLOB_NEON)
                 .fluidInputs(Neon.getFluid(10000))
-                .fluidOutputs(NeonPrime.getFluid(100))
+                .fluidOutputs(NeonPrime.getFluid(10))
                 .duration(9600).EUt(VA[UHV]).buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
                 .input(MYSTERIOUS_BLOB_NEON)
-                .fluidInputs(FluxedElectrum.getFluid(2304))
+                .fluidInputs(FluxedElectrum.getFluid(23040))
                 .output(MYSTERIOUS_BLOB_ARGON)
                 .duration(9600).EUt(VA[UEV]).buildAndRegister();
 
         AUTOCLAVE_RECIPES.recipeBuilder()
                 .input(MYSTERIOUS_BLOB_ARGON)
                 .fluidInputs(Argon.getFluid(10000))
-                .fluidOutputs(ArgonPrime.getFluid(100))
+                .fluidOutputs(ArgonPrime.getFluid(10))
                 .duration(9600).EUt(VA[UEV]).buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
                 .input(MYSTERIOUS_BLOB_ARGON)
-                .fluidInputs(Quantium.getFluid(2304))
+                .fluidInputs(Quantium.getFluid(23040))
                 .output(MYSTERIOUS_BLOB_KRYPTON)
                 .duration(9600).EUt(VA[UIV]).buildAndRegister();
 
         AUTOCLAVE_RECIPES.recipeBuilder()
                 .input(MYSTERIOUS_BLOB_KRYPTON)
                 .fluidInputs(Krypton.getFluid(10000))
-                .fluidOutputs(KryptonPrime.getFluid(100))
+                .fluidOutputs(KryptonPrime.getFluid(10))
                 .duration(9600).EUt(VA[UIV]).buildAndRegister();
     }
 
@@ -115,85 +264,85 @@ public class MysteriousBlobRecipes {
                 .input(screw, Tin, 8)
                 .fluidInputs(HydrogenPrime.getFluid(10))
                 .output(HULL[LV])
-                .duration(50).EUt(VA[MV]).buildAndRegister();
+                .duration(500).EUt(VA[MV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(stickLong, Electrum, 2)
                 .fluidInputs(HydrogenPrime.getFluid(60))
                 .output(HULL[MV])
-                .duration(50).EUt(VA[HV]).buildAndRegister();
+                .duration(500).EUt(VA[HV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(plate, Manganese, 2)
                 .fluidInputs(HeliumPrime.getFluid(10))
                 .output(HULL[HV])
-                .duration(50).EUt(VA[EV]).buildAndRegister();
+                .duration(500).EUt(VA[EV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(gear, Titanium, 1)
                 .fluidInputs(HeliumPrime.getFluid(60))
                 .output(HULL[EV])
-                .duration(50).EUt(VA[IV]).buildAndRegister();
+                .duration(500).EUt(VA[IV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(bolt, Rhopalthenit, 12)
                 .fluidInputs(NitrogenPrime.getFluid(10))
                 .output(HULL[IV])
-                .duration(50).EUt(VA[LuV]).buildAndRegister();
+                .duration(500).EUt(VA[LuV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(gear, EnrichedHolmium, 1)
                 .fluidInputs(NitrogenPrime.getFluid(60))
                 .output(HULL[LuV])
-                .duration(50).EUt(VA[ZPM]).buildAndRegister();
+                .duration(500).EUt(VA[ZPM]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(stick, Americium, 4)
                 .fluidInputs(OxygenPrime.getFluid(10))
                 .output(HULL[ZPM])
-                .duration(50).EUt(VA[UV]).buildAndRegister();
+                .duration(500).EUt(VA[UV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(plate, Darmstadtium, 2)
                 .fluidInputs(OxygenPrime.getFluid(60))
                 .output(HULL[UV])
-                .duration(50).EUt(VA[UHV]).buildAndRegister();
+                .duration(500).EUt(VA[UHV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(ring, Neutronium, 13)
                 .fluidInputs(NeonPrime.getFluid(10))
                 .output(HULL[UHV])
-                .duration(50).EUt(VA[UEV]).buildAndRegister();
+                .duration(500).EUt(VA[UEV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(ingot, NobleGases, 3)
                 .fluidInputs(NeonPrime.getFluid(60))
                 .output(HULL[UEV])
-                .duration(50).EUt(VA[UIV]).buildAndRegister();
+                .duration(500).EUt(VA[UIV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(round, StellarAlloy, 41)
                 .fluidInputs(ArgonPrime.getFluid(10))
                 .output(HULL[UIV])
-                .duration(50).EUt(VA[UXV]).buildAndRegister();
+                .duration(500).EUt(VA[UXV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(wireFine, CrystalMatrix, 64)
                 .fluidInputs(ArgonPrime.getFluid(60))
                 .output(HULL[UXV])
-                .duration(50).EUt(VA[OpV]).buildAndRegister();
+                .duration(500).EUt(VA[OpV]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(plate, CallistoIce, 4)
                 .fluidInputs(KryptonPrime.getFluid(10))
                 .output(HULL[OpV])
-                .duration(50).EUt(VA[MAX]).buildAndRegister();
+                .duration(500).EUt(VA[MAX]).buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(plate, Floppa, 6)
                 .fluidInputs(KryptonPrime.getFluid(180))
                 .output(HULL[MAX])
-                .duration(50).EUt(VA[MAX]).buildAndRegister();
+                .duration(500).EUt(VA[MAX]).buildAndRegister();
     }
 
     private static void matterCreationRecipes() {
@@ -660,19 +809,5 @@ public class MysteriousBlobRecipes {
                 .fluidInputs(Uranium238.getFluid(144), OxygenPrime.getFluid(100))
                 .fluidOutputs(Uranium238.getFluid(1296))
                 .duration(400).EUt(VA[LV]).buildAndRegister();
-
-        /*
-         * MIXER_RECIPES.recipeBuilder()
-         * .fluidInputs(SterlingSilver.getFluid(4608), HydrogenPrime.getFluid(300))
-         * .output(ore, CheeseCheddar, 64)
-         * .duration(800).EUt(VA[MV]).buildAndRegister();
-         */
-
-        /*
-         * MIXER_RECIPES.recipeBuilder()
-         * .fluidInputs(Samarium.getFluid(2304), Neodymium.getFluid(2304), NeonPrime.getFluid(300))
-         * .output(ore, TengamRaw, 32)
-         * .duration(2400).EUt(VA[ZPM]).buildAndRegister();
-         */
     }
 }

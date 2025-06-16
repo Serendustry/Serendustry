@@ -1,54 +1,55 @@
 package serendustry.machine;
 
-import gregtech.api.gui.GuiTextures;
-import gregtech.api.gui.Widget;
-import gregtech.api.gui.widgets.SlotWidget;
-import gregtech.api.metatileentity.multiblock.MultiblockDisplayText;
-import gregtech.api.recipes.Recipe;
-import gregtech.api.util.GTUtility;
-import gregtech.api.util.TextComponentUtil;
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
+
+import java.io.IOException;
+import java.util.List;
+
 import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
-
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentBase;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import gregtech.api.gui.GuiTextures;
+import gregtech.api.gui.Widget;
+import gregtech.api.gui.widgets.SlotWidget;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
+import gregtech.api.metatileentity.multiblock.MultiblockDisplayText;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
+import gregtech.api.recipes.Recipe;
+import gregtech.api.unification.material.Materials;
+import gregtech.api.util.GTUtility;
+import gregtech.api.util.TextComponentUtil;
 import gregtech.client.renderer.ICubeRenderer;
-import gregtech.client.renderer.texture.Textures;
-import gregtech.common.blocks.BlockMachineCasing;
-import gregtech.common.blocks.MetaBlocks;
+import serendustry.SValues;
+import serendustry.blocks.BlockMetalCasing;
+import serendustry.blocks.SerendustryMetaBlocks;
+import serendustry.client.renderer.texture.SerendustryTextures;
+import serendustry.machine.structure.StructureDefinition;
 
-import javax.annotation.Nonnull;
-import java.io.IOException;
-import java.util.List;
-import java.util.Objects;
+public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
 
-import static gregtech.api.util.GTUtility.getMetaTileEntity;
-import static serendustry.item.SerendustryMetaItems.*;
-
-public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController  {
     private static final String NO_CATALYST = "serendustry.machine.plasma_foundry.no_catalyst";
     private final int CATALYST = 32842846;
 
     private ItemStackHandler controllerSlot;
+
     @NotNull
     private ItemStack catalyst = ItemStack.EMPTY;
 
@@ -69,11 +70,12 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController  
 
     @Override
     public boolean checkRecipe(@NotNull Recipe recipe, boolean consumeIfSuccess) {
-        ItemStack[] expectedCatalysts = recipe.getProperty(PlasmaFoundryCatalystProperty.getInstance(), new ItemStack[0]);
-        if(expectedCatalysts.length != 0) {
-            for(ItemStack expectedCatalyst : expectedCatalysts) {
-                if(ItemStack.areItemsEqual(expectedCatalyst, this.catalyst)) {
-                    if(consumeIfSuccess) {
+        ItemStack[] expectedCatalysts = recipe.getProperty(PlasmaFoundryCatalystProperty.getInstance(),
+                new ItemStack[0]);
+        if (expectedCatalysts.length != 0) {
+            for (ItemStack expectedCatalyst : expectedCatalysts) {
+                if (ItemStack.areItemsEqual(expectedCatalyst, this.catalyst)) {
+                    if (consumeIfSuccess) {
                         this.catalyst.setCount(this.catalyst.getCount() - 1);
                         syncCatalyst();
                     }
@@ -85,49 +87,61 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController  
             return true;
         }
     }
-    
+
     @Override
     public @NotNull BlockPattern createStructurePattern() {
-        return FactoryBlockPattern.start()
-                .aisle("XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX")
-                .aisle("XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX")
-                .aisle("XXX", "XXX", "XXX", "XXX", "XSX", "XXX", "XXX", "XXX", "XXX")
-                .where('S', selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(40).or(autoAbilities()))
-                .build();
+        FactoryBlockPattern pattern = FactoryBlockPattern.start(LEFT, DOWN, FRONT);
+
+        for (String[] aisle : StructureDefinition.PLASMA_FOUNDRY) {
+            pattern.aisle(aisle);
+        }
+
+        pattern.where('D', selfPredicate())
+                .where('A',
+                        states(SerendustryMetaBlocks.METAL_CASING
+                                .getState(BlockMetalCasing.SerendustryMetalCasingType.CARBON))
+                                        .setMinGlobalLimited(158).or(autoAbilities()))
+                .where('B', frames(Materials.Osmiridium))
+                .where('C', states(Blocks.LAVA.getBlockState().getBaseState()));
+
+        return pattern.build();
     }
 
-    public ICubeRenderer getBaseTexture(@Nullable IMultiblockPart part) {
-        return Textures.INERT_PTFE_CASING; // todo
-    }
-
-    // todo: add custom ??? Casing
-    private IBlockState getCasingState() {
-        return MetaBlocks.MACHINE_CASING.getState(BlockMachineCasing.MachineCasingType.UV);
+    @Override
+    public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
+        return SerendustryTextures.CASING_CARBON;
     }
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, @NotNull List<String> tooltip,
                                boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
-        tooltip.add(I18n.format("serendustry.machine.plasma_foundry.flavor"));
-        tooltip.add(I18n.format("serendustry.machine.plasma_foundry.description"));
+        tooltip.add("");
         String catalyst = I18n.format(NO_CATALYST);
         NBTTagCompound tag = stack.getTagCompound();
-        if(tag != null) {
+        if (tag != null) {
             ItemStack catalystStack = new ItemStack(tag.getCompoundTag("Catalyst"));
-            if(!catalystStack.isEmpty()) {
+            if (!catalystStack.isEmpty()) {
                 catalyst = catalystStack.getDisplayName();
             }
         }
 
-        tooltip.add(I18n.format("serendustry.machine.plasma_foundry.catalyst") + " " + "§e" + catalyst + "§7");
+        tooltip.add(
+                I18n.format("serendustry.machine.plasma_foundry.catalyst.contained") + " " + "§e" + catalyst + "§7");
+        tooltip.add("");
+        tooltip.add(I18n.format("serendustry.machine.plasma_foundry.lava"));
+        tooltip.add("");
+        tooltip.add(I18n.format("serendustry.machine.energy.regular"));
+        tooltip.add("");
+        tooltip.add(I18n.format("serendustry.machine.authors") + " " + SValues.FORMAT_ENVOIDIA +
+                I18n.format("serendustry.machine.author.envoidia") + "§r§7 " + I18n.format("serendustry.text.and") +
+                " " + I18n.format("serendustry.machine.author.twilight"));
     }
 
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         TextComponentBase catalystText;
-        if(catalyst.isEmpty()) {
+        if (catalyst.isEmpty()) {
             catalystText = TextComponentUtil.translationWithColor(TextFormatting.GRAY, NO_CATALYST);
         } else {
             catalystText = TextComponentUtil.stringWithColor(TextFormatting.GRAY, catalyst.getDisplayName());
@@ -139,9 +153,9 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController  
                 .addEnergyTierLine(GTUtility.getTierByVoltage(recipeMapWorkable.getMaxVoltage()))
                 .addCustom(tl -> {
                     // Catalyst line
-                        tl.add(TextComponentUtil.translationWithColor(
-                                TextFormatting.GRAY,
-                                "serendustry.machine.plasma_foundry.catalyst"));
+                    tl.add(TextComponentUtil.translationWithColor(
+                            TextFormatting.YELLOW,
+                            "serendustry.machine.plasma_foundry.catalyst.contained"));
 
                     tl.add(catalystText);
                 })
@@ -153,6 +167,7 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController  
     protected Widget getFlexButton(int x, int y, int width, int height) {
         return new SlotWidget(controllerSlot, 0, x, y, true, true).setBackgroundTexture(GuiTextures.SLOT);
     }
+
     protected ItemStack getStackInSlot() {
         return controllerSlot.getStackInSlot(0);
     }
@@ -192,10 +207,10 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController  
     @Override
     public void update() {
         super.update();
-        if(getWorld().isRemote) return;
-        if(this.catalyst.isEmpty()) {
+        if (getWorld().isRemote) return;
+        if (this.catalyst.isEmpty()) {
             ItemStack stack = this.controllerSlot.getStackInSlot(0);
-            if(SerendustryRecipeMaps.PLASMA_FOUNDRY_RECIPES.isValidCatalyst(stack)) {
+            if (SerendustryRecipeMaps.PLASMA_FOUNDRY_RECIPES.isValidCatalyst(stack)) {
                 this.catalyst = stack.copy();
                 this.catalyst.setCount(SerendustryRecipeMaps.PLASMA_FOUNDRY_RECIPES.getCatalystUses(stack));
 

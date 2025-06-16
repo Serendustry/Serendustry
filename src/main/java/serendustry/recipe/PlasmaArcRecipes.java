@@ -7,6 +7,7 @@ import gregtech.api.unification.material.Materials;
 
 // todo: replace with build action after updating CEu
 public class PlasmaArcRecipes {
+
     public static void init() {
         for (Recipe recipe : RecipeMaps.ARC_FURNACE_RECIPES.getRecipeList()) {
             int fluidAmount = Math.max(1, recipe.getFluidInputs().get(0).getAmount() / 72);
