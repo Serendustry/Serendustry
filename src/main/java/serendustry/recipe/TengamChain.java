@@ -1,10 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.GTValues;
-import gregtech.api.recipes.ModHandler;
-import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.ore.OrePrefix;
-
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.ARC_FURNACE_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.CENTRIFUGE_RECIPES;
@@ -57,6 +52,11 @@ import static serendustry.item.material.SerendustryMaterials.TengamSludge;
 import static serendustry.item.material.SerendustryMaterials.XenomagneticAttunementCatalyst;
 import static serendustry.item.material.SerendustryMaterials.XenomagneticSeparationCatalyst;
 import static serendustry.machine.SerendustryRecipeMaps.ACR_RECIPES;
+
+import gregtech.api.GTValues;
+import gregtech.api.recipes.ModHandler;
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.ore.OrePrefix;
 
 public class TengamChain {
 

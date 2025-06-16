@@ -1,7 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.unification.material.MarkerMaterials;
-
 import static gregtech.api.GTValues.LuV;
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
@@ -44,6 +42,8 @@ import static serendustry.item.material.SerendustryMaterials.Pyridine;
 import static serendustry.item.material.SerendustryMaterials.paraXylene;
 import static serendustry.machine.SerendustryMetaTileEntities.GIANT_FRACTIONATING_COLUMN;
 import static serendustry.machine.SerendustryRecipeMaps.GIANT_FRACTIONATING_COLUMN_RECIPES;
+
+import gregtech.api.unification.material.MarkerMaterials;
 
 public class GiantFractionatingColumnRecipes {
 

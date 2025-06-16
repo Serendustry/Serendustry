@@ -155,7 +155,7 @@ import static serendustry.item.material.SerendustryMaterials.paraXylene;
 import static serendustry.machine.SerendustryRecipeMaps.ACR_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES;
 
-public class FPMRecipes {
+public class FPMChain {
 
     public static void init() {
         ARC_FURNACE_RECIPES.recipeBuilder()
@@ -649,6 +649,7 @@ public class FPMRecipes {
                 .duration(20 * 2).EUt(VA[UIV]).buildAndRegister();
 
         // Ex Hills: 19 Lq Cooler + 3 TE Cooler
+        // todo make harder?
         ACR_RECIPES.recipeBuilder()
                 .temperature(20, 30)
                 .pressure(35, 90)
@@ -668,6 +669,6 @@ public class FPMRecipes {
                 .fluidOutputs(FullerenePolymerMatrix.getFluid(144 * 2))
                 .duration(20 * 12).EUt(VA[UIV]).buildAndRegister();
 
-        // is 500k coal tar per FPM too much?
+        // is 500kL coal tar per FPM too much?
     }
 }

@@ -1,5 +1,21 @@
 package serendustry.machine;
 
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
+
+import org.jetbrains.annotations.Nullable;
+
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
@@ -14,25 +30,12 @@ import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 import serendustry.SValues;
-import serendustry.blocks.BlockSerendustryMetalCasing;
+import serendustry.blocks.BlockMetalCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.client.utils.STooltipHelper;
 import serendustry.machine.structure.StructureStellarIncubator;
-
-import javax.annotation.Nonnull;
-import java.util.ArrayList;
-import java.util.List;
-
-import static gregtech.api.util.RelativeDirection.DOWN;
-import static gregtech.api.util.RelativeDirection.FRONT;
-import static gregtech.api.util.RelativeDirection.LEFT;
 
 public class MetaTileEntityStellarIncubator extends RecipeMapMultiblockController {
 
@@ -88,8 +91,8 @@ public class MetaTileEntityStellarIncubator extends RecipeMapMultiblockControlle
 
         pattern.where('F', selfPredicate())
                 .where('E',
-                        states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
-                                .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.CARBON))
+                        states(SerendustryMetaBlocks.METAL_CASING
+                                .getState(BlockMetalCasing.SerendustryMetalCasingType.CARBON))
                                         .setMinGlobalLimited(1974)
                                         .or(autoAbilities(false, false, true, true, true, true, false))
                                         .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0)
@@ -102,8 +105,8 @@ public class MetaTileEntityStellarIncubator extends RecipeMapMultiblockControlle
                 .where('A', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.FUSION_GLASS)))
                 .where('C', states(MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.TRITANIUM)))
                 .where('D',
-                        states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
-                                .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.NEUTRONIUM)));
+                        states(SerendustryMetaBlocks.METAL_CASING
+                                .getState(BlockMetalCasing.SerendustryMetalCasingType.NEUTRONIUM)));
 
         return pattern.build();
     }

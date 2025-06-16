@@ -1,0 +1,14 @@
+{
+    "animation": {"frametime": 2}
+    "ctm": {
+        "ctm_version": 1,
+        "type": "CTM",
+        "layer": "SOLID",
+        "textures": [
+            "gregtech:blocks/casing/wire_coil/hypogen_ctm"
+        ],
+        "extra": {
+            "connect_inside": true
+        }
+    }
+}

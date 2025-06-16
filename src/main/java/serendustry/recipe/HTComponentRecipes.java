@@ -1,7 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.unification.material.MarkerMaterials.Tier;
-
 import static gregtech.api.GTValues.UEV;
 import static gregtech.api.GTValues.UHV;
 import static gregtech.api.GTValues.UIV;
@@ -99,6 +97,8 @@ import static serendustry.item.material.SerendustryMaterials.SelfRepairingNanobo
 import static serendustry.item.material.SerendustryMaterials.SentientNanobots;
 import static serendustry.item.material.SerendustryMaterials.TengamAttuned;
 import static serendustry.item.material.SerendustryMaterials.VibraniumAlloy;
+
+import gregtech.api.unification.material.MarkerMaterials.Tier;
 
 public class HTComponentRecipes {
 

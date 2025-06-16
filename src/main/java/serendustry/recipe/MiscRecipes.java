@@ -1,12 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.fluids.store.FluidStorageKeys;
-import gregtech.api.recipes.ModHandler;
-import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.Material;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-
 import static gregtech.api.GTValues.EV;
 import static gregtech.api.GTValues.HV;
 import static gregtech.api.GTValues.IV;
@@ -68,6 +61,14 @@ import static serendustry.item.material.SerendustryMaterials.Quantium40;
 import static serendustry.item.material.SerendustryMaterials.WroughtNeutronium;
 import static serendustry.item.material.SerendustryMaterials.Xenoxene;
 import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
+
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+
+import gregtech.api.fluids.store.FluidStorageKeys;
+import gregtech.api.recipes.ModHandler;
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.Material;
 
 public class MiscRecipes {
 

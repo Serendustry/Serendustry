@@ -3,6 +3,7 @@ package serendustry.machine;
 import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.recipes.builders.FuelRecipeBuilder;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 
 public class SerendustryRecipeMaps {
@@ -49,6 +50,8 @@ public class SerendustryRecipeMaps {
             "empyrean", 6, 1, 0, 0, new SimpleRecipeBuilder(), false);
     public static final RecipeMap<SimpleRecipeBuilder> DISTORTION_ENGINE_RECIPES = new RecipeMap<>(
             "distortion_engine", 0, 1, 118, 0, new SimpleRecipeBuilder(), true); // todo fix crash and make not hidden
+    public static final RecipeMap<FuelRecipeBuilder> ANTIMATTER_GENERATOR_FUELS = new RecipeMap<>(
+            "antimatter_generator_fuels", 0, 0, 1, 0, new FuelRecipeBuilder(), false).allowEmptyOutput();;
     /*
      * public static final RecipeMap<SimpleRecipeBuilder> ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES = new
      * RecipeMapBuilder<>("electric_implosion_compressor",
@@ -82,6 +85,6 @@ public class SerendustryRecipeMaps {
         RecipeMaps.FLUID_HEATER_RECIPES.setMaxInputs(1);
         RecipeMaps.FLUID_HEATER_RECIPES.setMaxOutputs(1);
 
-        GCYMRecipeMaps.ALLOY_BLAST_RECIPES.setMaxInputs(12);
+        GCYMRecipeMaps.ALLOY_BLAST_RECIPES.setMaxInputs(12); // todo temp
     }
 }

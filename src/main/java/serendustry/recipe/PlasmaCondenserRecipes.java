@@ -1,13 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.GTValues;
-import gregtech.api.GregTechAPI;
-import gregtech.api.fluids.store.FluidStorageKeys;
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.properties.FluidProperty;
-import gregtech.api.unification.material.properties.PropertyKey;
-import serendustry.machine.PlasmaCondenserTypeProperty;
-
 import static gregtech.api.GTValues.EV;
 import static gregtech.api.GTValues.V;
 import static gregtech.api.recipes.RecipeMaps.PLASMA_GENERATOR_FUELS;
@@ -42,6 +34,14 @@ import static serendustry.item.material.SerendustryMaterials.Periodicium;
 import static serendustry.item.material.SerendustryMaterials.Rhugnor;
 import static serendustry.item.material.SerendustryMaterials.Shirabon;
 import static serendustry.machine.SerendustryRecipeMaps.PLASMA_CONDENSER_RECIPES;
+
+import gregtech.api.GTValues;
+import gregtech.api.GregTechAPI;
+import gregtech.api.fluids.store.FluidStorageKeys;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.properties.FluidProperty;
+import gregtech.api.unification.material.properties.PropertyKey;
+import serendustry.machine.PlasmaCondenserTypeProperty;
 
 public class PlasmaCondenserRecipes {
 

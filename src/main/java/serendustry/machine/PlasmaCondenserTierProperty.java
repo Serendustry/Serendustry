@@ -1,10 +1,11 @@
 package serendustry.machine;
 
-import gregtech.api.recipes.recipeproperties.RecipeProperty;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import gregtech.api.recipes.recipeproperties.RecipeProperty;
 
 public class PlasmaCondenserTierProperty extends RecipeProperty<Integer> {
 

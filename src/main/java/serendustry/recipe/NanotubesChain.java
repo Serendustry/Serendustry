@@ -1,8 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.MarkerMaterials;
-
 import static gregtech.api.GTValues.EV;
 import static gregtech.api.GTValues.IV;
 import static gregtech.api.GTValues.UHV;
@@ -45,6 +42,9 @@ import static serendustry.machine.SerendustryMetaTileEntities.SONICATOR;
 import static serendustry.machine.SerendustryRecipeMaps.ACR_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.SONICATOR_RECIPES;
+
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.MarkerMaterials;
 
 public class NanotubesChain {
 

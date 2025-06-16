@@ -1,8 +1,10 @@
 package serendustry.machine;
 
-import serendustry.Serendustry;
-
 import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntity;
+
+import gregtech.api.GTValues;
+import gregtech.common.metatileentities.multi.multiblockpart.MetaTileEntityLaserHatch;
+import serendustry.Serendustry;
 
 // lateinit var DISSOLUTION_TANK: MetaTileEntityDissolutionTank
 // lateinit var INDUSTRIAL_DECANTER: MetaTileEntityIndustrialDecanter
@@ -36,6 +38,12 @@ public class SerendustryMetaTileEntities {
     public static MetaTileEntityAdvancedChemicalReactor ADVANCED_CHEMICAL_REACTOR;
     public static MetaTileEntityEmpyrean EMPYREAN;
     public static MetaTileEntityDistortionEngine DISTORTION_ENGINE;
+    public static MetaTileEntityAntimatterGenerator ANTIMATTER_GENERATOR;
+
+    public static MetaTileEntityLaserHatch[] LASER_INPUT_HATCH_16384 = new MetaTileEntityLaserHatch[GTValues.V.length -
+            1];
+    public static MetaTileEntityLaserHatch[] LASER_OUTPUT_HATCH_16384 = new MetaTileEntityLaserHatch[GTValues.V.length -
+            1];
 
     public static void preInit() {
         // todo claim an id range
@@ -81,5 +89,17 @@ public class SerendustryMetaTileEntities {
                 new MetaTileEntityEmpyrean(Serendustry.ID("empyrean")));
         DISTORTION_ENGINE = registerMetaTileEntity(4023,
                 new MetaTileEntityDistortionEngine(Serendustry.ID("distortion_engine")));
+        ANTIMATTER_GENERATOR = registerMetaTileEntity(4024,
+                new MetaTileEntityAntimatterGenerator(Serendustry.ID("antimatter_generator")));
+
+        for (int i = GTValues.UXV; i <= GTValues.OpV; i++) {
+            String voltageName = GTValues.VN[i].toLowerCase();
+            LASER_INPUT_HATCH_16384[i] = registerMetaTileEntity(4025 + i,
+                    new MetaTileEntityLaserHatch(
+                            Serendustry.ID("laser_hatch.target_16384a." + voltageName), false, i, 16384));
+            LASER_OUTPUT_HATCH_16384[i] = registerMetaTileEntity(4027 + i,
+                    new MetaTileEntityLaserHatch(Serendustry.ID("laser_hatch.source_16384a." + voltageName), true, i,
+                            16384));
+        }
     }
 }

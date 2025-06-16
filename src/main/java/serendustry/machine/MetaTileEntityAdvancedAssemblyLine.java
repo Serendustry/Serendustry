@@ -1,5 +1,35 @@
 package serendustry.machine;
 
+import static gregtech.api.util.RelativeDirection.BACK;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.RIGHT;
+import static gregtech.api.util.RelativeDirection.UP;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Supplier;
+
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
+import net.minecraftforge.fluids.IFluidTank;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.items.IItemHandlerModifiable;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
@@ -32,44 +62,16 @@ import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.common.metatileentities.multi.multiblockpart.MetaTileEntityItemBus;
 import gregtech.common.metatileentities.multi.multiblockpart.MetaTileEntityMultiFluidHatch;
 import gregtech.core.sound.GTSoundEvents;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.world.World;
-import net.minecraftforge.fluids.IFluidTank;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.items.IItemHandlerModifiable;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import serendustry.SValues;
 import serendustry.api.SerendustryAPI;
 import serendustry.api.capability.IAALCore;
 import serendustry.api.capability.impl.AALRecipeLogic;
 import serendustry.blocks.BlockAALCoreCasing;
-import serendustry.blocks.BlockSerendustryMetalCasing;
+import serendustry.blocks.BlockMetalCasing;
 import serendustry.blocks.IAALCoreBlockStats;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.machine.structure.StructureDefinition;
-
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.Supplier;
-
-import static gregtech.api.util.RelativeDirection.BACK;
-import static gregtech.api.util.RelativeDirection.FRONT;
-import static gregtech.api.util.RelativeDirection.RIGHT;
-import static gregtech.api.util.RelativeDirection.UP;
 
 public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockController implements IAALCore {
 
@@ -108,6 +110,7 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
         if (!energyInput.isEmpty()) {
             // Disallow mixing hatch types
             if (!substationInput.isEmpty() || !laserInput.isEmpty()) {
+                // todo error
                 invalidateStructure();
             }
 
@@ -116,11 +119,9 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
                 // todo error
                 invalidateStructure();
             }
-        }
-
-        if (!substationInput.isEmpty()) {
+        } else if (!substationInput.isEmpty()) {
             // Disallow mixing hatch types
-            if (!energyInput.isEmpty() || !laserInput.isEmpty()) {
+            if (!laserInput.isEmpty()) {
                 invalidateStructure();
             }
 
@@ -128,11 +129,9 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
             if (substationInput.get(0).getInputVoltage() > GTValues.V[tier]) {
                 invalidateStructure();
             }
-        }
-
-        if (!laserInput.isEmpty()) {
+        } else if (!laserInput.isEmpty()) {
             // Disallow mixing hatch types and require UXV+ cores
-            if (tier < GTValues.UXV || !energyInput.isEmpty() || !substationInput.isEmpty()) {
+            if (tier < GTValues.UXV) {
                 invalidateStructure();
             }
         }
@@ -209,14 +208,14 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
 
     @NotNull
     protected static IBlockState getCasingState() {
-        return SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
-                .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.ADAMANTIUM);
+        return SerendustryMetaBlocks.METAL_CASING
+                .getState(BlockMetalCasing.SerendustryMetalCasingType.ADAMANTIUM);
     }
 
     @NotNull
     protected static IBlockState getGrateState() {
-        return SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
-                .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.CARBON); // todo
+        return SerendustryMetaBlocks.METAL_CASING
+                .getState(BlockMetalCasing.SerendustryMetalCasingType.CARBON); // todo
     }
 
     @NotNull
@@ -270,10 +269,8 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
 
                     if (!casing.equals(tier)) {
                         blockWorldState.setError(
-                                new PatternStringError("serendustry.machine.advanced_assembly_line.tier")); // todo this
-                                                                                                            // error
-                                                                                                            // never
-                                                                                                            // appears
+                                // todo this error never appears
+                                new PatternStringError("serendustry.machine.advanced_assembly_line.tier"));
                         return false;
                     }
 
@@ -574,4 +571,26 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
         tooltip.add(I18n.format("serendustry.machine.author") + " " + SValues.FORMAT_ENVOIDIA +
                 I18n.format("serendustry.machine.author.envoidia"));
     }
+
+    /*
+     * @Override
+     * public List<MultiblockShapeInfo> getMatchingShapes() {
+     * ArrayList<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
+     * MultiblockShapeInfo.Builder builder = MultiblockShapeInfo.builder(/*RIGHT, UP, FRONT
+     */// )
+    /*
+     * .aisle(StructureDefinition.ADVANCED_ASSEMBLY_LINE_MIDDLE).setRepeatable(3, 16)
+     * .aisle(StructureDefinition.ADVANCED_ASSEMBLY_LINE_BACK)
+     * .where('S', SerendustryMetaTileEntities.ADVANCED_ASSEMBLY_LINE, EnumFacing.SOUTH)
+     * .where('F', states(getCasingState()));
+     * //.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.LV], EnumFacing.NORTH)
+     * //.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.SOUTH)
+     * //.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.SOUTH)
+     * //.where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GTValues.LV], EnumFacing.WEST)
+     * SerendustryAPI.AAL_CORE_CASINGS.entrySet().stream()
+     * .sorted(Comparator.comparingInt(entry -> entry.getValue().getCoreTier()))
+     * .forEach(entry -> shapeInfo.add(builder.where('C', entry.getKey()).build()));
+     * return shapeInfo;
+     * }
+     */
 }

@@ -18,7 +18,8 @@ public class SerendustryRecipes {
         DestabilizedMatterChain.init();
         DragonEggRecipes.init();
         FerrofluidChain.init();
-        FPMRecipes.init();
+        FPMChain.init();
+        GeneratorFuels.init();
         GermaniumChain.init();
         GiantFractionatingColumnRecipes.init();
         HalkoniteSteelRecipes.init();

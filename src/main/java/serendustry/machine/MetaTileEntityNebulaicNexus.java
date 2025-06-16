@@ -1,5 +1,19 @@
 package serendustry.machine;
 
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -11,24 +25,12 @@ import gregtech.api.pattern.PatternMatchContext;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import serendustry.SValues;
-import serendustry.blocks.BlockSerendustryMetalCasing;
+import serendustry.blocks.BlockMetalCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.client.utils.STooltipHelper;
 import serendustry.machine.structure.StructureDefinition;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static gregtech.api.util.RelativeDirection.DOWN;
-import static gregtech.api.util.RelativeDirection.FRONT;
-import static gregtech.api.util.RelativeDirection.LEFT;
 
 public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
 
@@ -80,8 +82,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
 
         pattern.where('D', selfPredicate())
                 .where('C',
-                        states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
-                                .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.CARBON))
+                        states(SerendustryMetaBlocks.METAL_CASING
+                                .getState(BlockMetalCasing.SerendustryMetalCasingType.CARBON))
                                         .setMinGlobalLimited(803)
                                         .or(autoAbilities(false, false, true, true, true, true, false))
                                         .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0)
@@ -89,8 +91,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                                         .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(1)
                                                 .setMaxGlobalLimited(1)))
                 .where('B',
-                        states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
-                                .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.AMERICIUM)))
+                        states(SerendustryMetaBlocks.METAL_CASING
+                                .getState(BlockMetalCasing.SerendustryMetalCasingType.AMERICIUM)))
                 .where('A', states(MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.TRITANIUM)));
 
         return pattern.build();

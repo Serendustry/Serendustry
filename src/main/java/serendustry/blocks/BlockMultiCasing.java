@@ -1,17 +1,19 @@
 package serendustry.blocks;
 
-import gregtech.api.block.VariantBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+
 import org.jetbrains.annotations.NotNull;
 
-public class BlockSerendustryMultiCasing extends VariantBlock<BlockSerendustryMultiCasing.SerendustryMultiCasingType> {
+import gregtech.api.block.VariantBlock;
 
-    public BlockSerendustryMultiCasing() {
+public class BlockMultiCasing extends VariantBlock<BlockMultiCasing.SerendustryMultiCasingType> {
+
+    public BlockMultiCasing() {
         super(net.minecraft.block.material.Material.IRON);
         setTranslationKey("serendustry_multi_casing");
         setHardness(5.0f);

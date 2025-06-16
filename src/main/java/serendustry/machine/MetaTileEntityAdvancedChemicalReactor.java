@@ -1,21 +1,15 @@
 package serendustry.machine;
 
-import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
-import gregtech.api.metatileentity.multiblock.IMultiblockPart;
-import gregtech.api.metatileentity.multiblock.MultiblockDisplayText;
-import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
-import gregtech.api.pattern.BlockPattern;
-import gregtech.api.pattern.FactoryBlockPattern;
-import gregtech.api.pattern.PatternMatchContext;
-import gregtech.api.pattern.TraceabilityPredicate;
-import gregtech.api.recipes.Recipe;
-import gregtech.api.util.BlockInfo;
-import gregtech.api.util.GTUtility;
-import gregtech.api.util.TextComponentUtil;
-import gregtech.api.util.TextFormattingUtil;
-import gregtech.client.renderer.ICubeRenderer;
-import it.unimi.dsi.fastutil.objects.Reference2IntMap;
-import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Supplier;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -30,30 +24,39 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
+import gregtech.api.metatileentity.multiblock.IMultiblockPart;
+import gregtech.api.metatileentity.multiblock.MultiblockDisplayText;
+import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
+import gregtech.api.pattern.BlockPattern;
+import gregtech.api.pattern.FactoryBlockPattern;
+import gregtech.api.pattern.PatternMatchContext;
+import gregtech.api.pattern.TraceabilityPredicate;
+import gregtech.api.recipes.Recipe;
+import gregtech.api.unification.material.Materials;
+import gregtech.api.util.BlockInfo;
+import gregtech.api.util.GTUtility;
+import gregtech.api.util.TextComponentUtil;
+import gregtech.api.util.TextFormattingUtil;
+import gregtech.client.renderer.ICubeRenderer;
+import it.unimi.dsi.fastutil.objects.Reference2IntMap;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
 import serendustry.SValues;
 import serendustry.api.SerendustryAPI;
 import serendustry.api.capability.IACRComponent;
 import serendustry.api.capability.impl.ACRRecipeLogic;
 import serendustry.blocks.BlockACRComponent;
-import serendustry.blocks.BlockSerendustryMultiCasing;
+import serendustry.blocks.BlockMultiCasing;
 import serendustry.blocks.IACRComponentBlockStats;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.client.utils.IntegerRange;
 import serendustry.client.utils.STooltipHelper;
 import serendustry.machine.structure.StructureDefinition;
-
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Supplier;
-
-import static gregtech.api.util.RelativeDirection.DOWN;
-import static gregtech.api.util.RelativeDirection.FRONT;
-import static gregtech.api.util.RelativeDirection.LEFT;
 
 public class MetaTileEntityAdvancedChemicalReactor extends RecipeMapMultiblockController implements IACRComponent {
 
@@ -175,14 +178,14 @@ public class MetaTileEntityAdvancedChemicalReactor extends RecipeMapMultiblockCo
             pattern.aisle(aisle);
         }
 
-        pattern.where('S', selfPredicate())
-                .where('X',
-                        states(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING
-                                .getState(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ACR))
-                                        .setMinGlobalLimited(1)
-                                        .or(autoAbilities(true, false, true, true, true, true, false)))
+        pattern.where('D', selfPredicate())
                 .where('A', ACRComponents())
-                .where('G', air());// states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS)));
+                .where('B',
+                        states(SerendustryMetaBlocks.MULTI_CASING
+                                .getState(BlockMultiCasing.SerendustryMultiCasingType.ACR))
+                                        .setMinGlobalLimited(160)
+                                        .or(autoAbilities(true, false, true, true, true, true, false)))
+                .where('C', frames(Materials.Scandium));
 
         return pattern.build();
     }

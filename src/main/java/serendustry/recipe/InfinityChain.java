@@ -1,10 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.GTValues;
-import gregtech.api.recipes.RecipeMap;
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.ore.OrePrefix;
-
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.ARC_FURNACE_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
@@ -66,6 +61,11 @@ import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.HP_LASER_ARRAY_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.NEBULAIC_NEXUS_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.SONICATOR_RECIPES;
+
+import gregtech.api.GTValues;
+import gregtech.api.recipes.RecipeMap;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.ore.OrePrefix;
 
 public class InfinityChain {
 

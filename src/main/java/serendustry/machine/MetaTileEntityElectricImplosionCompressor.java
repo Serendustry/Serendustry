@@ -1,5 +1,26 @@
 package serendustry.machine;
 
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.function.Supplier;
+
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
@@ -17,34 +38,15 @@ import gregtech.client.renderer.ICubeRenderer;
 import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.core.sound.GTSoundEvents;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import serendustry.SValues;
 import serendustry.api.SerendustryAPI;
 import serendustry.blocks.BlockEICHammerCasing;
-import serendustry.blocks.BlockSerendustryMetalCasing;
+import serendustry.blocks.BlockMetalCasing;
 import serendustry.blocks.IEICHammerBlockStats;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.client.utils.STooltipHelper;
 import serendustry.machine.structure.StructureDefinition;
-
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.function.Supplier;
-
-import static gregtech.api.util.RelativeDirection.DOWN;
-import static gregtech.api.util.RelativeDirection.FRONT;
-import static gregtech.api.util.RelativeDirection.LEFT;
 
 public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblockController {
 
@@ -105,8 +107,8 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
 
         pattern.where('E', selfPredicate())
                 .where('A',
-                        states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
-                                .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.ADAMANTIUM))
+                        states(SerendustryMetaBlocks.METAL_CASING
+                                .getState(BlockMetalCasing.SerendustryMetalCasingType.ADAMANTIUM))
                                         .setMinGlobalLimited(401)
                                         .or(autoAbilities(false, false, true, true, true, true, false))
                                         .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0)
@@ -183,4 +185,33 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
     protected ICubeRenderer getFrontOverlay() {
         return SerendustryTextures.OVERLAY_ELECTRIC_IMPLOSION_COMPRESSOR;
     }
+
+    /*
+     * @Override
+     * public List<MultiblockShapeInfo> getMatchingShapes() {
+     * ArrayList<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
+     * MultiblockShapeInfo.Builder builder = MultiblockShapeInfo.builder(/*RIGHT, DOWN, FRONT
+     *//*
+        * )
+        * 
+        * for (String[] aisle : StructureDefinition.ELECTRIC_IMPLOSION_COMPRESSOR) {
+        * builder.aisle(aisle);
+        * }
+        * builder.where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF))
+        * .where('S', MetaTileEntities.ELECTRIC_BLAST_FURNACE, EnumFacing.SOUTH)
+        * .where('#', Blocks.AIR.getDefaultState())
+        * .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.LV], EnumFacing.NORTH)
+        * .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.SOUTH)
+        * .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.SOUTH)
+        * .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GTValues.LV], EnumFacing.WEST)
+        * .where('D', MetaTileEntities.FLUID_EXPORT_HATCH[GTValues.LV], EnumFacing.EAST)
+        * .where('H', MetaTileEntities.MUFFLER_HATCH[GTValues.LV], EnumFacing.UP)
+        * .where('M', () -> ConfigHolder.machines.enableMaintenance ? MetaTileEntities.MAINTENANCE_HATCH :
+        * MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF), EnumFacing.NORTH);
+        * GregTechAPI.HEATING_COILS.entrySet().stream()
+        * .sorted(Comparator.comparingInt(entry -> entry.getValue().getTier()))
+        * .forEach(entry -> shapeInfo.add(builder.where('C', entry.getKey()).build()));
+        * return shapeInfo;
+        * }
+        */
 }

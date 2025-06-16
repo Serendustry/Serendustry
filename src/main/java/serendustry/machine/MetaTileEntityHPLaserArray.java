@@ -1,6 +1,22 @@
 package serendustry.machine;
 
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import gregtech.api.GTValues;
 import gregtech.api.capability.IEnergyContainer;
+import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
@@ -9,33 +25,25 @@ import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.pattern.PatternMatchContext;
 import gregtech.api.unification.material.Materials;
+import gregtech.api.util.GTUtility;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.common.blocks.BlockGlassCasing;
-import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import serendustry.SValues;
-import serendustry.blocks.BlockSerendustryMetalCasing;
+import serendustry.blocks.BlockMetalCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.client.utils.STooltipHelper;
 import serendustry.machine.structure.StructureDefinition;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static gregtech.api.util.RelativeDirection.DOWN;
-import static gregtech.api.util.RelativeDirection.FRONT;
-import static gregtech.api.util.RelativeDirection.LEFT;
-
 public class MetaTileEntityHPLaserArray extends RecipeMapMultiblockController {
+
+    private int sourceTier = 0;
+    private int sourceAmps = 0;
 
     public MetaTileEntityHPLaserArray(ResourceLocation rl) {
         super(rl, SerendustryRecipeMaps.HP_LASER_ARRAY_RECIPES);
+        this.recipeMapWorkable = new HPLaserArrayWorkable(this);
     }
 
     @Override
@@ -44,15 +52,55 @@ public class MetaTileEntityHPLaserArray extends RecipeMapMultiblockController {
     }
 
     @Override
+    public boolean hasMaintenanceMechanics() {
+        return false;
+    }
+
+    @Override
     protected void formStructure(PatternMatchContext context) {
         super.formStructure(context);
+
+        // Check laser sources
+        List<IEnergyContainer> sources = new ArrayList<>(getAbilities(MultiblockAbility.OUTPUT_LASER));
+        for (IEnergyContainer source : sources) {
+            int tier = GTUtility.getTierByVoltage(source.getOutputVoltage());
+            long amps = source.getOutputAmperage();
+
+            // Not the first loop, make sure all sources are the same. Invalidate if not
+            if (sourceTier != 0) {
+                if (tier != sourceTier || amps != sourceAmps) {
+                    // todo error
+                    invalidateStructure();
+                }
+            }
+            // First loop, set to the first source's values
+            else {
+                sourceTier = tier;
+                sourceAmps = Math.toIntExact(amps);
+            }
+        }
 
         List<IEnergyContainer> energyInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
         List<IEnergyContainer> substationInput = new ArrayList<>(
                 getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
 
-        if (!energyInput.isEmpty() && !substationInput.isEmpty()) {
-            invalidateStructure();
+        if (!energyInput.isEmpty()) {
+            // Cannot exceed source tier
+            if (energyInput.get(0).getInputVoltage() > GTValues.V[sourceTier]) {
+                // todo error
+                invalidateStructure();
+            }
+
+            // Disallow mixing hatch types
+            if (!substationInput.isEmpty()) {
+                invalidateStructure();
+            }
+        } else if (!substationInput.isEmpty()) {
+            // Cannot exceed source tier
+            if (substationInput.get(0).getInputVoltage() > GTValues.V[sourceTier]) {
+                // todo error
+                invalidateStructure();
+            }
         }
 
         // todo: give error message to multiblock builder and make JEI not show mixed hatches
@@ -66,8 +114,10 @@ public class MetaTileEntityHPLaserArray extends RecipeMapMultiblockController {
     }
 
     @Override
-    public boolean hasMaintenanceMechanics() {
-        return false;
+    public void invalidateStructure() {
+        super.invalidateStructure();
+        this.sourceTier = 0;
+        this.sourceAmps = 0;
     }
 
     @Override
@@ -80,8 +130,8 @@ public class MetaTileEntityHPLaserArray extends RecipeMapMultiblockController {
 
         pattern.where('F', selfPredicate())
                 .where('A',
-                        states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
-                                .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.AMERICIUM))
+                        states(SerendustryMetaBlocks.METAL_CASING
+                                .getState(BlockMetalCasing.SerendustryMetalCasingType.AMERICIUM))
                                         .setMinGlobalLimited(794)
                                         .or(autoAbilities(false, false, true, true, true, true, false))
                                         .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0)
@@ -91,9 +141,7 @@ public class MetaTileEntityHPLaserArray extends RecipeMapMultiblockController {
                 .where('B', frames(Materials.Neutronium))
                 .where('C', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS))) // todo
                 .where('D', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.FUSION_GLASS)))
-                .where('E', states(
-                        MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST)));
-        // todo: use laser sources (tiered)
+                .where('E', abilities(MultiblockAbility.OUTPUT_LASER)); // todo facing
 
         return pattern.build();
     }
@@ -108,5 +156,17 @@ public class MetaTileEntityHPLaserArray extends RecipeMapMultiblockController {
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         STooltipHelper.addSerendustryInformation(tooltip, SValues.ENERGY_SUBSTATION, false);
+    }
+
+    protected class HPLaserArrayWorkable extends MultiblockRecipeLogic {
+
+        public HPLaserArrayWorkable(RecipeMapMultiblockController tileEntity) {
+            super(tileEntity);
+        }
+
+        @Override
+        public int getParallelLimit() {
+            return sourceAmps / 64;
+        }
     }
 }

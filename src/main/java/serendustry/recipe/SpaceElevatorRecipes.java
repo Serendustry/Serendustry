@@ -1,11 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.common.metatileentities.MetaTileEntities;
-import net.minecraft.init.Blocks;
-import serendustry.blocks.BlockSerendustryMultiCasing;
-import serendustry.blocks.SerendustryMetaBlocks;
-
 import static gregtech.api.GTValues.UEV;
 import static gregtech.api.GTValues.UHV;
 import static gregtech.api.GTValues.UV;
@@ -205,12 +199,19 @@ import static serendustry.item.material.SerendustryMaterials.YellowStarMatter;
 import static serendustry.machine.SerendustryMetaTileEntities.SPACE_ELEVATOR;
 import static serendustry.machine.SerendustryRecipeMaps.SPACE_ELEVATOR_RECIPES;
 
+import net.minecraft.init.Blocks;
+
+import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.common.metatileentities.MetaTileEntities;
+import serendustry.blocks.BlockMultiCasing;
+import serendustry.blocks.SerendustryMetaBlocks;
+
 public class SpaceElevatorRecipes {
 
     public static void init() {
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .inputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(
-                        BlockSerendustryMultiCasing.SerendustryMultiCasingType.SPACE_ELEVATOR, 4))
+                .inputs(SerendustryMetaBlocks.MULTI_CASING.getItemVariant(
+                        BlockMultiCasing.SerendustryMultiCasingType.SPACE_ELEVATOR, 4))
                 .input(circuit, MarkerMaterials.Tier.UHV, 16)
                 .input(circuit, MarkerMaterials.Tier.UV, 64)
                 .input(SENSOR_ZPM, 32)
@@ -226,8 +227,8 @@ public class SpaceElevatorRecipes {
                 .fluidInputs(Europium.getFluid(144 * 64))
                 .output(SPACE_ELEVATOR)
                 .stationResearch(b -> b
-                        .researchStack(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING
-                                .getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.SPACE_ELEVATOR))
+                        .researchStack(SerendustryMetaBlocks.MULTI_CASING
+                                .getItemVariant(BlockMultiCasing.SerendustryMultiCasingType.SPACE_ELEVATOR))
                         .CWUt(64)
                         .EUt(VA[UV]))
                 .duration(9600).EUt(VA[UV]).buildAndRegister();

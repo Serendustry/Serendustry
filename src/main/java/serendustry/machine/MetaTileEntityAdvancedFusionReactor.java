@@ -1,5 +1,20 @@
 package serendustry.machine;
 
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
+
+import java.util.List;
+
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -11,25 +26,12 @@ import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.MetaBlocks;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import serendustry.SValues;
-import serendustry.blocks.BlockSerendustryMultiCasing;
+import serendustry.blocks.BlockMultiCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.client.utils.STooltipHelper;
 import serendustry.machine.structure.StructureDefinition;
-
-import java.util.List;
-
-import static gregtech.api.util.RelativeDirection.DOWN;
-import static gregtech.api.util.RelativeDirection.FRONT;
-import static gregtech.api.util.RelativeDirection.LEFT;
 
 public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockController {
 
@@ -58,12 +60,12 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
 
         pattern.where('C', selfPredicate())
                 .where('A',
-                        states(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING
-                                .getState(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION))
+                        states(SerendustryMetaBlocks.MULTI_CASING
+                                .getState(BlockMultiCasing.SerendustryMultiCasingType.ADV_FUSION))
                                         .setMinGlobalLimited(365).or(autoAbilities()))
                 .where('B',
-                        states(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING
-                                .getState(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL)))
+                        states(SerendustryMetaBlocks.MULTI_CASING
+                                .getState(BlockMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL)))
                 .where('D', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.FUSION_GLASS)));
 
         return pattern.build();

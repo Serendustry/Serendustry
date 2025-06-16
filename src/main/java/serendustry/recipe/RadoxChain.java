@@ -1,7 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.recipes.chance.output.ChancedOutputLogic;
-
 import static gregtech.api.GTValues.UHV;
 import static gregtech.api.GTValues.UV;
 import static gregtech.api.GTValues.VA;
@@ -46,6 +44,8 @@ import static serendustry.item.material.SerendustryMaterials.Xenoxene;
 import static serendustry.machine.SerendustryRecipeMaps.ACR_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.BIOLAB_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.GIANT_FRACTIONATING_COLUMN_RECIPES;
+
+import gregtech.api.recipes.chance.output.ChancedOutputLogic;
 
 public class RadoxChain {
 

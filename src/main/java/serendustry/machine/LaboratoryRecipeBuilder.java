@@ -1,14 +1,15 @@
 package serendustry.machine;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.google.common.collect.ImmutableTable;
+
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.recipeproperties.CleanroomProperty;
 import gregtech.api.recipes.recipeproperties.RecipeProperty;
 import serendustry.machine.LaboratoryProperty.LaboratoryEntry;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 public class LaboratoryRecipeBuilder extends RecipeBuilder<LaboratoryRecipeBuilder> {
 

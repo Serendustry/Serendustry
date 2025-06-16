@@ -1,0 +1,14 @@
+{
+    "animation": {"frametime": 2}
+    "ctm": {
+        "type": "NORMAL",
+        "layer": "BLOOM",
+        "gregtech": true,
+        "textures": [
+            "gregtech:blocks/casing/wire_coil/hypogen_bloom"
+        ],
+        "extra": {
+            "light": 5
+        }
+    }
+}

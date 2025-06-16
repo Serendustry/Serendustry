@@ -1,5 +1,24 @@
 package serendustry.machine;
 
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -14,29 +33,13 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.MetaBlocks;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import serendustry.SValues;
-import serendustry.blocks.BlockSerendustryMetalCasing;
+import serendustry.blocks.BlockMetalCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.client.utils.STooltipHelper;
 import serendustry.item.material.SerendustryMaterials;
 import serendustry.machine.structure.StructureFlamelCrucible;
-
-import javax.annotation.Nonnull;
-import java.util.ArrayList;
-import java.util.List;
-
-import static gregtech.api.util.RelativeDirection.DOWN;
-import static gregtech.api.util.RelativeDirection.FRONT;
-import static gregtech.api.util.RelativeDirection.LEFT;
 
 public class MetaTileEntityMegaChemicalReactor extends RecipeMapMultiblockController {
 
@@ -93,8 +96,8 @@ public class MetaTileEntityMegaChemicalReactor extends RecipeMapMultiblockContro
 
         pattern.where('F', selfPredicate())
                 .where('B',
-                        states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
-                                .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.CARBON))
+                        states(SerendustryMetaBlocks.METAL_CASING
+                                .getState(BlockMetalCasing.SerendustryMetalCasingType.CARBON))
                                         .setMinGlobalLimited(1789)
                                         .or(autoAbilities(false, false, true, true, true, true, false))
                                         .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0)
@@ -104,8 +107,8 @@ public class MetaTileEntityMegaChemicalReactor extends RecipeMapMultiblockContro
                                         .or(abilities(MultiblockAbility.INPUT_LASER).setPreviewCount(1)
                                                 .setMaxGlobalLimited(1)))
                 .where('A',
-                        states(SerendustryMetaBlocks.SERENDUSTRY_METAL_CASING
-                                .getState(BlockSerendustryMetalCasing.SerendustryMetalCasingType.ADAMANTIUM)))
+                        states(SerendustryMetaBlocks.METAL_CASING
+                                .getState(BlockMetalCasing.SerendustryMetalCasingType.ADAMANTIUM)))
                 .where('C', frames(SerendustryMaterials.Adamantium))
                 .where('D', states(Blocks.LAVA.getBlockState().getBaseState()))
                 .where('E', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.FUSION_GLASS))); // todo

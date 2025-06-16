@@ -1,22 +1,5 @@
 package serendustry.item.material;
 
-import gregicality.multiblocks.api.unification.GCYMMaterialFlags;
-import gregtech.api.fluids.FluidBuilder;
-import gregtech.api.fluids.store.FluidStorageKey;
-import gregtech.api.fluids.store.FluidStorageKeys;
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.info.MaterialIconSet;
-import gregtech.api.unification.material.properties.BlastProperty;
-import gregtech.api.unification.material.properties.BlastProperty.GasTier;
-import gregtech.api.unification.material.properties.DustProperty;
-import gregtech.api.unification.material.properties.FluidProperty;
-import gregtech.api.unification.material.properties.IngotProperty;
-import gregtech.api.unification.material.properties.OreProperty;
-import gregtech.api.unification.material.properties.PropertyKey;
-import gregtech.api.unification.material.properties.ToolProperty;
-import gregtech.api.unification.ore.OrePrefix;
-import serendustry.Serendustry;
-
 import static gregicality.multiblocks.api.unification.GCYMMaterials.Zeron100;
 import static gregtech.api.GTValues.EV;
 import static gregtech.api.GTValues.HV;
@@ -262,6 +245,23 @@ import static gregtech.api.unification.material.info.MaterialIconSet.MAGNETIC;
 import static gregtech.api.unification.material.info.MaterialIconSet.METALLIC;
 import static gregtech.api.unification.material.info.MaterialIconSet.NETHERSTAR;
 import static gregtech.api.unification.material.info.MaterialIconSet.SHINY;
+
+import gregicality.multiblocks.api.unification.GCYMMaterialFlags;
+import gregtech.api.fluids.FluidBuilder;
+import gregtech.api.fluids.store.FluidStorageKey;
+import gregtech.api.fluids.store.FluidStorageKeys;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.info.MaterialIconSet;
+import gregtech.api.unification.material.properties.BlastProperty;
+import gregtech.api.unification.material.properties.BlastProperty.GasTier;
+import gregtech.api.unification.material.properties.DustProperty;
+import gregtech.api.unification.material.properties.FluidProperty;
+import gregtech.api.unification.material.properties.IngotProperty;
+import gregtech.api.unification.material.properties.OreProperty;
+import gregtech.api.unification.material.properties.PropertyKey;
+import gregtech.api.unification.material.properties.ToolProperty;
+import gregtech.api.unification.ore.OrePrefix;
+import serendustry.Serendustry;
 
 public class SerendustryMaterials {
 
@@ -812,7 +812,7 @@ public class SerendustryMaterials {
 
     public static Material AmmoniumBisulfate;
     public static Material SilverBromide;
-// empty id 455
+    // empty id 455
     public static Material CalciumHydrosulfide;
     public static Material AluminiumHydride;
 

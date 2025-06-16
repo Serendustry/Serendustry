@@ -1,18 +1,20 @@
 package serendustry;
 
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.Table;
-import gregtech.api.GTValues;
-import gregtech.api.GregTechAPI;
-import gregtech.api.metatileentity.MetaTileEntity;
-import gregtech.api.metatileentity.TieredMetaTileEntity;
-import gregtech.api.recipes.RecipeMap;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.Table;
+
+import gregtech.api.GTValues;
+import gregtech.api.GregTechAPI;
+import gregtech.api.metatileentity.MetaTileEntity;
+import gregtech.api.metatileentity.TieredMetaTileEntity;
+import gregtech.api.recipes.RecipeMap;
 
 @Mod.EventBusSubscriber
 public class SerendustryUtil {

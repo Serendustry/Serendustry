@@ -1,16 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.GTValues;
-import gregtech.api.fluids.store.FluidStorageKeys;
-import gregtech.api.items.metaitem.MetaItem;
-import gregtech.api.metatileentity.multiblock.CleanroomType;
-import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.ore.OrePrefix;
-import gregtech.common.ConfigHolder;
-import gregtech.common.blocks.BlockGlassCasing;
-import gregtech.common.blocks.MetaBlocks;
-import serendustry.SValues;
-
 import static gregtech.api.GTValues.EV;
 import static gregtech.api.GTValues.HV;
 import static gregtech.api.GTValues.IV;
@@ -269,6 +258,17 @@ import static serendustry.machine.SerendustryRecipeMaps.CRYSTALLIZER_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.HP_LASER_ARRAY_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.NEBULAIC_NEXUS_RECIPES;
+
+import gregtech.api.GTValues;
+import gregtech.api.fluids.store.FluidStorageKeys;
+import gregtech.api.items.metaitem.MetaItem;
+import gregtech.api.metatileentity.multiblock.CleanroomType;
+import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.ore.OrePrefix;
+import gregtech.common.ConfigHolder;
+import gregtech.common.blocks.BlockGlassCasing;
+import gregtech.common.blocks.MetaBlocks;
+import serendustry.SValues;
 
 public class CircuitRecipes {
 

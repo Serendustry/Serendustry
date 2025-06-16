@@ -1,7 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.unification.material.MarkerMaterials;
-
 import static gregtech.api.GTValues.UHV;
 import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
@@ -33,6 +31,8 @@ import static serendustry.item.material.SerendustryMaterials.Trilithium;
 import static serendustry.item.material.SerendustryMaterials.VibraniumAlloy;
 import static serendustry.machine.SerendustryMetaTileEntities.STELLAR_INCUBATOR;
 import static serendustry.machine.SerendustryRecipeMaps.STELLAR_INCUBATOR_RECIPES;
+
+import gregtech.api.unification.material.MarkerMaterials;
 
 public class StellarIncubatorRecipes {
 

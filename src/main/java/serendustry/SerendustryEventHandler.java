@@ -1,22 +1,5 @@
 package serendustry;
 
-import gregtech.api.GTValues;
-import gregtech.api.GregTechAPI;
-import gregtech.api.event.HighTierEvent;
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.ore.OrePrefix;
-import gregtech.api.unification.stack.UnificationEntry;
-import gregtech.loaders.recipe.CraftingComponent;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import serendustry.entity.FriendlyCreeperEntity;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import static gregtech.api.unification.material.Materials.Neutronium;
 import static gregtech.api.unification.material.Materials.Tritanium;
 import static gregtech.api.unification.material.Materials.VanadiumGallium;
@@ -99,6 +82,24 @@ import static serendustry.item.material.SerendustryMaterials.Signalium;
 import static serendustry.item.material.SerendustryMaterials.Superheavies;
 import static serendustry.item.material.SerendustryMaterials.TengamAttuned;
 import static serendustry.item.material.SerendustryMaterials.VibraniumAlloy;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.relauncher.Side;
+
+import gregtech.api.GTValues;
+import gregtech.api.GregTechAPI;
+import gregtech.api.event.HighTierEvent;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.ore.OrePrefix;
+import gregtech.api.unification.stack.UnificationEntry;
+import gregtech.loaders.recipe.CraftingComponent;
+import serendustry.entity.FriendlyCreeperEntity;
 
 public class SerendustryEventHandler {
 

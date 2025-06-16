@@ -1,18 +1,19 @@
 package serendustry.client.utils;
 
-import gregtech.client.utils.TooltipHelper;
-import gregtech.common.ConfigHolder;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
-import serendustry.SValues;
+import static gregtech.api.GTValues.CLIENT_TIME;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static gregtech.api.GTValues.CLIENT_TIME;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
+
+import gregtech.client.utils.TooltipHelper;
+import gregtech.common.ConfigHolder;
+import serendustry.SValues;
 
 public class STooltipHelper extends TooltipHelper {
 

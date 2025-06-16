@@ -1,9 +1,5 @@
 package serendustry.recipe;
 
-import gregtech.api.GTValues;
-import serendustry.blocks.BlockSerendustryMultiCasing;
-import serendustry.blocks.SerendustryMetaBlocks;
-
 import static gregtech.api.GTValues.IV;
 import static gregtech.api.GTValues.LuV;
 import static gregtech.api.GTValues.UEV;
@@ -129,6 +125,10 @@ import static serendustry.item.material.SerendustryMaterials.Technetium22;
 import static serendustry.item.material.SerendustryMaterials.Thaumium;
 import static serendustry.machine.SerendustryMetaTileEntities.ADVANCED_FUSION_REACTOR;
 import static serendustry.machine.SerendustryMetaTileEntities.MEGA_FUSION_REACTOR;
+
+import gregtech.api.GTValues;
+import serendustry.blocks.BlockMultiCasing;
+import serendustry.blocks.SerendustryMetaBlocks;
 
 public class LargeAlloySmelterRecipes {
 
@@ -335,8 +335,8 @@ public class LargeAlloySmelterRecipes {
                 .duration(200).EUt(VA[UV]).EUToStart(640_000_000).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .inputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING
-                        .getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL))
+                .inputs(SerendustryMetaBlocks.MULTI_CASING
+                        .getItemVariant(BlockMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL))
                 .input(FIELD_GENERATOR_UEV, 8)
                 .input(ROBOT_ARM_UEV, 8)
                 .input(gear, HalkoniteSteel, 4)
@@ -387,14 +387,14 @@ public class LargeAlloySmelterRecipes {
                 .input(ADVANCED_FUSION_REACTOR, 64)
                 .input(FIELD_GENERATOR_UIV, 32)
                 .input(ROBOT_ARM_UIV, 32)
-                .inputs(SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING
-                        .getItemVariant(BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 64),
-                        SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(
-                                BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 64),
-                        SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(
-                                BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 64),
-                        SerendustryMetaBlocks.SERENDUSTRY_MULTI_CASING.getItemVariant(
-                                BlockSerendustryMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 64))
+                .inputs(SerendustryMetaBlocks.MULTI_CASING
+                        .getItemVariant(BlockMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 64),
+                        SerendustryMetaBlocks.MULTI_CASING.getItemVariant(
+                                BlockMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 64),
+                        SerendustryMetaBlocks.MULTI_CASING.getItemVariant(
+                                BlockMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 64),
+                        SerendustryMetaBlocks.MULTI_CASING.getItemVariant(
+                                BlockMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 64))
                 .input(plateDense, ExoHalkoniteSteel, 4)
                 .input(plateDense, HalkoniteSteel, 8)
                 .input(plate, DeepDarkSteel, 32)
