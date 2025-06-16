@@ -1,17 +1,251 @@
 package serendustry.recipe;
 
-import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregicality.multiblocks.api.unification.GCYMMaterials.Zeron100;
+import static gregtech.api.GTValues.EV;
+import static gregtech.api.GTValues.HV;
+import static gregtech.api.GTValues.IV;
+import static gregtech.api.GTValues.LV;
+import static gregtech.api.GTValues.LuV;
+import static gregtech.api.GTValues.MAX;
+import static gregtech.api.GTValues.MV;
+import static gregtech.api.GTValues.OpV;
+import static gregtech.api.GTValues.UEV;
+import static gregtech.api.GTValues.UHV;
+import static gregtech.api.GTValues.UIV;
+import static gregtech.api.GTValues.UV;
+import static gregtech.api.GTValues.UXV;
+import static gregtech.api.GTValues.V;
+import static gregtech.api.GTValues.VA;
+import static gregtech.api.GTValues.ZPM;
+import static gregtech.api.recipes.RecipeMaps.AUTOCLAVE_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.BLAST_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.CENTRIFUGE_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.CHEMICAL_BATH_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.CHEMICAL_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.EXTRACTOR_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.FLUID_HEATER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.FORMING_PRESS_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.LASER_ENGRAVER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.MIXER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.VACUUM_RECIPES;
+import static gregtech.api.unification.material.Materials.Air;
+import static gregtech.api.unification.material.Materials.Aluminium;
+import static gregtech.api.unification.material.Materials.AluminiumSulfite;
+import static gregtech.api.unification.material.Materials.Americium;
+import static gregtech.api.unification.material.Materials.Antimony;
+import static gregtech.api.unification.material.Materials.Argon;
+import static gregtech.api.unification.material.Materials.BasalticMineralSand;
+import static gregtech.api.unification.material.Materials.BlackSteel;
+import static gregtech.api.unification.material.Materials.Cadmium;
+import static gregtech.api.unification.material.Materials.Carbon;
+import static gregtech.api.unification.material.Materials.Cerium;
+import static gregtech.api.unification.material.Materials.Chlorine;
+import static gregtech.api.unification.material.Materials.Chrome;
+import static gregtech.api.unification.material.Materials.Copper;
+import static gregtech.api.unification.material.Materials.Diamond;
+import static gregtech.api.unification.material.Materials.DistilledWater;
+import static gregtech.api.unification.material.Materials.Dubnium;
+import static gregtech.api.unification.material.Materials.Einsteinium;
+import static gregtech.api.unification.material.Materials.Electrum;
+import static gregtech.api.unification.material.Materials.EnderPearl;
+import static gregtech.api.unification.material.Materials.Europium;
+import static gregtech.api.unification.material.Materials.Fermium;
+import static gregtech.api.unification.material.Materials.Gadolinium;
+import static gregtech.api.unification.material.Materials.Gallium;
+import static gregtech.api.unification.material.Materials.GarnetSand;
+import static gregtech.api.unification.material.Materials.Germanium;
+import static gregtech.api.unification.material.Materials.GraniticMineralSand;
+import static gregtech.api.unification.material.Materials.HSSG;
+import static gregtech.api.unification.material.Materials.HSSS;
+import static gregtech.api.unification.material.Materials.Helium;
+import static gregtech.api.unification.material.Materials.Holmium;
+import static gregtech.api.unification.material.Materials.HydrochloricAcid;
+import static gregtech.api.unification.material.Materials.Hydrogen;
+import static gregtech.api.unification.material.Materials.Indium;
+import static gregtech.api.unification.material.Materials.Invar;
+import static gregtech.api.unification.material.Materials.Iron;
+import static gregtech.api.unification.material.Materials.Kanthal;
+import static gregtech.api.unification.material.Materials.Krypton;
+import static gregtech.api.unification.material.Materials.Lava;
+import static gregtech.api.unification.material.Materials.Lithium;
+import static gregtech.api.unification.material.Materials.Magnesium;
+import static gregtech.api.unification.material.Materials.Manganese;
+import static gregtech.api.unification.material.Materials.Mendelevium;
+import static gregtech.api.unification.material.Materials.Mercury;
+import static gregtech.api.unification.material.Materials.Methane;
+import static gregtech.api.unification.material.Materials.Molybdenum;
+import static gregtech.api.unification.material.Materials.Naquadah;
+import static gregtech.api.unification.material.Materials.NaquadahAlloy;
+import static gregtech.api.unification.material.Materials.NaquadahEnriched;
+import static gregtech.api.unification.material.Materials.Naquadria;
+import static gregtech.api.unification.material.Materials.NetherStar;
+import static gregtech.api.unification.material.Materials.Nichrome;
+import static gregtech.api.unification.material.Materials.Nickel;
+import static gregtech.api.unification.material.Materials.Niobium;
+import static gregtech.api.unification.material.Materials.NiobiumNitride;
+import static gregtech.api.unification.material.Materials.Oganesson;
+import static gregtech.api.unification.material.Materials.Osmiridium;
+import static gregtech.api.unification.material.Materials.Oxygen;
+import static gregtech.api.unification.material.Materials.Palladium;
+import static gregtech.api.unification.material.Materials.Phosphate;
+import static gregtech.api.unification.material.Materials.Plutonium239;
+import static gregtech.api.unification.material.Materials.Polonium;
+import static gregtech.api.unification.material.Materials.Polyethylene;
+import static gregtech.api.unification.material.Materials.Promethium;
+import static gregtech.api.unification.material.Materials.Redstone;
+import static gregtech.api.unification.material.Materials.Rhenium;
+import static gregtech.api.unification.material.Materials.Rhodium;
+import static gregtech.api.unification.material.Materials.RoseGold;
+import static gregtech.api.unification.material.Materials.Rubidium;
+import static gregtech.api.unification.material.Materials.Ruridit;
+import static gregtech.api.unification.material.Materials.Ruthenium;
+import static gregtech.api.unification.material.Materials.Rutherfordium;
+import static gregtech.api.unification.material.Materials.Rutile;
+import static gregtech.api.unification.material.Materials.Samarium;
+import static gregtech.api.unification.material.Materials.SamariumMagnetic;
+import static gregtech.api.unification.material.Materials.Scandium;
+import static gregtech.api.unification.material.Materials.Silicon;
+import static gregtech.api.unification.material.Materials.SiliconDioxide;
+import static gregtech.api.unification.material.Materials.SolderingAlloy;
+import static gregtech.api.unification.material.Materials.Steel;
+import static gregtech.api.unification.material.Materials.SterlingSilver;
+import static gregtech.api.unification.material.Materials.Stone;
+import static gregtech.api.unification.material.Materials.Strontium;
+import static gregtech.api.unification.material.Materials.Sulfur;
+import static gregtech.api.unification.material.Materials.TinAlloy;
+import static gregtech.api.unification.material.Materials.Titanium;
+import static gregtech.api.unification.material.Materials.Trinium;
+import static gregtech.api.unification.material.Materials.Tritanium;
+import static gregtech.api.unification.material.Materials.Tungsten;
+import static gregtech.api.unification.material.Materials.TungstenCarbide;
+import static gregtech.api.unification.material.Materials.TungstenSteel;
+import static gregtech.api.unification.material.Materials.Uraninite;
+import static gregtech.api.unification.material.Materials.Uranium238;
+import static gregtech.api.unification.material.Materials.Vanadium;
+import static gregtech.api.unification.material.Materials.Xenon;
+import static gregtech.api.unification.material.Materials.Ytterbium;
+import static gregtech.api.unification.material.Materials.Yttrium;
+import static gregtech.api.unification.material.Materials.Zeolite;
+import static gregtech.api.unification.material.Materials.Zirconium;
+import static gregtech.api.unification.ore.OrePrefix.crushedCentrifuged;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.foil;
+import static gregtech.api.unification.ore.OrePrefix.gemExquisite;
+import static gregtech.api.unification.ore.OrePrefix.ingot;
+import static gregtech.api.unification.ore.OrePrefix.ingotHot;
+import static gregtech.api.unification.ore.OrePrefix.lens;
+import static gregtech.api.unification.ore.OrePrefix.nugget;
+import static gregtech.api.unification.ore.OrePrefix.round;
 import static gregtech.common.items.MetaItems.QUANTUM_MAINFRAME_ZPM;
-import static gregtech.common.items.MetaItems.STEM_CELLS;
 import static gregtech.common.metatileentities.MetaTileEntities.ASSEMBLY_LINE;
 import static gregtech.common.metatileentities.MetaTileEntities.ELECTROLYZER;
-import static serendustry.item.material.SerendustryMaterials.*;
+import static serendustry.item.SerendustryMetaItems.CULTURE_STEM_CELL_WIRED;
+import static serendustry.item.material.SerendustryMaterials.ALMST;
+import static serendustry.item.material.SerendustryMaterials.AbyssalAlloy;
+import static serendustry.item.material.SerendustryMaterials.Actinoids;
+import static serendustry.item.material.SerendustryMaterials.Adamantium;
+import static serendustry.item.material.SerendustryMaterials.AerCrystal;
+import static serendustry.item.material.SerendustryMaterials.Alkalis;
+import static serendustry.item.material.SerendustryMaterials.Aluminum;
+import static serendustry.item.material.SerendustryMaterials.Amogus;
+import static serendustry.item.material.SerendustryMaterials.AnthraciteCoal;
+import static serendustry.item.material.SerendustryMaterials.AquaCrystal;
+import static serendustry.item.material.SerendustryMaterials.Arcanite;
+import static serendustry.item.material.SerendustryMaterials.ArceusAlloy2B;
+import static serendustry.item.material.SerendustryMaterials.AssemblyLine;
+import static serendustry.item.material.SerendustryMaterials.AwakenedDraconium;
+import static serendustry.item.material.SerendustryMaterials.Bedrockium;
+import static serendustry.item.material.SerendustryMaterials.BismuthTellurite;
+import static serendustry.item.material.SerendustryMaterials.BituminousCoal;
+import static serendustry.item.material.SerendustryMaterials.BlackStarMatter;
+import static serendustry.item.material.SerendustryMaterials.BoneSteel;
+import static serendustry.item.material.SerendustryMaterials.ChargedDraconium;
+import static serendustry.item.material.SerendustryMaterials.Cinobite;
+import static serendustry.item.material.SerendustryMaterials.CondensedCoal;
+import static serendustry.item.material.SerendustryMaterials.CondensedStarMatter;
+import static serendustry.item.material.SerendustryMaterials.CrystalMatrix;
+import static serendustry.item.material.SerendustryMaterials.CubicZirconia;
+import static serendustry.item.material.SerendustryMaterials.DeepDarkIron;
+import static serendustry.item.material.SerendustryMaterials.DeepDarkSteel;
+import static serendustry.item.material.SerendustryMaterials.Draconium;
+import static serendustry.item.material.SerendustryMaterials.EglinSteel;
+import static serendustry.item.material.SerendustryMaterials.Enderiiium;
+import static serendustry.item.material.SerendustryMaterials.EnderiiumBase;
+import static serendustry.item.material.SerendustryMaterials.EnergeticAlloy;
+import static serendustry.item.material.SerendustryMaterials.EnergyCrystal;
+import static serendustry.item.material.SerendustryMaterials.EnrichedHolmium;
+import static serendustry.item.material.SerendustryMaterials.EnrichedNaquadahAlloy;
+import static serendustry.item.material.SerendustryMaterials.EnrichedTeflon;
+import static serendustry.item.material.SerendustryMaterials.ExtremelyUnstableTiberium;
+import static serendustry.item.material.SerendustryMaterials.FluxedElectrum;
+import static serendustry.item.material.SerendustryMaterials.GalliumYttrium;
+import static serendustry.item.material.SerendustryMaterials.HastelloyK243;
+import static serendustry.item.material.SerendustryMaterials.HastelloyN;
+import static serendustry.item.material.SerendustryMaterials.HastelloyX78;
+import static serendustry.item.material.SerendustryMaterials.HighDurabilityCompoundSteel;
+import static serendustry.item.material.SerendustryMaterials.HighGradeSolderingAlloy;
+import static serendustry.item.material.SerendustryMaterials.IgnisCrystal;
+import static serendustry.item.material.SerendustryMaterials.Inconel792;
+import static serendustry.item.material.SerendustryMaterials.Infinity;
+import static serendustry.item.material.SerendustryMaterials.InfinityCatalyst;
+import static serendustry.item.material.SerendustryMaterials.InfusedGold;
+import static serendustry.item.material.SerendustryMaterials.Jasper;
+import static serendustry.item.material.SerendustryMaterials.Lafium;
+import static serendustry.item.material.SerendustryMaterials.Lanthanoids;
+import static serendustry.item.material.SerendustryMaterials.Ledox;
+import static serendustry.item.material.SerendustryMaterials.LigniteCoal;
+import static serendustry.item.material.SerendustryMaterials.Lumiium;
+import static serendustry.item.material.SerendustryMaterials.Luminessence;
+import static serendustry.item.material.SerendustryMaterials.Magic2;
+import static serendustry.item.material.SerendustryMaterials.MagnetoResonatic;
+import static serendustry.item.material.SerendustryMaterials.MultiversalAlloy;
+import static serendustry.item.material.SerendustryMaterials.MutatedLivingSolder;
+import static serendustry.item.material.SerendustryMaterials.NaquadriaticTaranium;
+import static serendustry.item.material.SerendustryMaterials.NetherizedDiamond;
+import static serendustry.item.material.SerendustryMaterials.Onionium;
+import static serendustry.item.material.SerendustryMaterials.OrdoCrystal;
+import static serendustry.item.material.SerendustryMaterials.Originite;
+import static serendustry.item.material.SerendustryMaterials.PeatCoal;
+import static serendustry.item.material.SerendustryMaterials.PerditioCrystal;
+import static serendustry.item.material.SerendustryMaterials.Periodicium;
+import static serendustry.item.material.SerendustryMaterials.Pikyonium;
+import static serendustry.item.material.SerendustryMaterials.Pinkium;
+import static serendustry.item.material.SerendustryMaterials.Platinium;
+import static serendustry.item.material.SerendustryMaterials.PostTransitionMetals;
+import static serendustry.item.material.SerendustryMaterials.Prasiolite;
+import static serendustry.item.material.SerendustryMaterials.PulsatingIron;
+import static serendustry.item.material.SerendustryMaterials.Quantium;
+import static serendustry.item.material.SerendustryMaterials.Quantum;
+import static serendustry.item.material.SerendustryMaterials.RawAdamantium;
+import static serendustry.item.material.SerendustryMaterials.RealCupronickel;
+import static serendustry.item.material.SerendustryMaterials.Rhopalthenit;
+import static serendustry.item.material.SerendustryMaterials.ScOpv;
+import static serendustry.item.material.SerendustryMaterials.ScUev;
+import static serendustry.item.material.SerendustryMaterials.ScUiv;
+import static serendustry.item.material.SerendustryMaterials.ScUxv;
+import static serendustry.item.material.SerendustryMaterials.Shirabon;
+import static serendustry.item.material.SerendustryMaterials.Signalium;
+import static serendustry.item.material.SerendustryMaterials.Silane;
+import static serendustry.item.material.SerendustryMaterials.SiliconCarbide;
+import static serendustry.item.material.SerendustryMaterials.StellarAlloy;
+import static serendustry.item.material.SerendustryMaterials.SubBituminousCoal;
+import static serendustry.item.material.SerendustryMaterials.Tairitsu;
+import static serendustry.item.material.SerendustryMaterials.Taranium;
+import static serendustry.item.material.SerendustryMaterials.TastyNeutronium;
+import static serendustry.item.material.SerendustryMaterials.Teflon;
+import static serendustry.item.material.SerendustryMaterials.TerraCrystal;
+import static serendustry.item.material.SerendustryMaterials.Thaumium;
+import static serendustry.item.material.SerendustryMaterials.TiberiumAboreus;
+import static serendustry.item.material.SerendustryMaterials.TiberiumCruentus;
+import static serendustry.item.material.SerendustryMaterials.TiberiumRiparius;
+import static serendustry.item.material.SerendustryMaterials.TiberiumVinifera;
+import static serendustry.item.material.SerendustryMaterials.TungstenHexachloride;
+import static serendustry.item.material.SerendustryMaterials.VibrantAlloy;
+import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
+import static serendustry.machine.SerendustryRecipeMaps.ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES;
 import static serendustry.machine.SerendustryRecipeMaps.LABORATORY_RECIPES;
 
-import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 
 import gregtech.api.fluids.store.FluidStorageKeys;
 
@@ -47,11 +281,13 @@ public class AlloyRecipes {
                 .output(dust, HastelloyK243, 20)
                 .duration(2500).EUt(VA[UV]).buildAndRegister();
 
-        MIXER_RECIPES.recipeBuilder()
-                .input(dust, Steel, 20).input(dust, Chrome, 13).input(dust, Copper, 10).input(dust, Nickel, 3)
-                .input(dust, Molybdenum, 2).input(dust, Tungsten, 2)
-                .output(dust, Zeron100, 50)
-                .duration(3500).EUt(VA[IV]).buildAndRegister();
+        /*
+         * MIXER_RECIPES.recipeBuilder()
+         * .input(dust, Steel, 20).input(dust, Chrome, 13).input(dust, Copper, 10).input(dust, Nickel, 3)
+         * .input(dust, Molybdenum, 2).input(dust, Tungsten, 2)
+         * .output(dust, Zeron100, 50)
+         * .duration(3500).EUt(VA[IV]).buildAndRegister();
+         */
 
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, Zeron100, 8).input(dust, Titanium, 6).input(dust, Naquadria, 4).input(dust, Gadolinium, 3)
@@ -110,9 +346,10 @@ public class AlloyRecipes {
                 .duration(500).EUt(VA[ZPM]).buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
-                .input(dust, Silicon, 5).input(dust, Oxygen, 10).input(dust, Iron, 1)
+                .input(dust, Silicon, 5).input(dust, Iron, 1)
+                .fluidInputs(Oxygen.getFluid(10000))
                 .output(dust, Prasiolite, 16)
-                .duration(600).EUt(VA[HV]).buildAndRegister();
+                .duration(6000).EUt(VA[HV]).buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, Zirconium, 1).input(dust, Oxygen, 2)
@@ -192,22 +429,9 @@ public class AlloyRecipes {
                 .output(dust, ScUiv, 9)
                 .duration(1500).EUt(VA[UHV]).buildAndRegister();
 
-        IMPLOSION_RECIPES.recipeBuilder()
+        ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES.recipeBuilder()
                 .input(gemExquisite, Diamond).input(dust, NetherStar)
                 .output(dust, CrystalMatrix)
-                .explosivesAmount(4)
-                .duration(20).EUt(VA[UHV]).buildAndRegister();
-
-        IMPLOSION_RECIPES.recipeBuilder()
-                .input(dust, CrystalMatrix, 8).input(dust, Neutronium, 8)
-                .output(dust, InfinityCatalyst)
-                .explosivesAmount(4)
-                .duration(20).EUt(VA[UHV]).buildAndRegister();
-
-        IMPLOSION_RECIPES.recipeBuilder()
-                .input(dust, TinAlloy, 8).input(Blocks.DRAGON_EGG)
-                .output(dust, Draconium)
-                .explosivesAmount(4)
                 .duration(20).EUt(VA[UHV]).buildAndRegister();
 
         AUTOCLAVE_RECIPES.recipeBuilder()
@@ -219,8 +443,8 @@ public class AlloyRecipes {
         FORMING_PRESS_RECIPES.recipeBuilder()
                 .input(dust, Stone, 64).input(dust, Stone, 64).input(dust, Stone, 64).input(dust, Stone, 64)
                 .input(dust, Stone, 64).input(dust, Stone, 64)
-                .output(dust, Bedrockium, 16)
-                .duration(1050).EUt(VA[UHV]).buildAndRegister();
+                .output(dust, Bedrockium, 1)
+                .duration(120).EUt(VA[UHV]).buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, ChargedDraconium, 4).input(dust, StellarAlloy, 4).input(dust, Luminessence, 3)
@@ -234,11 +458,12 @@ public class AlloyRecipes {
                 .output(dust, Jasper, 8)
                 .duration(500).EUt(VA[UHV]).buildAndRegister();
 
-        BLAST_RECIPES.recipeBuilder()
-                .input(dust, Silicon).input(dust, Carbon)
-                .fluidInputs(Argon.getFluid(200))
+        CVD_RECIPES.recipeBuilder()
+                .input(dust, Carbon)
+                .fluidInputs(Silane.getFluid(1000), Argon.getFluid(100))
                 .output(dust, SiliconCarbide, 2)
-                .duration(100).EUt(VA[UV]).blastFurnaceTemp(6000).buildAndRegister();
+                .fluidOutputs(Hydrogen.getFluid(4000))
+                .duration(100).EUt(VA[HV]).buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, Trinium, 3).input(dust, HSSS, 4).input(dust, TungstenCarbide, 2).input(dust, Osmiridium)
@@ -259,7 +484,8 @@ public class AlloyRecipes {
 
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, StellarAlloy, 15).input(dust, ArceusAlloy2B, 10).input(dust, Lafium, 10)
-                .input(dust, Jasper, 5).input(dust, Americium, 5).input(dust, Pikyonium, 5).input(dust, Germanium, 5)
+                .input(dust, Jasper, 5).input(dust, Americium, 5).input(dust, EnergyCrystal, 5)
+                .input(dust, Germanium, 5)
                 .input(dust, SiliconCarbide, 5)
                 .fluidInputs(AssemblyLine.getPlasma(144))
                 .output(dust, Quantum, 60)
@@ -268,7 +494,7 @@ public class AlloyRecipes {
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .input(dust, Quantum, 60)
                 .output(dust, StellarAlloy, 15).output(dust, ArceusAlloy2B, 10).output(dust, Lafium, 10)
-                .output(dust, Jasper, 5).output(dust, Americium, 5).output(dust, Pikyonium, 5)
+                .output(dust, Jasper, 5).output(dust, Americium, 5).output(dust, EnergyCrystal, 5)
                 .output(dust, Germanium, 5).output(dust, SiliconCarbide, 5)
                 .fluidOutputs(AssemblyLine.getPlasma(144))
                 .duration(7200).EUt(60).buildAndRegister();
@@ -278,12 +504,6 @@ public class AlloyRecipes {
                 .fluidInputs(Quantum.getFluid(288))
                 .output(dust, Quantium)
                 .duration(200).EUt(VA[UIV]).buildAndRegister();
-
-        CHEMICAL_BATH_RECIPES.recipeBuilder()
-                .input(dust, Naquadria, 4)
-                .fluidInputs(CoalTar.getFluid(1000))
-                .output(dust, NaquadriaticTaranium, 5)
-                .duration(500).EUt(VA[UV]).buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, Quantum, 5).input(dust, Ledox, 4).input(dust, AwakenedDraconium, 3)
@@ -300,18 +520,18 @@ public class AlloyRecipes {
                 .duration(2760).EUt(60).buildAndRegister();
 
         LABORATORY_RECIPES.recipeBuilder()
-                .input(STEM_CELLS, 8).input(dust, SolderingAlloy, 4).input(dust, NetherStar)
+                .input(CULTURE_STEM_CELL_WIRED).input(dust, SolderingAlloy, 4).input(dust, NetherStar)
                 .fluidInputs(Iron.getPlasma(144), Nickel.getPlasma(144))
                 .fluidOutputs(MutatedLivingSolder.getFluid(576))
                 .requireInside(CHEMICAL_RECIPES, UV, 1)
                 .requireInside(CHEMICAL_BATH_RECIPES, UV, 1)
-                .duration(600).EUt(VA[UHV]).buildAndRegister();
+                .duration(1200).EUt(VA[UV]).buildAndRegister();
 
         CHEMICAL_BATH_RECIPES.recipeBuilder()
-                .input(dust, Darmstadtium)
+                .input(dust, Iron)
                 .fluidInputs(Magic2.getFluid(100))
                 .output(dust, Thaumium)
-                .duration(300).EUt(VA[ZPM]).buildAndRegister();
+                .duration(300).EUt(VA[LV]).buildAndRegister();
 
         for (int i = LV; i <= OpV; i++) {
             EXTRACTOR_RECIPES.recipeBuilder()
@@ -369,5 +589,162 @@ public class AlloyRecipes {
                 .input(dust, Rhodium, 1).input(dust, Palladium, 1).input(dust, Ruthenium, 1)
                 .output(dust, Rhopalthenit, 3)
                 .duration(400).EUt(VA[IV]).buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder()
+                .input(dust, Cadmium, 4).input(dust, Antimony, 3).input(dust, Indium, 1)
+                .output(dust, HighGradeSolderingAlloy, 8)
+                .duration(480).EUt(VA[IV]).buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder()
+                .input(dust, Aluminium, 2).input(dust, Lithium, 2).input(dust, Magnesium, 1)
+                .input(dust, Scandium, 2).input(dust, Titanium, 3)
+                .output(dust, ALMST, 9)
+                .duration(440).EUt(VA[IV]).buildAndRegister();
+
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(dust, Diamond)
+                .fluidInputs(Lava.getFluid(100))
+                .output(dust, IgnisCrystal)
+                .duration(30).EUt(VA[LV]).buildAndRegister();
+
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(dust, Diamond)
+                .fluidInputs(DistilledWater.getFluid(100))
+                .output(dust, AquaCrystal)
+                .duration(30).EUt(VA[LV]).buildAndRegister();
+
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(dust, Diamond)
+                .fluidInputs(Polyethylene.getFluid(100))
+                .output(dust, TerraCrystal)
+                .duration(30).EUt(VA[LV]).buildAndRegister();
+
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(dust, Diamond)
+                .fluidInputs(Air.getFluid(100))
+                .output(dust, AerCrystal)
+                .duration(30).EUt(VA[LV]).buildAndRegister();
+
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(dust, Diamond)
+                .fluidInputs(Antimony.getFluid(100))
+                .output(dust, OrdoCrystal)
+                .duration(30).EUt(VA[LV]).buildAndRegister();
+
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(dust, Diamond)
+                .fluidInputs(TinAlloy.getFluid(100))
+                .output(dust, PerditioCrystal)
+                .duration(30).EUt(VA[LV]).buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder()
+                .input(dust, IgnisCrystal, 1)
+                .input(dust, AquaCrystal, 1)
+                .input(dust, TerraCrystal, 1)
+                .input(dust, AerCrystal, 1)
+                .output(dust, EnergyCrystal, 4)
+                .duration(400).EUt(VA[EV]).buildAndRegister();
+
+        LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .fluidInputs(Arcanite.getFluid(144))
+                .notConsumable(lens, IgnisCrystal)
+                .notConsumable(lens, OrdoCrystal)
+                .notConsumable(lens, PerditioCrystal)
+                .notConsumable(lens, EnergyCrystal)
+                .output(ingot, Arcanite, 1)
+                .duration(3200).EUt(VA[UEV]).buildAndRegister();
+
+        LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .input(ingot, Arcanite)
+                .notConsumable(lens, AquaCrystal)
+                .notConsumable(lens, AerCrystal)
+                .notConsumable(lens, PerditioCrystal)
+                .output(nugget, Arcanite, 9)
+                .duration(3200).EUt(VA[UEV]).buildAndRegister();
+
+        LASER_ENGRAVER_RECIPES.recipeBuilder()
+                .input(nugget, Arcanite)
+                .notConsumable(lens, TerraCrystal)
+                .notConsumable(lens, AerCrystal)
+                .notConsumable(lens, OrdoCrystal)
+                .output(round, Arcanite)
+                .duration(356).EUt(VA[UEV]).buildAndRegister();
+
+        CENTRIFUGE_RECIPES.recipeBuilder()
+                .input(dust, AbyssalAlloy, 8)
+                .output(dust, Naquadria, 3)
+                .output(dust, Taranium, 1)
+                .output(dust, TungstenCarbide, 1)
+                .output(dust, NetherizedDiamond, 1)
+                .output(dust, Germanium, 1)
+                .fluidOutputs(BlackStarMatter.getFluid(400))
+                .duration(2400).EUt(VA[UV]).buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder()
+                .input(dust, Tungsten, 9).input(dust, Naquadria, 8).input(dust, Bedrockium, 6)
+                .input(dust, Vanadium, 5).input(dust, BlackSteel, 2).input(dust, Taranium).input(dust, SiliconCarbide)
+                .output(dust, Tairitsu, 32)
+                .duration(2400).EUt(VA[UHV]).buildAndRegister();
+
+        ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES.recipeBuilder()
+                .input(gemExquisite, LigniteCoal).input(gemExquisite, AnthraciteCoal)
+                .input(gemExquisite, BituminousCoal).input(gemExquisite, SubBituminousCoal)
+                .input(gemExquisite, PeatCoal)
+                .output(dust, CondensedCoal)
+                .duration(20).EUt(VA[MAX]).buildAndRegister();
+
+        ELECTRIC_IMPLOSION_COMPRESSOR_RECIPES.recipeBuilder()
+                .input(gemExquisite, TiberiumAboreus).input(gemExquisite, TiberiumCruentus)
+                .input(gemExquisite, TiberiumRiparius)
+                .input(gemExquisite, TiberiumVinifera).input(crushedCentrifuged, Originite)
+                .output(dust, ExtremelyUnstableTiberium)
+                .duration(20).EUt(VA[MAX]).buildAndRegister();
+
+        BLAST_RECIPES.recipeBuilder()
+                .input(ingot, Steel).input(Items.BONE)
+                // .fluidInputs(Blood.getFluid(100))
+                .output(ingot, BoneSteel)
+                .blastFurnaceTemp(1800)
+                .duration(120).EUt(VA[MV]).buildAndRegister();
+
+        FLUID_HEATER_RECIPES.recipeBuilder()
+                .input(dust, Tungsten)
+                .fluidInputs(Chlorine.getFluid(6000))
+                .output(dust, TungstenHexachloride, 7)
+                .duration(20 * 5).EUt(VA[EV]).buildAndRegister();
+
+        CVD_RECIPES.recipeBuilder()
+                .input(dust, TungstenHexachloride, 7)
+                .fluidInputs(Hydrogen.getFluid(2000), Methane.getFluid(1000))
+                .output(dust, TungstenCarbide)
+                .fluidOutputs(HydrochloricAcid.getFluid(6000))
+                .duration(20 * 5).EUt(VA[EV]).buildAndRegister();
+
+        MIXER_RECIPES.recipeBuilder()
+                .input(dust, PostTransitionMetals).input(dust, Chrome).input(dust, Rhodium)
+                .input(dust, Europium).input(dust, Rutile).input(dust, Onionium)
+                .input(dust, ScUiv).input(dust, Jasper).input(dust, Shirabon)
+                .output(dust, Pinkium, 9)
+                .duration(1200).EUt(VA[MAX]).buildAndRegister();
+
+        BLAST_RECIPES.recipeBuilder()
+                .fluidInputs(RawAdamantium.getFluid(144), Krypton.getFluid(10))
+                .output(ingotHot, Adamantium)
+                .blastFurnaceTemp(10800)
+                .duration(737).EUt(VA[UV]).buildAndRegister();
+
+        BLAST_RECIPES.recipeBuilder()
+                .input(dust, DeepDarkIron)
+                .fluidInputs(CondensedStarMatter.getFluid(1000), Xenon.getFluid(10))
+                .output(ingotHot, DeepDarkSteel)
+                .blastFurnaceTemp(10800)
+                .duration(20 * 90).EUt(VA[UXV]).buildAndRegister();
+
+        VACUUM_RECIPES.recipeBuilder()
+                .input(ingotHot, DeepDarkSteel)
+                .fluidInputs(BlackStarMatter.getFluid(500), Helium.getFluid(FluidStorageKeys.LIQUID, 5000))
+                .output(ingot, DeepDarkSteel)
+                .fluidOutputs(Helium.getFluid(5000))
+                .duration(20 * 90).EUt(VA[UXV]).buildAndRegister();
     }
 }

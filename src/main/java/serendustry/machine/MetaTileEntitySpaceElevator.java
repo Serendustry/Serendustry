@@ -1,20 +1,36 @@
 package serendustry.machine;
 
-import net.minecraft.block.state.IBlockState;
+import static gregtech.api.util.RelativeDirection.DOWN;
+import static gregtech.api.util.RelativeDirection.FRONT;
+import static gregtech.api.util.RelativeDirection.LEFT;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
+import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
+import gregtech.api.pattern.PatternMatchContext;
+import gregtech.api.unification.material.Materials;
 import gregtech.client.renderer.ICubeRenderer;
-import gregtech.client.renderer.texture.Textures;
-import gregtech.common.blocks.BlockMachineCasing;
-import gregtech.common.blocks.MetaBlocks;
+import serendustry.SValues;
+import serendustry.blocks.BlockMetalCasing;
+import serendustry.blocks.BlockMultiCasing;
+import serendustry.blocks.SerendustryMetaBlocks;
+import serendustry.client.renderer.texture.SerendustryTextures;
+import serendustry.client.utils.STooltipHelper;
+import serendustry.machine.structure.StructureSpaceElevator;
 
 public class MetaTileEntitySpaceElevator extends RecipeMapMultiblockController {
 
@@ -28,22 +44,71 @@ public class MetaTileEntitySpaceElevator extends RecipeMapMultiblockController {
     }
 
     @Override
+    protected void formStructure(PatternMatchContext context) {
+        super.formStructure(context);
+
+        List<IEnergyContainer> energyInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
+        List<IEnergyContainer> substationInput = new ArrayList<>(
+                getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
+        List<IEnergyContainer> laserInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_LASER));
+
+        // Allow only 1 type of energy input at a time
+        if ((!energyInput.isEmpty() && !substationInput.isEmpty()) ||
+                (!energyInput.isEmpty() && !laserInput.isEmpty()) ||
+                (!substationInput.isEmpty() && !laserInput.isEmpty())) {
+            invalidateStructure();
+        }
+
+        // todo: give error message to multiblock builder and make JEI not show mixed hatches
+
+        /*
+         * List<IEnergyContainer> powerInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
+         * powerInput.addAll(getAbilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY));
+         * 
+         * this.powerInput = new EnergyContainerList(powerInput);
+         */  // todo: update ceu so this works and check if this even needed
+    }
+
+    @Override
+    public boolean hasMaintenanceMechanics() {
+        return false;
+    }
+
+    @Override
     public @NotNull BlockPattern createStructurePattern() {
-        return FactoryBlockPattern.start()
-                .aisle("XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX")
-                .aisle("XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX", "XXX")
-                .aisle("XXX", "XXX", "XXX", "XXX", "XSX", "XXX", "XXX", "XXX", "XXX")
-                .where('S', selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(60).or(autoAbilities()))
-                .build();
+        FactoryBlockPattern pattern = FactoryBlockPattern.start(LEFT, DOWN, FRONT);
+
+        for (String[] aisle : StructureSpaceElevator.SPACE_ELEVATOR) {
+            pattern.aisle(aisle);
+        }
+
+        pattern.where('D', selfPredicate())
+                .where('B',
+                        states(SerendustryMetaBlocks.MULTI_CASING
+                                .getState(BlockMultiCasing.SerendustryMultiCasingType.SPACE_ELEVATOR))
+                                        .setMinGlobalLimited(4640)
+                                        .or(autoAbilities(false, false, true, true, true, true, false))
+                                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0)
+                                                .setMinGlobalLimited(0).setMaxGlobalLimited(2))
+                                        .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(0)
+                                                .setMaxGlobalLimited(1))
+                                        .or(abilities(MultiblockAbility.INPUT_LASER).setPreviewCount(1)
+                                                .setMaxGlobalLimited(1)))
+                .where('A',
+                        states(SerendustryMetaBlocks.METAL_CASING
+                                .getState(BlockMetalCasing.SerendustryMetalCasingType.CARBON)))
+                .where('C', frames(Materials.Scandium));
+
+        return pattern.build();
     }
 
     public ICubeRenderer getBaseTexture(@Nullable IMultiblockPart part) {
-        return Textures.INERT_PTFE_CASING; // todo
+        return SerendustryTextures.CASING_SPACE_ELEVATOR;
     }
 
-    // todo: add custom ??? Casing
-    private IBlockState getCasingState() {
-        return MetaBlocks.MACHINE_CASING.getState(BlockMachineCasing.MachineCasingType.UV);
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+        super.addInformation(stack, player, tooltip, advanced);
+        STooltipHelper.addSerendustryInformation(tooltip, SValues.ENERGY_LASER, false);
     }
 }

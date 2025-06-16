@@ -1,15 +1,18 @@
 package serendustry.machine;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 import com.google.common.collect.Table;
 
@@ -32,7 +35,10 @@ import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.BlockMachineCasing;
 import gregtech.common.blocks.MetaBlocks;
+import serendustry.SValues;
+import serendustry.client.utils.STooltipHelper;
 import serendustry.machine.LaboratoryProperty.LaboratoryEntry;
+import serendustry.machine.structure.StructureDefinition;
 
 public class MetaTileEntityIndustrialLaboratory extends RecipeMapMultiblockController {
 
@@ -52,20 +58,26 @@ public class MetaTileEntityIndustrialLaboratory extends RecipeMapMultiblockContr
         return new MetaTileEntityIndustrialLaboratory(metaTileEntityId);
     }
 
+    @Override
+    public boolean hasMaintenanceMechanics() {
+        return false;
+    }
+
     @Nonnull
     @Override
     protected BlockPattern createStructurePattern() {
-        return FactoryBlockPattern.start()
-                .aisle("XXXXX", "XGGGX", "XGGGX", "XXXXX")
-                .aisle("XXXXX", "G###G", "G###G", "XXXXX")
-                .aisle("XXXXX", "G###G", "G###G", "XXXXX")
-                .aisle("XXXXX", "G###G", "G###G", "XXXXX")
-                .aisle("XXSXX", "XGGGX", "XGGGX", "XXXXX")
-                .where('S', selfPredicate())
+        FactoryBlockPattern pattern = FactoryBlockPattern.start();
+
+        for (String[] aisle : StructureDefinition.INDUSTRIAL_LABORATORY) {
+            pattern.aisle(aisle);
+        }
+
+        pattern.where('S', selfPredicate())
                 .where('X', states(getCasingState()).setMinGlobalLimited(14).or(autoAbilities()))
                 .where('G', states(getGlassState()))
-                .where('#', innerPredicate())
-                .build();
+                .where('#', innerPredicate());
+
+        return pattern.build();
     }
 
     @Override
@@ -92,7 +104,6 @@ public class MetaTileEntityIndustrialLaboratory extends RecipeMapMultiblockContr
     @Nonnull
     protected TraceabilityPredicate innerPredicate() {
         return new TraceabilityPredicate(bws -> {
-            // todo might want to be more allowing on what can be inside
             if (bws.getBlockState().getBlock().isAir(bws.getBlockState(), bws.getWorld(), bws.getPos())) {
                 return true;
             }
@@ -258,5 +269,13 @@ public class MetaTileEntityIndustrialLaboratory extends RecipeMapMultiblockContr
                 return countArray[tier];
             }
         }
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @org.jetbrains.annotations.Nullable World player, List<String> tooltip,
+                               boolean advanced) {
+        super.addInformation(stack, player, tooltip, advanced);
+        STooltipHelper.addSerendustryInformation(tooltip, SValues.ENERGY_SUBSTATION, false,
+                "serendustry.machine.author.serenibyss");
     }
 }

@@ -1,0 +1,28 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:cube_all",
+    "textures": {
+      "all": "gregtech:blocks/rendering_error"
+    }
+  },
+  "variants": {
+    "variant": {
+      "neutronium": {
+        "textures": {
+          "all": "gregtech:blocks/casing/eic_hammer/neutronium"
+        }
+      },
+      "halkonite": {
+        "textures": {
+          "all": "gregtech:blocks/casing/eic_hammer/halkonite"
+        }
+      },
+      "ehk": {
+        "textures": {
+          "all": "gregtech:blocks/casing/eic_hammer/ehk"
+        }
+      }
+    }
+  }
+}

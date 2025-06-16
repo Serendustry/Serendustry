@@ -1,12 +1,64 @@
 package serendustry.recipe;
 
-import static gregtech.api.GTValues.*;
+import static gregtech.api.GTValues.MAX;
+import static gregtech.api.GTValues.OpV;
+import static gregtech.api.GTValues.UIV;
+import static gregtech.api.GTValues.UXV;
+import static gregtech.api.GTValues.V;
+import static gregtech.api.GTValues.VA;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
+import static gregtech.api.unification.material.Materials.Flerovium;
+import static gregtech.api.unification.material.Materials.Glass;
+import static gregtech.api.unification.material.Materials.Hydrogen;
+import static gregtech.api.unification.material.Materials.Iron;
+import static gregtech.api.unification.material.Materials.Lead;
+import static gregtech.api.unification.material.Materials.Nickel;
+import static gregtech.api.unification.material.Materials.Oxygen;
+import static gregtech.api.unification.material.Materials.Phosphorus;
+import static gregtech.api.unification.material.Materials.Protactinium;
+import static gregtech.api.unification.material.Materials.Redstone;
+import static gregtech.api.unification.material.Materials.Water;
+import static gregtech.api.unification.ore.OrePrefix.foil;
+import static gregtech.api.unification.ore.OrePrefix.plateDense;
+import static gregtech.api.unification.ore.OrePrefix.plateDouble;
+import static gregtech.api.unification.ore.OrePrefix.wireGtQuadruple;
+import static gregtech.common.items.MetaItems.FIELD_GENERATOR_UXV;
+import static gregtech.common.items.MetaItems.ROBOT_ARM_UXV;
 import static gregtech.common.metatileentities.MetaTileEntities.HULL;
-import static serendustry.item.material.SerendustryMaterials.*;
+import static serendustry.item.SerendustryMetaItems.CHIP_OPIC;
+import static serendustry.item.material.SerendustryMaterials.ArgonPrime;
+import static serendustry.item.material.SerendustryMaterials.AssemblyLine;
+import static serendustry.item.material.SerendustryMaterials.AtomicResonanceCatalyst;
+import static serendustry.item.material.SerendustryMaterials.AwakenedDraconium;
+import static serendustry.item.material.SerendustryMaterials.Bedrockium;
+import static serendustry.item.material.SerendustryMaterials.CallistoIce;
+import static serendustry.item.material.SerendustryMaterials.ChromaticGlass;
+import static serendustry.item.material.SerendustryMaterials.CrystalMatrix;
+import static serendustry.item.material.SerendustryMaterials.DarkMatter;
+import static serendustry.item.material.SerendustryMaterials.DestabilizedMatter;
+import static serendustry.item.material.SerendustryMaterials.EnrichedTeflon;
+import static serendustry.item.material.SerendustryMaterials.ExoticMatter;
+import static serendustry.item.material.SerendustryMaterials.Floppa;
+import static serendustry.item.material.SerendustryMaterials.HeliumPrime;
+import static serendustry.item.material.SerendustryMaterials.Infinity;
+import static serendustry.item.material.SerendustryMaterials.Jasper;
+import static serendustry.item.material.SerendustryMaterials.KryptonPrime;
+import static serendustry.item.material.SerendustryMaterials.Ledox;
+import static serendustry.item.material.SerendustryMaterials.MutatedLivingSolder;
+import static serendustry.item.material.SerendustryMaterials.NeonPrime;
+import static serendustry.item.material.SerendustryMaterials.NitrogenPrime;
+import static serendustry.item.material.SerendustryMaterials.OmniversalLubricant;
+import static serendustry.item.material.SerendustryMaterials.OmniversalRedstone;
+import static serendustry.item.material.SerendustryMaterials.OxygenPrime;
+import static serendustry.item.material.SerendustryMaterials.Periodicium;
+import static serendustry.item.material.SerendustryMaterials.Quantium;
+import static serendustry.item.material.SerendustryMaterials.RadoxPolymer;
+import static serendustry.item.material.SerendustryMaterials.RedMatter;
+import static serendustry.item.material.SerendustryMaterials.Shirabon;
+import static serendustry.item.material.SerendustryMaterials.TransCataCrude;
+import static serendustry.item.material.SerendustryMaterials.TransCataExcited;
+import static serendustry.item.material.SerendustryMaterials.TransCataResplendent;
+import static serendustry.item.material.SerendustryMaterials.TransResidue;
 import static serendustry.machine.SerendustryMetaTileEntities.TRANSCENDENT_PLASMA_MIXER;
 import static serendustry.machine.SerendustryRecipeMaps.PLASMA_MIXER_RECIPES;
 
@@ -17,10 +69,11 @@ public class PlasmaMixerRecipes {
                 .input(HULL[UXV])
                 .input(FIELD_GENERATOR_UXV)
                 .input(ROBOT_ARM_UXV, 2)
-                .input(ULTRA_HIGH_POWER_INTEGRATED_CIRCUIT, 64)
+                .input(CHIP_OPIC, 64)
                 .input(plateDense, AwakenedDraconium, 2)
                 .input(plateDouble, CrystalMatrix, 8)
                 .input(wireGtQuadruple, Bedrockium, 8)
+                .input(foil, EnrichedTeflon, 64)
                 .fluidInputs(MutatedLivingSolder.getFluid(4608))
                 .fluidInputs(OmniversalLubricant.getPlasma(16000))
                 .fluidInputs(RadoxPolymer.getFluid(4608))

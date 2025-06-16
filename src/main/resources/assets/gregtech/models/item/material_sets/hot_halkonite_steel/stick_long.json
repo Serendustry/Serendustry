@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "gregtech:item/material_sets/hot_halkonite_steel/stick_long"
+  }
+}

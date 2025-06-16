@@ -1,22 +1,74 @@
 package serendustry.recipe;
 
-import static gregtech.api.GTValues.*;
-import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
-import static gregtech.common.metatileentities.MetaTileEntities.HULL;
-import static net.minecraft.init.Blocks.*;
-import static serendustry.item.SerendustryMetaItems.*;
-import static serendustry.item.material.SerendustryMaterials.*;
-import static serendustry.machine.SerendustryMetaTileEntities.*;
-import static serendustry.machine.SerendustryRecipeMaps.LABORATORY_RECIPES;
+import static gregtech.api.GTValues.EV;
+import static gregtech.api.GTValues.HV;
+import static gregtech.api.GTValues.IV;
+import static gregtech.api.GTValues.LV;
+import static gregtech.api.GTValues.UHV;
+import static gregtech.api.GTValues.ULV;
+import static gregtech.api.GTValues.UV;
+import static gregtech.api.GTValues.VA;
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.AUTOCLAVE_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.BREWING_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.CHEMICAL_BATH_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.EXTRACTOR_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.IMPLOSION_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.LASER_ENGRAVER_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.VACUUM_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.WIREMILL_RECIPES;
+import static gregtech.api.unification.material.Materials.Chrome;
+import static gregtech.api.unification.material.Materials.Creosote;
+import static gregtech.api.unification.material.Materials.Diamond;
+import static gregtech.api.unification.material.Materials.DistilledWater;
+import static gregtech.api.unification.material.Materials.Glass;
+import static gregtech.api.unification.material.Materials.Graphite;
+import static gregtech.api.unification.material.Materials.Hydrogen;
+import static gregtech.api.unification.material.Materials.Iron;
+import static gregtech.api.unification.material.Materials.Methane;
+import static gregtech.api.unification.material.Materials.Molybdenite;
+import static gregtech.api.unification.material.Materials.Neutronium;
+import static gregtech.api.unification.material.Materials.Nitrogen;
+import static gregtech.api.unification.material.Materials.Oil;
+import static gregtech.api.unification.material.Materials.Oxygen;
+import static gregtech.api.unification.material.Materials.Polyethylene;
+import static gregtech.api.unification.material.Materials.Redstone;
+import static gregtech.api.unification.material.Materials.SeedOil;
+import static gregtech.api.unification.material.Materials.Tennessine;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.foil;
+import static gregtech.api.unification.ore.OrePrefix.gearSmall;
+import static gregtech.api.unification.ore.OrePrefix.gem;
+import static gregtech.api.unification.ore.OrePrefix.gemExquisite;
+import static gregtech.api.unification.ore.OrePrefix.nugget;
+import static gregtech.api.unification.ore.OrePrefix.plate;
+import static gregtech.api.unification.ore.OrePrefix.stickLong;
+import static gregtech.common.items.MetaItems.GRAVI_STAR;
+import static gregtech.common.items.MetaItems.QUANTUM_STAR;
+import static serendustry.item.SerendustryMetaItems.QUANTIUM_STAR;
+import static serendustry.item.SerendustryMetaItems.QUANTUM_ANOMALY;
+import static serendustry.item.material.SerendustryMaterials.Adamantium;
+import static serendustry.item.material.SerendustryMaterials.BoneSteel;
+import static serendustry.item.material.SerendustryMaterials.CheeseAmerican;
+import static serendustry.item.material.SerendustryMaterials.CheeseMozzarella;
+import static serendustry.item.material.SerendustryMaterials.ChromaticGlass;
+import static serendustry.item.material.SerendustryMaterials.ChromiumDopedMolybdenite;
+import static serendustry.item.material.SerendustryMaterials.MagnetoResonatic;
+import static serendustry.item.material.SerendustryMaterials.MolybdeniteLubricant;
+import static serendustry.item.material.SerendustryMaterials.OmniversalLubricant;
+import static serendustry.item.material.SerendustryMaterials.OmniversalRedstone;
+import static serendustry.item.material.SerendustryMaterials.Quantium40;
+import static serendustry.item.material.SerendustryMaterials.WroughtNeutronium;
+import static serendustry.item.material.SerendustryMaterials.Xenoxene;
+import static serendustry.machine.SerendustryRecipeMaps.CVD_RECIPES;
+
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 
 import gregtech.api.fluids.store.FluidStorageKeys;
 import gregtech.api.recipes.ModHandler;
-import gregtech.api.recipes.chance.output.ChancedOutputLogic;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.material.Material;
 
 public class MiscRecipes {
 
@@ -27,31 +79,11 @@ public class MiscRecipes {
                 .output(gem, MagnetoResonatic)
                 .duration(600).EUt(24).buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder()
-                .input(HULL[EV])
-                .input(circuit, MarkerMaterials.Tier.EV, 4)
-                .input(circuit, MarkerMaterials.Tier.HV, 8)
-                .input(gear, Titanium, 4)
-                .input(stickLong, Rhopalthenit, 12)
-                .input(foil, Polytetrafluoroethylene, 32)
-                .input(wireFine, Niobium, 32)
-                .fluidInputs(SolderingAlloy.getFluid(2592))
-                .output(INDUSTRIAL_LABORATORY)
-                .duration(2400).EUt(VA[EV]).buildAndRegister();
-
-        LABORATORY_RECIPES.recipeBuilder()
-                .input(dust, Polytetrafluoroethylene, 15).input(dust, Polyethylene, 3).input(dust, Carbon)
-                .fluidInputs(Sodium.getFluid(1000))
-                .fluidOutputs(Teflon.getFluid(2880))
-                .requireInside(ALLOY_SMELTER_RECIPES, EV, 1)
-                .requireInside(CHEMICAL_RECIPES, EV, 1)
-                .duration(600).EUt(VA[IV]).buildAndRegister();
-
         LASER_ENGRAVER_RECIPES.recipeBuilder()
                 .input(dust, Glass, 64)
                 .input(QUANTUM_ANOMALY)
                 .output(dust, ChromaticGlass)
-                .duration(400).EUt(VA[UV]).buildAndRegister();
+                .duration(1200).EUt(VA[UHV]).buildAndRegister();
 
         LASER_ENGRAVER_RECIPES.recipeBuilder()
                 .input(dust, Redstone, 64)
@@ -65,82 +97,11 @@ public class MiscRecipes {
                 .fluidOutputs(OmniversalLubricant.getFluid(1000))
                 .duration(400).EUt(VA[UHV]).buildAndRegister();
 
-        BLAST_RECIPES.recipeBuilder()
-                .fluidInputs(OmniversalLubricant.getFluid(100), Helium.getFluid(FluidStorageKeys.LIQUID, 100))
-                .fluidOutputs(OmniversalLubricant.getPlasma(100), Helium.getPlasma(100))
-                .blastFurnaceTemp(10800)
-                .duration(100).EUt(VA[UHV]).buildAndRegister();
-
         AUTOCLAVE_RECIPES.recipeBuilder()
-                .input(GRAVI_STAR, 8)
-                .fluidInputs(Quantium.getFluid(1250))
+                .input(GRAVI_STAR)
+                .fluidInputs(Quantium40.getFluid(144 * 2))
                 .output(QUANTIUM_STAR)
-                .duration(1920).EUt(VA[UXV]).buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder()
-                .fluidInputs(Infinity.getFluid(100), Helium.getFluid(FluidStorageKeys.LIQUID, 100))
-                .fluidOutputs(Infinity.getPlasma(100), Helium.getPlasma(100))
-                .blastFurnaceTemp(10800)
-                .duration(100).EUt(VA[UHV]).buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder()
-                .fluidInputs(Periodicium.getFluid(100), Helium.getFluid(FluidStorageKeys.LIQUID, 100))
-                .fluidOutputs(Periodicium.getPlasma(100), Helium.getPlasma(100))
-                .blastFurnaceTemp(10800)
-                .duration(100).EUt(VA[UHV]).buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder()
-                .fluidInputs(Shirabon.getFluid(100), Helium.getFluid(FluidStorageKeys.LIQUID, 100))
-                .fluidOutputs(Shirabon.getPlasma(100), Helium.getPlasma(100))
-                .blastFurnaceTemp(10800)
-                .duration(100).EUt(VA[UHV]).buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder()
-                .fluidInputs(Flerovium.getFluid(100), Helium.getFluid(FluidStorageKeys.LIQUID, 100))
-                .fluidOutputs(Flerovium.getPlasma(100), Helium.getPlasma(100))
-                .blastFurnaceTemp(10800)
-                .duration(100).EUt(VA[UHV]).buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder()
-                .fluidInputs(Phosphorus.getFluid(100), Helium.getFluid(FluidStorageKeys.LIQUID, 100))
-                .fluidOutputs(Phosphorus.getPlasma(100), Helium.getPlasma(100))
-                .blastFurnaceTemp(10800)
-                .duration(100).EUt(VA[UHV]).buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder()
-                .fluidInputs(Protactinium.getFluid(100), Helium.getFluid(FluidStorageKeys.LIQUID, 100))
-                .fluidOutputs(Protactinium.getPlasma(100), Helium.getPlasma(100))
-                .blastFurnaceTemp(10800)
-                .duration(100).EUt(VA[UHV]).buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder()
-                .fluidInputs(Redstone.getFluid(100), Helium.getFluid(FluidStorageKeys.LIQUID, 100))
-                .fluidOutputs(Redstone.getPlasma(100), Helium.getPlasma(100))
-                .blastFurnaceTemp(10800)
-                .duration(100).EUt(VA[UHV]).buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder()
-                .fluidInputs(Glass.getFluid(100), Helium.getFluid(FluidStorageKeys.LIQUID, 100))
-                .fluidOutputs(Glass.getPlasma(100), Helium.getPlasma(100))
-                .blastFurnaceTemp(10800)
-                .duration(100).EUt(VA[UHV]).buildAndRegister();
-
-        BLAST_RECIPES.recipeBuilder()
-                .fluidInputs(Lead.getFluid(100), Helium.getFluid(FluidStorageKeys.LIQUID, 100))
-                .fluidOutputs(Lead.getPlasma(100), Helium.getPlasma(100))
-                .blastFurnaceTemp(10800)
-                .duration(100).EUt(VA[UHV]).buildAndRegister();
-
-        ELECTROMAGNETIC_SEPARATOR_RECIPES.recipeBuilder()
-                .input(dust, TengamRaw)
-                .chancedOutput(dust, IronMagnetic, 2700, 0)
-                .chancedOutput(dust, SteelMagnetic, 2000, 0)
-                .chancedOutput(dust, NeodymiumMagnetic, 1600, 0)
-                .chancedOutput(dust, SamariumMagnetic, 1400, 0)
-                .chancedOutput(dust, MagnetoResonatic, 1200, 0)
-                .chancedOutput(dust, TengamPurified, 1100, 0)
-                .chancedOutputLogic(ChancedOutputLogic.XOR)
-                .duration(120).EUt(VA[UV]).buildAndRegister();
+                .duration(20 * 24).EUt(VA[UHV]).buildAndRegister();
 
         ModHandler.addSmeltingRecipe(OreDictUnifier.get(nugget, Neutronium),
                 OreDictUnifier.get(nugget, WroughtNeutronium));
@@ -151,5 +112,77 @@ public class MiscRecipes {
          * .input(HOT_WOOD_INGOT)
          * .duration(65535).EUt(MAX).buildAndRegister();
          */
+
+        EXTRACTOR_RECIPES.recipeBuilder()
+                .input(dust, CheeseAmerican)
+                .output(dust, Polyethylene)
+                .duration(20).EUt(VA[LV]).buildAndRegister();
+
+        WIREMILL_RECIPES.recipeBuilder()
+                .input(stickLong, CheeseMozzarella)
+                .output(Items.STRING, 8)
+                .duration(40).EUt(VA[LV]).buildAndRegister();
+
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(foil, BoneSteel)
+                .fluidInputs(Oxygen.getFluid(1000))
+                .output(foil, Oxygen)
+                .duration(100).EUt(VA[UHV]).buildAndRegister();
+
+        CHEMICAL_BATH_RECIPES.recipeBuilder()
+                .input(dust, Molybdenite)
+                .fluidInputs(Chrome.getFluid(72))
+                .output(dust, ChromiumDopedMolybdenite)
+                .duration(256).EUt(VA[HV]).buildAndRegister();
+
+        for (Material material : new Material[] { Oil, Creosote, SeedOil }) {
+            BREWING_RECIPES.recipeBuilder()
+                    .input(dust, ChromiumDopedMolybdenite)
+                    .input(dust, Graphite)
+                    .fluidInputs(material.getFluid(1000))
+                    .fluidOutputs(MolybdeniteLubricant.getFluid(1000))
+                    .duration(256).EUt(VA[HV]).buildAndRegister();
+        }
+
+        CVD_RECIPES.recipeBuilder()
+                .circuitMeta(1)
+                .fluidInputs(Methane.getFluid(100), Hydrogen.getFluid(10000))
+                .output(gemExquisite, Diamond)
+                .duration(400).EUt(VA[HV]).buildAndRegister();
+
+        AUTOCLAVE_RECIPES.recipeBuilder()
+                .input(QUANTUM_STAR)
+                .fluidInputs(Tennessine.getFluid(144 * 8))
+                .output(GRAVI_STAR)
+                .duration(20 * 24).EUt(VA[IV]).buildAndRegister();
+
+        // Liquid Nitrogen
+        VACUUM_RECIPES.recipeBuilder()
+                .fluidInputs(Nitrogen.getFluid(1000))
+                .fluidOutputs(Nitrogen.getFluid(FluidStorageKeys.LIQUID, 1000))
+                .duration(240).EUt(VA[EV]).buildAndRegister();
+
+        // test recipes
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(stickLong, Neutronium)
+                .input(gearSmall, Neutronium)
+                .input(plate, Iron)
+                .fluidInputs(Hydrogen.getFluid(1))
+                .output(Items.EGG)
+                .duration(20 * 60 * 60).EUt(VA[UV]).buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+                .input(stickLong, Adamantium)
+                .input(gearSmall, Neutronium)
+                .input(plate, Iron)
+                .fluidInputs(Hydrogen.getFluid(1))
+                .output(Items.EGG)
+                .duration(20).EUt(VA[LV]).buildAndRegister();
+
+        IMPLOSION_RECIPES.recipeBuilder()
+                .input(Blocks.DIRT)
+                .output(Blocks.OBSIDIAN)
+                .explosivesAmount(1)
+                .duration(20 * 60 * 240 * 32).EUt(VA[ULV]).buildAndRegister();
     }
 }

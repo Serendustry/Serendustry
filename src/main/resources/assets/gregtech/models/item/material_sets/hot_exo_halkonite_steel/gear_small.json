@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "gregtech:item/material_sets/hot_exo_halkonite_steel/gear_small"
+  }
+}

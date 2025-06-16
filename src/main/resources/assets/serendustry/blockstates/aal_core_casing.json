@@ -1,0 +1,48 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:cube_all",
+    "textures": {
+      "all": "gregtech:blocks/rendering_error"
+    }
+  },
+  "variants": {
+    "variant": {
+      "uv": {
+        "textures": {
+          "all": "gregtech:blocks/casing/aal_core/uv"
+        }
+      },
+      "uhv": {
+        "textures": {
+          "all": "gregtech:blocks/casing/aal_core/uhv"
+        }
+      },
+      "uev": {
+        "textures": {
+          "all": "gregtech:blocks/casing/aal_core/uev"
+        }
+      },
+      "uiv": {
+        "textures": {
+          "all": "gregtech:blocks/casing/aal_core/uiv"
+        }
+      },
+      "uxv": {
+        "textures": {
+          "all": "gregtech:blocks/casing/aal_core/uxv"
+        }
+      },
+      "opv": {
+        "textures": {
+          "all": "gregtech:blocks/casing/aal_core/opv"
+        }
+      },
+      "max": {
+        "textures" : {
+          "all" : "gregtech:blocks/casing/aal_core/max"
+        }
+      }
+    }
+  }
+}
