@@ -38,7 +38,7 @@ import gregtech.api.util.GTUtility;
 import gregtech.api.util.TextComponentUtil;
 import gregtech.client.renderer.ICubeRenderer;
 import serendustry.SValues;
-import serendustry.blocks.BlockMetalCasing;
+import serendustry.blocks.SBlockMetalCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.machine.structure.StructureDefinition;
@@ -98,8 +98,8 @@ public class MetaTileEntityPlasmaFoundry extends RecipeMapMultiblockController {
 
         pattern.where('D', selfPredicate())
                 .where('A',
-                        states(SerendustryMetaBlocks.METAL_CASING
-                                .getState(BlockMetalCasing.SerendustryMetalCasingType.CARBON))
+                        states(SerendustryMetaBlocks.S_METAL_CASING
+                                .getState(SBlockMetalCasing.SMetalCasingType.CARBON))
                                         .setMinGlobalLimited(158).or(autoAbilities()))
                 .where('B', frames(Materials.Osmiridium))
                 .where('C', states(Blocks.LAVA.getBlockState().getBaseState()));

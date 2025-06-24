@@ -34,7 +34,7 @@ import gregtech.client.renderer.ICubeRenderer;
 import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.MetaBlocks;
 import serendustry.SValues;
-import serendustry.blocks.BlockMetalCasing;
+import serendustry.blocks.SBlockMetalCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.client.utils.STooltipHelper;
@@ -96,8 +96,8 @@ public class MetaTileEntityMegaChemicalReactor extends RecipeMapMultiblockContro
 
         pattern.where('F', selfPredicate())
                 .where('B',
-                        states(SerendustryMetaBlocks.METAL_CASING
-                                .getState(BlockMetalCasing.SerendustryMetalCasingType.CARBON))
+                        states(SerendustryMetaBlocks.S_METAL_CASING
+                                .getState(SBlockMetalCasing.SMetalCasingType.CARBON))
                                         .setMinGlobalLimited(1789)
                                         .or(autoAbilities(false, false, true, true, true, true, false))
                                         .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0)
@@ -107,8 +107,8 @@ public class MetaTileEntityMegaChemicalReactor extends RecipeMapMultiblockContro
                                         .or(abilities(MultiblockAbility.INPUT_LASER).setPreviewCount(1)
                                                 .setMaxGlobalLimited(1)))
                 .where('A',
-                        states(SerendustryMetaBlocks.METAL_CASING
-                                .getState(BlockMetalCasing.SerendustryMetalCasingType.ADAMANTIUM)))
+                        states(SerendustryMetaBlocks.S_METAL_CASING
+                                .getState(SBlockMetalCasing.SMetalCasingType.ADAMANTIUM)))
                 .where('C', frames(SerendustryMaterials.Adamantium))
                 .where('D', states(Blocks.LAVA.getBlockState().getBaseState()))
                 .where('E', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.FUSION_GLASS))); // todo

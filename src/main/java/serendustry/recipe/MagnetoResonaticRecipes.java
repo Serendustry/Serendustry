@@ -74,6 +74,12 @@ import static serendustry.item.SerendustryMetaItems.MAGNETO_RESONATIC_UXV;
 import static serendustry.item.SerendustryMetaItems.MAGNETO_RESONATIC_WAFER;
 import static serendustry.item.SerendustryMetaItems.MAGNETO_RESONATIC_ZPM;
 import static serendustry.item.SerendustryMetaItems.MYSTERIOUS_BLOB_KRYPTON;
+import static serendustry.item.SerendustryMetaItems.OMNITEMPORAL_CIRCUIT_BOARD;
+import static serendustry.item.SerendustryMetaItems.OMNITEMPORAL_SMD_CAPACITOR;
+import static serendustry.item.SerendustryMetaItems.OMNITEMPORAL_SMD_DIODE;
+import static serendustry.item.SerendustryMetaItems.OMNITEMPORAL_SMD_INDUCTOR;
+import static serendustry.item.SerendustryMetaItems.OMNITEMPORAL_SMD_RESISTOR;
+import static serendustry.item.SerendustryMetaItems.OMNITEMPORAL_SMD_TRANSISTOR;
 import static serendustry.item.SerendustryMetaItems.RESONANCE_CHIP;
 import static serendustry.item.SerendustryMetaItems.RESONANCE_WAFER;
 import static serendustry.item.SerendustryMetaItems.SUPREME_SMD_CAPACITOR;
@@ -95,6 +101,7 @@ import static serendustry.item.material.SerendustryMaterials.EnrichedTeflon;
 import static serendustry.item.material.SerendustryMaterials.ExtremelyUnstableTiberium;
 import static serendustry.item.material.SerendustryMaterials.Floppa;
 import static serendustry.item.material.SerendustryMaterials.FluxedElectrum;
+import static serendustry.item.material.SerendustryMaterials.FullerenePolymerMatrix;
 import static serendustry.item.material.SerendustryMaterials.GalliumYttrium;
 import static serendustry.item.material.SerendustryMaterials.HastelloyK243;
 import static serendustry.item.material.SerendustryMaterials.HastelloyX78;
@@ -120,6 +127,7 @@ import static serendustry.item.material.SerendustryMaterials.ScOpv;
 import static serendustry.item.material.SerendustryMaterials.ScUev;
 import static serendustry.item.material.SerendustryMaterials.ScUiv;
 import static serendustry.item.material.SerendustryMaterials.ScUxv;
+import static serendustry.item.material.SerendustryMaterials.SentientNanobots;
 import static serendustry.item.material.SerendustryMaterials.Shirabon;
 import static serendustry.item.material.SerendustryMaterials.Superheavies;
 import static serendustry.item.material.SerendustryMaterials.SuperheavySolderingAlloy;
@@ -250,7 +258,7 @@ public class MagnetoResonaticRecipes {
                 .input(ADVANCED_SMD_TRANSISTOR, 24)
                 .fluidInputs(MagnetoResonatic.getFluid(144 * 6))
                 .output(MAGNETO_RESONATIC_LuV)
-                .duration(1000).EUt(VA[ZPM]).buildAndRegister();
+                .duration(20 * 60).EUt(VA[ZPM]).buildAndRegister();
 
         CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder()
                 .input(ELITE_CIRCUIT_BOARD)
@@ -261,13 +269,13 @@ public class MagnetoResonaticRecipes {
                 .input(ADVANCED_SMD_CAPACITOR, 32)
                 .fluidInputs(MagnetoResonatic.getFluid(144 * 8))
                 .output(MAGNETO_RESONATIC_ZPM)
-                .duration(1000).EUt(VA[UV]).buildAndRegister();
+                .duration(20 * 60 * 4).EUt(VA[UV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, Tritanium)
                 .input(WETWARE_CIRCUIT_BOARD)
                 .input(MAGNETO_RESONATIC_ZPM, 4)
-                .input(RESONANCE_CHIP, 4)
+                .input(RESONANCE_CHIP, 64)
                 .input(wireFine, TinAlloy, 64)
                 .input(wireFine, CheeseAmerican, 32)
                 .input(wireFine, HastelloyX78)
@@ -285,13 +293,13 @@ public class MagnetoResonaticRecipes {
                 .fluidInputs(AnimalWaste.getFluid(144 * 4))
                 .fluidInputs(FluxedElectrum.getFluid(144 * 4))
                 .output(MAGNETO_RESONATIC_UV)
-                .duration(10000).EUt(VA[UHV]).buildAndRegister();
+                .duration(20 * 60 * 15).EUt(VA[UHV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, Neutronium)
                 .input(WETWARE_CIRCUIT_BOARD)
                 .input(MAGNETO_RESONATIC_UV, 4)
-                .input(RESONANCE_CHIP, 4)
+                .input(RESONANCE_CHIP, 64)
                 .input(wireFine, TinAlloy, 64)
                 .input(wireFine, CheeseMozzarella, 64)
                 .input(plate, Lafium, 8)
@@ -309,13 +317,13 @@ public class MagnetoResonaticRecipes {
                 .fluidInputs(AnimalWaste.getFluid(144 * 6))
                 .fluidInputs(SuperheavySolderingAlloy.getFluid(144 * 12))
                 .output(MAGNETO_RESONATIC_UHV)
-                .duration(15000).EUt(VA[UEV]).buildAndRegister();
+                .duration(20 * 60 * 60).EUt(VA[UEV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, HastelloyK243)
                 .input(COSMIC_CIRCUIT_BOARD)
                 .input(MAGNETO_RESONATIC_UHV, 4)
-                .input(RESONANCE_CHIP, 8)
+                .input(RESONANCE_CHIP, 64)
                 .input(wireFine, TinAlloy, 64)
                 .input(wireFine, CheeseSwiss, 64)
                 .input(plate, NobleGases, 8)
@@ -333,13 +341,13 @@ public class MagnetoResonaticRecipes {
                 .fluidInputs(AnimalWaste.getFluid(144 * 8))
                 .fluidInputs(Tairitsu.getFluid(144 * 12))
                 .output(MAGNETO_RESONATIC_UEV)
-                .duration(20000).EUt(VA[UIV]).buildAndRegister();
+                .duration(20 * 60 * 120 * 2).EUt(VA[UIV]).buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder() // todo: Doesn't work
+        ASSEMBLY_LINE_RECIPES.recipeBuilder() // todo: Doesn't work (idk what this means)
                 .input(frameGt, Enderiiium, 2)
-                .input(COSMIC_CIRCUIT_BOARD, 2)
+                .input(OMNITEMPORAL_CIRCUIT_BOARD, 2)
                 .input(MAGNETO_RESONATIC_UEV, 4)
-                .input(RESONANCE_CHIP, 16)
+                .input(RESONANCE_CHIP, 64)
                 .input(wireFine, TinAlloy, 64)
                 .input(wireFine, CallistoIce, 64)
                 .input(wireFine, CheeseCheddar, 64)
@@ -347,23 +355,23 @@ public class MagnetoResonaticRecipes {
                 .input(plate, PartialSuperheavies, 8)
                 .input(ring, EnrichedTeflon, 32)
                 .input(wireGtOctal, ScUiv, 4)
-                .input(SUPREME_SMD_RESISTOR, 32)
-                .input(SUPREME_SMD_TRANSISTOR, 32)
-                .input(SUPREME_SMD_CAPACITOR, 32)
-                .input(SUPREME_SMD_DIODE, 32)
-                .input(SUPREME_SMD_INDUCTOR, 32)
+                .input(OMNITEMPORAL_SMD_RESISTOR, 32)
+                .input(OMNITEMPORAL_SMD_TRANSISTOR, 32)
+                .input(OMNITEMPORAL_SMD_CAPACITOR, 32)
+                .input(OMNITEMPORAL_SMD_DIODE, 32)
+                .input(OMNITEMPORAL_SMD_INDUCTOR, 32)
                 .fluidInputs(MagnetoResonatic.getFluid(144 * 32))
                 .fluidInputs(TinAlloy.getFluid(144 * 16))
                 .fluidInputs(AnimalWaste.getFluid(144 * 12))
                 .fluidInputs(OmniversalLubricant.getPlasma(1000))
                 .output(MAGNETO_RESONATIC_UIV)
-                .duration(20000).EUt(VA[UXV]).buildAndRegister();
+                .duration(20 * 60 * 120 * 8).EUt(VA[UIV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, InfinityCatalyst, 4)
-                .input(COSMIC_CIRCUIT_BOARD, 4)
+                .input(OMNITEMPORAL_CIRCUIT_BOARD, 4)
                 .input(MAGNETO_RESONATIC_UIV, 4)
-                .input(RESONANCE_CHIP, 24)
+                .input(RESONANCE_CHIP, 64)
                 .input(wireFine, TinAlloy, 64)
                 .input(wireFine, TinAlloy, 64)
                 .input(wireFine, CheeseAmerican, 64)
@@ -371,23 +379,23 @@ public class MagnetoResonaticRecipes {
                 .input(plate, Bedrockium, 16)
                 .input(ring, EnrichedTeflon, 48)
                 .input(wireGtOctal, ScUxv, 4)
-                .input(SUPREME_SMD_RESISTOR, 40)
-                .input(SUPREME_SMD_TRANSISTOR, 40)
-                .input(SUPREME_SMD_CAPACITOR, 40)
-                .input(SUPREME_SMD_DIODE, 40)
-                .input(SUPREME_SMD_INDUCTOR, 40)
+                .input(OMNITEMPORAL_SMD_RESISTOR, 40)
+                .input(OMNITEMPORAL_SMD_TRANSISTOR, 40)
+                .input(OMNITEMPORAL_SMD_CAPACITOR, 40)
+                .input(OMNITEMPORAL_SMD_DIODE, 40)
+                .input(OMNITEMPORAL_SMD_INDUCTOR, 40)
                 .fluidInputs(MagnetoResonatic.getFluid(144 * 48))
                 .fluidInputs(TinAlloy.getFluid(144 * 24))
                 .fluidInputs(AnimalWaste.getFluid(144 * 16))
                 .fluidInputs(MutatedLivingSolder.getFluid(144 * 16))
                 .output(MAGNETO_RESONATIC_UXV)
-                .duration(20000).EUt(VA[OpV]).buildAndRegister();
+                .duration(20 * 60 * 120 * 25).EUt(VA[UIV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, Quantum, 8)
-                .input(COSMIC_CIRCUIT_BOARD, 8)
+                .input(OMNITEMPORAL_CIRCUIT_BOARD, 8)
                 .input(MAGNETO_RESONATIC_UXV, 4)
-                .input(RESONANCE_CHIP, 32)
+                .input(RESONANCE_CHIP, 64)
                 .input(wireFine, TinAlloy, 64)
                 .input(wireFine, Quantium, 64)
                 .input(wireFine, CheeseSwiss, 64)
@@ -395,21 +403,22 @@ public class MagnetoResonaticRecipes {
                 .input(plate, Ledox, 32)
                 .input(ring, EnrichedTeflon, 64)
                 .input(wireGtOctal, ScOpv, 4)
-                .input(SUPREME_SMD_RESISTOR, 48)
-                .input(SUPREME_SMD_TRANSISTOR, 48)
-                .input(SUPREME_SMD_CAPACITOR, 48)
-                .input(SUPREME_SMD_DIODE, 48)
-                .input(SUPREME_SMD_INDUCTOR, 48)
+                .input(OMNITEMPORAL_SMD_RESISTOR, 48)
+                .input(OMNITEMPORAL_SMD_TRANSISTOR, 48)
+                .input(OMNITEMPORAL_SMD_CAPACITOR, 48)
+                .input(OMNITEMPORAL_SMD_DIODE, 48)
+                .input(OMNITEMPORAL_SMD_INDUCTOR, 48)
                 .fluidInputs(MagnetoResonatic.getFluid(144 * 64))
                 .fluidInputs(TinAlloy.getFluid(144 * 32))
                 .fluidInputs(AnimalWaste.getFluid(144 * 24))
                 .fluidInputs(Periodicium.getFluid(144 * 8))
                 .output(MAGNETO_RESONATIC_OpV)
-                .duration(25000).EUt(VA[MAX]).buildAndRegister();
+                // UXV AAL @ 16k UXV: 703.125s
+                .duration(20 * 60 * 120 * 100).EUt(VA[UIV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(frameGt, MultiversalAlloy, 64)
-                .input(COSMIC_CIRCUIT_BOARD, 64)
+                .input(OMNITEMPORAL_CIRCUIT_BOARD, 64)
                 .input(MAGNETO_RESONATIC_OpV, 4)
                 .input(RESONANCE_CHIP, 64)
                 .input(wireFine, TinAlloy, 64)
@@ -419,16 +428,17 @@ public class MagnetoResonaticRecipes {
                 .input(plate, ExtremelyUnstableTiberium, 64)
                 .input(ring, EnrichedTeflon, 64)
                 .input(wireGtHex, Floppa, 64)
-                .input(SUPREME_SMD_RESISTOR, 64)
-                .input(SUPREME_SMD_TRANSISTOR, 64)
-                .input(SUPREME_SMD_CAPACITOR, 64)
-                .input(SUPREME_SMD_DIODE, 64)
-                .input(SUPREME_SMD_INDUCTOR, 64)
-                .fluidInputs(MagnetoResonatic.getFluid(144 * 128))
-                .fluidInputs(TinAlloy.getFluid(144 * 64))
-                .fluidInputs(AnimalWaste.getFluid(144 * 64))
-                .fluidInputs(Shirabon.getFluid(144 * 64))
+                .input(OMNITEMPORAL_SMD_RESISTOR, 64)
+                .input(OMNITEMPORAL_SMD_TRANSISTOR, 64)
+                .input(OMNITEMPORAL_SMD_CAPACITOR, 64)
+                .input(OMNITEMPORAL_SMD_DIODE, 64)
+                .input(OMNITEMPORAL_SMD_INDUCTOR, 64)
+                .fluidInputs(MagnetoResonatic.getFluid(144 * 65536))
+                .fluidInputs(SentientNanobots.getFluid(144 * 65536))
+                .fluidInputs(Periodicium.getFluid(144 * 65536))
+                .fluidInputs(FullerenePolymerMatrix.getFluid(144 * 65536))
                 .output(MAGNETO_RESONATIC_MAX)
-                .duration(150000).EUt(VA[MAX]).buildAndRegister();
+                // UXV AAL @ 16k UXV: 5,625s
+                .duration(20 * 60 * 120 * 200).EUt(VA[UXV]).buildAndRegister();
     }
 }

@@ -1,23 +1,31 @@
 {
   "forge_marker": 1,
-  "defaults": {
-    "model": "minecraft:cube_all",
-    "textures": {
-      "all": "gregtech:blocks/rendering_error"
-    }
-  },
   "variants": {
-    "variant": {
-      "glacial": {
+      "active=false,variant=glacial": {
+        "model": "minecraft:cube_all",
         "textures": {
           "all": "gregtech:blocks/casing/pc_coil/glacial"
         }
       },
-      "black_hole": {
+      "active=true,variant=glacial": {
+        "model": "gregtech:cube_2_layer_all",
+        "textures": {
+          "bot_all": "gregtech:blocks/casing/pc_coil/glacial",
+          "top_all": "gregtech:blocks/casing/pc_coil/glacial_bloom"
+        }
+      },
+      "active=false,variant=black_hole": {
+        "model": "minecraft:cube_all",
         "textures": {
           "all": "gregtech:blocks/casing/pc_coil/black_hole"
         }
+      },
+      "active=true,variant=black_hole": {
+        "model": "gregtech:cube_2_layer_all",
+        "textures": {
+          "bot_all": "gregtech:blocks/casing/pc_coil/black_hole",
+          "top_all": "gregtech:blocks/casing/pc_coil/black_hole_bloom"
+        }
       }
-    }
   }
 }

@@ -1,0 +1,31 @@
+{
+  "forge_marker": 1,
+  "variants": {
+      "active=false,variant=adv_fusion_coil": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/casing/s_multi/adv_fusion_coil"
+        }
+      },
+      "active=true,variant=adv_fusion_coil": {
+        "model": "gregtech:cube_2_layer_all",
+        "textures": {
+          "bot_all": "gregtech:blocks/casing/s_multi/adv_fusion_coil",
+          "top_all": "gregtech:blocks/casing/s_multi/adv_fusion_coil_bloom"
+        }
+      },
+      "active=false,variant=empyrean_core": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/casing/s_multi/empyrean_core"
+        }
+      },
+      "active=true,variant=empyrean_core": {
+        "model": "gregtech:cube_2_layer_all",
+        "textures": {
+          "bot_all": "gregtech:blocks/casing/s_multi/empyrean_core",
+          "top_all": "gregtech:blocks/casing/s_multi/empyrean_core_bloom"
+        }
+      }
+  }
+}

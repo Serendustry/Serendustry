@@ -1,8 +1,11 @@
 package serendustry.blocks;
 
+import gregtech.api.block.VariantActiveBlock;
+import gregtech.common.ConfigHolder;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -12,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import gregtech.api.GTValues;
 import gregtech.api.block.VariantBlock;
 
-public class BlockAALCoreCasing extends VariantBlock<BlockAALCoreCasing.AALCoreCasingType> {
+public class BlockAALCoreCasing extends VariantActiveBlock<BlockAALCoreCasing.AALCoreCasingType> {
 
     public BlockAALCoreCasing() {
         super(net.minecraft.block.material.Material.IRON);
@@ -22,6 +25,12 @@ public class BlockAALCoreCasing extends VariantBlock<BlockAALCoreCasing.AALCoreC
         setHarvestLevel("wrench", 3);
         setSoundType(SoundType.METAL);
         setDefaultState(getState(AALCoreCasingType.UV));
+    }
+
+    @NotNull
+    @Override
+    public BlockRenderLayer getRenderLayer() {
+        return BlockRenderLayer.SOLID;
     }
 
     @Override

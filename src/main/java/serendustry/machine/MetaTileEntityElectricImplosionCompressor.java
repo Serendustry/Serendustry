@@ -41,8 +41,8 @@ import gregtech.core.sound.GTSoundEvents;
 import serendustry.SValues;
 import serendustry.api.SerendustryAPI;
 import serendustry.blocks.BlockEICHammerCasing;
-import serendustry.blocks.BlockMetalCasing;
 import serendustry.blocks.IEICHammerBlockStats;
+import serendustry.blocks.SBlockMetalCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.client.utils.STooltipHelper;
@@ -107,8 +107,8 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
 
         pattern.where('E', selfPredicate())
                 .where('A',
-                        states(SerendustryMetaBlocks.METAL_CASING
-                                .getState(BlockMetalCasing.SerendustryMetalCasingType.ADAMANTIUM))
+                        states(SerendustryMetaBlocks.S_METAL_CASING
+                                .getState(SBlockMetalCasing.SMetalCasingType.ADAMANTIUM))
                                         .setMinGlobalLimited(401)
                                         .or(autoAbilities(false, false, true, true, true, true, false))
                                         .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0)
@@ -197,7 +197,7 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
         * for (String[] aisle : StructureDefinition.ELECTRIC_IMPLOSION_COMPRESSOR) {
         * builder.aisle(aisle);
         * }
-        * builder.where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF))
+        * builder.where('X', MetaBlocks.S_METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF))
         * .where('S', MetaTileEntities.ELECTRIC_BLAST_FURNACE, EnumFacing.SOUTH)
         * .where('#', Blocks.AIR.getDefaultState())
         * .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.LV], EnumFacing.NORTH)
@@ -207,7 +207,7 @@ public class MetaTileEntityElectricImplosionCompressor extends RecipeMapMultiblo
         * .where('D', MetaTileEntities.FLUID_EXPORT_HATCH[GTValues.LV], EnumFacing.EAST)
         * .where('H', MetaTileEntities.MUFFLER_HATCH[GTValues.LV], EnumFacing.UP)
         * .where('M', () -> ConfigHolder.machines.enableMaintenance ? MetaTileEntities.MAINTENANCE_HATCH :
-        * MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF), EnumFacing.NORTH);
+        * MetaBlocks.S_METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF), EnumFacing.NORTH);
         * GregTechAPI.HEATING_COILS.entrySet().stream()
         * .sorted(Comparator.comparingInt(entry -> entry.getValue().getTier()))
         * .forEach(entry -> shapeInfo.add(builder.where('C', entry.getKey()).build()));

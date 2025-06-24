@@ -14,7 +14,9 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import gregtech.api.block.IHeatingCoilBlockStats;
 import gregtech.api.capability.IEnergyContainer;
+import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
@@ -23,10 +25,8 @@ import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.pattern.PatternMatchContext;
 import gregtech.client.renderer.ICubeRenderer;
-import gregtech.common.blocks.BlockWireCoil;
-import gregtech.common.blocks.MetaBlocks;
 import serendustry.SValues;
-import serendustry.blocks.BlockMetalCasing;
+import serendustry.blocks.SBlockMetalCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.client.utils.STooltipHelper;
@@ -34,10 +34,12 @@ import serendustry.machine.structure.StructureDefinition;
 
 public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
 
+    private int coilTier = 0;
     // private IEnergyContainer powerInput; // todo: update ceu so this works and check if this even needed
 
     public MetaTileEntityNebulaicNexus(ResourceLocation rl) {
         super(rl, SerendustryRecipeMaps.NEBULAIC_NEXUS_RECIPES);
+        this.recipeMapWorkable = new NNWorkable(this);
     }
 
     @Override
@@ -53,6 +55,17 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
     @Override
     protected void formStructure(PatternMatchContext context) {
         super.formStructure(context);
+
+        Object type = context.get("CoilType");
+        if (type instanceof IHeatingCoilBlockStats) {
+            this.coilTier = Math.max(0, ((IHeatingCoilBlockStats) type).getTier());
+        }
+
+        // Must be at least Tritanium
+        if (coilTier < 7) {
+            // todo error
+            invalidateStructure();
+        }
 
         List<IEnergyContainer> energyInput = new ArrayList<>(getAbilities(MultiblockAbility.INPUT_ENERGY));
         List<IEnergyContainer> substationInput = new ArrayList<>(
@@ -73,6 +86,12 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
     }
 
     @Override
+    public void invalidateStructure() {
+        super.invalidateStructure();
+        this.coilTier = 0;
+    }
+
+    @Override
     public @NotNull BlockPattern createStructurePattern() {
         FactoryBlockPattern pattern = FactoryBlockPattern.start(LEFT, DOWN, FRONT);
 
@@ -82,8 +101,8 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
 
         pattern.where('D', selfPredicate())
                 .where('C',
-                        states(SerendustryMetaBlocks.METAL_CASING
-                                .getState(BlockMetalCasing.SerendustryMetalCasingType.CARBON))
+                        states(SerendustryMetaBlocks.S_METAL_CASING
+                                .getState(SBlockMetalCasing.SMetalCasingType.CARBON))
                                         .setMinGlobalLimited(803)
                                         .or(autoAbilities(false, false, true, true, true, true, false))
                                         .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0)
@@ -91,20 +110,32 @@ public class MetaTileEntityNebulaicNexus extends RecipeMapMultiblockController {
                                         .or(abilities(MultiblockAbility.SUBSTATION_INPUT_ENERGY).setPreviewCount(1)
                                                 .setMaxGlobalLimited(1)))
                 .where('B',
-                        states(SerendustryMetaBlocks.METAL_CASING
-                                .getState(BlockMetalCasing.SerendustryMetalCasingType.AMERICIUM)))
-                .where('A', states(MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.TRITANIUM)));
+                        states(SerendustryMetaBlocks.S_METAL_CASING
+                                .getState(SBlockMetalCasing.SMetalCasingType.AMERICIUM)))
+                .where('A', heatingCoils());
 
         return pattern.build();
     }
 
     public ICubeRenderer getBaseTexture(@Nullable IMultiblockPart part) {
-        return SerendustryTextures.CASING_CARBON; // todo
+        return SerendustryTextures.CASING_CARBON;
     }
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         STooltipHelper.addSerendustryInformation(tooltip, SValues.ENERGY_SUBSTATION, false);
+    }
+
+    protected class NNWorkable extends MultiblockRecipeLogic {
+
+        public NNWorkable(RecipeMapMultiblockController tileEntity) {
+            super(tileEntity);
+        }
+
+        @Override
+        public int getParallelLimit() {
+            return (coilTier >= 8) ? coilTier * 2 : 1;
+        }
     }
 }

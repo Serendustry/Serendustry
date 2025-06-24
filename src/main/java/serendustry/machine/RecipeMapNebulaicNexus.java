@@ -4,7 +4,7 @@ import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 
 public class RecipeMapNebulaicNexus extends
-        RecipeMap<SimpleRecipeBuilder> {
+                                    RecipeMap<SimpleRecipeBuilder> {
 
     public RecipeMapNebulaicNexus(String name, int inputs, int outputs, int fluidInputs, int fluidOutputs,
                                   boolean hidden) {

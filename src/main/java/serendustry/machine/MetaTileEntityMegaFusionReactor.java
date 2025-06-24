@@ -31,7 +31,8 @@ import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.MetaBlocks;
 import serendustry.SValues;
-import serendustry.blocks.BlockMultiCasing;
+import serendustry.blocks.SBlockActiveMultiCasing;
+import serendustry.blocks.SBlockMultiCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.client.utils.STooltipHelper;
@@ -92,8 +93,8 @@ public class MetaTileEntityMegaFusionReactor extends RecipeMapMultiblockControll
 
         pattern.where('E', selfPredicate())
                 .where('D',
-                        states(SerendustryMetaBlocks.MULTI_CASING
-                                .getState(BlockMultiCasing.SerendustryMultiCasingType.ADV_FUSION))
+                        states(SerendustryMetaBlocks.S_MULTI_CASING
+                                .getState(SBlockMultiCasing.SMultiCasingType.ADV_FUSION))
                                         .setMinGlobalLimited(1681)
                                         .or(autoAbilities(false, false, false, false, true, true, false))
                                         .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0)
@@ -103,8 +104,8 @@ public class MetaTileEntityMegaFusionReactor extends RecipeMapMultiblockControll
                                         .or(abilities(MultiblockAbility.INPUT_LASER).setPreviewCount(1)
                                                 .setMaxGlobalLimited(1)))
                 .where('B',
-                        states(SerendustryMetaBlocks.MULTI_CASING
-                                .getState(BlockMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL)))
+                        states(SerendustryMetaBlocks.S_ACTIVE_MULTI_CASING
+                                .getState(SBlockActiveMultiCasing.SActiveMultiCasingType.ADV_FUSION_COIL)))
                 .where('A', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.FUSION_GLASS)))
                 .where('C', frames(SerendustryMaterials.DeepDarkSteel));
 
@@ -125,7 +126,7 @@ public class MetaTileEntityMegaFusionReactor extends RecipeMapMultiblockControll
     @NotNull
     @Override
     protected ICubeRenderer getFrontOverlay() {
-        return Textures.FUSION_REACTOR_OVERLAY;// SerendustryTextures.OVERLAY_ADVANCED_FUSION_REACTOR;
+        return SerendustryTextures.OVERLAY_ADVANCED_FUSION_REACTOR;
     }
     // todo: big laser rendering
 

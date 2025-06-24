@@ -1,0 +1,28 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:cube_all",
+    "textures": {
+      "all": "gregtech:blocks/rendering_error"
+    }
+  },
+  "variants": {
+    "variant": {
+      "space_elevator": {
+        "textures": {
+          "all": "gregtech:blocks/casing/s_multi/space_elevator"
+        }
+      },
+      "acr": {
+        "textures": {
+          "all": "gregtech:blocks/casing/s_multi/acr"
+        }
+      },
+      "adv_fusion": {
+        "textures": {
+          "all": "gregtech:blocks/casing/s_multi/adv_fusion_casing"
+        }
+      }
+    }
+  }
+}

@@ -1,8 +1,10 @@
 package serendustry.blocks;
 
+import gregtech.api.block.VariantActiveBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -11,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 
 import gregtech.api.block.VariantBlock;
 
-public class BlockPCCoilHeating extends VariantBlock<BlockPCCoilHeating.PCCoilHeatingType> {
+public class BlockPCCoilHeating extends VariantActiveBlock<BlockPCCoilHeating.PCCoilHeatingType> {
 
     public BlockPCCoilHeating() {
         super(net.minecraft.block.material.Material.IRON);
@@ -21,6 +23,12 @@ public class BlockPCCoilHeating extends VariantBlock<BlockPCCoilHeating.PCCoilHe
         setHarvestLevel("wrench", 3);
         setSoundType(SoundType.METAL);
         setDefaultState(getState(PCCoilHeatingType.INFERNAL));
+    }
+
+    @NotNull
+    @Override
+    public BlockRenderLayer getRenderLayer() {
+        return BlockRenderLayer.SOLID;
     }
 
     @Override
