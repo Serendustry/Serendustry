@@ -1,7 +1,7 @@
 package mrtjp.projectred.api;
 
-import net.minecraft.item.ItemStack;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 
 public interface IScrewdriver {
 

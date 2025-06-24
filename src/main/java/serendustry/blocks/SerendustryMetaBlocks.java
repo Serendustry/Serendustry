@@ -67,7 +67,8 @@ public class SerendustryMetaBlocks {
         ACR_COMPONENT = new BlockACRComponent();
         ACR_COMPONENT.setRegistryName("acr_component");
 
-        ALL_CASINGS.addAll(Arrays.asList(S_METAL_CASING, S_MULTI_CASING, S_ACTIVE_MULTI_CASING, S_GLASS_CASING, S_WIRE_COIL, AAL_CORE_CASING,
+        ALL_CASINGS.addAll(Arrays.asList(S_METAL_CASING, S_MULTI_CASING, S_ACTIVE_MULTI_CASING, S_GLASS_CASING,
+                S_WIRE_COIL, AAL_CORE_CASING,
                 EIC_HAMMER_CASING, PC_COIL_HEATING, PC_COIL_COOLING, ACR_COMPONENT));
     }
 
@@ -79,7 +80,7 @@ public class SerendustryMetaBlocks {
         AAL_CORE_CASING.onModelRegister();
         PC_COIL_HEATING.onModelRegister();
         PC_COIL_COOLING.onModelRegister();
-        //S_GLASS_CASING.onModelRegister();
+        // S_GLASS_CASING.onModelRegister();
     }
 
     @SideOnly(Side.CLIENT)

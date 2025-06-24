@@ -128,7 +128,6 @@ import static serendustry.machine.SerendustryMetaTileEntities.MEGA_FUSION_REACTO
 
 import gregtech.api.GTValues;
 import serendustry.blocks.SBlockActiveMultiCasing;
-import serendustry.blocks.SBlockMultiCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 
 public class LargeAlloySmelterRecipes {

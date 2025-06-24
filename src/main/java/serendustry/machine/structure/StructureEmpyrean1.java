@@ -1,8 +1,8 @@
 package serendustry.machine.structure;
 
 public class StructureEmpyrean1 {
-    
-    public static final String[][] EMPYREAN_1 = {{
+
+    public static final String[][] EMPYREAN_1 = { {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -136,7 +136,7 @@ public class StructureEmpyrean1 {
             "                                                                                           ",
             "                                                                                           ",
             "                                       BBBBBBBBBBBBB                                       "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -270,7 +270,7 @@ public class StructureEmpyrean1 {
             "                                                                                           ",
             "                                                                                           ",
             "                                  BBBBBBBBBBBBBBBBBBBBBBB                                  "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -404,7 +404,7 @@ public class StructureEmpyrean1 {
             "                                                                                           ",
             "                                                                                           ",
             "                               BBBBBBBBBBBBBBBBBBBBBBBBBBBBB                               "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -538,7 +538,7 @@ public class StructureEmpyrean1 {
             "                                                                                           ",
             "                                                                                           ",
             "                            BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                            "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -672,7 +672,7 @@ public class StructureEmpyrean1 {
             "                                                                                           ",
             "                                                                                           ",
             "                          BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                          "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -806,7 +806,7 @@ public class StructureEmpyrean1 {
             "                                                                                           ",
             "                                                                                           ",
             "                        BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                        "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -940,7 +940,7 @@ public class StructureEmpyrean1 {
             "                                                                                           ",
             "                                                                                           ",
             "                      BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                      "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -1074,7 +1074,7 @@ public class StructureEmpyrean1 {
             "                                                                                           ",
             "                                                                                           ",
             "                    BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                    "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -1208,7 +1208,7 @@ public class StructureEmpyrean1 {
             "                                                                                           ",
             "                                                                                           ",
             "                   BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                   "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -1342,7 +1342,7 @@ public class StructureEmpyrean1 {
             "                                                                                           ",
             "                                                                                           ",
             "                  BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                  "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -1476,7 +1476,7 @@ public class StructureEmpyrean1 {
             "                                                                                           ",
             "                                                                                           ",
             "                BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -1610,7 +1610,7 @@ public class StructureEmpyrean1 {
             "                                                                                           ",
             "                                        BBBBBBBBBBB                                        ",
             "               BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB               "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -1744,7 +1744,7 @@ public class StructureEmpyrean1 {
             "                                                                                           ",
             "                                   BBBBBBBBBBBBBBBBBBBBB                                   ",
             "              BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB              "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -1878,7 +1878,7 @@ public class StructureEmpyrean1 {
             "                                                                                           ",
             "                                 BBBBBBBBBBBBBBBBBBBBBBBBB                                 ",
             "             BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB             "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -2012,7 +2012,7 @@ public class StructureEmpyrean1 {
             "                                                                                           ",
             "                              BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                              ",
             "            BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB            "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -2146,7 +2146,7 @@ public class StructureEmpyrean1 {
             "                                                                                           ",
             "                            BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                            ",
             "           BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB           "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -2280,7 +2280,7 @@ public class StructureEmpyrean1 {
             "                                                                                           ",
             "                           BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                           ",
             "          BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB          "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -2414,7 +2414,7 @@ public class StructureEmpyrean1 {
             "                                                                                           ",
             "                         BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                         ",
             "          BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB          "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -2548,7 +2548,7 @@ public class StructureEmpyrean1 {
             "                                                                                           ",
             "                        BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                        ",
             "         BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB         "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -2682,7 +2682,7 @@ public class StructureEmpyrean1 {
             "                                                                                           ",
             "                       BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                       ",
             "        BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB        "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -2816,7 +2816,7 @@ public class StructureEmpyrean1 {
             "                                                                                           ",
             "                      BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                      ",
             "       BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB       "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -2950,7 +2950,7 @@ public class StructureEmpyrean1 {
             "                                                                                           ",
             "                     BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                     ",
             "       BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB       "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -3084,7 +3084,7 @@ public class StructureEmpyrean1 {
             "                                                                                           ",
             "                    BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                    ",
             "      BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB      "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -3218,7 +3218,7 @@ public class StructureEmpyrean1 {
             "                                                                                           ",
             "                   BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                   ",
             "      BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB      "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -3352,7 +3352,7 @@ public class StructureEmpyrean1 {
             "                                                                                           ",
             "                  BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                  ",
             "     BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB     "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -3486,7 +3486,7 @@ public class StructureEmpyrean1 {
             "                                                                                           ",
             "                 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                 ",
             "     BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB     "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -3620,7 +3620,7 @@ public class StructureEmpyrean1 {
             "                                                                                           ",
             "                 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                 ",
             "    BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB    "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -3754,7 +3754,7 @@ public class StructureEmpyrean1 {
             "                                            BBB                                            ",
             "                BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                ",
             "    BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB    "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -3888,7 +3888,7 @@ public class StructureEmpyrean1 {
             "                                         BBBBBBBBB                                         ",
             "               BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB               ",
             "   BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB   "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -4022,7 +4022,7 @@ public class StructureEmpyrean1 {
             "                                       BBBBBBBBBBBBB                                       ",
             "               BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB               ",
             "   BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB   "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -4156,7 +4156,7 @@ public class StructureEmpyrean1 {
             "                                     BBBBBBBBBBBBBBBBB                                     ",
             "              BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB              ",
             "   BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB   "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -4290,7 +4290,7 @@ public class StructureEmpyrean1 {
             "                                   BBBBBBBBBBBBBBBBBBBBB                                   ",
             "              BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB              ",
             "  BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB  "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -4424,7 +4424,7 @@ public class StructureEmpyrean1 {
             "                                  BBBBBBBBBBBBBBBBBBBBBBB                                  ",
             "              BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB              ",
             "  BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB  "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -4558,7 +4558,7 @@ public class StructureEmpyrean1 {
             "                                 BBBBBBBBBBBBBBBBBBBBBBBBB                                 ",
             "             BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB             ",
             "  BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB  "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -4692,7 +4692,7 @@ public class StructureEmpyrean1 {
             "                                BBBBBBBBBBBBBBBBBBBBBBBBBBB                                ",
             "             BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB             ",
             " BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -4826,7 +4826,7 @@ public class StructureEmpyrean1 {
             "                               BBBBBBBBBBBBBBBBBBBBBBBBBBBBB                               ",
             "            BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB            ",
             " BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -4960,7 +4960,7 @@ public class StructureEmpyrean1 {
             "                               BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                              ",
             "            BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB            ",
             " BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -5094,7 +5094,7 @@ public class StructureEmpyrean1 {
             "                              BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                              ",
             "            BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB            ",
             " BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -5228,7 +5228,7 @@ public class StructureEmpyrean1 {
             "                              BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                             ",
             "            BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB            ",
             " BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB "
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -5362,7 +5362,7 @@ public class StructureEmpyrean1 {
             "                             BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                             ",
             "            BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB            ",
             "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -5496,7 +5496,7 @@ public class StructureEmpyrean1 {
             "                             BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                             ",
             "           BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB           ",
             "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -5630,7 +5630,7 @@ public class StructureEmpyrean1 {
             "                            BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                            ",
             "           BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB           ",
             "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -5764,7 +5764,7 @@ public class StructureEmpyrean1 {
             "                            BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                            ",
             "           BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB           ",
             "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -5898,7 +5898,7 @@ public class StructureEmpyrean1 {
             "                            BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                            ",
             "           BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB           ",
             "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                             A                                             ",
@@ -6032,7 +6032,7 @@ public class StructureEmpyrean1 {
             "                           BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                           ",
             "           BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB           ",
             "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
-    },{
+    }, {
             "                                             A                                             ",
             "                                             A                                             ",
             "                                            AAA                                            ",
@@ -6166,7 +6166,7 @@ public class StructureEmpyrean1 {
             "                           BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                           ",
             "           BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB           ",
             "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                             A                                             ",
@@ -6300,7 +6300,7 @@ public class StructureEmpyrean1 {
             "                           BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                           ",
             "           BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB           ",
             "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -6434,7 +6434,7 @@ public class StructureEmpyrean1 {
             "                            BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                            ",
             "           BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB           ",
             "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -6568,7 +6568,7 @@ public class StructureEmpyrean1 {
             "                            BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                            ",
             "           BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB           ",
             "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
-    },{
+    }, {
             "                                                                                           ",
             "                                                                                           ",
             "                                                                                           ",
@@ -6702,5 +6702,5 @@ public class StructureEmpyrean1 {
             "                            BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                            ",
             "           BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB           ",
             "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
-    }};
+    } };
 }

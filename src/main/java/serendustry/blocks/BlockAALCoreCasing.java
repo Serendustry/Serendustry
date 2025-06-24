@@ -1,7 +1,5 @@
 package serendustry.blocks;
 
-import gregtech.api.block.VariantActiveBlock;
-import gregtech.common.ConfigHolder;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
@@ -13,7 +11,7 @@ import net.minecraft.world.IBlockAccess;
 import org.jetbrains.annotations.NotNull;
 
 import gregtech.api.GTValues;
-import gregtech.api.block.VariantBlock;
+import gregtech.api.block.VariantActiveBlock;
 
 public class BlockAALCoreCasing extends VariantActiveBlock<BlockAALCoreCasing.AALCoreCasingType> {
 

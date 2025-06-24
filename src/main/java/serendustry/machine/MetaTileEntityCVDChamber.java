@@ -20,7 +20,6 @@ import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
-import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
 import serendustry.SValues;
@@ -57,7 +56,8 @@ public class MetaTileEntityCVDChamber extends RecipeMapMultiblockController {
                 .where('A',
                         states(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN))
                                 .setMinGlobalLimited(38).or(autoAbilities()))
-                .where('B', states(SerendustryMetaBlocks.PC_COIL_COOLING.getState(BlockPCCoilCooling.PCCoilCoolingType.BLACK_HOLE)));//states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS)));
+                .where('B', states(SerendustryMetaBlocks.PC_COIL_COOLING
+                        .getState(BlockPCCoilCooling.PCCoilCoolingType.BLACK_HOLE)));// states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS)));
 
         return pattern.build();
     }

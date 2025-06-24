@@ -1,8 +1,5 @@
 package serendustry.blocks;
 
-import gregtech.api.block.VariantActiveBlock;
-import gregtech.api.items.toolitem.ToolClasses;
-import gregtech.common.blocks.BlockGlassCasing;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
@@ -11,12 +8,13 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
 import org.jetbrains.annotations.NotNull;
 
-import gregtech.api.block.VariantBlock;
+import gregtech.api.block.VariantActiveBlock;
+import gregtech.api.items.toolitem.ToolClasses;
 
 public class SBlockGlassCasing extends VariantActiveBlock<SBlockGlassCasing.SGlassCasingType> {
 

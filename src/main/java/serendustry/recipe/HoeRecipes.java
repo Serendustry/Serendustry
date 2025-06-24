@@ -94,17 +94,16 @@ import static serendustry.item.material.SerendustryMaterials.VibraniumAlloy;
 import static serendustry.machine.SerendustryMetaTileEntities.EMPYREAN;
 import static serendustry.machine.SerendustryRecipeMaps.EMPYREAN_RECIPES;
 
-import gregtech.common.ConfigHolder;
-import gregtech.common.blocks.BlockGlassCasing;
-import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.common.ConfigHolder;
+import gregtech.common.blocks.BlockGlassCasing;
+import gregtech.common.blocks.MetaBlocks;
 import serendustry.blocks.SBlockActiveMultiCasing;
 import serendustry.blocks.SBlockGlassCasing;
-import serendustry.blocks.SBlockMultiCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 
 public class HoeRecipes {
@@ -112,7 +111,8 @@ public class HoeRecipes {
     public static void init() {
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(STELLAR_ESSENCE_BEYOND)
-                .inputs(SerendustryMetaBlocks.S_ACTIVE_MULTI_CASING.getItemVariant(SBlockActiveMultiCasing.SActiveMultiCasingType.EMPYREAN_CORE, 64))
+                .inputs(SerendustryMetaBlocks.S_ACTIVE_MULTI_CASING
+                        .getItemVariant(SBlockActiveMultiCasing.SActiveMultiCasingType.EMPYREAN_CORE, 64))
                 .input(FIELD_GENERATOR_UXV, 32)
                 .input(circuit, MarkerMaterials.Tier.OpV, 16)
                 .input(plate, ExoHalkoniteSteel, 64)
@@ -151,7 +151,8 @@ public class HoeRecipes {
                         Flerovium.getFluid(144 * 512),
                         Neptunium.getFluid(144 * 512))
                 // default 32 per recipe, 1204 in structure + 1456 in cores, so 84 recipes
-                .outputs(SerendustryMetaBlocks.S_GLASS_CASING.getItemVariant(SBlockGlassCasing.SGlassCasingType.EMPYREAN_GLASS, ConfigHolder.recipes.casingsPerCraft * 16))
+                .outputs(SerendustryMetaBlocks.S_GLASS_CASING.getItemVariant(
+                        SBlockGlassCasing.SGlassCasingType.EMPYREAN_GLASS, ConfigHolder.recipes.casingsPerCraft * 16))
                 .stationResearch(b -> b
                         .researchStack(OreDictUnifier.get(block, ChromaticGlass))
                         .CWUt(144)
@@ -160,7 +161,8 @@ public class HoeRecipes {
                 .duration(20 * 60 * 60).EUt(VA[UIV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .inputs(SerendustryMetaBlocks.S_GLASS_CASING.getItemVariant(SBlockGlassCasing.SGlassCasingType.EMPYREAN_GLASS, 16))
+                .inputs(SerendustryMetaBlocks.S_GLASS_CASING
+                        .getItemVariant(SBlockGlassCasing.SGlassCasingType.EMPYREAN_GLASS, 16))
                 .input(FEMTOSCALE_SINGULARITY, 4)
                 .input(circuit, MarkerMaterials.Tier.UXV)
                 .input(FIELD_GENERATOR_UIV, 4)
@@ -172,9 +174,11 @@ public class HoeRecipes {
                         Flerovium.getFluid(144 * 1024),
                         Neptunium.getFluid(144 * 1024))
                 // 16 per recipe, 1379 in structure + 64 in controller, so 91 recipes
-                .outputs(SerendustryMetaBlocks.S_ACTIVE_MULTI_CASING.getItemVariant(SBlockActiveMultiCasing.SActiveMultiCasingType.EMPYREAN_CORE, 16))
+                .outputs(SerendustryMetaBlocks.S_ACTIVE_MULTI_CASING
+                        .getItemVariant(SBlockActiveMultiCasing.SActiveMultiCasingType.EMPYREAN_CORE, 16))
                 .stationResearch(b -> b
-                        .researchStack(SerendustryMetaBlocks.S_GLASS_CASING.getItemVariant(SBlockGlassCasing.SGlassCasingType.EMPYREAN_GLASS))
+                        .researchStack(SerendustryMetaBlocks.S_GLASS_CASING
+                                .getItemVariant(SBlockGlassCasing.SGlassCasingType.EMPYREAN_GLASS))
                         .CWUt(144)
                         .EUt(VA[UIV]))
                 // UXV AAL @ 4k UXV = 1279s total
