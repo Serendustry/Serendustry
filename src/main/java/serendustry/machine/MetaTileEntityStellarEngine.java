@@ -31,7 +31,7 @@ import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.pattern.PatternMatchContext;
 import gregtech.client.renderer.ICubeRenderer;
 import serendustry.SValues;
-import serendustry.blocks.BlockMetalCasing;
+import serendustry.blocks.SBlockMetalCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.client.utils.STooltipHelper;
@@ -92,11 +92,11 @@ public class MetaTileEntityStellarEngine extends RecipeMapMultiblockController {
 
         pattern.where('D', selfPredicate())
                 .where('A',
-                        states(SerendustryMetaBlocks.METAL_CASING
-                                .getState(BlockMetalCasing.SerendustryMetalCasingType.CARBON))) // todo
+                        states(SerendustryMetaBlocks.S_METAL_CASING
+                                .getState(SBlockMetalCasing.SMetalCasingType.CARBON))) // todo
                 .where('B',
-                        states(SerendustryMetaBlocks.METAL_CASING
-                                .getState(BlockMetalCasing.SerendustryMetalCasingType.NEUTRONIUM)) // todo
+                        states(SerendustryMetaBlocks.S_METAL_CASING
+                                .getState(SBlockMetalCasing.SMetalCasingType.NEUTRONIUM)) // todo
                                         .setMinGlobalLimited(4333)
                                         .or(autoAbilities(false, false, true, true, true, true, false))
                                         .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0)

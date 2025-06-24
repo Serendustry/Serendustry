@@ -25,8 +25,8 @@ import gregtech.api.pattern.PatternMatchContext;
 import gregtech.api.unification.material.Materials;
 import gregtech.client.renderer.ICubeRenderer;
 import serendustry.SValues;
-import serendustry.blocks.BlockMetalCasing;
-import serendustry.blocks.BlockMultiCasing;
+import serendustry.blocks.SBlockMetalCasing;
+import serendustry.blocks.SBlockMultiCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.client.utils.STooltipHelper;
@@ -84,8 +84,8 @@ public class MetaTileEntitySpaceElevator extends RecipeMapMultiblockController {
 
         pattern.where('D', selfPredicate())
                 .where('B',
-                        states(SerendustryMetaBlocks.MULTI_CASING
-                                .getState(BlockMultiCasing.SerendustryMultiCasingType.SPACE_ELEVATOR))
+                        states(SerendustryMetaBlocks.S_MULTI_CASING
+                                .getState(SBlockMultiCasing.SMultiCasingType.SPACE_ELEVATOR))
                                         .setMinGlobalLimited(4640)
                                         .or(autoAbilities(false, false, true, true, true, true, false))
                                         .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0)
@@ -95,8 +95,8 @@ public class MetaTileEntitySpaceElevator extends RecipeMapMultiblockController {
                                         .or(abilities(MultiblockAbility.INPUT_LASER).setPreviewCount(1)
                                                 .setMaxGlobalLimited(1)))
                 .where('A',
-                        states(SerendustryMetaBlocks.METAL_CASING
-                                .getState(BlockMetalCasing.SerendustryMetalCasingType.CARBON)))
+                        states(SerendustryMetaBlocks.S_METAL_CASING
+                                .getState(SBlockMetalCasing.SMetalCasingType.CARBON)))
                 .where('C', frames(Materials.Scandium));
 
         return pattern.build();

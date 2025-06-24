@@ -67,8 +67,8 @@ import serendustry.api.SerendustryAPI;
 import serendustry.api.capability.IAALCore;
 import serendustry.api.capability.impl.AALRecipeLogic;
 import serendustry.blocks.BlockAALCoreCasing;
-import serendustry.blocks.BlockMetalCasing;
 import serendustry.blocks.IAALCoreBlockStats;
+import serendustry.blocks.SBlockMetalCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.machine.structure.StructureDefinition;
@@ -208,14 +208,14 @@ public class MetaTileEntityAdvancedAssemblyLine extends RecipeMapMultiblockContr
 
     @NotNull
     protected static IBlockState getCasingState() {
-        return SerendustryMetaBlocks.METAL_CASING
-                .getState(BlockMetalCasing.SerendustryMetalCasingType.ADAMANTIUM);
+        return SerendustryMetaBlocks.S_METAL_CASING
+                .getState(SBlockMetalCasing.SMetalCasingType.ADAMANTIUM);
     }
 
     @NotNull
     protected static IBlockState getGrateState() {
-        return SerendustryMetaBlocks.METAL_CASING
-                .getState(BlockMetalCasing.SerendustryMetalCasingType.CARBON); // todo
+        return SerendustryMetaBlocks.S_METAL_CASING
+                .getState(SBlockMetalCasing.SMetalCasingType.CARBON); // todo
     }
 
     @NotNull

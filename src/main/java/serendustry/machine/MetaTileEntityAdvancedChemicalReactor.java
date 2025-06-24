@@ -50,8 +50,8 @@ import serendustry.api.SerendustryAPI;
 import serendustry.api.capability.IACRComponent;
 import serendustry.api.capability.impl.ACRRecipeLogic;
 import serendustry.blocks.BlockACRComponent;
-import serendustry.blocks.BlockMultiCasing;
 import serendustry.blocks.IACRComponentBlockStats;
+import serendustry.blocks.SBlockMultiCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.client.utils.IntegerRange;
@@ -181,8 +181,8 @@ public class MetaTileEntityAdvancedChemicalReactor extends RecipeMapMultiblockCo
         pattern.where('D', selfPredicate())
                 .where('A', ACRComponents())
                 .where('B',
-                        states(SerendustryMetaBlocks.MULTI_CASING
-                                .getState(BlockMultiCasing.SerendustryMultiCasingType.ACR))
+                        states(SerendustryMetaBlocks.S_MULTI_CASING
+                                .getState(SBlockMultiCasing.SMultiCasingType.ACR))
                                         .setMinGlobalLimited(160)
                                         .or(autoAbilities(true, false, true, true, true, true, false)))
                 .where('C', frames(Materials.Scandium));

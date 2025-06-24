@@ -1,0 +1,21 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "active=false,variant=empyrean_glass": {
+      "model": "gregtech:cube_2_layer_all",
+      "ambientocclusion": false,
+      "textures": {
+        "bot_all": "gregtech:blocks/casing/s_glass/empyrean_glass",
+        "top_all": "gregtech:blocks/casing/s_glass/empyrean_glass_bloom"
+      }
+    },
+    "active=true,variant=empyrean_glass": {
+      "model": "gregtech:cube_2_layer_all",
+      "ambientocclusion": false,
+      "textures": {
+        "bot_all": "gregtech:blocks/casing/s_glass/empyrean_glass",
+        "top_all": "gregtech:blocks/casing/s_glass/empyrean_glass_bloom"
+      }
+    }
+  }
+}

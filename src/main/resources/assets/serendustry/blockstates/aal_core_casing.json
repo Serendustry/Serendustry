@@ -1,48 +1,96 @@
 {
   "forge_marker": 1,
-  "defaults": {
-    "model": "minecraft:cube_all",
-    "textures": {
-      "all": "gregtech:blocks/rendering_error"
-    }
-  },
   "variants": {
-    "variant": {
-      "uv": {
+      "active=false,variant=uv": {
+        "model": "minecraft:cube_all",
         "textures": {
           "all": "gregtech:blocks/casing/aal_core/uv"
         }
       },
-      "uhv": {
+      "active=true,variant=uv": {
+        "model": "gregtech:cube_2_layer_all",
+        "textures": {
+          "bot_all": "gregtech:blocks/casing/aal_core/uv",
+          "top_all": "gregtech:blocks/casing/aal_core/uv_bloom"
+        }
+      },
+      "active=false,variant=uhv": {
+        "model": "minecraft:cube_all",
         "textures": {
           "all": "gregtech:blocks/casing/aal_core/uhv"
         }
       },
-      "uev": {
+      "active=true,variant=uhv": {
+        "model": "gregtech:cube_2_layer_all",
+        "textures": {
+          "bot_all": "gregtech:blocks/casing/aal_core/uhv",
+          "top_all": "gregtech:blocks/casing/aal_core/uhv_bloom"
+        }
+      },
+      "active=false,variant=uev": {
+        "model": "minecraft:cube_all",
         "textures": {
           "all": "gregtech:blocks/casing/aal_core/uev"
         }
       },
-      "uiv": {
+      "active=true,variant=uev": {
+        "model": "gregtech:cube_2_layer_all",
+        "textures": {
+          "bot_all": "gregtech:blocks/casing/aal_core/uev",
+          "top_all": "gregtech:blocks/casing/aal_core/uev_bloom"
+        }
+      },
+      "active=false,variant=uiv": {
+        "model": "minecraft:cube_all",
         "textures": {
           "all": "gregtech:blocks/casing/aal_core/uiv"
         }
       },
-      "uxv": {
+      "active=true,variant=uiv": {
+        "model": "gregtech:cube_2_layer_all",
+        "textures": {
+          "bot_all": "gregtech:blocks/casing/aal_core/uiv",
+          "top_all": "gregtech:blocks/casing/aal_core/uiv_bloom"
+        }
+      },
+      "active=false,variant=uxv": {
+        "model": "minecraft:cube_all",
         "textures": {
           "all": "gregtech:blocks/casing/aal_core/uxv"
         }
       },
-      "opv": {
+      "active=true,variant=uxv": {
+        "model": "gregtech:cube_2_layer_all",
+        "textures": {
+          "bot_all": "gregtech:blocks/casing/aal_core/uxv",
+          "top_all": "gregtech:blocks/casing/aal_core/uxv_bloom"
+        }
+      },
+      "active=false,variant=opv": {
+        "model": "minecraft:cube_all",
         "textures": {
           "all": "gregtech:blocks/casing/aal_core/opv"
         }
       },
-      "max": {
+      "active=true,variant=opv": {
+        "model": "gregtech:cube_2_layer_all",
+        "textures": {
+          "bot_all": "gregtech:blocks/casing/aal_core/opv",
+          "top_all": "gregtech:blocks/casing/aal_core/opv_bloom"
+        }
+      },
+      "active=false,variant=max": {
+        "model": "minecraft:cube_all",
         "textures" : {
           "all" : "gregtech:blocks/casing/aal_core/max"
         }
-      }
+      },
+      "active=true,variant=max": {
+        "model": "gregtech:cube_2_layer_all",
+        "textures" : {
+          "bot_all" : "gregtech:blocks/casing/aal_core/max",
+          "top_all": "gregtech:blocks/casing/aal_core/max_bloom"
+        }
     }
   }
 }

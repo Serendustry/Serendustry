@@ -116,7 +116,7 @@ import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.blocks.BlockMachineCasing;
 import serendustry.SValues;
-import serendustry.blocks.BlockMultiCasing;
+import serendustry.blocks.SBlockMultiCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 
 public class HTMachineRecipes {
@@ -190,8 +190,8 @@ public class HTMachineRecipes {
                 .duration(8000).EUt(VA[GTValues.UHV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .inputs(SerendustryMetaBlocks.MULTI_CASING
-                        .getItemVariant(BlockMultiCasing.SerendustryMultiCasingType.ACR, 4))
+                .inputs(SerendustryMetaBlocks.S_MULTI_CASING
+                        .getItemVariant(SBlockMultiCasing.SMultiCasingType.ACR, 4))
                 .input(circuit, MarkerMaterials.Tier.UHV, 8)
                 .input(FIELD_GENERATOR_UV, 4)
                 .input(SENSOR_UV, 8)

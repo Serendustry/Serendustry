@@ -736,15 +736,15 @@ serendustry.material.calcium_hydrosulfide=Calcium Hydrosulfide
 serendustry.material.aluminium_hydride=Aluminium Hydride
 serendustry.material.butanediol=1,4-Butanediol
 
-tile.serendustry_metal_casing.americium.name=Flawless Americium Casing
-tile.serendustry_metal_casing.carbon.name=Ultradense Carbon Casing
-tile.serendustry_metal_casing.adamantium.name=Immaculate Adamantium Casing
-tile.serendustry_metal_casing.neutronium.name=Stellar Neutronium Casing
+tile.s_metal_casing.americium.name=Flawless Americium Casing
+tile.s_metal_casing.carbon.name=Ultradense Carbon Casing
+tile.s_metal_casing.adamantium.name=Immaculate Adamantium Casing
+tile.s_metal_casing.neutronium.name=Stellar Neutronium Casing
 
-tile.serendustry_multi_casing.space_elevator.name=Space Elevator Casing
+tile.s_multi_casing.space_elevator.name=Space Elevator Casing
 
-tile.serendustry_multi_casing.adv_fusion.name=Prismatic Fusion Casing
-tile.serendustry_multi_casing.adv_fusion_coil.name=Prismatic Fusion Coil
+tile.s_multi_casing.adv_fusion.name=Prismatic Fusion Casing
+tile.s_active_multi_casing.adv_fusion_coil.name=Prismatic Fusion Coil
 
 tile.eic_hammer_casing.neutronium.name=Neutronium Hammer Casing
 tile.eic_hammer_casing.neutronium.tooltip=Grants the §eElectric Implosion Compressor §f16§7 parallel
@@ -777,7 +777,7 @@ tile.aal_core_casing.opv.tooltip=Allows the §eAdvanced Assembly Line§7 to acce
 tile.aal_core_casing.max.name=MAX Assembly Core
 tile.aal_core_casing.max.tooltip=Allows the §eAdvanced Assembly Line§7 to accept all §fEnergy§7, §dSubstation§7, and §dLaser§7 Hatches/nFor each tier that cores exceed recipe tier, recipe duration is §fhalved
 
-tile.serendustry_multi_casing.acr.name=Advanced Reaction Catalyzer Casing
+tile.s_multi_casing.acr.name=Advanced Reaction Catalyzer Casing
 tile.acr_component.empty.name=Empty Advanced Reaction Catalyzer Component
 tile.acr_component.empty.tooltip=Can be placed inside the §eAdvanced Reaction Catalyzer/n/nNo effect
 tile.acr_component.heater_resistive.name=Resistive Heater Component
@@ -797,6 +797,17 @@ tile.acr_component.compressor_reciprocating.tooltip=Can be placed inside the §e
 tile.acr_component.compressor_centrifugal.name=Centrifugal Compressor Component
 tile.acr_component.compressor_centrifugal.tooltip=Can be placed inside the §eAdvanced Reaction Catalyzer/n/nMultiplies §eTemperature§7 by §f1.025§7 and §ePressure§7 by §f1.2/nConsumes §f10L§a Molybdenite Lubricant§7 per second while the machine is running
 
+tile.s_wire_coil.hypogen.name=§6Hypogen§f Coil
+
+tile.s_active_multi_casing.empyrean_core.name=Empyrean Core
+tile.s_glass_casing.empyrean_glass.name=Empyrean Glass
+
+
+tile.wire_coil.tooltip_crystallizer=§8Crystallizer:
+tile.wire_coil.tooltip_duration_crystallizer=  §bRecipe Duration: §f%s%%
+tile.wire_coil.tooltip_nebulaic_nexus=§8Nebulaic Nexus:
+tile.wire_coil.tooltip_parallel_nebulaic_nexus=  §5Max Parallel: §f%s
+
 serendustry.machine.industrial_laboratory.name=Industrial Laboratory
 serendustry.machine.industrial_laboratory.tooltip=§bOne Science only will one Genius fit; So vast is Art, so narrow Human Wit/n/nPerforms advanced multi-step chemical reactions/nEach recipe requires certain singleblock machines of at least a certain tier to be placed in the space inside the Laboratory
 serendustry.machine.industrial_laboratory.jei_header=Machines Required:
@@ -805,7 +816,7 @@ serendustry.machine.transcendent_plasma_mixer.tooltip=wip
 serendustry.machine.space_elevator.name=Space Elevator
 serendustry.machine.space_elevator.tooltip=§bOne day we may just be able to touch down on a star/n/nFirst, send a §aScanning Drone§7 out, and it will return with §aData§7 on the location of resources/nThen, send the appropriate §aHarvesting Drone§7 with that §aData§7 and it will bring back riches beyond your wildest dreams
 serendustry.machine.nebulaic_nexus.name=Nebulaic Nexus
-serendustry.machine.nebulaic_nexus.tooltip=§bSet ablaze, I'll shine brighter than the stars/n/nThe birthplace of Neutronium
+serendustry.machine.nebulaic_nexus.tooltip=§bSet ablaze, I'll shine brighter than the stars/n/nThe birthplace of Neutronium/n/nAccepts §aTritanium§7 or §6Hypogen§f Coils§7. The latter grants 16 parallel
 serendustry.machine.plasma_foundry.name=Plasma Foundry
 serendustry.machine.plasma_foundry.tooltip=§bFor a minute the sky pours into the hole like plasma/n/nCreates alloys in liquid form at far faster speeds than previously thought possible/n/nRecipes require §eCatalysts§7 to run/nWhen a catalyst is placed inside the §fcontroller slot§7, it will be §cconsumed§7, and that controller will be bound to that catalyst, and §conly§7 that catalyst, until it breaks/nCatalysts break after §f50§7 recipes
 serendustry.machine.plasma_foundry.lava=Requires §f3§7 Lava source blocks to form

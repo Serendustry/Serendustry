@@ -203,15 +203,15 @@ import net.minecraft.init.Blocks;
 
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.common.metatileentities.MetaTileEntities;
-import serendustry.blocks.BlockMultiCasing;
+import serendustry.blocks.SBlockMultiCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 
 public class SpaceElevatorRecipes {
 
     public static void init() {
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .inputs(SerendustryMetaBlocks.MULTI_CASING.getItemVariant(
-                        BlockMultiCasing.SerendustryMultiCasingType.SPACE_ELEVATOR, 4))
+                .inputs(SerendustryMetaBlocks.S_MULTI_CASING.getItemVariant(
+                        SBlockMultiCasing.SMultiCasingType.SPACE_ELEVATOR, 4))
                 .input(circuit, MarkerMaterials.Tier.UHV, 16)
                 .input(circuit, MarkerMaterials.Tier.UV, 64)
                 .input(SENSOR_ZPM, 32)
@@ -227,8 +227,8 @@ public class SpaceElevatorRecipes {
                 .fluidInputs(Europium.getFluid(144 * 64))
                 .output(SPACE_ELEVATOR)
                 .stationResearch(b -> b
-                        .researchStack(SerendustryMetaBlocks.MULTI_CASING
-                                .getItemVariant(BlockMultiCasing.SerendustryMultiCasingType.SPACE_ELEVATOR))
+                        .researchStack(SerendustryMetaBlocks.S_MULTI_CASING
+                                .getItemVariant(SBlockMultiCasing.SMultiCasingType.SPACE_ELEVATOR))
                         .CWUt(64)
                         .EUt(VA[UV]))
                 .duration(9600).EUt(VA[UV]).buildAndRegister();

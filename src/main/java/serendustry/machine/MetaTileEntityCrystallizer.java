@@ -32,7 +32,7 @@ import gregtech.client.renderer.ICubeRenderer;
 import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.MetaBlocks;
 import serendustry.SValues;
-import serendustry.blocks.BlockMetalCasing;
+import serendustry.blocks.SBlockMetalCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.client.utils.STooltipHelper;
@@ -90,8 +90,8 @@ public class MetaTileEntityCrystallizer extends RecipeMapMultiblockController {
         pattern.where('E', selfPredicate())
                 .where('A', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.FUSION_GLASS)))
                 .where('B', heatingCoils())
-                .where('C', states(SerendustryMetaBlocks.METAL_CASING
-                        .getState(BlockMetalCasing.SerendustryMetalCasingType.CARBON))
+                .where('C', states(SerendustryMetaBlocks.S_METAL_CASING
+                        .getState(SBlockMetalCasing.SMetalCasingType.CARBON))
                                 .setMinGlobalLimited(180).or(autoAbilities()))
                 .where('D', frames(Materials.Scandium));
 

@@ -23,11 +23,11 @@ import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.client.renderer.ICubeRenderer;
-import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.MetaBlocks;
 import serendustry.SValues;
-import serendustry.blocks.BlockMultiCasing;
+import serendustry.blocks.SBlockActiveMultiCasing;
+import serendustry.blocks.SBlockMultiCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.client.utils.STooltipHelper;
@@ -60,12 +60,12 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
 
         pattern.where('C', selfPredicate())
                 .where('A',
-                        states(SerendustryMetaBlocks.MULTI_CASING
-                                .getState(BlockMultiCasing.SerendustryMultiCasingType.ADV_FUSION))
+                        states(SerendustryMetaBlocks.S_MULTI_CASING
+                                .getState(SBlockMultiCasing.SMultiCasingType.ADV_FUSION))
                                         .setMinGlobalLimited(365).or(autoAbilities()))
                 .where('B',
-                        states(SerendustryMetaBlocks.MULTI_CASING
-                                .getState(BlockMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL)))
+                        states(SerendustryMetaBlocks.S_ACTIVE_MULTI_CASING
+                                .getState(SBlockActiveMultiCasing.SActiveMultiCasingType.ADV_FUSION_COIL)))
                 .where('D', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.FUSION_GLASS)));
 
         return pattern.build();
@@ -85,7 +85,7 @@ public class MetaTileEntityAdvancedFusionReactor extends RecipeMapMultiblockCont
     @NotNull
     @Override
     protected ICubeRenderer getFrontOverlay() {
-        return Textures.FUSION_REACTOR_OVERLAY;// SerendustryTextures.OVERLAY_ADVANCED_FUSION_REACTOR;
+        return SerendustryTextures.OVERLAY_ADVANCED_FUSION_REACTOR;
     }
     // todo: big laser rendering
 

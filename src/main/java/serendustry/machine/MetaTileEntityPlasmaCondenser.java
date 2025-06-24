@@ -48,11 +48,11 @@ import serendustry.SValues;
 import serendustry.api.SerendustryAPI;
 import serendustry.api.capability.IPCCoil;
 import serendustry.api.capability.impl.PCRecipeLogic;
-import serendustry.blocks.BlockMetalCasing;
 import serendustry.blocks.BlockPCCoilCooling;
 import serendustry.blocks.BlockPCCoilHeating;
 import serendustry.blocks.IPCCoilCoolingBlockStats;
 import serendustry.blocks.IPCCoilHeatingBlockStats;
+import serendustry.blocks.SBlockMetalCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.client.utils.STooltipHelper;
@@ -145,13 +145,11 @@ public class MetaTileEntityPlasmaCondenser extends RecipeMapMultiblockController
         }
 
         pattern.where('G', selfPredicate())
-                .where('A', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.FUSION_GLASS))) // todo
-                                                                                                                      // chromatic
-                                                                                                                      // glass
+                .where('A', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.FUSION_GLASS)))
                 .where('B', PCCoilsCooling())
                 .where('C',
-                        states(SerendustryMetaBlocks.METAL_CASING
-                                .getState(BlockMetalCasing.SerendustryMetalCasingType.NEUTRONIUM))
+                        states(SerendustryMetaBlocks.S_METAL_CASING
+                                .getState(SBlockMetalCasing.SMetalCasingType.NEUTRONIUM))
                                         .setMinGlobalLimited(1227)
                                         .or(autoAbilities(false, false, true, true, true, true, false))
                                         .or(abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(0)
@@ -163,8 +161,8 @@ public class MetaTileEntityPlasmaCondenser extends RecipeMapMultiblockController
                                                 .setMaxGlobalLimited(1)))
                 .where('D', PCCoilsHeating())
                 .where('E',
-                        states(SerendustryMetaBlocks.METAL_CASING
-                                .getState(BlockMetalCasing.SerendustryMetalCasingType.CARBON)))
+                        states(SerendustryMetaBlocks.S_METAL_CASING
+                                .getState(SBlockMetalCasing.SMetalCasingType.CARBON)))
                 .where('F', frames(SerendustryMaterials.DeepDarkSteel));
 
         return pattern.build();

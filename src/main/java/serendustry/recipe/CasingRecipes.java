@@ -109,10 +109,11 @@ import gregtech.common.blocks.MetaBlocks;
 import serendustry.blocks.BlockAALCoreCasing;
 import serendustry.blocks.BlockACRComponent;
 import serendustry.blocks.BlockEICHammerCasing;
-import serendustry.blocks.BlockMetalCasing;
-import serendustry.blocks.BlockMultiCasing;
 import serendustry.blocks.BlockPCCoilCooling;
 import serendustry.blocks.BlockPCCoilHeating;
+import serendustry.blocks.SBlockActiveMultiCasing;
+import serendustry.blocks.SBlockMetalCasing;
+import serendustry.blocks.SBlockMultiCasing;
 import serendustry.blocks.SerendustryMetaBlocks;
 
 public class CasingRecipes {
@@ -123,8 +124,8 @@ public class CasingRecipes {
                 .input(plate, Americium, 6)
                 .input(frameGt, NaquadahAlloy, 1)
                 .circuitMeta(6)
-                .outputs(SerendustryMetaBlocks.METAL_CASING.getItemVariant(
-                        BlockMetalCasing.SerendustryMetalCasingType.AMERICIUM,
+                .outputs(SerendustryMetaBlocks.S_METAL_CASING.getItemVariant(
+                        SBlockMetalCasing.SMetalCasingType.AMERICIUM,
                         ConfigHolder.recipes.casingsPerCraft))
                 .duration(20 * 32).EUt(VA[GTValues.ZPM]).buildAndRegister();
 
@@ -147,8 +148,8 @@ public class CasingRecipes {
                 .input(plateDense, Carbon, 6)
                 .input(frameGt, Carbon)
                 .circuitMeta(6)
-                .outputs(SerendustryMetaBlocks.METAL_CASING.getItemVariant(
-                        BlockMetalCasing.SerendustryMetalCasingType.CARBON,
+                .outputs(SerendustryMetaBlocks.S_METAL_CASING.getItemVariant(
+                        SBlockMetalCasing.SMetalCasingType.CARBON,
                         ConfigHolder.recipes.casingsPerCraft))
                 .duration(20 * 32).EUt(VA[GTValues.ZPM]).buildAndRegister();
 
@@ -156,8 +157,8 @@ public class CasingRecipes {
                 .input(plate, Adamantium, 6)
                 .input(frameGt, Adamantium, 1)
                 .circuitMeta(6)
-                .outputs(SerendustryMetaBlocks.METAL_CASING.getItemVariant(
-                        BlockMetalCasing.SerendustryMetalCasingType.ADAMANTIUM,
+                .outputs(SerendustryMetaBlocks.S_METAL_CASING.getItemVariant(
+                        SBlockMetalCasing.SMetalCasingType.ADAMANTIUM,
                         ConfigHolder.recipes.casingsPerCraft))
                 .duration(20 * 32).EUt(VA[GTValues.UV]).buildAndRegister();
 
@@ -165,8 +166,8 @@ public class CasingRecipes {
                 .input(plate, Neutronium, 6)
                 .input(frameGt, Neutronium, 1)
                 .circuitMeta(6)
-                .outputs(SerendustryMetaBlocks.METAL_CASING.getItemVariant(
-                        BlockMetalCasing.SerendustryMetalCasingType.NEUTRONIUM,
+                .outputs(SerendustryMetaBlocks.S_METAL_CASING.getItemVariant(
+                        SBlockMetalCasing.SMetalCasingType.NEUTRONIUM,
                         ConfigHolder.recipes.casingsPerCraft))
                 .duration(20 * 32).EUt(VA[GTValues.UHV]).buildAndRegister();
 
@@ -179,8 +180,8 @@ public class CasingRecipes {
                 .input(screw, Adamantium, 32)
                 .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 16))
                 .fluidInputs(Europium.getFluid(144 * 16))
-                .outputs(SerendustryMetaBlocks.MULTI_CASING.getItemVariant(
-                        BlockMultiCasing.SerendustryMultiCasingType.SPACE_ELEVATOR,
+                .outputs(SerendustryMetaBlocks.S_MULTI_CASING.getItemVariant(
+                        SBlockMultiCasing.SMultiCasingType.SPACE_ELEVATOR,
                         ConfigHolder.recipes.casingsPerCraft * 16))
                 .stationResearch(b -> b
                         .researchStack(ADVANCED_LARGE_MINER.getStackForm())
@@ -194,8 +195,8 @@ public class CasingRecipes {
                 .input(plateDense, NaquadahAlloy)
                 .input(plate, Polybenzimidazole, 16)
                 .fluidInputs(HighGradeSolderingAlloy.getFluid(144 * 4))
-                .outputs(SerendustryMetaBlocks.MULTI_CASING.getItemVariant(
-                        BlockMultiCasing.SerendustryMultiCasingType.ACR,
+                .outputs(SerendustryMetaBlocks.S_MULTI_CASING.getItemVariant(
+                        SBlockMultiCasing.SMultiCasingType.ACR,
                         ConfigHolder.recipes.casingsPerCraft))
                 .duration(20 * 32).EUt(VA[GTValues.UV]).buildAndRegister();
 
@@ -265,8 +266,8 @@ public class CasingRecipes {
                 .input(plate, HalkoniteSteel, 8)
                 .input(plate, AbyssalAlloy, 8)
                 .fluidInputs(RadoxPolymer.getFluid(144 * 8))
-                .outputs(SerendustryMetaBlocks.MULTI_CASING.getItemVariant(
-                        BlockMultiCasing.SerendustryMultiCasingType.ADV_FUSION,
+                .outputs(SerendustryMetaBlocks.S_MULTI_CASING.getItemVariant(
+                        SBlockMultiCasing.SMultiCasingType.ADV_FUSION,
                         ConfigHolder.recipes.casingsPerCraft))
                 .duration(20 * 10).EUt(VA[GTValues.UEV]).buildAndRegister();
 
@@ -284,8 +285,8 @@ public class CasingRecipes {
                 .fluidInputs(Quantium40.getFluid(144 * 4),
                         Hihiirokane.getFluid(144 * 4),
                         Copper.getPlasma(144 * 8))
-                .outputs(SerendustryMetaBlocks.MULTI_CASING
-                        .getItemVariant(BlockMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL))
+                .outputs(SerendustryMetaBlocks.S_ACTIVE_MULTI_CASING
+                        .getItemVariant(SBlockActiveMultiCasing.SActiveMultiCasingType.ADV_FUSION_COIL))
                 .stationResearch(b -> b
                         .researchStack(
                                 MetaBlocks.FUSION_CASING.getItemVariant(BlockFusionCasing.CasingType.FUSION_COIL))
@@ -295,8 +296,8 @@ public class CasingRecipes {
 
         // Plasma Condenser coils
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .inputs(SerendustryMetaBlocks.MULTI_CASING
-                        .getItemVariant(BlockMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 2))
+                .inputs(SerendustryMetaBlocks.S_ACTIVE_MULTI_CASING
+                        .getItemVariant(SBlockActiveMultiCasing.SActiveMultiCasingType.ADV_FUSION_COIL, 2))
                 .input(FIELD_GENERATOR_UHV)
                 .input(ELECTRIC_PUMP_UV)
                 .input(circuit, MarkerMaterials.Tier.UEV, 2)
@@ -312,15 +313,15 @@ public class CasingRecipes {
                 .outputs(SerendustryMetaBlocks.PC_COIL_HEATING
                         .getItemVariant(BlockPCCoilHeating.PCCoilHeatingType.INFERNAL, 2))
                 .stationResearch(b -> b
-                        .researchStack(SerendustryMetaBlocks.MULTI_CASING
-                                .getItemVariant(BlockMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL))
+                        .researchStack(SerendustryMetaBlocks.S_ACTIVE_MULTI_CASING
+                                .getItemVariant(SBlockActiveMultiCasing.SActiveMultiCasingType.ADV_FUSION_COIL))
                         .CWUt(144)
                         .EUt(VA[GTValues.UEV]))
                 .duration(20 * 60 * 4).EUt(VA[GTValues.UEV]).buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .inputs(SerendustryMetaBlocks.MULTI_CASING
-                        .getItemVariant(BlockMultiCasing.SerendustryMultiCasingType.ADV_FUSION_COIL, 2))
+                .inputs(SerendustryMetaBlocks.S_ACTIVE_MULTI_CASING
+                        .getItemVariant(SBlockActiveMultiCasing.SActiveMultiCasingType.ADV_FUSION_COIL, 2))
                 .input(FIELD_GENERATOR_UHV)
                 .input(ELECTRIC_PUMP_UV)
                 .input(circuit, MarkerMaterials.Tier.UEV, 2)
@@ -501,8 +502,8 @@ public class CasingRecipes {
 
         // ACR Components
         ASSEMBLER_RECIPES.recipeBuilder()
-                .inputs(SerendustryMetaBlocks.MULTI_CASING
-                        .getItemVariant(BlockMultiCasing.SerendustryMultiCasingType.ACR))
+                .inputs(SerendustryMetaBlocks.S_MULTI_CASING
+                        .getItemVariant(SBlockMultiCasing.SMultiCasingType.ACR))
                 .input(circuit, MarkerMaterials.Tier.UV)
                 .input(plate, Neutronium, 6)
                 .input(cableGtDouble, Hihiirokane, 4)

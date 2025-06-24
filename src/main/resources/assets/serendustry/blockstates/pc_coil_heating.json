@@ -1,23 +1,31 @@
 {
   "forge_marker": 1,
-  "defaults": {
-    "model": "minecraft:cube_all",
-    "textures": {
-      "all": "gregtech:blocks/rendering_error"
-    }
-  },
   "variants": {
-    "variant": {
-      "infernal": {
+      "active=false,variant=infernal": {
+        "model": "minecraft:cube_all",
         "textures": {
           "all": "gregtech:blocks/casing/pc_coil/infernal"
         }
       },
-      "supernova": {
+      "active=true,variant=infernal": {
+        "model": "gregtech:cube_2_layer_all",
+        "textures": {
+          "bot_all": "gregtech:blocks/casing/pc_coil/infernal",
+          "top_all": "gregtech:blocks/casing/pc_coil/infernal_bloom"
+        }
+      },
+      "active=false,variant=supernova": {
+        "model": "minecraft:cube_all",
         "textures": {
           "all": "gregtech:blocks/casing/pc_coil/supernova"
         }
+      },
+      "active=true,variant=supernova": {
+        "model": "gregtech:cube_2_layer_all",
+        "textures": {
+          "bot_all": "gregtech:blocks/casing/pc_coil/supernova",
+          "top_all": "gregtech:blocks/casing/pc_coil/supernova_bloom"
+        }
       }
-    }
   }
 }

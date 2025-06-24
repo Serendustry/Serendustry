@@ -10,6 +10,7 @@ import static serendustry.blocks.SerendustryMetaBlocks.ACR_COMPONENT;
 import static serendustry.blocks.SerendustryMetaBlocks.EIC_HAMMER_CASING;
 import static serendustry.blocks.SerendustryMetaBlocks.PC_COIL_COOLING;
 import static serendustry.blocks.SerendustryMetaBlocks.PC_COIL_HEATING;
+import static serendustry.blocks.SerendustryMetaBlocks.S_WIRE_COIL;
 
 import java.util.Objects;
 import java.util.function.Function;
@@ -50,6 +51,7 @@ import serendustry.blocks.BlockACRComponent;
 import serendustry.blocks.BlockEICHammerCasing;
 import serendustry.blocks.BlockPCCoilCooling;
 import serendustry.blocks.BlockPCCoilHeating;
+import serendustry.blocks.SBlockWireCoil;
 import serendustry.blocks.SerendustryMetaBlocks;
 import serendustry.client.renderer.texture.SerendustryTextures;
 import serendustry.entity.FriendlyCreeperEntity;
@@ -118,6 +120,9 @@ public class Serendustry {
         for (BlockACRComponent.ACRComponentType type : BlockACRComponent.ACRComponentType.values()) {
             ACR_COMPONENTS.put(ACR_COMPONENT.getState(type), type);
         }
+
+        GregTechAPI.HEATING_COILS.put(S_WIRE_COIL.getState(SBlockWireCoil.CoilType.HYPOGEN),
+                SBlockWireCoil.CoilType.HYPOGEN);
 
         IForgeRegistry<Block> registry = event.getRegistry();
         SerendustryMetaBlocks.ALL_CASINGS.forEach(registry::register);
